@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="SMSads Romania — Launch Brief 2026">
+<meta property="og:description" content="Full market intelligence report: verticals, offers, networks, competitor angles for Romania SMS affiliate market.">
+<meta property="og:type" content="article">
+<title>SMSads Romania — Launch Brief 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --accent: #f97316;
+    --accent2: #1A9BA5;
+    --accent3: #4FC3F7;
+    --glass: rgba(17,17,24,0.7);
+    --border: rgba(249,115,22,0.15);
+    --text: #e2e8f0;
+    --muted: #8b949e;
+    --success: #22c55e;
+    --warn: #eab308;
+    --danger: #ef4444;
+    --sidebar-w: 260px;
+  }
+  [data-theme="light"] {
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --glass: rgba(255,255,255,0.85);
+    --border: rgba(249,115,22,0.2);
+    --text: #1e293b;
+    --muted: #64748b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    transition: background 0.3s, color 0.3s;
+  }
+  /* Animated gradient background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 20% 20%, rgba(249,115,22,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(26,155,165,0.05) 0%, transparent 60%),
+                radial-gradient(ellipse at 60% 30%, rgba(79,195,247,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .layout {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+  /* TOC Sidebar */
+  .toc-sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    flex-shrink: 0;
+  }
+  .toc-sidebar::-webkit-scrollbar { width: 4px; }
+  .toc-sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .toc-logo {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  .toc-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  .toc-nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-bottom: 2px;
+  }
+  .toc-nav a:hover, .toc-nav a.active {
+    color: var(--text);
+    background: rgba(249,115,22,0.1);
+  }
+  .toc-nav a .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    opacity: 0.4;
+  }
+  .toc-nav a.active .dot, .toc-nav a:hover .dot { opacity: 1; }
+  /* Metadata sidebar */
+  .meta-block {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  .meta-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.75rem;
+  }
+  .meta-row .key { font-size: 11px; color: var(--muted); }
+  .meta-row .val { font-size: 12px; font-weight: 500; color: var(--text); font-family: 'JetBrains Mono', monospace; }
+  .score-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(249,115,22,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(249,115,22,0.3);
+  }
+  /* Main content */
+  .main-content {
+    flex: 1;
+    max-width: 900px;
+    padding: 3rem 2.5rem;
+    overflow-x: hidden;
+  }
+  /* Header */
+  .report-header {
+    margin-bottom: 3rem;
+  }
+  .report-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(249,115,22,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(249,115,22,0.25);
+    margin-bottom: 1rem;
+  }
+  .report-header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #f97316 0%, #fbbf24 50%, #1A9BA5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .report-subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 600px;
+  }
+  /* KPI Hero Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .kpi-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(249,115,22,0.12);
+  }
+  .kpi-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .kpi-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .kpi-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+  .kpi-card.orange { border-color: rgba(249,115,22,0.3); }
+  .kpi-card.teal { border-color: rgba(26,155,165,0.3); }
+  .kpi-card.blue { border-color: rgba(79,195,247,0.3); }
+  .kpi-card.green { border-color: rgba(34,197,94,0.3); }
+  .kpi-card.orange .kpi-value { color: #f97316; }
+  .kpi-card.teal .kpi-value { color: #1A9BA5; }
+  .kpi-card.blue .kpi-value { color: #4FC3F7; }
+  .kpi-card.green .kpi-value { color: #22c55e; }
+  /* Sections */
+  section {
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .section-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(249,115,22,0.15);
+    border: 1px solid rgba(249,115,22,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  /* Glass card */
+  .glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  /* Tables */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .data-table thead tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table th {
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .data-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text);
+    vertical-align: middle;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(249,115,22,0.04); }
+  /* Status badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .badge-launch { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+  .badge-caution { background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3); }
+  .badge-later { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.3); }
+  .badge-high { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+  .badge-med { background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3); }
+  .badge-low { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+  /* Rank pill */
+  .rank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(249,115,22,0.12);
+    color: var(--accent);
+  }
+  /* Chart containers */
+  .chart-container {
+    position: relative;
+    height: 320px;
+    margin: 1rem 0;
+  }
+  /* Offer cards */
+  .offer-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .offer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(249,115,22,0.1);
+  }
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    border-radius: 3px 0 0 3px;
+  }
+  .offer-rank-big {
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(249,115,22,0.2);
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    line-height: 1;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .offer-name { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+  .offer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 12px;
+  }
+  .offer-meta-item {
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 3px 8px;
+    color: var(--muted);
+  }
+  .offer-meta-item strong { color: var(--text); }
+  .offer-hook {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(249,115,22,0.15);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  .offer-note { font-size: 12px; color: var(--muted); }
+  /* Intel cards */
+  .intel-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .intel-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .intel-card p { font-size: 13px; color: var(--muted); }
+  /* Action items */
+  .action-item {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--accent);
+  }
+  .action-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .action-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(249,115,22,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .action-title { font-size: 1rem; font-weight: 600; color: var(--text); }
+  .deadline-tag {
+    font-size: 11px;
+    color: var(--warn);
+    background: rgba(234,179,8,0.1);
+    border: 1px solid rgba(234,179,8,0.2);
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: auto;
+  }
+  .action-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  /* Budget */
+  .budget-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .budget-row:last-child { border-bottom: none; }
+  .budget-row .label { color: var(--muted); }
+  .budget-row .amount { font-weight: 600; font-family: 'JetBrains Mono', monospace; color: var(--text); }
+  .budget-total .label { color: var(--text); font-weight: 600; }
+  .budget-total .amount { color: var(--accent); font-size: 1.1rem; }
+  /* Carrier grid */
+  .carrier-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .carrier-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .carrier-name { font-weight: 600; font-size: 14px; margin-bottom: 0.25rem; }
+  .carrier-share {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .carrier-policy { font-size: 12px; color: var(--muted); margin-top: 0.25rem; }
+  /* Controls */
+  .controls {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+  }
+  .ctrl-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .ctrl-btn:hover { background: rgba(249,115,22,0.15); border-color: var(--accent); }
+  /* Compliance checklist */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-icon { color: var(--success); flex-shrink: 0; margin-top: 2px; }
+  /* Pull quote */
+  .pull-quote {
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0;
+    background: rgba(249,115,22,0.05);
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: var(--text);
+    font-style: italic;
+  }
+  /* Angle pills */
+  .angle-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.75rem; }
+  .angle-pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgba(79,195,247,0.1);
+    color: #4FC3F7;
+    border: 1px solid rgba(79,195,247,0.2);
+  }
+  .angle-pill.orange { background: rgba(249,115,22,0.1); color: #f97316; border-color: rgba(249,115,22,0.2); }
+  .angle-pill.teal { background: rgba(26,155,165,0.1); color: #1A9BA5; border-color: rgba(26,155,165,0.2); }
+  .angle-pill.green { background: rgba(34,197,94,0.1); color: #22c55e; border-color: rgba(34,197,94,0.2); }
+  /* Mono value */
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  /* Network score bar */
+  .score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .score-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+  }
+  .score-val { font-size: 12px; font-weight: 600; color: var(--text); width: 28px; text-align: right; }
+  /* Footer */
+  footer {
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* Responsive */
+  @media (max-width: 900px) {
+    .toc-sidebar { display: none; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .carrier-grid { grid-template-columns: 1fr; }
+    .main-content { padding: 2rem 1.25rem; }
+    .report-header h1 { font-size: 1.75rem; }
+  }
+  @media print {
+    body { background: #fff; color: #000; }
+    .toc-sidebar, .controls { display: none; }
+    section { opacity: 1; transform: none; }
+    .glass-card, .offer-card, .intel-card, .action-item {
+      background: #f8f8f8; border: 1px solid #ddd;
+    }
+    .kpi-value, .offer-name { color: #000; }
+    page-break-inside: avoid;
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <button class="ctrl-btn" onclick="toggleTheme()">☀ / ☾ Toggle</button>
+  <button class="ctrl-btn" onclick="shareReport()">⬆ Share</button>
+</div>
+
+<div class="layout">
+  <!-- TOC Sidebar -->
+  <nav class="toc-sidebar">
+    <div class="toc-logo">Mercury V2</div>
+    <div class="toc-title">SMSads Romania<br>Launch Brief 2026</div>
+    <nav class="toc-nav">
+      <a href="#overview"><span class="dot"></span>Market Overview</a>
+      <a href="#verticals"><span class="dot"></span>Top 10 Verticals</a>
+      <a href="#offers"><span class="dot"></span>Top Offers</a>
+      <a href="#networks"><span class="dot"></span>Networks</a>
+      <a href="#competitors"><span class="dot"></span>Competitor Intel</a>
+      <a href="#strategy"><span class="dot"></span>Strategic Rec.</a>
+      <a href="#budget"><span class="dot"></span>Launch Budget</a>
+      <a href="#compliance"><span class="dot"></span>Compliance</a>
+    </nav>
+
+    <div class="meta-block">
+      <div class="meta-label">Report Metadata</div>
+      <div class="meta-row"><span class="key">Country</span><span class="val">Romania (RO)</span></div>
+      <div class="meta-row"><span class="key">Task ID</span><span class="val">nx-20260404-c5xg</span></div>
+      <div class="meta-row"><span class="key">Generated</span><span class="val">2026-04-04</span></div>
+      <div class="meta-row"><span class="key">Pipeline</span><span class="val">MERCURY V2</span></div>
+      <div class="meta-row"><span class="key">Channel</span><span class="val">SMS Affiliate</span></div>
+      <div class="meta-row"><span class="key">Tier</span><span class="val">Tier-2 EU</span></div>
+    </div>
+
+    <div class="meta-block">
+      <div class="meta-label">Market Score</div>
+      <div style="margin-bottom: 0.5rem;">
+        <div class="score-bar-wrap" style="margin-bottom: 4px;">
+          <span style="font-size:11px;color:var(--muted);width:90px;">Overall</span>
+          <div class="score-bar"><div class="score-bar-fill" style="width:72%"></div></div>
+          <span class="score-val">72</span>
+        </div>
+        <div class="score-bar-wrap" style="margin-bottom: 4px;">
+          <span style="font-size:11px;color:var(--muted);width:90px;">Volume</span>
+          <div class="score-bar"><div class="score-bar-fill" style="width:80%"></div></div>
+          <span class="score-val">80</span>
+        </div>
+        <div class="score-bar-wrap" style="margin-bottom: 4px;">
+          <span style="font-size:11px;color:var(--muted);width:90px;">Cost Eff.</span>
+          <div class="score-bar"><div class="score-bar-fill" style="width:75%"></div></div>
+          <span class="score-val">75</span>
+        </div>
+        <div class="score-bar-wrap" style="margin-bottom: 4px;">
+          <span style="font-size:11px;color:var(--muted);width:90px;">Regulatory</span>
+          <div class="score-bar"><div class="score-bar-fill" style="width:60%"></div></div>
+          <span class="score-val">60</span>
+        </div>
+        <div class="score-bar-wrap">
+          <span style="font-size:11px;color:var(--muted);width:90px;">Offers</span>
+          <div class="score-bar"><div class="score-bar-fill" style="width:78%"></div></div>
+          <span class="score-val">78</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="report-header">
+      <div class="report-badge">
+        <span>&#x1F4F1;</span> SMS Affiliate Intelligence
+      </div>
+      <h1>SMSads Romania<br>Launch Brief 2026</h1>
+      <p class="report-subtitle">Full market intelligence report — verticals, offers, networks, and competitor angles for the Romanian SMS affiliate market. Pipeline nx-20260404-c5xg.</p>
+    </div>
+
+    <!-- KPI Hero Cards -->
+    <div class="kpi-grid">
+      <div class="kpi-card orange">
+        <div class="kpi-label">Top Vertical</div>
+        <div class="kpi-value">Nutra COD</div>
+        <div class="kpi-sub">$22.63 EC/1K &bull; 55% ROI</div>
+      </div>
+      <div class="kpi-card teal">
+        <div class="kpi-label">Top Payout</div>
+        <div class="kpi-value">$19.00</div>
+        <div class="kpi-sub">Joint Pain COD &bull; dr.cash</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">SMS Market Size</div>
+        <div class="kpi-value">$0.80M</div>
+        <div class="kpi-sub">2025 ad spend &bull; nascent</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Market Viability</div>
+        <div class="kpi-value">72/100</div>
+        <div class="kpi-sub">Overall opportunity score</div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: Market Overview -->
+    <section id="overview">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <h2>Market Overview</h2>
+      </div>
+
+      <div class="glass-card">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem;">
+          <div>
+            <div class="kpi-label">Population</div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--text);">19M</div>
+          </div>
+          <div>
+            <div class="kpi-label">SIM Connections</div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--accent);">30M+</div>
+          </div>
+          <div>
+            <div class="kpi-label">SIM Penetration</div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--text);">158%</div>
+          </div>
+          <div>
+            <div class="kpi-label">Smartphone Penetration</div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--text);">72%</div>
+          </div>
+          <div>
+            <div class="kpi-label">Internet Users</div>
+            <div style="font-size:1.3rem;font-weight:700;color:var(--text);">78%</div>
+          </div>
+          <div>
+            <div class="kpi-label">Economy CPM</div>
+            <div style="font-size:1.3rem;font-weight:700;color:#22c55e;">$25-32</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);">Tier-2 EU market. Multi-SIM culture inflates SIM count vs population. Strong smartphone growth driven by affordable Android. SMS ad market nascent at $0.80M (2025) — low competition window open. GDP per capita $16,500 USD. Currency: RON (Romanian Leu). Primary demographic: 25-44, Romanian language.</p>
+      </div>
+
+      <div class="pull-quote">
+        "Nascent affiliate SMS market = low competition from professional buyers. First-mover advantage window estimated 6-12 months before competition intensifies."
+      </div>
+
+      <h3>Carrier Breakdown</h3>
+      <div class="carrier-grid">
+        <div class="carrier-card">
+          <div class="carrier-name">Orange Romania</div>
+          <div class="carrier-share">34%</div>
+          <div style="font-size:12px;color:var(--muted);">9.2M subscribers</div>
+          <div class="carrier-policy">Alphanumeric Sender ID registration mandatory. URL whitelist required. HIGH filtering.</div>
+        </div>
+        <div class="carrier-card">
+          <div class="carrier-name">Vodafone Romania</div>
+          <div class="carrier-share">27%</div>
+          <div style="font-size:12px;color:var(--muted);">5.1M subscribers</div>
+          <div class="carrier-policy">Standard A2P. Sender ID registration required. URL whitelist required. HIGH filtering.</div>
+        </div>
+        <div class="carrier-card">
+          <div class="carrier-name">Digi Mobil (RCS-RDS)</div>
+          <div class="carrier-share">25%</div>
+          <div style="font-size:12px;color:var(--muted);">4.75M subscribers</div>
+          <div class="carrier-policy">Fastest growing carrier. Young urban skew. Sender ID mandatory. URL whitelist required.</div>
+        </div>
+        <div class="carrier-card" style="border-color:rgba(239,68,68,0.25);">
+          <div class="carrier-name">Telekom Romania</div>
+          <div class="carrier-share" style="color:#ef4444;">14%</div>
+          <div style="font-size:12px;color:var(--muted);">2.66M subscribers</div>
+          <div class="carrier-policy">STRICTEST. Blocks ALL unregistered sender IDs since Jan 15, 2025. VERY HIGH filtering.</div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="margin-top:1rem;background:rgba(239,68,68,0.05);border-color:rgba(239,68,68,0.2);">
+        <h3 style="color:#ef4444;margin-bottom:0.5rem;">Key Restrictions</h3>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted);">
+          <div>Alphanumeric Sender ID max 11 chars. Registration fee ~$760 (mandatory all 4 carriers).</div>
+          <div>Grey routes actively blocked since 2025. CLI spoofing crackdown: July 7, 2025.</div>
+          <div>Promotional SMS hours: 10:00–20:00 Romanian time only.</div>
+          <div>GDPR explicit opt-in required (checkbox + timestamp + IP). Max 4 SMS/month per recipient.</div>
+          <div>Economy CPM: $25 (local) / $32 (BulkGate) / $61-74 (Twilio/Infobip). Recommended: SendSMS.ro or SMSO.ro.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Verticals -->
+    <section id="verticals">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <h2>Top 10 Verticals</h2>
+      </div>
+
+      <div class="glass-card" style="padding: 1rem 1.25rem;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Vertical</th>
+              <th>EC/1K USD</th>
+              <th>Net EC/1K</th>
+              <th>ROI%</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="rank">1</span></td>
+              <td><strong>Nutraceuticals (COD)</strong><br><span style="font-size:11px;color:var(--muted);">Weight loss, Joint, Varicose, Potency</span></td>
+              <td class="mono" style="color:#f97316;">$22.63</td>
+              <td class="mono" style="color:#22c55e;">$9.37</td>
+              <td class="mono">55%</td>
+              <td><span class="badge badge-launch">LAUNCH</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">2</span></td>
+              <td><strong>Sweepstakes / Prize Promos</strong><br><span style="font-size:11px;color:var(--muted);">iPhone, Cash, Gift cards, Electronics</span></td>
+              <td class="mono" style="color:#f97316;">$19.88</td>
+              <td class="mono" style="color:#22c55e;">$7.88</td>
+              <td class="mono">190%</td>
+              <td><span class="badge badge-launch">LAUNCH</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">3</span></td>
+              <td><strong>Dating (CPL)</strong><br><span style="font-size:11px;color:var(--muted);">Mainstream, Adult, Local, Senior</span></td>
+              <td class="mono">$16.50</td>
+              <td class="mono" style="color:#22c55e;">$4.50</td>
+              <td class="mono">45%</td>
+              <td><span class="badge badge-launch">LAUNCH</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">4</span></td>
+              <td><strong>Finance / PDL Loans</strong><br><span style="font-size:11px;color:var(--muted);">Payday, Personal credit, Car loans</span></td>
+              <td class="mono">$11.55</td>
+              <td class="mono" style="color:var(--muted);">$5.55*</td>
+              <td class="mono">22%*</td>
+              <td><span class="badge badge-later">LATER</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">5</span></td>
+              <td><strong>iGaming / Casino</strong><br><span style="font-size:11px;color:var(--muted);">FTD, Sports betting, Slots, Live</span></td>
+              <td class="mono">$19.20</td>
+              <td class="mono" style="color:#22c55e;">$7.20</td>
+              <td class="mono">45%</td>
+              <td><span class="badge badge-caution">CAUTION (ONJN)</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">6</span></td>
+              <td><strong>Ecommerce</strong><br><span style="font-size:11px;color:var(--muted);">Fashion, Electronics, Car accessories</span></td>
+              <td class="mono">$6.00</td>
+              <td class="mono" style="color:var(--muted);">$0.00</td>
+              <td class="mono">—</td>
+              <td><span class="badge badge-later">LATER</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">7</span></td>
+              <td><strong>Crypto</strong><br><span style="font-size:11px;color:var(--muted);">Exchange reg, Trading, Investment</span></td>
+              <td class="mono">$8.64</td>
+              <td class="mono" style="color:var(--muted);">$0.00</td>
+              <td class="mono">—</td>
+              <td><span class="badge badge-caution">CAUTION</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">8</span></td>
+              <td><strong>Insurance</strong><br><span style="font-size:11px;color:var(--muted);">Health, RCA car, Travel</span></td>
+              <td class="mono">$6.00</td>
+              <td class="mono" style="color:var(--muted);">$0.00</td>
+              <td class="mono">—</td>
+              <td><span class="badge badge-later">LATER</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">9</span></td>
+              <td><strong>Education / E-learning</strong><br><span style="font-size:11px;color:var(--muted);">Online courses, Language, Certs</span></td>
+              <td class="mono">$5.40</td>
+              <td class="mono" style="color:var(--muted);">$0.00</td>
+              <td class="mono">—</td>
+              <td><span class="badge badge-later">LATER</span></td>
+            </tr>
+            <tr>
+              <td><span class="rank">10</span></td>
+              <td><strong>Real Estate</strong><br><span style="font-size:11px;color:var(--muted);">Property leads, Mortgage, Rental</span></td>
+              <td class="mono">$3.75</td>
+              <td class="mono" style="color:var(--muted);">$0.00</td>
+              <td class="mono">—</td>
+              <td><span class="badge badge-later">LATER</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px;color:var(--muted);margin-top:0.75rem;">*Finance PDL profitable only at local CPM ~$25 with high-intent opt-in lists. EC/1K formula: payout x CTR(27%) x CVR x 1000. CPM base $32 (BulkGate). Net EC = EC minus CPM cost.</p>
+      </div>
+
+      <!-- Verticals Chart -->
+      <div class="glass-card">
+        <h3>EC/1K USD by Vertical — Top 10</h3>
+        <div class="chart-container">
+          <canvas id="verticalChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Offers -->
+    <section id="offers">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <h2>Top 10 Affiliate Offers</h2>
+      </div>
+
+      <div style="margin-bottom:1rem;">
+        <p style="font-size:13px;color:var(--muted);">Composite scores (0-100) based on payout (30%), EPC (25%), approval difficulty (15%), saturation (15%), geo match (15%). Payouts are confirmed range estimates — verify live on network login.</p>
+      </div>
+
+      <!-- Table view for top 10 -->
+      <div class="glass-card" style="padding: 1rem 1.25rem;margin-bottom:2rem;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Offer Name</th>
+              <th>Network</th>
+              <th>Payout</th>
+              <th>Type</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="rank">1</span></td>
+              <td>Romania Nutra COD — Joint Pain / Arthritis</td>
+              <td>dr.cash</td>
+              <td class="mono" style="color:#22c55e;">$19.00</td>
+              <td><span class="badge badge-launch">CPA/COD</span></td>
+              <td class="mono">89/100</td>
+            </tr>
+            <tr>
+              <td><span class="rank">2</span></td>
+              <td>Romania Nutra COD — Weight Loss / Slimming</td>
+              <td>AdCombo</td>
+              <td class="mono" style="color:#22c55e;">$18.50</td>
+              <td><span class="badge badge-launch">CPA/COD</span></td>
+              <td class="mono">87/100</td>
+            </tr>
+            <tr>
+              <td><span class="rank">3</span></td>
+              <td>Romania Sweepstakes — iPhone / Prize Promo</td>
+              <td>PropellerAds / Zeydoo</td>
+              <td class="mono" style="color:#eab308;">$7.10</td>
+              <td><span class="badge badge-caution">CPA/CPL</span></td>
+              <td class="mono">85/100</td>
+            </tr>
+            <tr>
+              <td><span class="rank">4</span></td>
+              <td>Romania Dating CPL — be2 / Local Dating</td>
+              <td>Rebll / PropellerAds</td>
+              <td class="mono">$10.00</td>
+              <td><span class="badge badge-launch">CPL</span></td>
+              <td class="mono">81/100</td>
+            </tr>
+            <tr>
+              <td><span class="rank">5</span></td>
+              <td>Romania Nutra COD — Varicose Veins</td>
+              <td>AdCombo / dr.cash</td>
+              <td class="mono" style="color:#22c55e;">$18.00</td>
+              <td><span class="badge badge-launch">CPA/COD</span></td>
+              <td class="mono">82/100</td>
+            </tr>
+            <tr>
+              <td><span class="rank">6</span></td>
+              <td>Romania Finance CPL — Personal Loan Lead</td>
+              <td>SalesDoubler / Leadgid</td>
+              <td class="mono">$15.00</td>
+              <td><span class="badge badge-later">CPL</span></td>
+              <td class="mono">73/100</td>
+            </tr>
+            <tr>
+              <td><span class="rank">7</span></td>
+              <td>Romania Ecommerce — Car Accessories Flash Sale</td>
+              <td>Admitad</td>
+              <td class="mono">$8.00</td>
+              <td><span class="badge badge-later">CPA</span></td>
+              <td class="mono">65/100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Detailed offer cards for top 5 -->
+      <h3 style="margin-bottom:1rem;">Top 5 Offers — Detailed</h3>
+
+      <div class="offer-card">
+        <div class="offer-rank-big">#1</div>
+        <div class="offer-name">Romania Nutra COD — Joint Pain / Arthritis</div>
+        <div class="offer-meta">
+          <div class="offer-meta-item"><strong>Network:</strong> dr.cash</div>
+          <div class="offer-meta-item"><strong>Payout:</strong> $19.00 ($17-21)</div>
+          <div class="offer-meta-item"><strong>Type:</strong> CPA/COD</div>
+          <div class="offer-meta-item"><strong>Score:</strong> 89/100</div>
+          <div class="offer-meta-item"><strong>EPC est.:</strong> $0.86</div>
+          <span class="badge badge-high">LOW Approval Difficulty</span>
+        </div>
+        <div class="offer-hook">SMS: "Durere de genunchi sau articulatii? 94% din pacienti au scapat definitiv. Comanda acum — platesti la usa."</div>
+        <div class="offer-note">Angle: Authority + pain relief. Demographic: 55+. COD flow = trust signal. Daily payouts from dr.cash. Romanian-language LP + pre-lander provided. 4,900+ offers. Custom funnels available.</div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-rank-big">#2</div>
+        <div class="offer-name">Romania Nutra COD — Weight Loss / Slimming</div>
+        <div class="offer-meta">
+          <div class="offer-meta-item"><strong>Network:</strong> AdCombo</div>
+          <div class="offer-meta-item"><strong>Payout:</strong> $18.50 ($17-20)</div>
+          <div class="offer-meta-item"><strong>Type:</strong> CPA/COD</div>
+          <div class="offer-meta-item"><strong>Score:</strong> 87/100</div>
+          <div class="offer-meta-item"><strong>EPC est.:</strong> $0.84</div>
+          <span class="badge badge-high">LOW Approval Difficulty</span>
+        </div>
+        <div class="offer-hook">SMS: "Slabeste 10kg in 30 de zile fara dieta. Metoda secreta a nutritionistilor. COD — platesti la livrare."</div>
+        <div class="offer-note">Angle: Before/after transformation. Demographic: Both genders 30-55. Exclusive in-house AdCombo product. Tier-2 Eastern Europe specialist. Romanian LP/prelander provided. Medium saturation on SMS.</div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-rank-big">#3</div>
+        <div class="offer-name">Romania Sweepstakes — iPhone 15 Prize Promo</div>
+        <div class="offer-meta">
+          <div class="offer-meta-item"><strong>Network:</strong> PropellerAds / Zeydoo</div>
+          <div class="offer-meta-item"><strong>Payout:</strong> $7.10 ($5-10)</div>
+          <div class="offer-meta-item"><strong>Type:</strong> CPL</div>
+          <div class="offer-meta-item"><strong>Score:</strong> 85/100</div>
+          <div class="offer-meta-item"><strong>EPC est.:</strong> $1.92</div>
+          <span class="badge badge-high">VERY LOW Approval Difficulty</span>
+        </div>
+        <div class="offer-hook">SMS: "Felicitari! Ai fost selectat(a) pentru un iPhone 15. Confirma in 10 minute: [link]"</div>
+        <div class="offer-note">CONFIRMED: PropellerAds case study ROI 215%, profit $3,827, Romania-specific. Highest CTR angle. Simple 1-click opt-in. High competition on push but LOW on SMS specifically.</div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-rank-big">#4</div>
+        <div class="offer-name">Romania Nutra COD — Varicose Veins</div>
+        <div class="offer-meta">
+          <div class="offer-meta-item"><strong>Network:</strong> AdCombo / dr.cash</div>
+          <div class="offer-meta-item"><strong>Payout:</strong> $18.00</div>
+          <div class="offer-meta-item"><strong>Type:</strong> CPA/COD</div>
+          <div class="offer-meta-item"><strong>Score:</strong> 82/100</div>
+          <span class="badge badge-high">LOW Saturation on SMS</span>
+        </div>
+        <div class="offer-hook">SMS: "Varice si picioare grele? Scapa definitiv in 4 saptamani. Platesti la livrare. Stoc limitat: [link]"</div>
+        <div class="offer-note">Angle: Fear/loss. Demographic: Female 45+. Underserved angle — low SMS competition from competitors who focus on weight loss and joints. 55+ sub-verticals at dr.cash.</div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-rank-big">#5</div>
+        <div class="offer-name">Romania Dating CPL — Local Singles</div>
+        <div class="offer-meta">
+          <div class="offer-meta-item"><strong>Network:</strong> Rebll Network / PropellerAds</div>
+          <div class="offer-meta-item"><strong>Payout:</strong> $10.00 ($5-15)</div>
+          <div class="offer-meta-item"><strong>Type:</strong> CPL</div>
+          <div class="offer-meta-item"><strong>Score:</strong> 81/100</div>
+          <div class="offer-meta-item"><strong>EPC est.:</strong> $0.49</div>
+          <span class="badge badge-high">LOW Approval Difficulty</span>
+        </div>
+        <div class="offer-hook">SMS: "Cineva din [oras] vrea sa te cunoasca. 847 single-uri active in zona ta. Inscrie-te gratuit: [link]"</div>
+        <div class="offer-note">Angle: Social proof + curiosity. Demographic: Male 25-45. Romania explicitly confirmed by Rebll website. PropellerAds case study be2 dating ROI 89%. City personalization boosts CTR.</div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Networks -->
+    <section id="networks">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <h2>Top 10 Affiliate Networks</h2>
+      </div>
+
+      <div class="glass-card" style="padding: 1rem 1.25rem;margin-bottom:2rem;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Network</th>
+              <th>Score</th>
+              <th>Category</th>
+              <th>Payment</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="rank">1</span></td>
+              <td><strong>dr.cash</strong></td>
+              <td><span class="badge badge-launch">91/100</span></td>
+              <td style="font-size:12px;">CPA Nutra</td>
+              <td style="font-size:12px;">Daily</td>
+              <td style="font-size:12px;color:var(--muted);">PRIMARY nutra Romania</td>
+            </tr>
+            <tr>
+              <td><span class="rank">2</span></td>
+              <td><strong>PropellerAds / Zeydoo</strong></td>
+              <td><span class="badge badge-launch">89/100</span></td>
+              <td style="font-size:12px;">Ad Net + CPA</td>
+              <td style="font-size:12px;">Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">PRIMARY sweepstakes + dating</td>
+            </tr>
+            <tr>
+              <td><span class="rank">3</span></td>
+              <td><strong>AdCombo</strong></td>
+              <td><span class="badge badge-launch">84/100</span></td>
+              <td style="font-size:12px;">CPA Multi</td>
+              <td style="font-size:12px;">Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">SECONDARY nutra exclusive</td>
+            </tr>
+            <tr>
+              <td><span class="rank">4</span></td>
+              <td><strong>Zeydoo (standalone)</strong></td>
+              <td><span class="badge badge-launch">81/100</span></td>
+              <td style="font-size:12px;">CPA (PropellerAds)</td>
+              <td style="font-size:12px;">Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">PRIMARY sweepstakes smartlink</td>
+            </tr>
+            <tr>
+              <td><span class="rank">5</span></td>
+              <td><strong>RichAds</strong></td>
+              <td><span class="badge badge-caution">80/100</span></td>
+              <td style="font-size:12px;">Ad Network</td>
+              <td style="font-size:12px;">Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">SECONDARY push scale</td>
+            </tr>
+            <tr>
+              <td><span class="rank">6</span></td>
+              <td><strong>Rebll Network</strong></td>
+              <td><span class="badge badge-caution">75/100</span></td>
+              <td style="font-size:12px;">CPA Dating</td>
+              <td style="font-size:12px;">Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">PRIMARY dating CPL RO</td>
+            </tr>
+            <tr>
+              <td><span class="rank">7</span></td>
+              <td><strong>ClickDealer</strong></td>
+              <td><span class="badge badge-caution">75/100</span></td>
+              <td style="font-size:12px;">CPA Multi</td>
+              <td style="font-size:12px;">Daily/Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">SECONDARY multi-vertical</td>
+            </tr>
+            <tr>
+              <td><span class="rank">8</span></td>
+              <td><strong>MaxBounty</strong></td>
+              <td><span class="badge badge-caution">74/100</span></td>
+              <td style="font-size:12px;">CPA Multi</td>
+              <td style="font-size:12px;">Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">SECONDARY sweepstakes backup</td>
+            </tr>
+            <tr>
+              <td><span class="rank">9</span></td>
+              <td><strong>Mondiad</strong></td>
+              <td><span class="badge badge-later">73/100</span></td>
+              <td style="font-size:12px;">Ad Network</td>
+              <td style="font-size:12px;">Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">TEST phase only</td>
+            </tr>
+            <tr>
+              <td><span class="rank">10</span></td>
+              <td><strong>SalesDoubler</strong></td>
+              <td><span class="badge badge-later">71/100</span></td>
+              <td style="font-size:12px;">CPA Finance</td>
+              <td style="font-size:12px;">Weekly</td>
+              <td style="font-size:12px;color:var(--muted);">PRIMARY finance/PDL RO</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Networks Chart -->
+      <div class="glass-card">
+        <h3>Network Scores — Top 10</h3>
+        <div class="chart-container">
+          <canvas id="networksChart"></canvas>
+        </div>
+      </div>
+
+      <div class="glass-card" style="margin-top:1rem;">
+        <h3>Recommended Launch Stack</h3>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:0.75rem;">
+          <div style="padding:0.75rem;background:rgba(249,115,22,0.06);border-radius:8px;border:1px solid rgba(249,115,22,0.15);">
+            <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Primary Nutra</div>
+            <div style="font-weight:600;">dr.cash</div>
+          </div>
+          <div style="padding:0.75rem;background:rgba(26,155,165,0.06);border-radius:8px;border:1px solid rgba(26,155,165,0.15);">
+            <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Primary Sweepstakes</div>
+            <div style="font-weight:600;">Zeydoo (via PropellerAds)</div>
+          </div>
+          <div style="padding:0.75rem;background:rgba(79,195,247,0.06);border-radius:8px;border:1px solid rgba(79,195,247,0.15);">
+            <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Primary Dating</div>
+            <div style="font-weight:600;">Rebll Network</div>
+          </div>
+          <div style="padding:0.75rem;background:rgba(234,179,8,0.06);border-radius:8px;border:1px solid rgba(234,179,8,0.15);">
+            <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">SMS Aggregator</div>
+            <div style="font-weight:600;">SendSMS.ro (primary)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Competitor Intel -->
+    <section id="competitors">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <h2>Competitor Intelligence</h2>
+      </div>
+
+      <div class="intel-card">
+        <h4>Active Advertiser Landscape</h4>
+        <p>PropellerAds ecosystem advertisers dominate with $1,000-10,000 daily spend on push/pop (Sweepstakes ROI 215%, Dating ROI 89% confirmed). RichAds advertisers active in nutra/dating/gambling ($500-5,000/day). AdCombo COD affiliates active on native/push with 130,000+ network affiliates. Critically: ALL major competitors are push-focused. SMS is under-contested.</p>
+      </div>
+
+      <div class="intel-card">
+        <h4>Top Performing Angles (Competitor Usage)</h4>
+        <div class="angle-grid">
+          <span class="angle-pill orange">Curiosity (9/10 effectiveness)</span>
+          <span class="angle-pill orange">Urgency (9/10 effectiveness)</span>
+          <span class="angle-pill teal">Social Proof (8/10)</span>
+          <span class="angle-pill teal">Authority (8/10)</span>
+          <span class="angle-pill teal">Fear/Loss (8/10)</span>
+          <span class="angle-pill">Before/After (7/10)</span>
+          <span class="angle-pill">Direct Offer (7/10)</span>
+        </div>
+      </div>
+
+      <div class="intel-card">
+        <h4>Landing Page Patterns Observed</h4>
+        <div style="display:grid;gap:0.5rem;margin-top:0.5rem;">
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;">
+            <span><strong>Fake News Advertorial</strong> (Nutra)</span>
+            <span style="color:#22c55e;font-family:'JetBrains Mono',monospace;">5.5% CVR</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;">
+            <span><strong>Simple Opt-In Prize Registration</strong> (Sweepstakes)</span>
+            <span style="color:#22c55e;font-family:'JetBrains Mono',monospace;">12.0% CVR</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;">
+            <span><strong>Profile Match / Dating Tease</strong> (Dating)</span>
+            <span style="color:#eab308;font-family:'JetBrains Mono',monospace;">7.0% CVR</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;">
+            <span><strong>Quiz / Survey Funnel</strong> (Nutra, Finance)</span>
+            <span style="color:#eab308;font-family:'JetBrains Mono',monospace;">4.0% CVR</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px;">
+            <span><strong>Direct Sales Page + COD Form</strong> (Nutra COD)</span>
+            <span style="color:#eab308;font-family:'JetBrains Mono',monospace;">3.5% CVR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="intel-card" style="background:rgba(34,197,94,0.04);border-color:rgba(34,197,94,0.2);">
+        <h4 style="color:#22c55e;">Creative Gaps — Opportunities</h4>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:0.5rem;font-size:13px;color:var(--muted);">
+          <div>Romanian-language SMS with local city references barely used by competitors — personalization ([oras]) available via aggregators with segmented lists.</div>
+          <div>Fear/loss angle for health verticals underused vs curiosity angle. Strong opportunity for varicose veins and joint pain.</div>
+          <div>COD confirmation flows specifically designed for SMS traffic = opportunity. Most competitors use push-oriented LPs not optimized for SMS entry.</div>
+          <div>Most active angle combo: curiosity + urgency. Least contested on SMS: nutraceuticals (push-heavy competitors leave SMS open).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Strategy -->
+    <section id="strategy">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <h2>Strategic Recommendations</h2>
+      </div>
+
+      <div class="action-item">
+        <div class="action-header">
+          <span class="action-num">P1 — IMMEDIATE</span>
+          <span class="action-title">Register Sender ID — All 4 Carriers</span>
+          <span class="deadline-tag">Deadline: +7 days</span>
+        </div>
+        <div class="action-body">Register alphanumeric Sender ID (11 chars, e.g. "ClickWin") via SendSMS.ro for all four carriers (Orange 34%, Vodafone 27%, Digi 25%, Telekom 14%). Estimated cost ~$760. Without registration: Telekom blocks 100% of sends (enforced Jan 2025), all others filter heavily. This is the single biggest blocker to launch. No sends are possible without this step.</div>
+      </div>
+
+      <div class="action-item" style="border-left-color:#1A9BA5;">
+        <div class="action-header">
+          <span class="action-num" style="color:#1A9BA5;background:rgba(26,155,165,0.1);">P2 — PRIORITY</span>
+          <span class="action-title">Launch Nutra COD + Sweepstakes Parallel Test</span>
+          <span class="deadline-tag">Deadline: +17 days</span>
+        </div>
+        <div class="action-body">Open dr.cash + Zeydoo accounts (fast approval, self-serve). Run 10,000 sends split 50/50: 5,000 to Joint Pain COD (dr.cash, $19 payout) + 5,000 to iPhone Sweepstakes (Zeydoo, $7.10 payout). Target CTR 25%. Success criteria: 15+ nutra conversions = $285 revenue + 40+ sweepstakes conversions = $284 revenue from $320 CPM spend = 77% blended ROI. Use Keitaro tracker with postback integration.</div>
+      </div>
+
+      <div class="action-item" style="border-left-color:#4FC3F7;">
+        <div class="action-header">
+          <span class="action-num" style="color:#4FC3F7;background:rgba(79,195,247,0.1);">P3 — SCALE</span>
+          <span class="action-title">Acquire GDPR-Compliant Opt-In List + Scale to 100K</span>
+          <span class="deadline-tag">Deadline: +30 days</span>
+        </div>
+        <div class="action-body">Minimum 10,000 GDPR-compliant records (checkbox + timestamp + IP). Segment: 35-65 age, health interest for nutra + broad demographic for sweepstakes. Source via Romanian data broker or build via lead-gen LP. After Phase 1 test confirms winning vertical, scale to 100K sends. Add Dating CPL (Rebll Network) as third stream at scale. Local aggregator SendSMS.ro preferred — sub-$30 CPM vs $61-74 for international providers.</div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Budget -->
+    <section id="budget">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <h2>Launch Budget</h2>
+      </div>
+
+      <div class="glass-card" style="max-width:500px;">
+        <h3 style="margin-bottom:1rem;">Phase 1 — Test Campaign Budget</h3>
+        <div class="budget-row"><span class="label">Sender ID Registration (all 4 carriers)</span><span class="amount">$760</span></div>
+        <div class="budget-row"><span class="label">Test SMS Send (10,000 msgs @ $32 CPM)</span><span class="amount">$320</span></div>
+        <div class="budget-row"><span class="label">Tracking setup (Keitaro)</span><span class="amount">$50</span></div>
+        <div class="budget-row"><span class="label">Landing page (optional, networks provide)</span><span class="amount">$100</span></div>
+        <div class="budget-row"><span class="label">List acquisition / lead-gen (minimum)</span><span class="amount">$500</span></div>
+        <div class="budget-row"><span class="label">Contingency (10%)</span><span class="amount">$173</span></div>
+        <div class="budget-row budget-total"><span class="label">Total Launch Budget</span><span class="amount">$1,903</span></div>
+      </div>
+
+      <div class="glass-card" style="max-width:500px;margin-top:1rem;">
+        <h3 style="margin-bottom:1rem;">Projected Returns — Phase 1</h3>
+        <div class="budget-row"><span class="label">Nutra COD (5K sends, 4.5% CVR, $19/CPA)</span><span class="amount" style="color:#22c55e;">+$427</span></div>
+        <div class="budget-row"><span class="label">Sweepstakes (5K sends, 8% CVR, $7.10/CPA)</span><span class="amount" style="color:#22c55e;">+$284</span></div>
+        <div class="budget-row"><span class="label">Total Revenue Estimate</span><span class="amount" style="color:#22c55e;">$711</span></div>
+        <div class="budget-row"><span class="label">CPM Cost (10K sends)</span><span class="amount" style="color:#ef4444;">-$320</span></div>
+        <div class="budget-row budget-total"><span class="label">Net Profit (test campaign)</span><span class="amount">+$391</span></div>
+      </div>
+
+      <div class="pull-quote" style="margin-top:1.5rem;">
+        "Budget to launch: $2,000 (sender ID $760 + test send $500 + LP + tracker + list). Projected first campaign ROI: 55% nutra / 190% sweepstakes. Estimated payback period: ~3 weeks."
+      </div>
+    </section>
+
+    <!-- SECTION 8: Compliance -->
+    <section id="compliance">
+      <div class="section-header">
+        <div class="section-num">8</div>
+        <h2>Compliance Checklist</h2>
+      </div>
+
+      <div class="glass-card">
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>Sender ID registered with all 4 carriers (Orange, Vodafone, Digi, Telekom) via SendSMS.ro</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>Landing page URLs whitelisted via SendSMS.ro aggregator before first send</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>GDPR consent documented for all recipients (checkbox + timestamp + IP logged)</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>STOP/optout mechanism included in every SMS message body</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>Sends strictly within 10:00–20:00 local Romanian time (ANCOM requirement)</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>Max 4 SMS/month per recipient enforced at aggregator level</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>Nutra LPs: no medical claims. Use "alleviates", "reduces" — never "cures" or "treats"</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>iGaming: ONJN-licensed operators ONLY. No international unlicensed operators for RO traffic</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>Finance LPs: APR must be stated. ANPC consumer protection disclosures mandatory</span>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">&#x25A2;</span>
+          <span>Sweepstakes: no guaranteed winning claims. Use "selected for chance to win" framing</span>
+        </div>
+      </div>
+
+      <div class="glass-card" style="margin-top:1rem;background:rgba(239,68,68,0.04);border-color:rgba(239,68,68,0.2);">
+        <h3 style="color:#ef4444;margin-bottom:0.75rem;">Regulatory Timeline — Romania 2025</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="color:#ef4444;font-family:'JetBrains Mono',monospace;white-space:nowrap;font-size:11px;">Dec 2024</span>
+            <span style="color:var(--muted);">Romania sender ID registration process updated (Twilio advisory)</span>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="color:#ef4444;font-family:'JetBrains Mono',monospace;white-space:nowrap;font-size:11px;">Jan 2025</span>
+            <span style="color:var(--muted);">Telekom enforces mandatory alphanumeric sender ID registration — ALL unregistered blocked</span>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="color:#eab308;font-family:'JetBrains Mono',monospace;white-space:nowrap;font-size:11px;">Mar 2025</span>
+            <span style="color:var(--muted);">ANCOM revised wholesale market obligations</span>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="color:#ef4444;font-family:'JetBrains Mono',monospace;white-space:nowrap;font-size:11px;">Jul 2025</span>
+            <span style="color:var(--muted);">CLI spoofing crackdown — all 4 carriers mandate blocking of spoofed Romanian CLI</span>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="color:var(--muted);font-family:'JetBrains Mono',monospace;white-space:nowrap;font-size:11px;">2026</span>
+            <span style="color:var(--muted);">ANCOM designated AI Market Surveillance Authority — regulatory posture increasing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        Generated by <strong>MERCURY V2</strong> &bull; Pipeline <span class="mono">nx-20260404-c5xg</span> &bull; 42 citations from Delphi D3 + 15 live web searches
+      </div>
+      <div>2026-04-04 &bull; Tier 2 Full Report</div>
+    </footer>
+  </main>
+</div>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
+// Restore saved theme
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// Share
+function shareReport() {
+  if (navigator.share) {
+    navigator.share({ title: 'SMSads Romania — Launch Brief 2026', url: window.location.href });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert('URL copied to clipboard');
+  }
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+// TOC active state
+const tocLinks = document.querySelectorAll('.toc-nav a');
+const sections = document.querySelectorAll('section[id]');
+const tocObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.toc-nav a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => tocObserver.observe(s));
+
+// Charts
+const isDark = () => document.documentElement.getAttribute('data-theme') !== 'light';
+const textColor = () => isDark() ? '#8b949e' : '#64748b';
+const gridColor = () => isDark() ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+
+// Verticals Chart
+const vCtx = document.getElementById('verticalChart').getContext('2d');
+const verticalChart = new Chart(vCtx, {
+  type: 'bar',
+  data: {
+    labels: [
+      'Nutraceuticals COD',
+      'Sweepstakes',
+      'iGaming Casino',
+      'Dating CPL',
+      'Finance PDL',
+      'Crypto',
+      'Ecommerce',
+      'Insurance',
+      'Education',
+      'Real Estate'
+    ],
+    datasets: [{
+      label: 'EC/1K USD',
+      data: [22.63, 19.88, 19.20, 16.50, 11.55, 8.64, 6.00, 6.00, 5.40, 3.75],
+      backgroundColor: [
+        'rgba(249,115,22,0.8)',
+        'rgba(249,115,22,0.7)',
+        'rgba(234,179,8,0.7)',
+        'rgba(26,155,165,0.7)',
+        'rgba(100,116,139,0.6)',
+        'rgba(100,116,139,0.5)',
+        'rgba(100,116,139,0.4)',
+        'rgba(100,116,139,0.4)',
+        'rgba(100,116,139,0.35)',
+        'rgba(100,116,139,0.3)',
+      ],
+      borderColor: [
+        'rgba(249,115,22,1)',
+        'rgba(249,115,22,0.9)',
+        'rgba(234,179,8,0.9)',
+        'rgba(26,155,165,0.9)',
+        'rgba(100,116,139,0.8)',
+        'rgba(100,116,139,0.7)',
+        'rgba(100,116,139,0.6)',
+        'rgba(100,116,139,0.6)',
+        'rgba(100,116,139,0.55)',
+        'rgba(100,116,139,0.5)',
+      ],
+      borderWidth: 1,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` EC/1K: $${ctx.parsed.x.toFixed(2)}`
+        }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        grid: { color: gridColor() },
+        ticks: { color: textColor(), callback: v => '$' + v },
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: textColor(), font: { size: 12 } }
+      }
+    }
+  }
+});
+
+// Networks Chart
+const nCtx = document.getElementById('networksChart').getContext('2d');
+const networksChart = new Chart(nCtx, {
+  type: 'bar',
+  data: {
+    labels: ['dr.cash', 'PropellerAds/Zeydoo', 'AdCombo', 'Zeydoo (standalone)', 'RichAds', 'Rebll Network', 'ClickDealer', 'MaxBounty', 'Mondiad', 'SalesDoubler'],
+    datasets: [{
+      label: 'Score /100',
+      data: [91, 89, 84, 81, 80, 75, 75, 74, 73, 71],
+      backgroundColor: [
+        'rgba(79,195,247,0.8)',
+        'rgba(79,195,247,0.75)',
+        'rgba(79,195,247,0.7)',
+        'rgba(79,195,247,0.65)',
+        'rgba(79,195,247,0.6)',
+        'rgba(100,116,139,0.6)',
+        'rgba(100,116,139,0.55)',
+        'rgba(100,116,139,0.5)',
+        'rgba(100,116,139,0.45)',
+        'rgba(100,116,139,0.4)',
+      ],
+      borderColor: 'rgba(79,195,247,0.5)',
+      borderWidth: 1,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: { label: ctx => ` Score: ${ctx.parsed.x}/100` }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: false,
+        min: 65,
+        max: 100,
+        grid: { color: gridColor() },
+        ticks: { color: textColor() },
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: textColor(), font: { size: 12 } }
+      }
+    }
+  }
+});
+
+// Re-render charts on theme toggle
+document.querySelector('.ctrl-btn').addEventListener('click', () => {
+  setTimeout(() => {
+    [verticalChart, networksChart].forEach(c => {
+      c.options.scales.x.grid.color = gridColor();
+      c.options.scales.x.ticks.color = textColor();
+      c.options.scales.y.ticks.color = textColor();
+      c.update();
+    });
+  }, 50);
+});
+</script>
+</body>
+</html>
