@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SMSads Burkina Faso Launch Brief 2026 — ClickWin Campaign Intelligence">
+  <meta property="og:title" content="SMSads Burkina Faso — Launch Brief 2026">
+  <meta property="og:description" content="Full market intelligence report: verticals, offers, networks, competitor analysis for BF SMS affiliate market.">
+  <meta property="og:type" content="article">
+  <title>SMSads Burkina Faso — Launch Brief 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0A0A0F;
+      --card: #111118;
+      --card2: #16161f;
+      --accent: #f97316;
+      --accent2: #1A9BA5;
+      --accent3: #4FC3F7;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --border: rgba(255,255,255,0.08);
+      --glass: rgba(17,17,24,0.75);
+      --glow: rgba(249,115,22,0.15);
+      --green: #22c55e;
+      --yellow: #eab308;
+      --gray: #64748b;
+      --red: #ef4444;
+      --blue: #4FC3F7;
+      --sidebar-w: 260px;
+    }
+    [data-theme="light"] {
+      --bg: #f4f4f8;
+      --card: #ffffff;
+      --card2: #f0f0f6;
+      --text: #1a1a2e;
+      --text-muted: #5a6070;
+      --border: rgba(0,0,0,0.08);
+      --glass: rgba(255,255,255,0.85);
+      --glow: rgba(249,115,22,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    /* LAYOUT */
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar {
+      width: var(--sidebar-w);
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      overflow-y: auto;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 2rem 2.5rem;
+      max-width: 1100px;
+    }
+    /* SIDEBAR */
+    .sidebar-logo {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
+    .toc-list a {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      display: block;
+      transition: all 0.2s;
+    }
+    .toc-list a:hover { background: var(--border); color: var(--text); }
+    .toc-list a.active { background: rgba(249,115,22,0.15); color: var(--accent); }
+    /* META SIDEBAR */
+    .meta-section { margin-top: auto; }
+    .meta-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.4rem;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.72rem;
+    }
+    .meta-key { color: var(--text-muted); flex-shrink: 0; }
+    .meta-val { color: var(--text); font-weight: 500; text-align: right; }
+    /* TOGGLE */
+    .toggle-btn {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .toggle-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+    /* HEADER */
+    .report-header {
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .report-tag {
+      display: inline-block;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .report-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .report-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    /* KPI HERO CARDS */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+    .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--glow); }
+    .kpi-label { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .kpi-value { font-size: 1.6rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 0.3rem; }
+    .kpi-sub { font-size: 0.72rem; color: var(--text-muted); }
+    /* SECTION */
+    .section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .section.visible { opacity: 1; transform: translateY(0); }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title .icon { color: var(--accent); font-size: 1.1rem; }
+    /* CARDS */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    /* TABLES */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    thead { background: var(--card2); }
+    th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border);
+    }
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .badge-launch { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+    .badge-caution { background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3); }
+    .badge-later { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.3); }
+    .badge-skip { background: rgba(239,68,68,0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
+    .badge-low { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
+    .badge-medium { background: rgba(234,179,8,0.12); color: #eab308; border: 1px solid rgba(234,179,8,0.25); }
+    .badge-high { background: rgba(239,68,68,0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
+    /* CHART CONTAINERS */
+    .chart-container {
+      position: relative;
+      height: 320px;
+      padding: 1rem;
+    }
+    /* STATS GRID */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .stat-item {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--accent2); }
+    .stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+    /* CARRIER BAR */
+    .carrier-bar { margin-bottom: 0.8rem; }
+    .carrier-bar-label { display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 0.3rem; }
+    .carrier-bar-track { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .carrier-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+    /* COMPETITOR CARD */
+    .comp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .comp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; }
+    .comp-name { font-weight: 700; font-size: 0.9rem; }
+    .comp-type { font-size: 0.68rem; color: var(--text-muted); }
+    .comp-implication { font-size: 0.8rem; color: var(--text-muted); font-style: italic; padding: 0.5rem; background: var(--card2); border-radius: 6px; border-left: 3px solid var(--accent); }
+    /* ACTION CARD */
+    .action-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-bottom: 0.8rem;
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .action-num {
+      width: 36px; height: 36px;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+    .action-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .action-deadline { font-size: 0.7rem; color: var(--accent); font-weight: 600; }
+    .action-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
+    /* BUDGET TABLE */
+    .budget-highlight {
+      background: rgba(249,115,22,0.08);
+      border: 1px solid rgba(249,115,22,0.2);
+    }
+    .budget-highlight td { font-weight: 700; color: var(--accent); }
+    /* RISK PILL */
+    .risk-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+    .risk-row:last-child { border-bottom: none; }
+    /* CODE MONO */
+    .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+    .cta-example {
+      background: var(--card2);
+      border-left: 3px solid var(--accent2);
+      padding: 0.6rem 0.9rem;
+      border-radius: 0 6px 6px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent2);
+      margin-top: 0.5rem;
+    }
+    /* SHARE BUTTON */
+    .share-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .share-btn:hover { opacity: 0.85; }
+    /* CONFIDENCE BADGE */
+    .conf-badge {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .conf-high { background: rgba(34,197,94,0.12); color: #22c55e; }
+    .conf-medium { background: rgba(234,179,8,0.12); color: #eab308; }
+    .conf-low { background: rgba(239,68,68,0.12); color: #ef4444; }
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    /* PRINT */
+    @media print {
+      body { background: white; color: black; }
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+    }
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .sidebar { width: 200px; }
+      .main { margin-left: 200px; padding: 1.5rem; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">NexusOS Mercury</div>
+    <div>
+      <div class="toc-label">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#market" class="active">Market Overview</a></li>
+        <li><a href="#verticals">Top 10 Verticals</a></li>
+        <li><a href="#offers">Top Offers</a></li>
+        <li><a href="#networks">Networks</a></li>
+        <li><a href="#competitors">Competitor Intel</a></li>
+        <li><a href="#recommendations">Strategy</a></li>
+        <li><a href="#budget">Launch Budget</a></li>
+        <li><a href="#risks">Risk Register</a></li>
+      </ul>
+    </div>
+    <div class="meta-section">
+      <div class="meta-label">Metadata</div>
+      <div class="meta-item"><span class="meta-key">Country</span><span class="meta-val">Burkina Faso (BF)</span></div>
+      <div class="meta-item"><span class="meta-key">Task ID</span><span class="meta-val mono">nx-20260404-jpjr</span></div>
+      <div class="meta-item"><span class="meta-key">Generated</span><span class="meta-val">2026-04-04</span></div>
+      <div class="meta-item"><span class="meta-key">Pipeline</span><span class="meta-val">Mercury P1-P4</span></div>
+      <div class="meta-item"><span class="meta-key">Brand</span><span class="meta-val">ClickWin</span></div>
+      <div class="meta-item"><span class="meta-key">Channel</span><span class="meta-val">SMS</span></div>
+      <div class="meta-item"><span class="meta-key">Market Score</span><span class="meta-val">7.1 / 10</span></div>
+      <div class="meta-item"><span class="meta-key">Data Confidence</span><span class="meta-val">74%</span></div>
+      <div class="meta-item"><span class="meta-key">Agent</span><span class="meta-val">Mercury</span></div>
+    </div>
+    <div style="padding-top: 0.75rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+      <button class="toggle-btn" onclick="toggleTheme()">☀ / ☾ Mode</button>
+      <button class="share-btn" onclick="shareReport()">Share</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- HEADER -->
+    <div class="report-header">
+      <div class="report-tag">Mercury Intelligence Report · Tier 2</div>
+      <h1 class="report-title">SMSads Burkina Faso<br>Launch Brief 2026</h1>
+      <p class="report-subtitle">ClickWin SMS Affiliate Market Intelligence · nx-20260404-jpjr · Generated 2026-04-04</p>
+    </div>
+
+    <!-- KPI HERO CARDS -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Top Vertical</div>
+        <div class="kpi-value" style="font-size:1.1rem; padding-top:0.3rem;">mVAS / Mobile Subs</div>
+        <div class="kpi-sub">$31.50 EC/1K · 150% ROI · Fit 9.2/10</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Top Payout</div>
+        <div class="kpi-value">$10–20</div>
+        <div class="kpi-sub">1xBet Sports Betting CPA (FTD)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Market Size</div>
+        <div class="kpi-value">$505M</div>
+        <div class="kpi-sub">Telecom market 2025 · 27.1M SIMs</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Viability Score</div>
+        <div class="kpi-value">7.1<span style="font-size:1rem;color:var(--text-muted)">/10</span></div>
+        <div class="kpi-sub">SMS channel score 8.2/10 · Tier 3 GEO</div>
+      </div>
+    </div>
+
+    <!-- MARKET OVERVIEW -->
+    <section class="section" id="market">
+      <h2 class="section-title"><span class="icon">◉</span> Market Overview</h2>
+
+      <div class="card-grid-2" style="margin-bottom:1rem;">
+        <div class="card">
+          <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.75rem;">Key Metrics</div>
+          <div class="stats-row" style="grid-template-columns:1fr 1fr;">
+            <div class="stat-item"><div class="stat-value">22.8M</div><div class="stat-label">Population</div></div>
+            <div class="stat-item"><div class="stat-value">27.1M</div><div class="stat-label">SIM Connections</div></div>
+            <div class="stat-item"><div class="stat-value">118.9%</div><div class="stat-label">Mobile Penetration</div></div>
+            <div class="stat-item"><div class="stat-value">$764</div><div class="stat-label">GDP/Capita</div></div>
+            <div class="stat-item"><div class="stat-value">85%</div><div class="stat-label">SMS Reachability</div></div>
+            <div class="stat-item"><div class="stat-value">65%</div><div class="stat-label">Feature Phone</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.75rem;">Carrier Breakdown</div>
+          <div class="carrier-bar">
+            <div class="carrier-bar-label"><span>Orange Burkina Faso</span><span style="color:var(--accent)">46.02% · 12.6M</span></div>
+            <div class="carrier-bar-track"><div class="carrier-bar-fill" style="width:46%;background:var(--accent);"></div></div>
+          </div>
+          <div class="carrier-bar">
+            <div class="carrier-bar-label"><span>Moov Africa (Maroc Telecom)</span><span style="color:var(--accent2)">43.79% · 12.0M</span></div>
+            <div class="carrier-bar-track"><div class="carrier-bar-fill" style="width:44%;background:var(--accent2);"></div></div>
+          </div>
+          <div class="carrier-bar">
+            <div class="carrier-bar-label"><span>Telecel Faso (Planor)</span><span style="color:var(--gray)">10.18% · 2.8M</span></div>
+            <div class="carrier-bar-track"><div class="carrier-bar-fill" style="width:10%;background:var(--gray);"></div></div>
+          </div>
+          <div style="margin-top:0.75rem;font-size:0.75rem;color:var(--text-muted);">
+            DCB live on Orange + Moov via <strong>Digital Virgo</strong>. Mobile money: Orange Money (dominant), Moov Money, Wizall.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.75rem;">Regulatory Summary</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;font-size:0.8rem;">
+          <div><span style="color:var(--text-muted)">Regulator:</span><br><strong>ARCEP Burkina Faso</strong></div>
+          <div><span style="color:var(--text-muted)">Opt-in:</span><br><strong>Required (UEMOA)</strong></div>
+          <div><span style="color:var(--text-muted)">Sender ID:</span><br><strong>Operator pre-registration</strong></div>
+          <div><span style="color:var(--text-muted)">Compliance Risk:</span><br><span class="badge badge-caution">MEDIUM</span></div>
+          <div><span style="color:var(--text-muted)">Key 2025 Change:</span><br><strong>SMS cost -50% (Dec 2025)</strong></div>
+          <div><span style="color:var(--text-muted)">Data Protection:</span><br><strong>Loi n°010-2004/AN</strong></div>
+        </div>
+      </div>
+
+      <div class="card" style="background:rgba(26,155,165,0.05);border-color:rgba(26,155,165,0.2);">
+        <div style="font-size:0.85rem;line-height:1.7;color:var(--text-muted);">
+          <strong style="color:var(--text);">Market Context:</strong> Burkina Faso is a Tier 3 GEO with 22.8M population under transitional military government (since 2022). GDP per capita of $764 limits high-ticket CPA, but 27.1M SIM connections and 65% feature-phone dominance make SMS the primary digital channel. ARCEP's December 2025 regulation cut SMS costs 50%, opening the door for profitable bulk campaigns. No dominant affiliate SMS player identified — <strong style="color:var(--accent2);">first-mover window of 2–6 months.</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP 10 VERTICALS -->
+    <section class="section" id="verticals">
+      <h2 class="section-title"><span class="icon">◉</span> Top 10 Verticals</h2>
+
+      <div class="card" style="margin-bottom:1.5rem;">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Vertical</th>
+                <th>EC/1K USD</th>
+                <th>Net EC/1K</th>
+                <th>ROI%</th>
+                <th>Fit Score</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td><strong>mVAS / Mobile Subscriptions</strong></td>
+                <td class="mono">$52.50</td>
+                <td class="mono" style="color:var(--green);">$31.50</td>
+                <td><span style="color:var(--green);font-weight:700;">150%</span></td>
+                <td>9.2</td>
+                <td><span class="badge badge-launch">LAUNCH</span></td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Sweepstakes / Win Prizes</td>
+                <td class="mono">$48.00</td>
+                <td class="mono" style="color:var(--green);">$27.00</td>
+                <td><span style="color:var(--green);font-weight:700;">128.6%</span></td>
+                <td>8.0</td>
+                <td><span class="badge badge-launch">LAUNCH</span></td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Mobile Finance / Money Leads</td>
+                <td class="mono">$63.00</td>
+                <td class="mono" style="color:var(--green);">$42.00</td>
+                <td><span style="color:var(--green);font-weight:700;">200%</span></td>
+                <td>7.8</td>
+                <td><span class="badge badge-caution">CAUTION</span></td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>Sports Betting</td>
+                <td class="mono">$72.00</td>
+                <td class="mono" style="color:var(--green);">$51.00</td>
+                <td><span style="color:var(--green);font-weight:700;">242.9%</span></td>
+                <td>7.5</td>
+                <td><span class="badge badge-caution">CAUTION</span></td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>Health &amp; Nutra</td>
+                <td class="mono">$60.00</td>
+                <td class="mono" style="color:var(--green);">$39.00</td>
+                <td><span style="color:var(--green);font-weight:700;">185.7%</span></td>
+                <td>6.8</td>
+                <td><span class="badge badge-caution">CAUTION</span></td>
+              </tr>
+              <tr>
+                <td><strong>6</strong></td>
+                <td>Employment / Job Leads</td>
+                <td class="mono">$62.50</td>
+                <td class="mono" style="color:var(--green);">$41.50</td>
+                <td><span style="color:var(--green);font-weight:700;">197.6%</span></td>
+                <td>6.5</td>
+                <td><span class="badge badge-caution">CAUTION</span></td>
+              </tr>
+              <tr>
+                <td><strong>7</strong></td>
+                <td>E-learning / Online Education</td>
+                <td class="mono">$24.00</td>
+                <td class="mono" style="color:var(--yellow);">$3.00</td>
+                <td><span style="color:var(--yellow);font-weight:700;">14.3%</span></td>
+                <td>5.5</td>
+                <td><span class="badge badge-later">LATER</span></td>
+              </tr>
+              <tr>
+                <td><strong>8</strong></td>
+                <td>Agriculture / Farming Alerts</td>
+                <td class="mono">$25.00</td>
+                <td class="mono" style="color:var(--yellow);">$4.00</td>
+                <td><span style="color:var(--yellow);font-weight:700;">19.0%</span></td>
+                <td>4.5</td>
+                <td><span class="badge badge-later">LATER</span></td>
+              </tr>
+              <tr>
+                <td><strong>9</strong></td>
+                <td>Dating</td>
+                <td class="mono">$8.00</td>
+                <td class="mono" style="color:var(--red);">-$13.00</td>
+                <td><span style="color:var(--red);font-weight:700;">-61.9%</span></td>
+                <td>3.5</td>
+                <td><span class="badge badge-skip">SKIP</span></td>
+              </tr>
+              <tr>
+                <td><strong>10</strong></td>
+                <td>Crypto / DeFi</td>
+                <td class="mono">$8.00</td>
+                <td class="mono" style="color:var(--red);">-$13.00</td>
+                <td><span style="color:var(--red);font-weight:700;">-61.9%</span></td>
+                <td>2.0</td>
+                <td><span class="badge badge-skip">SKIP</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);">
+          EC/1K = Estimated Revenue per 1,000 SMS. Formula: (CPA_payout × CR%) × 1000. SMS cost: $0.021/msg via Plivo ($21/1K). Net EC/1K = gross revenue minus $21 send cost.
+        </div>
+      </div>
+
+      <!-- CHART: Verticals -->
+      <div class="card">
+        <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:0.5rem;">Net EC/1K USD by Vertical (top 8 viable)</div>
+        <div class="chart-container">
+          <canvas id="verticalsChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP OFFERS -->
+    <section class="section" id="offers">
+      <h2 class="section-title"><span class="icon">◉</span> Top Affiliate Offers</h2>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Offer Name</th>
+                <th>Network / Access</th>
+                <th>Payout (USD)</th>
+                <th>Type</th>
+                <th>Compliance</th>
+                <th>SMS Hook</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td><strong>Orange BF mVAS Content Subscription</strong></td>
+                <td>Digital Virgo / Mobidea</td>
+                <td class="mono" style="color:var(--green);">$1.00–2.00</td>
+                <td>CPA/Subscription</td>
+                <td><span class="badge badge-low">LOW</span></td>
+                <td style="font-size:0.72rem;color:var(--accent2);">Envoyez OUI au XXXX pour abonnement</td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Moov Africa BF mVAS Subscription</td>
+                <td>Digital Virgo / Mobidea</td>
+                <td class="mono" style="color:var(--green);">$0.80–1.50</td>
+                <td>CPA/Subscription</td>
+                <td><span class="badge badge-low">LOW</span></td>
+                <td style="font-size:0.72rem;color:var(--accent2);">Répondez SPORTS au XXXX</td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>West Africa Sweepstakes — Gagner iPhone/Cash</td>
+                <td>Mobidea / CPAroll / CPA.house</td>
+                <td class="mono" style="color:var(--green);">$0.80–1.50</td>
+                <td>CPL / CC Submit</td>
+                <td><span class="badge badge-medium">MEDIUM</span></td>
+                <td style="font-size:0.72rem;color:var(--accent2);">Gagnez 50,000 FCFA! Cliquez: [link]</td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>1xBet West Africa — Pari Sportif</td>
+                <td>1xBet Affiliates</td>
+                <td class="mono" style="color:var(--yellow);">$10–20</td>
+                <td>CPA on FTD</td>
+                <td><span class="badge badge-high">HIGH</span></td>
+                <td style="font-size:0.72rem;color:var(--accent2);">Bonus 100% dépôt Orange Money</td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>Orange Money JUMO Micro-Credit Lead</td>
+                <td>Direct Partnership</td>
+                <td class="mono" style="color:var(--green);">$2.00–5.00</td>
+                <td>CPL</td>
+                <td><span class="badge badge-low">LOW</span></td>
+                <td style="font-size:0.72rem;color:var(--accent2);">Crédit via Orange Money en 5 minutes</td>
+              </tr>
+              <tr>
+                <td><strong>6</strong></td>
+                <td>West Africa Job Board Lead Gen</td>
+                <td>Digitstem / Direct</td>
+                <td class="mono" style="color:var(--green);">$1.50–3.00</td>
+                <td>CPL</td>
+                <td><span class="badge badge-low">LOW</span></td>
+                <td style="font-size:0.72rem;color:var(--accent2);">500 offres d'emploi disponibles</td>
+              </tr>
+              <tr>
+                <td><strong>7</strong></td>
+                <td>Health / Nutra — Weight Loss / Vitality</td>
+                <td>Mobidea / CPA.house / Alfaleads</td>
+                <td class="mono" style="color:var(--yellow);">$3.00–6.00</td>
+                <td>CPA on Sale</td>
+                <td><span class="badge badge-medium">MEDIUM</span></td>
+                <td style="font-size:0.72rem;color:var(--accent2);">Secret naturel pour perdre du poids</td>
+              </tr>
+              <tr>
+                <td><strong>8</strong></td>
+                <td>Crypto Exchange Sign-Up</td>
+                <td>Alfaleads / CPAroll</td>
+                <td class="mono" style="color:var(--red);">$8.00+</td>
+                <td>CPA</td>
+                <td><span class="badge badge-high">HIGH</span></td>
+                <td style="color:var(--red);font-size:0.72rem;">NOT RECOMMENDED</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);">
+          All payouts UNVERIFIED — inferred from ecosystem data and regional analogues. Data confidence: 55%.
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP NETWORKS -->
+    <section class="section" id="networks">
+      <h2 class="section-title"><span class="icon">◉</span> Top Affiliate Networks</h2>
+
+      <div class="card" style="margin-bottom:1.5rem;">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Network</th>
+                <th>Score</th>
+                <th>GEO Coverage</th>
+                <th>Min Payout</th>
+                <th>Best For</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td><strong>Mobidea</strong></td>
+                <td><span style="color:var(--green);font-weight:700;">8.2</span></td>
+                <td>West Africa confirmed</td>
+                <td class="mono">$100</td>
+                <td>mVAS, Sweepstakes, Nutra</td>
+                <td><span class="badge badge-launch">REGISTER NOW</span></td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Digital Virgo (DCB Platform)</td>
+                <td><span style="color:var(--green);font-weight:700;">8.0</span></td>
+                <td>CONFIRMED Orange + Moov BF</td>
+                <td class="mono">Enterprise</td>
+                <td>mVAS Primary</td>
+                <td><span class="badge badge-launch">CONTACT TEAM</span></td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Alfaleads</td>
+                <td><span style="color:var(--yellow);font-weight:700;">7.2</span></td>
+                <td>Africa listed, BF unverified</td>
+                <td class="mono">$50</td>
+                <td>Betting, Finance</td>
+                <td><span class="badge badge-caution">VERIFY BF FIRST</span></td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>Digitstem</td>
+                <td><span style="color:var(--yellow);font-weight:700;">7.0</span></td>
+                <td>BF explicitly listed</td>
+                <td class="mono">$20</td>
+                <td>Jobs, Finance, E-comm</td>
+                <td><span class="badge badge-launch">REGISTER NOW</span></td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>CPAroll</td>
+                <td><span style="color:var(--yellow);font-weight:700;">6.8</span></td>
+                <td>Global, BF unverified</td>
+                <td class="mono">$50</td>
+                <td>Sweepstakes, Gambling</td>
+                <td><span class="badge badge-caution">CONFIRM BF FIRST</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CHART: Networks -->
+      <div class="card">
+        <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:0.5rem;">Network Composite Score Comparison</div>
+        <div class="chart-container">
+          <canvas id="networksChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPETITOR INTEL -->
+    <section class="section" id="competitors">
+      <h2 class="section-title"><span class="icon">◉</span> Competitor Intelligence</h2>
+
+      <div class="card" style="background:rgba(26,155,165,0.06);border-color:rgba(26,155,165,0.2);margin-bottom:1.5rem;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;text-align:center;font-size:0.82rem;">
+          <div>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--accent2);">NASCENT</div>
+            <div style="color:var(--text-muted);">Market Maturity</div>
+          </div>
+          <div>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--green);">LOW</div>
+            <div style="color:var(--text-muted);">Competitor Concentration</div>
+          </div>
+          <div>
+            <div style="font-size:1.4rem;font-weight:800;color:var(--accent);">2–6 Mo</div>
+            <div style="color:var(--text-muted);">First-Mover Window</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-header">
+          <div>
+            <div class="comp-name">Digital Virgo</div>
+            <div class="comp-type">mVAS Platform / Operator Partner · Confidence: HIGH</div>
+          </div>
+          <span class="badge badge-launch">PARTNER</span>
+        </div>
+        <div class="comp-implication">PARTNER not competitor. Approach Digital Virgo to be a ClickWin content publisher/VAS partner on their Orange/Moov portals. They hold DCB infrastructure for both operators.</div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-header">
+          <div>
+            <div class="comp-name">Orange Money (own SMS marketing)</div>
+            <div class="comp-type">Operator self-promotion · Confidence: HIGH</div>
+          </div>
+          <span class="badge badge-later">AVOID OVERLAP</span>
+        </div>
+        <div class="comp-implication">Cannot compete directly. Orange uses own channels for Orange Money to 12.6M subscribers. ClickWin should target the gaps: non-financial services (sweepstakes, mVAS content, job leads) where Orange Money doesn't advertise.</div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-header">
+          <div>
+            <div class="comp-name">1xBet / SportyBet West Africa</div>
+            <div class="comp-type">Direct betting advertiser · Confidence: MEDIUM</div>
+          </div>
+          <span class="badge badge-caution">MEDIUM THREAT</span>
+        </div>
+        <div class="comp-implication">Active in Ivory Coast, Ghana, Senegal with BF presence inferred. If ClickWin enters betting, differentiate on French creative quality and mobile-money CTA clarity. High CPA payouts but regulatory grey area under military government.</div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-header">
+          <div>
+            <div class="comp-name">NGO / Government SMS Programs</div>
+            <div class="comp-type">Health, agriculture, civic · Confidence: HIGH</div>
+          </div>
+          <span class="badge badge-later">AUDIENCE PRIMER</span>
+        </div>
+        <div class="comp-implication">High volume, non-commercial SMS has conditioned the audience to use SMS. ClickWin benefits from SMS literacy but must differentiate clearly with compelling commercial CTAs. No competitive threat.</div>
+      </div>
+
+      <div class="card" style="margin-top:1rem;">
+        <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:0.75rem;">Underserved Verticals (Gap Analysis)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.8rem;">
+          <div style="padding:0.6rem;background:var(--card2);border-radius:6px;">Entertainment mVAS (sports, music, quiz) — aggregator competition LOW</div>
+          <div style="padding:0.6rem;background:var(--card2);border-radius:6px;">Job/employment lead gen via SMS — no dominant player identified</div>
+          <div style="padding:0.6rem;background:var(--card2);border-radius:6px;">Sweepstakes affiliate SMS — no confirmed large-scale player in BF</div>
+          <div style="padding:0.6rem;background:var(--card2);border-radius:6px;">Health/nutra via SMS — nascent, mostly word-of-mouth currently</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRATEGIC RECOMMENDATIONS -->
+    <section class="section" id="recommendations">
+      <h2 class="section-title"><span class="icon">◉</span> Strategic Recommendations</h2>
+
+      <div class="action-card">
+        <div class="action-num">1</div>
+        <div>
+          <div class="action-title">Register Aggregator Accounts (Plivo + Africa's Talking)</div>
+          <div class="action-deadline">Deadline: April 7, 2026 (+3 days) — PRIORITY: CRITICAL</div>
+          <div class="action-desc">Register at Plivo ($0.021/msg, BF confirmed) and Africa's Talking (redundancy). Request BF-specific pricing and operator routing. Budget for sender ID registration with Orange + Moov operators.</div>
+          <div class="cta-example">Target: ClickWin branded sender ID pre-registered on both Orange BF and Moov Africa BF</div>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-num">2</div>
+        <div>
+          <div class="action-title">Contact Digital Virgo for mVAS Partnership + Register Mobidea/Digitstem</div>
+          <div class="action-deadline">Deadline: April 9, 2026 (+5 days) — PRIORITY: HIGH</div>
+          <div class="action-desc">Contact digitalvirgo.com/merchants — pitch ClickWin as content publisher on Orange BF + Moov BF portals. Simultaneously register Mobidea (sweepstakes + mVAS backup) and Digitstem (jobs/finance, $20 min payout, BF explicitly listed).</div>
+          <div class="cta-example">Phase 1 network stack: Digital Virgo (mVAS primary) + Mobidea (sweeps) + Digitstem (jobs/finance)</div>
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-num">3</div>
+        <div>
+          <div class="action-title">Legal Clearance for Betting Vertical + Launch 100K SMS Test</div>
+          <div class="action-deadline">Deadline: April 14, 2026 (+10 days) — PRIORITY: HIGH</div>
+          <div class="action-desc">Commission local legal review of BF gambling law under military government. If clear, apply to 1xBet Affiliates for $10–20 CPA (highest payout available). Parallel: launch 100K SMS test ($2,100 budget) — 50K mVAS + 50K sweepstakes targeting Ouagadougou + Bobo-Dioulasso urban centers.</div>
+          <div class="cta-example">Test KPIs: CR ≥ 3.5% mVAS, CR ≥ 4.0% sweepstakes, EC/1K ≥ $25</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAUNCH BUDGET -->
+    <section class="section" id="budget">
+      <h2 class="section-title"><span class="icon">◉</span> Launch Budget — Phase 1 Test</h2>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Volume</th>
+                <th>Unit Cost</th>
+                <th>Total (USD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>mVAS campaign SMS send (Orange BF)</td>
+                <td>50,000 SMS</td>
+                <td class="mono">$0.021</td>
+                <td class="mono"><strong>$1,050</strong></td>
+              </tr>
+              <tr>
+                <td>Sweepstakes campaign SMS send (all carriers)</td>
+                <td>50,000 SMS</td>
+                <td class="mono">$0.021</td>
+                <td class="mono"><strong>$1,050</strong></td>
+              </tr>
+              <tr>
+                <td>Sender ID registration (est.)</td>
+                <td>2 operators</td>
+                <td class="mono">$100</td>
+                <td class="mono"><strong>$200</strong></td>
+              </tr>
+              <tr>
+                <td>Creative + landing page (French)</td>
+                <td>2 verticals</td>
+                <td class="mono">$250</td>
+                <td class="mono"><strong>$500</strong></td>
+              </tr>
+              <tr class="budget-highlight">
+                <td><strong>Total Phase 1 Test Budget</strong></td>
+                <td></td>
+                <td></td>
+                <td class="mono"><strong>$2,800</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:0.75rem;">Projected Phase 1 Revenue (Conservative)</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;font-size:0.82rem;">
+            <div style="background:var(--card2);border-radius:8px;padding:0.9rem;">
+              <div style="color:var(--text-muted);font-size:0.7rem;">mVAS Revenue</div>
+              <div style="font-size:1.3rem;font-weight:800;color:var(--green);">$2,625</div>
+              <div style="font-size:0.7rem;color:var(--text-muted);">50K × 3.5% CR × $1.50</div>
+            </div>
+            <div style="background:var(--card2);border-radius:8px;padding:0.9rem;">
+              <div style="color:var(--text-muted);font-size:0.7rem;">Sweepstakes Revenue</div>
+              <div style="font-size:1.3rem;font-weight:800;color:var(--green);">$2,400</div>
+              <div style="font-size:0.7rem;color:var(--text-muted);">50K × 4.0% CR × $1.20</div>
+            </div>
+            <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:8px;padding:0.9rem;">
+              <div style="color:var(--text-muted);font-size:0.7rem;">Net After Costs</div>
+              <div style="font-size:1.3rem;font-weight:800;color:var(--green);">$2,225</div>
+              <div style="font-size:0.7rem;color:var(--green);">~79% ROI · Total: $5,025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISK REGISTER -->
+    <section class="section" id="risks">
+      <h2 class="section-title"><span class="icon">◉</span> Risk Register</h2>
+
+      <div class="card">
+        <div class="risk-row">
+          <span class="badge badge-caution" style="width:70px;text-align:center;">MEDIUM</span>
+          <div style="flex:1;">
+            <strong>Operator A2P route blocking</strong>
+            <div style="font-size:0.75rem;color:var(--text-muted);">Impact: HIGH · Mitigation: Use registered aggregator + branded sender ID pre-registration</div>
+          </div>
+        </div>
+        <div class="risk-row">
+          <span class="badge badge-caution" style="width:70px;text-align:center;">MEDIUM</span>
+          <div style="flex:1;">
+            <strong>BF gambling law change under military government</strong>
+            <div style="font-size:0.75rem;color:var(--text-muted);">Impact: HIGH · Mitigation: Legal review before betting vertical launch. Defer if unclear.</div>
+          </div>
+        </div>
+        <div class="risk-row">
+          <span class="badge badge-caution" style="width:70px;text-align:center;">MEDIUM</span>
+          <div style="flex:1;">
+            <strong>Low offer availability for BF on networks</strong>
+            <div style="font-size:0.75rem;color:var(--text-muted);">Impact: MEDIUM · Mitigation: Approach Digital Virgo directly. Use CI/SN francophone proxies.</div>
+          </div>
+        </div>
+        <div class="risk-row">
+          <span class="badge badge-later" style="width:70px;text-align:center;">LOW</span>
+          <div style="flex:1;">
+            <strong>Security situation limiting reach in northern/eastern regions</strong>
+            <div style="font-size:0.75rem;color:var(--text-muted);">Impact: MEDIUM · Mitigation: Target urban centers: Ouagadougou + Bobo-Dioulasso only</div>
+          </div>
+        </div>
+        <div class="risk-row">
+          <span class="badge badge-later" style="width:70px;text-align:center;">LOW</span>
+          <div style="flex:1;">
+            <strong>ARCEP enforcement on unsolicited SMS</strong>
+            <div style="font-size:0.75rem;color:var(--text-muted);">Impact: HIGH · Mitigation: Opt-in list building from Day 1. STOP mechanism mandatory.</div>
+          </div>
+        </div>
+        <div class="risk-row" style="border-bottom:none;">
+          <span class="badge badge-later" style="width:70px;text-align:center;">LOW</span>
+          <div style="flex:1;">
+            <strong>Currency / payment risk (XOF)</strong>
+            <div style="font-size:0.75rem;color:var(--text-muted);">Impact: LOW · Mitigation: Use USD-priced aggregators (Plivo). XOF volatility minimal vs. USD.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div style="margin-top:2rem;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:0.75rem;color:var(--text-muted);text-align:center;">
+        Generated by <strong style="color:var(--accent);">NexusOS Mercury Pipeline</strong> · Task ID: <span class="mono">nx-20260404-jpjr</span> · Date: 2026-04-04<br>
+        Data confidence: 74% · Sources cited: 24 · Agent: Mercury · Tier 2 Full Report
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // THEME TOGGLE
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    renderCharts();
+  }
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
+  // SHARE
+  function shareReport() {
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({ title: 'SMSads Burkina Faso — Launch Brief 2026', url });
+    } else {
+      navigator.clipboard.writeText(url).then(() => alert('URL copied to clipboard!'));
+    }
+  }
+
+  // SCROLL ANIMATIONS
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Update active TOC
+        const id = e.target.getAttribute('id');
+        if (id) {
+          document.querySelectorAll('.toc-list a').forEach(a => a.classList.remove('active'));
+          const link = document.querySelector(`.toc-list a[href="#${id}"]`);
+          if (link) link.classList.add('active');
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+  // CHARTS
+  let chartInstances = {};
+  function renderCharts() {
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+    const textColor = isDark ? '#8892a4' : '#5a6070';
+    const teal = '#1A9BA5';
+    const blue = '#4FC3F7';
+
+    // Destroy existing
+    Object.values(chartInstances).forEach(c => c.destroy());
+    chartInstances = {};
+
+    // VERTICALS CHART
+    const vCtx = document.getElementById('verticalsChart');
+    if (vCtx) {
+      chartInstances.verticals = new Chart(vCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Sports Betting', 'Mobile Finance', 'Employment', 'Health & Nutra', 'mVAS / Subscriptions', 'Sweepstakes', 'Agriculture', 'E-learning'],
+          datasets: [{
+            label: 'Net EC/1K USD',
+            data: [51.00, 42.00, 41.50, 39.00, 31.50, 27.00, 4.00, 3.00],
+            backgroundColor: [
+              'rgba(234,179,8,0.6)',
+              'rgba(26,155,165,0.75)',
+              'rgba(26,155,165,0.65)',
+              'rgba(26,155,165,0.55)',
+              'rgba(26,155,165,0.9)',
+              'rgba(26,155,165,0.7)',
+              'rgba(100,116,139,0.5)',
+              'rgba(100,116,139,0.4)',
+            ],
+            borderColor: [
+              '#eab308',
+              teal, teal, teal, teal, teal,
+              '#64748b', '#64748b',
+            ],
+            borderWidth: 1.5,
+            borderRadius: 4,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => ` Net EC/1K: $${ctx.raw.toFixed(2)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: gridColor },
+              ticks: { color: textColor, callback: v => '$' + v },
+              border: { color: gridColor }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: textColor, font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }
+
+    // NETWORKS CHART
+    const nCtx = document.getElementById('networksChart');
+    if (nCtx) {
+      chartInstances.networks = new Chart(nCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Mobidea', 'Digital Virgo', 'Alfaleads', 'Digitstem', 'CPAroll'],
+          datasets: [{
+            label: 'Composite Score',
+            data: [8.2, 8.0, 7.2, 7.0, 6.8],
+            backgroundColor: [
+              'rgba(79,195,247,0.8)',
+              'rgba(79,195,247,0.7)',
+              'rgba(79,195,247,0.55)',
+              'rgba(79,195,247,0.5)',
+              'rgba(79,195,247,0.4)',
+            ],
+            borderColor: blue,
+            borderWidth: 1.5,
+            borderRadius: 4,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => ` Score: ${ctx.raw}/10`
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 5,
+              max: 10,
+              grid: { color: gridColor },
+              ticks: { color: textColor },
+              border: { color: gridColor }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: textColor }
+            }
+          }
+        }
+      });
+    }
+  }
+
+  // Initial render
+  renderCharts();
+</script>
+</body>
+</html>
