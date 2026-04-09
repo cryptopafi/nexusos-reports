@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DELPHI D3 — Hermes Memory + OpenClaw Interconnection</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: rgba(255,255,255,0.04);
+      --surface-hover: rgba(255,255,255,0.07);
+      --border: rgba(26,155,165,0.18);
+      --teal: #1A9BA5;
+      --teal-light: #22c5d1;
+      --teal-dim: rgba(26,155,165,0.12);
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --text-dim: #5a6477;
+      --red: #e05c7a;
+      --orange: #e8924a;
+      --yellow: #e8c94a;
+      --green: #4ae8a3;
+      --radius: 12px;
+      --sidebar-w: 280px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.7;
+      font-size: 15px;
+      min-height: 100vh;
+    }
+
+    /* ── Background grid ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(26,155,165,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,155,165,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 1rem;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .badge-d3 {
+      background: var(--teal-dim);
+      border: 1px solid var(--teal);
+      color: var(--teal-light);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .header-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .header-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: inline-block;
+    }
+
+    /* ── Layout ── */
+    .layout {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: sticky;
+      top: 64px;
+      height: calc(100vh - 64px);
+      overflow-y: auto;
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .toc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .toc-list {
+      list-style: none;
+    }
+    .toc-list li {
+      margin-bottom: 2px;
+    }
+    .toc-list a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 7px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.15s;
+      border-left: 2px solid transparent;
+    }
+    .toc-list a:hover {
+      color: var(--teal-light);
+      background: var(--teal-dim);
+      border-left-color: var(--teal);
+    }
+    .toc-list .toc-section {
+      margin-top: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .toc-list .toc-section > a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding: 4px 10px;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* ── Main content ── */
+    .main {
+      padding: 2.5rem 3rem 4rem;
+      min-width: 0;
+    }
+
+    /* ── Hero card ── */
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), transparent);
+    }
+    .hero-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .hero-subtitle {
+      color: var(--teal-light);
+      font-size: 14px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .chip {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .chip strong { color: var(--text); }
+
+    /* ── Section headings ── */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+    .section-num {
+      background: var(--teal-dim);
+      border: 1px solid var(--teal);
+      color: var(--teal-light);
+      font-size: 11px;
+      font-weight: 700;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--teal-light);
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .card + .card { margin-top: 0.75rem; }
+
+    .source-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(26,155,165,0.08);
+      border: 1px solid rgba(26,155,165,0.2);
+      color: var(--text-muted);
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    /* ── Alert boxes ── */
+    .alert {
+      border-radius: 9px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      border-left: 3px solid;
+      font-size: 14px;
+    }
+    .alert-red { background: rgba(224,92,122,0.07); border-color: var(--red); }
+    .alert-orange { background: rgba(232,146,74,0.07); border-color: var(--orange); }
+    .alert-yellow { background: rgba(232,201,74,0.07); border-color: var(--yellow); }
+    .alert-green { background: rgba(74,232,163,0.07); border-color: var(--green); }
+    .alert-teal { background: var(--teal-dim); border-color: var(--teal); }
+
+    .risk-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .risk-high { background: rgba(224,92,122,0.2); color: var(--red); border: 1px solid rgba(224,92,122,0.3); }
+    .risk-medium { background: rgba(232,146,74,0.2); color: var(--orange); border: 1px solid rgba(232,146,74,0.3); }
+    .risk-low { background: rgba(74,232,163,0.15); color: var(--green); border: 1px solid rgba(74,232,163,0.25); }
+
+    /* ── Ordered list (system prompt slots) ── */
+    ol.slots {
+      counter-reset: slot;
+      list-style: none;
+      padding: 0;
+    }
+    ol.slots li {
+      counter-increment: slot;
+      display: flex;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 14px;
+    }
+    ol.slots li:last-child { border-bottom: none; }
+    ol.slots li::before {
+      content: counter(slot, decimal-leading-zero);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      min-width: 26px;
+      padding-top: 2px;
+    }
+    ol.slots li strong { color: var(--teal-light); }
+
+    ul.bullets {
+      list-style: none;
+      padding: 0;
+    }
+    ul.bullets li {
+      padding: 0.4rem 0 0.4rem 1.4rem;
+      position: relative;
+      font-size: 14px;
+    }
+    ul.bullets li::before {
+      content: '▸';
+      color: var(--teal);
+      position: absolute;
+      left: 0;
+    }
+
+    /* ── Code ── */
+    pre {
+      margin: 1rem 0;
+      border-radius: 9px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    pre code.hljs {
+      font-size: 13px;
+      padding: 1.2rem 1.4rem;
+      border-radius: 9px;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+    code:not(pre code) {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      color: var(--teal-light);
+    }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; margin: 1rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead tr {
+      background: var(--teal-dim);
+      border-bottom: 1px solid var(--teal);
+    }
+    th {
+      padding: 0.7rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--teal-light);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+    td:first-child { color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .status-complete {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* ── Action plan ── */
+    .action-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .action-num {
+      width: 36px; height: 36px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--teal-light);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .action-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .action-body {
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+    .priority-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+    .priority-immediate { background: rgba(224,92,122,0.15); color: var(--red); border: 1px solid rgba(224,92,122,0.25); }
+    .priority-short { background: rgba(232,146,74,0.15); color: var(--orange); border: 1px solid rgba(232,146,74,0.25); }
+
+    /* ── Architecture diagram ── */
+    .arch-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+    .arch-box pre {
+      margin: 0;
+      background: transparent;
+      border: none;
+    }
+    .arch-box pre code {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 13px;
+      padding: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .footer span { color: var(--teal); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .main { padding: 1.5rem 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <span class="badge-d3">Delphi D3</span>
+      <span class="header-title">Hermes Memory + OpenClaw Interconnection</span>
+    </div>
+    <div class="header-meta">
+      <span><span class="dot"></span> nx-20260409-12c2</span>
+      <span>2026-04-09</span>
+      <span>22 sources</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── Sidebar TOC ── -->
+  <nav class="sidebar">
+    <p class="toc-label">Table of Contents</p>
+    <ul class="toc-list">
+      <li><a href="#summary">Executive Summary</a></li>
+      <li class="toc-section"><li><a style="pointer-events:none;color:var(--text-dim);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;display:block">Findings</a></li></li>
+      <li><a href="#f1">F1 — System Prompt Slot Order</a></li>
+      <li><a href="#f2">F2 — System Prompt Caching</a></li>
+      <li><a href="#f3">F3 — Memory Write-Back</a></li>
+      <li><a href="#f4">F4 — lessons.md Dead File</a></li>
+      <li><a href="#f5">F5 — Persistence Across Restarts</a></li>
+      <li><a href="#f6">F6 — Known Memory Bugs</a></li>
+      <li><a href="#f7">F7 — OpenClaw HTTP API</a></li>
+      <li><a href="#f8">F8 — Hermes API Server</a></li>
+      <li><a href="#f9">F9 — OpenClaw Agent Routing</a></li>
+      <li><a href="#f10">F10 — Community Best Practices</a></li>
+      <li class="toc-section"><li><a style="pointer-events:none;color:var(--text-dim);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:4px 10px;display:block">Delivery</a></li></li>
+      <li><a href="#action">Action Plan</a></li>
+      <li><a href="#sources">Source Coverage</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-title">Hermes Memory Handling + OpenClaw Interconnection</div>
+      <div class="hero-subtitle">DELPHI D3 Research Report — Deep Architecture Analysis</div>
+      <div class="hero-chips">
+        <span class="chip"><strong>Task ID:</strong> nx-20260409-12c2</span>
+        <span class="chip"><strong>Depth:</strong> D3</span>
+        <span class="chip"><strong>Date:</strong> 2026-04-09</span>
+        <span class="chip"><strong>Sources:</strong> 22</span>
+        <span class="chip"><strong>Findings:</strong> 10</span>
+        <span class="chip"><strong>Bugs Catalogued:</strong> 4</span>
+      </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <section class="section" id="summary">
+      <div class="section-header">
+        <div class="section-num">S</div>
+        <h2>Executive Summary</h2>
+      </div>
+      <div class="card">
+        <p>Hermes v0.8.0 memory uses a <strong>frozen-snapshot pattern</strong>: <code>MEMORY.md</code> and <code>USER.md</code> are loaded into the system prompt <em>once</em> at session start and never updated mid-session, preserving the Anthropic prefix cache. The system prompt itself is cached in SQLite (<code>state.db</code>) and reused across gateway restarts for each session, with a <code>SOUL.md</code> mtime check as the only rebuild trigger.</p>
+        <br>
+        <p>OpenClaw's HTTP API (port 18789) is <strong>UI-only</strong> — there is no documented REST API for programmatic agent interaction by default. The correct interconnection path between Hermes and OpenClaw is via Hermes's own OpenAI-compatible API server (<strong>port 8642</strong>, <code>api_server</code> platform), not through OpenClaw's port.</p>
+        <br>
+        <div class="alert alert-red">
+          <strong>Critical:</strong> Four known memory bugs exist in Hermes (issues #2670, #3059, #4708, #5129) that affect gateway-mode deployments. Two are HIGH RISK for Lis.
+        </div>
+        <div class="alert alert-orange">
+          <strong>Dead file:</strong> <code>lessons.md</code> at <code>~/.hermes/lessons.md</code> is never loaded by any Hermes Python code. The 49 rules seeded there are NOT reaching Lis.
+        </div>
+      </div>
+    </section>
+
+    <!-- Finding 1 -->
+    <section class="section" id="f1">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <h2>System Prompt Slot Order (Exact Assembly)</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: run_agent.py:2657-2820, prompt_builder.py</div>
+        <p style="margin-bottom:1rem;font-size:14px;color:var(--text-muted)">The <code>_build_system_prompt()</code> method assembles slots in this exact order:</p>
+        <ol class="slots">
+          <li><strong>SOUL.md</strong> — from <code>~/.hermes/SOUL.md</code> via <code>load_soul_md()</code>. Falls back to <code>DEFAULT_AGENT_IDENTITY</code> if not found.</li>
+          <li><strong>Tool guidance block</strong> — appended only if tools are loaded: <code>MEMORY_GUIDANCE</code>, <code>SESSION_SEARCH_GUIDANCE</code>, <code>SKILLS_GUIDANCE</code>.</li>
+          <li><strong>Nous subscription prompt</strong> — only if Nous subscription tools are active.</li>
+          <li><strong>Tool-use enforcement guidance</strong> — injected for GPT/Codex/Gemini/Gemma/Grok models.</li>
+          <li><strong>system_message</strong> — gateway-injected system prompt from <code>config.yaml gateway.system_prompt</code>.</li>
+          <li><strong>MEMORY.md frozen snapshot</strong> — if <code>memory_enabled: true</code> in config.</li>
+          <li><strong>USER.md frozen snapshot</strong> — if <code>user_profile_enabled: true</code>.</li>
+          <li><strong>External memory provider block</strong> — if Honcho, Mem0 etc. configured.</li>
+          <li><strong>Skills index</strong> — list of available skills from <code>~/.hermes/skills/</code>.</li>
+          <li><strong>Context files</strong> — first match wins: <code>.hermes.md</code> → <code>AGENTS.md</code> → <code>CLAUDE.md</code> → <code>.cursorrules</code>.</li>
+          <li><strong>Timestamp + session ID + model/provider</strong> — frozen at build time.</li>
+          <li><strong>Platform hint</strong> — e.g. Telegram formatting hints.</li>
+        </ol>
+        <div class="alert alert-orange" style="margin-top:1rem">
+          <strong>Key detail:</strong> <code>lessons.md</code> is referenced in MEMORY.md content as a path but is NOT loaded by any Python code. It is a dead file. Lessons must be placed in SOUL.md (slot #1) or referenced as a <code>.hermes.md</code> context file (slot #10).
+        </div>
+      </div>
+    </section>
+
+    <!-- Finding 2 -->
+    <section class="section" id="f2">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <h2>System Prompt Caching — What Triggers a Rebuild</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: run_agent.py:7130-7200</div>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:1rem">The <code>_cached_system_prompt</code> is cached per-session in two places: in-memory (<code>self._cached_system_prompt</code>) and SQLite (<code>state.db</code>).</p>
+
+        <h3>What triggers a rebuild</h3>
+        <ul class="bullets">
+          <li><strong>SOUL.md mtime check</strong> — if <code>os.path.getmtime(SOUL.md) > session_row.get("started_at")</code>, cache is invalidated. This is the primary mechanism.</li>
+          <li><strong>Context compression events</strong> — set <code>self._cached_system_prompt = None</code> explicitly (line 1396).</li>
+          <li><strong>New session</strong> — no stored session in DB means fresh build.</li>
+          <li><strong>Model/provider swap</strong> — <code>_reinit_client()</code> invalidates the cache (line 1395-1396).</li>
+        </ul>
+
+        <h3>What does NOT trigger rebuild</h3>
+        <ul class="bullets">
+          <li>Writing to MEMORY.md/USER.md mid-session (by design — frozen snapshot pattern)</li>
+          <li>Plugin state changes</li>
+          <li>Skills changes mid-session</li>
+        </ul>
+
+        <div class="alert alert-teal" style="margin-top:1rem">
+          <strong>Practical implication for Lis:</strong> Updating SOUL.md triggers rebuild on next message. Updating MEMORY.md manually takes effect at next session start OR after compression.
+        </div>
+      </div>
+    </section>
+
+    <!-- Finding 3 -->
+    <section class="section" id="f3">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <h2>Memory Write-Back — How Writes Actually Happen</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: memory_tool.py, run_agent.py:1005-1095, 5850-5930</div>
+
+        <h3>A. Direct Tool Call (memory tool)</h3>
+        <p style="font-size:14px;color:var(--text-muted)">When the model calls the <code>memory</code> tool with <code>action=add/replace/remove</code>, <code>MemoryStore.save_to_disk()</code> is called immediately. Uses atomic rename via <code>tempfile</code> + <code>os.replace()</code> for safety. File-locked with <code>fcntl.LOCK_EX</code> on a <code>.lock</code> sidecar file.</p>
+
+        <h3>B. Background Memory Review (nudge system)</h3>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:0.6rem">After every N turns (<code>nudge_interval</code>, default 10), Hermes spawns a background <code>AIAgent</code> clone that reviews the conversation and decides what to save.</p>
+        <ul class="bullets">
+          <li>Gets a forked snapshot of messages</li>
+          <li>Has <code>_memory_nudge_interval = 0</code> and <code>_skill_nudge_interval = 0</code> (prevents recursive nudges)</li>
+          <li>Writes directly to the shared <code>MemoryStore</code></li>
+        </ul>
+
+        <h3>Config parameters (VPS config.yaml)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Parameter</th><th>Your VPS Value</th><th>Default</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>nudge_interval</td><td>10</td><td>10</td><td>Background review every N user turns</td></tr>
+              <tr><td>flush_min_turns</td><td>6</td><td>6</td><td>Min turns before flush triggers on compression</td></tr>
+              <tr><td>memory_char_limit</td><td>4000</td><td>2200</td><td>Max chars in MEMORY.md</td></tr>
+              <tr><td>user_char_limit</td><td>2000</td><td>1375</td><td>Max chars in USER.md</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>C. Flush on Session End/Compression</h3>
+        <p style="font-size:14px;color:var(--text-muted)"><code>flush_memories()</code> is called before context compression or session reset. It injects a special compression system message, makes a single API call with only the <code>memory</code> tool available, then strips all flush artifacts. Requires <code>user_turn_count >= flush_min_turns</code>.</p>
+      </div>
+    </section>
+
+    <!-- Finding 4 -->
+    <section class="section" id="f4">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <h2>lessons.md Status — Confirmed Dead File</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: grep -rn "lessons" /home/pafi/hermes-agent/ --include="*.py"</div>
+        <div class="alert alert-red">
+          <strong>CONFIRMED DEAD:</strong> Only 1 hit in entire codebase — in <code>memory_tool.py</code> line 509 as descriptive text in a tool schema. No Python code loads <code>~/.hermes/lessons.md</code>. The 49 rules seeded from MacM4 experience are NOT reaching Lis.
+        </div>
+        <h3>To make lessons.md effective — three options</h3>
+        <ul class="bullets">
+          <li><strong>Merge into SOUL.md</strong> — lessons become part of identity slot (slot #1, always loaded). Recommended.</li>
+          <li><strong>Create <code>.hermes.md</code> in working directory</strong> — reference lessons content or merge there (slot #10).</li>
+          <li><strong>Add to MEMORY.md</strong> — content appears in slot #6 but is subject to 4000-char limit.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Finding 5 -->
+    <section class="section" id="f5">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <h2>Memory Persistence Across Gateway Restarts</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: gateway/session.py, run_agent.py</div>
+        <h3>What persists (survives restarts)</h3>
+        <ul class="bullets">
+          <li><code>~/.hermes/memories/MEMORY.md</code> — file-backed, survives everything</li>
+          <li><code>~/.hermes/memories/USER.md</code> — file-backed, survives everything</li>
+          <li><code>~/.hermes/state.db</code> — SQLite WAL-mode: session metadata, message transcripts (FTS5), stored system prompts, pre-flushed session flags</li>
+          <li><code>~/.hermes/sessions/</code> — JSONL transcript files (state.db backup)</li>
+        </ul>
+        <h3>What is lost on restart</h3>
+        <ul class="bullets">
+          <li><code>_pre_flushed_sessions</code> in-memory set — root cause of Bug #3059 (now fixed in recent versions)</li>
+          <li>In-flight background review threads — safe to lose, no data loss risk</li>
+          <li><code>_cached_system_prompt</code> in-memory — rebuilt from state.db on next message</li>
+        </ul>
+        <div class="alert alert-teal" style="margin-top:1rem">
+          <strong>Session isolation:</strong> Each Telegram user gets their own session key (built from platform + user_id + chat_id + thread_id). Conversation history and memory context are isolated per user.
+        </div>
+      </div>
+    </section>
+
+    <!-- Finding 6 -->
+    <section class="section" id="f6">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <h2>Known Memory Bugs — Priority Order</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: GitHub issues NousResearch/hermes-agent</div>
+
+        <div style="margin-bottom:1.25rem">
+          <p style="font-size:15px;font-weight:600;color:#fff;margin-bottom:0.5rem">BUG-1: Double Memory Flush on Restart <span class="risk-badge risk-high">High Risk — Lis</span></p>
+          <p style="font-size:13.5px;color:var(--text-muted)"><strong>Issue #3059.</strong> When a session expires and triggers memory flush, if the gateway restarts, the same session flushes again. The <code>_pre_flushed_sessions</code> set was in-memory only. <strong>Status:</strong> Fix landed (persisting flag to state.db). Verify your version has this fix.</p>
+        </div>
+        <hr style="border-color:var(--border);margin:1rem 0">
+        <div style="margin-bottom:1.25rem">
+          <p style="font-size:15px;font-weight:600;color:#fff;margin-bottom:0.5rem">BUG-2: Memory Flush Overwrites Live Memory <span class="risk-badge risk-high">High Risk</span></p>
+          <p style="font-size:13.5px;color:var(--text-muted)"><strong>Issue #2670.</strong> The flush agent has no awareness of memory changes made during the current session. It can revert memory to stale state on session timeout. <strong>Mitigation:</strong> Keep <code>flush_min_turns: 6</code> and save critical facts via tool calls before ending long sessions.</p>
+        </div>
+        <hr style="border-color:var(--border);margin:1rem 0">
+        <div style="margin-bottom:1.25rem">
+          <p style="font-size:15px;font-weight:600;color:#fff;margin-bottom:0.5rem">BUG-3: Background Review Duplicate Provider <span class="risk-badge risk-medium">Medium Risk</span></p>
+          <p style="font-size:13.5px;color:var(--text-muted)"><strong>Issue #5129.</strong> Background review spawns a clone that creates a second instance of the memory provider. Can create duplicate memory entries. <strong>Mitigation:</strong> SQLite WAL prevents corruption; duplicates deduplicated via <code>dict.fromkeys()</code> on load.</p>
+        </div>
+        <hr style="border-color:var(--border);margin:1rem 0">
+        <div>
+          <p style="font-size:15px;font-weight:600;color:#fff;margin-bottom:0.5rem">BUG-4: Memory Provider Tool Routing Failure <span class="risk-badge risk-low">Low Risk</span></p>
+          <p style="font-size:13.5px;color:var(--text-muted)"><strong>Issue #4708.</strong> Affects external memory providers (Honcho, Mem0). <code>fact_store</code>, <code>fact_feedback</code> tools return <code>Unknown tool</code> error in sequential dispatch path. <strong>Impact on Lis:</strong> None — using built-in MEMORY.md/USER.md, no external provider configured.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Finding 7 -->
+    <section class="section" id="f7">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <h2>OpenClaw HTTP API — Architecture Clarification</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: Container inspection, /home/node/.openclaw/openclaw.json, server-middleware-H1aVuvZd.js</div>
+        <div class="alert alert-orange">
+          <strong>Key finding:</strong> OpenClaw port 18789 is a <strong>UI-only control plane</strong>, not a programmatic REST API. The HTTP server serves the SPA by default. <code>/v1/chat/completions</code> is <strong>disabled by default</strong>.
+        </div>
+
+        <h3>Current config state</h3>
+        <ul class="bullets">
+          <li><code>gateway.mode: "local"</code>, <code>gateway.bind: "loopback"</code> (loopback-only)</li>
+          <li>Port 18789, <code>agents.defaults.maxConcurrent: 4</code>, subagents <code>maxConcurrent: 8</code></li>
+          <li>Auth token: <code>20d352bacd...a844df</code> (from <code>openclaw.json</code>), uses Bearer token auth</li>
+        </ul>
+
+        <h3>To enable programmatic HTTP access</h3>
+        <pre><code class="language-json">{
+  "gateway": {
+    "http": {
+      "endpoints": {
+        "chatCompletions": { "enabled": true }
+      }
+    }
+  }
+}</code></pre>
+        <p style="font-size:13.5px;color:var(--text-muted)">Then POST to <code>http://127.0.0.1:18789/v1/chat/completions</code> with <code>Authorization: Bearer &lt;token&gt;</code>. Use <code>model: "openclaw:&lt;agent-name&gt;"</code> to target specific agents.</p>
+      </div>
+    </section>
+
+    <!-- Finding 8 -->
+    <section class="section" id="f8">
+      <div class="section-header">
+        <div class="section-num">8</div>
+        <h2>Hermes API Server — The Correct Interconnection Path</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: gateway/platforms/api_server.py, ~/.hermes/config.yaml</div>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:1rem">Hermes has its own <strong>OpenAI-compatible API server</strong> on port 8642. This is the correct integration bus for agent-to-agent communication on the VPS.</p>
+
+        <h3>Confirmed endpoints</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>POST</td><td>/v1/chat/completions</td><td>OpenAI Chat Completions (stateless; opt-in session via X-Hermes-Session-Id)</td></tr>
+              <tr><td>POST</td><td>/v1/responses</td><td>OpenAI Responses API (stateful via previous_response_id)</td></tr>
+              <tr><td>GET</td><td>/v1/models</td><td>Lists hermes-agent as available model</td></tr>
+              <tr><td>POST</td><td>/v1/runs</td><td>Start a run, returns run_id immediately (202)</td></tr>
+              <tr><td>GET</td><td>/v1/runs/{run_id}/events</td><td>SSE stream of lifecycle events</td></tr>
+              <tr><td>GET</td><td>/health</td><td>Health check</td></tr>
+              <tr><td>GET/POST/PATCH/DELETE</td><td>/api/jobs</td><td>Scheduled job management</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-red" style="margin-top:1rem">
+          <strong>Current status on VPS:</strong> Port 8642 appears to not be responding (curl returned empty). The <code>api_server</code> platform is configured in config.yaml but may not be active. Check: <code>systemctl status hermes</code> and verify <code>api_server.enabled: true</code> in config.
+        </div>
+      </div>
+    </section>
+
+    <!-- Finding 9 -->
+    <section class="section" id="f9">
+      <div class="section-header">
+        <div class="section-num">9</div>
+        <h2>OpenClaw Agent Routing Details</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: .openclaw/openclaw.json, docs.openclaw.ai/tools/agent-send, container inspection</div>
+
+        <h3>Native agent communication</h3>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:0.8rem">OpenClaw has a native <code>agent_send</code> tool for dispatching tasks between agents. The A2A v0.3.0 protocol plugin (<code>openclaw-a2a-gateway</code>) enables cross-server agent communication.</p>
+
+        <h3>Hermes to OpenClaw routing (step by step)</h3>
+        <ol style="font-size:14px;color:var(--text-muted);padding-left:1.5rem;line-height:2">
+          <li>Enable <code>gateway.http.endpoints.chatCompletions.enabled: true</code> in OpenClaw config</li>
+          <li>POST to <code>http://127.0.0.1:18789/v1/chat/completions</code></li>
+          <li>Set <code>Authorization: Bearer 20d352bacd15538460c654ba1a864025114c773f82a844df</code></li>
+          <li>Set <code>model: "openclaw:&lt;agent-name&gt;"</code> to target a specific agent</li>
+        </ol>
+
+        <p style="font-size:12px;color:var(--text-dim);margin-top:0.5rem">Note: The 6 business agents (Richard, Finance, Marketing etc.) are configured on MacIntel, not VPS.</p>
+      </div>
+    </section>
+
+    <!-- Finding 10 -->
+    <section class="section" id="f10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <h2>Community Best Practices for Hermes Memory</h2>
+      </div>
+      <div class="card">
+        <div class="source-tag">Source: hermes-agent.nousresearch.com/docs, vectorize.io, deepwiki.com/NousResearch/hermes-agent/4.3</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+          <div>
+            <h3 style="color:var(--green);margin-top:0">Save to MEMORY.md</h3>
+            <ul class="bullets">
+              <li>Environment facts (VPS IPs, paths, service ports)</li>
+              <li>Tool quirks and workarounds discovered</li>
+              <li>Project conventions (naming, structure)</li>
+              <li>Recurring corrections</li>
+              <li>"What reduces future user steering"</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="color:var(--red);margin-top:0">Do NOT save</h3>
+            <ul class="bullets">
+              <li>Task progress or session outcomes</li>
+              <li>Completed-work logs</li>
+              <li>Temporary TODO state</li>
+              <li>Info easily re-discovered from context files</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Memory vs Skills distinction</h3>
+        <ul class="bullets">
+          <li><strong>Memory</strong> = "what" (facts, preferences, env details)</li>
+          <li><strong>Skills</strong> = "how" (multi-step workflows, reusable recipes)</li>
+        </ul>
+
+        <h3>Char limit strategy (your config: 4000 chars)</h3>
+        <ul class="bullets">
+          <li>4000 chars ≈ 25-35 medium-sized entries</li>
+          <li>When full: use <code>replace</code> action (not <code>remove</code> + <code>add</code>) to consolidate</li>
+          <li>GROUP related facts into single entries to maximize density</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Action Plan -->
+    <section class="section" id="action">
+      <div class="section-header">
+        <div class="section-num">A</div>
+        <h2>Action Plan</h2>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">1</div>
+        <div>
+          <div class="action-title">Fix lessons.md — merge into SOUL.md <span class="priority-tag priority-immediate">Immediate</span></div>
+          <div class="action-body">
+            <p>The 49 rules at <code>/home/pafi/.hermes/lessons.md</code> are not loaded. Merge them into SOUL.md under a <code>## Rules &amp; Lessons</code> section. Editing SOUL.md triggers mtime check = rebuild on next message.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">2</div>
+        <div>
+          <div class="action-title">Verify api_server platform is active on VPS <span class="priority-tag priority-immediate">Immediate</span></div>
+          <div class="action-body">
+            <p>Port 8642 returned empty. Check and enable:</p>
+            <pre><code class="language-bash">hermes status
+# or
+curl http://127.0.0.1:8642/health</code></pre>
+            <p style="margin-top:0.5rem">If not running, add to config.yaml:</p>
+            <pre><code class="language-yaml">gateway:
+  platforms:
+    api_server:
+      enabled: true
+      extra:
+        host: 127.0.0.1
+        port: 8642
+        key: &lt;strong-random-key&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">3</div>
+        <div>
+          <div class="action-title">Enable OpenClaw HTTP completions endpoint <span class="priority-tag priority-immediate">Immediate</span></div>
+          <div class="action-body">
+            <p>If Hermes to OpenClaw routing is needed:</p>
+            <pre><code class="language-bash">docker exec openclaw-gateway openclaw config set gateway.http.endpoints.chatCompletions.enabled true</code></pre>
+            <p style="margin-top:0.5rem">Use <code>model: "openclaw:main"</code> to route to default agent.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">4</div>
+        <div>
+          <div class="action-title">Hermes to Hermes interconnection pattern <span class="priority-tag priority-short">Short-Term</span></div>
+          <div class="action-body">
+            <p>For Genie/sub-agent calls to Lis (Hermes), use the <code>/v1/chat/completions</code> endpoint at port 8642:</p>
+            <pre><code class="language-python">import requests
+response = requests.post(
+    "http://127.0.0.1:8642/v1/chat/completions",
+    headers={"Authorization": "Bearer &lt;api_server_key&gt;"},
+    json={
+        "model": "hermes-agent",
+        "messages": [{"role": "user", "content": task}],
+        "stream": False
+    }
+)
+# For session continuity:
+# headers["X-Hermes-Session-Id"] = "&lt;uuid&gt;"</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num">5</div>
+        <div>
+          <div class="action-title">Memory hygiene for Lis <span class="priority-tag priority-short">Short-Term</span></div>
+          <div class="action-body">
+            <p>Current MEMORY.md has ~800 chars used. Add: Cortex IPv6 fix quirk, find-procedure endpoint quirk, model routing facts. Monitor Bug #2670 during long sessions — if Lis forgets recent saves after restart, explicitly call memory tool before ending session.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1.5rem">
+        <h3 style="margin-top:0;color:var(--teal-light)">Architectural Integration Bus</h3>
+        <div class="arch-box">
+          <pre><code class="language-text">Genie (MacM4/VPS) ──POST──▶ http://127.0.0.1:8642/v1/chat/completions ──▶ Lis (Hermes)
+                                                                                    │
+                                                                                    ▼
+                            Lis ──POST──▶ http://127.0.0.1:18789/v1/chat/completions ──▶ OpenClaw agents
+                                          (requires chatCompletions.enabled: true)</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Source Coverage -->
+    <section class="section" id="sources">
+      <div class="section-header">
+        <div class="section-num">S</div>
+        <h2>Source Coverage Report (22/22)</h2>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Category</th><th>Source</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>run_agent.py (prompt assembly)</td><td>VPS direct read, lines 2657-2820</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>run_agent.py (caching logic)</td><td>VPS direct read, lines 7100-7200</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>prompt_builder.py</td><td>VPS direct read</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>memory_tool.py</td><td>VPS direct read</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>memory_setup.py</td><td>VPS direct read</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>gateway/session.py</td><td>VPS direct read</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>gateway/platforms/api_server.py</td><td>VPS direct read</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>gateway/config.py</td><td>VPS grep</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>lessons.md codebase search</td><td>grep -rn all .py .md .yaml — dead file confirmed</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>~/.hermes/config.yaml</td><td>VPS direct read</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>~/.hermes/memories/</td><td>VPS direct read</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>OpenClaw container inspection</td><td>docker exec</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>OpenClaw config openclaw.json</td><td>docker + host</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>OpenClaw dist JS analysis</td><td>docker exec grep</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>OpenClaw API endpoint probing</td><td>curl with token</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>Hermes official docs (memory)</td><td>hermes-agent.nousresearch.com</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>Hermes deepwiki (session persistence)</td><td>deepwiki.com</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>vectorize.io memory explained</td><td>web search</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>GitHub Issue #2670</td><td>Memory flush overwrite</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>GitHub Issue #3059</td><td>Double flush on restart</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>GitHub Issue #4708</td><td>Tool routing failure</td><td class="status-complete">COMPLETE</td></tr>
+              <tr><td>GitHub Issue #5129</td><td>Duplicate provider</td><td class="status-complete">COMPLETE</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <p>Generated by <span>NexusOS DELPHI v2.0</span> &nbsp;·&nbsp; Task nx-20260409-12c2 &nbsp;·&nbsp; 2026-04-09 &nbsp;·&nbsp; 22 sources &nbsp;·&nbsp; 10 findings</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    hljs.highlightAll();
+  });
+</script>
+
+</body>
+</html>
