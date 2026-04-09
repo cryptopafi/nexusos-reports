@@ -117,6 +117,7 @@ tailwind.config = {
       <a href="#hormonal" class="block text-sm text-gray-400 hover:text-gray-200 transition">Hormonal Profile</a>
       <a href="#pending" class="block text-sm text-gray-400 hover:text-gray-200 transition">Pending Results</a>
       <a href="#actions" class="block text-sm text-gray-400 hover:text-gray-200 transition">Action Items</a>
+      <a href="#peptides" class="block text-sm text-purple-400 hover:text-purple-300 transition font-medium">Peptide Protocol</a>
       <hr class="border-white/5 my-3">
       <div class="space-y-2 text-xs text-gray-500">
         <div><span class="text-gray-400">Agent:</span> HEALTH PRO</div>
@@ -376,6 +377,253 @@ tailwind.config = {
             <div class="font-medium text-sm">TSH + Free T4 Recheck (6 months)</div>
             <p class="text-xs text-gray-400 mt-0.5">Track thyroid function trajectory given autoimmune flag.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Peptide Protocol -->
+    <section id="peptides" class="fade-in space-y-6">
+      <h2 class="text-lg font-semibold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-purple-400"></span>Peptide Protocol Recommendation
+      </h2>
+      <div class="glass glow rounded-xl p-6">
+        <p class="text-sm text-gray-300 mb-4">Based on Daniela's bloodwork findings, the following peptide protocol addresses the three root causes identified by Dr. Trevor Bachmeyer's Hashimoto's framework: <strong class="text-accent">systemic inflammation</strong>, <strong class="text-accent">mitochondrial ATP deficit</strong>, and <strong class="text-accent">immune regulatory dysfunction</strong>. Protocol cross-referenced against 46 peptide knowledge files, Cortex health collection (926 items), and NLM notebooks (Bachmeyer, Asprey).</p>
+        <div class="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3 text-xs text-yellow-300 mb-5">
+          This peptide protocol is informational only. All peptides require medical supervision, proper sourcing (third-party tested, e.g. Janoshik), and individual dose titration. Consult a physician before starting any peptide regimen.
+        </div>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="glass glow rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center"><span class="text-red-400 font-bold">P1</span></div>
+          <div>
+            <h3 class="font-semibold">Phase 1: Foundation (Weeks 1-4)</h3>
+            <p class="text-xs text-gray-500">Gut-Thyroid Axis Repair + Immune Modulation</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white/5 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-accent text-sm">Thymosin Alpha-1 (TA1)</h4>
+              <span class="px-2 py-0.5 rounded text-xs bg-red-500/10 text-red-400">PRIORITY: Autoimmune</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-2"><strong>Dose:</strong> 1.6mg subcutaneous, 2x/week</p>
+            <p class="text-xs text-gray-400 mb-2"><strong>Rationale:</strong> Adaptogenic immune modulator. In autoimmune states (Anti-Tg 54.60, 1.82x limit), TA1 <em>suppresses</em> rather than stimulates immune activity via TLR/NF-kB signaling. Restores T-regulatory cell function, which is the key failure point in Hashimoto's (Bachmeyer: T-reg collapse from ATP depletion allows autoimmune attack to continue).</p>
+            <p class="text-xs text-gray-500"><strong>Source:</strong> Bachmeyer "Thymosin Alpha 1 Is A Powerhouse For Life" / Cortex health collection</p>
+          </div>
+
+          <div class="bg-white/5 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-accent text-sm">BPC-157</h4>
+              <span class="px-2 py-0.5 rounded text-xs bg-orange-500/10 text-orange-400">Gut-Thyroid Axis</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-2"><strong>Dose:</strong> 250-500mcg subcutaneous, 2x/day</p>
+            <p class="text-xs text-gray-400 mb-2"><strong>Rationale:</strong> Gut-thyroid axis healing. Bachmeyer states leaky gut (zonulin-mediated tight junction disruption leading to LPS-TLR4-NF-kB cascade) is present in 100% of Hashimoto's patients. BPC-157 is the primary gut healing peptide addressing systemic inflammation upstream of thyroid autoimmunity. Multi-mechanism: gastric mucosal protection, angiogenesis, tissue repair.</p>
+            <p class="text-xs text-gray-500"><strong>Route:</strong> Subcutaneous ONLY. Oral administration is pharmacologically inactive (hepatic first-pass + proteolytic degradation).</p>
+            <p class="text-xs text-gray-500"><strong>Source:</strong> 16 video sources in knowledge base / Bachmeyer "BPC157 Does Everything"</p>
+          </div>
+
+          <div class="bg-white/5 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-accent text-sm">KPV</h4>
+              <span class="px-2 py-0.5 rounded text-xs bg-yellow-500/10 text-yellow-400">Anti-Inflammatory</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-2"><strong>Dose:</strong> 500mcg oral, 1x/day</p>
+            <p class="text-xs text-gray-400 mb-2"><strong>Rationale:</strong> Alpha-MSH derived tripeptide. Powerful anti-inflammatory that suppresses cytokine storms. Works synergistically with BPC-157 for gut healing. Addresses the NF-kB inflammatory cascade that drives Anti-Tg antibody production. CRP at 1 mg/L is currently normal, but KPV targets organ-specific inflammation (thyroid) that CRP may not capture.</p>
+            <p class="text-xs text-gray-500"><strong>Source:</strong> Bachmeyer "KPV The Greatest Anti Inflammatory Ever" / 4 video sources</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="glass glow rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center"><span class="text-blue-400 font-bold">P2</span></div>
+          <div>
+            <h3 class="font-semibold">Phase 2: Metabolic Reset (Weeks 5-12)</h3>
+            <p class="text-xs text-gray-500">Mitochondrial Restoration + Hormonal Support</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white/5 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-accent text-sm">MOTS-c</h4>
+              <span class="px-2 py-0.5 rounded text-xs bg-blue-500/10 text-blue-400">Mitochondrial</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-2"><strong>Dose:</strong> 10mg subcutaneous, 1x/week</p>
+            <p class="text-xs text-gray-400 mb-2"><strong>Rationale:</strong> Mitochondrial-derived peptide that addresses ATP shortage (Bachmeyer's 3rd pillar of Hashimoto's). Restores AMPK activation, improves electron transport chain function (complexes 1-4), and enhances insulin sensitivity. While HOMA index is excellent (1.48), mitochondrial optimization ensures T-regulatory cells have the ATP needed to maintain immune tolerance, preventing further thyroid tissue destruction.</p>
+            <p class="text-xs text-gray-500"><strong>Note:</strong> Take WITH carbohydrates to avoid hypoglycemia (strong insulin-sensitizing effect).</p>
+            <p class="text-xs text-gray-500"><strong>Source:</strong> 7 video sources / Bachmeyer "MOTS-C The Ultimate Peptide?"</p>
+          </div>
+
+          <div class="bg-white/5 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-accent text-sm">Kisspeptin-10</h4>
+              <span class="px-2 py-0.5 rounded text-xs bg-purple-500/10 text-purple-400">Hormonal / Thyroid</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-2"><strong>Dose:</strong> To be determined by physician (requires clinical titration)</p>
+            <p class="text-xs text-gray-400 mb-2"><strong>Rationale:</strong> Kisspeptin directly addresses thyroid dysfunction AND Hashimoto's thyroiditis (per our knowledge base). Also relevant for low estradiol (8.16 pg/ml) as Kisspeptin modulates the HPG axis (hypothalamic-pituitary-gonadal) which governs estrogen production. Unlike HRT, Kisspeptin works upstream to restore the body's own signaling. Conditionally recommended: confirm low estradiol is persistent (not just early cycle timing) before initiating.</p>
+            <p class="text-xs text-gray-500"><strong>Source:</strong> Bachmeyer "Kisspeptin Masterclass (more than fertility)" / 2 video sources</p>
+          </div>
+
+          <div class="bg-white/5 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-accent text-sm">GHK-Cu</h4>
+              <span class="px-2 py-0.5 rounded text-xs bg-accent/20 text-accent">Tissue Repair</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-2"><strong>Dose:</strong> 1-2mg subcutaneous, 3x/week</p>
+            <p class="text-xs text-gray-400 mb-2"><strong>Rationale:</strong> Copper peptide for tissue repair, anti-inflammatory support, and gene regulation. Addresses inflammation and mitochondrial dysfunction. Supports thyroid tissue repair alongside immune modulation from TA1. Also benefits skin quality, which can be affected by thyroid dysfunction.</p>
+            <p class="text-xs text-gray-500"><strong>Source:</strong> 6 video sources / Bachmeyer "GHK-Cu Masterclass"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="glass glow rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center"><span class="text-accent font-bold">P3</span></div>
+          <div>
+            <h3 class="font-semibold">Phase 3: Longevity Optimization (Week 12+)</h3>
+            <p class="text-xs text-gray-500">Maintenance + Anti-Aging</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-white/5 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-accent text-sm">Epitalon</h4>
+              <span class="px-2 py-0.5 rounded text-xs bg-accent/20 text-accent">Telomere / Aging</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-2"><strong>Dose:</strong> 10mg/day subcutaneous, 10-20 day cycle, 2x/year</p>
+            <p class="text-xs text-gray-400 mb-2"><strong>Rationale:</strong> Telomere maintenance peptide. Relevant at 36 years for proactive longevity. Autoimmune conditions accelerate cellular aging, making telomere support especially important.</p>
+            <p class="text-xs text-gray-500"><strong>Source:</strong> "Does Epitalon Actually Work" / 1 video source</p>
+          </div>
+
+          <div class="bg-white/5 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-medium text-accent text-sm">SS-31 (Elamipretide)</h4>
+              <span class="px-2 py-0.5 rounded text-xs bg-blue-500/10 text-blue-400">Mitochondrial Deep</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-2"><strong>Dose:</strong> Per physician protocol (sequential after MOTS-c metabolic reset)</p>
+            <p class="text-xs text-gray-400 mb-2"><strong>Rationale:</strong> Targets cardiolipin in mitochondrial inner membrane. Deeper mitochondrial repair after MOTS-c has restored baseline metabolic function. Addresses oxidative stress at the electron transport chain level. Recommended sequence: MOTS-c first (Phase 2), SS-31 second (Phase 3).</p>
+            <p class="text-xs text-gray-500"><strong>Source:</strong> 5 video sources / Bachmeyer "MOTS-C or SS-31 Comprehensive Guide"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supplements Stack -->
+      <div class="glass glow rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center"><span class="text-accent font-bold text-lg">+</span></div>
+          <div>
+            <h3 class="font-semibold">Essential Supplement Stack (All Phases)</h3>
+            <p class="text-xs text-gray-500">Cofactors required for peptide efficacy + marker optimization</p>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-3">
+          <div class="bg-white/5 rounded-lg p-3">
+            <h4 class="text-sm font-medium text-red-400 mb-1">Selenium 200mcg/day</h4>
+            <p class="text-xs text-gray-400">Reduces Anti-Tg and Anti-TPO antibodies 21-40% (meta-analysis). Essential for T4-to-T3 conversion. Critical cofactor for thyroid autoimmune management. Low dose, every 1-2 days per Asprey guidance (geographic calibration needed).</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <h4 class="text-sm font-medium text-orange-400 mb-1">Iron Bisglycinate 18-36mg EOD + Vit C</h4>
+            <p class="text-xs text-gray-400">Ferritin 29 ng/ml is functionally marginal (&lt;30). Target 50-100 ng/ml. Iron is required for T4-to-T3 thyroid hormone conversion. Take every other day with Vitamin C for absorption. Monitor copper alongside iron.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <h4 class="text-sm font-medium text-yellow-400 mb-1">Vitamin D3 4000 IU/day + K2</h4>
+            <p class="text-xs text-gray-400">Current 31.40 ng/ml is barely sufficient. Target 50-60 ng/ml. Vitamin D modulates immune function and is critical for autoimmune conditions. Take with fat-containing meal. Add K2 (MK-7) for calcium metabolism.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <h4 class="text-sm font-medium text-accent mb-1">Zinc 30mg + Copper 2mg</h4>
+            <p class="text-xs text-gray-400">Zinc supports aromatase function (estrogen production in granulosa cells) and thyroid hormone synthesis. Copper prevents zinc-induced depletion. Both are cofactors for peptide receptor binding.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <h4 class="text-sm font-medium text-accent mb-1">Omega-3 (2000mg EPA / 1000mg DHA)</h4>
+            <p class="text-xs text-gray-400">Anti-inflammatory support. Reduces NF-kB activation driving thyroid autoimmunity. Supports brain health (thyroid-brain axis per Bachmeyer).</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <h4 class="text-sm font-medium text-accent mb-1">Magnesium Glycinate 400mg</h4>
+            <p class="text-xs text-gray-400">Mitochondrial ATP production cofactor. Supports sleep quality and nervous system regulation. Essential alongside MOTS-c for mitochondrial optimization.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lifestyle -->
+      <div class="glass glow rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center"><span class="text-accent font-bold text-lg">L</span></div>
+          <div>
+            <h3 class="font-semibold">Lifestyle Interventions (Bachmeyer + Asprey Framework)</h3>
+            <p class="text-xs text-gray-500">Address root causes alongside peptide protocol</p>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-3 text-xs text-gray-400">
+          <div class="bg-white/5 rounded-lg p-3">
+            <strong class="text-gray-300">Gluten/Dairy Elimination (90 days)</strong>
+            <p class="mt-1">Hashimoto's is strongly linked to gluten-driven zonulin release causing leaky gut. Trial elimination to assess antibody response.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <strong class="text-gray-300">Filtered Water</strong>
+            <p class="mt-1">Remove fluoride and chlorine. Asprey identifies fluoride as a thyroid suppressant (prescription drug to lower thyroid function historically).</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <strong class="text-gray-300">Anti-Inflammatory Diet</strong>
+            <p class="mt-1">High saturated fat, eliminate seed oils (canola, soybean, safflower). Grass-fed animal foods for cholesterol-to-hormone conversion cofactors.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <strong class="text-gray-300">Sleep Optimization</strong>
+            <p class="mt-1">Asleep before 22:00. Blackout room. No screens 1hr pre-bed. Thyroid hormone production peaks during deep sleep cycles.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Missing Tests -->
+      <div class="glass glow rounded-xl p-6">
+        <h3 class="font-semibold mb-3 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-blue-400"></span>Additional Tests Recommended
+        </h3>
+        <div class="grid md:grid-cols-3 gap-3">
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="text-sm font-medium text-blue-400 mb-1">Anti-TPO Antibodies</div>
+            <p class="text-xs text-gray-400">Complete Hashimoto's antibody panel. Anti-Tg alone is not sufficient.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="text-sm font-medium text-blue-400 mb-1">Reverse T3</div>
+            <p class="text-xs text-gray-400">Asprey/McPherson: rT3 blocks Free T3 at receptor level. Essential for thyroid interpretation.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="text-sm font-medium text-blue-400 mb-1">GI-MAP Stool Test</div>
+            <p class="text-xs text-gray-400">Gut microbiome assessment. Bachmeyer: gut-thyroid axis is upstream of autoimmunity.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="text-sm font-medium text-blue-400 mb-1">Celiac Screen (tTG-IgA)</div>
+            <p class="text-xs text-gray-400">Gluten sensitivity drives zonulin, drives leaky gut, drives Hashimoto's (per Bachmeyer).</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="text-sm font-medium text-blue-400 mb-1">AMH</div>
+            <p class="text-xs text-gray-400">Ovarian reserve marker. Relevant given low estradiol at 36. Informs Kisspeptin protocol decision.</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="text-sm font-medium text-blue-400 mb-1">Copper / Ceruloplasmin</div>
+            <p class="text-xs text-gray-400">Iron-copper axis (Sutton/Asprey). Copper deficiency mimics iron deficiency. Must check before iron supplementation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Knowledge Sources -->
+      <div class="glass glow rounded-xl p-6">
+        <h3 class="font-semibold mb-3 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-gray-400"></span>Knowledge Sources Cross-Referenced
+        </h3>
+        <div class="grid md:grid-cols-2 gap-2 text-xs text-gray-500">
+          <div class="flex items-center gap-2"><span class="text-accent">46</span> peptide knowledge files (Bachmeyer, Asprey, IFBB Pro series)</div>
+          <div class="flex items-center gap-2"><span class="text-accent">926</span> Cortex health collection items</div>
+          <div class="flex items-center gap-2"><span class="text-accent">2</span> NLM notebooks (Bachmeyer longevity, Asprey biohacking)</div>
+          <div class="flex items-center gap-2"><span class="text-accent">7</span> Hashimoto's-specific entries (Bachmeyer, Asprey, McPherson)</div>
+          <div class="flex items-center gap-2"><span class="text-accent">16</span> BPC-157 video sources</div>
+          <div class="flex items-center gap-2"><span class="text-accent">7</span> MOTS-c video sources</div>
+          <div class="flex items-center gap-2"><span class="text-accent">2</span> Kisspeptin video sources</div>
+          <div class="flex items-center gap-2"><span class="text-accent">5</span> SS-31 video sources</div>
         </div>
       </div>
     </section>
