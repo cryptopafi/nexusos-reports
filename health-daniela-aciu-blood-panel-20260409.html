@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blood Panel Analysis: Daniela Aciu | NexusOS Health</title>
+<meta property="og:title" content="Blood Panel Analysis: Daniela Aciu">
+<meta property="og:description" content="Comprehensive blood panel analysis - 16 biomarkers, 2 flags, moderate risk">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+      colors: {
+        dark: { bg: '#0A0A0F', card: '#111118', border: '#1e1e2e' },
+        accent: '#22c55e',
+        'accent-dim': '#16a34a'
+      }
+    }
+  }
+}
+</script>
+<style>
+  .glass { background: rgba(17,17,24,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(34,197,94,0.15); }
+  .light .glass { background: rgba(255,255,255,0.8); border: 1px solid rgba(0,0,0,0.08); }
+  .glow { box-shadow: 0 0 30px rgba(34,197,94,0.08); }
+  .light .glow { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .flag-high { border-left: 3px solid #ef4444; }
+  .flag-low { border-left: 3px solid #f97316; }
+  .flag-watch { border-left: 3px solid #eab308; }
+  .flag-ok { border-left: 3px solid #22c55e; }
+  @media print { .no-print { display: none !important; } html { color-scheme: light; } body { background: #fff !important; color: #111 !important; } .glass { background: #f9f9f9 !important; border: 1px solid #ddd !important; } }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: #22c55e; z-index: 100; transition: width 0.1s; }
+</style>
+</head>
+<body class="bg-dark-bg text-gray-200 font-sans min-h-screen transition-colors duration-300 dark:bg-dark-bg dark:text-gray-200 light:bg-[#fafafa] light:text-gray-900">
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass no-print" style="backdrop-filter:blur(16px)">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center"><span class="text-accent font-bold text-sm">H</span></div>
+      <span class="text-sm font-medium text-gray-400">NexusOS Health</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <button id="themeToggle" class="text-gray-400 hover:text-white transition text-sm px-3 py-1 rounded-lg hover:bg-white/5">
+        <span id="themeIcon">Light</span>
+      </button>
+      <button id="shareBtn" class="text-sm px-4 py-1.5 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition font-medium">Share</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="pt-24 pb-12 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-wrap items-center gap-3 mb-4">
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">HEALTH REPORT</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400">MODERATE RISK</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-400">Tier 2 Full</span>
+    </div>
+    <h1 class="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">Blood Panel Analysis</h1>
+    <p class="text-xl text-gray-400 mb-6">Daniela Aciu</p>
+    <div class="flex flex-wrap gap-6 text-sm text-gray-500">
+      <div><span class="text-gray-400">Patient:</span> F, 36 years</div>
+      <div><span class="text-gray-400">Lab:</span> MEDICTEST-BUCURESTI</div>
+      <div><span class="text-gray-400">Collected:</span> 30 March 2026</div>
+      <div><span class="text-gray-400">Report:</span> 9 April 2026</div>
+    </div>
+  </div>
+</header>
+
+<!-- Metrics Row -->
+<section class="px-6 pb-8">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="glass glow rounded-xl p-5 text-center">
+      <div class="text-3xl font-bold text-accent">16</div>
+      <div class="text-xs text-gray-400 mt-1">Biomarkers Tested</div>
+    </div>
+    <div class="glass glow rounded-xl p-5 text-center">
+      <div class="text-3xl font-bold text-red-400">2</div>
+      <div class="text-xs text-gray-400 mt-1">Flagged Out of Range</div>
+    </div>
+    <div class="glass glow rounded-xl p-5 text-center">
+      <div class="text-3xl font-bold text-yellow-400">4</div>
+      <div class="text-xs text-gray-400 mt-1">Borderline / Watch</div>
+    </div>
+    <div class="glass glow rounded-xl p-5 text-center">
+      <div class="text-3xl font-bold text-blue-400">3</div>
+      <div class="text-xs text-gray-400 mt-1">Pending (Bioclinica)</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOC Sidebar + Content -->
+<div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row gap-8">
+
+  <!-- Sidebar -->
+  <aside class="lg:w-64 shrink-0 no-print">
+    <div class="lg:sticky lg:top-20 glass glow rounded-xl p-5 space-y-3">
+      <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Contents</h3>
+      <a href="#flags" class="block text-sm text-red-400 hover:text-red-300 transition">Flagged Markers</a>
+      <a href="#borderline" class="block text-sm text-yellow-400 hover:text-yellow-300 transition">Borderline / Watch</a>
+      <a href="#normal" class="block text-sm text-accent hover:text-green-300 transition">Normal Values</a>
+      <a href="#charts" class="block text-sm text-gray-400 hover:text-gray-200 transition">Biomarker Charts</a>
+      <a href="#metabolic" class="block text-sm text-gray-400 hover:text-gray-200 transition">Metabolic Profile</a>
+      <a href="#hormonal" class="block text-sm text-gray-400 hover:text-gray-200 transition">Hormonal Profile</a>
+      <a href="#pending" class="block text-sm text-gray-400 hover:text-gray-200 transition">Pending Results</a>
+      <a href="#actions" class="block text-sm text-gray-400 hover:text-gray-200 transition">Action Items</a>
+      <hr class="border-white/5 my-3">
+      <div class="space-y-2 text-xs text-gray-500">
+        <div><span class="text-gray-400">Agent:</span> HEALTH PRO</div>
+        <div><span class="text-gray-400">Model:</span> Opus 4.6</div>
+        <div><span class="text-gray-400">Validated:</span> Dr. Nica Ana Maria</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 space-y-8 pb-16">
+
+    <!-- Executive Summary -->
+    <section class="fade-in glass glow rounded-xl p-6 md:p-8">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>Executive Summary
+      </h2>
+      <p class="text-gray-300 leading-relaxed">
+        16 analytes reported (3 pending from Bioclinica subcontract). <strong class="text-red-400">2 flags require clinical attention</strong>: elevated anti-thyroglobulin antibodies (autoimmune thyroid marker) and low estradiol. Several values sit at the lower boundary of normal ranges, forming a pattern worth monitoring. Metabolic markers (glucose, insulin, HOMA) are excellent. No acute inflammation.
+      </p>
+    </section>
+
+    <!-- Flagged Markers -->
+    <section id="flags" class="fade-in space-y-4">
+      <h2 class="text-lg font-semibold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-red-400"></span>Flagged Markers (Out of Range)
+      </h2>
+
+      <div class="glass glow rounded-xl p-6 flag-high">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <h3 class="font-semibold text-red-400">Anti-Thyroglobulin Antibodies (Anti-Tg)</h3>
+          <span class="px-2 py-0.5 rounded text-xs font-mono bg-red-500/10 text-red-400">54.60 IU/mL (ref: &lt;30)</span>
+        </div>
+        <div class="w-full bg-gray-800 rounded-full h-2 mb-4">
+          <div class="bg-red-500 h-2 rounded-full" style="width:82%"></div>
+        </div>
+        <p class="text-sm text-gray-300 mb-3">1.82x the upper limit. Hallmark of autoimmune thyroiditis (Hashimoto's disease). The immune system is targeting thyroid tissue. While TSH remains normal (0.92), combined with low-normal Free T3 and Free T4, early subclinical autoimmune thyroiditis should be considered.</p>
+        <div class="bg-white/5 rounded-lg p-3 text-sm">
+          <span class="text-accent font-medium">Recommendation:</span> <span class="text-gray-300">Thyroid ultrasound recommended. Test Anti-TPO antibodies for complete profiling. Monitor TSH every 6 months.</span>
+        </div>
+      </div>
+
+      <div class="glass glow rounded-xl p-6 flag-low">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <h3 class="font-semibold text-orange-400">Estradiol</h3>
+          <span class="px-2 py-0.5 rounded text-xs font-mono bg-orange-500/10 text-orange-400">8.16 pg/ml (ref: 15-122 follicular)</span>
+        </div>
+        <div class="w-full bg-gray-800 rounded-full h-2 mb-4">
+          <div class="bg-orange-500 h-2 rounded-full" style="width:7%"></div>
+        </div>
+        <p class="text-sm text-gray-300 mb-3">Below follicular phase minimum (15 pg/ml). Could indicate very early follicular phase (day 1-3), ovarian hypofunction, or hormonal suppression. Progesteron of 0.68 ng/ml supports early follicular timing. FSH (7.86) and LH (8.80) are mid-range, which is reassuring.</p>
+        <div class="bg-white/5 rounded-lg p-3 text-sm">
+          <span class="text-accent font-medium">Recommendation:</span> <span class="text-gray-300">Repeat estradiol on cycle day 3 (along with AMH if fertility assessment desired). If persistently low, gynecological evaluation recommended.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Borderline -->
+    <section id="borderline" class="fade-in space-y-4">
+      <h2 class="text-lg font-semibold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-yellow-400"></span>Borderline / Watch Values
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="glass glow rounded-xl p-5 flag-watch">
+          <h3 class="font-medium text-yellow-400 text-sm mb-1">Free T3</h3>
+          <div class="text-2xl font-bold font-mono mb-1">2.27 <span class="text-sm text-gray-500">pg/ml</span></div>
+          <div class="text-xs text-gray-500 mb-2">Ref: 2.0-4.2 (12th percentile)</div>
+          <p class="text-xs text-gray-400">Lower boundary. Combined with elevated Anti-Tg and low-normal Free T4, warrants tracking.</p>
+        </div>
+        <div class="glass glow rounded-xl p-5 flag-watch">
+          <h3 class="font-medium text-yellow-400 text-sm mb-1">Free T4</h3>
+          <div class="text-2xl font-bold font-mono mb-1">10.00 <span class="text-sm text-gray-500">pg/mL</span></div>
+          <div class="text-xs text-gray-500 mb-2">Ref: 8.9-17.2 (13th percentile)</div>
+          <p class="text-xs text-gray-400">Lower quarter. Pattern with low Free T3 + elevated antibodies warrants monitoring.</p>
+        </div>
+        <div class="glass glow rounded-xl p-5 flag-watch">
+          <h3 class="font-medium text-yellow-400 text-sm mb-1">Ferritin</h3>
+          <div class="text-2xl font-bold font-mono mb-1">29.00 <span class="text-sm text-gray-500">ng/ml</span></div>
+          <div class="text-xs text-gray-500 mb-2">Ref: 10-160 (functional deficiency &lt;30)</div>
+          <p class="text-xs text-gray-400">Functionally marginal. Optimal for pre-menopausal women: 50-100. Consider iron-rich diet or low-dose supplementation.</p>
+        </div>
+        <div class="glass glow rounded-xl p-5 flag-watch">
+          <h3 class="font-medium text-yellow-400 text-sm mb-1">25-OH Vitamin D</h3>
+          <div class="text-2xl font-bold font-mono mb-1">31.40 <span class="text-sm text-gray-500">ng/ml</span></div>
+          <div class="text-xs text-gray-500 mb-2">Ref: Sufficient 30-100 (optimal 40-60)</div>
+          <p class="text-xs text-gray-400">Barely sufficient. Important for immune modulation given autoimmune thyroid flag. Target 50+ ng/ml.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Normal Values -->
+    <section id="normal" class="fade-in">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>Normal Values
+      </h2>
+      <div class="glass glow rounded-xl overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/5">
+              <th class="text-left p-4 text-gray-400 font-medium">Marker</th>
+              <th class="text-right p-4 text-gray-400 font-medium">Value</th>
+              <th class="text-right p-4 text-gray-400 font-medium hidden md:table-cell">Reference</th>
+              <th class="text-right p-4 text-gray-400 font-medium">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4">Glicemia</td><td class="p-4 text-right font-mono">88 mg/dl</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">60-95</td><td class="p-4 text-right"><span class="text-accent">Optimal</span></td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4">CRP</td><td class="p-4 text-right font-mono">1 mg/L</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">&lt;6</td><td class="p-4 text-right"><span class="text-accent">Excellent</span></td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4">Progesteron</td><td class="p-4 text-right font-mono">0.68 ng/ml</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">0.4-2.3</td><td class="p-4 text-right"><span class="text-accent">Normal</span></td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4">FSH</td><td class="p-4 text-right font-mono">7.86 mUI/ml</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">3.2-15</td><td class="p-4 text-right"><span class="text-accent">Normal</span></td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4">LH</td><td class="p-4 text-right font-mono">8.80 mUI/ml</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">1.2-12.5</td><td class="p-4 text-right"><span class="text-accent">Normal</span></td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4">TSH</td><td class="p-4 text-right font-mono">0.92 uUI/ml</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">0.30-4.5</td><td class="p-4 text-right"><span class="text-accent">Normal</span></td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4">HOMA Index</td><td class="p-4 text-right font-mono">1.48</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">&le;2.00</td><td class="p-4 text-right"><span class="text-accent">Excellent</span></td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4">Insulin</td><td class="p-4 text-right font-mono">6.81 miu/ml</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">2.7-24.8</td><td class="p-4 text-right"><span class="text-accent">Normal</span></td></tr>
+            <tr class="hover:bg-white/[0.02]"><td class="p-4">Vitamin B12</td><td class="p-4 text-right font-mono">433 pg/ml</td><td class="p-4 text-right text-gray-500 hidden md:table-cell">200-1100</td><td class="p-4 text-right"><span class="text-accent">Normal</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section id="charts" class="fade-in space-y-6">
+      <h2 class="text-lg font-semibold flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-blue-400"></span>Biomarker Visualization
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass glow rounded-xl p-6">
+          <h3 class="text-sm font-medium text-gray-400 mb-4">Thyroid Panel (% of Range)</h3>
+          <canvas id="thyroidChart" height="200"></canvas>
+        </div>
+        <div class="glass glow rounded-xl p-6">
+          <h3 class="text-sm font-medium text-gray-400 mb-4">Hormonal Panel (% of Range)</h3>
+          <canvas id="hormonalChart" height="200"></canvas>
+        </div>
+        <div class="glass glow rounded-xl p-6">
+          <h3 class="text-sm font-medium text-gray-400 mb-4">Metabolic Panel (% of Range)</h3>
+          <canvas id="metabolicChart" height="200"></canvas>
+        </div>
+        <div class="glass glow rounded-xl p-6">
+          <h3 class="text-sm font-medium text-gray-400 mb-4">Marker Status Distribution</h3>
+          <canvas id="statusChart" height="200"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metabolic Profile -->
+    <section id="metabolic" class="fade-in glass glow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>Metabolic Profile Assessment
+      </h2>
+      <div class="space-y-4 text-sm text-gray-300">
+        <div>
+          <h3 class="font-medium text-gray-200 mb-1">Glucose-Insulin Axis</h3>
+          <p>Excellent. Fasting glucose 88 mg/dl, insulin 6.81 miu/ml, HOMA index 1.48. No insulin resistance. Pancreatic beta-cell function appears normal.</p>
+        </div>
+        <div>
+          <h3 class="font-medium text-gray-200 mb-1">Inflammatory Status</h3>
+          <p>CRP at 1 mg/L indicates no systemic inflammation. This is positive and helps contextualize the thyroid antibodies as organ-specific autoimmunity rather than part of a systemic inflammatory process.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hormonal Profile -->
+    <section id="hormonal" class="fade-in glass glow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-purple-400"></span>Hormonal Profile Assessment
+      </h2>
+      <div class="space-y-4 text-sm text-gray-300">
+        <div>
+          <h3 class="font-medium text-gray-200 mb-1">Thyroid Axis</h3>
+          <p>TSH normal but thyroid hormone output (T3, T4) sits in the lower quarter with positive autoantibodies. Pattern consistent with early/subclinical Hashimoto's thyroiditis where the thyroid is still compensating adequately.</p>
+        </div>
+        <div>
+          <h3 class="font-medium text-gray-200 mb-1">Reproductive Axis</h3>
+          <p>FSH and LH mid-normal for follicular phase with normal ratio (LH/FSH = 1.12, no PCOS pattern). Low estradiol likely reflects early cycle timing. Progesteron confirms pre-ovulatory phase.</p>
+        </div>
+        <div>
+          <h3 class="font-medium text-gray-200 mb-1">Adrenal / Androgen Axis</h3>
+          <p>Pending DHEA-S and Free Testosterone from Bioclinica. Total testosterone (0.26 ng/mL) is within standard medical reference ranges for women (0.15-0.70 ng/mL).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pending -->
+    <section id="pending" class="fade-in glass glow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-blue-400"></span>Pending Results (Bioclinica)
+      </h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-white/5 rounded-lg p-4">
+          <div class="text-sm font-medium text-blue-400 mb-1">SHBG</div>
+          <p class="text-xs text-gray-400">Key for calculating free androgen index. Affects interpretation of total testosterone.</p>
+        </div>
+        <div class="bg-white/5 rounded-lg p-4">
+          <div class="text-sm font-medium text-blue-400 mb-1">Free Testosterone</div>
+          <p class="text-xs text-gray-400">Bioavailable fraction. Clarifies total testosterone context.</p>
+        </div>
+        <div class="bg-white/5 rounded-lg p-4">
+          <div class="text-sm font-medium text-blue-400 mb-1">DHEA-S</div>
+          <p class="text-xs text-gray-400">Adrenal androgen reserve. Age-relevant marker for 36-year-old female.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Items -->
+    <section id="actions" class="fade-in">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>Priority Action Items
+      </h2>
+      <div class="space-y-3">
+        <div class="glass glow rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0"><span class="text-red-400 font-bold text-sm">1</span></div>
+          <div>
+            <div class="font-medium text-sm">Thyroid Ultrasound</div>
+            <p class="text-xs text-gray-400 mt-0.5">Priority. Evaluate thyroid morphology given elevated Anti-Tg antibodies (54.60 IU/mL).</p>
+          </div>
+        </div>
+        <div class="glass glow rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0"><span class="text-red-400 font-bold text-sm">2</span></div>
+          <div>
+            <div class="font-medium text-sm">Anti-TPO Antibodies Test</div>
+            <p class="text-xs text-gray-400 mt-0.5">Complete autoimmune thyroid profiling alongside Anti-Tg results.</p>
+          </div>
+        </div>
+        <div class="glass glow rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center shrink-0"><span class="text-yellow-400 font-bold text-sm">3</span></div>
+          <div>
+            <div class="font-medium text-sm">Vitamin D Supplementation</div>
+            <p class="text-xs text-gray-400 mt-0.5">2000-4000 IU/day with fat-containing meal. Target 50+ ng/ml. Recheck in 3 months.</p>
+          </div>
+        </div>
+        <div class="glass glow rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center shrink-0"><span class="text-yellow-400 font-bold text-sm">4</span></div>
+          <div>
+            <div class="font-medium text-sm">Iron Optimization</div>
+            <p class="text-xs text-gray-400 mt-0.5">Iron-rich diet or low-dose supplementation (18-36 mg elemental iron + Vitamin C). Target ferritin 50+ ng/ml.</p>
+          </div>
+        </div>
+        <div class="glass glow rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0"><span class="text-blue-400 font-bold text-sm">5</span></div>
+          <div>
+            <div class="font-medium text-sm">Repeat Estradiol (Cycle Day 3)</div>
+            <p class="text-xs text-gray-400 mt-0.5">If symptoms warrant. Consider AMH if fertility assessment desired.</p>
+          </div>
+        </div>
+        <div class="glass glow rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0"><span class="text-blue-400 font-bold text-sm">6</span></div>
+          <div>
+            <div class="font-medium text-sm">Follow Up Bioclinica Results</div>
+            <p class="text-xs text-gray-400 mt-0.5">SHBG, Free Testosterone, DHEA-S. Integrate when available.</p>
+          </div>
+        </div>
+        <div class="glass glow rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0"><span class="text-blue-400 font-bold text-sm">7</span></div>
+          <div>
+            <div class="font-medium text-sm">TSH + Free T4 Recheck (6 months)</div>
+            <p class="text-xs text-gray-400 mt-0.5">Track thyroid function trajectory given autoimmune flag.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="fade-in glass rounded-xl p-5 border border-yellow-500/10">
+      <p class="text-xs text-gray-500 italic">This report is informational only and does not constitute medical advice. Consult your physician for clinical interpretation and treatment decisions. All findings should be discussed with a qualified healthcare professional.</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer class="max-w-6xl mx-auto px-6 py-8 mt-8 border-t border-white/5 text-center text-xs text-gray-600">
+  <p>NexusOS Health Agent / Opus 4.6 / Report generated 2026-04-09</p>
+  <p class="mt-1">Lab: MEDICTEST-BUCURESTI, Sos. Iancului nr. 3, Sector 2 / Validated by Dr. Nica Ana Maria</p>
+</footer>
+
+<script>
+// Theme toggle
+const html = document.documentElement;
+const toggle = document.getElementById('themeToggle');
+const icon = document.getElementById('themeIcon');
+const saved = localStorage.getItem('theme');
+if (saved === 'light') { html.classList.remove('dark'); html.classList.add('light'); icon.textContent = 'Dark'; }
+toggle.addEventListener('click', () => {
+  const isLight = html.classList.contains('light');
+  html.classList.toggle('dark', isLight); html.classList.toggle('light', !isLight);
+  icon.textContent = isLight ? 'Light' : 'Dark';
+  localStorage.setItem('theme', isLight ? 'dark' : 'light');
+});
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progressBar').style.width = (window.scrollY / h * 100) + '%';
+});
+
+// Fade in
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Share
+document.getElementById('shareBtn').addEventListener('click', () => {
+  if (navigator.share) { navigator.share({title:'Blood Panel: Daniela Aciu', url:location.href}); }
+  else { navigator.clipboard.writeText(location.href).then(()=>{ document.getElementById('shareBtn').textContent='Copied!'; setTimeout(()=>document.getElementById('shareBtn').textContent='Share',2000); }); }
+});
+
+// Charts
+const chartDefaults = { responsive: true, plugins: { legend: { display: false } }, scales: { x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af', font: { size: 11 } } }, y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af', font: { size: 11 } }, beginAtZero: true, max: 100 } } };
+
+// Thyroid chart (% position within range)
+new Chart(document.getElementById('thyroidChart'), {
+  type: 'bar',
+  data: {
+    labels: ['TSH', 'Free T3', 'Free T4', 'Anti-Tg'],
+    datasets: [{
+      data: [
+        ((0.92-0.30)/(4.5-0.30)*100).toFixed(0),
+        ((2.27-2.0)/(4.2-2.0)*100).toFixed(0),
+        ((10.0-8.9)/(17.2-8.9)*100).toFixed(0),
+        100
+      ],
+      backgroundColor: ['#22c55e', '#eab308', '#eab308', '#ef4444'],
+      borderRadius: 4
+    }]
+  },
+  options: {...chartDefaults}
+});
+
+// Hormonal chart
+new Chart(document.getElementById('hormonalChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Estradiol', 'Progesteron', 'FSH', 'LH', 'Testosterone'],
+    datasets: [{
+      data: [
+        ((8.16-0)/(122-0)*100).toFixed(0),
+        ((0.68-0.4)/(2.3-0.4)*100).toFixed(0),
+        ((7.86-3.2)/(15-3.2)*100).toFixed(0),
+        ((8.80-1.2)/(12.5-1.2)*100).toFixed(0),
+        37
+      ],
+      backgroundColor: ['#ef4444', '#22c55e', '#22c55e', '#22c55e', '#22c55e'],
+      borderRadius: 4
+    }]
+  },
+  options: {...chartDefaults}
+});
+
+// Metabolic chart
+new Chart(document.getElementById('metabolicChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Glucose', 'Insulin', 'HOMA', 'Ferritin', 'Vit D', 'B12'],
+    datasets: [{
+      data: [
+        ((88-60)/(95-60)*100).toFixed(0),
+        ((6.81-2.7)/(24.8-2.7)*100).toFixed(0),
+        ((1.48-0)/(2.0-0)*100).toFixed(0),
+        ((29-10)/(160-10)*100).toFixed(0),
+        ((31.4-0)/(100-0)*100).toFixed(0),
+        ((433-200)/(1100-200)*100).toFixed(0)
+      ],
+      backgroundColor: ['#22c55e', '#22c55e', '#22c55e', '#eab308', '#eab308', '#22c55e'],
+      borderRadius: 4
+    }]
+  },
+  options: {...chartDefaults}
+});
+
+// Status distribution pie
+new Chart(document.getElementById('statusChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Normal', 'Flagged', 'Borderline', 'Pending'],
+    datasets: [{
+      data: [9, 2, 4, 3],
+      backgroundColor: ['#22c55e', '#ef4444', '#eab308', '#3b82f6'],
+      borderWidth: 0
+    }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#9ca3af', font: { size: 11 }, padding: 16 } } } }
+});
+</script>
+</body>
+</html>
