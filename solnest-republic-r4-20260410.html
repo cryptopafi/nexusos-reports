@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolNest AI — Republic.com Reg-CF Refresh (R4) | DELPHI</title>
+<meta name="description" content="Delphi R4 research refresh on Republic.com Reg-CF viability for SolNest AI. Verdict: ABANDON confirmed. SeedBlink emerges as Year 2 EU crowdfunding path.">
+<meta property="og:title" content="SolNest AI — Republic.com Reg-CF Refresh (R4)">
+<meta property="og:description" content="ABANDON Republic for 2026 CONFIRMED. New finding: SeedBlink as Year 2 EU path. R1-R4 combined capital stack: €700K-€1.55M.">
+<meta property="og:type" content="article">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --accent: #58a6ff;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --border: rgba(88, 166, 255, 0.15);
+    --glass: rgba(17, 17, 24, 0.7);
+    --danger: #ef4444;
+    --warning: #eab308;
+    --info: #58a6ff;
+    --success: #22c55e;
+    --purple: #a78bfa;
+  }
+  html.light {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --accent: #5E6AD2;
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --border: rgba(94, 106, 210, 0.15);
+    --glass: rgba(255, 255, 255, 0.85);
+  }
+  * { -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .glow {
+    box-shadow: 0 0 40px rgba(88, 166, 255, 0.08), 0 0 1px rgba(88, 166, 255, 0.3) inset;
+  }
+  .hero-bg {
+    background: radial-gradient(ellipse at top, rgba(88, 166, 255, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at bottom right, rgba(239, 68, 68, 0.08) 0%, transparent 50%);
+  }
+  .callout {
+    border-left: 4px solid;
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    margin: 1.25rem 0;
+    background: var(--card);
+  }
+  .callout-danger { border-color: var(--danger); background: rgba(239, 68, 68, 0.08); }
+  .callout-info { border-color: var(--info); background: rgba(88, 166, 255, 0.08); }
+  .callout-warning { border-color: var(--warning); background: rgba(234, 179, 8, 0.08); }
+  .callout-purple { border-color: var(--purple); background: rgba(167, 139, 250, 0.08); }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.5;
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: rgba(88, 166, 255, 0.06); font-weight: 600; color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { font-size: 0.92rem; }
+  tr:hover td { background: rgba(88, 166, 255, 0.03); }
+  .chip {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .chip-high { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+  .chip-med { background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3); }
+  .chip-low { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+  .toc-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+  }
+  .toc-link:hover, .toc-link.active {
+    color: var(--accent);
+    background: rgba(88, 166, 255, 0.08);
+    border-left-color: var(--accent);
+  }
+  section { scroll-margin-top: 2rem; }
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+  p { margin: 0.75rem 0; line-height: 1.75; color: var(--text); }
+  ul { margin: 0.75rem 0 0.75rem 1.5rem; list-style: disc; }
+  ul li { margin: 0.35rem 0; line-height: 1.7; }
+  strong { color: var(--text); font-weight: 600; }
+  code { background: rgba(88, 166, 255, 0.1); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: var(--accent); }
+  @media print {
+    html { background: white; color: black; }
+    body { background: white; color: black; }
+    .no-print { display: none !important; }
+    .glass, .kpi-card { background: white; border: 1px solid #ccc; box-shadow: none; }
+    section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top nav -->
+<nav class="no-print sticky top-0 z-50 glass" style="border-radius: 0; border-left: 0; border-right: 0;">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg" style="background: linear-gradient(135deg, var(--accent), #a78bfa);"></div>
+      <div>
+        <div class="text-xs mono" style="color: var(--text-muted);">DELPHI · R4</div>
+        <div class="text-sm font-semibold">SolNest Republic Refresh</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <button onclick="toggleMode()" class="px-3 py-1.5 text-xs rounded-lg border transition" style="border-color: var(--border); color: var(--text-muted);">
+        <span id="mode-label">Light</span>
+      </button>
+      <button onclick="shareReport()" class="px-3 py-1.5 text-xs rounded-lg font-semibold" style="background: var(--accent); color: #0A0A0F;">
+        Share
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero-bg">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="max-w-4xl">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="chip" style="background: rgba(88, 166, 255, 0.15); color: var(--accent); border: 1px solid var(--border);">DELPHI RESEARCH</span>
+        <span class="chip chip-high">D3 · HIGH CONFIDENCE</span>
+        <span class="chip" style="background: rgba(167, 139, 250, 0.15); color: #a78bfa; border: 1px solid rgba(167, 139, 250, 0.3);">R4 · FINAL</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+        SolNest AI: Republic.com Reg-CF Refresh
+      </h1>
+      <p class="text-lg md:text-xl mb-6" style="color: var(--text-muted);">
+        Q1 2026 refresh of the Delphi R4 verdict on US crowdfunding viability. Confirms ABANDON, surfaces SeedBlink as Year 2 EU path, and consolidates the R1 to R4 capital stack.
+      </p>
+      <div class="flex flex-wrap gap-6 text-sm mono" style="color: var(--text-muted);">
+        <div><span style="color: var(--accent);">Date:</span> 2026-04-10</div>
+        <div><span style="color: var(--accent);">Task:</span> nx-20260410-r4rc</div>
+        <div><span style="color: var(--accent);">Depth:</span> D3</div>
+        <div><span style="color: var(--accent);">Duration:</span> 6.5 min</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Layout -->
+<div class="max-w-7xl mx-auto px-6 pb-24">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+    <!-- Sidebar -->
+    <aside class="lg:col-span-1 no-print">
+      <div class="lg:sticky lg:top-24">
+        <div class="glass p-5 mb-4">
+          <div class="text-xs uppercase tracking-wider mb-3 font-semibold" style="color: var(--text-muted);">Contents</div>
+          <nav>
+            <a href="#verdict" class="toc-link">Final Verdict</a>
+            <a href="#kpis" class="toc-link">Key Metrics</a>
+            <a href="#callouts" class="toc-link">Highlights</a>
+            <a href="#q1" class="toc-link">Q1 · EDGAR Q1 2026</a>
+            <a href="#q2" class="toc-link">Q2 · Platform Comparison</a>
+            <a href="#q3" class="toc-link">Q3 · Raise Green / Climatize</a>
+            <a href="#q4" class="toc-link">Q4 · Reg-CF Regulatory</a>
+            <a href="#q5" class="toc-link">Q5 · DOGE + Sentiment</a>
+            <a href="#q6" class="toc-link">Q6 · SolNest Verdict</a>
+            <a href="#stack" class="toc-link">R1-R4 Capital Stack</a>
+            <a href="#charts" class="toc-link">Visual Analysis</a>
+            <a href="#confidence" class="toc-link">Confidence Matrix</a>
+            <a href="#contradictions" class="toc-link">Contradictions</a>
+            <a href="#sources" class="toc-link">Sources</a>
+          </nav>
+        </div>
+
+        <div class="glass p-5">
+          <div class="text-xs uppercase tracking-wider mb-3 font-semibold" style="color: var(--text-muted);">Metadata</div>
+          <dl class="space-y-3 text-sm">
+            <div><dt class="text-xs" style="color: var(--text-muted);">Agent</dt><dd class="font-semibold">DELPHI</dd></div>
+            <div><dt class="text-xs" style="color: var(--text-muted);">Report Type</dt><dd>Research · Tier 2</dd></div>
+            <div><dt class="text-xs" style="color: var(--text-muted);">Depth</dt><dd>D3 · Standalone refresh</dd></div>
+            <div><dt class="text-xs" style="color: var(--text-muted);">Source Tiers</dt><dd>T1 primary (sec.gov, republic.com, climatize.earth, seedblink.com, honeycombcredit.com)</dd></div>
+            <div><dt class="text-xs" style="color: var(--text-muted);">Channels</dt><dd class="text-xs">Perplexity Sonar Pro x8, Brave Web Search, Tavily, SEC EDGAR direct</dd></div>
+            <div><dt class="text-xs" style="color: var(--text-muted);">Queries</dt><dd>8 Perplexity + direct EDGAR</dd></div>
+            <div><dt class="text-xs" style="color: var(--text-muted);">Citations</dt><dd>18 primary sources</dd></div>
+            <div><dt class="text-xs" style="color: var(--text-muted);">Prior Research</dt><dd class="text-xs">D4 + R1 (FR) + R2 (US) + R3 (IT)</dd></div>
+          </dl>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="lg:col-span-3">
+
+      <!-- Verdict -->
+      <section id="verdict" class="fade-in">
+        <div class="glass glow p-8" style="border-left: 4px solid var(--danger);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="chip chip-low">FINAL VERDICT</span>
+            <span class="chip chip-high">CONFIRMED</span>
+          </div>
+          <h2 class="mt-0 text-3xl md:text-4xl" style="color: var(--danger);">ABANDON Republic.com for 2026</h2>
+          <p class="text-lg">
+            Q1 2026 refresh data does not contradict D4. Pre-revenue solar Reg-CF raises remain in the <strong>$50-186K band</strong>, with upfront costs of $25-60K and a 12-14 month time burden. Net proceeds at the midpoint land around <strong>$70K</strong>, which is less than 12 months of founder bandwidth deployed anywhere else on the R1-R4 stack.
+          </p>
+          <p class="text-lg">
+            One material finding D4 missed: <strong>SeedBlink</strong>, a Romanian ECSPR-regulated platform with €430M raised, opens as a Year 2 EU path once an EU entity (French SAS or Italian SRL) is formed.
+          </p>
+        </div>
+      </section>
+
+      <!-- KPIs -->
+      <section id="kpis" class="mt-10 fade-in">
+        <h2>Key Metrics</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="kpi-card">
+            <div class="text-xs uppercase mono mb-2" style="color: var(--text-muted);">Republic 2026</div>
+            <div class="text-3xl font-bold" style="color: var(--danger);">$0 net</div>
+            <div class="text-xs mt-2" style="color: var(--text-muted);">Verdict after cost subtraction</div>
+          </div>
+          <div class="kpi-card">
+            <div class="text-xs uppercase mono mb-2" style="color: var(--text-muted);">Midpoint Net</div>
+            <div class="text-3xl font-bold" style="color: var(--warning);">$70K</div>
+            <div class="text-xs mt-2" style="color: var(--text-muted);">$112K raise minus $42K costs</div>
+          </div>
+          <div class="kpi-card">
+            <div class="text-xs uppercase mono mb-2" style="color: var(--text-muted);">R1-R4 Stack</div>
+            <div class="text-3xl font-bold" style="color: var(--accent);">€500K-€1.55M</div>
+            <div class="text-xs mt-2" style="color: var(--text-muted);">Combined 2026-2027 capital</div>
+          </div>
+          <div class="kpi-card">
+            <div class="text-xs uppercase mono mb-2" style="color: var(--text-muted);">Year 1 Leader</div>
+            <div class="text-3xl font-bold" style="color: var(--success);">Italy</div>
+            <div class="text-xs mt-2" style="color: var(--text-muted);">€300-600K Smart&amp;Start</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Callouts -->
+      <section id="callouts" class="mt-10 fade-in">
+        <h2>Highlights</h2>
+
+        <div class="callout callout-danger">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="chip chip-low">DANGER</span>
+            <span class="text-sm font-semibold">ABANDON CONFIRMED</span>
+          </div>
+          <p class="m-0">
+            <strong>$0 net from Republic for 2026.</strong> Time cost 12-14 months worth more than the $70K midpoint net. Republic's $500K platform average is driven by post-revenue tech. Pre-revenue solar sits in the $50-186K tier with acceptance rate under 5 percent.
+          </p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="chip" style="background: rgba(88, 166, 255, 0.15); color: var(--accent); border: 1px solid var(--border);">NEW FINDING</span>
+            <span class="text-sm font-semibold">SeedBlink Year 2 Path</span>
+          </div>
+          <p class="m-0">
+            <strong>SeedBlink</strong> (Romanian ECSPR platform, €430M raised) is a Year 2 path after EU entity formation. Romanian founder network is the unfair advantage here: the 60-70 percent network capital rule works IN FAVOR rather than against. Typical raises €500K-€2M for curated tech startups.
+          </p>
+        </div>
+
+        <div class="callout callout-warning">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="chip chip-med">WARNING</span>
+            <span class="text-sm font-semibold">Raise Green Category Error</span>
+          </div>
+          <p class="m-0">
+            <strong>Raise Green merged with Honeycomb Credit</strong> and pivoted to project-finance lending against PPA revenues. This is the WRONG FIT for a SaaS marketplace. D4's 2027 revisit suggestion is moot: the category mismatch is structural, not timing-related.
+          </p>
+        </div>
+
+        <div class="callout callout-purple">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="chip" style="background: rgba(167, 139, 250, 0.15); color: #a78bfa; border: 1px solid rgba(167, 139, 250, 0.3);">DOC</span>
+            <span class="text-sm font-semibold">No Regulatory Blocker</span>
+          </div>
+          <p class="m-0">
+            <strong>Reg-CF regulations unchanged in 2025-2026.</strong> Romanian founder plus Delaware C-Corp is not a blocker: Reg-CF permits any US-incorporated entity regardless of founder citizenship. The issue is economics, not eligibility. Audit threshold ($1.235M), Form C disclosure, and the $5M rolling cap are all unchanged.
+          </p>
+        </div>
+      </section>
+
+      <!-- Q1 -->
+      <section id="q1" class="mt-12 fade-in">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(88, 166, 255, 0.15); color: var(--accent);">Q1</div>
+          <h2 class="m-0">Republic Pre-Revenue Solar · EDGAR Q1 2026</h2>
+        </div>
+        <p>
+          SEC EDGAR Form C direct search for Q1 2026 Republic-intermediated solar and cleantech filings returned no new primary data contradicting the D4 2024-2025 dataset. EDGAR confirms Republic as a registered intermediary, but no specific Form C filings for pre-revenue solar companies on Republic in January through April 2026 surfaced through Perplexity or EDGAR EFTS.
+        </p>
+
+        <h3>D4 EDGAR-verified pre-revenue solar dataset (2024-2025)</h3>
+        <ul>
+          <li><strong>EV Solar Kits</strong>: $67K raised</li>
+          <li><strong>ThermoShade</strong>: $84K raised</li>
+          <li><strong>WeSolar</strong>: $186K raised</li>
+          <li><strong>Pre-revenue median</strong>: approximately $112K</li>
+        </ul>
+
+        <h3>Platform averages (2026 confirmed)</h3>
+        <ul>
+          <li>Republic overall average raise: approximately $500K across all sectors</li>
+          <li>Republic pre-revenue solar specifically: no published sector breakdown</li>
+          <li>Republic acceptance rate: under 5 percent of applicants</li>
+          <li>Republic success rate once accepted: approximately 90 percent</li>
+        </ul>
+
+        <p>
+          <strong>Critical distinction.</strong> The $500K Republic average is driven by post-revenue tech companies. Pre-revenue cleantech and solar remain in the $50-186K tier. No Q1 2026 data contradicts this. The under-5-percent acceptance rate alone means most pre-revenue solar companies do not even get listed.
+        </p>
+
+        <div class="flex items-center gap-2 mt-4">
+          <span class="chip chip-med">MEDIUM confidence</span>
+          <span class="text-xs" style="color: var(--text-muted);">Q1 2026 EDGAR data gap; D4 range uncontradicted</span>
+        </div>
+      </section>
+
+      <!-- Q2 -->
+      <section id="q2" class="mt-12 fade-in">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(88, 166, 255, 0.15); color: var(--accent);">Q2</div>
+          <h2 class="m-0">Wefunder vs Republic vs Alternatives</h2>
+        </div>
+        <p>Fee structure and platform comparison, 2026 confirmed.</p>
+
+        <div class="overflow-x-auto">
+        <table>
+          <thead><tr>
+            <th>Platform</th>
+            <th>Fee Structure</th>
+            <th>Avg Raise</th>
+            <th>Acceptance</th>
+            <th>Success</th>
+          </tr></thead>
+          <tbody>
+            <tr><td><strong>Republic</strong></td><td>6% funds + 2% equity</td><td>~$500K</td><td>&lt;5%</td><td>~90%</td></tr>
+            <tr><td><strong>Wefunder</strong></td><td>7.5% (waived $25K+ angel)</td><td>$313-350K</td><td>More open</td><td>~75%</td></tr>
+            <tr><td><strong>StartEngine</strong></td><td>7-12% tiered</td><td>~$280K</td><td>Moderate</td><td>~70%</td></tr>
+            <tr><td><strong>Raise Green</strong></td><td>Listing + 7% success</td><td>$200-500K</td><td>Selective</td><td>N/A</td></tr>
+            <tr><td><strong>Climatize</strong></td><td>Undisclosed</td><td>$400-600K</td><td>Application</td><td>N/A</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h3>SPV model vs direct-to-investor</h3>
+        <ul>
+          <li><strong>Republic</strong>: direct-to-investor, no SPV. Each investor gets an individual security.</li>
+          <li><strong>Wefunder</strong>: SPV model, all investors pooled into a single cap table entry, structurally better for SaaS companies maintaining clean cap tables.</li>
+          <li>For SolNest (SaaS marketplace with future VC ambitions), Wefunder SPV is structurally superior to Republic direct, IF Reg-CF were worth pursuing at all.</li>
+        </ul>
+
+        <h3>Investor base focus</h3>
+        <ul>
+          <li>Republic investor base: tech, AI, blockchain, skews higher check size.</li>
+          <li>Wefunder: broader, approximately 1.4-1.5M investors, more retail and generalist.</li>
+          <li>Neither platform has a dedicated cleantech or solar investor cohort of meaningful size.</li>
+        </ul>
+
+        <div class="flex items-center gap-2 mt-4">
+          <span class="chip chip-high">HIGH confidence</span>
+          <span class="text-xs" style="color: var(--text-muted);">Fee and structure data consistent across 4+ independent sources</span>
+        </div>
+      </section>
+
+      <!-- Q3 -->
+      <section id="q3" class="mt-12 fade-in">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(88, 166, 255, 0.15); color: var(--accent);">Q3</div>
+          <h2 class="m-0">Raise Green and Climatize · 2026 Status</h2>
+        </div>
+
+        <h3>Raise Green</h3>
+        <p>
+          <strong>STATUS CHANGE D4 missed.</strong> Raise Green merged with Honeycomb Credit. Now operating as a combined entity with 7 percent success fee plus listing. Focus pivoted to community clean energy lending (loans, not equity primarily) with typical raises $200-500K.
+        </p>
+        <p>
+          <strong>Critical mismatch for SolNest.</strong> Raise Green and Honeycomb focus on physical clean energy projects: community solar installations, lending against PPA revenues. SolNest is a SaaS marketplace with no physical assets. Platform focus is the wrong fit. Historically Raise Green supported pre-development projects (physical assets with permitting underway), not pre-revenue software and SaaS.
+        </p>
+
+        <h3>Climatize</h3>
+        <p>
+          Operational in 2026 with active campaigns. Enterprise Energy raised $463K on Climatize in Q4 2025 and is building its Q1 2026 community solar pipeline. Green Bridge Corporation battery storage portfolio is raising on Climatize in 2026. Platform size: approximately 2,300 members, $9M+ total raised across 26 projects as of early 2026.
+        </p>
+        <p>
+          Focus is community solar, battery storage, and nonprofit clean energy. Fixed-interest notes (for example 11.25 percent over 24 months) are repaid from PPA revenues.
+        </p>
+        <p>
+          <strong>Critical mismatch for SolNest.</strong> Same as Raise Green: Climatize serves physical renewable energy projects, not SaaS marketplaces. Their $400-600K raises are for projects with revenue-generating assets like PPAs. SolNest has no such underlying revenue model for this structure. Pre-MVP SaaS qualification: NO, Climatize's product-market fit is project finance, not startup equity.
+        </p>
+
+        <div class="callout callout-warning">
+          <strong>Verdict.</strong> Neither Raise Green nor Climatize is applicable to SolNest. Both are project-finance platforms for physical cleantech, not startup equity platforms. D4's 2027 revisit recommendation is moot: the category is simply wrong for SolNest's business model.
+        </div>
+
+        <div class="flex items-center gap-2 mt-4">
+          <span class="chip chip-high">HIGH confidence</span>
+          <span class="text-xs" style="color: var(--text-muted);">Product mismatch is structural, not timing-related</span>
+        </div>
+      </section>
+
+      <!-- Q4 -->
+      <section id="q4" class="mt-12 fade-in">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(88, 166, 255, 0.15); color: var(--accent);">Q4</div>
+          <h2 class="m-0">Reg-CF Regulatory · 2025-2026 Updates</h2>
+        </div>
+
+        <h3>Audit threshold: UNCHANGED</h3>
+        <p>
+          The $1.235M threshold remains in force. No 2025 or 2026 changes confirmed. SBCFAC proposed raising the reviewed-statement cap to $250K, but this is pending SEC consideration only, not enacted.
+        </p>
+        <p><strong>Financial statement tiers</strong> (current, unchanged):</p>
+        <ul>
+          <li>At or below $618K: Unaudited and certified</li>
+          <li>$618K to $1.235M: Reviewed (first-time issuer), audited (repeat)</li>
+          <li>Above $1.235M: Audited required</li>
+        </ul>
+        <p>SolNest targeting $1.2M falls just under the audit threshold, so reviewed financials are sufficient. No change from D4 analysis.</p>
+
+        <h3>Form C disclosure: UNCHANGED</h3>
+        <p>
+          No new 2025-2026 Form C disclosure additions found. March 2026 SEC guidance clarified the rolling 12-month $5M cap calculation: administrative clarification only, not a new cost burden.
+        </p>
+
+        <h3>Foreign founder (Romanian citizen, Delaware C-Corp)</h3>
+        <p>
+          <strong>NO BLOCKER CONFIRMED.</strong> Reg-CF permits foreign issuers if organized under US laws (Delaware C-Corp qualifies). Standard eligibility: US-incorporated entity, not an investment company, must file Form C. Romanian citizenship of the sole founder does NOT disqualify. Bad actor disqualification applies only to securities violations: a Romanian citizen with no US criminal record is CLEAR.
+        </p>
+        <p>
+          The only citizenship risk confirmed in prior research (R2) is SBIR and STTR programs, which are separate from Reg-CF.
+        </p>
+
+        <div class="flex items-center gap-2 mt-4">
+          <span class="chip chip-high">HIGH confidence</span>
+          <span class="text-xs" style="color: var(--text-muted);">Multiple primary SEC sources confirm; no contradicting data found</span>
+        </div>
+      </section>
+
+      <!-- Q5 -->
+      <section id="q5" class="mt-12 fade-in">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(88, 166, 255, 0.15); color: var(--accent);">Q5</div>
+          <h2 class="m-0">DOGE Impact and 2026 Cleantech Investor Sentiment</h2>
+        </div>
+
+        <h3>Confirmed</h3>
+        <ul>
+          <li><strong>DOE DOGE cuts</strong>: confirmed, $7.56B in terminations (R2 data). Described as having "untold negative impacts on the future" of cleantech sectors. DOE awards and grants widely cancelled.</li>
+          <li><strong>DOGE overall savings</strong>: actual approximately $1.4B vs claimed $2T (Fortune and Techdirt, 2026-03-17). Net effect: program disruption without commensurate savings.</li>
+          <li><strong>Cleantech investor sentiment</strong>: inferred negative, no quantified Q1 2026 Reg-CF data available.</li>
+        </ul>
+
+        <h3>Not confirmed</h3>
+        <ul>
+          <li>No published Q1 2026 cleantech Reg-CF success rate vs non-cleantech comparison found.</li>
+          <li>No Republic or Wefunder Q1 2026 investor sentiment data on climate and solar published.</li>
+          <li>No Q1 2026 cleantech campaign case studies (success or failure) surfaced from primary sources.</li>
+        </ul>
+
+        <h3>Inference (LOW confidence)</h3>
+        <p>DOGE cuts have damaged two things relevant to Reg-CF:</p>
+        <ol class="list-decimal ml-6">
+          <li><strong>Retail investor confidence</strong>: Cancellation of DOE programs signals political headwinds for solar and cleantech. Retail investors read headlines.</li>
+          <li><strong>Narrative credibility</strong>: SolNest would need to pitch in a context where "US solar policy is being cut". Counterproductive in a Republic campaign.</li>
+        </ol>
+        <p>
+          However, no published data shows direct suppression of Reg-CF clean energy raise amounts in Q1 2026. Launching a US solar Reg-CF campaign under a "DOE is cutting solar programs" headline is actively counterproductive. Retail investors seeing DOGE news plus cancelled DOE grants will apply a political risk discount to solar startups.
+        </p>
+
+        <div class="flex items-center gap-2 mt-4">
+          <span class="chip chip-low">LOW on quantified data</span>
+          <span class="chip chip-med">MEDIUM on direction</span>
+        </div>
+      </section>
+
+      <!-- Q6 -->
+      <section id="q6" class="mt-12 fade-in">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(88, 166, 255, 0.15); color: var(--accent);">Q6</div>
+          <h2 class="m-0">Updated SolNest Verdict + Alternatives</h2>
+        </div>
+
+        <h3>Is there any 2026 Reg-CF scenario where expected raise exceeds net costs?</h3>
+        <p>Math has not changed.</p>
+        <ul>
+          <li>Expected raise, pre-revenue solar, Republic: <strong>$50-186K</strong></li>
+          <li>Upfront costs: <strong>$25-60K</strong> (legal, accounting, platform fees, marketing)</li>
+          <li>Time cost: <strong>12-14 months</strong> of founder bandwidth</li>
+          <li>Net proceeds at midpoint: ($112K raise minus $42K costs) = <strong>$70K net</strong></li>
+          <li>Opportunity cost of 12-14 months vs MVP building plus grant applications: NEGATIVE</li>
+        </ul>
+
+        <p>
+          With Wefunder (structurally better, lower fees), expected raise moves to $150-250K, but upfront costs are similar, 60-70 percent of Reg-CF capital comes from the founder's own network (Pafi has zero US investor network), Republic and Wefunder investors skew tech and AI and crypto with limited solar retail investors, and under DOGE-era headwinds cleantech retail fundraising is harder. <strong>No Q1 2026 data changes this math.</strong>
+        </p>
+
+        <h3>NEW FINDING D4 MISSED · EU ECSP alternatives</h3>
+        <p><strong>SeedBlink</strong> (Romania, ECSPR-regulated):</p>
+        <ul>
+          <li>Base: Romania, registered EU Crowdfunding Service Provider (ECSP Regulation 2020/1503)</li>
+          <li>€430M raised as of early 2026, 225+ licensed CSPs across EU in 2024</li>
+          <li>Typical raise: equity and SAFEs for early-stage tech startups, €500K-€2M range</li>
+          <li>Minimum investor ticket: €500-€2,500</li>
+          <li>Focus: curated high-potential tech startups, AI and SaaS fit</li>
+          <li><strong>Key advantage for SolNest</strong>: Romanian founder plus Romanian investors is a natural network match. The 60-70 percent network capital rule works IN FAVOR here.</li>
+          <li><strong>Structural requirement</strong>: EU entity required. SeedBlink raises for EU-registered companies, not Delaware C-Corps directly.</li>
+        </ul>
+
+        <p>
+          SeedBlink is not actionable for 2026 Reg-CF (Delaware C-Corp won't qualify directly), but becomes directly relevant once Pafi forms a French SAS or Italian SRL. The EU entity unlocks this platform for Year 2 (2027).
+        </p>
+
+        <div class="overflow-x-auto mt-4">
+        <table>
+          <thead><tr>
+            <th>Platform</th>
+            <th>Base</th>
+            <th>Typical Raise</th>
+            <th>Fit</th>
+            <th>Gate</th>
+          </tr></thead>
+          <tbody>
+            <tr><td><strong>SeedBlink</strong></td><td>Romania</td><td>€500K-€2M</td><td><span class="chip chip-high">HIGH</span></td><td>EU entity</td></tr>
+            <tr><td>Republic Europe</td><td>UK/EU</td><td>€300K-€1M</td><td><span class="chip chip-med">MED</span></td><td>EU entity</td></tr>
+            <tr><td>Crowdcube</td><td>UK/EU</td><td>€300K-€1.5M</td><td><span class="chip chip-med">MED</span></td><td>EU entity</td></tr>
+            <tr><td>Companisto</td><td>Germany</td><td>€150K-€500K</td><td><span class="chip chip-med">MED</span></td><td>EU entity</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p class="mt-4">
+          <strong>Path.</strong> Form French SAS or Italian SRL (R1 and R3 already validated), qualify for SeedBlink and EU ECSP platforms, then crowdfunding in 2027 post-traction.
+        </p>
+      </section>
+
+      <!-- Capital stack -->
+      <section id="stack" class="mt-12 fade-in">
+        <div class="glass glow p-6" style="border-left: 4px solid var(--accent);">
+          <h2 class="mt-0">R1-R4 Combined Capital Stack</h2>
+          <p>The final R-research consolidates findings from France (R1), United States (R2), Italy (R3), and Republic.com (R4), plus the new EU ECSP path.</p>
+
+          <div class="overflow-x-auto">
+          <table>
+            <thead><tr>
+              <th>Source</th>
+              <th>2026 Realistic</th>
+              <th>Notes</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>France (R1)</strong></td>
+                <td>€50K grant + €150K equity = <strong>€200K</strong></td>
+                <td>Bourse French Tech conditional; Kima dilutive</td>
+              </tr>
+              <tr>
+                <td><strong>United States (R2)</strong></td>
+                <td><strong>$50-150K</strong></td>
+                <td>Solar Prize Ready! $50K floor; Third Derivative TBD</td>
+              </tr>
+              <tr>
+                <td><strong>Italy (R3)</strong></td>
+                <td><strong>€300-600K</strong> Year 1</td>
+                <td>Smart&amp;Start 0% loan, 3-5 months setup from decision</td>
+              </tr>
+              <tr style="background: rgba(239, 68, 68, 0.05);">
+                <td><strong>Republic.com (R4)</strong></td>
+                <td><strong style="color: var(--danger);">$0 · ABANDON</strong></td>
+                <td>Net proceeds ~$0-125K vs $25-60K cost + 12 months</td>
+              </tr>
+              <tr style="background: rgba(167, 139, 250, 0.05);">
+                <td><strong>EU ECSP (new)</strong></td>
+                <td><strong>€200-500K</strong> Year 2 (2027)</td>
+                <td>SeedBlink / Republic Europe; EU entity + traction required</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <div class="kpi-card">
+              <div class="text-xs uppercase mono mb-2" style="color: var(--text-muted);">Realistic 2026 Floor</div>
+              <div class="text-2xl font-bold">~€500K</div>
+              <div class="text-xs mt-1" style="color: var(--text-muted);">€50K FR + $50K US + €300K IT</div>
+            </div>
+            <div class="kpi-card">
+              <div class="text-xs uppercase mono mb-2" style="color: var(--text-muted);">Realistic 2026 Ceiling</div>
+              <div class="text-2xl font-bold">~€1.05M</div>
+              <div class="text-xs mt-1" style="color: var(--text-muted);">€200K FR + $150K US + €600K IT</div>
+            </div>
+            <div class="kpi-card md:col-span-2" style="border-color: var(--accent);">
+              <div class="text-xs uppercase mono mb-2" style="color: var(--accent);">Combined Year 1-2 Stack</div>
+              <div class="text-3xl font-bold">€700K - €1.55M</div>
+              <div class="text-xs mt-1" style="color: var(--text-muted);">Adds €200K-€500K EU ECSP in 2027 post-entity</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts -->
+      <section id="charts" class="mt-12 fade-in">
+        <h2>Visual Analysis</h2>
+
+        <div class="glass p-6 mb-6">
+          <h3 class="mt-0">R1-R4 Capital Stack by Jurisdiction</h3>
+          <p class="text-sm" style="color: var(--text-muted);">Realistic floor and ceiling in EUR equivalent. Republic shown at zero; ECSP is Year 2.</p>
+          <div style="height: 340px;"><canvas id="stackChart"></canvas></div>
+        </div>
+
+        <div class="glass p-6">
+          <h3 class="mt-0">Average Pre-Revenue Solar Raise by Platform</h3>
+          <p class="text-sm" style="color: var(--text-muted);">EDGAR-verified data for pre-revenue solar or closest proxy. Note: Raise Green and Climatize are project-finance, not SaaS equity.</p>
+          <div style="height: 340px;"><canvas id="platformChart"></canvas></div>
+        </div>
+      </section>
+
+      <!-- Confidence -->
+      <section id="confidence" class="mt-12 fade-in">
+        <h2>Confidence Summary</h2>
+        <div class="overflow-x-auto">
+        <table>
+          <thead><tr>
+            <th>Finding</th>
+            <th>Confidence</th>
+            <th>Primary Source</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>D4 ABANDON verdict confirmed</td><td><span class="chip chip-high">HIGH</span></td><td>EDGAR data (D4), platform comparisons</td></tr>
+            <tr><td>Reg-CF no regulatory changes</td><td><span class="chip chip-high">HIGH</span></td><td>sec.gov direct</td></tr>
+            <tr><td>Romanian founder no Reg-CF blocker</td><td><span class="chip chip-high">HIGH</span></td><td>sec.gov Reg-CF eligibility</td></tr>
+            <tr><td>Raise Green / Climatize wrong fit</td><td><span class="chip chip-high">HIGH</span></td><td>Platform official pages</td></tr>
+            <tr><td>DOGE negative sentiment direction</td><td><span class="chip chip-med">MEDIUM</span></td><td>Multiple news sources</td></tr>
+            <tr><td>Q1 2026 EDGAR specific data</td><td><span class="chip chip-med">MEDIUM</span></td><td>EDGAR search (no new data found)</td></tr>
+            <tr><td>SeedBlink as Year 2 alternative</td><td><span class="chip chip-med">MEDIUM</span></td><td>seedblink.com (2025 article, minor staleness risk)</td></tr>
+            <tr><td>DOGE quantified Reg-CF impact</td><td><span class="chip chip-low">LOW</span></td><td>No primary data found</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <!-- Contradictions -->
+      <section id="contradictions" class="mt-12 fade-in">
+        <h2>Contradictions and Unresolved</h2>
+        <ol class="list-decimal ml-6 space-y-3">
+          <li>
+            <strong>Platform average vs sector average.</strong> Republic's $500K average does not equal pre-revenue solar average. D4 used sector-specific EDGAR data. The "Republic is a good platform" narrative is based on all-sector data and misleads.
+          </li>
+          <li>
+            <strong>Raise Green as cleantech crowdfunding alternative.</strong> D4 mentioned this as a 2027 option. Post-merger with Honeycomb, Raise Green is a project-finance lending platform. Recommending it for a SaaS startup would be a category error.
+          </li>
+          <li>
+            <strong>DOGE savings claims.</strong> DOGE claimed $2T savings; actual approximately $1.4B audited. DOE programs disrupted regardless. Both the political narrative (harm to cleantech) and the fiscal reality (small actual savings) are confirmed simultaneously.
+          </li>
+          <li>
+            <strong>Q1 2026 EDGAR data gap.</strong> The D4 $50-186K range is 2024-2025 data. It is plausible but unconfirmed that Q1 2026 saw slightly higher raises given platform maturation. Even optimistic revisions to $150-250K do not cover costs plus opportunity cost.
+          </li>
+          <li>
+            <strong>SeedBlink EU entity requirement.</strong> Unclear whether a Delaware C-Corp with a Romanian citizen as sole founder can raise on SeedBlink WITHOUT forming an EU entity. Most likely requires EU entity. Flagged for legal verification before 2027 action.
+          </li>
+        </ol>
+
+        <h3>Data Staleness Flags</h3>
+        <ul>
+          <li>D4 Republic EDGAR dataset: 2024-2025 (not Q1 2026) - STALE for Q1 2026 specific request</li>
+          <li>Climatize total raised ($9M, 26 projects): as of fall 2025 - STALE</li>
+          <li>Republic investor count (2M members): confirmed 2026 in FinanceBuzz review - CURRENT</li>
+          <li>DOGE cleantech investor sentiment: no Q1 2026 quantified data - STALE inference only</li>
+          <li>SEC Reg-CF thresholds: confirmed unchanged as of April 2026 - CURRENT</li>
+        </ul>
+      </section>
+
+      <!-- Sources -->
+      <section id="sources" class="mt-12 fade-in">
+        <h2>Primary Sources (18)</h2>
+        <div class="glass p-6">
+          <ol class="list-decimal ml-6 space-y-2 text-sm">
+            <li><a href="https://www.sec.gov/resources-small-businesses/exempt-offerings/regulation-crowdfunding" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">SEC · Regulation Crowdfunding (official)</a></li>
+            <li><a href="https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/regulation-crowdfunding" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">SEC · Corp Fin Interpretations Reg-CF (March 2026)</a></li>
+            <li><a href="https://republic.com/hydro-wind-energy-3" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">republic.com · Hydro/Wind active comparable</a></li>
+            <li><a href="https://climatize.earth/get-funded" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">climatize.earth · Get funded (platform official)</a></li>
+            <li><a href="https://honeycombcredit.com/raisegreen" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">honeycombcredit.com · Raise Green merger status</a></li>
+            <li><a href="https://seedblink.com/blog" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">seedblink.com · EU ECSP platform data</a></li>
+            <li><a href="https://europe.republic.com" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">europe.republic.com · Republic Europe</a></li>
+            <li><a href="https://enterpriseenergy.com/news" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">enterpriseenergy.com · Q1 2026 Climatize raise data</a></li>
+            <li><a href="https://financebuzz.com/republic-review" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">financebuzz.com · Republic 2026 platform data</a></li>
+            <li><a href="https://crowdfundingattorney.com/2026/03/17/sec-issues-new-reg-cf-guidance/" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">crowdfundingattorney.com · March 2026 SEC guidance</a></li>
+            <li><a href="https://thecrowdscale.com/p/crowdfunding-success-rates" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">thecrowdscale.com · Success rate comparison</a></li>
+            <li><a href="https://sharkponds.com/top-differences-between-wefunder-and-republic-for-crowdfunding/" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">sharkponds.com · Wefunder vs Republic fee comparison</a></li>
+            <li><a href="https://growthturbine.com/blogs/a-comparison-of-wefunder-vs-republic-vs-seedinvest" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">growthturbine.com · Wefunder / Republic / SeedInvest</a></li>
+            <li><a href="https://www.techdirt.com/2026/03/17/" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">techdirt.com · DOGE impact assessment</a></li>
+            <li><a href="https://fortune.com/2026/03/16/" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">fortune.com · DOGE savings data</a></li>
+            <li><a href="https://kingscrowd.com/battery-storage-portfolio-in-ma-on-climatize-2026/" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">kingscrowd.com · Climatize Q1 2026</a></li>
+            <li><a href="https://thegeca.org/blogs/equity-crowdfunding-trends-2026-coordinated-capital-regulation-ai-liquidity/" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">thegeca.org · Equity crowdfunding trends 2026</a></li>
+            <li><a href="https://thecrowdspace.com/directory/list-of-equity-crowdfunding-platforms-across-europe/" class="hover:underline" style="color: var(--accent);" target="_blank" rel="noopener">thecrowdspace.com · EU equity crowdfunding directory</a></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="mt-16 pt-8 border-t text-sm" style="border-color: var(--border); color: var(--text-muted);">
+        <div class="flex flex-wrap justify-between gap-4">
+          <div>
+            <div class="font-semibold mb-1" style="color: var(--text);">DELPHI · NexusOS Research Agent</div>
+            <div>Task nx-20260410-r4rc · Generated 2026-04-10</div>
+          </div>
+          <div class="text-right">
+            <div>Cortex stored: <code>business_solnest</code></div>
+            <div>Raw intel: <code>~/.nexus/intel/solnest-r4-republic-2026-04-10.md</code></div>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  // Mode toggle
+  const root = document.documentElement;
+  const stored = localStorage.getItem('solnest-r4-mode');
+  if (stored === 'light') root.classList.remove('dark'), root.classList.add('light'), document.getElementById('mode-label').textContent = 'Dark';
+  function toggleMode() {
+    if (root.classList.contains('dark')) {
+      root.classList.remove('dark'); root.classList.add('light');
+      localStorage.setItem('solnest-r4-mode', 'light');
+      document.getElementById('mode-label').textContent = 'Dark';
+    } else {
+      root.classList.remove('light'); root.classList.add('dark');
+      localStorage.setItem('solnest-r4-mode', 'dark');
+      document.getElementById('mode-label').textContent = 'Light';
+    }
+    renderCharts();
+  }
+
+  // Share
+  function shareReport() {
+    const url = window.location.href;
+    const title = 'SolNest AI — Republic.com Reg-CF Refresh (R4)';
+    if (navigator.share) {
+      navigator.share({ title, url }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = event.target;
+        const orig = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => btn.textContent = orig, 1500);
+      });
+    }
+  }
+
+  // IntersectionObserver for fade-in
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  // TOC highlight
+  const tocLinks = document.querySelectorAll('.toc-link');
+  const sections = document.querySelectorAll('section[id]');
+  const tocIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => tocIO.observe(s));
+
+  // Charts
+  let stackChartInstance, platformChartInstance;
+  function getChartColors() {
+    const isDark = root.classList.contains('dark');
+    return {
+      text: isDark ? '#e6edf3' : '#1a1a1a',
+      muted: isDark ? '#8b949e' : '#555',
+      grid: isDark ? 'rgba(139, 148, 158, 0.15)' : 'rgba(0, 0, 0, 0.08)',
+      accent: isDark ? '#58a6ff' : '#5E6AD2'
+    };
+  }
+
+  function renderCharts() {
+    const c = getChartColors();
+    if (stackChartInstance) stackChartInstance.destroy();
+    if (platformChartInstance) platformChartInstance.destroy();
+
+    // Bar chart: R1-R4 stack
+    const stackCtx = document.getElementById('stackChart');
+    if (stackCtx) {
+      stackChartInstance = new Chart(stackCtx, {
+        type: 'bar',
+        data: {
+          labels: ['France (R1)', 'US (R2)', 'Italy (R3)', 'Republic (R4)', 'EU ECSP Year 2'],
+          datasets: [
+            {
+              label: 'Floor (k EUR)',
+              data: [50, 45, 300, 0, 200],
+              backgroundColor: 'rgba(88, 166, 255, 0.7)',
+              borderColor: '#58a6ff',
+              borderWidth: 1
+            },
+            {
+              label: 'Ceiling (k EUR)',
+              data: [200, 135, 600, 0, 500],
+              backgroundColor: 'rgba(167, 139, 250, 0.7)',
+              borderColor: '#a78bfa',
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: c.text } },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y === 0 ? 'ABANDON' : '€' + ctx.parsed.y + 'K'}`
+              }
+            }
+          },
+          scales: {
+            x: { ticks: { color: c.text }, grid: { color: c.grid } },
+            y: {
+              ticks: { color: c.text, callback: (v) => '€' + v + 'K' },
+              grid: { color: c.grid },
+              title: { display: true, text: 'Capital (k EUR equiv)', color: c.muted }
+            }
+          }
+        }
+      });
+    }
+
+    // Doughnut: platform average pre-revenue solar raise
+    const platformCtx = document.getElementById('platformChart');
+    if (platformCtx) {
+      platformChartInstance = new Chart(platformCtx, {
+        type: 'doughnut',
+        data: {
+          labels: [
+            'Republic (pre-rev solar $50-186K)',
+            'Wefunder ($313-350K)',
+            'StartEngine (~$280K)',
+            'Raise Green ($200-500K, wrong fit)',
+            'Climatize ($400-600K, wrong fit)'
+          ],
+          datasets: [{
+            data: [118, 332, 280, 350, 500],
+            backgroundColor: [
+              'rgba(239, 68, 68, 0.75)',
+              'rgba(88, 166, 255, 0.75)',
+              'rgba(34, 197, 94, 0.75)',
+              'rgba(234, 179, 8, 0.6)',
+              'rgba(167, 139, 250, 0.6)'
+            ],
+            borderColor: root.classList.contains('dark') ? '#111118' : '#ffffff',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: c.text, font: { size: 11 } } },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.label}: ~$${ctx.parsed}K avg`
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+
+  // Initial chart render after DOM + Chart.js ready
+  if (typeof Chart !== 'undefined') {
+    renderCharts();
+  } else {
+    window.addEventListener('load', renderCharts);
+  }
+</script>
+
+</body>
+</html>
