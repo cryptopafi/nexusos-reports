@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SolNest AI — US Grant Landscape Verification (R2)</title>
+<meta property="og:title" content="SolNest AI — US Grant Landscape Verification (R2)">
+<meta property="og:description" content="DELPHI D3 verification research: US cleantech grant landscape for a Delaware C-Corp with a Romanian sole founder. Cleantech Open window missed by 4 days. Solar Prize citizenship cliff confirmed.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --card-glass: rgba(17,17,24,0.7);
+    --border: rgba(88,166,255,0.15);
+    --accent: #58a6ff;
+    --accent-dim: rgba(88,166,255,0.12);
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --warn: #f97316;
+    --warn-bg: rgba(249,115,22,0.10);
+    --warn-border: rgba(249,115,22,0.35);
+    --danger: #ef4444;
+    --danger-bg: rgba(239,68,68,0.10);
+    --danger-border: rgba(239,68,68,0.35);
+    --ok: #22c55e;
+    --ok-bg: rgba(34,197,94,0.10);
+    --ok-border: rgba(34,197,94,0.35);
+  }
+  html[data-theme="light"] {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --card-glass: rgba(255,255,255,0.85);
+    --border: rgba(94,106,210,0.18);
+    --accent: #5E6AD2;
+    --accent-dim: rgba(94,106,210,0.10);
+    --text: #0e1116;
+    --text-dim: #475569;
+    --warn: #c2410c;
+    --warn-bg: rgba(249,115,22,0.08);
+    --warn-border: rgba(194,65,12,0.40);
+    --danger: #b91c1c;
+    --danger-bg: rgba(239,68,68,0.08);
+    --danger-border: rgba(185,28,28,0.40);
+    --ok: #15803d;
+    --ok-bg: rgba(34,197,94,0.08);
+    --ok-border: rgba(21,128,61,0.40);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+  code, pre, .mono { font-family: 'JetBrains Mono', monospace; }
+  .glass {
+    background: var(--card-glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .glow { box-shadow: 0 0 0 1px var(--border), 0 8px 40px -12px var(--accent-dim); }
+  .accent { color: var(--accent); }
+  .dim { color: var(--text-dim); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .sticky-nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10,10,15,0.6);
+    border-bottom: 1px solid var(--border);
+  }
+  html[data-theme="light"] .sticky-nav { background: rgba(250,250,250,0.75); }
+  .hero-gradient {
+    background: radial-gradient(ellipse at top, var(--accent-dim) 0%, transparent 60%);
+  }
+  .callout {
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 16px 0;
+  }
+  .callout-warn {
+    background: var(--warn-bg);
+    border-left-color: var(--warn);
+    border: 1px solid var(--warn-border);
+    border-left-width: 4px;
+  }
+  .callout-danger {
+    background: var(--danger-bg);
+    border-left-color: var(--danger);
+    border: 1px solid var(--danger-border);
+    border-left-width: 4px;
+  }
+  .callout-ok {
+    background: var(--ok-bg);
+    border-left-color: var(--ok);
+    border: 1px solid var(--ok-border);
+    border-left-width: 4px;
+  }
+  .kpi-card {
+    padding: 20px;
+    border-radius: 14px;
+    background: var(--card-glass);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px -12px var(--accent-dim);
+  }
+  .kpi-value {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .kpi-label {
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+  .kpi-sub { color: var(--text-dim); font-size: 0.82rem; margin-top: 8px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  tr:last-child td { border-bottom: none; }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    border-radius: 999px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .tag-warn { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-border); }
+  .tag-danger { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger-border); }
+  .tag-ok { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok-border); }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.7s ease-out; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; }
+  h2 { font-size: 1.7rem; margin-top: 3.5rem; margin-bottom: 1rem; }
+  h3 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.7rem; color: var(--accent); }
+  h4 { font-size: 1.0rem; margin-top: 1.4rem; margin-bottom: 0.5rem; }
+  .toc {
+    position: sticky; top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+  .toc a {
+    display: block;
+    padding: 6px 12px;
+    color: var(--text-dim);
+    border-left: 2px solid transparent;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+  }
+  .toc a:hover, .toc a.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    text-decoration: none;
+  }
+  .theme-toggle, .share-btn {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-glass);
+    color: var(--text);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover, .share-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .source-list { font-size: 0.85rem; }
+  .source-list li { margin-bottom: 6px; }
+  .divider { border: none; height: 1px; background: var(--border); margin: 2.5rem 0; }
+  .pull-quote {
+    font-size: 1.15rem;
+    font-style: italic;
+    border-left: 4px solid var(--accent);
+    padding: 14px 20px;
+    margin: 20px 0;
+    color: var(--text);
+    background: var(--accent-dim);
+    border-radius: 0 10px 10px 0;
+  }
+  ul, ol { padding-left: 1.4rem; }
+  li { margin-bottom: 0.4rem; }
+  @media print {
+    html, body { background: #fff !important; color: #000 !important; }
+    .sticky-nav, .toc, .theme-toggle, .share-btn, #charts-section { display: none !important; }
+    .glass, .kpi-card { background: #fff !important; border: 1px solid #ddd !important; box-shadow: none !important; }
+    main { max-width: 100% !important; }
+    a { color: #000 !important; }
+    @page { size: A4; margin: 1.5cm; }
+    h2, h3, .callout, table { page-break-inside: avoid; }
+  }
+  @media (max-width: 900px) {
+    .toc-wrap { display: none; }
+    .kpi-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="sticky-nav">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="tag">DELPHI</span>
+      <span class="dim text-sm mono">nx-20260410-r2us</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="share-btn" onclick="shareReport()">Share</button>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">Light</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero-gradient">
+  <div class="max-w-7xl mx-auto px-4 pt-16 pb-12">
+    <div class="mb-4 flex flex-wrap items-center gap-2">
+      <span class="tag">Research</span>
+      <span class="tag tag-warn">CONDITIONAL GO</span>
+      <span class="tag tag-danger">Window Missed</span>
+      <span class="tag">D3 Verification</span>
+    </div>
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-3" style="letter-spacing:-0.03em;">
+      SolNest AI — US Grant Landscape Verification
+    </h1>
+    <p class="text-xl dim mb-2">R2 primary-source verification of the R1 French grant context. Delaware C-Corp, 100% Romanian founder, no MVP, no revenue.</p>
+    <p class="dim text-sm mono">2026-04-10 · DELPHI · nx-20260410-r2us</p>
+  </div>
+</header>
+
+<section class="max-w-7xl mx-auto px-4 mb-12">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 kpi-grid">
+    <div class="kpi-card fade-in">
+      <div class="kpi-value accent">$50K–$150K</div>
+      <div class="kpi-label">Realistic 2026 US Pool</div>
+      <div class="kpi-sub">vs. D4's implied $4.8M — overstated by ~30x</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-value" style="color: var(--danger);">4 days late</div>
+      <div class="kpi-label">Cleantech Open Missed</div>
+      <div class="kpi-sub">Closed April 6, 2026</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-value" style="color: var(--warn);">$50K ceiling</div>
+      <div class="kpi-label">Solar Prize Ready! only</div>
+      <div class="kpi-sub">Set!/Go! blocked by ownership</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-value" style="color: var(--ok);">31 countries</div>
+      <div class="kpi-label">Third Derivative cohort</div>
+      <div class="kpi-sub">Foreign-founder friendly</div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-[220px_1fr_260px] gap-8">
+
+  <aside class="toc-wrap">
+    <nav class="toc glass p-4">
+      <div class="text-xs uppercase dim mb-2 tracking-wider">Contents</div>
+      <a href="#alerts">Critical Alerts</a>
+      <a href="#exec">Executive Verdict</a>
+      <a href="#kpi-charts">Capital Pool</a>
+      <a href="#q1">Q1 Solar Prize Round</a>
+      <a href="#q2">Q2 Eligibility Cliff</a>
+      <a href="#q3">Q3 Cleantech Open</a>
+      <a href="#q4">Q4 Other Programs</a>
+      <a href="#q5">Q5 DOGE Impact</a>
+      <a href="#q6">Q6 Tactical Guidance</a>
+      <a href="#priority">Priority Ranking</a>
+      <a href="#contradictions">Contradictions vs D4</a>
+      <a href="#confidence">Confidence Table</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <section id="alerts" class="fade-in">
+      <h2 class="mt-0">Critical Alerts</h2>
+
+      <div class="callout callout-danger">
+        <strong>Cleantech Open 2026 CLOSED April 6, 2026.</strong><br>
+        The 2026 cohort application window closed four days before this report was generated. The structural miss is not a research gap — it's a calendar miss. Next opportunity is the 2027 cohort, expected to open Q4 2026 or January 2027.
+      </div>
+
+      <div class="callout callout-warn">
+        <strong>American-Made Solar Prize citizenship cliff.</strong><br>
+        Ready! stage ($50K) is open to foreign-owned entities. Set! and Go! stages are <em>explicitly</em> restricted to entities with "majority domestic ownership and control" per Section 1.8 of the Round 8 Official Rules. SolNest can compete for Ready! only — the $50K is the hard ceiling without ownership restructuring.
+      </div>
+
+      <div class="callout callout-danger">
+        <strong>DOGE terminated $7.56B in DOE projects — no Round 9 announced.</strong><br>
+        DOE announced termination of 223 projects worth $7.56 billion in savings. An additional $5.9B in DOE contracts cancelled or reduced per the DOGE tracker. Renewable energy, climate research, and cleantech R&amp;D are heavily targeted. Silence on Round 9 of American-Made Solar Prize is consistent with a program freeze.
+      </div>
+
+      <div class="callout callout-ok">
+        <strong>Third Derivative (RMI) is the best alternative — verify deadline TODAY.</strong><br>
+        18-month virtual accelerator. Cohort 24-1 included 31 startups from 16 countries. Zero equity required. Optional $100K convertible note. Foreign founders explicitly welcomed. 2026 cohort deadline is unverified — check third-derivative.org/startups immediately.
+      </div>
+    </section>
+
+    <section id="exec" class="fade-in">
+      <h2>Executive Verdict</h2>
+      <p><strong>Profile.</strong> Delaware C-Corp, 100% Romanian citizen owner (Pafi, age 41), no MVP, no revenue, no employees. SBIR/NSF SBIR was previously ruled out as a hard block under 15 U.S.C. §638(e)(4).</p>
+
+      <p>R2 was commissioned to verify the R1 French grant context's assumption that the US landscape offered a ~$4.8M opportunity pool. Primary-source verification finds that number is structurally overstated by roughly 30x once eligibility cliffs and program freezes are applied.</p>
+
+      <div class="pull-quote">
+        The realistic 2026 US capital pool for SolNest as currently structured is $50K to $150K, contingent on Third Derivative's application window and Solar Prize Round 9 launching at all.
+      </div>
+
+      <h3>Top-line verdicts</h3>
+      <ul>
+        <li><strong>American-Made Solar Prize</strong> — CONDITIONAL GO, Ready! stage only, if Round 9 opens. Monitor weekly.</li>
+        <li><strong>Cleantech Open 2026</strong> — MISSED. Register for 2027 notification list. Re-enter in January 2027.</li>
+        <li><strong>Third Derivative (RMI)</strong> — GO. Verify deadline today. Priority alternative.</li>
+        <li><strong>Other state and federal programs</strong> — DEFER until US operations exist.</li>
+      </ul>
+    </section>
+
+    <section id="kpi-charts" class="fade-in">
+      <h2>2026 Capital Pool Scenarios</h2>
+      <div class="glass p-5 mb-4">
+        <canvas id="capitalChart" height="120"></canvas>
+      </div>
+      <table>
+        <thead><tr><th>Scenario</th><th>Estimate</th><th>Trigger</th></tr></thead>
+        <tbody>
+          <tr><td>Floor</td><td>$0</td><td>Nothing opens; Round 9 cancelled; Third Derivative closed</td></tr>
+          <tr><td>Base</td><td>$50,000</td><td>Solar Prize R9 Ready! only</td></tr>
+          <tr><td>Optimistic</td><td>$100,000–$150,000</td><td>Third Derivative optional note + Solar Prize Ready!</td></tr>
+          <tr><td>Ceiling (requires restructuring)</td><td>$700,000+</td><td>Pafi gives up majority for Set!/Go! eligibility</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr class="divider">
+
+    <section id="q1" class="fade-in">
+      <h2>Q1. American-Made Solar Prize — Round Status</h2>
+      <p><strong>Current round:</strong> Round 8 is the most recent documented round. <strong>No Round 9 has been announced.</strong></p>
+      <ul>
+        <li>Round 8 opened: June 14, 2024</li>
+        <li>Round 8 Ready! winners announced: January 15, 2025 (20 teams, $50K each)</li>
+        <li>Round 8 Go! stage: highlighted at RE+ in September 2025 (still completing)</li>
+      </ul>
+      <p>Round 9 is UNCONFIRMED. No announcement on DOE, NREL, or HeroX as of April 2026. The silence is consistent with the DOGE-era program freeze documented in Q5.</p>
+
+      <h4>Round 8 prize structure (most recent confirmed)</h4>
+      <table>
+        <thead><tr><th>Stage</th><th>Winners</th><th>Cash</th><th>Vouchers</th></tr></thead>
+        <tbody>
+          <tr><td>Ready!</td><td>20 teams</td><td>$50,000 each</td><td>—</td></tr>
+          <tr><td>Set!</td><td>10 teams</td><td>$100,000 each</td><td>$75,000 each</td></tr>
+          <tr><td>Go!</td><td>2 winners</td><td>$500,000 each</td><td>$75,000 each</td></tr>
+          <tr><td><strong>Total pool</strong></td><td></td><td colspan="2"><strong>$4 million</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="dim text-sm">Sources: <a href="https://www.energy.gov/cmei/systems/american-made-solar-prize-round-8">DOE Round 8</a> · <a href="https://www.herox.com/solarprizeround8">HeroX R8</a></p>
+    </section>
+
+    <section id="q2" class="fade-in">
+      <h2>Q2. Eligibility Cliff for a Foreign-Owned Delaware C-Corp</h2>
+      <p><strong>Software / AI marketplace scope:</strong> IN SCOPE. Round 8 explicitly covers software addressing non-hardware costs — customer acquisition, financing, grid integration, load prediction. AI rooftop scanning plus installer matching fits this description.</p>
+
+      <div class="glass p-4 mb-3">
+        <h4 class="mt-0">The citizenship cliff</h4>
+        <table>
+          <thead><tr><th>Stage</th><th>SolNest Status</th><th>Rules language</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tag-ok">Ready!</span></td>
+              <td>ELIGIBLE</td>
+              <td>No ownership or citizenship restriction; open to any private entity</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-danger">Set!</span></td>
+              <td>BLOCKED</td>
+              <td>Majority domestic ownership and control required</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-danger">Go!</span></td>
+              <td>BLOCKED</td>
+              <td>Same — 100% foreign-owned Delaware corp fails</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="dim text-sm">Source: <a href="https://americanmadeprogram.org/challenges/solarprize/docs/American-Made-Solar-Prize-R8-Rules.pdf">American-Made Solar Prize Round 8 Official Rules PDF, Section 1.8</a></p>
+
+      <p><strong>Implication.</strong> SolNest can compete for the $50K Ready! prize only. To unlock Set! and Go!, ownership restructuring is required — a US co-founder or investor taking a &gt;50% stake, which fundamentally changes the company.</p>
+      <p><strong>Past foreign-owner finalists:</strong> no evidence found either way. Cannot cite a precedent.</p>
+      <p><strong>Confidence:</strong> HIGH. Eligibility language comes directly from the official rules PDF.</p>
+    </section>
+
+    <section id="q3" class="fade-in">
+      <h2>Q3. Cleantech Open 2026 — Status</h2>
+
+      <div class="callout callout-danger">
+        <strong>VERDICT: MISSED WINDOW.</strong> The 2026 cohort application closed on April 6, 2026 — four days before this report. The Cleantech Open official site already displays a "next year" notification form, confirming the pivot to the 2027 cohort.
+      </div>
+
+      <ul>
+        <li>Early bird deadline: approximately February 27, 2026</li>
+        <li><strong>Final deadline: April 6, 2026</strong> (confirmed via StartupSac.com and LaunchNY.org)</li>
+        <li>As of April 10, 2026, the 2026 cohort application is CLOSED</li>
+        <li>CTO post-deadline text: "Interested in applying for next year? Fill Out This Form"</li>
+      </ul>
+
+      <p><strong>Next opportunity:</strong> 2027 cohort, application window likely opens Q4 2026 or January 2027.</p>
+
+      <h4>What was confirmed about CTO eligibility</h4>
+      <ul>
+        <li>Pre-MVP startups accepted</li>
+        <li>National Remote track exists</li>
+        <li>No explicit citizenship restriction found</li>
+        <li>Cash prize amounts unverified in 2026 primary sources</li>
+      </ul>
+
+      <p class="dim text-sm">Sources: <a href="https://www.cleantechopen.org/en/page/2026-cto-accelerator-en">cleantechopen.org</a> · <a href="https://startupsac.com">startupsac.com</a> · <a href="https://launchny.org">launchny.org</a></p>
+    </section>
+
+    <section id="q4" class="fade-in">
+      <h2>Q4. Other US Programs — 2026 Accessibility</h2>
+
+      <h3>Third Derivative (RMI) — BEST ALTERNATIVE FOUND</h3>
+      <ul>
+        <li>18-month virtual accelerator — Cohort 24-1 included 31 startups from 16 countries</li>
+        <li>Equity: NONE required. Optional $100K convertible note only.</li>
+        <li>Foreign founders: explicitly OK (16 countries confirmed in last cohort)</li>
+        <li>Pre-MVP: likely eligible (no confirmed MVP requirement)</li>
+        <li>Solar SaaS: within climate tech scope</li>
+        <li><strong>2026 cohort deadline:</strong> NOT CONFIRMED — check <a href="https://www.third-derivative.org/startups">third-derivative.org/startups</a> immediately</li>
+      </ul>
+      <p><strong>Status:</strong> VERIFY NOW. Program may have an open or upcoming application window.</p>
+
+      <h3>Other programs checked</h3>
+      <table>
+        <thead><tr><th>Program</th><th>Status for SolNest</th></tr></thead>
+        <tbody>
+          <tr><td>Elemental Excelerator</td><td>Pacific / Hawaii geographic focus. LOW FIT. 2026 dates unverified.</td></tr>
+          <tr><td>Breakthrough Energy Fellows</td><td>Academic researcher track. NOT APPLICABLE.</td></tr>
+          <tr><td>MassCEC Catalyst</td><td>Massachusetts nexus required. NOT APPLICABLE.</td></tr>
+          <tr><td>NYSERDA Early Stage</td><td>New York nexus required. LOW FIT.</td></tr>
+          <tr><td>CEC CalSEED</td><td>California entity required. NOT APPLICABLE.</td></tr>
+          <tr><td>DOE SETO FOA (non-SBIR)</td><td>HIGH RISK under DOGE cuts. Requires US operations presence.</td></tr>
+          <tr><td>ARPA-E OPEN</td><td>No 2026 program announced. TRL requirements would block a pre-MVP team.</td></tr>
+        </tbody>
+      </table>
+      <p class="dim text-sm"><strong>Note.</strong> State-level programs (MassCEC, NYSERDA, CalSEED) are not structurally blocked by foreign founder status, but they require a physical or operational nexus in that state — irrelevant without a US office.</p>
+    </section>
+
+    <section id="q5" class="fade-in">
+      <h2>Q5. DOGE-Era DOE Budget Impact on 2026 Programs</h2>
+
+      <h4>Confirmed impacts</h4>
+      <ul>
+        <li>DOE terminated <strong>223 projects worth $7.56 billion</strong> in savings (announced approximately October 2025) — <a href="https://www.energy.gov/articles/energy-department-announces-termination-223-projects-saving-over-75-billion">energy.gov</a></li>
+        <li>Additional <strong>$5.9 billion in DOE contracts</strong> cancelled or reduced per the DOGE tracker — <a href="https://fed-spend.com/blog/doge-spending-cuts-agency-tracker-2026">fed-spend.com</a></li>
+        <li>Renewable energy deployment, climate research, and cleantech R&amp;D contracts identified as heavily targeted</li>
+        <li>Partial mitigation: Congress rejected most DOGE spending cuts (Washington Times, Feb 2026)</li>
+      </ul>
+
+      <h4>American-Made Solar Prize specific risk</h4>
+      <ul>
+        <li>Program is DOE SETO / NREL administered — exactly the type of climate and clean energy program targeted</li>
+        <li>No Round 9 announced is consistent with a program freeze or cancellation</li>
+        <li>Round 8 existing commitments (Ready! / Set! / Go! prizes) are likely honored; new rounds are at risk</li>
+        <li>Prize competitions versus grants may have different termination procedures — unknown</li>
+      </ul>
+
+      <p><strong>2026 outlook:</strong> HIGH UNCERTAINTY for new DOE clean energy prize rounds and FOAs. SETO programs not tied to grid reliability are high risk. Startups should not build strategy around a DOE grant as primary capital.</p>
+      <p><strong>Confidence:</strong> HIGH for DOE cuts happening. LOW for specific Solar Prize Round 9 impact.</p>
+    </section>
+
+    <section id="q6" class="fade-in">
+      <h2>Q6. Solar Prize Ready! — Tactical Guidance</h2>
+
+      <h4>Ready! stage requirements (from Round 8 Rules PDF)</h4>
+      <ul>
+        <li>90-second video describing the solution</li>
+        <li>2-page Technical Assistance Request (TAR) describing technical challenges (not a proof of concept)</li>
+        <li>No prototype, no MVP, no revenue required</li>
+        <li>Concept-only entry: eligible and historically successful at Ready! stage</li>
+      </ul>
+
+      <h4>Time investment for a Ready! entry</h4>
+      <ul>
+        <li>Video: 1-2 weeks (scripting, recording, editing)</li>
+        <li>TAR: 3-5 days</li>
+        <li><strong>Total:</strong> approximately 2-4 weeks for a quality submission</li>
+      </ul>
+
+      <div class="callout callout-warn">
+        <strong>Key framing requirement.</strong> The entry must articulate a specific US solar industry challenge being addressed. "AI rooftop marketplace" must be framed as solving a US solar deployment bottleneck (customer acquisition, installer matching, cost reduction) — not just described as a SaaS product.
+      </div>
+
+      <p><strong>Set! stage PoC requirement:</strong> design a proof of concept plus demonstrate market demand. Irrelevant for SolNest in its current configuration due to the eligibility block.</p>
+      <p class="dim text-sm">Sources: <a href="https://americanmadeprogram.org/challenges/solarprize/docs/American-Made-Solar-Prize-R8-Rules.pdf">Round 8 Official Rules PDF</a> · <a href="https://www.energy.gov/cmei/systems/american-made-solar-prize">energy.gov Solar Prize</a></p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="priority" class="fade-in">
+      <h2>Priority Ranking for Immediate Action</h2>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Program</th><th>Action</th><th>Deadline</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>Third Derivative</strong></td>
+            <td>Check third-derivative.org/startups NOW for an open cohort</td>
+            <td><span class="tag tag-warn">VERIFY TODAY</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>American-Made Solar Prize R9</strong></td>
+            <td>Monitor for Round 9 announcement</td>
+            <td>None yet. Monitor weekly.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Cleantech Open 2027</strong></td>
+            <td>Register interest. Apply in Jan 2027.</td>
+            <td>January 2027</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Other state programs</td>
+            <td>Defer until US operations established</td>
+            <td>N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contradictions" class="fade-in">
+      <h2>Contradictions vs. Prior D4 (nx-20260410-1c58)</h2>
+      <table>
+        <thead><tr><th>Prior finding</th><th>R2 verdict</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>American-Made Solar Prize "immediately accessible"</td>
+            <td>PARTIALLY WRONG. Ready! accessible ($50K), but Set!/Go! blocked. The prior D4 did not flag the ownership cliff.</td>
+          </tr>
+          <tr>
+            <td>Cleantech Open "recommended as immediate pre-MVP application"</td>
+            <td>MISSED WINDOW. April 6 deadline passed. The prior D4 was right on eligibility but the application window has closed.</td>
+          </tr>
+          <tr>
+            <td>DOGE uncertainty flagged</td>
+            <td>CONFIRMED AND WORSENED. No Round 9 announced, pattern consistent with program freeze.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="confidence" class="fade-in">
+      <h2>Confidence Summary</h2>
+      <div class="glass p-5 mb-4">
+        <canvas id="confidenceChart" height="110"></canvas>
+      </div>
+      <table>
+        <thead><tr><th>Finding</th><th>Confidence</th></tr></thead>
+        <tbody>
+          <tr><td>Solar Prize Ready! eligible</td><td><span class="tag tag-ok">HIGH</span></td></tr>
+          <tr><td>Solar Prize Set! / Go! blocked</td><td><span class="tag tag-ok">HIGH</span></td></tr>
+          <tr><td>Cleantech Open 2026 closed</td><td><span class="tag tag-ok">HIGH</span></td></tr>
+          <tr><td>Third Derivative foreign founder OK</td><td><span class="tag tag-ok">HIGH</span></td></tr>
+          <tr><td>DOGE clean energy targeting</td><td><span class="tag tag-ok">HIGH</span></td></tr>
+          <tr><td>Round 9 delayed / cancelled</td><td><span class="tag tag-warn">MEDIUM (inferred)</span></td></tr>
+          <tr><td>Third Derivative 2026 deadline</td><td><span class="tag tag-danger">LOW — unverified</span></td></tr>
+          <tr><td>Other programs (state, ARPA-E)</td><td><span class="tag tag-danger">LOW — insufficient data</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="sources" class="fade-in">
+      <h2>Sources &amp; Channel Coverage</h2>
+      <div class="glass p-5 mb-4">
+        <h4 class="mt-0">Channels used</h4>
+        <table>
+          <thead><tr><th>Channel</th><th>Queries</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Perplexity Sonar Pro</td><td>6 (Q1-Q6)</td><td>Complete</td></tr>
+            <tr><td>Brave Web Search</td><td>3</td><td>Used</td></tr>
+            <tr><td>Tavily</td><td>1 attempt</td><td>Rate limited</td></tr>
+            <tr><td>Exa</td><td>2 attempts</td><td>Out of credits</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Primary sources cited</h4>
+      <ul class="source-list">
+        <li><a href="https://www.energy.gov/cmei/systems/american-made-solar-prize-round-8">energy.gov — American-Made Solar Prize Round 8</a></li>
+        <li><a href="https://americanmadeprogram.org/challenges/solarprize/docs/American-Made-Solar-Prize-R8-Rules.pdf">American-Made Solar Prize Round 8 Official Rules PDF</a></li>
+        <li><a href="https://www.herox.com/solarprizeround8">HeroX — Solar Prize Round 8</a></li>
+        <li><a href="https://www.cleantechopen.org/en/page/2026-cto-accelerator-en">cleantechopen.org — 2026 CTO Accelerator page</a></li>
+        <li><a href="https://startupsac.com">StartupSac — Cleantech Open 2026 deadlines</a></li>
+        <li><a href="https://launchny.org">LaunchNY — 2026 Cleantech Open National Accelerator</a></li>
+        <li><a href="https://www.third-derivative.org/startups">third-derivative.org — Startups</a></li>
+        <li><a href="https://www.energy.gov/articles/energy-department-announces-termination-223-projects-saving-over-75-billion">energy.gov — 223 Projects Termination Announcement</a></li>
+        <li><a href="https://fed-spend.com/blog/doge-spending-cuts-agency-tracker-2026">fed-spend.com — DOGE Agency Tracker 2026</a></li>
+        <li>Washington Times (Feb 2026) — Congressional rejection of most DOGE cuts</li>
+        <li>Techdirt (March 2026) — DOGE efficiency claims challenged</li>
+      </ul>
+    </section>
+
+    <hr class="divider">
+    <p class="dim text-xs mono text-center">DELPHI · Research Oracle · nx-20260410-r2us · 2026-04-10 · Raw findings: ~/.nexus/intel/solnest-r2-us-2026-04-10.md</p>
+  </main>
+
+  <aside class="toc-wrap">
+    <div class="glass p-4 sticky" style="top:80px;">
+      <div class="text-xs uppercase dim mb-2 tracking-wider">Metadata</div>
+      <div class="mb-3">
+        <div class="dim text-xs">Agent</div>
+        <div class="font-semibold">DELPHI</div>
+      </div>
+      <div class="mb-3">
+        <div class="dim text-xs">Task ID</div>
+        <div class="mono text-xs">nx-20260410-r2us</div>
+      </div>
+      <div class="mb-3">
+        <div class="dim text-xs">Depth</div>
+        <div class="font-semibold">D3 Verification</div>
+      </div>
+      <div class="mb-3">
+        <div class="dim text-xs">Duration</div>
+        <div class="font-semibold">~6.5 min</div>
+      </div>
+      <div class="mb-3">
+        <div class="dim text-xs">Confidence</div>
+        <div class="font-semibold">HIGH (eligibility)<br><span class="dim text-xs">MEDIUM (R9 timing)</span></div>
+      </div>
+      <div class="mb-3">
+        <div class="dim text-xs">Channels</div>
+        <ul class="text-xs mt-1 pl-4">
+          <li>Perplexity Sonar Pro x6</li>
+          <li>Brave Web Search x3</li>
+          <li>Exa (out of credits)</li>
+        </ul>
+      </div>
+      <div class="mb-3">
+        <div class="dim text-xs">Source Tiers</div>
+        <div class="text-xs">T1 primary: energy.gov, americanmadeprogram.org, cleantechopen.org, third-derivative.org</div>
+      </div>
+      <div class="mb-3">
+        <div class="dim text-xs">Date</div>
+        <div class="font-semibold">2026-04-10</div>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="max-w-7xl mx-auto px-4 py-8 mt-16 dim text-xs text-center">
+  Generated by <span class="accent">NexusOS shared-reporter</span> · Tier 2 Full Report · GitHub Pages deploy
+</footer>
+
+<script>
+  // Theme toggle with localStorage persistence
+  (function(){
+    const saved = localStorage.getItem('nx-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('theme-btn').textContent = saved === 'dark' ? 'Light' : 'Dark';
+  })();
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('nx-theme', next);
+    document.getElementById('theme-btn').textContent = next === 'dark' ? 'Light' : 'Dark';
+    // Re-render charts with new theme colors
+    renderCharts();
+  }
+
+  // Share
+  function shareReport() {
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({title: document.title, url: url}).catch(()=>{});
+    } else {
+      navigator.clipboard.writeText(url).then(()=>{
+        const b = document.querySelector('.share-btn');
+        const o = b.textContent; b.textContent = 'Copied'; setTimeout(()=>b.textContent=o, 1500);
+      });
+    }
+  }
+
+  // Fade-in observer
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  // TOC active link highlight
+  const tocLinks = document.querySelectorAll('.toc a');
+  const sections = document.querySelectorAll('main section');
+  const tocObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if (e.isIntersecting) {
+        tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+e.target.id));
+      }
+    });
+  }, {rootMargin:'-30% 0px -60% 0px'});
+  sections.forEach(s => tocObserver.observe(s));
+
+  // Charts
+  let capitalChart, confidenceChart;
+  function renderCharts() {
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const textColor = isDark ? '#e6edf3' : '#0e1116';
+    const gridColor = isDark ? 'rgba(88,166,255,0.12)' : 'rgba(94,106,210,0.12)';
+    Chart.defaults.color = textColor;
+    Chart.defaults.font.family = 'Inter, system-ui, sans-serif';
+
+    if (capitalChart) capitalChart.destroy();
+    if (confidenceChart) confidenceChart.destroy();
+
+    const capCtx = document.getElementById('capitalChart');
+    if (capCtx) {
+      capitalChart = new Chart(capCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Floor', 'Base', 'Optimistic', 'Ceiling (restructured)'],
+          datasets: [{
+            label: '2026 US Capital Pool (USD)',
+            data: [0, 50000, 125000, 700000],
+            backgroundColor: [
+              'rgba(239,68,68,0.65)',
+              'rgba(249,115,22,0.70)',
+              'rgba(88,166,255,0.75)',
+              'rgba(34,197,94,0.65)'
+            ],
+            borderColor: [
+              'rgba(239,68,68,1)',
+              'rgba(249,115,22,1)',
+              'rgba(88,166,255,1)',
+              'rgba(34,197,94,1)'
+            ],
+            borderWidth: 1.5,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: gridColor },
+              ticks: { color: textColor, callback: v => '$' + (v/1000) + 'K' }
+            },
+            x: { grid: { display: false }, ticks: { color: textColor } }
+          }
+        }
+      });
+    }
+
+    const confCtx = document.getElementById('confidenceChart');
+    if (confCtx) {
+      confidenceChart = new Chart(confCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['HIGH (5 findings)', 'MEDIUM (1 finding)', 'LOW (2 findings)'],
+          datasets: [{
+            data: [5, 1, 2],
+            backgroundColor: [
+              'rgba(34,197,94,0.75)',
+              'rgba(249,115,22,0.75)',
+              'rgba(239,68,68,0.65)'
+            ],
+            borderColor: isDark ? '#0A0A0F' : '#fafafa',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'right', labels: { color: textColor, boxWidth: 14, padding: 12 } }
+          }
+        }
+      });
+    }
+  }
+  renderCharts();
+</script>
+</body>
+</html>
