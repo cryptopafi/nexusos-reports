@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SolNest AI — EU-Level Programs Verification (R5) | DELPHI</title>
+<meta name="description" content="DELPHI R5 Research — EU-level funding verification for SolNest AI. EIC Accelerator TRL 6 gate, SME consolidation rule, Horizon Europe consortium requirements. Verdict: Italy Smart&Start remains Year 1 anchor.">
+<meta property="og:title" content="SolNest AI — EU-Level Programs Verification (R5)">
+<meta property="og:description" content="DELPHI D3 research: 8 EU-level programs verified. EIC Accelerator TRL 6 hard blocker for pre-MVP SolNest. Italy Smart&Start remains the Year 1 anchor.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NexusOS Reports">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'monospace']
+        },
+        colors: {
+          'bg-dark': '#0A0A0F',
+          'card-dark': '#111118',
+          'accent': '#58a6ff',
+          'accent-hover': '#79b8ff'
+        }
+      }
+    }
+  };
+</script>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --text: #e6edf3;
+    --text-dim: #9ca3af;
+    --border: rgba(88,166,255,0.15);
+    --accent: #58a6ff;
+    --glass: rgba(17,17,24,0.7);
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #eab308;
+    --info: #58a6ff;
+  }
+  html.light {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #0f172a;
+    --text-dim: #475569;
+    --border: rgba(94,106,210,0.2);
+    --accent: #5E6AD2;
+    --glass: rgba(255,255,255,0.85);
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
+  }
+  html.dark body {
+    background: radial-gradient(ellipse at top, #0e1220 0%, #0A0A0F 50%, #000 100%);
+    min-height: 100vh;
+  }
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .glass-strong {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  html.dark .glass-strong {
+    box-shadow: 0 0 40px rgba(88,166,255,0.04), 0 1px 0 rgba(255,255,255,0.03) inset;
+  }
+  .accent-glow {
+    box-shadow: 0 0 24px rgba(88,166,255,0.25);
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #58a6ff 0%, #a371f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  html.light .gradient-text {
+    background: linear-gradient(135deg, #5E6AD2 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .callout {
+    border-left: 4px solid;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .callout-success {
+    border-color: var(--success);
+    background: rgba(34,197,94,0.08);
+  }
+  .callout-danger {
+    border-color: var(--danger);
+    background: rgba(239,68,68,0.08);
+  }
+  .callout-warning {
+    border-color: var(--warning);
+    background: rgba(234,179,8,0.08);
+  }
+  .callout-info {
+    border-color: var(--info);
+    background: rgba(88,166,255,0.08);
+  }
+  .callout-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-dim);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  tr:hover td {
+    background: rgba(88,166,255,0.04);
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .badge-blocked { background: rgba(239,68,68,0.15); color: #fca5a5; }
+  .badge-partial { background: rgba(234,179,8,0.15); color: #fde68a; }
+  .badge-accessible { background: rgba(34,197,94,0.15); color: #86efac; }
+  .badge-dead { background: rgba(156,163,175,0.15); color: #d1d5db; }
+  html.light .badge-blocked { color: #b91c1c; }
+  html.light .badge-partial { color: #854d0e; }
+  html.light .badge-accessible { color: #166534; }
+  html.light .badge-dead { color: #475569; }
+  .kpi-number {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .toc-link {
+    display: block;
+    padding: 7px 12px;
+    font-size: 13px;
+    color: var(--text-dim);
+    border-left: 2px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .toc-link:hover, .toc-link.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: rgba(88,166,255,0.05);
+  }
+  code, .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+  }
+  .section-h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .section-h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .prose p { line-height: 1.7; color: var(--text); margin-bottom: 14px; }
+  .prose ul { margin-left: 22px; margin-bottom: 14px; }
+  .prose li { line-height: 1.75; margin-bottom: 6px; }
+  .prose strong { color: var(--accent); font-weight: 600; }
+  html.light .prose strong { color: var(--accent); }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.25);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  @media print {
+    html { background: white !important; }
+    body { background: white !important; color: #111 !important; }
+    .no-print, aside, nav, #tocSidebar, #shareBtn, #themeBtn { display: none !important; }
+    .glass, .glass-strong { background: white !important; border: 1px solid #ddd !important; box-shadow: none !important; }
+    .callout { page-break-inside: avoid; }
+    section { page-break-inside: avoid; }
+    a { color: #0369a1 !important; text-decoration: underline; }
+    @page { size: A4; margin: 18mm; }
+  }
+  .scroll-bar { scrollbar-width: thin; scrollbar-color: rgba(88,166,255,0.2) transparent; }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<header class="sticky top-0 z-50 glass no-print" style="border-radius: 0; border-left: 0; border-right: 0; border-top: 0;">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg accent-glow flex items-center justify-center" style="background: linear-gradient(135deg, #58a6ff 0%, #a371f7 100%);">
+        <span class="font-bold text-white text-sm">D</span>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-wider" style="color: var(--text-dim);">DELPHI Research</div>
+        <div class="text-sm font-semibold">NexusOS Intelligence</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="shareBtn" class="text-xs px-3 py-2 rounded-lg glass hover:accent-glow transition-all" title="Share">
+        <span>Share</span>
+      </button>
+      <button id="themeBtn" class="text-xs px-3 py-2 rounded-lg glass hover:accent-glow transition-all" title="Toggle theme">
+        <span id="themeIcon">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="max-w-7xl mx-auto px-6 pt-14 pb-10 fade-in">
+  <div class="flex flex-wrap gap-2 mb-5">
+    <span class="chip">DELPHI</span>
+    <span class="chip">D3 Depth</span>
+    <span class="chip">nx-20260410-r5eu</span>
+    <span class="chip">2026-04-10</span>
+  </div>
+  <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-5">
+    SolNest AI <span class="gradient-text">EU-Level Programs</span><br>Verification R5
+  </h1>
+  <p class="text-lg md:text-xl max-w-3xl" style="color: var(--text-dim);">
+    Does any EU-level program beat Italy Smart&Start for pre-MVP SolNest in 2026?
+    Eight programs verified against EIC Accelerator TRL 6 gate, consortium requirements, and SME consolidation rule.
+  </p>
+</section>
+
+<!-- KPI Cards -->
+<section class="max-w-7xl mx-auto px-6 pb-10">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="glass-strong p-6 fade-in">
+      <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Verdict</div>
+      <div class="kpi-number" style="color: var(--danger);">NO</div>
+      <div class="text-xs mt-2" style="color: var(--text-dim);">No EU program beats Italy Year 1</div>
+    </div>
+    <div class="glass-strong p-6 fade-in">
+      <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">EIC Gate</div>
+      <div class="kpi-number gradient-text">TRL 6</div>
+      <div class="text-xs mt-2" style="color: var(--text-dim);">Hard requirement, pre-MVP blocked</div>
+    </div>
+    <div class="glass-strong p-6 fade-in">
+      <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Year 1 Realistic</div>
+      <div class="kpi-number" style="color: var(--success);">&euro;500K<span class="text-xl">-1.05M</span></div>
+      <div class="text-xs mt-2" style="color: var(--text-dim);">R1-R5 combined stack</div>
+    </div>
+    <div class="glass-strong p-6 fade-in">
+      <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Year 1-2 Cumulative</div>
+      <div class="kpi-number gradient-text">&euro;1.25M<span class="text-xl">-4.55M</span></div>
+      <div class="text-xs mt-2" style="color: var(--text-dim);">If all paths execute</div>
+    </div>
+  </div>
+</section>
+
+<!-- Main layout: TOC + content -->
+<div class="max-w-7xl mx-auto px-6 pb-16 flex gap-8">
+
+  <!-- TOC sidebar -->
+  <aside class="hidden lg:block w-56 flex-shrink-0 no-print">
+    <nav id="tocSidebar" class="sticky top-28 glass p-4">
+      <div class="text-xs uppercase tracking-wider mb-3" style="color: var(--text-dim);">Contents</div>
+      <a href="#verdict" class="toc-link">Final Verdict</a>
+      <a href="#blockers" class="toc-link">Blockers Matrix</a>
+      <a href="#accessibility" class="toc-link">Accessibility Chart</a>
+      <a href="#eic" class="toc-link">EIC Accelerator 2026</a>
+      <a href="#sme" class="toc-link">SME Consolidation</a>
+      <a href="#top3" class="toc-link">Top 3 EU Programs</a>
+      <a href="#stack" class="toc-link">R1-R5 Capital Stack</a>
+      <a href="#sequence" class="toc-link">Strategic Sequence</a>
+      <a href="#methodology" class="toc-link">Methodology</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 min-w-0 prose">
+
+    <!-- Verdict -->
+    <section id="verdict" class="fade-in mb-12">
+      <h2 class="section-h2">Final Verdict</h2>
+      <p class="text-sm mb-6" style="color: var(--text-dim);">D3 research across 8 EU-level funding programs, cross-validated against R1-R4 findings.</p>
+
+      <div class="callout callout-danger">
+        <div class="callout-label" style="color: var(--danger);">Red Flag &mdash; EIC Accelerator</div>
+        <p><strong>EIC Accelerator TRL 6 HARD REQUIREMENT.</strong> Pre-MVP SolNest (TRL 2-4) is INELIGIBLE until post-MVP with pilot users. Earliest realistic target: Nov 4, 2026 cut-off, assuming MVP ships Q3 2026. The &euro;2.5M grant plus &euro;15M equity potential is irrelevant if you cannot apply.</p>
+      </div>
+
+      <div class="callout callout-success">
+        <div class="callout-label" style="color: var(--success);">Green Light &mdash; SME Consolidation</div>
+        <p><strong>SME consolidation rule confirmed: Delaware parent does NOT block EU access.</strong> Under Recommendation 2003/361/EC, consolidated group size = 0+0 = MICRO enterprise. Italy, France, and Romania subsidiaries all pass the micro-enterprise test. This rule applies uniformly across EIC Accelerator, Horizon Europe, LIFE, InvestEU, and all programs using the EU SME definition.</p>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-label" style="color: var(--warning);">Stale Data Flag &mdash; SME Instrument Phase 1</div>
+        <p><strong>SME Instrument Phase 1 (&euro;50K) TERMINATED September 2019.</strong> D4 and other references to it are STALE. Do not plan around this program. Phase 2 was renamed and replaced by EIC Accelerator under Horizon Europe starting 2021. There is NO &euro;50K SME feasibility grant at EU level in 2026.</p>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-label" style="color: var(--info);">Strategic Clarity</div>
+        <p><strong>Italy Smart&amp;Start Scenario A is the single highest-leverage Year 1 play.</strong> EU-level programs are Year 2+ add-ons gated on MVP. The entire EU funding stack is post-MVP; nothing unlocks until SolNest ships a working product with pilot users.</p>
+      </div>
+    </section>
+
+    <!-- Blockers matrix -->
+    <section id="blockers" class="fade-in mb-12">
+      <h2 class="section-h2">Blockers Per EU-Level Program</h2>
+      <p class="text-sm mb-4" style="color: var(--text-dim);">Every major EU-level program carries a hard blocker for pre-MVP SolNest.</p>
+
+      <div class="glass-strong overflow-x-auto scroll-bar">
+        <table>
+          <thead>
+            <tr>
+              <th>Program</th>
+              <th>Status</th>
+              <th>Blocker</th>
+              <th>Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>EIC Accelerator</strong><br><span class="text-xs" style="color: var(--text-dim);">&euro;2.5M grant + &euro;15M equity</span></td>
+              <td><span class="badge badge-blocked">Blocked</span></td>
+              <td>TRL 6 minimum, confirmed by EIC FAQ + Guide v6.0 Nov 2025</td>
+              <td>Pre-MVP INELIGIBLE. Year 2 target.</td>
+            </tr>
+            <tr>
+              <td><strong>LIFE Clean Energy</strong></td>
+              <td><span class="badge badge-blocked">Blocked</span></td>
+              <td>3 partners from 3 EU countries required. Solo founder blocked. Calls publish April 21, 2026.</td>
+              <td>Consortium entry path only.</td>
+            </tr>
+            <tr>
+              <td><strong>Horizon Europe Cluster 4</strong><br><span class="text-xs" style="color: var(--text-dim);">Digital, &euro;221.8M budget</span></td>
+              <td><span class="badge badge-partial">Partial</span></td>
+              <td>3+ entity consortium from 3+ countries. Pre-MVP startup cannot lead.</td>
+              <td>Year 2+ junior partner path only.</td>
+            </tr>
+            <tr>
+              <td><strong>Horizon Europe Cluster 5</strong><br><span class="text-xs" style="color: var(--text-dim);">Climate, Energy</span></td>
+              <td><span class="badge badge-partial">Partial</span></td>
+              <td>Same consortium rules. 18-24 months to cash.</td>
+              <td>Year 2+ junior partner.</td>
+            </tr>
+            <tr>
+              <td><strong>EIC Pathfinder</strong><br><span class="text-xs" style="color: var(--text-dim);">&euro;4M, TRL 1-4</span></td>
+              <td><span class="badge badge-blocked">Blocked</span></td>
+              <td>3+ consortium + genuine deep tech research. Solar marketplace SaaS = weak fit.</td>
+              <td>Wrong product category.</td>
+            </tr>
+            <tr>
+              <td><strong>EIC Transition</strong><br><span class="text-xs" style="color: var(--text-dim);">&euro;2.5M, TRL 4-6</span></td>
+              <td><span class="badge badge-blocked">Blocked</span></td>
+              <td>Requires prior Pathfinder or Horizon project involvement. SolNest has none.</td>
+              <td>No entry path today.</td>
+            </tr>
+            <tr>
+              <td><strong>InvestEU</strong></td>
+              <td><span class="badge badge-blocked">Blocked</span></td>
+              <td>Via financial intermediaries only. No direct startup access.</td>
+              <td>Not a startup program.</td>
+            </tr>
+            <tr>
+              <td><strong>CEF Energy</strong></td>
+              <td><span class="badge badge-blocked">Blocked</span></td>
+              <td>Infrastructure projects only. Cross-border energy networks, interconnectors.</td>
+              <td>Wrong domain.</td>
+            </tr>
+            <tr>
+              <td><strong>SME Instrument Phase 1</strong><br><span class="text-xs" style="color: var(--text-dim);">&euro;50K feasibility</span></td>
+              <td><span class="badge badge-dead">Dead</span></td>
+              <td>Terminated September 2019. Does not exist in 2026.</td>
+              <td>D4 reference was stale.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Chart: accessibility -->
+    <section id="accessibility" class="fade-in mb-12">
+      <h2 class="section-h2">EU Programs By Accessibility</h2>
+      <p class="text-sm mb-4" style="color: var(--text-dim);">Red = hard blocked | Amber = partial access via consortium | Green = accessible (if any).</p>
+      <div class="glass-strong p-6">
+        <div style="position: relative; height: 360px;">
+          <canvas id="accessChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- EIC Accelerator detail -->
+    <section id="eic" class="fade-in mb-12">
+      <h2 class="section-h2">EIC Accelerator 2026 &mdash; Detailed</h2>
+
+      <h3 class="section-h3">Cut-Off Dates (Step 2)</h3>
+      <p>All close at 17:00 Brussels time:</p>
+      <ul>
+        <li>Jan 7, 2026 &mdash; PASSED</li>
+        <li>Mar 4, 2026 &mdash; PASSED</li>
+        <li><strong>May 6, 2026</strong> &mdash; upcoming but pre-MVP ineligible</li>
+        <li>Jul 8, 2026</li>
+        <li>Sep 2, 2026</li>
+        <li><strong>Nov 4, 2026</strong> &mdash; realistic target if MVP ships Q3 2026</li>
+      </ul>
+      <p>Step 1 (short proposal) is continuously open. Applicants should submit Step 1 roughly 70-90 days before target Step 2 deadline.</p>
+
+      <h3 class="section-h3">Funding Structure</h3>
+      <ul>
+        <li><strong>Grant-only:</strong> up to &euro;2.5M, one-time, covers TRL 6-8 activities, 24-month project, lump-sum</li>
+        <li><strong>Blended finance:</strong> grant (up to &euro;2.5M) plus equity investment from EIC Fund (up to &euro;15M)</li>
+      </ul>
+
+      <h3 class="section-h3">TRL Floor &mdash; The Hard Block</h3>
+      <p>Confirmed by multiple primary EU sources:</p>
+      <ul>
+        <li>Official EIC FAQ: <span class="mono">"grant-only support can only be provided... for a maximum of EUR 2.5 million to cover activities of TRL 6 to 8"</span></li>
+        <li>EIC Accelerator Guide for Applicants v6.0 (Nov 2025): <span class="mono">"innovation activities currently at TRL 6 or above"</span></li>
+        <li>Catalyze Group (2026): "TRL 6-8"</li>
+      </ul>
+      <p><strong>Success rate: 5-7%.</strong> SolNest at concept plus non-functional landing page is TRL 2-4 at best. Cannot apply until post-MVP with pilot users.</p>
+
+      <h3 class="section-h3">Published Success Rates (2024-2026)</h3>
+      <div class="glass-strong overflow-x-auto scroll-bar">
+        <table>
+          <thead><tr><th>Cut-off</th><th>Step 2 Submissions</th><th>Funded</th><th>Success Rate</th></tr></thead>
+          <tbody>
+            <tr><td>Oct 2024</td><td>1,211</td><td>71</td><td>5.9%</td></tr>
+            <tr><td>Mar 2025</td><td>~800 est.</td><td>40</td><td>&lt;5%</td></tr>
+            <tr><td>Oct 2025</td><td>923</td><td>61</td><td><strong>6.6%</strong></td></tr>
+            <tr><td>Cumulative 2021-2025</td><td>~11,873</td><td>~7% overall</td><td>&mdash;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mt-3" style="color: var(--text-dim);">Step 3 (interview) to funded rate: 50.4% (Oct 2025). Total timeline Step 1 to funded: 9-15 months.</p>
+    </section>
+
+    <!-- SME Consolidation -->
+    <section id="sme" class="fade-in mb-12">
+      <h2 class="section-h2">SME Consolidation &mdash; Cross-Research Confirmation</h2>
+      <p>Delaware C-Corp parent (0 employees, &euro;0 revenue) plus French SAS or Italian SRL subsidiary (new) gives consolidated SME size = 0 + 0 = <strong>MICRO enterprise</strong>.</p>
+
+      <p>Per EU Recommendation 2003/361/EC (Annex, Art 2 + Art 3): SolNest EU sub PASSES the SME test (&le;250 employees, &le;&euro;50M revenue, &le;&euro;43M balance sheet) because the consolidated figures with the Delaware parent remain within micro-enterprise thresholds.</p>
+
+      <h3 class="section-h3">SME Thresholds (Article 2)</h3>
+      <div class="glass-strong overflow-x-auto scroll-bar">
+        <table>
+          <thead><tr><th>Category</th><th>Employees</th><th>Turnover</th><th>Balance Sheet</th></tr></thead>
+          <tbody>
+            <tr><td>Medium-sized</td><td>&lt;250</td><td>&le;&euro;50M</td><td>&le;&euro;43M</td></tr>
+            <tr><td>Small</td><td>&lt;50</td><td>&le;&euro;10M</td><td>&le;&euro;10M</td></tr>
+            <tr><td>Micro</td><td>&lt;10</td><td>&le;&euro;2M</td><td>&le;&euro;2M</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="section-h3">This Rule Applies Uniformly To:</h3>
+      <ul>
+        <li>EIC Accelerator</li>
+        <li>EIC Pathfinder and Transition</li>
+        <li>Horizon Europe all clusters</li>
+        <li>LIFE programme</li>
+        <li>InvestEU</li>
+        <li>Any EU program that uses the EU SME definition</li>
+      </ul>
+
+      <p><strong>Confirms R3's Italy SRL Innovativa finding:</strong> the real gate everywhere in the EU funding stack is the size-based SME test, not ownership-nationality-based rules. Delaware parent ownership is NOT a structural blocker at the EU level, only a monitoring trigger once the Delaware parent grows past SME limits.</p>
+    </section>
+
+    <!-- Top 3 -->
+    <section id="top3" class="fade-in mb-12">
+      <h2 class="section-h2">Top 3 EU Programs By Accessibility x Amount x Speed</h2>
+      <div class="glass-strong overflow-x-auto scroll-bar">
+        <table>
+          <thead><tr><th>Rank</th><th>Program</th><th>Amount</th><th>When</th><th>Gate</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>1</strong></td>
+              <td><strong>EIC Accelerator</strong></td>
+              <td>&euro;2.5M grant + &euro;15M equity</td>
+              <td>Year 2 post-MVP</td>
+              <td>TRL 6 &mdash; blocked until MVP + pilot users</td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td><strong>Widening / EIC Pre-Accelerator</strong></td>
+              <td>&euro;50K-&euro;200K</td>
+              <td>Year 2, higher probability</td>
+              <td>Romanian SRL unlocks Widening country advantage</td>
+            </tr>
+            <tr>
+              <td><strong>3</strong></td>
+              <td><strong>Horizon Consortium (Junior)</strong></td>
+              <td>&euro;300K-&euro;1M allocation</td>
+              <td>Year 2+ (18-24 mo to cash)</td>
+              <td>Find consortium lead &mdash; passive pipeline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- R1-R5 Capital Stack -->
+    <section id="stack" class="fade-in mb-12">
+      <h2 class="section-h2">R1-R5 Combined Capital Stack</h2>
+      <p class="text-sm mb-4" style="color: var(--text-dim);">Updated view across all five research rounds: France, US, Italy, Republic/SeedBlink, and EU-level.</p>
+
+      <div class="glass-strong overflow-x-auto scroll-bar mb-6">
+        <table>
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Year 1 Realistic</th>
+              <th>Year 2 Realistic</th>
+              <th>Gate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>France (R1)</strong></td>
+              <td>&euro;200K</td>
+              <td>&mdash;</td>
+              <td>Foreign ownership unresolved for Bourse FT</td>
+            </tr>
+            <tr>
+              <td><strong>US (R2)</strong></td>
+              <td>$50-150K</td>
+              <td>&mdash;</td>
+              <td>Solar Prize Ready! $50K only (citizenship cliff)</td>
+            </tr>
+            <tr>
+              <td><strong>Italy (R3) &mdash; ANCHOR</strong></td>
+              <td><strong>&euro;300-600K</strong></td>
+              <td>&mdash;</td>
+              <td>Smart&amp;Start Scenario A, 3-5 mo setup</td>
+            </tr>
+            <tr>
+              <td><strong>Republic.com (R4)</strong></td>
+              <td>$0</td>
+              <td>&mdash;</td>
+              <td>ABANDONED</td>
+            </tr>
+            <tr>
+              <td><strong>SeedBlink / EU ECSP (R4)</strong></td>
+              <td>&mdash;</td>
+              <td>&euro;200-500K</td>
+              <td>After EU entity formation</td>
+            </tr>
+            <tr>
+              <td><strong>EIC Accelerator (R5)</strong></td>
+              <td>&mdash;</td>
+              <td>&euro;2.5M + &euro;15M equity potential</td>
+              <td>TRL 6 gate &mdash; post-MVP only</td>
+            </tr>
+            <tr>
+              <td><strong>Widening / EIC Pre-Accel (R5)</strong></td>
+              <td>&mdash;</td>
+              <td>&euro;50-200K</td>
+              <td>Romanian SRL path, Year 2</td>
+            </tr>
+            <tr>
+              <td><strong>Horizon Consortium Junior (R5)</strong></td>
+              <td>&mdash;</td>
+              <td>&euro;300K-1M</td>
+              <td>Year 2+, consortium lead required</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="glass-strong p-5">
+          <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Year 1 Realistic Total</div>
+          <div class="text-2xl font-bold" style="color: var(--success);">&euro;500K-&euro;1.05M</div>
+          <div class="text-xs mt-1" style="color: var(--text-dim);">Italy dominant</div>
+        </div>
+        <div class="glass-strong p-5">
+          <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Year 2 Add-ons</div>
+          <div class="text-2xl font-bold gradient-text">&euro;750K-&euro;3.5M</div>
+          <div class="text-xs mt-1" style="color: var(--text-dim);">EIC + Widening + Horizon + SeedBlink stackable</div>
+        </div>
+        <div class="glass-strong p-5">
+          <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Year 1-2 Cumulative</div>
+          <div class="text-2xl font-bold" style="color: var(--accent);">&euro;1.25M-&euro;4.55M</div>
+          <div class="text-xs mt-1" style="color: var(--text-dim);">If all favorable paths execute</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-strong p-6">
+          <h3 class="text-sm font-semibold mb-4" style="color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;">Year 1 Stack by Jurisdiction</h3>
+          <div style="position: relative; height: 260px;">
+            <canvas id="stackDoughnut"></canvas>
+          </div>
+        </div>
+        <div class="glass-strong p-6">
+          <h3 class="text-sm font-semibold mb-4" style="color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;">Year 1 vs Year 2 Cumulative</h3>
+          <div style="position: relative; height: 260px;">
+            <canvas id="yearStack"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategic Sequence -->
+    <section id="sequence" class="fade-in mb-12">
+      <h2 class="section-h2">Strategic Sequence &mdash; 2026 Execution Plan</h2>
+      <p class="text-sm mb-6" style="color: var(--text-dim);">Five-step play sequencing Italy Year 1 with EU-level stackable add-ons in Year 2.</p>
+
+      <div class="space-y-4">
+        <div class="glass-strong p-5 flex gap-5">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold" style="background: rgba(88,166,255,0.15); color: var(--accent);">1</div>
+          <div>
+            <div class="font-semibold mb-1">Q2 2026 &mdash; Form Italian SRL</div>
+            <div class="text-sm" style="color: var(--text-dim);">Incorporate Italian SRL (3-5 months to grant-ready state per R3). Obtain &euro;1,500-&euro;3K legal opinion on SME consolidation calculation.</div>
+          </div>
+        </div>
+        <div class="glass-strong p-5 flex gap-5">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold" style="background: rgba(88,166,255,0.15); color: var(--accent);">2</div>
+          <div>
+            <div class="font-semibold mb-1">Q2-Q3 2026 &mdash; Smart&amp;Start + MVP Build</div>
+            <div class="text-sm" style="color: var(--text-dim);">Smart&amp;Start application in parallel with 6-month MVP build (R3 + R4 MVP decision combined).</div>
+          </div>
+        </div>
+        <div class="glass-strong p-5 flex gap-5">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold" style="background: rgba(88,166,255,0.15); color: var(--accent);">3</div>
+          <div>
+            <div class="font-semibold mb-1">Q3 2026 &mdash; Smart&amp;Start Disbursement</div>
+            <div class="text-sm" style="color: var(--text-dim);">&euro;300-600K realistic disbursement. Funds MVP completion plus first users.</div>
+          </div>
+        </div>
+        <div class="glass-strong p-5 flex gap-5">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold" style="background: rgba(88,166,255,0.15); color: var(--accent);">4</div>
+          <div>
+            <div class="font-semibold mb-1">Q4 2026 - Q1 2027 &mdash; EIC Accelerator Step 1</div>
+            <div class="text-sm" style="color: var(--text-dim);">Post-MVP state unlocks EIC eligibility. Submit Step 1 targeting Nov 4, 2026 Step 2 cut-off.</div>
+          </div>
+        </div>
+        <div class="glass-strong p-5 flex gap-5">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold" style="background: rgba(88,166,255,0.15); color: var(--accent);">5</div>
+          <div>
+            <div class="font-semibold mb-1">2027 &mdash; Stackable Adds</div>
+            <div class="text-sm" style="color: var(--text-dim);">Widening / Horizon consortium as stackable adds. SeedBlink ECSP after traction. EIC interview + Step 3 funding arrives mid-2027 at earliest.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 p-5 rounded-xl" style="background: rgba(88,166,255,0.06); border: 1px solid var(--border);">
+        <p class="text-sm m-0"><strong>Summary:</strong> Republic.com is dead (R4), France is mostly blocked (R1), US is low-yield (R2), Italy anchors (R3), EU-level programs unlock after MVP (R5).</p>
+      </div>
+    </section>
+
+    <!-- Methodology -->
+    <section id="methodology" class="fade-in mb-12">
+      <h2 class="section-h2">R5 Methodology</h2>
+
+      <div class="glass-strong p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Channels</div>
+            <div class="text-sm">Perplexity Sonar Pro x 8 queries<br>Brave Search x 2 cross-checks</div>
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Source Tiers</div>
+            <div class="text-sm">T1 primary: eic.ec.europa.eu, ec.europa.eu, cinea.ec.europa.eu, research-and-innovation.ec.europa.eu</div>
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Depth</div>
+            <div class="text-sm">D3 multi-source synthesis</div>
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Duration</div>
+            <div class="text-sm">~5.5 minutes wall clock</div>
+          </div>
+          <div class="md:col-span-2">
+            <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Confidence</div>
+            <div class="text-sm">HIGH on TRL 6 gate (multi-source confirmation) | HIGH on consortium requirements | HIGH on SME consolidation rule | HIGH on EIC cut-off dates (official calendar confirmed)</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-h3">Primary Sources</h3>
+      <ul class="text-sm">
+        <li><span class="mono">eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en</span> &mdash; EIC Accelerator official</li>
+        <li><span class="mono">eic.ec.europa.eu/eic-frequently-asked-questions/faqs-eic-accelerator_en</span> &mdash; EIC FAQ (TRL 6 confirmation)</li>
+        <li><span class="mono">eic.ec.europa.eu/document/...EIC+Accelerator+guide+for+applicants_WP26.pdf</span> &mdash; Guide v6.0 Nov 2025</li>
+        <li><span class="mono">eic.ec.europa.eu/eic-2026-work-programme_en</span> &mdash; 2026 Work Programme</li>
+        <li><span class="mono">cinea.ec.europa.eu/life-calls-proposals-2026_en</span> &mdash; LIFE 2026 calls</li>
+        <li><span class="mono">single-market-economy.ec.europa.eu/smes/sme-fundamentals/sme-definition_en</span> &mdash; SME definition official</li>
+        <li><span class="mono">hadea.ec.europa.eu/news/horizon-europe-2026-digital-calls-now-published-2026-01-14_en</span> &mdash; Cluster 4 2026 calls</li>
+        <li><span class="mono">ec.europa.eu/info/funding-tenders/opportunities/portal/...HORIZON-CL4-2026-04</span> &mdash; Funding &amp; Tenders Portal</li>
+      </ul>
+
+      <h3 class="section-h3">Process Note</h3>
+      <p class="text-sm" style="color: var(--text-dim);">Task was spuriously interrupted at 18:15:46 UTC by a <span class="mono">launchctl kickstart -k</span> signal hitting the scanner process group and killing the <span class="mono">nexus-agent-execute.sh</span> wrapper. Claude itself kept running detached from the dead wrapper and completed the research, writing the intel file at 18:20 and EXECUTION.log at 18:22. Task was manually unblocked by GENIE: renamed <span class="mono">FAILED-nx-20260410-r5eu/</span> to <span class="mono">nx-20260410-r5eu/</span>, fixed PROGRESS.md status, rebuilt output.md from the agent's EXECUTION.log summary. Research integrity is unaffected.</p>
+
+      <h3 class="section-h3">Information Gaps</h3>
+      <ul class="text-sm">
+        <li>LIFE 2026 call details not yet published (April 21 publication expected). All LIFE grant amounts/rates based on 2025 call docs.</li>
+        <li>Cluster 5 specific 2026 energy call identifiers not found.</li>
+        <li>EIC Accelerator specific foreign-parent SME consolidation official guidance text not directly confirmed (inferred from 2003/361/EC + programme docs).</li>
+        <li>Smart&amp;Start success rate not confirmed from primary Italian source (20-40% is research-grade estimate).</li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t text-center text-xs" style="border-color: var(--border); color: var(--text-dim);">
+      <div class="mb-1">DELPHI | D3 | nx-20260410-r5eu | 2026-04-10</div>
+      <div>NexusOS Research Pipeline | Cortex: business_solnest (ID: 64fda89e)</div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+// Theme toggle
+const themeBtn = document.getElementById('themeBtn');
+const themeIcon = document.getElementById('themeIcon');
+const html = document.documentElement;
+const savedTheme = localStorage.getItem('nexus-theme') || 'dark';
+if (savedTheme === 'light') {
+  html.classList.remove('dark');
+  html.classList.add('light');
+  themeIcon.textContent = 'Dark';
+}
+themeBtn.addEventListener('click', () => {
+  const isDark = html.classList.contains('dark');
+  html.classList.toggle('dark', !isDark);
+  html.classList.toggle('light', isDark);
+  themeIcon.textContent = isDark ? 'Dark' : 'Light';
+  localStorage.setItem('nexus-theme', isDark ? 'light' : 'dark');
+  setTimeout(() => { if (window.rebuildCharts) window.rebuildCharts(); }, 100);
+});
+
+// Share
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const url = window.location.href;
+  const title = document.title;
+  if (navigator.share) {
+    try { await navigator.share({ title, url }); } catch(e){}
+  } else {
+    try {
+      await navigator.clipboard.writeText(url);
+      const btn = document.getElementById('shareBtn');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<span>Copied!</span>';
+      setTimeout(() => { btn.innerHTML = original; }, 1600);
+    } catch(e){}
+  }
+});
+
+// Intersection Observer for fade-in
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+// TOC active link on scroll
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+const tocObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => tocObserver.observe(s));
+
+// Chart.js
+const cssVar = (n) => getComputedStyle(document.body).getPropertyValue(n).trim();
+function chartColors() {
+  const isDark = document.documentElement.classList.contains('dark');
+  return {
+    text: isDark ? '#e6edf3' : '#0f172a',
+    dim: isDark ? '#9ca3af' : '#64748b',
+    grid: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)',
+    accent: isDark ? '#58a6ff' : '#5E6AD2',
+    success: '#22c55e',
+    danger: '#ef4444',
+    warning: '#eab308',
+    purple: '#a371f7'
+  };
+}
+let charts = {};
+function buildCharts() {
+  Object.values(charts).forEach(c => c && c.destroy && c.destroy());
+  const c = chartColors();
+  Chart.defaults.color = c.text;
+  Chart.defaults.font.family = "'Inter', sans-serif";
+
+  // Accessibility horizontal bar
+  const accessCtx = document.getElementById('accessChart');
+  if (accessCtx) {
+    charts.access = new Chart(accessCtx, {
+      type: 'bar',
+      data: {
+        labels: ['EIC Accelerator', 'LIFE Clean Energy', 'Horizon Cluster 4', 'Horizon Cluster 5', 'EIC Pathfinder', 'EIC Transition', 'InvestEU', 'CEF Energy', 'SME Instrument P1'],
+        datasets: [{
+          label: 'Accessibility Score (1 blocked, 2 partial, 3 accessible)',
+          data: [1, 1, 2, 2, 1, 1, 1, 1, 0],
+          backgroundColor: [
+            c.danger, c.danger, c.warning, c.warning, c.danger, c.danger, c.danger, c.danger, '#6b7280'
+          ],
+          borderRadius: 6,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const labels = ['DEAD (terminated 2019)', 'BLOCKED (hard gate)', 'PARTIAL (junior partner)', 'ACCESSIBLE'];
+                return labels[ctx.parsed.x] || '';
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            max: 3,
+            grid: { color: c.grid },
+            ticks: {
+              color: c.dim,
+              callback: (v) => ['Dead', 'Blocked', 'Partial', 'Open'][v] || ''
+            }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: c.dim, font: { size: 12 } }
+          }
+        }
+      }
+    });
+  }
+
+  // Year 1 doughnut
+  const doughCtx = document.getElementById('stackDoughnut');
+  if (doughCtx) {
+    charts.dough = new Chart(doughCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Italy (Smart&Start)', 'France (Bourse FT)', 'US (Solar Prize)', 'EU-level (blocked Y1)'],
+        datasets: [{
+          data: [450, 200, 100, 0.1],
+          backgroundColor: [c.success, c.accent, c.warning, c.grid],
+          borderColor: c.grid,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: c.dim, font: { size: 11 }, padding: 12, boxWidth: 10 }
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                if (ctx.dataIndex === 3) return ctx.label + ': 0 (post-MVP gate)';
+                return ctx.label + ': ~EUR ' + ctx.parsed + 'K midpoint';
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // Year stack
+  const yearCtx = document.getElementById('yearStack');
+  if (yearCtx) {
+    charts.year = new Chart(yearCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Italy (R3)', 'France (R1)', 'US (R2)', 'SeedBlink (R4)', 'EIC Accel (R5)', 'Widening (R5)', 'Horizon (R5)'],
+        datasets: [
+          {
+            label: 'Year 1 (EUR K)',
+            data: [450, 200, 100, 0, 0, 0, 0],
+            backgroundColor: c.accent,
+            borderRadius: 4
+          },
+          {
+            label: 'Year 2 (EUR K)',
+            data: [0, 0, 0, 350, 2500, 125, 650],
+            backgroundColor: c.purple,
+            borderRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: c.dim, font: { size: 11 }, padding: 12, boxWidth: 10 }
+          }
+        },
+        scales: {
+          x: {
+            stacked: true,
+            grid: { display: false },
+            ticks: { color: c.dim, font: { size: 10 } }
+          },
+          y: {
+            stacked: true,
+            grid: { color: c.grid },
+            ticks: {
+              color: c.dim,
+              callback: (v) => v >= 1000 ? (v/1000)+'M' : v+'K'
+            }
+          }
+        }
+      }
+    });
+  }
+}
+window.rebuildCharts = buildCharts;
+window.addEventListener('load', buildCharts);
+</script>
+</body>
+</html>
