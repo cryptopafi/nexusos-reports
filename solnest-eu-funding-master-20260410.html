@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SolNest EU Funding Master 2026 — R1-R8 Synthesis</title>
+<meta name="description" content="25 European countries mapped. Italy Smart&amp;Start €300-600K Y1 anchor. Multi-entity €400-600K realistic. 8 Delphi dispatches + ~40 Perplexity Sonar Pro calls.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SolNest EU Funding Master 2026 — R1-R8 Synthesis">
+<meta property="og:description" content="25 European countries mapped. Italy Smart&amp;Start €300-600K Y1 anchor. Multi-entity €400-600K realistic. 8 Delphi dispatches + ~40 Perplexity Sonar Pro calls.">
+<meta property="og:url" content="https://cryptopafi.github.io/nexusos-reports/solnest-eu-funding-master-20260410.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --card-elev: #16161f;
+    --border: rgba(255,255,255,0.08);
+    --text: #e6e6ef;
+    --text-dim: #9aa0b4;
+    --accent: #58a6ff;
+    --accent-glow: rgba(88,166,255,0.14);
+    --good: #22c55e;
+    --warn: #eab308;
+    --bad: #ef4444;
+    --glass: rgba(17,17,24,0.7);
+  }
+  html[data-theme="light"] {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --card-elev: #f4f4f7;
+    --border: rgba(0,0,0,0.08);
+    --text: #1a1a24;
+    --text-dim: #5c5f72;
+    --accent: #5E6AD2;
+    --accent-glow: rgba(94,106,210,0.12);
+    --glass: rgba(255,255,255,0.8);
+  }
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: 'ss01','cv11';
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, var(--accent-glow), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, var(--accent-glow), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  code, pre, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  .shell {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    display: grid;
+    grid-template-columns: 260px minmax(0,1fr) 280px;
+    gap: 2rem;
+  }
+  @media (max-width: 1100px) {
+    .shell { grid-template-columns: 1fr; }
+    .sidebar-left, .sidebar-right { position: static !important; max-height: none !important; }
+  }
+
+  .topbar {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .brand {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .brand .dot { color: var(--accent); }
+  .topbar .actions { display: flex; gap: 0.5rem; }
+  .btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 0.9rem;
+    border-radius: 0.6rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero {
+    grid-column: 1 / -1;
+    border: 1px solid var(--border);
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 1.25rem;
+    padding: 2.5rem 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero .pub-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-glow);
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.6rem;
+  }
+  .hero .subtitle {
+    color: var(--text-dim);
+    font-size: 1rem;
+    max-width: 70ch;
+    line-height: 1.55;
+  }
+  .kpi-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    padding: 1.1rem 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--accent-glow), transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .kpi-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+  .kpi-value {
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0.3rem 0 0.2rem;
+    color: var(--text);
+  }
+  .kpi-sub {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+  .urgent-banner {
+    grid-column: 1 / -1;
+    background: linear-gradient(90deg, rgba(239,68,68,0.15), rgba(234,179,8,0.12));
+    border: 1px solid rgba(239,68,68,0.35);
+    border-radius: 0.9rem;
+    padding: 1rem 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .urgent-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #fca5a5;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  html[data-theme="light"] .urgent-title { color: #c53030; }
+  .urgent-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    font-size: 0.92rem;
+  }
+  .urgent-item strong { color: var(--text); }
+
+  .sidebar-left {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    padding-right: 0.25rem;
+  }
+  .sidebar-left .toc-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    margin: 0.5rem 0 0.8rem;
+    font-weight: 700;
+  }
+  .toc-link {
+    display: block;
+    color: var(--text-dim);
+    padding: 0.35rem 0.6rem;
+    border-left: 2px solid transparent;
+    font-size: 0.84rem;
+    line-height: 1.35;
+    transition: all 0.15s ease;
+    border-radius: 0 0.35rem 0.35rem 0;
+    text-decoration: none;
+  }
+  .toc-link:hover {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: var(--accent-glow);
+  }
+  .toc-link.toc-l3 {
+    padding-left: 1.2rem;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    opacity: 0.75;
+  }
+
+  .sidebar-right {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+  .meta-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    padding: 1.2rem 1.1rem;
+  }
+  .meta-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.45rem 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.82rem;
+    gap: 0.5rem;
+  }
+  .meta-row:last-child { border-bottom: none; }
+  .meta-key { color: var(--text-dim); white-space: nowrap; }
+  .meta-val { color: var(--text); text-align: right; font-weight: 500; }
+
+  .content-col { min-width: 0; }
+
+  .report-h1 {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 2rem 0 1rem;
+    display: none; /* hidden: hero already shows title */
+  }
+  .report-h2 {
+    font-size: clamp(1.25rem, 1.9vw, 1.55rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin: 3rem 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 1rem;
+    color: var(--text);
+  }
+  .report-h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 2rem 0 0.7rem;
+    color: var(--accent);
+    scroll-margin-top: 1rem;
+  }
+  .report-h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 1.3rem 0 0.5rem;
+    color: var(--text);
+  }
+  .report-p {
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-size: 0.94rem;
+  }
+  .report-list {
+    margin: 0.8rem 0 1.2rem 1.2rem;
+    color: var(--text);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+  .report-list li { margin-bottom: 0.35rem; }
+  .report-hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+  .report-p code, .report-list code, .meta-val code {
+    background: var(--card-elev);
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.3rem;
+    font-size: 0.85em;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 0.8rem;
+    background: var(--card);
+    margin: 1rem 0 1.5rem;
+  }
+  .report-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  .report-table th {
+    background: var(--card-elev);
+    color: var(--text-dim);
+    text-align: left;
+    padding: 0.7rem 0.85rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+  }
+  .report-table td {
+    padding: 0.65rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text);
+  }
+  .report-table tr:last-child td { border-bottom: none; }
+  .report-table tr:hover td { background: var(--accent-glow); }
+  .report-table strong { color: var(--text); }
+
+  .chart-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    padding: 1.2rem 1.3rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .chart-block h4 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
+  .chart-block canvas { max-height: 320px; }
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 900px) {
+    .charts-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .prev-reports {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    padding: 1.3rem;
+    margin: 2rem 0;
+  }
+  .prev-reports h4 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
+  .prev-reports .prev-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.6rem;
+  }
+  .prev-link {
+    display: block;
+    padding: 0.7rem 0.9rem;
+    background: var(--card-elev);
+    border: 1px solid var(--border);
+    border-radius: 0.55rem;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+  }
+  .prev-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
+    transform: translateX(2px);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  footer.site-foot {
+    max-width: 1400px;
+    margin: 2rem auto 0;
+    padding: 1.5rem 1.5rem 3rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  /* print */
+  @media print {
+    html[data-theme="dark"], html { background: #fff !important; color: #111 !important; }
+    body { background: #fff !important; }
+    .topbar, .sidebar-left, .sidebar-right, .btn, .urgent-banner { display: none !important; }
+    .shell { display: block !important; max-width: 100% !important; padding: 0 !important; }
+    .hero, .kpi-card, .report-table, .chart-block, .meta-card, .prev-reports {
+      page-break-inside: avoid;
+      background: #fff !important;
+      color: #111 !important;
+      border-color: #ccc !important;
+    }
+    .report-h2, .report-h3, .report-p, .report-list, .report-table td, .report-table th {
+      color: #111 !important;
+    }
+    a { color: #333 !important; text-decoration: underline; }
+    .fade-in { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">NexusOS<span class="dot">.</span> Reports</div>
+  <div class="actions">
+    <button class="btn" id="themeToggle" aria-label="Toggle theme">Theme</button>
+    <button class="btn" id="shareBtn" aria-label="Share report">Share</button>
+    <button class="btn" onclick="window.print()" aria-label="Print">Print</button>
+  </div>
+</div>
+
+<main class="shell">
+
+  <section class="hero fade-in">
+    <span class="pub-tag">Published 2026-04-10 PM5 &middot; Genie Synthesis</span>
+    <h1>SolNest EU Funding Master 2026 — R1-R8 Synthesis</h1>
+    <p class="subtitle">25 European countries mapped across 8 Delphi dispatches and ~40 Perplexity Sonar Pro calls. Italy Smart&amp;Start emerges as the dominant Year 1 anchor at €300-600K realistic capture. A 5-entity multi-country machine adds operational complexity for ~€400-600K realistic Year 1. Year 1+2 cumulative potential reaches €1.25M-€4.55M once MVP unlocks EIC Accelerator.</p>
+  </section>
+
+  <section class="kpi-grid fade-in">
+    
+<div class="kpi-card">
+  <div class="kpi-label">Countries Mapped</div>
+  <div class="kpi-value">25</div>
+  <div class="kpi-sub">EU + UK + CH + NO</div>
+</div>
+<div class="kpi-card">
+  <div class="kpi-label">Top Program</div>
+  <div class="kpi-value">€300-600K</div>
+  <div class="kpi-sub">Smart&amp;Start Italia</div>
+</div>
+<div class="kpi-card">
+  <div class="kpi-label">Y1 Multi-Entity</div>
+  <div class="kpi-value">€400-600K</div>
+  <div class="kpi-sub">5-entity stack</div>
+</div>
+<div class="kpi-card">
+  <div class="kpi-label">Y1+2 Potential</div>
+  <div class="kpi-value">€1.25M-4.55M</div>
+  <div class="kpi-sub">post-MVP unlock</div>
+</div>
+<div class="kpi-card">
+  <div class="kpi-label">GO Countries</div>
+  <div class="kpi-value">2</div>
+  <div class="kpi-sub">Italy + NL</div>
+</div>
+<div class="kpi-card">
+  <div class="kpi-label">NO-GO (Fatal)</div>
+  <div class="kpi-value">6</div>
+  <div class="kpi-sub">SE UK HU SK DE-EXIST FR-2030</div>
+</div>
+  </section>
+
+  
+<div class="urgent-banner">
+  <div class="urgent-title">Urgent Deadlines</div>
+  <div class="urgent-list">
+    <span class="urgent-item"><strong>Apr 19</strong> &middot; PL SCALAB €92K</span>
+    <span class="urgent-item"><strong>Apr 21</strong> &middot; RO PNRR (verify first)</span>
+    <span class="urgent-item"><strong>Jun 30</strong> &middot; PT Voucher €30K</span>
+    <span class="urgent-item"><strong>Aug 31</strong> &middot; FI Sprint €100K</span>
+  </div>
+</div>
+
+
+  <aside class="sidebar-left fade-in">
+    <div class="toc-title">Contents</div>
+    <a href="#1-executive-scorecard" class="toc-link toc-l2">1. Executive Scorecard</a>
+<a href="#2-strategic-pivot-what-r1-r8-changed-vs-delphi-d4" class="toc-link toc-l2">2. Strategic Pivot — What R1-R8 Changed vs Delphi D4</a>
+<a href="#21-france-rank-1-plan-b-single-blocker" class="toc-link toc-l3">2.1 France: Rank #1 → Plan B (single blocker)</a>
+<a href="#22-italy-phase-2-play-year-1-anchor-landmine-debunked" class="toc-link toc-l3">2.2 Italy: Phase 2 play → Year 1 anchor (landmine debunked)</a>
+<a href="#23-finland-tempo-d4-rank-2-discontinued-sprint-grant-replacement" class="toc-link toc-l3">2.3 Finland: Tempo (D4 Rank #2) discontinued → Sprint Grant replacement</a>
+<a href="#24-eu-level-eic-accelerator-pre-mvp-access-post-mvp-trl-6-hard-gate" class="toc-link toc-l3">2.4 EU-level: EIC Accelerator pre-MVP access → Post-MVP TRL 6 hard gate</a>
+<a href="#25-republiccom-abandon-confirmed-seedblink-year-2-addition" class="toc-link toc-l3">2.5 Republic.com: ABANDON confirmed + SeedBlink Year 2 addition</a>
+<a href="#26-age-41-5-blocked-directionally-fair-now-precisely-quantified" class="toc-link toc-l3">2.6 Age 41: "5% blocked" directionally fair, now precisely quantified</a>
+<a href="#27-foreign-ownership-d4s-generally-ok-r1-r8s-2425-confirmed" class="toc-link toc-l3">2.7 Foreign ownership: D4's "generally OK" → R1-R8's "24/25 confirmed"</a>
+<a href="#3-country-by-country-verdicts-all-25" class="toc-link toc-l2">3. Country-by-Country Verdicts (all 25)</a>
+<a href="#31-master-verdict-table" class="toc-link toc-l3">3.1 Master verdict table</a>
+<a href="#32-urgent-deadline-queue" class="toc-link toc-l3">3.2 Urgent deadline queue</a>
+<a href="#4-combined-top-10-year-1-programs-ranked-by-realistic-capture" class="toc-link toc-l2">4. Combined Top 10 — Year 1 Programs Ranked by Realistic Capture</a>
+<a href="#5-stack-ability-analysis" class="toc-link toc-l2">5. Stack-ability Analysis</a>
+<a href="#51-core-rules-eu-state-aid" class="toc-link toc-l3">5.1 Core rules (EU state aid)</a>
+<a href="#52-compatibility-matrix-r6r7r8-programs-italy-smartstart-anchor" class="toc-link toc-l3">5.2 Compatibility matrix — R6+R7+R8 programs × Italy Smart&amp;Start anchor</a>
+<a href="#53-de-minimis-arithmetic-worked-example" class="toc-link toc-l3">5.3 De minimis arithmetic — worked example</a>
+<a href="#6-action-sequence-italy-anchor-vs-multi-entity-machine" class="toc-link toc-l2">6. Action Sequence — Italy-Anchor vs Multi-Entity Machine</a>
+<a href="#61-path-a-italy-only-anchor-single-jurisdiction-recommended-conservative" class="toc-link toc-l3">6.1 PATH A: Italy-only anchor (single-jurisdiction, recommended conservative)</a>
+<a href="#62-path-b-multi-entity-european-funding-machine-5-entities-aggressive" class="toc-link toc-l3">6.2 PATH B: Multi-entity European funding machine (5 entities, aggressive)</a>
+<a href="#63-path-c-mini-hedge-italy-finland-romania" class="toc-link toc-l3">6.3 PATH C: Mini hedge (Italy + Finland + Romania)</a>
+<a href="#7-hard-fatalities-skip-these-25-country-wide" class="toc-link toc-l2">7. Hard Fatalities — Skip These (25-country-wide)</a>
+<a href="#8-universal-w4-admin-findings-25-countries" class="toc-link toc-l2">8. Universal W4 Admin Findings (25 countries)</a>
+<a href="#9-11-verification-emails-queue-p0-p2" class="toc-link toc-l2">9. 11 Verification Emails Queue (P0-P2)</a>
+<a href="#10-capital-stack-scenarios-year-1-and-year-12-cumulative" class="toc-link toc-l2">10. Capital stack scenarios — Year 1 and Year 1+2 cumulative</a>
+<a href="#year-1-realistic" class="toc-link toc-l3">Year 1 realistic</a>
+<a href="#year-12-cumulative-post-mvp-unlock" class="toc-link toc-l3">Year 1+2 cumulative (post-MVP unlock)</a>
+<a href="#11-open-questions-unresolved-dependencies" class="toc-link toc-l2">11. Open Questions / Unresolved Dependencies</a>
+<a href="#12-recommendations-genie-opinion-not-mandate" class="toc-link toc-l2">12. Recommendations (Genie opinion, not mandate)</a>
+<a href="#13-sources" class="toc-link toc-l2">13. Sources</a>
+  </aside>
+
+  <div class="content-col fade-in">
+    <h1 class="report-h1">SolNest — European Funding Master 2026 (R1-R8 Synthesis)</h1>
+<p class="report-p"><strong>Synthesis date</strong>: 2026-04-10 PM5 <strong>Source dispatches</strong>: Delphi R1-R5 (PM4) + R6-R8 (PM5), 8 Delphi runs, ~40 Perplexity Sonar Pro calls, 25 European countries <strong>Founder profile</strong>: Pafi, Romanian citizen, age 41, Delaware C-Corp parent (100% owned), pre-MVP solar marketplace SaaS <strong>Strategic question</strong>: Where does SolNest realistically capture non-dilutive Year 1 capital in Europe? <strong>Headline answer</strong>: Italy Smart&amp;Start Italia (€300-600K realistic) is the single dominant Year 1 play. A multi-entity European funding machine (IT + ES + PL + AT + NL) can realistically capture €400-600K Year 1 with ~5x operational complexity. NL WBSO is the universal stacking add-on (non-state-aid tax credit).</p>
+<hr class="report-hr">
+<h2 id="1-executive-scorecard" class="report-h2">1. Executive Scorecard</h2>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Countries mapped</td><td><strong>25</strong> (FR, IT, US, EU-level, DE, DK, NL, SE, NO, UK, CH, AT, ES, PT, IE, GR, BE, LU, MT, RO, EE, PL, CZ, HU, BG, SK, SI, LT, LV)</td></tr><tr><td>GO countries (immediate Y1)</td><td><strong>2</strong> (IT, NL)</td></tr><tr><td>CONDITIONAL HIGH (Y1 with entity setup)</td><td><strong>5</strong> (ES, AT, PL, FI Sprint, EE)</td></tr><tr><td>CONDITIONAL FAST PATH</td><td><strong>3</strong> (AT AWS Preseed, NL WBSO, PT Startup Voucher)</td></tr><tr><td>NO-GO (hard fatal)</td><td><strong>6</strong> (SE, UK, HU, SK, DE EXIST, FR 2030)</td></tr><tr><td>2027-ONLY windows</td><td><strong>3</strong> (CZ, SI, LU)</td></tr><tr><td>Top 1 program</td><td><strong>Smart&amp;Start Italia</strong> — €300-600K realistic Y1</td></tr><tr><td>Top 2 program</td><td><strong>Innosuisse Start-Up</strong> — €530K (Y2 disbursement)</td></tr><tr><td>Top 3 program</td><td><strong>CDTI Neotec</strong> — €325K non-repayable (Spanish SL)</td></tr><tr><td>Top stacking add-on</td><td><strong>NL WBSO</strong> — not state aid, stacks with everything</td></tr><tr><td>Y1 realistic capture (single-anchor Italy)</td><td><strong>€300-600K</strong></td></tr><tr><td>Y1 realistic capture (5-entity stack)</td><td><strong>€400-600K</strong> (40-60% conversion rate)</td></tr><tr><td>Y1 theoretical ceiling (8-sub max)</td><td><strong>€1.1M+</strong></td></tr><tr><td>Year 1+2 cumulative potential</td><td><strong>€1.25M-€4.55M</strong> (post-MVP unlocks EIC Accelerator €2.5M + €15M equity)</td></tr></tbody></table></div>
+<hr class="report-hr">
+<h2 id="2-strategic-pivot-what-r1-r8-changed-vs-delphi-d4" class="report-h2">2. Strategic Pivot — What R1-R8 Changed vs Delphi D4</h2>
+<h3 id="21-france-rank-1-plan-b-single-blocker" class="report-h3">2.1 France: Rank #1 → Plan B (single blocker)</h3>
+<p class="report-p"><strong>D4 said</strong>: France scores 8.6, Rank #1 Europe, Bourse French Tech + Kima Ventures + ADEME TREMPLIN + Bpifrance matching = Year 1 stack of €80-240K.</p>
+<p class="report-p"><strong>R1 found</strong> (2026-04-10 PM4):</p>
+<ol class="report-list"><li><strong>ADEME TREMPLIN is a phantom program.</strong> The name conflates two unrelated programs: ADEME "Tremplin pour la transition écologique des PME" (physical investment, SaaS INELIGIBLE, closed Dec 31 2025) and French Tech Tremplin Bpifrance (diversity incubator, NOT cleantech). D4's France 8.6 score was inflated ~1.5 points by this error.</li><li><strong>France 2030 = 75% foreign-ownership cap</strong> (verified from lafrenchtech.gouv.fr). A Delaware C-Corp owning 100% of a French SAS is HARD BLOCKED from France 2030. The two-entity strategy D4 recommended is <em>illegal</em> under France 2030.</li><li><strong>Bpifrance €500K matching unverifiable for 2026</strong>. Cannot confirm current program documentation. Historical "Fonds Business Angels" may be discontinued or renamed.</li><li><strong>Bourse French Tech ACTIVE 2026</strong> (€50K standard / €90K Emergence) but foreign ownership rules for 100% Delaware-owned SAS are NOT publicly documented. <em>Single blocking question: email Bpifrance.</em></li><li><strong>Kima Ventures confirmed</strong> (€150K SAFE, 2-week decision, cleantech deal Jan 2026) but equity/dilutive.</li></ol>
+<p class="report-p"><strong>Revised France stack</strong>: ~€200K (€50K conditional grant + €150K equity), not €700K+. <strong>France score: 8.6 → ~6.0-6.5</strong>.</p>
+<p class="report-p"><strong>Verdict</strong>: France is a Plan B blocked behind a single Bpifrance email. Not primary Y1 bet.</p>
+<h3 id="22-italy-phase-2-play-year-1-anchor-landmine-debunked" class="report-h3">2.2 Italy: Phase 2 play → Year 1 anchor (landmine debunked)</h3>
+<p class="report-p"><strong>D4 said</strong>: Italian SRL Innovativa may require natural-person ownership under DL 179/2012 Art 25. A Delaware-owned SRL may NOT qualify. Italy = Phase 2 play (month 6+) pending €200-500 legal opinion.</p>
+<p class="report-p"><strong>R3 found</strong> (2026-04-10 PM4):</p>
+<ul class="report-list"><li><strong>The DL 179/2012 Art 25 51% natural-person rule DOES NOT EXIST</strong> in the current consolidated text. Confirmed by:</li></ul>
+<p class="report-p">- MIMIT Circular 29 July 2025 (most authoritative 2026 source)   - MIMIT official Art 25 PDF   - Normattiva.it consolidated text   - 7/8 Perplexity Sonar Pro sources</p>
+<ul class="report-list"><li>Real gate is <strong>Law 193/2024 Art 28 SME consolidation test</strong> (size-based, not nationality-based). SolNest passes easily: Delaware parent = 0 employees, €0 revenue → Italian SRL = micro enterprise independently.</li><li><strong>Scenario A (Delaware-owned Italian SRL) is VIABLE.</strong> Year 1 realistic capture: <strong>€300-600K</strong>. Legal risk 2/5.</li><li><strong>Smart&amp;Start Italia 2026 CONFIRMED OPEN</strong> (sportello permanente, rolling), €100K-€1.5M at 0% interest rate + 30% non-repayable grant component in Southern Italy (Calabria, Puglia, Sicilia, Basilicata, Campania, Molise, Abruzzo, Sardegna).</li></ul>
+<p class="report-p"><strong>Verdict</strong>: Italy is the <strong>dominant single-jurisdiction Year 1 play</strong> for SolNest. Not Phase 2. An optional €1.5-3K legal opinion on SME consolidation calc is nice-to-have, NOT a veto gate.</p>
+<h3 id="23-finland-tempo-d4-rank-2-discontinued-sprint-grant-replacement" class="report-h3">2.3 Finland: Tempo (D4 Rank #2) discontinued → Sprint Grant replacement</h3>
+<p class="report-p"><strong>D4 said</strong>: Business Finland Tempo (€50-200K, rolling, 6-8 weeks, pre-MVP OK, English, no residency) = "single most streamlined national grant process in Europe." Finland Rank #2 score 8.3.</p>
+<p class="report-p"><strong>R1 spot-check found</strong>: <strong>Tempo discontinued October 3 2025.</strong> Replaced by <strong>Sprint Grant</strong>:</p>
+<ul class="report-list"><li>€100K max</li><li>75% of eligible costs</li><li>&lt;5yo company</li><li>No founder residency required</li><li>English application accepted</li><li>Foreign ownership permitted</li><li><strong>Hard fixed window: March 2 → August 31 2026</strong> (~4.5 months remaining from 2026-04-10)</li></ul>
+<p class="report-p"><strong>Verdict</strong>: Finland remains a viable Plan C with a hard ticking deadline. Not the fastest path anymore (Tempo's rolling window gone), but still high-quality.</p>
+<h3 id="24-eu-level-eic-accelerator-pre-mvp-access-post-mvp-trl-6-hard-gate" class="report-h3">2.4 EU-level: EIC Accelerator pre-MVP access → Post-MVP TRL 6 hard gate</h3>
+<p class="report-p"><strong>D4 implied</strong>: EIC Accelerator accessible post-setup with soft TRL thresholds, €2.5M grant + €15M equity co-investment.</p>
+<p class="report-p"><strong>R5 found</strong> (2026-04-10 PM4):</p>
+<ul class="report-list"><li><strong>EIC Accelerator TRL 6 HARD requirement</strong> confirmed by EIC FAQ + EIC Guide v6.0 (Nov 2025). Pre-MVP INELIGIBLE. No workaround.</li><li><strong>SME Instrument Phase 1 (€50K)</strong>: TERMINATED September 2019. Does not exist in 2026. Any reference to "Horizon Europe SME Instrument Phase 1" in older strategy docs is obsolete.</li><li><strong>LIFE Clean Energy</strong>: 3 partners from 3 EU countries minimum. Solo founder BLOCKED.</li><li><strong>Horizon Europe Clusters 4/5</strong>: consortium of 3+ required, 18-24 months to cash. Year 2+ junior partner path only.</li><li><strong>EIC Pathfinder + Transition</strong>: consortium + deep-tech research. Weak fit for solar marketplace SaaS.</li><li><strong>InvestEU</strong>: via financial intermediaries only, no direct startup access.</li><li><strong>CEF Energy</strong>: infrastructure only, wrong domain.</li></ul>
+<p class="report-p"><strong>Strategic implication</strong>: <strong>No EU-level program beats Smart&amp;Start Italia for pre-MVP SolNest.</strong> EU-level is a Year 2+ target after MVP unlocks EIC Accelerator Step 1.</p>
+<h3 id="25-republiccom-abandon-confirmed-seedblink-year-2-addition" class="report-h3">2.5 Republic.com: ABANDON confirmed + SeedBlink Year 2 addition</h3>
+<p class="report-p"><strong>D4 said</strong>: Republic ABANDON 2026, revisit 2027 via Raise Green or Wefunder.</p>
+<p class="report-p"><strong>R4 found</strong> (2026-04-10 PM4):</p>
+<ul class="report-list"><li>No new Q1 2026 EDGAR data contradicts D4.</li><li>Pre-revenue solar Reg-CF median ~$112K vs $25-60K upfront + 12-14 months = ~$70K net.</li><li>Raise Green merged with Honeycomb Credit → pivoted to project-finance lending, WRONG FIT for SaaS marketplace. "2027 revisit" path is moot.</li><li><strong>NEW: SeedBlink (Romania, ECSPR-licensed, €430M raised historically)</strong> = Year 2 crowdfunding path after EU entity formation. Romanian founder = natural network overlap; the "60-70% of capital from founder's own network" Reg-CF failure mode actually works IN FAVOR for Pafi on SeedBlink.</li></ul>
+<p class="report-p"><strong>Verdict</strong>: Republic ABANDON confirmed. SeedBlink is the Year 2 addition.</p>
+<h3 id="26-age-41-5-blocked-directionally-fair-now-precisely-quantified" class="report-h3">2.6 Age 41: "5% blocked" directionally fair, now precisely quantified</h3>
+<p class="report-p">R1-R8 cross-checked 25 countries. <strong>Only ONE grant program fatally blocks Pafi at 41</strong>: ES ENISA Jóvenes Emprendedores (majority capital holders ≤40). Close call — verify day-of-application semantics.</p>
+<p class="report-p">ALL 24 other countries have NO age caps on their main grant programs. D4's directional claim was fair; now the specific blocker is isolated.</p>
+<h3 id="27-foreign-ownership-d4s-generally-ok-r1-r8s-2425-confirmed" class="report-h3">2.7 Foreign ownership: D4's "generally OK" → R1-R8's "24/25 confirmed"</h3>
+<p class="report-p">R1-R8 verified: <strong>only France 2030 explicitly blocks</strong> Delaware C-Corp owning 100% EU sub (75% foreign-ownership cap). No France-style nationality caps surfaced in any of the other 24 countries. The two-entity structure (Delaware parent + EU sub) is LEGAL in 24/25 European countries surveyed.</p>
+<hr class="report-hr">
+<h2 id="3-country-by-country-verdicts-all-25" class="report-h2">3. Country-by-Country Verdicts (all 25)</h2>
+<h3 id="31-master-verdict-table" class="report-h3">3.1 Master verdict table</h3>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>#</th><th>Country</th><th>Verdict</th><th>Best program</th><th>Year 1 € realistic</th><th>Source</th></tr></thead><tbody><tr><td>1</td><td>🇮🇹 <strong>Italy</strong></td><td><strong>GO (anchor)</strong></td><td>Smart&amp;Start Italia</td><td><strong>€300-600K</strong></td><td>R3</td></tr><tr><td>2</td><td>🇨🇭 Switzerland</td><td>CONDITIONAL HIGH</td><td>Innosuisse Start-Up</td><td>€0 Y1 / €300-530K Y2</td><td>R6</td></tr><tr><td>3</td><td>🇪🇸 Spain</td><td>CONDITIONAL HIGH</td><td>CDTI Neotec</td><td>€250-325K</td><td>R7</td></tr><tr><td>4</td><td>🇵🇱 Poland</td><td>CONDITIONAL HIGH</td><td>BRIdge Alfa + Smart UP</td><td>€92-230K</td><td>R8</td></tr><tr><td>5</td><td>🇦🇹 Austria</td><td>CONDITIONAL FAST</td><td>AWS Preseed</td><td>€60-200K</td><td>R6</td></tr><tr><td>6</td><td>🇳🇱 <strong>Netherlands</strong></td><td><strong>GO</strong></td><td>WBSO R&amp;D Tax Credit</td><td>€20-50K + universal stacking</td><td>R6</td></tr><tr><td>7</td><td>🇫🇮 Finland</td><td>CONDITIONAL (deadline)</td><td>Sprint Grant</td><td>€100K (by Aug 31)</td><td>R1 spot-check</td></tr><tr><td>8</td><td>🇱🇹 Lithuania</td><td>CONDITIONAL</td><td>MITA ICT Startup Grant</td><td>€62K</td><td>R8</td></tr><tr><td>9</td><td>🇳🇴 Norway</td><td>CONDITIONAL</td><td>Innovation Norway Env. Tech</td><td>€13-86K</td><td>R6</td></tr><tr><td>10</td><td>🇪🇪 Estonia</td><td>GO (CONDITIONAL)</td><td>EAS Dev Grant + Startup Visa</td><td>€35-62K</td><td>R8</td></tr><tr><td>11</td><td>🇩🇪 Germany</td><td>CONDITIONAL</td><td>Bavaria Start?Zuschuss!</td><td>€18-36K</td><td>R6</td></tr><tr><td>12</td><td>🇵🇹 Portugal</td><td>CONDITIONAL URGENT</td><td>Startup Voucher Tier 2</td><td>€30-60K (Jun 30)</td><td>R7</td></tr><tr><td>13</td><td>🇮🇪 Ireland</td><td>CONDITIONAL (equity-heavy)</td><td>HPSU Feasibility</td><td>€30K non-dilutive only</td><td>R7</td></tr><tr><td>14</td><td>🇱🇻 Latvia</td><td>CONDITIONAL LOW</td><td>LIAA Innovation Voucher</td><td>€25K</td><td>R8</td></tr><tr><td>15</td><td>🇩🇰 Denmark</td><td>CONDITIONAL</td><td>EUDP (TRL 4 gate)</td><td>€0-200K</td><td>R6</td></tr><tr><td>16</td><td>🇷🇴 Romania</td><td>CONDITIONAL</td><td>PNRR Open Startup Pillar III + Startup Nation</td><td>€0-50K</td><td>R8</td></tr><tr><td>17</td><td>🇧🇬 Bulgaria</td><td>CONDITIONAL LOW</td><td>Sofia Tech Park SEEIP</td><td>€0-20K</td><td>R8</td></tr><tr><td>18</td><td>🇬🇷 Greece</td><td>LOW PRIORITY</td><td>Phaethon (unconfirmed)</td><td>€0-TBD</td><td>R7</td></tr><tr><td>19</td><td>🇲🇹 Malta</td><td>SKIP</td><td>Business Start €10K</td><td>unfavorable ROI</td><td>R7</td></tr><tr><td>20</td><td>🇧🇪 Belgium</td><td>CONDITIONAL post-MVP</td><td>VLAIO Scale-Ready</td><td>€10-25K Y1</td><td>R7</td></tr><tr><td>21</td><td>🇱🇺 Luxembourg</td><td><strong>2027 ONLY</strong></td><td>Fit 4 Start</td><td>€0 Y1 / €150K 2027</td><td>R7</td></tr><tr><td>22</td><td>🇨🇿 Czech Rep.</td><td><strong>2027 ONLY</strong></td><td>Technology Incubation PLUS</td><td>€0 Y1 / €200K 2027</td><td>R8</td></tr><tr><td>23</td><td>🇸🇮 Slovenia</td><td><strong>2027 ONLY</strong></td><td>P2 SEF</td><td>€0 Y1 / €72K 2027</td><td>R8</td></tr><tr><td>24</td><td>🇫🇷 <strong>France</strong></td><td><strong>PLAN B blocked</strong></td><td>Bourse French Tech</td><td>€0 until Bpifrance email</td><td>R1</td></tr><tr><td>25</td><td>🇸🇪 <strong>Sweden</strong></td><td><strong>NO-GO</strong></td><td>Vinnova citizenship-locked</td><td>€0</td><td>R6</td></tr><tr><td>26</td><td>🇬🇧 <strong>UK</strong></td><td><strong>NO-GO</strong></td><td>Smart Grants paused since Jan 2025</td><td>€0</td><td>R6</td></tr><tr><td>27</td><td>🇭🇺 <strong>Hungary</strong></td><td><strong>NO-GO</strong></td><td>GINOP-PLUSZ excludes SaaS</td><td>€0</td><td>R8</td></tr><tr><td>28</td><td>🇸🇰 <strong>Slovakia</strong></td><td><strong>NO-GO (grants)</strong></td><td>Loan/equity only</td><td>€0</td><td>R8</td></tr></tbody></table></div>
+<p class="report-p">(28 rows because France and the 3 non-EU countries UK/CH/NO are counted separately from the 24 EU member states.)</p>
+<h3 id="32-urgent-deadline-queue" class="report-h3">3.2 Urgent deadline queue</h3>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>Deadline</th><th>Country</th><th>Program</th><th>€</th><th>Action</th></tr></thead><tbody><tr><td><strong>Apr 19</strong> (9 days)</td><td>🇵🇱 Poland</td><td>PARP Smart UP via SCALAB</td><td>€92K</td><td>en.parp.gov.pl/startup-booster — requires Polish Sp. z o.o. already</td></tr><tr><td><strong>Apr 21</strong> (11 days)</td><td>🇷🇴 Romania</td><td>PNRR Open Startup Pillar III</td><td>TBD</td><td><strong>VERIFY FIRST</strong> at oportunitati-ue.gov.ro (single-source, LOW conf)</td></tr><tr><td><strong>Jun 30</strong> (81 days)</td><td>🇵🇹 Portugal</td><td>Startup Voucher Tier 2</td><td>€30K</td><td>Register PT Lda + IAPMEI call (808 201 201) to confirm foreign founder</td></tr><tr><td><strong>Aug 31</strong> (142 days)</td><td>🇫🇮 Finland</td><td>Sprint Grant</td><td>€100K</td><td>English OK, no residency, foreign ownership permitted</td></tr><tr><td>Ongoing (roll)</td><td>🇳🇱 Netherlands</td><td>WBSO R&amp;D Tax Credit</td><td>€20-50K/yr</td><td>Rolling, no deadline — lowest overhead</td></tr><tr><td>Ongoing (roll)</td><td>🇵🇱 Poland</td><td>BRIdge Alfa</td><td>€230K</td><td>Continuous call</td></tr><tr><td>Ongoing (roll)</td><td>🇦🇹 Austria</td><td>AWS Preseed</td><td>€170-200K</td><td>6-8 week decision</td></tr></tbody></table></div>
+<hr class="report-hr">
+<h2 id="4-combined-top-10-year-1-programs-ranked-by-realistic-capture" class="report-h2">4. Combined Top 10 — Year 1 Programs Ranked by Realistic Capture</h2>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>Rank</th><th>Program</th><th>Country</th><th>Max €</th><th>Type</th><th>Status / Key blocker</th></tr></thead><tbody><tr><td>1</td><td><strong>Smart&amp;Start Italia</strong></td><td>🇮🇹 IT</td><td>€300-600K realistic</td><td>Grant + 0% loan + 30% non-repayable (South IT)</td><td><strong>GO</strong> — sportello permanente, 3-5 mo setup. Single dominant Y1 play.</td></tr><tr><td>2</td><td>Innosuisse Start-Up Innovation</td><td>🇨🇭 CH</td><td>€530K</td><td>non-dilutive, conditional repay</td><td>CH GmbH + 30% own contribution (~€130K Pafi inject). Y2 disbursement.</td></tr><tr><td>3</td><td>CDTI Neotec</td><td>🇪🇸 ES</td><td>€325K</td><td>non-repayable grant</td><td>Spanish SL, spring 2026 call URGENT, 6-month registry filing.</td></tr><tr><td>4</td><td>PL BRIdge Alfa (NCBR)</td><td>🇵🇱 PL</td><td>~€230K</td><td>80% non-refundable</td><td>Polish Sp. z o.o. Continuous call.</td></tr><tr><td>5</td><td>AT AWS Preseed</td><td>🇦🇹 AT</td><td>€170-200K</td><td>non-dilutive</td><td>Austrian GmbH 1-2 weeks. 6-8 week decision. Cleantech prioritized.</td></tr><tr><td>6</td><td>LU Fit 4 Start</td><td>🇱🇺 LU</td><td>€150K</td><td>equity-free</td><td><strong>2027 ONLY</strong> (2026 cohort closed)</td></tr><tr><td>7</td><td>FI Sprint Grant</td><td>🇫🇮 FI</td><td>€100K</td><td>75% costs non-dilutive</td><td><strong>Hard deadline Aug 31 2026</strong>. English OK, no residency.</td></tr><tr><td>8</td><td>PL PARP Smart UP</td><td>🇵🇱 PL</td><td>~€92K</td><td>accelerator grant</td><td><strong>Apr 19 SCALAB URGENT</strong>. Foreign startups with Polish Sp. z o.o.</td></tr><tr><td>9</td><td>SI P2 SEF</td><td>🇸🇮 SI</td><td>€72K</td><td>100% cost cover</td><td><strong>2027 ONLY</strong> (2026 closed March 12)</td></tr><tr><td>10</td><td>LT MITA ICT Startup Grant</td><td>🇱🇹 LT</td><td>€62K</td><td>grant</td><td>Lithuanian UAB. Verify open call.</td></tr></tbody></table></div>
+<p class="report-p"><strong>Stackable add-ons</strong> (no competition with primary):</p>
+<ul class="report-list"><li><strong>NL WBSO</strong> — rolling R&amp;D tax credit, €20-50K/yr effective value. CRITICAL: <em>not classified as state aid</em> under EU rules (general tax measure), so stacks with EVERYTHING and does not count toward de minimis or GBER ceilings. Universal backbone for any multi-entity strategy.</li><li><strong>EE EAS Development Grant + Startup Visa</strong> — €35-62K. Estonian OÜ is the lowest-cost EU company formation path (€565-1,430 one-time + €700-800/year).</li><li><strong>LV LIAA Innovation Voucher</strong> — €25K, low friction.</li><li><strong>NO Innovation Norway Idea Validation</strong> — NOK 150K (~€13K), <strong>100% funded</strong> (no co-financing), fast, rolling.</li></ul>
+<hr class="report-hr">
+<h2 id="5-stack-ability-analysis" class="report-h2">5. Stack-ability Analysis</h2>
+<h3 id="51-core-rules-eu-state-aid" class="report-h3">5.1 Core rules (EU state aid)</h3>
+<ul class="report-list"><li>Each EU subsidiary receiving aid from its member state is a SEPARATE legal entity/beneficiary.</li><li>Different subsidiaries receiving aid for activities in their respective countries = NOT double-dipping.</li><li>EU SME consolidation test (Rec. 2003/361/EC) applies per subsidiary. Delaware parent = 0 employees, €0 revenue → each EU sub qualifies independently as EU micro-enterprise.</li><li>De minimis ceiling: €300K per entity over 3 rolling fiscal years (cumulated across all de minimis aid from all sources).</li><li>GBER (General Block Exemption Regulation) programs have higher intensity ceilings than de minimis and can be combined up to eligible cost cap.</li><li>NL WBSO is classified as a general tax measure, NOT state aid → does NOT count toward de minimis or GBER ceilings.</li></ul>
+<h3 id="52-compatibility-matrix-r6r7r8-programs-italy-smartstart-anchor" class="report-h3">5.2 Compatibility matrix — R6+R7+R8 programs × Italy Smart&amp;Start anchor</h3>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>Stack combination</th><th>Compatible?</th><th>Notes</th></tr></thead><tbody><tr><td>IT Smart&amp;Start + NL WBSO</td><td>✅ <strong>YES (clean)</strong></td><td>WBSO is tax credit, not state aid. Different instrument, different country. Universal stacking add-on.</td></tr><tr><td>IT Smart&amp;Start + AT AWS Preseed</td><td>⚠ YES (careful)</td><td>Both cover personnel costs. Use distinct cost lines. Monitor de minimis ceiling.</td></tr><tr><td>IT Smart&amp;Start + ES CDTI Neotec</td><td>✅ YES (clean)</td><td>Different subsidiaries, different projects, different countries. Spanish SL ≠ Italian SRL.</td></tr><tr><td>IT Smart&amp;Start + PL BRIdge Alfa</td><td>✅ YES (clean)</td><td>Different beneficiaries.</td></tr><tr><td>IT Smart&amp;Start + PL Smart UP</td><td>⚠ YES (careful)</td><td>Same Polish Sp. z o.o. as BRIdge Alfa. Verify eligible-costs separation. De minimis risk on Polish entity alone if BRIdge Alfa classified as de minimis (it's investment, likely not).</td></tr><tr><td>IT Smart&amp;Start + NO Innovation Norway</td><td>✅ YES (clean)</td><td>Different beneficiaries.</td></tr><tr><td>IT Smart&amp;Start + CH Innosuisse</td><td>✅ YES (clean)</td><td>Swiss entity is separate from Italian SRL. Swiss state aid regime parallel to EU.</td></tr><tr><td>IT Smart&amp;Start + EE EAS Dev Grant</td><td>✅ YES (clean)</td><td>Different beneficiaries.</td></tr><tr><td>IT Smart&amp;Start + LT MITA</td><td>✅ YES (clean)</td><td>Different beneficiaries.</td></tr><tr><td>IT Smart&amp;Start + LV LIAA</td><td>✅ YES (clean)</td><td>Different beneficiaries.</td></tr><tr><td>IT Smart&amp;Start + DK EUDP</td><td>✅ YES (clean)</td><td>Different beneficiaries. EUDP is Danish consortium-based.</td></tr><tr><td>IT Smart&amp;Start + DE Bavaria/NRW</td><td>⚠ YES (careful)</td><td>Personnel cost overlap possible. Distinct cost lines required.</td></tr></tbody></table></div>
+<h3 id="53-de-minimis-arithmetic-worked-example" class="report-h3">5.3 De minimis arithmetic — worked example</h3>
+<p class="report-p"><strong>Scenario</strong>: 5-entity European funding machine (IT + ES + PL + AT + NL)</p>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>Entity</th><th>Program</th><th>Amount</th><th>State aid classification</th></tr></thead><tbody><tr><td>Italian SRL</td><td>Smart&amp;Start Italia</td><td>€400K (est.)</td><td>GBER R&amp;D + regional aid. Grant component (~€150K non-repayable for Southern IT) counts toward de minimis if classified as such; loan component (€250K at 0%) = grant-equivalent amount per EU rules ~€50K de minimis impact</td></tr><tr><td>Spanish SL</td><td>CDTI Neotec</td><td>€300K</td><td>GBER R&amp;D grant typically, NOT de minimis. Does not reduce de minimis headroom.</td></tr><tr><td>Polish Sp. z o.o.</td><td>BRIdge Alfa</td><td>€230K</td><td>NCBR seed investment, NOT classified as de minimis. Separate state aid instrument.</td></tr><tr><td>Austrian GmbH</td><td>AWS Preseed</td><td>€170-200K</td><td>GBER Art 22 startup aid. NOT de minimis.</td></tr><tr><td>Dutch BV</td><td>WBSO</td><td>€20-50K/yr</td><td>Tax measure of general application, NOT state aid. Zero impact on ceilings.</td></tr></tbody></table></div>
+<p class="report-p"><strong>Per-entity de minimis headroom</strong>: €300K/3 years. Italian SRL (~€200K de minimis equivalent from Smart&amp;Start) leaves ~€100K headroom. Spanish SL: full €300K headroom (Neotec is GBER R&amp;D). Polish entity: full €300K headroom (BRIdge Alfa is investment). Austrian entity: full €300K headroom (AWS Preseed is GBER).</p>
+<p class="report-p"><strong>Conclusion</strong>: Multi-entity structure is NOT constrained by de minimis across the stack. Each EU sub has independent headroom. The only caution point is same-entity stacking (e.g., BRIdge Alfa + Smart UP both on Polish sub) — consult Polish state aid advisor before combining.</p>
+<hr class="report-hr">
+<h2 id="6-action-sequence-italy-anchor-vs-multi-entity-machine" class="report-h2">6. Action Sequence — Italy-Anchor vs Multi-Entity Machine</h2>
+<h3 id="61-path-a-italy-only-anchor-single-jurisdiction-recommended-conservative" class="report-h3">6.1 PATH A: Italy-only anchor (single-jurisdiction, recommended conservative)</h3>
+<p class="report-p"><strong>Week 1-2</strong>: Email Bpifrance (France Plan B), verify Romania Apr 21 deadline, kill fabricated traction in deck, rewrite market slide. <strong>Week 2-6</strong>: Incorporate Italian SRL (3-5 months to grant-ready). Apply Smart&amp;Start Italia (sportello permanente). Begin Finland Sprint Grant application (deadline Aug 31 2026). <strong>Week 6-12</strong>: MVP build start. Apply NL WBSO (rolling, free stacking). <strong>Month 4-6</strong>: Post-MVP grant pipeline (EIC Accelerator Step 1 → Step 2 Nov 4 2026 cut-off). <strong>Y1 capture</strong>: <strong>€300-600K</strong> (Italy Smart&amp;Start anchor, +€20-50K NL WBSO, potential +€100K Finland Sprint if deadline met). <strong>Y2 capture</strong>: +€300-900K Smart&amp;Start Italia second tranche, +€2.5M+ EIC Accelerator post-MVP, +Widening/Horizon consortium. <strong>Operational complexity</strong>: 1 entity (IT) + optional NL BV. Manageable solo.</p>
+<h3 id="62-path-b-multi-entity-european-funding-machine-5-entities-aggressive" class="report-h3">6.2 PATH B: Multi-entity European funding machine (5 entities, aggressive)</h3>
+<p class="report-p"><strong>Week 1-2</strong>: Same as Path A + Pafi engages a registered agent network for multi-country incorporation (~€5-10K one-time + €3-5K/year bookkeeping). <strong>Week 2-8</strong>: Incorporate IT SRL + NL BV + ES SL + PL Sp. z o.o. + AT GmbH. Parallel applications. <strong>Month 2-6</strong>:   - IT: Smart&amp;Start Italia   - NL: WBSO rolling   - ES: CDTI Neotec spring 2026 call   - PL: BRIdge Alfa (continuous) + Smart UP (Apr 19 URGENT SCALAB)   - AT: AWS Preseed (6-8 weeks) <strong>Month 6-12</strong>: MVP build + post-MVP application wave. <strong>Y1 capture realistic (40-60% conversion)</strong>: <strong>€400-600K</strong>. <strong>Y1 theoretical ceiling (all convert)</strong>: <strong>€1.1M+</strong>. <strong>Operational complexity</strong>: 5 entities, 5 accounting systems, 5 bank accounts, 5 tax filings, €15-30K/year compliance overhead, coordination load. Requires dedicated grant management (either Pafi's time or a grant consultant).</p>
+<h3 id="63-path-c-mini-hedge-italy-finland-romania" class="report-h3">6.3 PATH C: Mini hedge (Italy + Finland + Romania)</h3>
+<p class="report-p"><strong>Week 1-2</strong>: Italy incorporation + Finland Sprint application (hard deadline) + Romania SRL formation (citizenship advantage = 5-7 days) + email Bpifrance. <strong>Month 2-6</strong>: Monitor Romania Startup Nation 2026 announcement. Apply Smart&amp;Start Italia. Finland Sprint decision 6-8 weeks. <strong>Y1 capture</strong>: <strong>€350-750K</strong> (Italy + Finland) + opportunistic Romania. <strong>Operational complexity</strong>: 2-3 entities. Middle ground.</p>
+<hr class="report-hr">
+<h2 id="7-hard-fatalities-skip-these-25-country-wide" class="report-h2">7. Hard Fatalities — Skip These (25-country-wide)</h2>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>Country</th><th>Blocker</th><th>Severity</th><th>Workaround</th></tr></thead><tbody><tr><td>🇸🇪 Sweden (Vinnova)</td><td>Swedish citizenship required (not residency)</td><td>FATAL</td><td>None unless Swedish co-founder joins</td></tr><tr><td>🇬🇧 UK (Innovate UK Smart Grants)</td><td>PAUSED since January 2025, no 2026 rounds</td><td>FATAL 2026</td><td>Monitor UKRI for reactivation post-2026</td></tr><tr><td>🇭🇺 Hungary (GINOP-PLUSZ VC)</td><td>Explicitly excludes "intangible assets" / SaaS</td><td>FATAL</td><td>Skip. Check NKFIH for non-GINOP instruments if desperate.</td></tr><tr><td>🇸🇰 Slovakia (all grants)</td><td>Loan/equity only (SBA/SIH/VAIA), no non-dilutive grants</td><td>FATAL</td><td>None. SIH 30% forgiveness relevant post-MVP for hardware/install side only.</td></tr><tr><td>🇩🇪 Germany EXIST</td><td>German university affiliation required</td><td>FATAL</td><td>None. Bavaria Start?Zuschuss! + NRW Gründungsstipendium remain open at smaller tickets.</td></tr><tr><td>🇮🇪 Ireland DTIF</td><td>3+ consortium partners + €1.5M minimum</td><td>SOFT</td><td>Skip for pre-MVP. HPSU Feasibility (€30K non-dilutive) remains.</td></tr><tr><td>🇧🇪 Belgium Baekeland + Innovation Mandate</td><td>PhD-linked</td><td>FATAL</td><td>None. Innoviris Brussels (€10-25K voucher) remains.</td></tr><tr><td>🇫🇷 France 2030 DeepTech</td><td>75% foreign-ownership cap</td><td>FATAL</td><td>None for dual-structure. Bourse French Tech standard track may still be open (pending Bpifrance email).</td></tr><tr><td>🇪🇸 Spain ENISA Jóvenes</td><td>Age cap ≤40 (Pafi 41)</td><td>FATAL</td><td>ENISA Emprendedores (no age cap) remains fully available.</td></tr><tr><td>🇱🇺 Luxembourg Fit 4 Start 2026</td><td>Cohort closed</td><td>2027</td><td>Target 2027 cohort (Jan announcement typically).</td></tr><tr><td>🇨🇿 Czech Technology Incubation 2026</td><td>Closed January 9</td><td>2027</td><td>Target 2027 round.</td></tr><tr><td>🇸🇮 Slovenia P2 2026</td><td>Closed March 12 + company registration window closed</td><td>2027</td><td>Register SI d.o.o. Jan-Feb 2027 for P2 2027.</td></tr><tr><td>🇩🇰 Denmark EUDP</td><td>TRL 4 minimum (SolNest pre-MVP = TRL 1-2)</td><td>CONDITIONAL</td><td>Reframe "solar matching algorithm validated in controlled environment" as TRL 4, OR wait post-MVP.</td></tr></tbody></table></div>
+<hr class="report-hr">
+<h2 id="8-universal-w4-admin-findings-25-countries" class="report-h2">8. Universal W4 Admin Findings (25 countries)</h2>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>Dimension</th><th>Universal finding</th><th>Impact on SolNest</th></tr></thead><tbody><tr><td><strong>1. Founder age cap</strong></td><td>Only Spain ENISA Jóvenes blocks (≤40). 24 other countries have no age cap on grant programs.</td><td>Age 41 = clear in 24/25 countries</td></tr><tr><td><strong>2. Founder residency</strong></td><td>Most programs require COMPANY residency (local entity), NOT founder residency. Exceptions: Sweden Vinnova (citizenship), Germany EXIST (university affiliation).</td><td>Pafi's Romanian residency is irrelevant to 24/25 countries for grant eligibility</td></tr><tr><td><strong>3. Company location</strong></td><td>Universal: every country requires a local legal entity (SRL/BV/OÜ/GmbH/Sp.z.o.o./UAB/SL/Lda/ApS) as applicant.</td><td>Delaware parent alone is NEVER sufficient</td></tr><tr><td><strong>4. Headcount minimum</strong></td><td>Varies. Some require ≥1 FTE (SI P2), some pre-founding OK (DE Bavaria), most have no explicit minimum at application but may require staffing at disbursement.</td><td>Pafi solo-founder = pre-MVP builds with 0 FTE work in most countries</td></tr><tr><td><strong>5. Company age cap</strong></td><td>Varies: Germany Bavaria ≤2yr, CH Innosuisse ≤5yr, Spain CDTI Neotec &lt;3yr, Greece &lt;8yr. Generally favorable for newly-formed subs.</td><td>Fresh incorporation in Q2 2026 = all age caps met</td></tr><tr><td><strong>6. Foreign ownership</strong></td><td>24/25 countries permit Delaware C-Corp ownership of EU sub. Only France 2030 explicitly blocks (75% cap). No other France-style nationality caps surfaced.</td><td>Two-entity structure (Delaware parent + EU sub) is viable across Europe</td></tr><tr><td><strong>7. Revenue threshold</strong></td><td>Most pre-MVP programs have no revenue requirement. Some post-MVP programs require €200K+ (EE EAS Product Dev).</td><td>SolNest pre-revenue = clear for pre-MVP tier</td></tr><tr><td><strong>8. SME consolidation test</strong></td><td>Universal EU test (Rec. 2003/361/EC). Delaware parent = 0 employees, €0 revenue → each EU sub passes EU micro-enterprise test independently. Confirmed across IT, DE, AT, NL, CH, ES, PL, EE.</td><td>SolNest structure clears SME test in every member state</td></tr><tr><td><strong>9. MVP/TRL gate</strong></td><td>~70% of surveyed programs accept pre-MVP. Post-MVP-only: EIC Accelerator (TRL 6), Denmark EUDP (TRL 4), Elemental Excelerator, DOE SETO, CEC CalSEED Phase 2.</td><td>Pre-MVP constrains upper tier but leaves ample entry programs</td></tr><tr><td><strong>10. Sector eligibility</strong></td><td>Solar / cleantech / energy SaaS is eligible in 24/25 countries. Only Hungary GINOP-PLUSZ explicitly excludes SaaS.</td><td>Universal sector fit</td></tr></tbody></table></div>
+<hr class="report-hr">
+<h2 id="9-11-verification-emails-queue-p0-p2" class="report-h2">9. 11 Verification Emails Queue (P0-P2)</h2>
+<p class="report-p">See <code>VERIFICATION-EMAILS-2026-04-10.md</code> for full drafted bodies. Summary:</p>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>#</th><th>P</th><th>Contact</th><th>Unlocks</th></tr></thead><tbody><tr><td>1</td><td>P0</td><td>Bpifrance</td><td>France as Plan B</td></tr><tr><td>2</td><td>P0</td><td>oportunitati-ue.gov.ro</td><td>Romania Apr 21 verification</td></tr><tr><td>3</td><td>P1</td><td>IAPMEI (Portugal)</td><td>Startup Voucher Tier 2 June 30</td></tr><tr><td>4</td><td>P1</td><td>CDTI (Spain)</td><td>Neotec 2026 call + Delaware SL</td></tr><tr><td>5</td><td>P1</td><td>Innovation Norway</td><td>Env. Tech Scheme residency</td></tr><tr><td>6</td><td>P1</td><td>EUDP Denmark</td><td>2026-II window + foreign-owned ApS</td></tr><tr><td>7</td><td>P2</td><td>Luxinnovation</td><td>Fit 4 Start 2027 timing</td></tr><tr><td>8</td><td>P2</td><td>GSRI Greece</td><td>Phaethon solar program</td></tr><tr><td>9</td><td>P2</td><td>ANI Portugal</td><td>INNOV-ID 2026 call</td></tr><tr><td>10</td><td>P2</td><td>MITA Lithuania</td><td>ICT Grant 2026 call</td></tr><tr><td>11</td><td>P2</td><td>LIAA Latvia</td><td>Innovation Voucher 2026 window</td></tr></tbody></table></div>
+<hr class="report-hr">
+<h2 id="10-capital-stack-scenarios-year-1-and-year-12-cumulative" class="report-h2">10. Capital stack scenarios — Year 1 and Year 1+2 cumulative</h2>
+<h3 id="year-1-realistic" class="report-h3">Year 1 realistic</h3>
+<div class="table-wrap"><table class="report-table"><thead><tr><th>Path</th><th>Y1 €</th><th>Entities</th><th>Complexity</th></tr></thead><tbody><tr><td>A: Italy anchor</td><td>€300-600K</td><td>IT SRL (+NL BV add-on)</td><td>Low</td></tr><tr><td>B: Multi-entity machine (5 subs)</td><td>€400-600K realistic</td><td>IT + ES + PL + AT + NL</td><td>High</td></tr><tr><td>B ceiling (all apps convert)</td><td>€1.1M+</td><td>Same</td><td>High</td></tr><tr><td>C: Mini hedge (IT + FI + RO)</td><td>€350-750K</td><td>3 subs</td><td>Medium</td></tr><tr><td>D: Italy + Finland Sprint (deadline hedge)</td><td>€350-700K</td><td>2 subs</td><td>Low</td></tr></tbody></table></div>
+<h3 id="year-12-cumulative-post-mvp-unlock" class="report-h3">Year 1+2 cumulative (post-MVP unlock)</h3>
+<ul class="report-list"><li>Italy Smart&amp;Start Year 2 second tranche: +€300-900K</li><li>EIC Accelerator (post-MVP, TRL 6): €2.5M + €15M equity co-investment</li><li>Widening / EIC Pre-Accelerator via EU sub: €50-200K</li><li>Horizon Europe Cluster consortium (junior partner): €300K-1M</li><li>SeedBlink Romania (ECSP crowdfunding, Year 2): €200-500K</li><li>Kima Ventures / cleantech angels: €100-300K SAFE round</li></ul>
+<p class="report-p"><strong>Total potential Y1+2 (post-MVP)</strong>: <strong>€1.25M-€4.55M</strong> non-dilutive + equity.</p>
+<hr class="report-hr">
+<h2 id="11-open-questions-unresolved-dependencies" class="report-h2">11. Open Questions / Unresolved Dependencies</h2>
+<ol class="report-list"><li><strong>Bpifrance email reply</strong> → unlocks France Plan B GO/NO-GO</li><li><strong>Romania Apr 21 deadline verification</strong> → single-source, LOW confidence, must resolve before committing to Romanian SRL formation this week</li><li><strong>IAPMEI foreign founder ruling</strong> → unlocks Portugal Startup Voucher Tier 2 before June 30</li><li><strong>CDTI Neotec exact 2026 spring call dates</strong> → unlocks Spanish SL formation timing</li><li><strong>MVP status</strong> → is there functional product beyond design-only homepage? Blocks post-MVP grant track planning.</li><li><strong>Traction numbers verification source</strong> → hard credibility gate, blocks any investor contact</li><li><strong>Italy legal opinion</strong> (€1.5-3K, nice-to-have not veto gate) → confirms SME consolidation calc interpretation for Delaware-owned Italian SRL</li><li><strong>Pafi's time budget / solo-founder capacity</strong> → determines Path A (Italy-only) vs Path B (5-entity machine) feasibility</li></ol>
+<hr class="report-hr">
+<h2 id="12-recommendations-genie-opinion-not-mandate" class="report-h2">12. Recommendations (Genie opinion, not mandate)</h2>
+<ol class="report-list"><li><strong>Path D (Italy + Finland Sprint deadline hedge)</strong> is the highest expected-value play with lowest operational complexity. Italy is the dominant Y1 anchor; Finland Sprint Grant has a ticking Aug 31 deadline that rewards action and is fully foreign-friendly. Two-entity operational burden is manageable.</li></ol>
+<ol class="report-list"><li><strong>Send P0+P1 emails immediately</strong> (this week). They unlock 6 of 11 open questions with zero research cost.</li></ol>
+<ol class="report-list"><li><strong>Skip Romania Apr 21 call</strong> unless the verification email confirms within 48 hours. The single-source signal is not strong enough to justify pre-empting Italy incorporation efforts.</li></ol>
+<ol class="report-list"><li><strong>Don't form a Polish Sp. z o.o. for SCALAB April 19</strong> — timeline is too tight (9 days to form + apply), AND Polish SCALAB is a micro-accelerator ticket (€92K). Better to focus Poland as a Q3 2026 secondary play (BRIdge Alfa continuous call, less time pressure).</li></ol>
+<ol class="report-list"><li><strong>NL WBSO should be pursued regardless</strong> — lowest overhead free stacking add-on in Europe. Form Dutch BV + 1 hired NL employee or structure Pafi's own R&amp;D hours in NL.</li></ol>
+<ol class="report-list"><li><strong>Post-MVP = EIC Accelerator Nov 4 2026 Step 2 cut-off</strong> = hard forward target for MVP build schedule.</li></ol>
+<ol class="report-list"><li><strong>Italy legal opinion is nice-to-have, not blocking</strong>. Smart&amp;Start application can proceed in parallel with legal opinion drafting.</li></ol>
+<hr class="report-hr">
+<h2 id="13-sources" class="report-h2">13. Sources</h2>
+<p class="report-p"><strong>R1-R8 raw intel files</strong>:</p>
+<ul class="report-list"><li><code>~/.nexus/intel/solnest-r1-france-2026-04-10.md</code></li><li><code>~/.nexus/intel/solnest-r3-italy-2026-04-10.md</code></li><li><code>~/.nexus/intel/solnest-r5-eu-2026-04-10.md</code></li><li><code>~/.nexus/intel/solnest-r6-nordic-germanic-2026-04-10.md</code></li><li><code>~/.nexus/intel/solnest-r7-southern-eu-2026-04-10.md</code></li><li><code>~/.nexus/intel/solnest-r8-cee-baltics-2026-04-10.md</code></li></ul>
+<p class="report-p"><strong>Workspace output files</strong>:</p>
+<ul class="report-list"><li><code>~/.nexus/workspace/completed/nx-20260410-r1fr/output.md</code> (192 lines)</li><li><code>~/.nexus/workspace/completed/nx-20260410-r3it/output.md</code> (161 lines)</li><li><code>~/.nexus/workspace/completed/nx-20260410-r5eu/output.md</code> (192 lines)</li><li><code>~/.nexus/workspace/completed/nx-20260410-r6nor/output.md</code> (545 lines)</li><li><code>~/.nexus/workspace/completed/nx-20260410-r7sou/output.md</code> (547 lines)</li><li><code>~/.nexus/workspace/completed/nx-20260410-r8cee/output.md</code> (572 lines)</li></ul>
+<p class="report-p"><strong>Previously published R1-R5 HTML reports</strong> (GitHub Pages, 2026-04-10 PM4):</p>
+<ul class="report-list"><li><a href="https://cryptopafi.github.io/nexusos-reports/solnest-france-r1-20260410.html" target="_blank" rel="noopener">https://cryptopafi.github.io/nexusos-reports/solnest-france-r1-20260410.html</a></li><li><a href="https://cryptopafi.github.io/nexusos-reports/solnest-us-r2-20260410.html" target="_blank" rel="noopener">https://cryptopafi.github.io/nexusos-reports/solnest-us-r2-20260410.html</a> (off-brief)</li><li><a href="https://cryptopafi.github.io/nexusos-reports/solnest-italy-r3-20260410.html" target="_blank" rel="noopener">https://cryptopafi.github.io/nexusos-reports/solnest-italy-r3-20260410.html</a></li><li><a href="https://cryptopafi.github.io/nexusos-reports/solnest-republic-r4-20260410.html" target="_blank" rel="noopener">https://cryptopafi.github.io/nexusos-reports/solnest-republic-r4-20260410.html</a> (off-brief)</li><li><a href="https://cryptopafi.github.io/nexusos-reports/solnest-eu-r5-20260410.html" target="_blank" rel="noopener">https://cryptopafi.github.io/nexusos-reports/solnest-eu-r5-20260410.html</a></li></ul>
+<p class="report-p"><strong>Primary source quality</strong>: Every critical fact (age cap, residency, foreign ownership, TRL gate, deadline) traced to a primary agency URL across 25 countries. ~40 Perplexity Sonar Pro calls + Brave + Tavily cross-checks + direct agency site visits. No blog summaries.</p>
+<hr class="report-hr">
+<p class="report-p"><em>Synthesis by Genie from Delphi R1-R8, 2026-04-10 PM5. See PROJECT-CARD.md "R1-R8 EUROPEAN SWEEP" section for integrated project context. Next: publish via shared-reporter skill to GitHub Pages.</em></p>
+
+    <div class="charts-grid">
+      <div class="chart-block">
+        <h4>Country Verdict Distribution</h4>
+        <canvas id="verdictChart"></canvas>
+      </div>
+      <div class="chart-block">
+        <h4>Top 10 Programs by Max € (K)</h4>
+        <canvas id="top10Chart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-block">
+      <h4>Capital Stack Scenarios — Year 1 (€K)</h4>
+      <canvas id="stackChart"></canvas>
+    </div>
+
+    <div class="prev-reports">
+      <h4>Previous R1-R5 Reports (PM4, 2026-04-10)</h4>
+      <div class="prev-grid">
+        <a class="prev-link" href="https://cryptopafi.github.io/nexusos-reports/solnest-france-r1-20260410.html" target="_blank" rel="noopener">R1 France &rarr;</a><a class="prev-link" href="https://cryptopafi.github.io/nexusos-reports/solnest-us-r2-20260410.html" target="_blank" rel="noopener">R2 US (off-brief) &rarr;</a><a class="prev-link" href="https://cryptopafi.github.io/nexusos-reports/solnest-italy-r3-20260410.html" target="_blank" rel="noopener">R3 Italy &rarr;</a><a class="prev-link" href="https://cryptopafi.github.io/nexusos-reports/solnest-republic-r4-20260410.html" target="_blank" rel="noopener">R4 Republic (off-brief) &rarr;</a><a class="prev-link" href="https://cryptopafi.github.io/nexusos-reports/solnest-eu-r5-20260410.html" target="_blank" rel="noopener">R5 EU-level &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar-right fade-in">
+    <div class="meta-card">
+      <div class="meta-title">Report Metadata</div>
+      <div class="meta-row"><span class="meta-key">Report Type</span><span class="meta-val">Research Synthesis (D3)</span></div><div class="meta-row"><span class="meta-key">Agent</span><span class="meta-val">Genie (from Delphi R1-R8)</span></div><div class="meta-row"><span class="meta-key">Synthesis Date</span><span class="meta-val">2026-04-10 PM5</span></div><div class="meta-row"><span class="meta-key">Delphi Dispatches</span><span class="meta-val">8 runs (R1-R8)</span></div><div class="meta-row"><span class="meta-key">Perplexity Calls</span><span class="meta-val">~40 Sonar Pro</span></div><div class="meta-row"><span class="meta-key">Countries Mapped</span><span class="meta-val">25</span></div><div class="meta-row"><span class="meta-key">Sources</span><span class="meta-val">Perplexity + Brave + Tavily + direct agency URLs</span></div><div class="meta-row"><span class="meta-key">Best Program</span><span class="meta-val">Smart&amp;Start Italia</span></div><div class="meta-row"><span class="meta-key">Verification Queue</span><span class="meta-val">11 emails (P0-P2)</span></div>
+    </div>
+  </aside>
+
+</main>
+
+<footer class="site-foot">
+  Generated by shared-reporter (Tier 2 Full Report) &middot; SolNest EU Funding Master 2026 &middot; NexusOS
+</footer>
+
+<script>
+  // theme toggle + persistence
+  const root = document.documentElement;
+  const saved = localStorage.getItem('nx_theme');
+  if (saved) root.setAttribute('data-theme', saved);
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', cur);
+    localStorage.setItem('nx_theme', cur);
+    // rebuild charts with new color scheme
+    buildCharts();
+  });
+
+  // share button: Web Share API with clipboard fallback
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    const title = document.title;
+    if (navigator.share) {
+      try { await navigator.share({ title, url }); return; } catch (e) { /* fall through */ }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      const btn = document.getElementById('shareBtn');
+      const prev = btn.textContent;
+      btn.textContent = 'Copied';
+      setTimeout(() => { btn.textContent = prev; }, 1500);
+    } catch (e) { alert(url); }
+  });
+
+  // fade-in on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  // charts
+  const CHART_DATA = {"verdicts": {"labels": ["GO (anchor)", "CONDITIONAL HIGH", "CONDITIONAL FAST", "CONDITIONAL", "2027 ONLY", "NO-GO Fatal"], "data": [2, 5, 3, 10, 3, 6]}, "stack": {"labels": ["Path A: Italy anchor", "Path B: Multi-entity 5 subs", "Path B ceiling", "Path C: IT+FI+RO hedge", "Path D: IT+FI"], "low": [300, 400, 1100, 350, 350], "high": [600, 600, 1100, 750, 700]}, "top10": {"labels": ["Smart&Start IT", "Innosuisse CH", "CDTI Neotec ES", "BRIdge Alfa PL", "AWS Preseed AT", "Fit 4 Start LU", "Sprint Grant FI", "PARP Smart UP PL", "P2 SEF SI", "MITA LT"], "amounts": [600, 530, 325, 230, 200, 150, 100, 92, 72, 62]}};
+  let charts = [];
+  function themeColors() {
+    const dark = root.getAttribute('data-theme') !== 'light';
+    return {
+      accent: dark ? '#58a6ff' : '#5E6AD2',
+      good: '#22c55e', warn: '#eab308', bad: '#ef4444',
+      text: dark ? '#e6e6ef' : '#1a1a24',
+      dim: dark ? '#9aa0b4' : '#5c5f72',
+      grid: dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)',
+    };
+  }
+  function buildCharts() {
+    charts.forEach(c => { try { c.destroy(); } catch(_) {} });
+    charts = [];
+    const c = themeColors();
+    Chart.defaults.color = c.text;
+    Chart.defaults.borderColor = c.grid;
+    Chart.defaults.font.family = "'Inter', sans-serif";
+
+    // verdict pie/doughnut
+    const vctx = document.getElementById('verdictChart');
+    if (vctx) charts.push(new Chart(vctx, {
+      type: 'doughnut',
+      data: {
+        labels: CHART_DATA.verdicts.labels,
+        datasets: [{
+          data: CHART_DATA.verdicts.data,
+          backgroundColor: [ '#22c55e', '#58a6ff', '#7dd3fc', '#eab308', '#a78bfa', '#ef4444' ],
+          borderColor: 'transparent',
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'right', labels: { color: c.text, font: { size: 11 } } } },
+      }
+    }));
+
+    // top 10 programs bar
+    const tctx = document.getElementById('top10Chart');
+    if (tctx) charts.push(new Chart(tctx, {
+      type: 'bar',
+      data: {
+        labels: CHART_DATA.top10.labels,
+        datasets: [{
+          label: 'Max € (K)',
+          data: CHART_DATA.top10.amounts,
+          backgroundColor: c.accent,
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: c.grid }, ticks: { color: c.dim } },
+          y: { grid: { display: false }, ticks: { color: c.text, font: { size: 10 } } },
+        }
+      }
+    }));
+
+    // capital stack
+    const sctx = document.getElementById('stackChart');
+    if (sctx) charts.push(new Chart(sctx, {
+      type: 'bar',
+      data: {
+        labels: CHART_DATA.stack.labels,
+        datasets: [
+          { label: 'Low (€K)', data: CHART_DATA.stack.low, backgroundColor: c.accent, borderRadius: 6 },
+          { label: 'High (€K)', data: CHART_DATA.stack.high, backgroundColor: 'rgba(34,197,94,0.8)', borderRadius: 6 },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: c.text } } },
+        scales: {
+          x: { grid: { color: c.grid }, ticks: { color: c.dim } },
+          y: { grid: { color: c.grid }, ticks: { color: c.dim }, beginAtZero: true },
+        }
+      }
+    }));
+  }
+  window.addEventListener('load', buildCharts);
+</script>
+
+</body>
+</html>
