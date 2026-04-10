@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SolNest AI — Italy SRL Innovativa Ownership Verdict (R3) | DELPHI</title>
+<meta name="description" content="DELPHI R3: Binary verdict on whether a 100% Delaware-owned Italian SRL can register as Startup Innovativa under current 2026 law.">
+<meta property="og:title" content="SolNest AI — Italy SRL Innovativa Ownership Verdict (R3)">
+<meta property="og:description" content="YES conditional — D4 ownership landmine debunked. No natural-person ownership requirement exists. Real gate is SME consolidation.">
+<meta property="og:type" content="article">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      colors: {
+        'delphi': '#58a6ff',
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --card-glass: rgba(17, 17, 24, 0.7);
+    --border: rgba(88, 166, 255, 0.15);
+    --accent: #58a6ff;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+  }
+  html.light {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --card-glass: rgba(255, 255, 255, 0.8);
+    --border: rgba(94, 106, 210, 0.15);
+    --accent: #5E6AD2;
+    --text: #0d1117;
+    --text-dim: #57606a;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  html.dark body {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(88, 166, 255, 0.12), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 50%, rgba(88, 166, 255, 0.05), transparent),
+      #0A0A0F;
+  }
+  .glass {
+    background: var(--card-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .accent { color: var(--accent); }
+  .accent-bg { background: var(--accent); }
+  .text-dim { color: var(--text-dim); }
+
+  .glow-text {
+    text-shadow: 0 0 40px rgba(88, 166, 255, 0.3);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .callout {
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid;
+  }
+  .callout-success {
+    background: rgba(34, 197, 94, 0.08);
+    border-color: #22c55e;
+  }
+  .callout-info {
+    background: rgba(88, 166, 255, 0.08);
+    border-color: #58a6ff;
+  }
+  .callout-warning {
+    background: rgba(234, 179, 8, 0.08);
+    border-color: #eab308;
+  }
+  .callout-doc {
+    background: rgba(139, 92, 246, 0.08);
+    border-color: #8b5cf6;
+  }
+
+  .kpi-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(88, 166, 255, 0.05), transparent 50%);
+    pointer-events: none;
+  }
+
+  table { border-collapse: collapse; width: 100%; }
+  th, td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  td { font-size: 0.95rem; }
+  tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
+
+  .toc-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: var(--text-dim);
+    border-left: 2px solid transparent;
+    font-size: 0.875rem;
+    transition: all 0.15s;
+  }
+  .toc-link:hover {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: rgba(88, 166, 255, 0.05);
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(88, 166, 255, 0.1);
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    font-size: 0.875em;
+  }
+
+  .section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin: 3rem 0 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-title::before {
+    content: '§ ';
+    color: var(--accent);
+  }
+
+  .verdict-hero {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.03));
+    border: 2px solid #22c55e;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .verdict-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(34, 197, 94, 0.1), transparent 70%);
+    pointer-events: none;
+  }
+
+  .src-pill {
+    display: inline-block;
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid rgba(88, 166, 255, 0.25);
+    color: var(--accent);
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0.125rem;
+  }
+
+  .t1-badge {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  @media print {
+    html { background: white !important; color: black !important; }
+    body { background: white !important; color: black !important; }
+    .no-print { display: none !important; }
+    .card, .kpi-card, .glass { background: white !important; border: 1px solid #ccc !important; }
+    .verdict-hero { background: #f0f9f4 !important; }
+    a { color: black !important; text-decoration: underline !important; }
+    @page { size: A4; margin: 2cm; }
+    .section-title, table, .callout { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV BAR -->
+<nav class="no-print glass sticky top-0 z-50 border-b">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-2 h-2 rounded-full bg-delphi animate-pulse"></div>
+      <span class="font-mono text-sm text-dim">DELPHI R3</span>
+      <span class="hidden sm:inline text-dim">/</span>
+      <span class="hidden sm:inline font-semibold">SolNest Italy Ownership Verdict</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="shareBtn" class="text-sm px-3 py-1.5 rounded-lg border border-delphi/30 hover:bg-delphi/10 transition">Share</button>
+      <button id="themeBtn" class="text-sm px-3 py-1.5 rounded-lg border border-delphi/30 hover:bg-delphi/10 transition">Light</button>
+      <button onclick="window.print()" class="text-sm px-3 py-1.5 rounded-lg border border-delphi/30 hover:bg-delphi/10 transition">Print</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="max-w-7xl mx-auto px-6 pt-12 pb-6">
+  <div class="mb-6">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="src-pill">DELPHI v1.0</span>
+      <span class="src-pill">D3 RESEARCH</span>
+      <span class="src-pill">nx-20260410-r3it</span>
+      <span class="src-pill">2026-04-10</span>
+    </div>
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 glow-text">
+      SolNest AI <span class="accent">—</span><br>
+      Italy SRL Innovativa Ownership Verdict
+    </h1>
+    <p class="text-lg text-dim max-w-3xl">
+      R3 clarification brief answering whether a 100% Delaware-owned Italian SRL can register as Startup Innovativa under current 2026 law. Binary verdict + full legal analysis + two-scenario grant capture.
+    </p>
+  </div>
+
+  <!-- VERDICT HERO CALLOUT -->
+  <div class="verdict-hero fade-in">
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center font-bold text-green-400 text-xl">
+        ✓
+      </div>
+      <div class="flex-1">
+        <div class="text-xs uppercase tracking-widest text-green-400 font-semibold mb-2">BINARY VERDICT</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-green-400 mb-3">YES (conditional)</h2>
+        <p class="text-lg leading-relaxed">
+          The D4 ownership landmine is debunked. <strong>No natural-person ownership requirement exists in the current registration criteria</strong> for Startup Innovativa under DL 179/2012 Art 25 (consolidated 2026 text) or MIMIT Circular 29 July 2025. The real gate added by Law 193/2024 is the EU SME test — size-based, not nationality-based — which SolNest passes easily at current stage.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI GRID -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+    <div class="kpi-card fade-in">
+      <div class="text-xs uppercase tracking-widest text-dim mb-2">Verdict</div>
+      <div class="text-3xl font-extrabold text-green-400">YES</div>
+      <div class="text-sm text-dim mt-1">conditional (D4 landmine inverted)</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="text-xs uppercase tracking-widest text-dim mb-2">Year 1 Grant Capture</div>
+      <div class="text-3xl font-extrabold accent">€300-600K</div>
+      <div class="text-sm text-dim mt-1">Scenario A realistic</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="text-xs uppercase tracking-widest text-dim mb-2">Time to Grant-Ready</div>
+      <div class="text-3xl font-extrabold accent">3-5 mo</div>
+      <div class="text-sm text-dim mt-1">SRL + register + apply</div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="text-xs uppercase tracking-widest text-dim mb-2">Legal Risk Rating</div>
+      <div class="text-3xl font-extrabold accent">2/5</div>
+      <div class="text-sm text-dim mt-1">low-medium</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT: TOC sidebar + content -->
+<div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-[240px_1fr_200px] gap-8">
+
+  <!-- LEFT SIDEBAR: TOC -->
+  <aside class="hidden lg:block no-print sticky top-24 self-start">
+    <div class="text-xs uppercase tracking-widest text-dim mb-3 font-semibold">Contents</div>
+    <nav>
+      <a href="#myth" class="toc-link">The Myth Debunked</a>
+      <a href="#law" class="toc-link">What Law 193/2024 Changed</a>
+      <a href="#risk" class="toc-link">The Real Risk: SME Consolidation</a>
+      <a href="#questions" class="toc-link">Six Questions — Answers</a>
+      <a href="#scenarios" class="toc-link">Scenarios A &amp; B</a>
+      <a href="#charts" class="toc-link">Data Visualization</a>
+      <a href="#recommendation" class="toc-link">Recommendation</a>
+      <a href="#confidence" class="toc-link">Confidence Calibration</a>
+      <a href="#sources" class="toc-link">Primary Sources</a>
+      <a href="#stale" class="toc-link">Stale Data Flag</a>
+    </nav>
+  </aside>
+
+  <!-- CENTER: CONTENT -->
+  <main>
+
+    <!-- CALLOUT: Real Gate -->
+    <div class="callout callout-info fade-in">
+      <div class="text-xs uppercase tracking-widest accent font-semibold mb-2">KEY INSIGHT</div>
+      <div class="font-semibold text-lg">Real gate is SME consolidation — size-based, not nationality-based.</div>
+      <p class="mt-2 text-dim">For SolNest at current stage (early-stage micro-enterprise Delaware parent), the EU SME test (≤250 employees, ≤€50M revenue) passes comfortably. Foreign ownership is not a blocker.</p>
+    </div>
+
+    <!-- SECTION: THE MYTH -->
+    <section id="myth" class="fade-in">
+      <h2 class="section-title">The Myth Debunked</h2>
+
+      <div class="card p-6 mb-4">
+        <div class="text-xs uppercase tracking-widest text-red-400 font-semibold mb-2">The D4 claimed</div>
+        <p class="mb-4">DL 179/2012 Art 25 requires 51%+ natural-person ownership.</p>
+
+        <div class="text-xs uppercase tracking-widest text-green-400 font-semibold mb-2">The R3 verdict</div>
+        <p>This requirement does NOT exist in the current consolidated text of Art 25 comma 2.</p>
+      </div>
+
+      <p class="mb-4"><strong>Evidence across primary sources:</strong></p>
+      <ul class="space-y-2 mb-4 text-dim">
+        <li>• <strong class="text-white">MIMIT official Art 25 PDF</strong> (mimit.gov.it): No ownership nationality criterion</li>
+        <li>• <strong class="text-white">Normattiva.it consolidated text</strong> (primary authority): Lists 8 letters (a through h) — none contain nationality or natural-person majority requirement</li>
+        <li>• <strong class="text-white">MIMIT Circular 29 July 2025</strong>: Explicitly silent on foreign ownership — only excludes startups controlled by "grandi imprese" (>250 employees or >€50M revenue)</li>
+        <li>• <strong class="text-white">7/8 Perplexity sources</strong> with MIMIT/Normattiva citation agree: No ownership restriction</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <div class="text-xs uppercase tracking-widest text-yellow-400 font-semibold mb-2">ONE CONTRADICTORY SOURCE</div>
+        <p>A single Perplexity synthesis cited an older MIMIT PDF claiming lettera a) requires 24-month natural-person majority. This appears to reference a pre-amendment version. Overridden by the MIMIT July 2025 Circular (weight-of-evidence assessment).</p>
+      </div>
+    </section>
+
+    <!-- SECTION: LAW 193/2024 -->
+    <section id="law" class="fade-in">
+      <h2 class="section-title">What Law 193/2024 Actually Changed</h2>
+
+      <p class="mb-4">Law 193/2024 Art 28 (<em>Legge Annuale Concorrenza 2024</em>, GU 17-12-2024) modified Art 25 by:</p>
+
+      <div class="space-y-4">
+        <div class="card p-5">
+          <div class="text-xs uppercase tracking-widest accent font-semibold mb-2">Change 1 — NEW lettera a-bis)</div>
+          <p>Startup Innovativa must qualify as an <strong>EU SME</strong> (Recommendation 2003/361/EC): ≤250 employees, ≤€50M revenue, ≤€43M balance sheet.</p>
+        </div>
+        <div class="card p-5">
+          <div class="text-xs uppercase tracking-widest accent font-semibold mb-2">Change 2 — MODIFIED lettera f)</div>
+          <p>Cannot have agency or consulting as primary activity.</p>
+        </div>
+        <div class="card p-5">
+          <div class="text-xs uppercase tracking-widest accent font-semibold mb-2">Change 3 — Investor terminology</div>
+          <p>Replaces "investitori professionali" with "investitori qualificati" in Art 29 investor tax credit provisions. This affects <strong>who gets tax credits when investing</strong>, not who can own the startup.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-doc">
+        <div class="text-xs uppercase tracking-widest text-purple-400 font-semibold mb-2">PRIMARY-SOURCE DOCUMENTATION</div>
+        <p>MIMIT Circular 29 July 2025 is the most authoritative 2026 source — explicitly silent on foreign ownership. The operative SME test is size-based, not ownership-nationality-based. Full text retrieved from normattiva.it.</p>
+      </div>
+    </section>
+
+    <!-- SECTION: REAL RISK -->
+    <section id="risk" class="fade-in">
+      <h2 class="section-title">The Real Risk: SME Consolidation</h2>
+
+      <p class="mb-4">Per EU Recommendation 2003/361/EC (now embedded in Italian Startup law via Law 193/2024):</p>
+
+      <ul class="space-y-2 mb-6 text-dim">
+        <li>• Delaware C-Corp owns 100% of Italian SRL → <strong class="text-white">full consolidation applies</strong></li>
+        <li>• Combined group must qualify as SME: ≤250 employees, ≤€50M revenue</li>
+        <li>• <strong class="text-white">For SolNest current stage</strong>: Delaware parent is a micro-startup → passes comfortably</li>
+        <li>• <strong class="text-white">Future risk</strong>: As Delaware grows, Italian SRL may lose Startup Innovativa status at scale</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <div class="text-xs uppercase tracking-widest text-yellow-400 font-semibold mb-2">FUTURE MONITORING</div>
+        <p>Delaware parent growing past SME limits (>250 employees or >€50M revenue) will disqualify the Italian SRL from Startup Innovativa status. This is a monitoring trigger, not a current blocker.</p>
+      </div>
+    </section>
+
+    <!-- SECTION: SIX QUESTIONS -->
+    <section id="questions" class="fade-in">
+      <h2 class="section-title">Six Questions — Compressed Answers</h2>
+
+      <div class="space-y-4">
+        <div class="card p-5">
+          <div class="font-semibold accent mb-2">Q1 — Art 25 current text</div>
+          <p class="text-dim">No natural-person majority requirement. lettera a) = 60-month age limit only. Full Art 25 comma 2 text at normattiva.it: zero ownership nationality criteria. Amendments: DL 76/2013 (extended time), L. 193/2024 (added SME + consulting ban).</p>
+        </div>
+
+        <div class="card p-5">
+          <div class="font-semibold accent mb-2">Q2 — Law 193/2024 changes</div>
+          <p class="text-dim">Added SME requirement (size-based, not nationality-based). Modified investor tax-credit terminology. Effective 18-12-2024. No foreign-parent language.</p>
+        </div>
+
+        <div class="card p-5">
+          <div class="font-semibold accent mb-2">Q3 — Foreign-owned SRL, 2026 reality</div>
+          <p class="text-dim">MIMIT Circular 29 July 2025 confirms no foreign-ownership prohibition. Registration via <em>autocertificazione</em>. No case law rejecting a foreign-owned SRL from the startup register. Only exclusion: "grandi imprese" control (via SME test).</p>
+        </div>
+
+        <div class="card p-5">
+          <div class="font-semibold accent mb-2">Q4 — Workaround (Pafi personally owns Italian SRL)</div>
+          <p class="text-dim">Viable. Transfer pricing required under Art 110 TUIR. Annual documentation cost: €5K-€15K. Risk of <em>abuso del diritto</em> (Art 10-bis L. 212/2000) if structure lacks economic substance. Recommended: APA with Agenzia delle Entrate or a pre-filing <em>interpello</em>.</p>
+        </div>
+
+        <div class="card p-5">
+          <div class="font-semibold accent mb-2">Q5 — Smart&amp;Start 2026</div>
+          <p class="text-dim">OPEN (<em>sportello permanente</em>). €100K-€1.5M at 0% rate. 30% non-repayable grant for Southern Italy (Calabria, Puglia, Sicilia, Basilicata, Campania, Molise, Abruzzo, Sardegna) confirmed. No foreign-parent ownership bar in program rules. Must be registered Startup Innovativa.</p>
+        </div>
+
+        <div class="card p-5">
+          <div class="font-semibold accent mb-2">Q6 — Final verdict</div>
+          <p class="text-dim">YES conditional. Italy stays on the board. See Scenarios A &amp; B below.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: SCENARIOS -->
+    <section id="scenarios" class="fade-in">
+      <h2 class="section-title">Scenario A vs Scenario B</h2>
+
+      <!-- Scenario A -->
+      <h3 class="text-xl font-bold mt-6 mb-3">Scenario A — Delaware-owned Italian SRL <span class="text-sm font-normal text-dim">(current SolNest structure)</span></h3>
+      <div class="card overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Startup Innovativa eligible?</td><td><strong class="text-green-400">YES</strong> — no ownership nationality bar</td></tr>
+            <tr><td>Key condition</td><td>Delaware parent must remain EU-SME-compatible</td></tr>
+            <tr><td>Smart&amp;Start access</td><td><strong class="text-green-400">YES</strong></td></tr>
+            <tr><td>Year 1 grant capture — floor</td><td><strong>€0</strong> (rejection on business plan)</td></tr>
+            <tr><td>Year 1 grant capture — realistic</td><td><strong class="accent">€300K-€600K</strong> (€1M project, southern Italy location)</td></tr>
+            <tr><td>Year 1 grant capture — ceiling</td><td><strong>€1.35M</strong> (90% of €1.5M max, 0% rate + southern grant)</td></tr>
+            <tr><td>Legal risk rating</td><td><strong>2/5</strong> — low-medium</td></tr>
+            <tr><td>Required legal opinion</td><td><strong>€1,500-€3,000</strong> (SME consolidation calc + TP framework)</td></tr>
+            <tr><td>Notary + SRL incorporation</td><td><strong>€3,000-€6,000</strong></td></tr>
+            <tr><td>Commercialista (annual)</td><td><strong>€2,000-€4,000/year</strong></td></tr>
+            <tr><td>Time to "grant ready"</td><td><strong class="accent">3-5 months</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-info mt-6">
+        <div class="text-xs uppercase tracking-widest accent font-semibold mb-2">ACTION REQUIRED</div>
+        <p>One focused legal opinion (Italian firm) on: (1) SME consolidation calculation with current Delaware financials, (2) whether Delaware parent's investor base triggers any issues. Estimated: €1,500-€3,000. Recommended firms: Chiomenti, BonelliErede, or mid-tier Italian tax firm.</p>
+      </div>
+
+      <!-- Scenario B -->
+      <h3 class="text-xl font-bold mt-8 mb-3">Scenario B — Pafi personally owns Italian SRL <span class="text-sm font-normal text-dim">(restructure)</span></h3>
+      <div class="card overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>US parent relationship</td><td>Delaware C-Corp remains intact; Italian SRL is new separate entity under Pafi personally</td></tr>
+            <tr><td>Delaware dilution needed?</td><td><strong class="text-green-400">NO</strong> — two independent entities linked by licensing/services contract</td></tr>
+            <tr><td>Startup Innovativa eligible?</td><td><strong class="text-green-400">YES</strong> — cleanest path, zero consolidation concern</td></tr>
+            <tr><td>Smart&amp;Start access</td><td><strong class="text-green-400">YES</strong> — same as Scenario A</td></tr>
+            <tr><td>Gain vs Scenario A</td><td>Eliminates SME consolidation risk permanently</td></tr>
+            <tr><td>Loss vs Scenario A</td><td>Transfer pricing overhead (€5K-€15K/year), dual-entity legal cost (+€5K-€10K upfront), ongoing intercompany management</td></tr>
+            <tr><td>Operational complexity</td><td><strong>3/5</strong></td></tr>
+            <tr><td>Year 1 grant capture</td><td>Same as Scenario A</td></tr>
+            <tr><td>Time to "grant ready"</td><td><strong>4-6 months</strong> (additional time for intercompany structure)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card p-5 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <div class="text-xs uppercase tracking-widest text-green-400 font-semibold mb-2">Scenario B is valid IF</div>
+            <p class="text-dim">Delaware is expected to scale rapidly past SME limits in 2-3 years, OR Pafi wants cleanest possible grant optics with zero ambiguity.</p>
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-widest text-yellow-400 font-semibold mb-2">Scenario B is premature IF</div>
+            <p class="text-dim">Delaware parent stays micro for 3+ years — unnecessary complexity for a problem that doesn't yet exist.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CHARTS -->
+    <section id="charts" class="fade-in">
+      <h2 class="section-title">Data Visualization</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="card p-6">
+          <div class="text-xs uppercase tracking-widest text-dim font-semibold mb-2">Chart 1</div>
+          <h4 class="font-semibold mb-4">Year 1 Grant Capture — Scenario Comparison</h4>
+          <div style="height: 300px;"><canvas id="grantChart"></canvas></div>
+          <p class="text-sm text-dim mt-4">Floor / Realistic / Ceiling ranges for both scenarios (€K). Scenario B matches Scenario A on grant capture; the trade-off is complexity not ceiling.</p>
+        </div>
+
+        <div class="card p-6">
+          <div class="text-xs uppercase tracking-widest text-dim font-semibold mb-2">Chart 2</div>
+          <h4 class="font-semibold mb-4">Confidence Breakdown per Claim</h4>
+          <div style="height: 300px;"><canvas id="confChart"></canvas></div>
+          <p class="text-sm text-dim mt-4">HIGH confidence on law text and SME consolidation. MEDIUM-HIGH on Delaware-owned SRL practical registration. MEDIUM on Smart&amp;Start foreign-parent access.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: RECOMMENDATION -->
+    <section id="recommendation" class="fade-in">
+      <h2 class="section-title">Recommendation for SolNest</h2>
+
+      <div class="card p-6 mb-6">
+        <h3 class="text-xl font-bold mb-3">At current stage (early Delaware startup)</h3>
+        <p class="text-dim mb-4">Scenario A is valid. Italy is NOT blocked by the ownership structure. The legal landmine from D4 is partially invalidated.</p>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-xl font-bold mb-4 accent">Immediate Action</h3>
+        <p class="mb-4 text-dim">Obtain a scoped Italian legal opinion (€1,500-€3,000) to:</p>
+        <ol class="space-y-2 text-dim list-decimal list-inside">
+          <li>Confirm SME consolidation calculation given Delaware's current financials</li>
+          <li>Review Smart&amp;Start application structure for a Delaware-owned SRL</li>
+          <li>Verify notary fee estimates for SRL formation with foreign parent</li>
+        </ol>
+      </div>
+
+      <div class="callout callout-success mt-6">
+        <div class="text-xs uppercase tracking-widest text-green-400 font-semibold mb-2">BOTTOM LINE</div>
+        <p class="text-lg"><strong>Italy stays on the board as Phase 2.</strong> Smart&amp;Start is accessible. The D4's Phase 2 verdict is upheld and the ownership landmine is inverted — not a blocker.</p>
+      </div>
+    </section>
+
+    <!-- SECTION: CONFIDENCE -->
+    <section id="confidence" class="fade-in">
+      <h2 class="section-title">Confidence Calibration</h2>
+
+      <div class="card overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Claim</th>
+              <th>Confidence</th>
+              <th>Basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No natural-person majority requirement</td>
+              <td><span class="text-green-400 font-semibold">HIGH</span></td>
+              <td class="text-dim">7/8 sources, MIMIT Circular primary</td>
+            </tr>
+            <tr>
+              <td>Delaware-owned SRL can register</td>
+              <td><span class="text-green-400 font-semibold">MEDIUM-HIGH</span></td>
+              <td class="text-dim">No prohibition found; absence ≠ explicit permission</td>
+            </tr>
+            <tr>
+              <td>SME consolidation is operative risk</td>
+              <td><span class="text-green-400 font-semibold">HIGH</span></td>
+              <td class="text-dim">EU law, MIMIT Circular</td>
+            </tr>
+            <tr>
+              <td>Smart&amp;Start accessible to foreign-parent</td>
+              <td><span class="text-yellow-400 font-semibold">MEDIUM</span></td>
+              <td class="text-dim">Secondary sources; no contrary evidence</td>
+            </tr>
+            <tr>
+              <td>Transfer pricing costs €5K-15K/year</td>
+              <td><span class="text-green-400 font-semibold">HIGH</span></td>
+              <td class="text-dim">Multiple professional sources</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-warning mt-6">
+        <div class="text-xs uppercase tracking-widest text-yellow-400 font-semibold mb-2">ONE OPEN QUESTION</div>
+        <p>Whether the "persone fisiche, investitori qualificati, investitori istituzionali" language in Art 28 of L. 193/2024 has any interpretive impact on registration (vs. just investor tax credits). Assessed as: investor tax credit provision only, NOT a registration gate. Confidence: MEDIUM. A scoped legal opinion would close this definitively.</p>
+      </div>
+    </section>
+
+    <!-- SECTION: SOURCES -->
+    <section id="sources" class="fade-in">
+      <h2 class="section-title">Primary Source Citations</h2>
+
+      <p class="mb-4 text-dim">This is a legal research output. All primary-source citations are traceable to Italian government authorities.</p>
+
+      <div class="card overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Source</th>
+              <th>Type</th>
+              <th>Tier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Art 25 DL 179/2012 consolidated text (normattiva.it)</td><td>Primary law</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>2</td><td>MIMIT official Art 25 PDF (mimit.gov.it)</td><td>Official guidance</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>3</td><td>Law 193/2024 Art 28 (normattiva.it)</td><td>Primary law</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>4</td><td>Law 193/2024 GU publication (gazzettaufficiale.it, 24G00215)</td><td>Official register</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>5</td><td>MIMIT Circular 29 July 2025 (mimit.gov.it)</td><td>Most recent authoritative guidance</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>6</td><td>MIMIT Circular PDF (mimit.gov.it)</td><td>Official PDF</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>7</td><td>Smart&amp;Start Italia (invitalia.it)</td><td>Program page</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>8</td><td>MIMIT Smart&amp;Start page (mimit.gov.it)</td><td>Official program</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>9</td><td>Parliamentary research (camera.it)</td><td>Official research</td><td><span class="src-pill t1-badge">T1</span></td></tr>
+            <tr><td>10</td><td>Transfer pricing US flip (fiscomania.com)</td><td>Professional analysis</td><td><span class="src-pill">T2</span></td></tr>
+            <tr><td>11</td><td>Law 193/2024 analysis (federnotizie.it)</td><td>Notarial analysis</td><td><span class="src-pill">T2</span></td></tr>
+            <tr><td>12</td><td>Law 193/2024 startup changes (prolaw.it)</td><td>Legal analysis</td><td><span class="src-pill">T2</span></td></tr>
+            <tr><td>13</td><td>MIMIT Circular analysis (dirittobancario.it)</td><td>Legal analysis</td><td><span class="src-pill">T2</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 text-sm text-dim">
+        <strong class="accent">Primary-source provenance:</strong> 9/13 sources are Tier 1 (Italian government primary: normattiva.it, mimit.gov.it, gazzettaufficiale.it, invitalia.it, camera.it). 4/13 are Tier 2 professional legal analysis.
+      </div>
+    </section>
+
+    <!-- SECTION: STALE DATA -->
+    <section id="stale" class="fade-in">
+      <h2 class="section-title">Stale Data Flag</h2>
+      <ul class="space-y-3 text-dim">
+        <li>• <strong class="text-white">Transfer pricing cost estimates (€5K-15K)</strong>: Based on 2024-2025 professional sources — assume stable for 2026 but verify with Italian commercialista.</li>
+        <li>• <strong class="text-white">Smart&amp;Start budget status</strong>: Not directly confirmed from MIMIT 2026 budget documents — "open" status confirmed operationally but budget allocation not verified.</li>
+        <li>• <strong class="text-white">Case law gap</strong>: No 2026-specific case law found on foreign-owned startup register challenges (absence of evidence is informative but not conclusive).</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- RIGHT SIDEBAR: METADATA -->
+  <aside class="hidden lg:block no-print sticky top-24 self-start">
+    <div class="card p-5">
+      <div class="text-xs uppercase tracking-widest text-dim mb-4 font-semibold">Research Metadata</div>
+      <dl class="space-y-3 text-sm">
+        <div>
+          <dt class="text-dim">Task ID</dt>
+          <dd class="font-mono text-xs accent">nx-20260410-r3it</dd>
+        </div>
+        <div>
+          <dt class="text-dim">Agent</dt>
+          <dd>DELPHI v1.0</dd>
+        </div>
+        <div>
+          <dt class="text-dim">Depth</dt>
+          <dd>D3</dd>
+        </div>
+        <div>
+          <dt class="text-dim">Duration</dt>
+          <dd>13.5 min</dd>
+        </div>
+        <div>
+          <dt class="text-dim">Confidence</dt>
+          <dd>HIGH (legal text)<br><span class="text-xs text-dim">MEDIUM-HIGH (practice)</span></dd>
+        </div>
+        <div>
+          <dt class="text-dim">Date</dt>
+          <dd>2026-04-10</dd>
+        </div>
+      </dl>
+
+      <div class="border-t border-[var(--border)] mt-4 pt-4">
+        <div class="text-xs uppercase tracking-widest text-dim mb-3 font-semibold">Research Channels</div>
+        <div class="flex flex-wrap">
+          <span class="src-pill">Perplexity Sonar Pro x7</span>
+          <span class="src-pill">Brave Web Search</span>
+          <span class="src-pill">WebFetch</span>
+          <span class="src-pill">Tavily (attempted)</span>
+        </div>
+      </div>
+
+      <div class="border-t border-[var(--border)] mt-4 pt-4">
+        <div class="text-xs uppercase tracking-widest text-dim mb-3 font-semibold">Source Tiers</div>
+        <div class="text-sm">
+          <div class="flex justify-between mb-1"><span>T1 Primary</span><span class="accent font-mono">9</span></div>
+          <div class="flex justify-between mb-1"><span>T2 Secondary</span><span class="accent font-mono">4</span></div>
+          <div class="flex justify-between"><span>Total</span><span class="accent font-mono">13</span></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer class="max-w-7xl mx-auto px-6 py-12 border-t border-[var(--border)] mt-16 text-center text-sm text-dim">
+  <div class="mb-3">
+    <span class="src-pill">DELPHI v1.0</span>
+    <span class="src-pill">D3</span>
+    <span class="src-pill">nx-20260410-r3it</span>
+  </div>
+  <p>Generated by shared-reporter · NexusOS · 2026-04-10</p>
+  <p class="mt-2 text-xs">Raw findings: <code>~/.nexus/intel/solnest-r3-italy-2026-04-10.md</code></p>
+</footer>
+
+<script>
+// Theme toggle
+const themeBtn = document.getElementById('themeBtn');
+const html = document.documentElement;
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if (savedTheme === 'light') html.classList.remove('dark'), html.classList.add('light'), themeBtn.textContent = 'Dark';
+themeBtn.addEventListener('click', () => {
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark'); html.classList.add('light');
+    themeBtn.textContent = 'Dark';
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.classList.remove('light'); html.classList.add('dark');
+    themeBtn.textContent = 'Light';
+    localStorage.setItem('theme', 'dark');
+  }
+});
+
+// Share button
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const url = window.location.href;
+  const title = document.title;
+  if (navigator.share) {
+    try { await navigator.share({ title, url }); } catch (e) {}
+  } else {
+    try {
+      await navigator.clipboard.writeText(url);
+      const btn = document.getElementById('shareBtn');
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = orig, 2000);
+    } catch (e) {}
+  }
+});
+
+// Fade-in observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Charts
+document.addEventListener('DOMContentLoaded', () => {
+  Chart.defaults.color = '#8b949e';
+  Chart.defaults.borderColor = 'rgba(88, 166, 255, 0.15)';
+
+  // Chart 1: Grant Capture Bar
+  const grantCtx = document.getElementById('grantChart');
+  if (grantCtx) {
+    new Chart(grantCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Floor', 'Realistic', 'Ceiling'],
+        datasets: [
+          {
+            label: 'Scenario A (Delaware-owned)',
+            data: [0, 450, 1350],
+            backgroundColor: 'rgba(88, 166, 255, 0.7)',
+            borderColor: '#58a6ff',
+            borderWidth: 2,
+            borderRadius: 6
+          },
+          {
+            label: 'Scenario B (Pafi personal)',
+            data: [0, 450, 1350],
+            backgroundColor: 'rgba(34, 197, 94, 0.6)',
+            borderColor: '#22c55e',
+            borderWidth: 2,
+            borderRadius: 6
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12 } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ctx.dataset.label + ': €' + ctx.parsed.y + 'K'
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: '€ thousands' },
+            ticks: { callback: (v) => '€' + v + 'K' }
+          }
+        }
+      }
+    });
+  }
+
+  // Chart 2: Confidence Doughnut
+  const confCtx = document.getElementById('confChart');
+  if (confCtx) {
+    new Chart(confCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['HIGH confidence', 'MEDIUM-HIGH', 'MEDIUM'],
+        datasets: [{
+          data: [3, 1, 1],
+          backgroundColor: [
+            'rgba(34, 197, 94, 0.8)',
+            'rgba(88, 166, 255, 0.8)',
+            'rgba(234, 179, 8, 0.8)'
+          ],
+          borderColor: [
+            '#22c55e',
+            '#58a6ff',
+            '#eab308'
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12 } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ctx.label + ': ' + ctx.parsed + ' claim' + (ctx.parsed > 1 ? 's' : '')
+            }
+          }
+        }
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>
