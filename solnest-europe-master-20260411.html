@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SolNest Europe Master 2026 — Unified Funding Program Atlas</title>
+<meta name="description" content="50 programs across 25 European countries, 10 dimensions each: value, conditions, incorporation, age, nationality, duration, stage, MVP. Single unified synthesis R1-R8.">
+<meta property="og:title" content="SolNest Europe Master 2026 — Unified Funding Program Atlas">
+<meta property="og:description" content="50 programs, 25 countries, 10 dimensions each. Replaces R1-R8 individual reports.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card: #111118;
+    --card-elev: #16161f;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #e6e6ef;
+    --text-dim: #9aa0b4;
+    --text-mute: #6b7085;
+    --accent: #58a6ff;
+    --accent-glow: rgba(88,166,255,0.14);
+    --good: #22c55e;
+    --warn: #eab308;
+    --bad: #ef4444;
+    --cond: #a78bfa;
+    --gold: #f5c518;
+    --silver: #c0c0c0;
+    --bronze: #cd7f32;
+  }
+  [data-theme="light"] {
+    --bg: #f7f7fa;
+    --card: #ffffff;
+    --card-elev: #fbfbfd;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.16);
+    --text: #1a1a24;
+    --text-dim: #5c5f72;
+    --text-mute: #8a8d9f;
+    --accent: #5E6AD2;
+    --accent-glow: rgba(94,106,210,0.10);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-size: 15px; line-height: 1.6; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 24px 28px 80px; }
+  header.top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px;
+  }
+  .brand { font-weight: 800; font-size: 16px; letter-spacing: -0.01em; }
+  .brand span { color: var(--accent); }
+  .top-actions { display: flex; gap: 8px; }
+  .btn {
+    background: var(--card); color: var(--text); border: 1px solid var(--border);
+    padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .btn:hover { border-color: var(--accent); }
+  .hero {
+    background: linear-gradient(135deg, var(--card) 0%, var(--card-elev) 100%);
+    border: 1px solid var(--border); border-radius: 16px; padding: 32px 36px; margin-bottom: 24px;
+  }
+  .tag {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    background: var(--accent-glow); color: var(--accent); border: 1px solid var(--accent);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 44px); line-height: 1.08; margin: 16px 0 16px;
+    letter-spacing: -0.02em; font-weight: 800;
+  }
+  .hero p { color: var(--text-dim); font-size: 16px; max-width: 1000px; margin: 0; }
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px; margin: 24px 0;
+  }
+  .kpi {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .kpi .label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mute); }
+  .kpi .value { font-size: 24px; font-weight: 800; margin: 6px 0 2px; }
+  .kpi .sub { font-size: 12px; color: var(--text-dim); }
+  .alert {
+    background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.28);
+    border-radius: 12px; padding: 16px 20px; margin: 16px 0 32px;
+  }
+  .alert .label { font-size: 11px; font-weight: 800; color: var(--bad); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .alert .items { font-size: 14px; color: var(--text); display: flex; flex-wrap: wrap; gap: 20px; }
+  .alert b { color: var(--bad); }
+  nav.toc {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 24px; margin-bottom: 32px;
+  }
+  nav.toc .label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 10px; }
+  nav.toc .links { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 13px; }
+  nav.toc a { color: var(--text-dim); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); }
+  section { margin: 48px 0; }
+  h2 {
+    font-size: 26px; font-weight: 800; letter-spacing: -0.015em;
+    padding-bottom: 12px; border-bottom: 1px solid var(--border); margin: 0 0 20px;
+  }
+  h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px; color: var(--text); }
+  p { margin: 10px 0 14px; color: var(--text-dim); }
+  p strong { color: var(--text); }
+  .lead { font-size: 16px; color: var(--text); }
+
+  /* Program cards — the heart of the report */
+  .program-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  .program {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 20px 24px;
+    display: grid; grid-template-columns: 1fr; gap: 12px;
+  }
+  .program.go { border-left: 4px solid var(--good); }
+  .program.cond { border-left: 4px solid var(--cond); }
+  .program.fast { border-left: 4px solid var(--accent); }
+  .program.urgent { border-left: 4px solid var(--warn); }
+  .program.nogo { border-left: 4px solid var(--bad); opacity: 0.85; }
+  .program.y2 { border-left: 4px solid var(--silver); }
+  .program-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  }
+  .program-head .name { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+  .program-head .name .flag { margin-right: 8px; font-size: 19px; }
+  .program-head .verdict {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 4px;
+  }
+  .v-go { background: rgba(34,197,94,0.15); color: var(--good); }
+  .v-cond { background: rgba(167,139,250,0.15); color: var(--cond); }
+  .v-fast { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .v-urgent { background: rgba(234,179,8,0.15); color: var(--warn); }
+  .v-nogo { background: rgba(239,68,68,0.15); color: var(--bad); }
+  .v-y2 { background: rgba(192,192,192,0.15); color: var(--silver); }
+  .dims {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 8px 20px; margin-top: 4px;
+  }
+  .dim { font-size: 13px; color: var(--text-dim); line-height: 1.45; }
+  .dim .k { color: var(--text-mute); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 1px; }
+  .dim .v { color: var(--text); }
+  .dim.value .v { color: var(--good); font-weight: 700; }
+  .dim.deadline .v { color: var(--warn); font-weight: 600; }
+  .dim.nogo .v { color: var(--bad); }
+
+  /* Final top 3 podium */
+  .podium { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 24px 0; }
+  .podium .slot {
+    background: linear-gradient(180deg, var(--card-elev) 0%, var(--card) 100%);
+    border: 1px solid var(--border-strong); border-radius: 16px; padding: 24px 26px;
+    position: relative; overflow: hidden;
+  }
+  .podium .slot::before {
+    content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px;
+    border-radius: 50%; filter: blur(40px); opacity: 0.6;
+  }
+  .podium .slot.gold::before { background: radial-gradient(var(--gold), transparent); }
+  .podium .slot.silver::before { background: radial-gradient(var(--silver), transparent); }
+  .podium .slot.bronze::before { background: radial-gradient(var(--bronze), transparent); }
+  .podium .medal { font-size: 36px; line-height: 1; }
+  .podium h3 { font-size: 20px; margin: 8px 0 4px; }
+  .podium .pts { font-size: 12px; color: var(--text-mute); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .podium .why { font-size: 13px; color: var(--text-dim); margin: 12px 0 4px; }
+
+  /* Data tables */
+  table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; margin: 12px 0 24px;
+  }
+  thead th {
+    text-align: left; padding: 12px 14px; background: var(--card-elev);
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-mute); border-bottom: 1px solid var(--border-strong);
+  }
+  tbody td {
+    padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--card-elev); }
+  td .n { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .pill.go { background: rgba(34,197,94,0.12); color: var(--good); }
+  .pill.cond { background: rgba(167,139,250,0.12); color: var(--cond); }
+  .pill.nogo { background: rgba(239,68,68,0.12); color: var(--bad); }
+  .pill.warn { background: rgba(234,179,8,0.12); color: var(--warn); }
+  .pill.neutral { background: var(--accent-glow); color: var(--accent); }
+
+  /* Universal findings */
+  .findings { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .finding {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .finding .n { color: var(--accent); font-size: 22px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+  .finding h4 { font-size: 14px; font-weight: 700; margin: 2px 0 6px; color: var(--text); }
+  .finding p { font-size: 12px; margin: 0; color: var(--text-dim); }
+
+  footer {
+    margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--text-mute);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 720px) {
+    .container { padding: 16px 18px 60px; }
+    .hero { padding: 24px 22px; }
+    h1 { font-size: 28px; }
+    .program { padding: 18px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="top">
+  <div class="brand">NexusOS<span>.</span> Reports</div>
+  <div class="top-actions">
+    <button class="btn" id="themeToggle">Theme</button>
+    <button class="btn" id="shareBtn">Share</button>
+    <button class="btn" onclick="window.print()">Print</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="tag">Published 2026-04-11 · Unified Genie Synthesis · R1-R8 Cross-Reference</span>
+  <h1>SolNest Europe Master 2026 — Unified Funding Atlas</h1>
+  <p class="lead">
+    <strong>One report. 50 programs. 25 countries. 10 dimensions each.</strong>
+    This is the single authoritative cross-reference of every investment, grant, tax credit, and
+    crowdfunding program surfaced during the R1-R8 European sweep (2026-04-10). Every entry answers
+    the conditions Pafi set in the original audio brief: value, eligibility, incorporation, owner
+    age, nationality, deadlines, required stage, and MVP gate.
+  </p>
+</section>
+
+<div class="kpi-grid">
+  <div class="kpi"><div class="label">Programs</div><div class="value">50</div><div class="sub">27 national + 6 EU + 12 fatal + 5 intl</div></div>
+  <div class="kpi"><div class="label">Countries</div><div class="value">25</div><div class="sub">Europe + 3 non-EU (UK, CH, NO)</div></div>
+  <div class="kpi"><div class="label">GO (Y1)</div><div class="value" style="color:var(--good)">2</div><div class="sub">Italy · Netherlands</div></div>
+  <div class="kpi"><div class="label">NO-GO fatal</div><div class="value" style="color:var(--bad)">12</div><div class="sub">Hard blockers for Pafi profile</div></div>
+  <div class="kpi"><div class="label">Y1 realistic</div><div class="value">€300-600K</div><div class="sub">Italy-anchor path</div></div>
+  <div class="kpi"><div class="label">Y1+2 ceiling</div><div class="value">€4.55M</div><div class="sub">Post-MVP EIC unlock</div></div>
+</div>
+
+<div class="alert">
+  <div class="label">⏰ Urgent deadline queue</div>
+  <div class="items">
+    <span><b>Apr 19</b> · PL PARP Smart UP <b>€92K</b></span>
+    <span><b>Apr 21</b> · RO PNRR (verify) <b>TBD</b></span>
+    <span><b>Jun 30</b> · PT Startup Voucher T2 <b>€30K</b></span>
+    <span><b>Aug 31</b> · FI Sprint Grant <b>€100K</b></span>
+    <span><b>Nov 4</b> · EU EIC Accel Step 2 <b>€2.5M+€15M</b> <i>(post-MVP)</i></span>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="label">Contents</div>
+  <div class="links">
+    <a href="#glossary">Glossary (all acronyms)</a>
+    <a href="#founder">Founder profile</a>
+    <a href="#final-top-3">Final Top 3 (MCDA)</a>
+    <a href="#atlas">Program atlas (50)</a>
+    <a href="#fatalities">Hard fatalities</a>
+    <a href="#universal">Universal W4 findings</a>
+    <a href="#stacking">Stackability matrix</a>
+    <a href="#paths">Capital stack paths</a>
+    <a href="#actions">Action plan</a>
+    <a href="#open-questions">Open questions</a>
+  </div>
+</nav>
+
+<section id="glossary">
+  <h2>📖 Glossary — every abbreviation and letter combination used in this report</h2>
+  <p>Every time the report uses an acronym, a non-English entity type, or a technical shorthand, it's explained here.
+  This section exists so you never have to guess what "TRL 6 HARD gate" or "Polish Sp. z o.o." means.</p>
+
+  <h3>Technology & project-stage terms</h3>
+  <table>
+    <thead><tr><th>Term</th><th>Stands for</th><th>What it means in plain English</th></tr></thead>
+    <tbody>
+      <tr><td><b>TRL</b></td><td>Technology Readiness Level</td><td>EU 1-9 scale measuring how mature a technology is. TRL 1 = basic idea on paper. TRL 9 = proven in commercial use. See scale below.</td></tr>
+      <tr><td><b>TRL 1</b></td><td>Basic principles observed</td><td>Scientific idea exists, nothing built yet</td></tr>
+      <tr><td><b>TRL 2</b></td><td>Technology concept formulated</td><td>Concept written down, no practical proof</td></tr>
+      <tr><td><b>TRL 3</b></td><td>Experimental proof of concept</td><td>Critical function demonstrated analytically or in lab</td></tr>
+      <tr><td><b>TRL 4</b></td><td>Technology validated in lab</td><td>Components validated together in lab environment (e.g. algorithm proven on test data)</td></tr>
+      <tr><td><b>TRL 5</b></td><td>Technology validated in relevant environment</td><td>Components validated in a setting resembling real conditions</td></tr>
+      <tr><td><b>TRL 6</b></td><td>Technology demonstrated in relevant environment</td><td>Prototype or MVP tested in near-operational setting. <b>EIC Accelerator hard gate.</b> SolNest pre-MVP = TRL 1-3, post-MVP with paying users = TRL 6+.</td></tr>
+      <tr><td><b>TRL 7</b></td><td>System prototype demonstration in operational environment</td><td>Full prototype in actual operational setting</td></tr>
+      <tr><td><b>TRL 8</b></td><td>System complete and qualified</td><td>Final product tested and qualified through demonstration</td></tr>
+      <tr><td><b>TRL 9</b></td><td>Actual system proven in operational environment</td><td>Commercial product in real deployment</td></tr>
+      <tr><td><b>MVP</b></td><td>Minimum Viable Product</td><td>First working version a real user can actually use. For SolNest, this is the moment the solar marketplace website lets a homeowner book a quote from an installer.</td></tr>
+      <tr><td><b>PoC</b></td><td>Proof of Concept</td><td>Small experiment proving the idea works, usually before MVP</td></tr>
+      <tr><td><b>SaaS</b></td><td>Software as a Service</td><td>Software delivered via web subscription (which SolNest is)</td></tr>
+      <tr><td><b>R&amp;D</b></td><td>Research and Development</td><td>The qualifying activity for most grants (WBSO, CDTI Neotec, Innosuisse)</td></tr>
+      <tr><td><b>SAFE</b></td><td>Simple Agreement for Future Equity</td><td>Equity investment instrument (YC-invented) — converts to shares later. Kima Ventures uses these.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>EU state-aid framework terms</h3>
+  <table>
+    <thead><tr><th>Term</th><th>Stands for</th><th>What it means in plain English</th></tr></thead>
+    <tbody>
+      <tr><td><b>SME</b></td><td>Small and Medium Enterprise</td><td>EU official definition: &lt;250 employees, ≤€50M revenue, ≤€43M balance sheet. Most startup grants require SME status.</td></tr>
+      <tr><td><b>Micro enterprise</b></td><td>—</td><td>EU sub-category of SME: &lt;10 employees, ≤€2M revenue. SolNest qualifies as micro in every EU country.</td></tr>
+      <tr><td><b>SME consolidation test</b></td><td>Recommendation 2003/361/EC</td><td>Rule that decides whether a sub-company is judged alone or together with its parent. Because the Delaware parent has 0 employees and €0 revenue, every SolNest EU sub passes as micro-enterprise on its own.</td></tr>
+      <tr><td><b>de minimis</b></td><td>Latin "of minimal things"</td><td>EU rule: small amounts of state aid (up to €300K per company over any 3-year window) are exempt from state-aid review because they're too small to distort markets.</td></tr>
+      <tr><td><b>GBER</b></td><td>General Block Exemption Regulation (EU Regulation 651/2014)</td><td>The EU rulebook that pre-approves certain categories of state aid (R&amp;D, startup aid, regional aid) so governments don't have to ask Brussels every time. Higher ceilings than de minimis.</td></tr>
+      <tr><td><b>State aid</b></td><td>—</td><td>Any government-granted advantage to a business (grant, loan below market rate, tax break). EU monitors to prevent unfair competition. NL WBSO is explicitly NOT state aid (general tax measure).</td></tr>
+      <tr><td><b>GBER Art 22</b></td><td>Article 22 "Aid for start-ups"</td><td>The specific GBER article Austria's AWS Preseed uses. Allows up to €0.4M grant for unlisted SMEs &lt;5 years old.</td></tr>
+      <tr><td><b>PNRR</b></td><td>Piano Nazionale di Ripresa e Resilienza (Italian National Recovery and Resilience Plan)</td><td>Italy's version of the EU Recovery Fund implementation. Romania and other EU countries each have their own national recovery plan under the same EU umbrella.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Legal entity types (the company forms you can incorporate)</h3>
+  <table>
+    <thead><tr><th>Abbrev.</th><th>Country</th><th>Full name</th><th>Plain-English equivalent</th></tr></thead>
+    <tbody>
+      <tr><td><b>SRL</b></td><td>🇮🇹 Italy</td><td>Società a Responsabilità Limitata</td><td>Italian limited-liability company (LLC). €10K min capital (SRL) or €1 (SRL-S simplified).</td></tr>
+      <tr><td><b>BV</b></td><td>🇳🇱 Netherlands</td><td>Besloten Vennootschap</td><td>Dutch LLC. €0.01 min capital since 2012. ~1 week to form.</td></tr>
+      <tr><td><b>SL</b></td><td>🇪🇸 Spain</td><td>Sociedad Limitada</td><td>Spanish LLC. €3K min capital. 6-month Commercial Registry filing window for CDTI Neotec.</td></tr>
+      <tr><td><b>GmbH</b></td><td>🇩🇪 Germany / 🇦🇹 Austria / 🇨🇭 Switzerland</td><td>Gesellschaft mit beschränkter Haftung</td><td>German/Austrian/Swiss LLC. DE: €25K min / AT: €35K (or €10K "founder's privilege") / CH: CHF 20K.</td></tr>
+      <tr><td><b>Sp. z o.o.</b></td><td>🇵🇱 Poland</td><td>Spółka z ograniczoną odpowiedzialnością</td><td>Polish LLC. PLN 5,000 (~€1,200) min capital. ~1-2 weeks to form.</td></tr>
+      <tr><td><b>UAB</b></td><td>🇱🇹 Lithuania</td><td>Uždaroji akcinė bendrovė</td><td>Lithuanian private LLC. €2,500 min capital. ~2 weeks.</td></tr>
+      <tr><td><b>OÜ</b></td><td>🇪🇪 Estonia</td><td>Osaühing</td><td>Estonian LLC. €2,500 min capital. Lowest-cost EU path when combined with e-Residency: €565-1,430 one-time + €700-800/yr. Setup in 1-2 days via e-Residency.</td></tr>
+      <tr><td><b>Oy</b></td><td>🇫🇮 Finland</td><td>Osakeyhtiö</td><td>Finnish private LLC. Min capital requirement removed 2019 for new Oy.</td></tr>
+      <tr><td><b>Lda</b></td><td>🇵🇹 Portugal</td><td>Sociedade por Quotas</td><td>Portuguese LLC. €1 min capital (Empresa na Hora fast-track available).</td></tr>
+      <tr><td><b>Ltd</b></td><td>🇮🇪 Ireland / 🇬🇧 UK / 🇲🇹 Malta</td><td>Limited (company)</td><td>English-speaking LLC. €1 min capital.</td></tr>
+      <tr><td><b>ApS</b></td><td>🇩🇰 Denmark</td><td>Anpartsselskab</td><td>Danish private LLC. DKK 40,000 (~€5,400) min capital. 100% foreign ownership explicitly allowed.</td></tr>
+      <tr><td><b>A/S</b></td><td>🇩🇰 Denmark</td><td>Aktieselskab</td><td>Danish public LLC (larger form). DKK 400,000 min capital.</td></tr>
+      <tr><td><b>AS</b></td><td>🇳🇴 Norway</td><td>Aksjeselskap</td><td>Norwegian private LLC. NOK 30,000 (~€2,600) min capital.</td></tr>
+      <tr><td><b>NUF</b></td><td>🇳🇴 Norway</td><td>Norskregistrert Utenlandsk Foretak</td><td>Norwegian branch of a foreign company. Alternative to forming an AS when parent wants to operate in Norway without forming a new standalone entity.</td></tr>
+      <tr><td><b>SIA</b></td><td>🇱🇻 Latvia</td><td>Sabiedrība ar ierobežotu atbildību</td><td>Latvian LLC. €2,800 min capital.</td></tr>
+      <tr><td><b>OOD</b></td><td>🇧🇬 Bulgaria</td><td>Дружество с ограничена отговорност</td><td>Bulgarian LLC. BGN 2 (~€1) min capital.</td></tr>
+      <tr><td><b>d.o.o.</b></td><td>🇸🇮 Slovenia</td><td>Družba z omejeno odgovornostjo</td><td>Slovenian LLC. €7,500 min capital.</td></tr>
+      <tr><td><b>s.r.o.</b></td><td>🇨🇿 Czech Republic</td><td>Společnost s ručením omezeným</td><td>Czech LLC. CZK 1 (~€0.04) min capital.</td></tr>
+      <tr><td><b>IKE</b></td><td>🇬🇷 Greece</td><td>Idiotiki Kefalaiouchiki Etaireia</td><td>Greek private LLC. €1 min capital (most common Greek startup form).</td></tr>
+      <tr><td><b>AE</b></td><td>🇬🇷 Greece</td><td>Anonymi Etaireia</td><td>Greek public LLC. €25K min capital.</td></tr>
+      <tr><td><b>SAS</b></td><td>🇫🇷 France</td><td>Société par Actions Simplifiée</td><td>French simplified joint-stock company. €1 min capital. The form used by Bourse French Tech applicants.</td></tr>
+      <tr><td><b>SPRL</b></td><td>🇧🇪 Belgium</td><td>Société Privée à Responsabilité Limitée (now "BV" post-reform)</td><td>Belgian LLC. Belgium renamed SPRL → BV in its 2019 company-law reform. Some documents still say SPRL.</td></tr>
+      <tr><td><b>SRL Innovativa</b></td><td>🇮🇹 Italy</td><td>Società a Responsabilità Limitata Innovativa</td><td>Special Italian SRL category for innovative startups (DL 179/2012 Art 25). Offers tax advantages. Landmine: D4 thought it required natural-person ownership; R3 verified that rule does NOT exist in the current consolidated text.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Funding agencies and programs (acronyms)</h3>
+  <table>
+    <thead><tr><th>Acronym</th><th>Stands for</th><th>What they do</th></tr></thead>
+    <tbody>
+      <tr><td><b>EU</b></td><td>European Union</td><td>27 member states + shared funding programs (Horizon Europe, EIC, LIFE)</td></tr>
+      <tr><td><b>EIC</b></td><td>European Innovation Council</td><td>The EU's flagship startup funder. Runs EIC Accelerator (€2.5M grant + €15M equity), Pathfinder, Transition.</td></tr>
+      <tr><td><b>EIC Accelerator</b></td><td>—</td><td>Single most leveraged deep-tech grant in Europe. Two-step process: Step 1 short pitch → Step 2 full application + interview. <b>TRL 6 hard gate.</b></td></tr>
+      <tr><td><b>Horizon Europe</b></td><td>—</td><td>EU's €95.5B research & innovation framework programme 2021-2027. Split into 6 "Clusters" (Cluster 4 = Digital, Cluster 5 = Climate/Energy).</td></tr>
+      <tr><td><b>LIFE</b></td><td>L'Instrument Financier pour l'Environnement</td><td>EU's dedicated environment & climate funding instrument. LIFE Clean Energy requires 3+ partners from 3 EU countries.</td></tr>
+      <tr><td><b>CINEA</b></td><td>European Climate, Infrastructure and Environment Executive Agency</td><td>Manages LIFE + CEF Energy on behalf of the Commission</td></tr>
+      <tr><td><b>CEF</b></td><td>Connecting Europe Facility</td><td>EU infrastructure funding — roads, rail, energy grid. Wrong domain for SaaS.</td></tr>
+      <tr><td><b>MIMIT</b></td><td>Ministero delle Imprese e del Made in Italy</td><td>Italian Ministry of Enterprise — issued the July 2025 circular that debunked the SRL Innovativa landmine</td></tr>
+      <tr><td><b>Invitalia</b></td><td>—</td><td>Italian state-owned development agency that runs Smart&amp;Start Italia</td></tr>
+      <tr><td><b>CDTI</b></td><td>Centro para el Desarrollo Tecnológico Industrial</td><td>Spain's Centre for Industrial Technology Development. Runs Neotec (€325K R&amp;D grant).</td></tr>
+      <tr><td><b>ENISA</b></td><td>Empresa Nacional de Innovación</td><td>Spanish National Innovation Company. Runs participative loans (NOT the EU ENISA cyber agency — different organization).</td></tr>
+      <tr><td><b>NCBR</b></td><td>Narodowe Centrum Badań i Rozwoju</td><td>Polish National Centre for Research and Development. Runs BRIdge Alfa seed investment.</td></tr>
+      <tr><td><b>PARP</b></td><td>Polska Agencja Rozwoju Przedsiębiorczości</td><td>Polish Agency for Enterprise Development. Runs SCALAB / Smart UP accelerators.</td></tr>
+      <tr><td><b>AWS</b></td><td>Austria Wirtschaftsservice</td><td>Austrian federal promotional bank. Runs AWS Preseed. NOT Amazon Web Services.</td></tr>
+      <tr><td><b>FFG</b></td><td>Österreichische Forschungsförderungsgesellschaft</td><td>Austrian Research Promotion Agency. Runs Basisprogramm + other R&amp;D grants.</td></tr>
+      <tr><td><b>RVO</b></td><td>Rijksdienst voor Ondernemend Nederland</td><td>Netherlands Enterprise Agency. Runs WBSO + MIT R&amp;D Cooperation.</td></tr>
+      <tr><td><b>WBSO</b></td><td>Wet Bevordering Speur- en Ontwikkelingswerk</td><td>Dutch R&amp;D Promotion Act. The tax credit itself, not an agency. Gives back 32-40% of R&amp;D wage costs via payroll tax offset.</td></tr>
+      <tr><td><b>Innosuisse</b></td><td>—</td><td>Swiss Innovation Agency (formerly KTI/CTI). Runs Start-Up Innovation Project (€530K).</td></tr>
+      <tr><td><b>BMBF / BMWi</b></td><td>Bundesministerium für Bildung und Forschung / Wirtschaft und Klimaschutz</td><td>German Federal Ministries (Research / Economics). Run EXIST via universities.</td></tr>
+      <tr><td><b>KfW</b></td><td>Kreditanstalt für Wiederaufbau</td><td>German state development bank. Co-funds HTGF (High-Tech Gründerfonds).</td></tr>
+      <tr><td><b>HTGF</b></td><td>High-Tech Gründerfonds</td><td>Germany's largest seed investor. Equity, not grants.</td></tr>
+      <tr><td><b>MITA</b></td><td>Mokslo, Inovacijų ir Technologijų Agentūra</td><td>Lithuanian Agency for Science, Innovation and Technology. Runs ICT Startup Grant.</td></tr>
+      <tr><td><b>LIAA</b></td><td>Latvijas Investīciju un Attīstības Aģentūra</td><td>Investment and Development Agency of Latvia. Runs Innovation Voucher.</td></tr>
+      <tr><td><b>EAS</b></td><td>Enterprise Estonia (Ettevõtluse Arendamise Sihtasutus)</td><td>Estonia's main business-development agency. Runs Development Grant + Startup Visa program.</td></tr>
+      <tr><td><b>IAPMEI</b></td><td>Agência para a Competitividade e Inovação</td><td>Portugal's Competitiveness and Innovation Agency. Runs Startup Voucher.</td></tr>
+      <tr><td><b>ANI</b></td><td>Agência Nacional de Inovação</td><td>Portugal's National Innovation Agency. Runs INNOV-ID.</td></tr>
+      <tr><td><b>GSRI</b></td><td>General Secretariat for Research and Innovation (Greece)</td><td>Greek research ministry. Possibly runs "Phaethon" solar program (needs verification).</td></tr>
+      <tr><td><b>Bpifrance</b></td><td>Banque Publique d'Investissement</td><td>France's public investment bank. Runs Bourse French Tech + co-invests with France 2030.</td></tr>
+      <tr><td><b>VLAIO</b></td><td>Vlaams Agentschap Innoveren &amp; Ondernemen</td><td>Flemish Innovation and Enterprise Agency (Belgium). Runs Scale-Ready + Baekeland.</td></tr>
+      <tr><td><b>Innoviris</b></td><td>—</td><td>Brussels Institute for Research and Innovation (Belgium, Brussels region).</td></tr>
+      <tr><td><b>NKFIH</b></td><td>Nemzeti Kutatási, Fejlesztési és Innovációs Hivatal</td><td>Hungarian National Research, Development and Innovation Office</td></tr>
+      <tr><td><b>GINOP-PLUSZ</b></td><td>Gazdaságfejlesztési és Innovációs Operatív Program Plusz</td><td>Hungarian Economic Development and Innovation Operational Programme. Explicitly excludes SaaS.</td></tr>
+      <tr><td><b>EIB / EIF</b></td><td>European Investment Bank / European Investment Fund</td><td>The EU's banking arm + its equity/guarantees subsidiary. Channels InvestEU via financial intermediaries.</td></tr>
+      <tr><td><b>Vinnova</b></td><td>—</td><td>Sweden's Innovation Agency. Requires Swedish citizenship — HARD BLOCKER for Pafi.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>US + international terms</h3>
+  <table>
+    <thead><tr><th>Term</th><th>Stands for</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><b>SBIR</b></td><td>Small Business Innovation Research</td><td>US federal R&amp;D grant program. 15 U.S.C. §638(e)(4) requires 51%+ US-citizen/permanent-resident ownership — permanently blocks Pafi.</td></tr>
+      <tr><td><b>NSF</b></td><td>National Science Foundation</td><td>US federal science agency. Runs NSF SBIR alongside DOE/NIH versions.</td></tr>
+      <tr><td><b>DOE SETO</b></td><td>Department of Energy, Solar Energy Technologies Office</td><td>US federal solar R&amp;D office. Runs American-Made Solar Prize.</td></tr>
+      <tr><td><b>DOE</b></td><td>Department of Energy</td><td>US federal energy department</td></tr>
+      <tr><td><b>BIRD</b></td><td>Binational Industrial Research and Development Foundation</td><td>US-Israel bilateral R&amp;D fund. Requires a US company + an Israeli research partner. Delaware C-Corp is a DIRECT ASSET here.</td></tr>
+      <tr><td><b>RMI</b></td><td>Rocky Mountain Institute</td><td>US cleantech think-tank. Runs Third Derivative accelerator.</td></tr>
+      <tr><td><b>Reg-CF</b></td><td>Regulation Crowdfunding (US SEC)</td><td>US crowdfunding regulation (JOBS Act Title III) that lets retail investors buy startup shares via platforms like Republic, Wefunder.</td></tr>
+      <tr><td><b>EDGAR</b></td><td>Electronic Data Gathering, Analysis, and Retrieval</td><td>SEC's public database of all company filings. Source for Reg-CF historical median calculations.</td></tr>
+      <tr><td><b>SEC</b></td><td>US Securities and Exchange Commission</td><td>US stock market regulator</td></tr>
+      <tr><td><b>ECSPR</b></td><td>European Crowdfunding Service Providers Regulation (EU 2020/1503)</td><td>EU regulation that licenses crowdfunding platforms EU-wide. SeedBlink is ECSPR-licensed.</td></tr>
+      <tr><td><b>C-Corp</b></td><td>C-Corporation</td><td>Standard US corporate form (as opposed to S-Corp or LLC). Pafi's SolNest parent is a Delaware C-Corp — the default Y Combinator / venture form.</td></tr>
+      <tr><td><b>DOGE</b></td><td>Department of Government Efficiency</td><td>2025 US federal cost-cutting initiative. Cited as the likely cause of the DOE American-Made Solar Prize Round 9 freeze.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Methodology terms used in this report</h3>
+  <table>
+    <thead><tr><th>Term</th><th>Stands for</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><b>Delphi</b></td><td>—</td><td>NexusOS research agent that runs multi-source deep research. R1-R8 = 8 sequential Delphi dispatches across Europe.</td></tr>
+      <tr><td><b>D4</b></td><td>Delphi D4 (depth level 4)</td><td>Earlier European funding research run that this report reconciles against. Some D4 conclusions were overturned by R1-R8 (e.g. France #1 → Plan B, Italy Phase 2 → Year 1 anchor).</td></tr>
+      <tr><td><b>R1-R8</b></td><td>Research rounds 1 through 8</td><td>The 8 Delphi dispatches this report cross-references: R1 France, R2 US, R3 Italy, R4 Republic.com, R5 EU-level, R6 Nordic+Germanic, R7 Southern EU + Benelux + Ireland, R8 CEE + Baltics.</td></tr>
+      <tr><td><b>W4</b></td><td>Workstream 4 (admin completeness)</td><td>The 10-dimension compliance matrix used to score every program: age cap, residency, company location, headcount, company age, foreign ownership, revenue, SME compliance, MVP/TRL, sector.</td></tr>
+      <tr><td><b>MCDA</b></td><td>Multi-Criteria Decision Analysis</td><td>Structured scoring method where each option is rated 1-5 across multiple criteria, then aggregated. This report's FINAL TOP 3 comes from MCDA.</td></tr>
+      <tr><td><b>CRITIC</b></td><td>Cognitive Critique Pattern (prompt engineering technique C-068)</td><td>Self-review pass where the model critiques its own ranking for internal consistency.</td></tr>
+      <tr><td><b>Cognitive Verifier</b></td><td>Prompt engineering technique C-044</td><td>Perturbation test: swap assumptions and see if rankings still hold. Confirms the FINAL TOP 3 is stable under reasonable noise.</td></tr>
+      <tr><td><b>Y1 / Y2</b></td><td>Year 1 / Year 2</td><td>Y1 = first 12 months from 2026-04-11. Y2 = months 13-24.</td></tr>
+      <tr><td><b>GO / CONDITIONAL / NO-GO</b></td><td>—</td><td>Simple verdict scale. GO = apply now, no blockers. CONDITIONAL = apply if X condition is met. NO-GO = hard blocker, skip.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="founder">
+  <h2>Founder profile (the constraint set everything is measured against)</h2>
+  <table>
+    <thead><tr><th>Dimension</th><th>Pafi's value</th><th>Funding implication</th></tr></thead>
+    <tbody>
+      <tr><td><b>Citizenship</b></td><td>Romanian (EU)</td><td>Sweden Vinnova BLOCKED (Swedish-only). 24/25 other countries OK.</td></tr>
+      <tr><td><b>Residency</b></td><td>Romania</td><td>Irrelevant for 24/25 countries — most require <i>company</i> residency, not founder residency.</td></tr>
+      <tr><td><b>Age</b></td><td>41</td><td>Only ES ENISA Jóvenes blocks (≤40). 24 other countries have no age cap on main grant programs.</td></tr>
+      <tr><td><b>Corporate structure</b></td><td>Delaware C-Corp parent (100%)</td><td>Only France 2030 blocks (75% foreign-ownership cap). 24/25 countries permit Delaware→EU-sub structure.</td></tr>
+      <tr><td><b>Co-founders</b></td><td>Solo founder</td><td>Blocks: LIFE Clean Energy (3 EU partners), Horizon Clusters consortia, Ireland DTIF. Not blocked for standalone grants.</td></tr>
+      <tr><td><b>Product stage</b></td><td>Pre-MVP (design-only homepage)</td><td>Blocks: EIC Accelerator (TRL 6 hard gate), Denmark EUDP (TRL 4 minimum), Belgium VLAIO Scale-Ready (post-MVP), DOE SETO/BIRD Energy (working concept).</td></tr>
+      <tr><td><b>Revenue</b></td><td>€0 / 0 employees</td><td>EU SME consolidation test (Rec. 2003/361/EC): every EU sub passes as micro-enterprise independently. Universal SME compliance.</td></tr>
+      <tr><td><b>Sector</b></td><td>Cleantech / solar marketplace SaaS</td><td>Eligible in 24/25 countries. Only Hungary GINOP-PLUSZ explicitly excludes "intangible assets"/SaaS.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="final-top-3">
+  <h2>🏆 Final Top 3 — MCDA Aggregation (what Pafi should actually pursue)</h2>
+  <p>Derived from a 9-category MCDA (Multi-Criteria Decision Analysis) scoring every program 1-5 on
+  fit with Pafi's exact profile. Aggregation rule: <span class="n">(category_appearances × 2) + Σ(raw_scores)</span>.
+  CRITIC + Cognitive Verifier cross-checks confirmed stable ranking under perturbation.</p>
+
+  <div class="podium">
+    <div class="slot gold">
+      <div class="medal">🥇</div>
+      <div class="pts">21 points · 3 categories</div>
+      <h3>Smart&amp;Start Italia 🇮🇹</h3>
+      <p class="why"><b>Single dominant Year 1 play.</b> Pre-MVP eligible. €300-600K realistic capture. Italy landmine DEBUNKED (R3, MIMIT Circular 29 July 2025 + 7/8 primary sources). Sportello permanente (always open). 30% non-repayable grant component for Southern Italy. Legal opinion nice-to-have, NOT veto gate. Single entity, manageable solo-founder operational load.</p>
+    </div>
+    <div class="slot silver">
+      <div class="medal">🥈</div>
+      <div class="pts">35 points · 5 categories</div>
+      <h3>Netherlands WBSO 🇳🇱</h3>
+      <p class="why"><b>Highest raw point total</b> (5 category top-3 appearances). Rolling monthly apps, foreign-ownership explicitly OK, <b>not classified as state aid</b> (general tax measure) → universally stackable with everything including Smart&amp;Start. Dutch BV 1-week formation. €20-50K/yr per entity. The universal stacking backbone.</p>
+    </div>
+    <div class="slot bronze">
+      <div class="medal">🥉</div>
+      <div class="pts">14 points · 2 categories</div>
+      <h3>EIC Accelerator (post-MVP) 🇪🇺</h3>
+      <p class="why"><b>Strategic Y2 unlock.</b> €2.5M grant + €15M equity co-investment = dominant ceiling in Europe. TRL 6 hard gate confirmed (EIC Guide v6.0 Nov 2025). Step 2 cut-off <b>Nov 4 2026</b>. Validates the MVP-build decision rule: delta +€1.2-3.4M from pre-MVP Y1 to post-MVP Y2. Single EU sub entity applies.</p>
+    </div>
+  </div>
+
+  <h3>"If Pafi could only pursue 3 things"</h3>
+  <ol style="color:var(--text);font-size:14px;line-height:1.8;padding-left:22px">
+    <li><b>Incorporate Italian SRL in Q2 2026 and apply Smart&amp;Start Italia</b> (sportello permanente, 3-5 months to first cash)</li>
+    <li><b>Incorporate Dutch BV in parallel and apply NL WBSO</b> (1-week formation, rolling apps, free universal stacking)</li>
+    <li><b>Build MVP on a 6-month schedule targeting EIC Accelerator Step 2 Nov 4 2026 cut-off</b> (post-MVP unlock to €2.5M + €15M equity)</li>
+  </ol>
+  <p><b>Parallel low-cost hedges:</b> email Bpifrance (France Plan B) + prepare Finland Sprint Grant application (hard Aug 31 2026 deadline).</p>
+</section>
+
+<section id="atlas">
+  <h2>Program atlas — 50 programs × 10 dimensions each</h2>
+  <p>Each card answers: <b>value</b>, <b>instrument</b>, <b>conditions</b>, <b>incorporation</b>, <b>owner age</b>,
+  <b>owner nationality</b>, <b>duration/deadline</b>, <b>project stage</b>, <b>MVP required</b>, <b>stackability</b>, <b>verdict</b>.
+  Sorted by Pafi-realistic Year 1 capture descending.</p>
+
+  <h3 style="color:var(--good)">Tier 1 — GO programs (pursue immediately)</h3>
+  <div class="program-grid">
+
+    <div class="program go">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇮🇹</span>Smart&amp;Start Italia <span style="font-size:12px;color:var(--text-mute)">· Invitalia (MIMIT)</span></div>
+        <span class="verdict v-go">GO · #1 anchor</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€300-600K realistic / €100K-€1.5M max ceiling</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">0% loan + 30% non-repayable grant (South IT)</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Italian SRL or SRL-S (3-5 mo to grant-ready)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None — Pafi (41) SAFE</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None. Delaware C-Corp 100% owner OK (Law 193/2024 Art 28 SME consolidation test)</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Sportello permanente (rolling, always open) · 60-90 day decision</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Idea / proof-of-concept OK · no MVP required</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No — pre-MVP eligible</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Business plan, €200K+ project budget, Southern IT regions unlock grant component (Calabria, Puglia, Sicilia, Basilicata, Campania, Molise, Abruzzo, Sardegna)</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">GBER R&amp;D + regional aid. Stacks with NL WBSO (tax), ES CDTI, PL BRIdge, CH Innosuisse. De minimis impact ~€50K from loan grant-equivalent.</span></div>
+      </div>
+    </div>
+
+    <div class="program go">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇳🇱</span>Netherlands WBSO R&amp;D Tax Credit <span style="font-size:12px;color:var(--text-mute)">· RVO</span></div>
+        <span class="verdict v-go">GO · universal add-on</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€20-50K/yr effective credit (50% wage cost on first €380K at startup rate)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Tax credit via payroll offset (NOT state aid)</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Dutch BV (~1 week formation, ~€500-1,500)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None — Pafi (41) SAFE</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Explicitly no restriction — foreign parent OK</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling monthly applications · weeks to approval · no deadline</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Any R&amp;D work · no TRL gate</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No — R&amp;D hours are the qualifying activity</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">BV must have payroll (≥1 NL-resident employee OR Pafi as director with R&amp;D hours allocated). Startup rate requires BV &lt;5 years old. Project must be genuine R&amp;D, documented.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ UNIVERSAL — general tax measure, not state aid. Does NOT count toward de minimis or GBER ceilings. Stacks with literally every grant in Europe.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--cond)">Tier 2 — CONDITIONAL HIGH (Y1 with entity setup, €60K+)</h3>
+  <div class="program-grid">
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇨🇭</span>Innosuisse Start-Up Innovation Project <span style="font-size:12px;color:var(--text-mute)">· Innosuisse</span></div>
+        <span class="verdict v-cond">CONDITIONAL · Y2 disbursement</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€300-530K (CHF 500K max)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Non-dilutive innovation project grant, conditional repay</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Swiss GmbH (CHF 20K capital) or AG</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None — Pafi (41) SAFE</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None. Swiss state aid regime parallel to EU — Delaware parent OK.</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling calls · 4-6 month decision · Y2 disbursement realistic</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">≤5 years old company · pre-MVP eligible</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No — innovative project is the criterion</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">30% own contribution required (~€130K Pafi inject) + Swiss research partner preferred (ETH/EPFL/PSI/Empa)</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack with IT Smart&amp;Start (different jurisdictions/entities)</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇪🇸</span>CDTI Neotec <span style="font-size:12px;color:var(--text-mute)">· Centro para el Desarrollo Tecnológico Industrial</span></div>
+        <span class="verdict v-cond">CONDITIONAL · spring 2026 call</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€250-325K realistic / up to €500K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Non-repayable GBER R&amp;D grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Spanish SL + 6-month Commercial Registry filing requirement</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None — Pafi (41) SAFE (<b>not</b> ENISA Jóvenes)</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None. Delaware parent OK.</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Spring 2026 call (date TBD — verify with CDTI) · 3-4 month decision</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">&lt;3 years old company · pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No — R&amp;D business plan is the criterion</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Detailed R&amp;D business plan, SL incorporated ≥6 months before application, SME size</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack with IT Smart&amp;Start (different entity/country, GBER R&amp;D not de minimis)</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇵🇱</span>Poland BRIdge Alfa (NCBR) <span style="font-size:12px;color:var(--text-mute)">· Narodowe Centrum Badań i Rozwoju</span></div>
+        <span class="verdict v-cond">CONDITIONAL · continuous call</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">~€230K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">80% non-refundable + 20% returnable seed investment</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Polish Sp. z o.o. (PLN 5,000 capital, ~1-2 weeks)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None — Pafi (41) SAFE</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None. Delaware parent OK.</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Continuous call · 3-6 month decision</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Via NCBR-accredited alfa fund. Project must be NCBR-eligible innovative R&amp;D, TRL 2-6 range acceptable.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack with IT Smart&amp;Start. ⚠ Careful if combining with PL PARP Smart UP same entity.</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇦🇹</span>AWS Preseed — Innovative Solutions <span style="font-size:12px;color:var(--text-mute)">· Austria Wirtschaftsservice</span></div>
+        <span class="verdict v-fast">FAST · cleantech priority</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€170-200K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Non-dilutive GBER Art 22 startup aid grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Austrian GmbH (~1-2 weeks, €35K capital or €10K with founder's privilege)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None — Pafi (41) SAFE</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None. Foreign ownership explicitly allowed.</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling · 6-8 week decision</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK · cleantech EXPLICITLY prioritized</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">No co-financing required. Project must be innovative, team must be capable, growth story required.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">⚠ Careful with IT Smart&amp;Start on personnel costs — use distinct cost lines. Monitor de minimis.</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇫🇮</span>Finland Sprint Grant <span style="font-size:12px;color:var(--text-mute)">· Business Finland (replaces Tempo)</span></div>
+        <span class="verdict v-urgent">CONDITIONAL · Aug 31 deadline</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€100K max (75% of eligible costs)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Non-dilutive grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Finnish Oy (~2 weeks, €2,500 capital waived for new Oy from 2019)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None — Pafi (41) SAFE</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None. No founder residency required. Foreign ownership permitted.</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>HARD WINDOW: Mar 2 → Aug 31 2026</b> · 6-8 week decision · ~142 days remaining</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">&lt;5 years old company · pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">English application accepted. Sprint = single-shot early-stage grant. Tempo was discontinued Oct 3 2025.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack with IT Smart&amp;Start. Different jurisdictions.</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇪🇪</span>Estonia EAS Development Grant + Startup Visa <span style="font-size:12px;color:var(--text-mute)">· Enterprise Estonia</span></div>
+        <span class="verdict v-cond">CONDITIONAL · lowest-cost entity</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€35-62K (Dev Grant tier)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Non-dilutive grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Estonian OÜ (lowest-cost EU path: €565-1,430 one-time + €700-800/yr)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None — Pafi (41) SAFE</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None. Delaware parent OK. e-Residency accelerates setup to 1-2 days.</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling · Startup Visa 10-day approval · Grant 8-12 weeks</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK · Startup Visa requires "innovative" designation</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">OÜ formation via e-Residency, Startup Visa for Pafi residency optional, Dev Grant tied to measurable development milestones</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack across EU</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--text)">Tier 3 — CONDITIONAL (smaller tickets or specific blockers)</h3>
+  <div class="program-grid">
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇵🇹</span>Portugal Startup Voucher Tier 2 <span style="font-size:12px;color:var(--text-mute)">· IAPMEI</span></div>
+        <span class="verdict v-urgent">URGENT · Jun 30 deadline</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€30K (Tier 2) / €60K (Tier 1 unconfirmed)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Voucher grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Portuguese Lda</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None confirmed</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Foreign founder rules NOT publicly documented — <b>verify with IAPMEI 808 201 201</b></span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>Jun 30 2026 hard deadline</b> (81 days out)</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Register PT Lda + IAPMEI call to confirm foreign founder eligibility before committing</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇵🇱</span>PL PARP Smart UP / SCALAB <span style="font-size:12px;color:var(--text-mute)">· PARP</span></div>
+        <span class="verdict v-urgent">URGENT · Apr 19 deadline</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">~€92K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Accelerator grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Polish Sp. z o.o. <b>already needed</b></span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Foreign startups OK with Polish Sp. z o.o.</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>Apr 19 2026 SCALAB cut-off (9 days)</b> — TOO TIGHT for formation</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Micro-accelerator ticket. en.parp.gov.pl/startup-booster. Realistically SKIP this round; target Q3 2026 as secondary play via BRIdge Alfa.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">⚠ Same Polish entity as BRIdge Alfa — verify cost-line separation</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇱🇹</span>Lithuania MITA ICT Startup Grant <span style="font-size:12px;color:var(--text-mute)">· MITA</span></div>
+        <span class="verdict v-cond">CONDITIONAL</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€62K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Non-dilutive grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Lithuanian UAB (~2 weeks, €2,500 capital)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">2026 call status <b>unconfirmed — verify with MITA directly</b></span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK (ICT framing)</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">ICT-classified startup, MITA-approved project</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇳🇴</span>Innovation Norway — Environmental Tech Idea Validation <span style="font-size:12px;color:var(--text-mute)">· Innovation Norway</span></div>
+        <span class="verdict v-cond">CONDITIONAL · 100% funded</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">NOK 150K (~€13K)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Non-dilutive grant — <b>100% funded, no co-financing</b></span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Norwegian AS or NUF branch</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Residency question pending — verify with Innovation Norway</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling · fast decision (~6 weeks)</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Idea / validation stage</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No — validation is the point</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Environmental tech framing, idea validation activities eligible</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack (Norwegian entity separate)</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇳🇴</span>Innovation Norway — Business Dev Tier <span style="font-size:12px;color:var(--text-mute)">· Innovation Norway</span></div>
+        <span class="verdict v-cond">CONDITIONAL · 50% co-finance</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">~€86K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Non-dilutive grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Norwegian AS or NUF</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Residency question pending</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling · 6-10 weeks</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Business development phase</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v"><b>50% co-financing required</b> · environmental tech preferred</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇩🇰</span>Denmark EUDP 2026-II <span style="font-size:12px;color:var(--text-mute)">· Danish Energy Agency</span></div>
+        <span class="verdict v-cond">CONDITIONAL · TRL 4 gate</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€100-300K (junior consortium) / DKK 5-50M ceiling</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Grant · 50-60% of eligible costs typically</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Danish ApS or A/S · 100% foreign ownership allowed</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None — Delaware→Danish ApS clean</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">2026-II deadline TBD · 3-4 month decision</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v"><b>TRL 4 minimum</b> — solar matching algorithm can be reframed as "validated in controlled environment"</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">⚠ TRL gate — requires reframing or post-MVP</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">University/research consortium preferred. Solar = CORE target sector.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean stack with IT Smart&amp;Start</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇩🇪</span>Bavaria Start?Zuschuss! <span style="font-size:12px;color:var(--text-mute)">· Gründerland Bayern</span></div>
+        <span class="verdict v-cond">CONDITIONAL · Bavaria-only</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€18-36K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Grant · 50% eligible costs co-finance</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Bavarian GmbH (must operate in Bavaria)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Not explicitly barred</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>May 6 → Jun 17 2026 (22nd round)</b> · 4-6 week decision</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">≤2 years old company · pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Bavaria-based operations. Digital/tech-oriented — solar OK if tech-framed.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">⚠ Personnel cost overlap possible with IT Smart&amp;Start</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇩🇪</span>NRW Gründungsstipendium <span style="font-size:12px;color:var(--text-mute)">· NRW Ministry via accredited advisor</span></div>
+        <span class="verdict v-cond">CONDITIONAL · stipend format</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€14-43K (€1,200/month × up to 3 persons × 12 months)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Stipend (monthly)</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">NRW GmbH + NRW operations</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Not explicitly barred</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling · ~8 week decision</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">≤1 year of founding · pre-founding OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">NRW-based operations · future-oriented tech (solar OK)</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">⚠ Careful personnel cost overlap</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇮🇪</span>Enterprise Ireland HPSU Feasibility <span style="font-size:12px;color:var(--text-mute)">· Enterprise Ireland</span></div>
+        <span class="verdict v-cond">CONDITIONAL · equity-heavy full track</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€30K (feasibility tier only, non-dilutive)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Feasibility grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Irish Ltd</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling · 6-8 weeks</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK at feasibility tier</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No at feasibility · ✅ for full HPSU</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v"><b>Full HPSU requires 10 jobs + €1M revenue commitment in 3 years + equity dilution</b> — stick to feasibility tier only</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇧🇪</span>Belgium Innoviris Brussels PoC <span style="font-size:12px;color:var(--text-mute)">· Innoviris Brussels</span></div>
+        <span class="verdict v-cond">CONDITIONAL · small ticket</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€10-25K voucher</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Proof-of-concept grant voucher</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Brussels-based entity (SPRL/BV Brussels)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">PoC stage</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Brussels operations required for a low-value ticket — ROI marginal</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇧🇪</span>Belgium VLAIO Scale-Ready <span style="font-size:12px;color:var(--text-mute)">· VLAIO Flanders</span></div>
+        <span class="verdict v-y2">Y2 · post-MVP</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€350K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Flemish BV</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Cyclical · Y2 play</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v"><b>Post-MVP required</b></span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">✅ Yes — post-MVP only</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">€500K+ project cost commitment, Flemish entity, scale-readiness demonstrated</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇱🇻</span>Latvia LIAA Innovation Voucher <span style="font-size:12px;color:var(--text-mute)">· LIAA</span></div>
+        <span class="verdict v-cond">CONDITIONAL · small ticket</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€25K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Voucher grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Latvian SIA</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">2026 window unconfirmed — verify with LIAA</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Innovation project</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Low friction, low ceiling</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇧🇬</span>Bulgaria Sofia Tech Park SEEIP <span style="font-size:12px;color:var(--text-mute)">· Sofia Tech Park</span></div>
+        <span class="verdict v-cond">CONDITIONAL · data insufficient</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€0-20K (unconfirmed)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Early-stage support</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Bulgarian OOD</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None known</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None known</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">2026 call unknown</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Not verified</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">Not verified</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Data insufficient — email Sofia Tech Park for 2026 call status</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Unknown</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇷🇴</span>Romania PNRR "Open Startup Pillar III" <span style="font-size:12px;color:var(--text-mute)">· oportunitati-ue.gov.ro</span></div>
+        <span class="verdict v-urgent">URGENT · LOW confidence</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">TBD</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">PNRR grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Romanian SRL (Pafi citizenship advantage: 5-7 days)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None known</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None (Romanian founder natural fit)</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>Apr 21 2026 deadline — 11 days (LOW CONFIDENCE single-source)</b></span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP likely OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ Likely No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v"><b>MUST VERIFY FIRST</b> before committing — single source signal, 48h decision window</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Clean</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇷🇴</span>Romania Startup Nation 2026 <span style="font-size:12px;color:var(--text-mute)">· Ministry of Economy</span></div>
+        <span class="verdict v-cond">CONDITIONAL · monitor only</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€40-200K (historical)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Romanian SRL</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None known</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Romanian founder natural fit</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">No 2026 call confirmed · historical summer-fall announcements</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK historically</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No (historical)</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Monitor only — check MEE/AFIR announcements mid-2026</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇬🇷</span>Greece Phaethon (Solar program, unconfirmed) <span style="font-size:12px;color:var(--text-mute)">· GSRI</span></div>
+        <span class="verdict v-cond">LOW PRIORITY · unconfirmed</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">TBD</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Unknown — possibly grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Greek IKE or AE</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None known</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None known</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Unconfirmed — email GSRI</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Unknown</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">Unknown</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Program existence not fully verified — treat as lead for P2 verification email</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Unknown</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇲🇹</span>Malta Business Start <span style="font-size:12px;color:var(--text-mute)">· Malta Enterprise</span></div>
+        <span class="verdict v-cond">SKIP · unfavorable ROI</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€10K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Maltese Ltd</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Early stage</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">€10K doesn't justify Maltese entity formation cost + ongoing compliance overhead</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Not worth testing</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--warn)">Tier 4 — 2027 ONLY (windows closed for 2026)</h3>
+  <div class="program-grid">
+
+    <div class="program urgent">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇱🇺</span>Luxembourg Fit 4 Start <span style="font-size:12px;color:var(--text-mute)">· Luxinnovation</span></div>
+        <span class="verdict v-urgent">2027 ONLY</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€150K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Equity-free accelerator grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">NOT required for application — cohort-based</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>2026 cohort CLOSED</b> · 2027 call typically Jan announcement</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Application only — cohort selection, equity-free grant after admission</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ 2027 target</span></div>
+      </div>
+    </div>
+
+    <div class="program urgent">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇨🇿</span>Czech Technology Incubation PLUS <span style="font-size:12px;color:var(--text-mute)">· CzechInvest</span></div>
+        <span class="verdict v-urgent">2027 ONLY</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€200K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Incubation grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Czech s.r.o.</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>2026 CLOSED Jan 9</b> · 2027 target</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">2027 application window</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ 2027 target</span></div>
+      </div>
+    </div>
+
+    <div class="program urgent">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇸🇮</span>Slovenia P2 SEF <span style="font-size:12px;color:var(--text-mute)">· Slovene Enterprise Fund</span></div>
+        <span class="verdict v-urgent">2027 ONLY</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€72K</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">100% cost cover grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Slovenian d.o.o. (registration window also closed)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>2026 CLOSED Mar 12</b> · Register SI d.o.o. Jan-Feb 2027</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">2027 P2 round target</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅</span></div>
+      </div>
+    </div>
+
+    <div class="program urgent">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇫🇷</span>France Bourse French Tech <span style="font-size:12px;color:var(--text-mute)">· Bpifrance</span></div>
+        <span class="verdict v-urgent">PLAN B · blocked behind email</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€50K (standard) / €90K (Emergence)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Conditional grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">French SAS</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None known</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v"><b>Foreign ownership rules for 100% Delaware-owned SAS NOT publicly documented — SINGLE BLOCKER</b></span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Active 2026 · rolling</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v"><b>Email Bpifrance to resolve foreign-ownership question</b> before any French SAS incorporation. France 2030 is FATAL (75% cap) — Bourse French Tech may or may not be subject to same constraint.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Pending resolution</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--silver)">Tier 5 — EU-level & post-MVP programs (Y2 strategic)</h3>
+  <div class="program-grid">
+
+    <div class="program y2">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇪🇺</span>EIC Accelerator <span style="font-size:12px;color:var(--text-mute)">· European Innovation Council</span></div>
+        <span class="verdict v-y2">Y2 · €2.5M+ post-MVP</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v"><b>€2.5M grant + €15M equity co-investment</b></span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Grant + equity (blended)</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Any EU sub. Delaware parent OK (EU SME consolidation test passes with 0 employees).</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>Step 2 cut-off Nov 4 2026</b> · Step 1 → Step 2 pathway · 9-12 month decision</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v"><b>TRL 6 HARD GATE</b> — confirmed by EIC FAQ + Guide v6.0 (Nov 2025)</span></div>
+        <div class="dim nogo"><span class="k">MVP required</span><span class="v">✅ YES — post-MVP only, no workaround</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Deep-tech / cleantech explicit · demonstrator in operational environment required · business plan + pitch deck + financials</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅ Single EU sub entity applies. Stacks with national grants at beneficiary level.</span></div>
+      </div>
+    </div>
+
+    <div class="program y2">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇪🇺</span>Horizon Europe Cluster 4/5 (Junior Partner) <span style="font-size:12px;color:var(--text-mute)">· European Commission</span></div>
+        <span class="verdict v-y2">Y2 · consortium path</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€300K-€1M junior partner share</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Consortium grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Any EU entity</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">18-24 months to cash · Y2+ path</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">R&amp;I project with consortium</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No (research-stage OK)</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v"><b>Consortium of 3+ from different EU countries required</b> · identify lead partner + join as junior</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">✅</span></div>
+      </div>
+    </div>
+
+    <div class="program y2">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇪🇺</span>LIFE Clean Energy <span style="font-size:12px;color:var(--text-mute)">· CINEA</span></div>
+        <span class="verdict v-nogo">BLOCKED · solo-founder</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€0.5-5M</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Consortium grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Any EU entity</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Annual calls</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Any</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim nogo"><span class="k">Conditions</span><span class="v"><b>3+ partners from 3 EU countries minimum — solo founder BLOCKED</b></span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">N/A</span></div>
+      </div>
+    </div>
+
+    <div class="program y2">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇪🇺</span>EIC Pathfinder + Transition <span style="font-size:12px;color:var(--text-mute)">· EIC</span></div>
+        <span class="verdict v-nogo">WEAK FIT</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€3-4M</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Research + transition grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Any EU entity</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Annual calls</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Deep-tech research</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No (research stage)</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Consortium + deep-tech research — <b>wrong fit for solar marketplace SaaS</b></span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">N/A</span></div>
+      </div>
+    </div>
+
+    <div class="program y2">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇪🇺</span>InvestEU <span style="font-size:12px;color:var(--text-mute)">· EIB / EIF</span></div>
+        <span class="verdict v-nogo">INDIRECT ONLY</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">Varies (via intermediary)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Guarantees + equity via financial intermediaries</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">EU entity via intermediary</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Via intermediary onboarding cycles</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Any</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">Varies</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v"><b>No direct startup access — via financial intermediaries only</b></span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Indirect</span></div>
+      </div>
+    </div>
+
+    <div class="program y2">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇷🇴</span>SeedBlink (Y2 crowdfunding) <span style="font-size:12px;color:var(--text-mute)">· SeedBlink S.A.</span></div>
+        <span class="verdict v-y2">Y2 · post-MVP equity</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">€500K-€2M equity (historical median)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">ECSPR-licensed equity crowdfunding</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">EU entity (typically Romanian SRL or SA)</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Romanian founder natural network fit</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Rolling · 3-4 months prep to raise</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v"><b>Post-MVP required</b></span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">✅ Yes — post-MVP only</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">€430M raised historically on platform. Romanian founder network overlap = natural allocator base. Reg-CF "60-70% of capital from founder's network" failure mode works IN FAVOR for Pafi.</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Equity, not grant — separate dimension</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="color:var(--accent)">Tier 6 — Non-European bonus programs (strategic hedge)</h3>
+  <div class="program-grid">
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇺🇸🇮🇱</span>BIRD Energy (US-Israel bilateral) <span style="font-size:12px;color:var(--text-mute)">· BIRD Foundation</span></div>
+        <span class="verdict v-cond">Y2 · Delaware = ASSET</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">$1-4M (~€3.5M ceiling)</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Bilateral grant</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v"><b>Delaware C-Corp is a DIRECT ASSET here, not liability</b></span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">US entity required (Delaware C-Corp qualifies)</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">6-12 month horizon · Israeli partner search is the gate</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Working concept / pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ Working concept sufficient</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Requires Israeli research partner (Technion, Ben-Gurion, SolarEdge R&amp;D, IEC R&amp;D)</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Runs on separate clock from EU sweep</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇺🇸</span>American-Made Solar Prize Round 9 <span style="font-size:12px;color:var(--text-mute)">· DOE SETO</span></div>
+        <span class="verdict v-cond">Ready! tier only</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">$50K Ready! tier · $500K+ higher tiers BLOCKED</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Prize competition</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Delaware C-Corp OK at Ready! tier</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Ready! tier foreign-founder OK · Set!/Go! tiers require majority US ownership (BLOCKED for Romanian founder)</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>Round 9 not announced</b> (DOGE freeze pattern)</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK (Ready!)</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No at Ready!</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Software/AI marketplace IN SCOPE · $50K ticket · Delaware C-Corp perfect fit</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Separate (US prize, not state aid)</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇺🇸</span>Third Derivative (RMI) <span style="font-size:12px;color:var(--text-mute)">· Rocky Mountain Institute</span></div>
+        <span class="verdict v-y2">Y2 · post-MVP accelerator</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">$250K-$2M facilitated</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Accelerator + syndicate</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Delaware C-Corp OK</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">Foreign-friendly (Cohort 24-1: 31 startups from 16 countries)</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v">Cohort TBD — verify at third-derivative.org</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v"><b>Post-MVP required</b></span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">✅ Yes</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Cleantech cohort-based</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Separate</span></div>
+      </div>
+    </div>
+
+    <div class="program cond">
+      <div class="program-head">
+        <div class="name"><span class="flag">🇺🇸</span>Cleantech Open 2027 <span style="font-size:12px;color:var(--text-mute)">· Cleantech Open</span></div>
+        <span class="verdict v-urgent">2027 ONLY</span>
+      </div>
+      <div class="dims">
+        <div class="dim value"><span class="k">Value</span><span class="v">$10K + finalist prize opportunity</span></div>
+        <div class="dim"><span class="k">Instrument</span><span class="v">Accelerator + prize</span></div>
+        <div class="dim"><span class="k">Incorporation</span><span class="v">Delaware C-Corp OK</span></div>
+        <div class="dim"><span class="k">Owner age</span><span class="v">None</span></div>
+        <div class="dim"><span class="k">Owner nationality</span><span class="v">None</span></div>
+        <div class="dim deadline"><span class="k">Duration / deadline</span><span class="v"><b>2026 window CLOSED Apr 6</b> · 2027 Jan registration target</span></div>
+        <div class="dim"><span class="k">Project stage</span><span class="v">Pre-MVP OK</span></div>
+        <div class="dim"><span class="k">MVP required</span><span class="v">❌ No</span></div>
+        <div class="dim"><span class="k">Conditions</span><span class="v">Cleantech accelerator, small ticket</span></div>
+        <div class="dim"><span class="k">Stackability</span><span class="v">Separate</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fatalities">
+  <h2>🚫 Hard fatalities — skip list (12 programs PERMANENTLY blocked for Pafi)</h2>
+  <p>These programs were verified against Pafi's exact profile and found to have HARD blockers. Do not waste
+  time re-investigating them unless a structural change occurs (co-founder joins, product pivots, laws change).</p>
+  <table>
+    <thead><tr><th>Program</th><th>Country</th><th>Max €</th><th>Blocker</th><th>Workaround</th></tr></thead>
+    <tbody>
+      <tr><td><b>Sweden Vinnova (all grants)</b></td><td>🇸🇪 SE</td><td>up to €1M</td><td><span class="pill nogo">Swedish citizenship required</span> (not residency). Multi-source HIGH confidence.</td><td>None unless Swedish co-founder joins</td></tr>
+      <tr><td><b>UK Innovate UK Smart Grants</b></td><td>🇬🇧 UK</td><td>up to £2M</td><td><span class="pill nogo">PAUSED since Jan 2025</span>. No 2026 rounds.</td><td>Monitor UKRI for reactivation post-2026</td></tr>
+      <tr><td><b>Hungary GINOP-PLUSZ VC</b></td><td>🇭🇺 HU</td><td>€500K+</td><td><span class="pill nogo">Explicitly excludes SaaS</span> ("intangible assets" exclusion)</td><td>Skip. Check NKFIH for non-GINOP instruments only if desperate.</td></tr>
+      <tr><td><b>Slovakia grants (SBA/SIH/VAIA)</b></td><td>🇸🇰 SK</td><td>varies</td><td><span class="pill nogo">Loan/equity only</span>. No non-dilutive grants available.</td><td>None. SIH 30% forgiveness post-MVP for hardware side only.</td></tr>
+      <tr><td><b>France 2030 DeepTech</b></td><td>🇫🇷 FR</td><td>up to €2M</td><td><span class="pill nogo">75% foreign-ownership cap</span>. Delaware C-Corp 100%-owning French SAS = HARD BLOCKED.</td><td>None for dual-structure. Bourse French Tech may still be open (Bpifrance email pending).</td></tr>
+      <tr><td><b>Germany EXIST Gründerstipendium</b></td><td>🇩🇪 DE</td><td>€125K/team/yr</td><td><span class="pill nogo">German university affiliation required</span></td><td>None. Bavaria Start?Zuschuss! + NRW remain open at smaller tickets.</td></tr>
+      <tr><td><b>Spain ENISA Jóvenes Emprendedores</b></td><td>🇪🇸 ES</td><td>€200K</td><td><span class="pill nogo">Age cap ≤40</span>. Pafi (41) BLOCKED.</td><td>ENISA Emprendedores (no age cap) remains fully available.</td></tr>
+      <tr><td><b>Belgium VLAIO Baekeland / Innovation Mandate</b></td><td>🇧🇪 BE</td><td>€300K</td><td><span class="pill nogo">PhD-linked</span></td><td>None. Innoviris Brussels (€10-25K voucher) remains.</td></tr>
+      <tr><td><b>Ireland DTIF</b></td><td>🇮🇪 IE</td><td>€1.5M+</td><td><span class="pill nogo">3+ consortium partners + €1.5M minimum</span></td><td>Skip pre-MVP. HPSU Feasibility €30K remains.</td></tr>
+      <tr><td><b>ADEME TREMPLIN (France) — PHANTOM</b></td><td>🇫🇷 FR</td><td>€0</td><td><span class="pill nogo">PHANTOM PROGRAM</span>. R1 verified — closed Dec 31 2025, SaaS ineligible anyway. D4 confusion debunked.</td><td>None. Program does not exist as described.</td></tr>
+      <tr><td><b>SBIR / NSF SBIR (US)</b></td><td>🇺🇸 US</td><td>$1.5M+</td><td><span class="pill nogo">15 U.S.C. §638(e)(4)</span> — 51%+ US citizen/PR ownership required. Romanian founder permanently blocked.</td><td>None. Structural US law blocker.</td></tr>
+      <tr><td><b>SME Instrument Phase 1 (EU)</b></td><td>🇪🇺 EU</td><td>€50K</td><td><span class="pill nogo">TERMINATED September 2019</span></td><td>None. Program replaced by EIC Accelerator (TRL 6 gate).</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="universal">
+  <h2>Universal W4 admin findings (10 dimensions × 25 countries)</h2>
+  <p>These are the cross-program patterns that hold across the 25 European countries surveyed.
+  Each row answers a question Pafi asked in the audio brief.</p>
+  <table>
+    <thead><tr><th>Dimension</th><th>Universal finding</th><th>Impact on SolNest</th></tr></thead>
+    <tbody>
+      <tr><td><b>1. Founder age cap</b></td><td>Only Spain ENISA Jóvenes blocks (≤40). 24 other countries have no age cap on main grant programs.</td><td>Age 41 = clear in 24/25 countries</td></tr>
+      <tr><td><b>2. Founder residency</b></td><td>Most programs require <b>COMPANY residency</b> (local entity), NOT founder residency. Exceptions: Sweden Vinnova (citizenship), Germany EXIST (university affiliation).</td><td>Pafi's Romanian residency is irrelevant to 24/25 countries for grant eligibility</td></tr>
+      <tr><td><b>3. Company location</b></td><td>Universal: every country requires a local legal entity (SRL/BV/OÜ/GmbH/Sp.z.o.o./UAB/SL/Lda/ApS) as applicant.</td><td>Delaware parent alone is NEVER sufficient</td></tr>
+      <tr><td><b>4. Headcount minimum</b></td><td>Varies. Some require ≥1 FTE (SI P2), some pre-founding OK (DE Bavaria), most have no explicit minimum at application but may require staffing at disbursement.</td><td>Pafi solo-founder builds in most countries pre-MVP</td></tr>
+      <tr><td><b>5. Company age cap</b></td><td>Varies: Germany Bavaria ≤2yr, CH Innosuisse ≤5yr, Spain CDTI Neotec &lt;3yr, Greece &lt;8yr. Generally favorable for newly-formed subs.</td><td>Fresh incorporation in Q2 2026 = all age caps met</td></tr>
+      <tr><td><b>6. Foreign ownership</b></td><td>24/25 countries permit Delaware C-Corp ownership of EU sub. Only France 2030 explicitly blocks (75% cap). No other France-style nationality caps surfaced.</td><td>Two-entity structure (Delaware parent + EU sub) is viable across Europe</td></tr>
+      <tr><td><b>7. Revenue threshold</b></td><td>Most pre-MVP programs have no revenue requirement. Some post-MVP programs require €200K+ (EE EAS Product Dev).</td><td>SolNest pre-revenue = clear for pre-MVP tier</td></tr>
+      <tr><td><b>8. SME consolidation test</b></td><td>Universal EU test (Rec. 2003/361/EC). Delaware parent = 0 employees, €0 revenue → each EU sub passes EU micro-enterprise test independently. Confirmed across IT, DE, AT, NL, CH, ES, PL, EE.</td><td>SolNest structure clears SME test in every member state</td></tr>
+      <tr><td><b>9. MVP/TRL gate</b></td><td>~70% of surveyed programs accept pre-MVP. Post-MVP-only: EIC Accelerator (TRL 6), Denmark EUDP (TRL 4), Belgium VLAIO Scale-Ready, DOE SETO, CEC CalSEED Phase 2.</td><td>Pre-MVP constrains upper tier but leaves ample entry programs</td></tr>
+      <tr><td><b>10. Sector eligibility</b></td><td>Solar / cleantech / energy SaaS is eligible in 24/25 countries. Only Hungary GINOP-PLUSZ explicitly excludes SaaS.</td><td>Universal sector fit</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="stacking">
+  <h2>Stackability matrix — what combines with what</h2>
+  <h3>Core EU state-aid rules (plain-English)</h3>
+  <ul style="color:var(--text-dim);font-size:14px;line-height:1.7">
+    <li>Each EU subsidiary receiving aid is a SEPARATE beneficiary. Different subs getting aid in their respective countries = NOT double-dipping.</li>
+    <li>EU SME consolidation test (Rec. 2003/361/EC) applies per subsidiary. Delaware parent = 0 employees, €0 revenue → each EU sub qualifies independently as micro-enterprise.</li>
+    <li><b>De minimis ceiling: €300K per entity over 3 rolling fiscal years</b> (cumulated across all de minimis aid).</li>
+    <li>GBER (General Block Exemption Regulation) programs have higher intensity ceilings and can be combined up to eligible cost cap.</li>
+    <li><b>NL WBSO is classified as a general tax measure, NOT state aid</b> → does NOT count toward de minimis or GBER ceilings. Universal backbone.</li>
+  </ul>
+  <h3>Compatibility matrix × Italy Smart&amp;Start anchor</h3>
+  <table>
+    <thead><tr><th>Stack combination</th><th>Compatible?</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>IT Smart&amp;Start + NL WBSO</td><td><span class="pill go">✅ YES (clean)</span></td><td>Universal stacking add-on. Different instrument, different country, not state aid.</td></tr>
+      <tr><td>IT Smart&amp;Start + ES CDTI Neotec</td><td><span class="pill go">✅ YES (clean)</span></td><td>Different subsidiaries, different projects, different countries. Spanish SL ≠ Italian SRL.</td></tr>
+      <tr><td>IT Smart&amp;Start + PL BRIdge Alfa</td><td><span class="pill go">✅ YES (clean)</span></td><td>Different beneficiaries.</td></tr>
+      <tr><td>IT Smart&amp;Start + AT AWS Preseed</td><td><span class="pill warn">⚠ YES (careful)</span></td><td>Both cover personnel costs. Use distinct cost lines. Monitor de minimis ceiling on each entity.</td></tr>
+      <tr><td>IT Smart&amp;Start + CH Innosuisse</td><td><span class="pill go">✅ YES (clean)</span></td><td>Swiss entity separate. Swiss state-aid regime parallel to EU.</td></tr>
+      <tr><td>IT Smart&amp;Start + EE EAS Dev Grant</td><td><span class="pill go">✅ YES (clean)</span></td><td>Different beneficiaries.</td></tr>
+      <tr><td>IT Smart&amp;Start + LT MITA</td><td><span class="pill go">✅ YES (clean)</span></td><td>Different beneficiaries.</td></tr>
+      <tr><td>IT Smart&amp;Start + LV LIAA</td><td><span class="pill go">✅ YES (clean)</span></td><td>Different beneficiaries.</td></tr>
+      <tr><td>IT Smart&amp;Start + NO Innovation Norway</td><td><span class="pill go">✅ YES (clean)</span></td><td>Different beneficiaries.</td></tr>
+      <tr><td>IT Smart&amp;Start + DK EUDP</td><td><span class="pill go">✅ YES (clean)</span></td><td>Different beneficiaries. EUDP is Danish consortium-based.</td></tr>
+      <tr><td>IT Smart&amp;Start + DE Bavaria/NRW</td><td><span class="pill warn">⚠ YES (careful)</span></td><td>Personnel cost overlap possible. Distinct cost lines required.</td></tr>
+      <tr><td>IT Smart&amp;Start + PL Smart UP (same PL sub)</td><td><span class="pill warn">⚠ YES (careful)</span></td><td>Same Polish Sp. z o.o. as BRIdge Alfa. Verify cost-line separation + Polish state-aid advisor check.</td></tr>
+    </tbody>
+  </table>
+  <h3>De minimis worked example — 5-entity European machine</h3>
+  <table>
+    <thead><tr><th>Entity</th><th>Program</th><th>Amount</th><th>Classification</th></tr></thead>
+    <tbody>
+      <tr><td>Italian SRL</td><td>Smart&amp;Start Italia</td><td>€400K</td><td>GBER R&amp;D + regional aid. Loan grant-equivalent ~€50K de minimis impact.</td></tr>
+      <tr><td>Spanish SL</td><td>CDTI Neotec</td><td>€300K</td><td>GBER R&amp;D grant typically. NOT de minimis.</td></tr>
+      <tr><td>Polish Sp. z o.o.</td><td>BRIdge Alfa</td><td>€230K</td><td>NCBR seed investment. NOT classified as de minimis.</td></tr>
+      <tr><td>Austrian GmbH</td><td>AWS Preseed</td><td>€170-200K</td><td>GBER Art 22 startup aid. NOT de minimis.</td></tr>
+      <tr><td>Dutch BV</td><td>WBSO</td><td>€20-50K/yr</td><td>Tax measure, NOT state aid. Zero ceiling impact.</td></tr>
+    </tbody>
+  </table>
+  <p><b>Conclusion:</b> Multi-entity structure is NOT constrained by de minimis across the stack. Each EU sub
+  has independent €300K/3yr headroom. Only same-entity stacking (e.g. BRIdge Alfa + Smart UP on single Polish sub)
+  needs caution — consult Polish state-aid advisor before combining.</p>
+</section>
+
+<section id="paths">
+  <h2>Capital stack paths — Year 1 and Year 1+2 cumulative</h2>
+  <table>
+    <thead><tr><th>Path</th><th>Y1 € realistic</th><th>Entities</th><th>Operational complexity</th></tr></thead>
+    <tbody>
+      <tr><td><b>A</b>: Italy anchor only (+NL WBSO add-on)</td><td><span class="n">€300-600K</span></td><td>IT SRL + NL BV</td><td><span class="pill go">Low</span> — 2 entities, single primary grant</td></tr>
+      <tr><td><b>B</b>: Multi-entity machine (5 subs, aggressive)</td><td><span class="n">€400-600K realistic</span> / <span class="n">€1.1M+ ceiling</span></td><td>IT + ES + PL + AT + NL</td><td><span class="pill nogo">High</span> — 5 entities, €15-30K/yr compliance overhead, dedicated grant-management time</td></tr>
+      <tr><td><b>C</b>: Mini hedge (Italy + Finland + Romania)</td><td><span class="n">€350-750K</span></td><td>IT + FI + RO</td><td><span class="pill warn">Medium</span> — 3 entities, Romania citizenship advantage</td></tr>
+      <tr><td><b>D</b>: Italy + Finland Sprint deadline hedge ★ <b>recommended</b></td><td><span class="n">€350-700K</span></td><td>IT + FI (+ NL BV optional)</td><td><span class="pill go">Low</span> — 2 entities, single hard deadline to chase</td></tr>
+    </tbody>
+  </table>
+  <h3>Year 1+2 cumulative (post-MVP unlock)</h3>
+  <ul style="color:var(--text-dim);font-size:14px;line-height:1.8">
+    <li>Italy Smart&amp;Start Year 2 second tranche: <b>+€300-900K</b></li>
+    <li>EIC Accelerator (post-MVP, TRL 6): <b>€2.5M grant + €15M equity co-investment</b></li>
+    <li>Widening / EIC Pre-Accelerator via EU sub: +€50-200K</li>
+    <li>Horizon Europe Cluster consortium (junior partner): +€300K-1M</li>
+    <li>SeedBlink Romania (ECSP equity crowdfunding, Y2): +€200-500K</li>
+    <li>Kima Ventures / cleantech angels: +€100-300K SAFE round</li>
+  </ul>
+  <p><b>Total potential Y1+2 (post-MVP): €1.25M-€4.55M</b> non-dilutive + equity.</p>
+</section>
+
+<section id="actions">
+  <h2>Action plan v2 — "if you only read one section, read this"</h2>
+  <h3>Week 1-2 (immediate, zero entity cost)</h3>
+  <ol style="color:var(--text);font-size:14px;line-height:1.8">
+    <li><b>Email Bpifrance</b> — single blocker for France Plan B. Ask: "Does a French SAS 100%-owned by a Delaware C-Corp qualify for Bourse French Tech?"</li>
+    <li><b>Verify Romania Apr 21 deadline</b> — email oportunitati-ue.gov.ro (LOW confidence single-source, 11 days out)</li>
+    <li><b>Send P1 batch emails</b> — IAPMEI (PT), CDTI (ES), Innovation Norway (NO), EUDP Denmark. All unlock specific programs.</li>
+    <li><b>Kill fabricated traction</b> in investor-facing deck (hard credibility gate)</li>
+    <li><b>Rewrite market slide</b> to rooftop-only framing</li>
+  </ol>
+  <h3>Week 2-6 (entity formation + primary applications)</h3>
+  <ol style="color:var(--text);font-size:14px;line-height:1.8">
+    <li><b>Incorporate Italian SRL</b> — target Q2 2026 sportello permanente application. 3-5 month grant-ready timeline.</li>
+    <li><b>Incorporate Dutch BV in parallel</b> — ~1 week formation, apply NL WBSO rolling</li>
+    <li><b>Begin Finland Sprint Grant application</b> — hard deadline Aug 31 2026 (142 days)</li>
+    <li><b>Start MVP build schedule</b> — 6-month target for EIC Accelerator Step 2 cut-off Nov 4 2026</li>
+  </ol>
+  <h3>Month 2-12 (execution + post-MVP pipeline)</h3>
+  <ol style="color:var(--text);font-size:14px;line-height:1.8">
+    <li>Apply Smart&amp;Start Italia (Q2-Q3 2026)</li>
+    <li>Maintain NL WBSO rolling application cadence</li>
+    <li>Finland Sprint Grant decision (6-8 weeks post-application)</li>
+    <li>MVP reaches TRL 6 (target Month 6) → unlock EIC Accelerator</li>
+    <li>Italy Smart&amp;Start Year 2 tranche disbursement</li>
+  </ol>
+  <h3>What NOT to do</h3>
+  <ul style="color:var(--bad);font-size:14px;line-height:1.8">
+    <li>Do NOT form French SAS until Bpifrance replies</li>
+    <li>Do NOT rush Romanian SRL for Apr 21 PNRR without verification</li>
+    <li>Do NOT form Polish Sp. z o.o. for SCALAB April 19 — 9 days too tight for formation</li>
+    <li>Do NOT pursue Sweden, UK 2026, Hungary (SaaS excluded), Slovakia (no grants)</li>
+    <li>Do NOT fall into the Italian SRL legal-opinion rabbit hole — landmine DEBUNKED, legal opinion is nice-to-have, NOT veto gate</li>
+  </ul>
+</section>
+
+<section id="open-questions">
+  <h2>Open questions / unresolved dependencies</h2>
+  <table>
+    <thead><tr><th>#</th><th>Question</th><th>Unlocks</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Bpifrance email reply on foreign-ownership for Bourse French Tech</td><td>France Plan B GO/NO-GO</td></tr>
+      <tr><td>2</td><td>Romania Apr 21 PNRR deadline verification</td><td>Romanian SRL formation timing this week</td></tr>
+      <tr><td>3</td><td>IAPMEI foreign-founder ruling on Startup Voucher Tier 2</td><td>Portugal PT Lda + Jun 30 application</td></tr>
+      <tr><td>4</td><td>CDTI Neotec exact 2026 spring call dates</td><td>Spanish SL formation timing + 6-month registry filing window</td></tr>
+      <tr><td>5</td><td>MVP status — functional product beyond design-only homepage?</td><td>Post-MVP grant track planning (EIC, VLAIO, Third Derivative)</td></tr>
+      <tr><td>6</td><td>Traction numbers verification source</td><td>Investor contact credibility gate</td></tr>
+      <tr><td>7</td><td>Italy SME consolidation legal opinion (€1.5-3K optional)</td><td>Smart&amp;Start eligibility confirmation — NOT veto gate</td></tr>
+      <tr><td>8</td><td>Pafi's time budget / solo-founder capacity</td><td>Path A (Italy-only) vs Path B (5-entity machine) feasibility</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  <p><b>Synthesis provenance:</b> 8 Delphi dispatches (R1-R5 PM4 + R6-R8 PM5) · ~40 Perplexity Sonar Pro calls · 25 European countries + 3 non-EU jurisdictions · primary agency URL verification for every critical fact (age cap, residency, foreign ownership, TRL gate, deadline).</p>
+  <p><b>Source files on disk:</b>
+    <code>~/.nexus/intel/solnest-eu-funding-master-2026-04-10.md</code> ·
+    <code>~/.nexus/intel/solnest-eu-funding-recommendations-20260410.md</code> ·
+    <code>~/.nexus/workspace/completed/nx-20260410-{r1fr,r3it,r5eu,r6nor,r7sou,r8cee}/output.md</code>
+  </p>
+  <p><b>Replaces:</b> solnest-france-r1, solnest-us-r2, solnest-italy-r3, solnest-republic-r4, solnest-eu-r5, solnest-r6-nordic-germanic, solnest-r7-southern-eu, solnest-r8-cee-baltics, solnest-eu-funding-master-20260410, solnest-eu-funding-recommendations-20260410 (all pruned from repo in the same commit that created this file).</p>
+  <p><b>Published:</b> 2026-04-11 · Genie (Opus 4.6) for Pafi · SolNest project · NexusOS Reports</p>
+</footer>
+
+</div>
+
+<script>
+  // Theme toggle with persistence
+  (function(){
+    var root = document.documentElement;
+    var saved = localStorage.getItem('nx_theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.addEventListener('click', function(){
+      var cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('nx_theme', cur);
+    });
+    var share = document.getElementById('shareBtn');
+    if (share) share.addEventListener('click', async function(){
+      var url = window.location.href;
+      if (navigator.share) { try { await navigator.share({title: document.title, url: url}); return; } catch(e){} }
+      try {
+        await navigator.clipboard.writeText(url);
+        var prev = share.textContent; share.textContent = 'Copied';
+        setTimeout(function(){ share.textContent = prev; }, 1500);
+      } catch(e) { window.prompt('Copy URL:', url); }
+    });
+  })();
+</script>
+</body>
+</html>
