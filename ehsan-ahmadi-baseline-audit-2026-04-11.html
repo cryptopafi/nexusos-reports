@@ -581,22 +581,152 @@ At 13 pg/mL, Free T sits in the bottom ~10% of the reference range — functiona
 </ul>
 </div>
 
-<!-- ===== NLM SERVICE INCIDENT DISCLOSURE ===== -->
-<div class="card" style="border-color:var(--orange)">
-<h2 style="margin-top:0;color:var(--orange)">⚠️ NLM Service Incident Disclosure (Transparency)</h2>
-<p class="explain">Per the "Dr. Bachmeyer NLM = PRIMARY" hard rule, this audit attempted to hit the live NotebookLM service (localhost:18790) for direct Bachmeyer queries on 4 Ehsan-specific safety questions (TB-500 in LAD plaque, IGF-1 LOW + E2 HIGH sequencing, Retatrutide amylase/lipase/calcitonin gate, statin-before-peptide decision) plus 4 dosing questions (KPV chronic maintenance, GHK-Cu stacked dose, pituitary panel scope, AOD-9604 chondrogenesis protocol).</p>
+<!-- ===== LIVE NLM DR. BACHMEYER RESPONSE (PRIMARY SOURCE) ===== -->
+<div class="card" style="border:2px solid var(--purple);background:rgba(168,85,247,.04)">
+<h2 style="margin-top:0;color:var(--purple)">🎯 LIVE NLM — Dr. Trevor Bachmeyer Primary Source Responses</h2>
+<p class="explain">Per the "Bachmeyer NLM = PRIMARY" hard rule, this section contains the verbatim answers returned from the Bachmeyer NotebookLM notebooks (269+ videos) on 2026-04-11. Two Bachmeyer notebooks were queried via templates A.1 (blood panel initial), A.2 (12-week protocol design), and a precise follow-up on the Extended notebook. All 3 queries succeeded via direct CLI bypass of the nlm-service wrapper (see incident note at bottom).</p>
 
-<p><strong>Result:</strong> All NLM queries failed with identical HTTP 503 errors: <code>RPC GET_LAST_CONVERSATION_ID failed after 0.41s · RPC GET_NOTEBOOK failed</code>. Tested across <strong>3 notebooks</strong> (both Bachmeyer IDs <code>cb9cf1fd</code> and <code>1eef6220</code>, plus <code>Peptide Dosage Protocols</code> <code>d9213daf</code>) — failure pattern is service-wide, not notebook-specific. The <code>/health</code> endpoint returns <code>{"status":"ok"}</code> and <code>/list</code> works (28 notebooks enumerated), but the underlying Google NotebookLM RPC backend is returning auth failures on all query attempts. This is the <strong>same class of failure documented in the 2026-03-27 session</strong> (Georgeta Rosu's Bachmeyer query failed the same way — cached fallback was used then).</p>
-
-<p><strong>Fallback applied:</strong> All Bachmeyer content in this report is sourced from the <strong>Cortex <code>health</code> collection</strong> (926 items, NLM-derived extractions of the 269-video Bachmeyer corpus). Seven targeted semantic searches were executed for this audit: Tesamorelin/Ipamorelin baselines, BPC-157/TB-500/GHK-Cu safety, Retatrutide pancreatitis/thyroid, apoB/Lp(a)/hs-CRP cardiovascular, estradiol/aromatase, AOD-9604 chondrogenesis, KPV/MOTS-c/5-Amino-1MQ. Coverage is high but <em>cached</em>, not live — any Bachmeyer content added to the notebook <em>after</em> the last Cortex sync is missing from this audit.</p>
-
-<p><strong>Recommended incident action</strong> (for Pafi / SENTINEL):</p>
-<ol style="padding-left:22px">
-<li>Dispatch <code>incident-responder</code> subagent to diagnose the NLM service RPC failure.</li>
-<li>Likely root causes to check: (a) Google auth cookie/session expired in <code>notebooklm-py</code> CLI, (b) rate-limit hit on the Google backend, (c) broken conversation state from a prior failed query. The service has been up 6,746s without a restart.</li>
-<li>Suggested fix sequence: <code>launchctl kickstart -k gui/$(id -u)/com.nexus.nlm-service</code> then re-auth via <code>notebooklm auth</code> if needed.</li>
-<li>After fix, re-run the 8 Ehsan-specific queries and integrate answers via a follow-up patch to this report. The specific questions are preserved in the Cortex entry for this session (ID 7da0a1b0).</li>
+<h3>🚨 CRITICAL CORRECTION (from Bachmeyer Extended notebook)</h3>
+<div class="warn-box">
+<strong>Bachmeyer advises AGAINST stacking Tesamorelin + Ipamorelin together.</strong> His actual recommendation is to choose ONE of the two, or to pair <strong>Ipamorelin with CJC-1295</strong> instead. This contradicts both the March 2026 plan AND my own initial draft of this report. The original plan ("Tesamorelin + Ipamorelin core evening") must be revised to one of three options:
+<ol style="padding-left:22px;margin-top:10px">
+<li><strong>Option A (Tesa-solo):</strong> Tesamorelin alone (FDA-approved for HIV lipodystrophy; strongest evidence for visceral fat + metabolic targeting). Best fit for Ehsan's fatty liver + metabolic profile.</li>
+<li><strong>Option B (CJC+Ipa):</strong> CJC-1295 (no-DAC) + Ipamorelin — the Bachmeyer-preferred stack per "CJC-1295/Ipamorelin Masterclass". Broader GH optimization (recovery, sleep, muscle).</li>
+<li><strong>Option C (Ipa-solo):</strong> Ipamorelin alone — minimal cortisol/prolactin impact, but weaker standalone GH pulse.</li>
 </ol>
+<strong>Recommendation for Ehsan:</strong> Given fatty liver + E2 HIGH + IGF-1 LOW, the visceral-fat-targeting mechanism of <strong>Tesamorelin-solo</strong> (Option A) is the best fit. The physician should make the final call — this is not a trivial substitution.
+</div>
+
+<h3>📋 Template A.1 — Abnormal Markers → Bachmeyer Recommendations (live, 2026-04-11)</h3>
+
+<div class="peptide-card">
+<h4>IGF-1 75.10 ng/mL LOW</h4>
+<p><strong>Bachmeyer root cause:</strong> Age-related decline in natural growth hormone pulsatility + metabolic stress suppressing the GH/IGF-1 axis.</p>
+<p><strong>Recommended intervention:</strong> GH secretagogue — per Bachmeyer's "foundational not optional" framing: "HGH analogues are the <em>foundation of the longevity machine because everything else builds on top of that</em>. Elevating IGF-1 is directly cardioprotective, improves insulin sensitivity, and lowers systemic inflammation (reducing IL-6 and TNF-alpha)."</p>
+<p><strong>Sources:</strong> "CJC 1295 and Ipamorelin and Reversing Age", "What is Tesamorelin - Unbreakable Podcast 296"</p>
+<p><strong>Contraindication flag:</strong> GH secretagogues strictly contraindicated if active hormone-sensitive malignancy — <em>rules out TRT/GHRH until PSA + tumor markers clear</em>.</p>
+</div>
+
+<div class="peptide-card">
+<h4>Estradiol 46.95 pg/mL HIGH</h4>
+<p><strong>Bachmeyer root cause:</strong> "Visceral and ectopic liver fat act as active endocrine organs, over-expressing the aromatase enzyme which converts native testosterone into estrogen."</p>
+<p><strong>Recommended intervention:</strong>
+<ul style="padding-left:22px">
+<li><strong>Retatrutide</strong> (replaces Mounjaro) to "demolish the liver/visceral fat driving aromatization."</li>
+<li><strong>DIM 300 mg daily</strong> (diindolylmethane) to enhance Phase 2 liver conjugation of estrogen — <em>new intervention, not in prior plan</em>.</li>
+<li><strong>Body fat target &lt;15%</strong> (ideally &lt;10%) to naturally eliminate aromatase overproduction.</li>
+<li><strong>Enclomiphene</strong> to block estrogen receptors at the pituitary and restart native LH/FSH production (<em>if Free T remains low after fat loss</em>).</li>
+</ul></p>
+<p><strong>Sources:</strong> "Biggest Bang For Your Buck Oral Compounds - Unbreakable Podcast 301", "Testosterone Versus Enclomiphene - Unbreakable Podcast 275"</p>
+<p><strong>Contraindication flag:</strong> "Adding exogenous TRT without controlling current aromatization will spike Estradiol further, leading to severe mood and physical side effects." <em>→ TRT is off the table for Ehsan as long as fatty liver + E2 HIGH persist.</em></p>
+</div>
+
+<div class="peptide-card">
+<h4>LDL-C 139 mg/dL HIGH + confirmed LAD plaque</h4>
+<p><strong>Bachmeyer root cause:</strong> "LDL is merely the 'ambulance' responding to endothelial micro-tears. The actual cause of plaque formation is systemic inflammation oxidizing the LDL, causing macrophages to turn into foam cells."</p>
+<p><strong>Recommended intervention:</strong>
+<ul style="padding-left:22px">
+<li><strong>KPV</strong> — "shift macrophages away from forming inflammatory foam cells and stabilize plaques."</li>
+<li><strong>TB-500</strong> — "repair existing cardiac fibrosis and restore vascular flexibility."</li>
+<li><strong>BPC-157</strong> — "repair the endothelial lining and promote healthy angiogenesis."</li>
+</ul></p>
+<p><strong>Sources:</strong> "KPV and TB500N vs Cholesterol, AFib and Heart Disease", "The Lie About High Cholesterol - Unbreakable Podcast 263"</p>
+<p><strong>⚠️ BACHMEYER vs STANDARD-OF-CARE DISAGREEMENT (critical):</strong> Bachmeyer says <em>"Statins are highly contraindicated as they deplete CoQ10, destroying mitochondrial ATP production and worsening cardiac energy crises."</em> This directly contradicts the standard AHA/ESC secondary-prevention guideline (high-intensity statin for confirmed plaque + LDL &gt;100). For Ehsan's physician: this is the single biggest decision point. Recommended compromise: <strong>initiate statin per guideline + co-supplement CoQ10 (Ubiquinol 200 mg/day) to address Bachmeyer's mitochondrial concern</strong>, and run KPV + BPC-157 + TB-500 in parallel once other Tier-1 gates are closed. Do NOT withhold statin based on the Bachmeyer argument alone in a LAD-plaque patient.</p>
+</div>
+
+<div class="peptide-card">
+<h4>Free Testosterone 13 pg/mL (bottom of range)</h4>
+<p><strong>Bachmeyer root cause:</strong> "Secondary hypogonadism (a 'management' problem). The testes work, but the hypothalamus/pituitary are under-signaling due to metabolic stress and visceral fat."</p>
+<p><strong>Recommended intervention:</strong> <strong>Kisspeptin-10 + Enclomiphene</strong> — "Kisspeptin-10 directly triggers GnRH release at the hypothalamus, restarting native testosterone production without causing testicular atrophy." <em>Avoid exogenous TRT injections at this stage — will shut down native production (factory) completely.</em></p>
+<p><strong>Source:</strong> "Kisspeptin and IVF, Fertility and TRT - Dr Trevor Bachmeyer"</p>
+</div>
+
+<div class="peptide-card">
+<h4>Vitamin D 39.74 ng/mL (low-sufficient)</h4>
+<p><strong>Recommended intervention:</strong> "10,000 to 25,000 IU of Vitamin D3 daily, <strong>strictly paired with Vitamin K2</strong>."</p>
+<p><strong>Source:</strong> "When I Get Sick This Is What I Do - Unbreakable Podcast 296"</p>
+<p><strong>🚨 CRITICAL — LAD plaque-specific:</strong> <em>"Because he has a confirmed calcific LAD plaque, taking D3 without K2 is dangerous. K2 ensures calcium is mobilized into the bones rather than depositing into his arterial plaques."</em> <strong>This is a direct contraindication — D3 without K2 is harmful for Ehsan specifically.</strong> Use D3 5,000–10,000 IU + K2 MK-7 180–360 mcg daily.</p>
+</div>
+
+<h3>🧪 Template A.1 — Synergy Map (Bachmeyer's own grouping)</h3>
+<div class="grid3">
+<div class="peptide-card"><h4>Metabolic Triad</h4><p><strong>Retatrutide + MOTS-c + 5-Amino-1MQ</strong> — clears fatty liver + visceral fat, removes the aromatase factory driving E2 HIGH, increases cellular ATP.</p></div>
+<div class="peptide-card"><h4>Cardiovascular Defense</h4><p><strong>TB-500 + BPC-157 + KPV</strong> — BPC-157 patches endothelial lining, KPV stops foam cell progression in LAD, TB-500 repairs cardiac muscle.</p></div>
+<div class="peptide-card"><h4>GH Axis Restoration</h4><p><strong>Tesamorelin-solo OR CJC-1295+Ipamorelin</strong> (NOT Tesa+Ipa together per Bachmeyer) — fixes low IGF-1, accelerates liver fat lipolysis (lowering E2), provides growth factors for cardiovascular repair.</p></div>
+</div>
+
+<h3>📆 Template A.2 — Live Bachmeyer 12-Week Phased Protocol</h3>
+
+<div class="explain">
+<strong>Sequencing rationale (direct Bachmeyer quotes from A.2 answer):</strong>
+<ul style="padding-left:22px;margin-top:6px">
+<li><strong>(a) Retatrutide solo or concurrent?</strong> "No — deploy concurrently with MOTS-c, BPC-157, and KPV. Retatrutide clears the metabolic block, MOTS-c provides cellular ATP to execute repairs, BPC/KPV act as immediate fire extinguishers for the endothelial inflammation driving the LAD plaque."</li>
+<li><strong>(b) When to add GH axis (Tesa OR CJC+Ipa)?</strong> "Delay to Phase 2 (Week 5). High E2 is caused by aromatase overexpression in visceral/ectopic liver fat. Retatrutide will begin demolishing this fat factory in Phase 1. Once insulin sensitivity is primed, adding Tesa will safely surge IGF-1."</li>
+<li><strong>(c) Should TB-500 be delayed?</strong> "Yes. Delay until Phase 2 or until the Agatston CAC score is quantified. Must first cool the inflammatory storm (oxidized LDL) in the LAD plaque using KPV and BPC-157." <em>(Aligns with my initial caution)</em></li>
+<li><strong>(d) KLOW blend injection protocol:</strong> "KPV and BPC-157 can be injected simultaneously, but <strong>GHK-Cu must be injected in a separate syringe and spaced apart from growth factors</strong>. The copper ion will oxidize and destroy other peptides if mixed in the same barrel." <em>(Important procedural detail not in Cortex cache)</em></li>
+</ul>
+</div>
+
+<table style="font-size:.84rem">
+<tr><th>Phase</th><th>Peptide</th><th>Dose</th><th>Route / Timing</th><th>Expected Timeline</th></tr>
+<tr><td rowspan="6" style="background:rgba(168,85,247,.1);font-weight:700">PHASE 1<br>(Wks 1–4)<br><small>Foundation: halt LAD inflammation, reset metabolism</small></td><td>Retatrutide</td><td>Wk 1–2: 0.5 mg/wk<br>Wk 3–4: 1.0 mg/wk</td><td>SC AM belly</td><td>4 wk: drops liver fat, clears ectopic lipids, insulin sensitivity spikes</td></tr>
+<tr><td>MOTS-c</td><td>5 mg EOD</td><td>SC AM (cortisol peak)</td><td>2–4 wk: mitochondrial biogenesis. <em>Requires 100–200 g carbs/day.</em></td></tr>
+<tr><td>BPC-157</td><td>500 mcg – 1 mg daily</td><td>SC AM or PM</td><td>2–4 wk: endothelial repair, gut seal</td></tr>
+<tr><td>KPV</td><td>250–500 mcg daily</td><td>SC AM or PM</td><td>1–2 wk: halts NF-κB, stabilizes plaque</td></tr>
+<tr><td>GHK-Cu</td><td>2 mg daily</td><td>SC AM (fed), <strong>separate syringe</strong></td><td>4–6 wk: vascular elasticity, collagen repair</td></tr>
+<tr><td>5-Amino-1MQ</td><td>50–100 mg daily</td><td>Oral or SC AM</td><td>3–4 wk: NNMT block, NAD+ elevation</td></tr>
+<tr><td rowspan="5" style="background:rgba(59,130,246,.1);font-weight:700">PHASE 2<br>(Wks 5–8)<br><small>GH axis reboot, cartilage/plaque repair</small></td><td><strong>Tesamorelin-solo</strong> <em>(NOT stacked with Ipa)</em></td><td>1–2 mg daily, 5 days on / 2 off</td><td>SC 30–60 min pre-bed (fasted)</td><td>4–6 wk: IGF-1 rises, deep sleep, visceral fat drops</td></tr>
+<tr><td>TB-500</td><td>5 mg every 5 days</td><td>SC systemic (belly)</td><td>4–6 wk: reverses cardiac fibrosis, vascular repair</td></tr>
+<tr><td>AOD-9604</td><td>300 mcg daily</td><td>SC near T10/thoracic if possible</td><td>6–9 months for full chondrogenesis</td></tr>
+<tr><td>Retatrutide</td><td>Wk 5–6: 1.5 mg/wk<br>Wk 7–8: 2.0 mg/wk</td><td>SC AM</td><td>Titrate slowly to avoid GI</td></tr>
+<tr><td>Phase 1 core</td><td>Continue MOTS-c, BPC, KPV, GHK-Cu</td><td>Same as Phase 1</td><td>Cumulative vascular shielding</td></tr>
+<tr><td rowspan="4" style="background:rgba(34,197,94,.1);font-weight:700">PHASE 3<br>(Wks 9–12)<br><small>Maintenance / cycling</small></td><td>Retatrutide</td><td>Titrate to 3–4 mg/wk</td><td>SC AM</td><td>Therapeutic plateau for lipid/E2 clearance</td></tr>
+<tr><td>KPV</td><td><strong>CYCLE OFF at Wk 8</strong></td><td>N/A</td><td>Prevent melanocortin receptor downregulation</td></tr>
+<tr><td>TB-500</td><td>Taper to 2.5 mg/wk</td><td>SC systemic</td><td>Long-term cardiac maintenance</td></tr>
+<tr><td>Keep</td><td>BPC-157, GHK-Cu, Tesa, AOD, 5-Amino</td><td>Same</td><td>Safe long-term</td></tr>
+</table>
+
+<h3>🔬 Retest Schedule (Bachmeyer A.2 output)</h3>
+<ul style="padding-left:22px">
+<li><strong>Week 6:</strong> Retest Estradiol, Fasting Insulin, CRP. Confirm Retatrutide + KPV have begun lowering systemic inflammation + dropping aromatase activity before pushing Tesamorelin higher.</li>
+<li><strong>Week 12:</strong> Full comprehensive panel (IGF-1, E2, Free T, LDL-C) + repeat non-contrast CT or Agatston score to quantify LAD plaque stabilization.</li>
+</ul>
+
+<h3>📝 Important clarifications from Bachmeyer Extended notebook</h3>
+
+<div class="explain">
+<strong>Honest gap flag — what Bachmeyer does NOT cover:</strong>
+<ul style="padding-left:22px;margin-top:6px">
+<li><strong>CAC Agatston scores</strong> — Bachmeyer does not reference them or provide TB-500 sequencing based on score. My "delay TB-500 until CAC quantified" recommendation is <em>standard cardiology caution</em>, not Bachmeyer. The Bachmeyer view is that TB-500's angiogenesis is strictly beneficial (VEGF-mediated repair of hypoxic/hypertrophied tissue). Physician should weigh both.</li>
+<li><strong>Calcitonin / MTC / thyroid US / amylase / lipase baselines before Retatrutide</strong> — Bachmeyer does NOT mention these. He broadly dismisses GLP-1 cancer concerns as "fear-mongering based on rodent studies." These gates remain in my Tier-1 list as <em>standard FDA / endocrinology practice</em>, not as Bachmeyer-specific requirements. My initial draft incorrectly implied these were "per Bachmeyer" — <strong>corrected</strong>.</li>
+<li><strong>Specific monitoring cadence for KPV + BPC + GHK-Cu stack</strong> — Bachmeyer generally advocates tracking CRP, IL-6, TNF-α, HOMA-IR, AST/ALT but does NOT give specific first-8-weeks testing cadence. The Week 6 / Week 12 cadence in the A.2 protocol is his standard pattern, not a stack-specific recommendation.</li>
+<li><strong>E2 sequencing (fix first vs parallel?)</strong> — Bachmeyer does NOT give an explicit rule. His systemic approach: drop body fat to &lt;15% naturally eliminates aromatase overproduction. Interim support: <strong>DIM 300 mg/day</strong> for Phase 2 liver conjugation of estrogen.</li>
+</ul>
+</div>
+</div>
+
+<!-- ===== NLM SERVICE INCIDENT DISCLOSURE ===== -->
+<div class="card" style="border-color:var(--green)">
+<h2 style="margin-top:0;color:var(--green)">✅ NLM Service Incident — RESOLVED (via direct CLI bypass)</h2>
+<p class="explain"><strong>Status:</strong> Live Bachmeyer NLM queries succeeded after diagnosis. The report's recommendations section (above) is now sourced from live Bachmeyer content, not cached Cortex extractions.</p>
+
+<p><strong>Root cause:</strong> The <code>~/.nexus/services/nlm-service.py</code> HTTP wrapper (localhost:18790) has a conversation-state bug: it calls <code>GET_LAST_CONVERSATION_ID</code> before every query, which returns 503 when no active conversation exists for that notebook. The underlying <code>notebooklm</code> CLI (notebooklm-py 0.3.4 at <code>/Users/pafi/.local/bin/notebooklm</code>) works correctly when invoked directly — it auto-creates a fresh conversation and starts one.</p>
+
+<p><strong>Bypass procedure used (captured for re-use):</strong></p>
+<pre style="background:rgba(0,0,0,.3);padding:10px;border-radius:6px;font-size:.8rem;overflow-x:auto;color:var(--teal)"># Instead of using nlm_client.nlm_query() which goes through the broken service:
+/Users/pafi/.local/bin/notebooklm use cb9cf1fd         # set Bachmeyer notebook
+/Users/pafi/.local/bin/notebooklm ask "Your query..."  # direct CLI, creates fresh conversation
+# Works because the CLI calls nlm_ask() directly, bypassing GET_LAST_CONVERSATION_ID state check.</pre>
+
+<p><strong>Fix needed in <code>nlm-service.py</code>:</strong> Replace the <code>GET_LAST_CONVERSATION_ID</code> → <code>GET_NOTEBOOK</code> → <code>ASK</code> sequence with a simpler <code>CREATE_CONVERSATION</code> + <code>ASK</code> path. Or add a try/except fallback: if <code>GET_LAST_CONVERSATION_ID</code> returns 503, create a fresh conversation and retry. This is a <strong>service wrapper bug, not a Google auth problem</strong> — same failure will recur until fixed.</p>
+
+<p><strong>Notebooks queried successfully (2026-04-11):</strong></p>
+<ul style="padding-left:22px">
+<li><code>cb9cf1fd</code> — Dr Trevor Bachmeyer (primary) — Templates A.1 + A.2</li>
+<li><code>1eef6220</code> — Dr Trevor Bachmeyer Extended — precise follow-ups (CAC, calcitonin, monitoring cadence, Tesa+Ipa stacking)</li>
+</ul>
+
+<p>Total: 3 queries, 251 lines of live Bachmeyer content integrated into the recommendations section above. Full query transcripts saved to <code>/tmp/ehsan-nlm/answer-A1.txt</code>, <code>answer-A2.txt</code>, <code>answer-extended.txt</code>.</p>
 </div>
 
 <!-- ===== FOOTER ===== -->
