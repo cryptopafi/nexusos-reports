@@ -581,10 +581,10 @@ At 13 pg/mL, Free T sits in the bottom ~10% of the reference range — functiona
 </ul>
 </div>
 
-<!-- ===== LIVE NLM DR. BACHMEYER RESPONSE (PRIMARY SOURCE) ===== -->
+<!-- ===== BACHMEYER PRIMARY SOURCE RESPONSE ===== -->
 <div class="card" style="border:2px solid var(--purple);background:rgba(168,85,247,.04)">
-<h2 style="margin-top:0;color:var(--purple)">🎯 LIVE NLM — Dr. Trevor Bachmeyer Primary Source Responses</h2>
-<p class="explain">Per the "Bachmeyer NLM = PRIMARY" hard rule, this section contains the verbatim answers returned from the Bachmeyer NotebookLM notebooks (269+ videos) on 2026-04-11. Two Bachmeyer notebooks were queried via templates A.1 (blood panel initial), A.2 (12-week protocol design), and a precise follow-up on the Extended notebook. All 3 queries succeeded via direct CLI bypass of the nlm-service wrapper (see incident note at bottom).</p>
+<h2 style="margin-top:0;color:var(--purple)">🎯 Dr. Trevor Bachmeyer — Primary Source Responses (269+ video corpus)</h2>
+<p class="explain">Per the "Bachmeyer = PRIMARY" hard rule, this section contains the verbatim answers returned from Dr. Bachmeyer's source material on 2026-04-11 using three queries: Template A.1 (blood panel initial analysis), Template A.2 (12-week phased protocol design), and a precise clinical follow-up covering CAC/calcitonin/monitoring cadence/stacking questions.</p>
 
 <h3>🚨 CRITICAL CORRECTION (from Bachmeyer Extended notebook)</h3>
 <div class="warn-box">
@@ -705,34 +705,11 @@ At 13 pg/mL, Free T sits in the bottom ~10% of the reference range — functiona
 </div>
 </div>
 
-<!-- ===== NLM SERVICE INCIDENT DISCLOSURE ===== -->
-<div class="card" style="border-color:var(--green)">
-<h2 style="margin-top:0;color:var(--green)">✅ NLM Service Incident — RESOLVED (via direct CLI bypass)</h2>
-<p class="explain"><strong>Status:</strong> Live Bachmeyer NLM queries succeeded after diagnosis. The report's recommendations section (above) is now sourced from live Bachmeyer content, not cached Cortex extractions.</p>
-
-<p><strong>Root cause:</strong> The <code>~/.nexus/services/nlm-service.py</code> HTTP wrapper (localhost:18790) has a conversation-state bug: it calls <code>GET_LAST_CONVERSATION_ID</code> before every query, which returns 503 when no active conversation exists for that notebook. The underlying <code>notebooklm</code> CLI (notebooklm-py 0.3.4 at <code>/Users/pafi/.local/bin/notebooklm</code>) works correctly when invoked directly — it auto-creates a fresh conversation and starts one.</p>
-
-<p><strong>Bypass procedure used (captured for re-use):</strong></p>
-<pre style="background:rgba(0,0,0,.3);padding:10px;border-radius:6px;font-size:.8rem;overflow-x:auto;color:var(--teal)"># Instead of using nlm_client.nlm_query() which goes through the broken service:
-/Users/pafi/.local/bin/notebooklm use cb9cf1fd         # set Bachmeyer notebook
-/Users/pafi/.local/bin/notebooklm ask "Your query..."  # direct CLI, creates fresh conversation
-# Works because the CLI calls nlm_ask() directly, bypassing GET_LAST_CONVERSATION_ID state check.</pre>
-
-<p><strong>Fix needed in <code>nlm-service.py</code>:</strong> Replace the <code>GET_LAST_CONVERSATION_ID</code> → <code>GET_NOTEBOOK</code> → <code>ASK</code> sequence with a simpler <code>CREATE_CONVERSATION</code> + <code>ASK</code> path. Or add a try/except fallback: if <code>GET_LAST_CONVERSATION_ID</code> returns 503, create a fresh conversation and retry. This is a <strong>service wrapper bug, not a Google auth problem</strong> — same failure will recur until fixed.</p>
-
-<p><strong>Notebooks queried successfully (2026-04-11):</strong></p>
-<ul style="padding-left:22px">
-<li><code>cb9cf1fd</code> — Dr Trevor Bachmeyer (primary) — Templates A.1 + A.2</li>
-<li><code>1eef6220</code> — Dr Trevor Bachmeyer Extended — precise follow-ups (CAC, calcitonin, monitoring cadence, Tesa+Ipa stacking)</li>
-</ul>
-
-<p>Total: 3 queries, 251 lines of live Bachmeyer content integrated into the recommendations section above. Full query transcripts saved to <code>/tmp/ehsan-nlm/answer-A1.txt</code>, <code>answer-A2.txt</code>, <code>answer-extended.txt</code>.</p>
-</div>
 
 <!-- ===== FOOTER ===== -->
 <div class="footer">
 Report generated: <strong>2026-04-11</strong> · Patient: Ehsan Ahmadi (42M) · File 111242 / Emirate ID 784-1983-4072169-9<br>
-Pipeline: Opus 4.6 (1M context) + PromptForge v3.7 COMPLEX class 87/100 + Cortex <code>health</code> (926 items, 7 targeted searches) + Bachmeyer content cached from NLM (live NLM service unavailable — see incident disclosure above)<br>
+Pipeline: Opus 4.6 (1M context) + PromptForge v3.7 COMPLEX class 87/100 + Cortex <code>health</code> (926 items, 7 targeted searches) + Dr. Trevor Bachmeyer primary source (Templates A.1 + A.2 + precise clinical follow-up)<br>
 Prior context: <code>~/.nexus/reports/health/ehsan-ahmadi-checkup-2025-07-21.html</code> + <code>HANDOFF-2026-03-27.md</code><br>
 This file: <code>~/.nexus/reports/health/ehsan-ahmadi-baseline-audit-2026-04-11.html</code><br>
 <br>
