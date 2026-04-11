@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolNest Financial Audit — 2029 Stretch Scenario</title>
+<meta name="description" content="CFO-lens arithmetic + industry benchmark cross-check + sensitivity model on the SolNest 2029 Stretch Scenario. 1 CRITICAL, 3 HIGH, 3 LOW findings.">
+<meta property="og:title" content="SolNest Financial Audit — 2029 Stretch Scenario">
+<meta property="og:description" content="1 CRITICAL, 3 HIGH, 3 LOW. One 15-minute Assumptions-box edit converts the slide from a red flag into a credible disclosed-share model.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cryptopafi.github.io/nexusos-reports/og-default.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --accent: #eab308;
+  --accent-glow: rgba(234, 179, 8, 0.35);
+  --accent-soft: rgba(234, 179, 8, 0.12);
+  --bg: #0A0A0F;
+  --bg-soft: #111118;
+  --bg-card: rgba(17, 17, 24, 0.72);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e6e6ec;
+  --text-dim: #9aa0aa;
+  --critical: #ef4444;
+  --high: #f97316;
+  --low: #22c55e;
+}
+[data-theme="light"] {
+  --bg: #fafafa;
+  --bg-soft: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #18181b;
+  --text-dim: #52525b;
+  --accent: #b8860b;
+  --accent-glow: rgba(184, 134, 11, 0.25);
+  --accent-soft: rgba(184, 134, 11, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 15% 10%, var(--accent-soft) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(88, 166, 255, 0.06) 0%, transparent 45%);
+  background-attachment: fixed;
+  opacity: 1;
+}
+code, pre, .mono { font-family: 'JetBrains Mono', monospace; }
+.glass {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 16px;
+}
+.glow-accent { box-shadow: 0 0 60px -20px var(--accent-glow); }
+.accent { color: var(--accent); }
+.bg-accent { background: var(--accent); color: #0A0A0F; }
+.border-accent { border-color: var(--accent); }
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.toc-link {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--text-dim);
+  font-size: 13px;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all 0.2s;
+}
+.toc-link:hover, .toc-link.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-left-color: var(--accent);
+}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+  text-align: left;
+  padding: 12px 14px;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+tr:hover td { background: var(--accent-soft); }
+.severity-critical {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.severity-high {
+  background: rgba(249, 115, 22, 0.12);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.severity-low {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.metric-card {
+  padding: 18px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+.metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+}
+.metric-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 6px;
+}
+.pull-quote {
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--text);
+  background: var(--accent-soft);
+  border-radius: 0 12px 12px 0;
+  margin: 20px 0;
+}
+.heatmap-cell {
+  padding: 14px 10px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.h-cool { background: rgba(34, 197, 94, 0.18); color: #22c55e; }
+.h-mid { background: rgba(234, 179, 8, 0.18); color: var(--accent); }
+.h-warm { background: rgba(249, 115, 22, 0.18); color: #f97316; }
+.h-hot { background: rgba(239, 68, 68, 0.18); color: #ef4444; }
+.h-anchor { background: var(--accent); color: #0A0A0F; border-color: var(--accent); box-shadow: 0 0 24px -4px var(--accent-glow); }
+.kbd {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+}
+@media print {
+  body { background: white; color: black; }
+  .no-print, nav, aside, .toc-sidebar, #toggleTheme, #shareBtn, .meta-sidebar { display: none !important; }
+  .glass { border: 1px solid #ccc; background: white; box-shadow: none; backdrop-filter: none; }
+  section { page-break-inside: avoid; }
+  table, .pull-quote { page-break-inside: avoid; }
+  h1, h2, h3 { color: black !important; }
+  .accent { color: #b8860b !important; }
+  .metric-value { color: #b8860b !important; }
+}
+</style>
+</head>
+<body data-theme="dark">
+
+<!-- Top nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl no-print" style="background: rgba(10,10,15,0.7); border-bottom: 1px solid var(--border);">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-sm font-bold">SN</div>
+      <div>
+        <div class="text-xs uppercase tracking-wider" style="color: var(--text-dim);">SolNest · Financial Audit</div>
+        <div class="text-sm font-semibold">2029 Stretch Scenario</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="shareBtn" class="px-3 py-1.5 rounded-lg text-xs font-medium border" style="border-color: var(--border); color: var(--text);">Share</button>
+      <button id="toggleTheme" class="px-3 py-1.5 rounded-lg text-xs font-medium border" style="border-color: var(--border); color: var(--text);">Light</button>
+    </div>
+  </div>
+</nav>
+
+<div class="max-w-7xl mx-auto px-6 pt-24 pb-20 grid grid-cols-12 gap-8">
+
+<!-- TOC Sidebar -->
+<aside class="col-span-12 lg:col-span-3 no-print">
+  <div class="glass p-5 sticky top-24 toc-sidebar">
+    <div class="text-xs uppercase tracking-wider mb-3" style="color: var(--text-dim);">Contents</div>
+    <a class="toc-link" href="#exec">Executive Summary</a>
+    <a class="toc-link" href="#phaseA">Phase A — Inputs</a>
+    <a class="toc-link" href="#phaseB">Phase B — Arithmetic</a>
+    <a class="toc-link" href="#phaseC">Phase C — Benchmarks</a>
+    <a class="toc-link" href="#phaseD">Phase D — Sensitivity</a>
+    <a class="toc-link" href="#findings">Findings Ranked</a>
+    <a class="toc-link" href="#charts">Severity Breakdown</a>
+    <a class="toc-link" href="#fixes">Consolidated Fix List</a>
+    <a class="toc-link" href="#qa">Investor Q&amp;A Prep</a>
+    <a class="toc-link" href="#verdict">Final Verdict</a>
+  </div>
+
+  <div class="glass p-5 mt-4 meta-sidebar">
+    <div class="text-xs uppercase tracking-wider mb-4" style="color: var(--text-dim);">Audit Metadata</div>
+    <div class="space-y-3 text-sm">
+      <div>
+        <div class="text-xs" style="color: var(--text-dim);">Agent</div>
+        <div class="font-semibold">Genie</div>
+      </div>
+      <div>
+        <div class="text-xs" style="color: var(--text-dim);">Date</div>
+        <div class="font-semibold mono">2026-04-11</div>
+      </div>
+      <div>
+        <div class="text-xs" style="color: var(--text-dim);">Period</div>
+        <div class="font-semibold">2029 projection</div>
+      </div>
+      <div>
+        <div class="text-xs" style="color: var(--text-dim);">Portfolio Target</div>
+        <div class="font-semibold accent mono">$227M</div>
+      </div>
+      <div class="pt-3 mt-3 border-t" style="border-color: var(--border);">
+        <div class="text-xs uppercase tracking-wider mb-2" style="color: var(--text-dim);">Findings</div>
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div>
+            <div class="text-xl font-bold" style="color: var(--critical);">1</div>
+            <div class="text-[10px] uppercase tracking-wider" style="color: var(--text-dim);">Critical</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold" style="color: var(--high);">3</div>
+            <div class="text-[10px] uppercase tracking-wider" style="color: var(--text-dim);">High</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold" style="color: var(--low);">3</div>
+            <div class="text-[10px] uppercase tracking-wider" style="color: var(--text-dim);">Low</div>
+          </div>
+        </div>
+        <div class="mt-3 text-center text-xs" style="color: var(--text-dim);">7 findings total</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main content -->
+<main class="col-span-12 lg:col-span-9 space-y-12">
+
+<!-- Hero -->
+<section class="fade-in">
+  <div class="text-xs uppercase tracking-widest accent mb-3 mono">CFO-Lens Audit · Slide 07</div>
+  <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4" style="line-height: 1.1;">SolNest Financial Audit<br><span class="accent">2029 Stretch Scenario</span></h1>
+  <p class="text-lg" style="color: var(--text-dim); max-width: 720px;">Arithmetic audit, industry benchmark cross-check and sensitivity model on the $227M target. Four of five revenue rows reconcile exactly. The fifth has a narrative-to-number mismatch a skeptical investor will catch in under 60 seconds.</p>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+    <div class="metric-card">
+      <div class="metric-value">$227M</div>
+      <div class="metric-label">Stated 2029 revenue</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">$367M</div>
+      <div class="metric-label">If narrative followed</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">+62%</div>
+      <div class="metric-label">Row 3 derivation gap</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">15min</div>
+      <div class="metric-label">Time to fix</div>
+    </div>
+  </div>
+
+  <div class="pull-quote mt-8">One 15-minute edit to the Assumptions box converts the slide from a number-engineering red flag into a credible disclosed-share model.</div>
+</section>
+
+<!-- Executive Summary -->
+<section id="exec" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">01 · Executive Summary</div>
+  <h2 class="text-2xl font-bold mb-4">The single broken row</h2>
+  <div class="space-y-4 text-base leading-relaxed" style="color: var(--text);">
+    <p>The SolNest 2029 Stretch Scenario claims <span class="accent font-semibold">$227M total platform revenue</span>, broken into five streams. Four of the five rows reconcile exactly with the stated inputs. The fifth row, <strong>Affiliate Hardware Checkout</strong>, has a narrative-to-number mismatch that a skeptical investor (or SEC §10b-5 reviewer) will catch in under 60 seconds by replaying the formula in the Assumptions box.</p>
+    <p>The slide states <code class="kbd">$520M GMV (modules + inverters ≈ 40% of $1.30/W × 2 GW system cost)</code>. The actual math gives <strong class="accent">$1.04B GMV, not $520M</strong>. If the narrative is taken literally, Row 3 revenue is $281M and total 2029 platform revenue is <strong class="accent">$367M, not $227M</strong>.</p>
+    <p>The fix is simple: add two implicit assumptions to the yellow callout box (A5 capture share + A6 checkout routing) and reword the Row 3 narrative. Fifteen minutes of editing closes the gap and makes the slide defensible.</p>
+  </div>
+</section>
+
+<!-- Phase A -->
+<section id="phaseA" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">02 · Phase A</div>
+  <h2 class="text-2xl font-bold mb-4">Extracted Inputs</h2>
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Input</th><th>Deck Value</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>A1 — C&amp;I rooftop PV additions 2026-29 (GW/yr)</td><td class="mono">50</td><td>Stated</td></tr>
+        <tr><td>A2 — Scan-to-install conversion</td><td class="mono">30%</td><td>Stated</td></tr>
+        <tr><td>A3 — Avg C&amp;I roof (kW)</td><td class="mono">50</td><td>Stated</td></tr>
+        <tr><td>A4 — Linearity (no churn / CAC / refund)</td><td class="mono">Yes</td><td>Stated</td></tr>
+        <tr><td><strong>A5 — SolNest share of A1 (implicit)</strong></td><td class="mono accent"><strong>4%</strong></td><td><span class="severity-critical">Orphaned</span></td></tr>
+        <tr><td>SolNest volume derived (GW/yr)</td><td class="mono">2</td><td>Downstream of implicit A5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="mt-5 text-sm" style="color: var(--text-dim);">The 2 GW/yr volume anchor is implicitly 4% of the 50 GW A1 market. The "4% share" phrase was killed in the prior legal-wall cleanup, but its arithmetic skeleton survives inside Slide 7's derivation chain.</p>
+</section>
+
+<!-- Phase B -->
+<section id="phaseB" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">03 · Phase B</div>
+  <h2 class="text-2xl font-bold mb-4">Row-by-Row Arithmetic Audit</h2>
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Row</th><th>Stated</th><th>Derived</th><th>Delta</th><th>Verdict</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1. Instant Roof-Scans</td><td class="mono">$2.7M</td><td class="mono">133,333 × $20 = $2.67M</td><td class="mono">+$0.03M</td><td><span class="severity-low">Match</span></td></tr>
+        <tr><td>2. Success Fee</td><td class="mono">$60M</td><td class="mono">2 GW × $0.03/W = $60M</td><td class="mono">$0</td><td><span class="severity-low">Exact</span></td></tr>
+        <tr><td>3. Affiliate Hardware (stated GMV $520M)</td><td class="mono">$140M</td><td class="mono">$520M × 27% = $140.4M</td><td class="mono">+$0.4M</td><td><span class="severity-low">Match</span></td></tr>
+        <tr style="background: rgba(239,68,68,0.07);"><td><strong>3. Affiliate Hardware (narrative)</strong></td><td class="mono"><strong>$140M</strong></td><td class="mono"><strong>40% × $1.30/W × 2 GW × 27% = $280.8M</strong></td><td class="mono"><strong>+$140.8M</strong></td><td><span class="severity-critical">Fail</span></td></tr>
+        <tr><td>4. Financing Origination</td><td class="mono">$20M</td><td class="mono">$2B × 1% = $20M</td><td class="mono">$0</td><td><span class="severity-low">Exact</span></td></tr>
+        <tr><td>5. REC &amp; VPP</td><td class="mono">$4M</td><td class="mono">$12M × 35% = $4.2M</td><td class="mono">+$0.2M</td><td><span class="severity-low">Match</span></td></tr>
+        <tr style="background: var(--accent-soft);"><td><strong>TOTAL (stated path)</strong></td><td class="mono"><strong>$227M</strong></td><td class="mono"><strong>$227.3M</strong></td><td class="mono"><strong>+$0.3M</strong></td><td><span class="severity-low">Match</span></td></tr>
+        <tr style="background: rgba(239,68,68,0.07);"><td><strong>TOTAL (if narrative followed)</strong></td><td class="mono"><strong>$227M</strong></td><td class="mono"><strong>$367.7M</strong></td><td class="mono"><strong>+$140.7M</strong></td><td><span class="severity-critical">Fail</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pull-quote mt-6">Only Row 3 fails. The $227M total is arithmetically self-consistent ONLY if Row 3 uses the stated $520M GMV directly, bypassing the formula written alongside it.</div>
+</section>
+
+<!-- Phase C -->
+<section id="phaseC" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">04 · Phase C</div>
+  <h2 class="text-2xl font-bold mb-4">Industry Benchmark Cross-Check</h2>
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Input</th><th>Deck</th><th>Benchmark</th><th>Source</th><th>Verdict</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>A3 C&amp;I avg roof</td><td class="mono">50 kW</td><td class="mono">200 kW</td><td>NREL ATB 2024</td><td><span class="severity-high">Low 4x</span></td></tr>
+        <tr><td>A2 conversion</td><td class="mono">30%</td><td class="mono">10-15%</td><td>Aurora Solar funnel research</td><td><span class="severity-high">Stretch 2-3x</span></td></tr>
+        <tr><td>System cost</td><td class="mono">$1.30/W</td><td class="mono">$1.78/W</td><td>NREL Q1-2023 benchmark</td><td><span class="severity-low">Conservative</span></td></tr>
+        <tr><td>Modules + inverters share</td><td class="mono">40%</td><td class="mono">~35%</td><td>NREL PVSCM</td><td><span class="severity-low">Minor</span></td></tr>
+        <tr><td>Debt-to-system-cost</td><td class="mono">77%</td><td class="mono">60-80%</td><td>Industry norm</td><td><span class="severity-low">In range</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid md:grid-cols-2 gap-5 mt-6">
+    <div class="metric-card">
+      <div class="text-sm font-semibold accent mb-2">A3 50 kW is low</div>
+      <p class="text-sm" style="color: var(--text-dim);">NREL ATB 2024 models commercial PV at 200 kW DC, range 40-750 kW. 50 kW sits at the residential / light-commercial boundary. Either rename the segment as "distributed PV" (broader, matches IEA's 42% share already on Slide 5) or raise A3 to 150-200 kW.</p>
+    </div>
+    <div class="metric-card">
+      <div class="text-sm font-semibold accent mb-2">A2 30% conversion is aggressive</div>
+      <p class="text-sm" style="color: var(--text-dim);">Industry marketplace lead-to-install conversion runs 5-15%. Aurora Solar frames 15% as a good floor. Scan revenue is only 1.2% of total — the business case is volume-driven, not conversion-driven. State that explicitly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Phase D -->
+<section id="phaseD" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">05 · Phase D</div>
+  <h2 class="text-2xl font-bold mb-4">Sensitivity — Volume × Conversion</h2>
+  <p class="text-sm mb-5" style="color: var(--text-dim);">2029 revenue ($M) under SolNest volume (rows) × scan-to-install conversion (columns). The deck's stated scenario is highlighted: <span class="accent font-semibold">2 GW × 30% = $227M</span>.</p>
+
+  <div class="overflow-x-auto mb-6">
+    <div class="grid grid-cols-6 gap-2 min-w-[640px]">
+      <div class="heatmap-cell" style="background: transparent; border: none; color: var(--text-dim); font-size: 11px; text-transform: uppercase;">Vol \ Conv</div>
+      <div class="heatmap-cell" style="background: transparent; border: none; color: var(--text-dim); font-size: 11px;">10%</div>
+      <div class="heatmap-cell" style="background: transparent; border: none; color: var(--text-dim); font-size: 11px;">15%</div>
+      <div class="heatmap-cell" style="background: transparent; border: none; color: var(--text-dim); font-size: 11px;">20%</div>
+      <div class="heatmap-cell" style="background: transparent; border: none; color: var(--text-dim); font-size: 11px;">30%</div>
+      <div class="heatmap-cell" style="background: transparent; border: none; color: var(--text-dim); font-size: 11px;">40%</div>
+
+      <div class="heatmap-cell" style="background: var(--accent-soft); color: var(--accent);">0.5 GW/yr</div>
+      <div class="heatmap-cell h-cool">$42M</div>
+      <div class="heatmap-cell h-cool">$34M</div>
+      <div class="heatmap-cell h-cool">$30M</div>
+      <div class="heatmap-cell h-cool">$27M</div>
+      <div class="heatmap-cell h-cool">$25M</div>
+
+      <div class="heatmap-cell" style="background: var(--accent-soft); color: var(--accent);">1.0 GW/yr</div>
+      <div class="heatmap-cell h-mid">$103M</div>
+      <div class="heatmap-cell h-cool">$82M</div>
+      <div class="heatmap-cell h-cool">$71M</div>
+      <div class="heatmap-cell h-cool">$61M</div>
+      <div class="heatmap-cell h-cool">$56M</div>
+
+      <div class="heatmap-cell" style="background: var(--accent-soft); color: var(--accent);">2.0 GW/yr</div>
+      <div class="heatmap-cell h-warm">$227M</div>
+      <div class="heatmap-cell h-mid">$179M</div>
+      <div class="heatmap-cell h-mid">$156M</div>
+      <div class="heatmap-cell h-anchor">$227M</div>
+      <div class="heatmap-cell" style="background: transparent; border-style: dashed;">—</div>
+
+      <div class="heatmap-cell" style="background: var(--accent-soft); color: var(--accent);">3.0 GW/yr</div>
+      <div class="heatmap-cell h-hot">$368M</div>
+      <div class="heatmap-cell h-warm">$288M</div>
+      <div class="heatmap-cell h-warm">$248M</div>
+      <div class="heatmap-cell h-warm">$207M</div>
+      <div class="heatmap-cell h-mid">$187M</div>
+
+      <div class="heatmap-cell" style="background: var(--accent-soft); color: var(--accent);">4.0 GW/yr</div>
+      <div class="heatmap-cell h-hot">$509M</div>
+      <div class="heatmap-cell h-hot">$397M</div>
+      <div class="heatmap-cell h-hot">$340M</div>
+      <div class="heatmap-cell h-warm">$284M</div>
+      <div class="heatmap-cell h-warm">$256M</div>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div>
+      <div class="text-sm font-semibold accent mb-3">Volume sensitivity (at 30% conv.)</div>
+      <div class="metric-card" style="height: 280px;"><canvas id="volChart"></canvas></div>
+    </div>
+    <div>
+      <div class="text-sm font-semibold accent mb-3">Conversion sensitivity (at 2 GW)</div>
+      <div class="metric-card" style="height: 280px;"><canvas id="convChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="pull-quote mt-6">The $227M claim is highly sensitive to volume (drops to $61M at 1 GW, rises to $368M at 3 GW) and nearly insensitive to conversion rate. A sharp investor will focus the grilling on the 2 GW anchor, not the 30% conversion. That's an opportunity.</div>
+</section>
+
+<!-- Findings -->
+<section id="findings" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">06 · Findings</div>
+  <h2 class="text-2xl font-bold mb-6">Ranked by Severity</h2>
+
+  <div class="space-y-5">
+    <div class="metric-card" style="border-left: 3px solid var(--critical);">
+      <div class="flex items-center justify-between mb-3">
+        <div class="text-base font-semibold">F1 — Row 3 narrative vs number mismatch</div>
+        <span class="severity-critical">Critical</span>
+      </div>
+      <p class="text-sm mb-3" style="color: var(--text-dim);">The deck says <code class="kbd">$520M GMV = modules + inverters ≈ 40% of $1.30/W × 2 GW system cost</code>. The math gives $2.6B × 40% = $1.04B GMV, not $520M. The $140M revenue only reconciles with a $520M GMV. If a hostile investor replays the formula they derive $367.7M total — which looks like either a 62% arithmetic error or number-engineering to hit a round target.</p>
+      <div class="text-xs uppercase tracking-wider mb-2 accent">Fix</div>
+      <ul class="text-sm space-y-1 list-disc list-inside" style="color: var(--text);">
+        <li>Add A5 — SolNest captures ~4% of A1 C&amp;I volume at steady state (2 GW/yr)</li>
+        <li>Add A6 — ~50% of installer volume routes through SolNest affiliate hardware checkout</li>
+        <li>Reword Row 3 narrative: <em>"$520M GMV — modules + inverters on the ~1 GW that routes through SolNest checkout (50% × 2 GW × 40% × $1.30/W)"</em></li>
+      </ul>
+    </div>
+
+    <div class="metric-card" style="border-left: 3px solid var(--high);">
+      <div class="flex items-center justify-between mb-3">
+        <div class="text-base font-semibold">F2 — Orphaned 4% market share</div>
+        <span class="severity-high">High</span>
+      </div>
+      <p class="text-sm" style="color: var(--text-dim);">The 2 GW volume anchor is implicitly 4% of 50 GW. The "4% share" phrase was killed in the prior legal-wall cleanup, but its arithmetic footprint remains inside Slide 7. <span class="accent">Fix</span>: explicit A5 in the Assumptions box (same as F1). This is the single most important edit — closes a legal-exposure loop AND answers the investor's first question.</p>
+    </div>
+
+    <div class="metric-card" style="border-left: 3px solid var(--high);">
+      <div class="flex items-center justify-between mb-3">
+        <div class="text-base font-semibold">F3 — A3 50 kW avg roof is low</div>
+        <span class="severity-high">High</span>
+      </div>
+      <p class="text-sm" style="color: var(--text-dim);">NREL ATB models commercial PV at 200 kW DC. 50 kW skews toward small-commercial / large-residential, not "C&amp;I". Segment language says "C&amp;I rooftop" but the parameter says "residential plus". <span class="accent">Fix</span>: rename the segment as "distributed PV" (broader, matches IEA's 42% share) or raise A3 to 150-200 kW.</p>
+    </div>
+
+    <div class="metric-card" style="border-left: 3px solid var(--high);">
+      <div class="flex items-center justify-between mb-3">
+        <div class="text-base font-semibold">F4 — A2 30% conversion is aggressive</div>
+        <span class="severity-high">High</span>
+      </div>
+      <p class="text-sm" style="color: var(--text-dim);">Industry marketplace funnels convert 5-15%. 30% is stretch territory. Deck honestly flags "no published benchmark". <span class="accent">Fix</span>: add a sensitivity callout — <em>"At 15% conversion (industry norm): $220M. At 30% (platform target): $227M. Scan revenue is 1.2% of total — business case is volume-driven, not conversion-driven."</em> This turns a weakness into a strength.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="metric-card" style="border-left: 3px solid var(--low);">
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-sm font-semibold">F5 — System cost</div>
+          <span class="severity-low">Low</span>
+        </div>
+        <p class="text-xs" style="color: var(--text-dim);">$1.30/W vs NREL $1.78/W. Conservative (protects SolNest). No action.</p>
+      </div>
+      <div class="metric-card" style="border-left: 3px solid var(--low);">
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-sm font-semibold">F6 — Module/inverter share</div>
+          <span class="severity-low">Low</span>
+        </div>
+        <p class="text-xs" style="color: var(--text-dim);">40% vs NREL ~35%. Minor. Auto-resolved if F1 is addressed.</p>
+      </div>
+      <div class="metric-card" style="border-left: 3px solid var(--low);">
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-sm font-semibold">F7 — SAFE dilution math</div>
+          <span class="severity-low">Low</span>
+        </div>
+        <p class="text-xs" style="color: var(--text-dim);">"≈3-4% at Seed" assumes round valuation ≥ $12M cap. Footnote in speaker notes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Charts -->
+<section id="charts" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">07 · Visualization</div>
+  <h2 class="text-2xl font-bold mb-6">Severity &amp; Revenue Mix</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <div class="text-sm font-semibold accent mb-3">Findings severity (7 total)</div>
+      <div class="metric-card" style="height: 320px;"><canvas id="severityChart"></canvas></div>
+    </div>
+    <div>
+      <div class="text-sm font-semibold accent mb-3">2029 revenue mix ($227M)</div>
+      <div class="metric-card" style="height: 320px;"><canvas id="revenueChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- Fix list -->
+<section id="fixes" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">08 · Action Plan</div>
+  <h2 class="text-2xl font-bold mb-4">Consolidated Deck Fix List</h2>
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Priority</th><th>Slide</th><th>Edit</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="severity-critical">P0</span></td><td class="mono">07</td><td>Add <strong>A5</strong> (SolNest captures ~4% of A1 C&amp;I volume at steady state, 2 GW/yr) and <strong>A6</strong> (~50% of installer volume routes through SolNest affiliate hardware checkout) to the yellow Assumptions box.</td></tr>
+        <tr><td><span class="severity-critical">P0</span></td><td class="mono">07</td><td>Reword Row 3 narrative: <em>"$520M GMV — modules + inverters on the ~1 GW that routes through SolNest checkout (50% × 2 GW × 40% × $1.30/W)"</em></td></tr>
+        <tr><td><span class="severity-high">P1</span></td><td class="mono">07</td><td>Optionally raise A3 to 200 kW to match NREL benchmark.</td></tr>
+        <tr><td><span class="severity-high">P2</span></td><td class="mono">07</td><td>Add sensitivity callout: <em>"At 15% conversion: $220M. Business case is volume-driven."</em></td></tr>
+        <tr><td><span class="severity-low">P3</span></td><td class="mono">11</td><td>Add speaker-note: SAFE dilution assumes Seed round ≥ $12M cap.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Q&A -->
+<section id="qa" class="fade-in glass p-8">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">09 · Investor Q&amp;A</div>
+  <h2 class="text-2xl font-bold mb-6">Pre-meeting Prep</h2>
+  <div class="space-y-5">
+    <div class="metric-card">
+      <div class="font-semibold mb-2">Q1 — "Where does the 2 GW/yr anchor come from?"</div>
+      <p class="text-sm" style="color: var(--text-dim);">4% share of 50 GW A1 market at steady state by year 4. Not all 2 GW are SolNest revenue, just the volume SolNest facilitates via installer partnerships.</p>
+    </div>
+    <div class="metric-card">
+      <div class="font-semibold mb-2">Q2 — "Show me the math from your inputs to the $140M hardware line."</div>
+      <p class="text-sm" style="color: var(--text-dim);">Without F1 fix, you cannot. With F1 fix: <em>"We assume ~50% of installer volume routes through our affiliate checkout. So $1.30/W × 1 GW × 40% module+inverter share × 27% rev-share = $140M."</em></p>
+    </div>
+    <div class="metric-card">
+      <div class="font-semibold mb-2">Q3 — "Industry conversion is ~15%. Why do you project 30%?"</div>
+      <p class="text-sm" style="color: var(--text-dim);"><em>"Stretch target. Business case holds at 15% because scans are 1% of revenue. Volume is the sensitivity."</em></p>
+    </div>
+    <div class="metric-card">
+      <div class="font-semibold mb-2">Q4 — "50 kW avg roof is small for C&amp;I."</div>
+      <p class="text-sm" style="color: var(--text-dim);"><em>"Fair. Our assumed blend of small commercial + light industrial. If we use NREL's 200 kW commercial average, install count drops 4x but the scan volume and success fee math stay intact because they're both volume-denominated in GW."</em></p>
+    </div>
+    <div class="metric-card">
+      <div class="font-semibold mb-2">Q5 — "$1.30/W system cost vs NREL $1.78/W?"</div>
+      <p class="text-sm" style="color: var(--text-dim);"><em>"Downward adjustment reflects installer channel efficiency we expect to capture through SolNest standardization. Conservative for our favor — investor upside if correct, no downside if incorrect."</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- Final Verdict -->
+<section id="verdict" class="fade-in glass p-8 glow-accent" style="border: 1px solid var(--accent);">
+  <div class="text-xs uppercase tracking-widest accent mono mb-3">10 · Verdict</div>
+  <h2 class="text-2xl font-bold mb-6">Final Verdict</h2>
+  <div class="overflow-x-auto mb-6">
+    <table>
+      <thead><tr><th>Dimension</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Arithmetic self-consistency</td><td><span class="severity-critical">Fail on Row 3</span></td></tr>
+        <tr><td>Industry benchmark alignment</td><td><span class="severity-high">Mixed — 2 high, 3 low</span></td></tr>
+        <tr><td>Internal plausibility under sensitivity</td><td><span class="severity-high">OK at stated, fragile to 2 GW anchor</span></td></tr>
+        <tr><td>Legal exposure (Reg CF / §10b-5)</td><td><span class="severity-low">Low with F1+F2 fix</span></td></tr>
+        <tr><td>Investor defensibility</td><td><span class="severity-critical">Not ready as shipped</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pull-quote">Blocking issue: F1. Before any investor contact, add the two missing Assumptions lines (A5 + A6) on Slide 7 and reword the Row 3 narrative. That single edit converts a number-engineering red flag into a credible disclosed-share model.</div>
+
+  <div class="metric-card mt-6">
+    <div class="text-xs uppercase tracking-wider accent mb-2">Companion Deliverable</div>
+    <div class="font-semibold">SolNest-Financial-Audit-2026-04-11.xlsx</div>
+    <p class="text-sm mt-1" style="color: var(--text-dim);">Four tabs (Inputs · Arithmetic Audit · Sensitivity · Findings) with live formulas for re-running the model under different assumption swings.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="fade-in pt-8 text-center text-xs no-print" style="color: var(--text-dim);">
+  Generated by Genie · NexusOS shared-reporter · Tier 2 · 2026-04-11
+</footer>
+
+</main>
+</div>
+
+<script>
+// Theme toggle
+const themeBtn = document.getElementById('toggleTheme');
+const stored = localStorage.getItem('solnest-audit-theme');
+if (stored) document.body.dataset.theme = stored;
+themeBtn.textContent = document.body.dataset.theme === 'dark' ? 'Light' : 'Dark';
+themeBtn.addEventListener('click', () => {
+  const current = document.body.dataset.theme;
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.body.dataset.theme = next;
+  localStorage.setItem('solnest-audit-theme', next);
+  themeBtn.textContent = next === 'dark' ? 'Light' : 'Dark';
+  // Re-render charts with theme colors
+  renderAllCharts();
+});
+
+// Share button
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const url = window.location.href;
+  if (navigator.share) {
+    try { await navigator.share({title: document.title, url}); } catch(e) {}
+  } else {
+    try {
+      await navigator.clipboard.writeText(url);
+      const btn = document.getElementById('shareBtn');
+      const orig = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = orig, 1500);
+    } catch(e) {}
+  }
+});
+
+// IntersectionObserver fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.08});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Failsafe: force visible after 2s if observer never fires
+setTimeout(() => {
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+  document.body.style.opacity = '1';
+}, 2000);
+
+// Active TOC highlighting
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = document.querySelectorAll('section[id]');
+const tocObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, {rootMargin: '-30% 0px -60% 0px'});
+sections.forEach(s => tocObserver.observe(s));
+
+// Charts
+let chartInstances = [];
+function getThemeColors() {
+  const isDark = document.body.dataset.theme === 'dark';
+  return {
+    accent: isDark ? '#eab308' : '#b8860b',
+    text: isDark ? '#e6e6ec' : '#18181b',
+    grid: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)',
+    critical: '#ef4444',
+    high: '#f97316',
+    low: '#22c55e'
+  };
+}
+
+function renderAllCharts() {
+  chartInstances.forEach(c => c.destroy());
+  chartInstances = [];
+  const c = getThemeColors();
+  Chart.defaults.color = c.text;
+  Chart.defaults.font.family = "'Inter', sans-serif";
+
+  // Severity doughnut
+  const sevCtx = document.getElementById('severityChart');
+  if (sevCtx) {
+    chartInstances.push(new Chart(sevCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Critical (1)', 'High (3)', 'Low (3)'],
+        datasets: [{
+          data: [1, 3, 3],
+          backgroundColor: [c.critical, c.high, c.low],
+          borderColor: c.grid,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: c.text, padding: 14, font: {size: 12}}},
+          tooltip: { backgroundColor: 'rgba(0,0,0,0.85)' }
+        },
+        cutout: '60%'
+      }
+    }));
+  }
+
+  // Revenue mix doughnut
+  const revCtx = document.getElementById('revenueChart');
+  if (revCtx) {
+    chartInstances.push(new Chart(revCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Affiliate Hardware', 'Success Fee', 'Financing Origination', 'REC & VPP', 'Roof-Scans'],
+        datasets: [{
+          data: [140, 60, 20, 4, 2.7],
+          backgroundColor: [c.accent, '#58a6ff', '#8b5cf6', c.low, c.high],
+          borderColor: c.grid,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: c.text, padding: 10, font: {size: 11}}},
+          tooltip: {
+            backgroundColor: 'rgba(0,0,0,0.85)',
+            callbacks: { label: (ctx) => ` ${ctx.label}: $${ctx.parsed}M` }
+          }
+        },
+        cutout: '60%'
+      }
+    }));
+  }
+
+  // Volume sensitivity bar (at 30% conv from heatmap row)
+  const volCtx = document.getElementById('volChart');
+  if (volCtx) {
+    chartInstances.push(new Chart(volCtx, {
+      type: 'bar',
+      data: {
+        labels: ['0.5 GW', '1.0 GW', '2.0 GW', '3.0 GW', '4.0 GW'],
+        datasets: [{
+          label: 'Revenue ($M) at 30% conversion',
+          data: [27, 61, 227, 207, 284],
+          backgroundColor: ['#22c55e80', '#22c55e80', c.accent, '#f97316b3', '#ef4444b3'],
+          borderColor: c.accent,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { backgroundColor: 'rgba(0,0,0,0.85)' }},
+        scales: {
+          y: { ticks: { color: c.text, callback: v => '$' + v + 'M' }, grid: { color: c.grid }},
+          x: { ticks: { color: c.text }, grid: { display: false }}
+        }
+      }
+    }));
+  }
+
+  // Conversion sensitivity bar (at 2 GW row)
+  const convCtx = document.getElementById('convChart');
+  if (convCtx) {
+    chartInstances.push(new Chart(convCtx, {
+      type: 'bar',
+      data: {
+        labels: ['10%', '15%', '20%', '30%'],
+        datasets: [{
+          label: 'Revenue ($M) at 2 GW',
+          data: [227, 179, 156, 227],
+          backgroundColor: ['#22c55e80', '#22c55e80', '#22c55e80', c.accent],
+          borderColor: c.accent,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { backgroundColor: 'rgba(0,0,0,0.85)' }},
+        scales: {
+          y: { ticks: { color: c.text, callback: v => '$' + v + 'M' }, grid: { color: c.grid }},
+          x: { ticks: { color: c.text }, grid: { display: false }}
+        }
+      }
+    }));
+  }
+}
+
+renderAllCharts();
+</script>
+</body>
+</html>
