@@ -124,6 +124,8 @@
   .chart-box { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.2rem 1.3rem; }
   html.light .chart-box { background: rgba(15,23,42,0.02); }
   .chart-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); font-weight: 600; margin-bottom: 0.5rem; }
+  .chart-canvas-wrap { position: relative; height: 260px; max-height: 260px; width: 100%; }
+  .chart-canvas-wrap canvas { max-height: 260px !important; }
   @media print {
     html, body { background: #ffffff !important; color: #0f172a !important; }
     body.light-print { font-size: 10pt; }
@@ -238,12 +240,12 @@
         <section class="grid md:grid-cols-2 gap-5 mb-8 no-print">
           <div class="chart-box">
             <div class="chart-title">Lipid Panel vs Secondary-Prevention Target</div>
-            <canvas id="lipidChart" height="200"></canvas>
+            <div class="chart-canvas-wrap"><canvas id="lipidChart"></canvas></div>
             <div class="text-[11px] mt-2" style="color: var(--text-dim);">LDL 139 mg/dL is ~2× the <70 target for confirmed LAD plaque (secondary prevention). Non-HDL 153 is ~1.9× the <80 target.</div>
           </div>
           <div class="chart-box">
             <div class="chart-title">Hormone Panel — Key Abnormalities</div>
-            <canvas id="hormoneChart" height="200"></canvas>
+            <div class="chart-canvas-wrap"><canvas id="hormoneChart"></canvas></div>
             <div class="text-[11px] mt-2" style="color: var(--text-dim);">IGF-1 75 LOW (ref 86–214); E2 46.95 HIGH (ref <39.8); Total T 472 mid-normal; Free T 13 bottom of 9.57–40.6 range.</div>
           </div>
         </section>
