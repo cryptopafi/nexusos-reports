@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Ehsan Dubai RE v4 — Rental Overlay + Active Negotiations">
+<meta property="og:description" content="3 Al Barari active offers re-modeled with Delphi 2026 Q2 rental yields, revised CAGR, and combined total-return IRR. Nest AED 22M · Lunaria AED 33M · Chorisia 1 AED 15M.">
+<meta property="og:type" content="article">
+<title>Ehsan Dubai RE v4 — Rental Overlay + Active Negotiations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = { darkMode: 'class', theme: { extend: {
+  fontFamily: { sans: ['Inter','system-ui','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+  colors: { accent: '#eab308', accent2: '#f59e0b', good: '#22c55e', bad: '#ef4444', warn: '#f97316' }
+}}}
+</script>
+<style>
+  :root { color-scheme: dark; }
+  html.dark body { background: radial-gradient(ellipse at top, #0c0a09 0%, #09090b 60%, #050505 100%); color: #e7e5e4; }
+  html:not(.dark) body { background: #fafafa; color: #1c1917; }
+  .glass { background: rgba(24,24,27,0.55); backdrop-filter: blur(14px); border: 1px solid rgba(234,179,8,0.12); border-radius: 18px; }
+  html:not(.dark) .glass { background: rgba(255,255,255,0.7); border-color: rgba(234,179,8,0.25); color: #1c1917; }
+  .accent-border { border-left: 3px solid #eab308; }
+  .good-border { border-left: 3px solid #22c55e; }
+  .bad-border { border-left: 3px solid #ef4444; }
+  .warn-border { border-left: 3px solid #f97316; }
+  .kbd { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; background: rgba(234,179,8,0.08); padding: 2px 6px; border-radius: 4px; color: #eab308; }
+  .pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; }
+  .pill.good { background: rgba(34,197,94,0.14); color: #4ade80; }
+  .pill.bad { background: rgba(239,68,68,0.14); color: #f87171; }
+  .pill.warn { background: rgba(249,115,22,0.14); color: #fb923c; }
+  .pill.neutral { background: rgba(234,179,8,0.12); color: #eab308; }
+  .fade-in { opacity: 0; transform: translateY(14px); transition: all 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+  th { text-align: left; padding: 10px 12px; font-weight: 600; color: #eab308; border-bottom: 1px solid rgba(234,179,8,0.25); }
+  td { padding: 9px 12px; border-bottom: 1px solid rgba(234,179,8,0.06); vertical-align: top; }
+  tr:hover td { background: rgba(234,179,8,0.04); }
+  .num { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .pos { color: #4ade80; }
+  .neg { color: #f87171; }
+  .mid { color: #fb923c; }
+  .neu { color: #a8a29e; }
+  #toc { position: sticky; top: 80px; max-height: 85vh; overflow-y: auto; }
+  #toc a { display: block; padding: 4px 10px; border-left: 2px solid transparent; font-size: 0.82rem; color: #a8a29e; transition: all 0.2s; }
+  #toc a:hover, #toc a.active { border-left-color: #eab308; color: #eab308; background: rgba(234,179,8,0.04); }
+  .stack-card { background: rgba(234,179,8,0.04); border: 1px solid rgba(234,179,8,0.15); border-radius: 12px; padding: 16px; }
+  .stack-card.good { background: rgba(34,197,94,0.06); border-color: rgba(34,197,94,0.25); }
+  .stack-card.bad { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.25); }
+  .stack-card.warn { background: rgba(249,115,22,0.06); border-color: rgba(249,115,22,0.25); }
+  @media print {
+    html, body { background: white !important; color: black !important; }
+    .glass, .stack-card { background: white !important; border: 1px solid #ddd !important; }
+    #toc, #theme-toggle, #share-btn { display: none !important; }
+  }
+</style>
+</head>
+<body class="font-sans">
+
+<!-- TOP NAV -->
+<header class="sticky top-0 z-40 backdrop-blur-lg bg-black/40 border-b border-yellow-500/10">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-accent font-bold tracking-wide">◆ GENIE · EHSAN DUBAI RE</span>
+      <span class="pill neutral">v4 · RENTAL OVERLAY</span>
+      <span class="pill good">DELPHI D3 · EPR 16/20</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="./dubai-luxury-verified-2030-v3-20260420-181329.html" class="text-sm px-3 py-1.5 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-accent border border-yellow-500/20">← v3 Full Portfolio</a>
+      <button id="share-btn" class="text-sm px-3 py-1.5 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-accent border border-yellow-500/20">⇪ Share</button>
+      <button id="theme-toggle" class="text-sm px-3 py-1.5 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-accent border border-yellow-500/20">◐</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-6 pt-16 pb-8">
+  <div class="fade-in">
+    <p class="text-accent font-mono text-sm tracking-widest uppercase mb-3">2026-04-20 · Dubai · Al Barari · Active Negotiations</p>
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
+      Rental Overlay <span class="text-accent">+ Combined IRR</span><br>
+      <span class="text-stone-400 text-3xl md:text-4xl font-semibold">v4 · 3 Al Barari live offers re-modeled</span>
+    </h1>
+    <p class="text-stone-300 text-lg max-w-3xl leading-relaxed">
+      Three Al Barari purchase negotiations are live. This revision adds <span class="text-accent font-semibold">Dubai 2026 rental yield research</span> (Delphi D3, EPR 16/20, 22 sources), revised CAGR (Bear 2% / Base 5% / Bull 8%), and computes total return = capital gain + 4y net rental. The flip-only mandate becomes harder; rental income changes the picture materially.
+    </p>
+    <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+      <div class="glass p-4"><div class="text-stone-400 text-xs uppercase tracking-wider">Active offers</div><div class="text-2xl font-bold text-accent num">3</div></div>
+      <div class="glass p-4"><div class="text-stone-400 text-xs uppercase tracking-wider">4y NOI portfolio</div><div class="text-2xl font-bold text-accent num">AED 10M+</div></div>
+      <div class="glass p-4"><div class="text-stone-400 text-xs uppercase tracking-wider">Mandate hit</div><div class="text-2xl font-bold text-bad num">0/3<span class="text-stone-400 text-base"> at base</span></div></div>
+      <div class="glass p-4"><div class="text-stone-400 text-xs uppercase tracking-wider">Capital anchor</div><div class="text-2xl font-bold text-good num">Lunaria</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 pb-20">
+
+<!-- TOC -->
+<aside id="toc" class="hidden lg:block text-xs">
+  <div class="text-accent font-bold mb-2 tracking-widest uppercase text-[10px]">Contents</div>
+  <nav>
+    <a href="#verdict">1 · Alpha Verdict</a>
+    <a href="#offers">2 · 3 Active Offers</a>
+    <a href="#reframe">3 · CAGR Reframe</a>
+    <a href="#market">4 · Al Barari Market 2026</a>
+    <a href="#rental">5 · Rental Yield Waterfall</a>
+    <a href="#str">6 · STR Holiday Homes</a>
+    <a href="#matrix">7 · Total Return Matrix</a>
+    <a href="#chart">8 · Visual Comparison</a>
+    <a href="#portfolio">9 · Portfolio Options</a>
+    <a href="#negotiation">10 · Negotiation Gates</a>
+    <a href="#tax">11 · Tax Framework</a>
+    <a href="#flags">12 · Data Flags</a>
+    <a href="#method">13 · Method + Sources</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="space-y-12">
+
+<!-- §1 ALPHA VERDICT -->
+<section id="verdict" class="glass p-8 accent-border fade-in">
+  <h2 class="text-3xl font-bold mb-4">§1 · Alpha Verdict</h2>
+  <p class="text-stone-300 leading-relaxed mb-4">
+    Delphi 2026 Q2 rental research produced three structural findings that force a recalibration of the entire thesis. This is not a cosmetic update — the investment case changes.
+  </p>
+  <div class="grid md:grid-cols-3 gap-4 mt-6">
+    <div class="stack-card bad">
+      <div class="text-bad font-bold text-sm mb-2">⚠ CAGR REVISED DOWN</div>
+      <p class="text-sm text-stone-300">Delphi verified Bear 2% / Base 5% / Bull 8%. Previous model used 3/7/12%. The 100% ROE flip mandate becomes <span class="text-bad font-semibold">virtually unreachable</span> in any realistic scenario.</p>
+    </div>
+    <div class="stack-card warn">
+      <div class="text-warn font-bold text-sm mb-2">⚠ PREMIUM-TO-MEAN RISK</div>
+      <p class="text-sm text-stone-300">Chorisia 1 at <span class="font-semibold">+45% premium</span> and Nest at <span class="font-semibold">+36% premium</span> to Al Barari community AED/sqft avg. Under mean-reversion, both show capital loss at Base CAGR.</p>
+    </div>
+    <div class="stack-card good">
+      <div class="text-good font-bold text-sm mb-2">✓ RENTAL NOI OFFSETS</div>
+      <p class="text-sm text-stone-300">Net yields 3.4-4.1%. 4-year cumulative NOI <span class="font-semibold">AED 10.0-10.7M</span> portfolio. Rental income meaningfully rescues total return where capital gain disappoints.</p>
+    </div>
+  </div>
+  <div class="mt-8 stack-card">
+    <div class="text-accent font-bold mb-3">The Verdict</div>
+    <p class="text-stone-300 leading-relaxed mb-3">
+      <span class="text-good font-semibold">Lunaria at AED 33M is the anchor.</span> It is the only one of the three priced near community fair value (+8% premium) and the only asset producing positive capital gain in the realistic base case. Rental NOI of AED 4.47-4.67M over 4 years is a genuine floor.
+    </p>
+    <p class="text-stone-300 leading-relaxed mb-3">
+      <span class="text-warn font-semibold">Chorisia 1 at AED 15M and Nest at AED 22M are income plays, not flips.</span> Both were acquired at material premiums to community fair value; capital recovery requires luxury-premium maintenance through 2030. Rental yield is strong (3.65-4.07%), but they cannot individually hit the 100% flip mandate.
+    </p>
+    <p class="text-stone-300 leading-relaxed">
+      <span class="text-accent font-semibold">Recommendation:</span> Single-pick Lunaria at AED 31M (counter), or diversified basket of Lunaria + Chorisia 1 to blend capital anchor with the highest net yield. Accept that the 100% mandate is no longer the frame — pivot to risk-adjusted total return.
+    </p>
+  </div>
+</section>
+
+<!-- §2 THREE ACTIVE OFFERS -->
+<section id="offers" class="fade-in">
+  <h2 class="text-3xl font-bold mb-4">§2 · Three Active Offers (Live Data)</h2>
+  <p class="text-stone-300 mb-6">PropertyFinder live listings verified 2026-04-20 via WebFetch. Negotiation states confirmed by Ehsan.</p>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="glass p-6 accent-border">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <div class="text-xs text-stone-400 uppercase tracking-widest">Al Barari</div>
+          <div class="text-xl font-bold text-accent">The Nest</div>
+        </div>
+        <span class="pill warn">Unfurnished</span>
+      </div>
+      <table class="text-xs">
+        <tr><td class="text-stone-400">Public ask</td><td class="num text-right">AED 27.75M</td></tr>
+        <tr><td class="text-stone-400">Seller floor</td><td class="num text-right mid">AED 24.00M</td></tr>
+        <tr><td class="text-stone-400">Ehsan offer</td><td class="num text-right pos">AED 22.00M</td></tr>
+        <tr><td class="text-stone-400">BUA</td><td class="num text-right">7,462 sqft</td></tr>
+        <tr><td class="text-stone-400">AED/sqft @22M</td><td class="num text-right">2,949</td></tr>
+        <tr><td class="text-stone-400">Config</td><td class="text-right">4BR + Maids</td></tr>
+        <tr><td class="text-stone-400">Reno CapEx</td><td class="num text-right neg">+AED 5M</td></tr>
+        <tr><td class="text-stone-400">Agent</td><td class="text-right text-[11px]">Maria Morris Global · lic 28162</td></tr>
+      </table>
+      <div class="mt-4 text-xs text-warn">+36% vs community AED/sqft avg</div>
+    </div>
+
+    <div class="glass p-6 good-border">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <div class="text-xs text-stone-400 uppercase tracking-widest">Al Barari</div>
+          <div class="text-xl font-bold text-accent">Lunaria</div>
+        </div>
+        <span class="pill good">Furnished</span>
+      </div>
+      <table class="text-xs">
+        <tr><td class="text-stone-400">Public ask</td><td class="num text-right">AED 37.00M</td></tr>
+        <tr><td class="text-stone-400">Seller now</td><td class="num text-right pos">AED 33.00M</td></tr>
+        <tr><td class="text-stone-400">Vacant since</td><td class="num text-right mid">Feb 28 (7+ wks)</td></tr>
+        <tr><td class="text-stone-400">BUA</td><td class="num text-right">14,118 sqft</td></tr>
+        <tr><td class="text-stone-400">AED/sqft @33M</td><td class="num text-right pos">2,337</td></tr>
+        <tr><td class="text-stone-400">Config</td><td class="text-right">5BR + Maids · Corner</td></tr>
+        <tr><td class="text-stone-400">Reno CapEx</td><td class="num text-right pos">None</td></tr>
+        <tr><td class="text-stone-400">Agent</td><td class="text-right text-[11px]">Nvest RE · lic 22520</td></tr>
+      </table>
+      <div class="mt-4 text-xs text-good">+8% vs community avg — closest to fair value</div>
+    </div>
+
+    <div class="glass p-6 warn-border">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <div class="text-xs text-stone-400 uppercase tracking-widest">Al Barari</div>
+          <div class="text-xl font-bold text-accent">Chorisia 1</div>
+        </div>
+        <span class="pill good">Renovated</span>
+      </div>
+      <table class="text-xs">
+        <tr><td class="text-stone-400">Public ask</td><td class="num text-right">AED 17.50M</td></tr>
+        <tr><td class="text-stone-400">Seller now</td><td class="num text-right pos">AED 15.00M</td></tr>
+        <tr><td class="text-stone-400">Listed</td><td class="num text-right">9 days ago</td></tr>
+        <tr><td class="text-stone-400">BUA</td><td class="num text-right">4,757 sqft</td></tr>
+        <tr><td class="text-stone-400">AED/sqft @15M</td><td class="num text-right warn">3,152</td></tr>
+        <tr><td class="text-stone-400">Config</td><td class="text-right">5BR / 6BA · Lake-backing</td></tr>
+        <tr><td class="text-stone-400">Reno CapEx</td><td class="num text-right pos">None (done)</td></tr>
+        <tr><td class="text-stone-400">Agent</td><td class="text-right text-[11px]">Black Brick · lic 26387</td></tr>
+      </table>
+      <div class="mt-4 text-xs text-warn">+45% vs community avg — highest premium of 3</div>
+    </div>
+  </div>
+</section>
+
+<!-- §3 CAGR REFRAME -->
+<section id="reframe" class="glass p-8 warn-border fade-in">
+  <h2 class="text-3xl font-bold mb-4">§3 · The CAGR Reframe — Why v3 Numbers Looked Better</h2>
+  <p class="text-stone-300 mb-4">
+    The v3 report used Bear 3% / Base 7% / Bull 12% CAGR. Delphi D3 2026 Q2 Al Barari research produces tighter, source-grounded numbers:
+  </p>
+  <div class="grid md:grid-cols-2 gap-6 mt-6">
+    <div>
+      <table>
+        <thead><tr><th>Scenario</th><th class="text-right">v3 CAGR</th><th class="text-right">v4 (Delphi)</th><th class="text-right">Source basis</th></tr></thead>
+        <tbody>
+          <tr><td>Bear</td><td class="num text-right">3%</td><td class="num text-right warn">2%</td><td class="text-xs text-stone-400">KF Q4 +3% guidance, discount for supply</td></tr>
+          <tr><td>Base</td><td class="num text-right">7%</td><td class="num text-right warn">5%</td><td class="text-xs text-stone-400">Renfaze 6-8%, minus luxury-segment drag</td></tr>
+          <tr><td>Bull</td><td class="num text-right">12%</td><td class="num text-right warn">8%</td><td class="text-xs text-stone-400">2023-2025 trajectory partial continuation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="stack-card warn">
+      <div class="text-warn font-bold text-sm mb-2">The Implication</div>
+      <p class="text-sm text-stone-300 mb-2">
+        The original 100% ROE mandate required <span class="font-semibold">12.5% underlying CAGR</span>. Delphi's Bull case is 8%. Under any realistic scenario:
+      </p>
+      <ul class="text-sm text-stone-300 space-y-1 ml-4">
+        <li>• Base case capital ROE lands 30-50% (not 100%)</li>
+        <li>• Bull case capital ROE lands 55-65% (not 100%)</li>
+        <li>• Rental NOI adds 15-25 ROE points over 4 years</li>
+      </ul>
+      <p class="text-sm text-accent mt-3 font-semibold">Total return 100% is achievable only in Bull + full rental stack on a single asset.</p>
+    </div>
+  </div>
+</section>
+
+<!-- §4 AL BARARI MARKET 2026 -->
+<section id="market" class="fade-in">
+  <h2 class="text-3xl font-bold mb-4">§4 · Al Barari Sub-Tier Market 2026 Q1-Q2</h2>
+  <p class="text-stone-300 mb-4">Sources: DLD via Bayut (42 villa contracts 12mo), YallaValue (57 villa sales), Knight Frank Q3-Q4 2025, PropertyFinder live.</p>
+  <div class="glass p-6 accent-border">
+    <table>
+      <thead><tr><th>Sub-community</th><th class="text-right">BUA range</th><th class="text-right">Current AED/sqft</th><th class="text-right">Rent AED/sqft/yr</th><th class="text-right">Gross yield</th><th class="text-right">Volume 12mo</th><th class="text-right">DoM</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Chorisia 1</strong> <span class="pill good ml-2">TARGET</span></td><td class="num text-right">4,500-5,500</td><td class="num text-right warn">3,152</td><td class="num text-right">~175</td><td class="num text-right">5.1-5.8%</td><td class="num text-right">8-12</td><td class="num text-right">60-90d</td></tr>
+        <tr><td><strong>The Nest</strong> <span class="pill good ml-2">TARGET</span></td><td class="num text-right">7,000-8,000</td><td class="num text-right warn">2,949</td><td class="num text-right">129-181</td><td class="num text-right">4.4-6.1%</td><td class="num text-right">6-10</td><td class="num text-right">90-150d</td></tr>
+        <tr><td><strong>Lunaria</strong> <span class="pill good ml-2">TARGET</span></td><td class="num text-right">13,000-15,000</td><td class="num text-right pos">2,337</td><td class="num text-right">99-142</td><td class="num text-right">4.2-6.1%</td><td class="num text-right">3-6</td><td class="num text-right">120-180d</td></tr>
+        <tr><td>The Reserve <span class="text-xs text-stone-500">(trophy)</span></td><td class="num text-right">25,000+</td><td class="num text-right">1,500-1,700*</td><td class="num text-right">80-140</td><td class="num text-right">5.0-8.8%</td><td class="num text-right">1-3</td><td class="num text-right">180-360d</td></tr>
+        <tr class="border-t-2 border-yellow-500/20"><td><strong>Community avg</strong></td><td class="num text-right">~4,900</td><td class="num text-right"><strong>2,167</strong></td><td class="num text-right"><strong>125</strong></td><td class="num text-right"><strong>5.0%</strong></td><td class="num text-right">57</td><td class="num text-right">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mt-6 stack-card warn">
+    <div class="text-warn font-bold text-sm mb-2">Premium vs Community Average — The Critical Read</div>
+    <p class="text-sm text-stone-300 mb-3">
+      AED/sqft paid above community average creates recovery risk at exit. Base CAGR applies to the community, not to individual premium positions.
+    </p>
+    <div class="grid md:grid-cols-3 gap-3 text-sm">
+      <div class="stack-card bad"><span class="text-bad font-semibold">Chorisia 1:</span> +45% premium. Needs luxury-premium maintenance through 2030 to avoid capital loss.</div>
+      <div class="stack-card warn"><span class="text-warn font-semibold">Nest:</span> +36% premium. Middle case. Renovation thesis must add real value.</div>
+      <div class="stack-card good"><span class="text-good font-semibold">Lunaria:</span> +8% premium. Near fair value — genuine capital upside.</div>
+    </div>
+  </div>
+</section>
+
+<!-- §5 RENTAL YIELD WATERFALL -->
+<section id="rental" class="fade-in">
+  <h2 class="text-3xl font-bold mb-4">§5 · Long-Term Rental Yield Waterfall</h2>
+  <p class="text-stone-300 mb-4">Gross-to-net waterfall per Delphi-verified 2026 components. Service charge AED 7.57/sqft/yr confirmed (DLD-indexed). Management fees LT 5-8% vs ST 15-25%.</p>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="glass p-5 accent-border">
+      <div class="text-accent font-bold mb-3">Chorisia 1 · AED 15M</div>
+      <table class="text-xs">
+        <tr><td class="text-stone-400">Gross LT rent</td><td class="num text-right">835,000</td></tr>
+        <tr><td class="neg">− Service charge</td><td class="num text-right neg">(36,010)</td></tr>
+        <tr><td class="neg">− DEWA (void)</td><td class="num text-right neg">(15,000)</td></tr>
+        <tr><td class="neg">− Maintenance</td><td class="num text-right neg">(42,500)</td></tr>
+        <tr><td class="neg">− Mgmt 5-8%</td><td class="num text-right neg">(54,275)</td></tr>
+        <tr><td class="neg">− Insurance</td><td class="num text-right neg">(15,000)</td></tr>
+        <tr><td class="neg">− Vacancy (1 mo)</td><td class="num text-right neg">(69,583)</td></tr>
+        <tr class="border-t border-yellow-500/20"><td class="font-semibold text-good">NOI</td><td class="num text-right pos font-semibold">548-609K</td></tr>
+        <tr><td class="text-stone-400">Net yield</td><td class="num text-right pos font-semibold">3.65-4.06%</td></tr>
+        <tr><td class="text-stone-400">4y cumulative</td><td class="num text-right pos">AED 2.19-2.44M</td></tr>
+      </table>
+    </div>
+    <div class="glass p-5 accent-border">
+      <div class="text-accent font-bold mb-3">The Nest · AED 22M</div>
+      <table class="text-xs">
+        <tr><td class="text-stone-400">Gross LT rent</td><td class="num text-right">1,150,000</td></tr>
+        <tr><td class="neg">− Service charge</td><td class="num text-right neg">(56,487)</td></tr>
+        <tr><td class="neg">− DEWA (void)</td><td class="num text-right neg">(20,000)</td></tr>
+        <tr><td class="neg">− Maintenance</td><td class="num text-right neg">(65,000)</td></tr>
+        <tr><td class="neg">− Mgmt 5-8%</td><td class="num text-right neg">(74,750)</td></tr>
+        <tr><td class="neg">− Insurance</td><td class="num text-right neg">(22,000)</td></tr>
+        <tr><td class="neg">− Vacancy (1 mo)</td><td class="num text-right neg">(95,833)</td></tr>
+        <tr class="border-t border-yellow-500/20"><td class="font-semibold text-good">NOI</td><td class="num text-right pos font-semibold">845-895K</td></tr>
+        <tr><td class="text-stone-400">Net yield</td><td class="num text-right pos font-semibold">3.84-4.07%</td></tr>
+        <tr><td class="text-stone-400">4y cumulative</td><td class="num text-right pos">AED 3.38-3.58M</td></tr>
+      </table>
+    </div>
+    <div class="glass p-5 accent-border">
+      <div class="text-accent font-bold mb-3">Lunaria · AED 33M</div>
+      <table class="text-xs">
+        <tr><td class="text-stone-400">Gross LT rent (est)</td><td class="num text-right">1,700,000</td></tr>
+        <tr><td class="neg">− Service charge</td><td class="num text-right neg">(106,873)</td></tr>
+        <tr><td class="neg">− DEWA (void)</td><td class="num text-right neg">(25,000)</td></tr>
+        <tr><td class="neg">− Maintenance</td><td class="num text-right neg">(120,000)</td></tr>
+        <tr><td class="neg">− Mgmt 5-8%</td><td class="num text-right neg">(110,500)</td></tr>
+        <tr><td class="neg">− Insurance</td><td class="num text-right neg">(34,000)</td></tr>
+        <tr><td class="neg">− Vacancy (1.5 mo)</td><td class="num text-right neg">(212,500)</td></tr>
+        <tr class="border-t border-yellow-500/20"><td class="font-semibold text-good">NOI</td><td class="num text-right pos font-semibold">1.12-1.17M</td></tr>
+        <tr><td class="text-stone-400">Net yield</td><td class="num text-right pos font-semibold">3.39-3.54%</td></tr>
+        <tr><td class="text-stone-400">4y cumulative</td><td class="num text-right pos">AED 4.47-4.67M</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="mt-6 stack-card">
+    <div class="text-accent font-bold text-sm mb-2">The Nest renewal trap (DLD-sourced)</div>
+    <p class="text-sm text-stone-300">HarperWellington DLD data: a Nest lease signed Sep 2024 at AED 1,350,000/yr was renewed Apr 2025 at AED 963,543 — a <span class="text-bad font-semibold">29% renewal discount</span>. RERA rent cap protects existing tenants; new tenants pay market. <span class="text-warn">Action</span>: buy vacant possession. If inheriting a tenant, re-price at next renewal window with proper RERA calculator execution.</p>
+  </div>
+</section>
+
+<!-- §6 STR HOLIDAY HOMES -->
+<section id="str" class="glass p-8 warn-border fade-in">
+  <h2 class="text-3xl font-bold mb-4">§6 · STR / Holiday Homes — Limited Applicability for Al Barari</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <p class="text-stone-300 text-sm mb-4">DTCM Holiday Home license for luxury villa is cheap to set up (total one-time AED 6-10K + annual renewal AED 1,270-3,720). Furnishing + professional management is where capex lives.</p>
+      <table class="text-xs">
+        <thead><tr><th>DTCM cost item</th><th class="text-right">AED</th></tr></thead>
+        <tbody>
+          <tr><td>Entire Home permit (annual)</td><td class="num text-right">3,720</td></tr>
+          <tr><td>Registration + classification</td><td class="num text-right">370-520</td></tr>
+          <tr><td>Inspection (one-time)</td><td class="num text-right">320</td></tr>
+          <tr><td>Per-bedroom fee (5BR × 300)</td><td class="num text-right">1,500</td></tr>
+          <tr><td>Furnishing (Chorisia tier)</td><td class="num text-right">300-500K</td></tr>
+          <tr><td>Furnishing (Lunaria tier)</td><td class="num text-right">800K-1.5M</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="stack-card bad">
+      <div class="text-bad font-bold text-sm mb-2">⚠ HIGH FLAG — Al Barari HOA unconfirmed</div>
+      <p class="text-sm text-stone-300 mb-2">
+        No evidence Al Barari community management rules explicitly permit DTCM holiday home registration. Gated luxury communities in Dubai increasingly restrict STR. <span class="font-semibold text-bad">Must verify directly with Al Barari developer before committing to STR thesis.</span>
+      </p>
+      <p class="text-sm text-stone-300">
+        Even if permitted: Al Barari inland location (~25 min from Downtown/beach) suppresses STR demand vs Palm Jumeirah. Chorisia 1 base STR case = 5.1% net (at 60% occupancy), marginal vs 4.0% LT net. Bear case (50% occupancy) = 2.0% net — worse than LT. STR upside does NOT justify HOA risk.
+      </p>
+    </div>
+  </div>
+  <div class="mt-5 stack-card">
+    <div class="text-accent font-bold text-sm mb-2">Strategy recommendation per asset</div>
+    <div class="grid md:grid-cols-3 gap-3 text-sm">
+      <div><span class="text-good font-semibold">Chorisia 1:</span> LT first. STR optional ONLY if HOA confirms. Smallest unit = easiest STR execution but smallest upside.</div>
+      <div><span class="text-warn font-semibold">Nest:</span> Pure LT. 7,462 sqft villa is a poor STR product vs apartments — family residents are the natural buyer/tenant.</div>
+      <div><span class="text-bad font-semibold">Lunaria:</span> Pure LT. 14,118 sqft extremely niche for STR. SC alone is AED 107K/yr. LT yield 3.4% is ceiling.</div>
+    </div>
+  </div>
+</section>
+
+<!-- §7 TOTAL RETURN MATRIX -->
+<section id="matrix" class="fade-in">
+  <h2 class="text-3xl font-bold mb-4">§7 · Total Return Matrix — Capital Gain + 4y Net Rental</h2>
+  <p class="text-stone-300 mb-4">
+    Total Return = (Net Exit − Mortgage − 4y Interest − 2% Exit Fees) + 4y cumulative NOI midpoint − Cash In.
+    Financial model: 50% LTV, 4.5% IO, 7% entry fees, 2% exit fees. Ehsan's current offer prices.
+  </p>
+
+  <div class="stack-card mb-4">
+    <div class="text-accent font-bold text-sm mb-2">Two exit-value views — reality lies between</div>
+    <div class="grid md:grid-cols-2 gap-3 text-sm">
+      <div><span class="text-good font-semibold">Method A — Premium Preserved:</span> Exit = Entry × (1+CAGR)^4. Assumes property retains its premium-to-community positioning.</div>
+      <div><span class="text-bad font-semibold">Method B — Mean Reversion:</span> Exit = BUA × (community avg AED/sqft × (1+CAGR)^4). Premium erodes to community average.</div>
+    </div>
+  </div>
+
+  <div class="glass p-6 accent-border">
+    <div class="text-accent font-bold mb-4">Method A — Premium Preserved (optimistic)</div>
+    <table>
+      <thead><tr><th>Asset</th><th class="text-right">Cash In</th><th class="text-right">Bear 2%</th><th class="text-right">Base 5%</th><th class="text-right">Bull 8%</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Chorisia 1</strong> AED 15M</td>
+          <td class="num text-right">AED 8.55M</td>
+          <td class="num text-right pos">+10%</td>
+          <td class="num text-right pos">+33%</td>
+          <td class="num text-right pos">+58%</td>
+        </tr>
+        <tr>
+          <td><strong>Nest</strong> AED 22M <span class="text-xs text-stone-500">(no reno)</span></td>
+          <td class="num text-right">AED 12.54M</td>
+          <td class="num text-right pos">+10%</td>
+          <td class="num text-right pos">+33%</td>
+          <td class="num text-right pos">+58%</td>
+        </tr>
+        <tr>
+          <td><strong>Nest</strong> AED 22M <span class="text-xs text-stone-500">(+5M reno)</span></td>
+          <td class="num text-right">AED 17.54M</td>
+          <td class="num text-right neg">−1%</td>
+          <td class="num text-right pos">+18%</td>
+          <td class="num text-right pos">+38%</td>
+        </tr>
+        <tr>
+          <td><strong>Lunaria</strong> AED 33M</td>
+          <td class="num text-right">AED 18.81M</td>
+          <td class="num text-right pos">+7%</td>
+          <td class="num text-right pos">+30%</td>
+          <td class="num text-right pos">+55%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="text-xs text-stone-400 mt-3">Method A = favourable view. Assumes Chorisia and Nest maintain their 45%/36% community premium to 2030.</p>
+  </div>
+
+  <div class="glass p-6 bad-border mt-5">
+    <div class="text-bad font-bold mb-4">Method B — Mean Reversion (pessimistic)</div>
+    <table>
+      <thead><tr><th>Asset</th><th class="text-right">Cash In</th><th class="text-right">Bear 2%</th><th class="text-right">Base 5%</th><th class="text-right">Bull 8%</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Chorisia 1</strong> AED 15M</td>
+          <td class="num text-right">AED 8.55M</td>
+          <td class="num text-right neg">−48%</td>
+          <td class="num text-right neg">−33%</td>
+          <td class="num text-right neg">−16%</td>
+        </tr>
+        <tr>
+          <td><strong>Nest</strong> AED 22M <span class="text-xs text-stone-500">(no reno)</span></td>
+          <td class="num text-right">AED 12.54M</td>
+          <td class="num text-right neg">−39%</td>
+          <td class="num text-right neg">−22%</td>
+          <td class="num text-right neg">−4%</td>
+        </tr>
+        <tr>
+          <td><strong>Lunaria</strong> AED 33M</td>
+          <td class="num text-right">AED 18.81M</td>
+          <td class="num text-right neg">−7%</td>
+          <td class="num text-right pos">+15%</td>
+          <td class="num text-right pos">+38%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="text-xs text-stone-400 mt-3">Method B = conservative view. Community-avg AED/sqft applied to BUA × CAGR. Only Lunaria survives Base case. Chorisia and Nest show capital loss even after 4y NOI.</p>
+  </div>
+
+  <div class="mt-5 stack-card warn">
+    <div class="text-warn font-bold text-sm mb-2">Midpoint view (most realistic)</div>
+    <table class="text-sm mt-2">
+      <thead><tr><th></th><th class="text-right">Bear 2%</th><th class="text-right">Base 5%</th><th class="text-right">Bull 8%</th></tr></thead>
+      <tbody>
+        <tr><td>Chorisia 1 (blended)</td><td class="num text-right neg">~−19%</td><td class="num text-right">~0% breakeven</td><td class="num text-right pos">+21%</td></tr>
+        <tr><td>Nest no-reno (blended)</td><td class="num text-right neg">~−15%</td><td class="num text-right pos">+6%</td><td class="num text-right pos">+27%</td></tr>
+        <tr><td>Lunaria (blended)</td><td class="num text-right">0% flat</td><td class="num text-right pos">+22%</td><td class="num text-right pos">+47%</td></tr>
+      </tbody>
+    </table>
+    <p class="text-xs text-stone-300 mt-3">Blended = midpoint of Method A and Method B. Best single-asset outcome in realistic Base = Lunaria +22% total return. Worst = Chorisia 1 ~flat.</p>
+  </div>
+</section>
+
+<!-- §8 CHART -->
+<section id="chart" class="glass p-8 accent-border fade-in">
+  <h2 class="text-3xl font-bold mb-4">§8 · Visual — Total Return by Asset and Scenario</h2>
+  <div class="h-96"><canvas id="returnChart"></canvas></div>
+  <p class="text-xs text-stone-400 mt-3">Mid-blended (average of Premium-Preserved and Mean-Reversion methods). Horizontal line = 100% mandate target.</p>
+</section>
+
+<!-- §9 PORTFOLIO OPTIONS -->
+<section id="portfolio" class="fade-in">
+  <h2 class="text-3xl font-bold mb-4">§9 · Portfolio Composition Options</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="glass p-6 good-border">
+      <div class="pill good mb-3">RECOMMENDED</div>
+      <h3 class="text-xl font-bold text-good mb-3">Option 1 — Anchor Play</h3>
+      <table class="text-sm">
+        <tr><td class="text-stone-400">Buy</td><td>Lunaria only (target AED 31M counter)</td></tr>
+        <tr><td class="text-stone-400">Cash</td><td class="num">AED 17.67M</td></tr>
+        <tr><td class="text-stone-400">4y NOI</td><td class="num">AED 4.5M</td></tr>
+        <tr><td class="text-stone-400">Base total return</td><td class="num pos">+30%</td></tr>
+        <tr><td class="text-stone-400">Bull</td><td class="num pos">+55%</td></tr>
+        <tr><td class="text-stone-400">Risk profile</td><td>Lowest — fair-value entry</td></tr>
+      </table>
+      <p class="text-xs text-stone-300 mt-3">Best risk-adjusted single pick. Only asset near community fair value. Rental NOI provides solid floor. Counter at AED 31M because seller dropped from 37M and is 7+ weeks vacant.</p>
+    </div>
+
+    <div class="glass p-6 accent-border">
+      <div class="pill neutral mb-3">YIELD FOCUS</div>
+      <h3 class="text-xl font-bold text-accent mb-3">Option 2 — Diversified Basket</h3>
+      <table class="text-sm">
+        <tr><td class="text-stone-400">Buy</td><td>Lunaria 31M + Chorisia 1 14M</td></tr>
+        <tr><td class="text-stone-400">Cash</td><td class="num">AED 25.65M</td></tr>
+        <tr><td class="text-stone-400">4y NOI</td><td class="num">AED 6.8M</td></tr>
+        <tr><td class="text-stone-400">Base total return</td><td class="num pos">+20-25%</td></tr>
+        <tr><td class="text-stone-400">Bull</td><td class="num pos">+45-50%</td></tr>
+        <tr><td class="text-stone-400">Risk profile</td><td>Medium — Chorisia premium risk</td></tr>
+      </table>
+      <p class="text-xs text-stone-300 mt-3">Capital anchor + highest net yield. 18,875 sqft combined across 2 titles. Exit flexibility: Chorisia can flip 2028, Lunaria hold 2030. Chorisia premium creates downside drag in Base — acceptable if strong LT tenancy signed year 1.</p>
+    </div>
+
+    <div class="glass p-6 warn-border">
+      <div class="pill warn mb-3">HIGH CAPEX</div>
+      <h3 class="text-xl font-bold text-warn mb-3">Option 3 — All Three</h3>
+      <table class="text-sm">
+        <tr><td class="text-stone-400">Buy</td><td>Nest 22M + Lunaria 31M + Chorisia 14M</td></tr>
+        <tr><td class="text-stone-400">Cash</td><td class="num">AED 43.19M</td></tr>
+        <tr><td class="text-stone-400">4y NOI</td><td class="num">AED 10.3M</td></tr>
+        <tr><td class="text-stone-400">Base total return</td><td class="num">+11-18%</td></tr>
+        <tr><td class="text-stone-400">Bull</td><td class="num pos">+35-40%</td></tr>
+        <tr><td class="text-stone-400">Risk profile</td><td>High concentration</td></tr>
+      </table>
+      <p class="text-xs text-stone-300 mt-3">Three-asset Al Barari cluster. Concentration risk: all in one gated community. Reno on Nest adds execution risk. Nest+Chorisia both carry 36-45% community premium. Only works if Ehsan has capital to spare and wants Al Barari scale.</p>
+    </div>
+  </div>
+
+  <div class="mt-6 stack-card good">
+    <div class="text-good font-bold text-sm mb-2">Pafi's recommendation</div>
+    <p class="text-sm text-stone-300">
+      <strong>Option 1 (Lunaria only at AED 31M)</strong> is the cleanest play. Single premium asset, at fair value, with the best combination of capital upside and rental NOI. If Ehsan wants exposure to the lower-ticket Al Barari tier for yield optimization, <strong>Option 2</strong> adds Chorisia 1 at AED 14M (counter from 15M) — the additional AED 7.98M cash deploys into an asset with the highest net yield of the three (3.65-4.06%) and exit optionality in 2028.
+    </p>
+  </div>
+</section>
+
+<!-- §10 NEGOTIATION GATES -->
+<section id="negotiation" class="fade-in">
+  <h2 class="text-3xl font-bold mb-4">§10 · Negotiation Gates — Price Ceilings Where Math Breaks</h2>
+  <p class="text-stone-300 mb-4">At what entry price does each asset stop being viable on a risk-adjusted basis? Gates are set where Base total return drops below +15% (i.e. underperforms 10-yr UAE government bonds).</p>
+  <div class="glass p-6 accent-border">
+    <table>
+      <thead><tr><th>Asset</th><th class="text-right">Ehsan offer</th><th class="text-right">Current seller</th><th class="text-right">Our ceiling</th><th class="text-right">Walk-away</th><th>Counter script</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Nest</strong></td>
+          <td class="num text-right">AED 22M</td>
+          <td class="num text-right">AED 24M</td>
+          <td class="num text-right warn">AED 22.5M</td>
+          <td class="num text-right neg">>AED 23M</td>
+          <td class="text-xs text-stone-400">"22 is firm. Reno is my risk. Vacant means you carry cost. I can close in 30 days." </td>
+        </tr>
+        <tr>
+          <td><strong>Lunaria</strong></td>
+          <td class="num text-right">—</td>
+          <td class="num text-right">AED 33M</td>
+          <td class="num text-right pos">AED 31M</td>
+          <td class="num text-right neg">>AED 33M</td>
+          <td class="text-xs text-stone-400">"7 weeks vacant tells me you want to close. 31 gets it done this month. Above 33 we're just watching the market."</td>
+        </tr>
+        <tr>
+          <td><strong>Chorisia 1</strong></td>
+          <td class="num text-right">—</td>
+          <td class="num text-right">AED 15M</td>
+          <td class="num text-right warn">AED 14M</td>
+          <td class="num text-right neg">>AED 15M</td>
+          <td class="text-xs text-stone-400">"Comp floor is 13.45M for similar sqft. 14M is fair given it's renovated. Above 15 makes no sense vs Chorisia 2 resales at 12M avg."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mt-5 stack-card warn">
+    <div class="text-warn font-bold text-sm mb-2">Leverage the seller-motivation signals</div>
+    <ul class="text-sm text-stone-300 space-y-1 ml-4">
+      <li>• <strong>Lunaria seller</strong> dropped 4M from ask, vacant 7+ weeks, furnished = storage/staging costs. Maximum leverage.</li>
+      <li>• <strong>Nest seller</strong> dropped 3.75M from ask, vacant April 2026. Medium leverage.</li>
+      <li>• <strong>Chorisia 1 seller</strong> dropped 2.5M, listed only 9 days. Lowest leverage — seller may not budge yet.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- §11 TAX -->
+<section id="tax" class="glass p-8 good-border fade-in">
+  <h2 class="text-3xl font-bold mb-4">§11 · Tax Framework 2026</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <div class="text-accent font-bold mb-3">Individual Ownership (recommended)</div>
+      <table class="text-sm">
+        <tr><td>UAE personal income tax on rent</td><td class="num text-right pos">0%</td></tr>
+        <tr><td>Capital gains tax</td><td class="num text-right pos">0%</td></tr>
+        <tr><td>Inheritance / estate tax</td><td class="num text-right pos">0%</td></tr>
+        <tr><td>DLD transfer fee at purchase</td><td class="num text-right warn">4%</td></tr>
+        <tr><td>DEWA housing fee</td><td class="num text-right">5% of annual rent</td></tr>
+        <tr><td>Ejari registration</td><td class="num text-right">AED 1,500-2,000</td></tr>
+      </table>
+      <p class="text-xs text-stone-300 mt-3">Non-residents: same treatment as residents on rental income and CGT. Home-country tax obligations may apply separately.</p>
+    </div>
+    <div>
+      <div class="text-warn font-bold mb-3">LLC / Corporate (NOT recommended)</div>
+      <table class="text-sm">
+        <tr><td>UAE Corporate Income Tax</td><td class="num text-right neg">9%</td></tr>
+        <tr><td>Applies above</td><td class="num text-right">AED 375K profit</td></tr>
+        <tr><td>Small Business Relief through 2026</td><td class="num text-right">up to AED 3M</td></tr>
+        <tr><td>QFZP zero-rate eligibility</td><td class="num text-right neg">RE typically excluded</td></tr>
+      </table>
+      <p class="text-xs text-stone-300 mt-3">For a 3-asset portfolio generating AED 3.5M+ gross rental, LLC structure = ~AED 280K+ annual CIT drag. Only justifiable if non-tax benefits (succession, liability firewall) exceed the tax cost.</p>
+    </div>
+  </div>
+  <div class="mt-5 stack-card good">
+    <div class="text-good font-bold text-sm mb-2">Conclusion</div>
+    <p class="text-sm text-stone-300">Individual direct ownership dominates. All NOI projections in this report assume individual ownership and zero personal tax. If legal/succession considerations push toward LLC, re-model net yields down ~8% to account for CIT.</p>
+  </div>
+</section>
+
+<!-- §12 FLAGS -->
+<section id="flags" class="fade-in">
+  <h2 class="text-3xl font-bold mb-4">§12 · Data Flags + Uncertainty Disclosure</h2>
+  <div class="glass p-6 warn-border">
+    <table>
+      <thead><tr><th>Flag</th><th class="text-center">Severity</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Al Barari STR/HOA rules</td><td class="text-center"><span class="pill bad">HIGH</span></td><td>No evidence confirming DTCM holiday home registration is permitted. Gated communities increasingly restrict STR. Verify directly with Al Barari developer before pursuing STR strategy.</td></tr>
+        <tr><td>Chorisia 1 capital recovery</td><td class="text-center"><span class="pill bad">HIGH</span></td><td>AED 3,152/sqft acquisition vs AED 2,167 community avg = +45% premium. Bear scenario (mean reversion) implies exit AED 11.2M vs AED 15M purchase — meaningful capital loss risk.</td></tr>
+        <tr><td>Lunaria LT rent data</td><td class="text-center"><span class="pill warn">MEDIUM</span></td><td>No direct 2026 LT contracts for 14,118 sqft villas on record. AED 1.4-2.0M/yr estimated from AED/sqft trend. Verify with Allsopp, CBRE, or Savills before underwriting.</td></tr>
+        <tr><td>STR nightly ADR Al Barari</td><td class="text-center"><span class="pill warn">MEDIUM</span></td><td>No direct Airbnb 2026 data. Proxy from Palm Jumeirah minus 20-30% discount. Contact Maison Privée or similar for actual Al Barari STR operator data.</td></tr>
+        <tr><td>Sub-community closed DLD 2026</td><td class="text-center"><span class="pill warn">MEDIUM</span></td><td>No Q1-Q2 2026 closed per-sqft DLD data separately for Chorisia 1, Nest, or Lunaria. Community-level aggregates used.</td></tr>
+        <tr><td>Nest renewal rent reset</td><td class="text-center"><span class="pill warn">MEDIUM</span></td><td>RERA rent cap protects existing tenants. If inheriting a tenant, market reset requires renewal-window execution. Factor 2-4 month void if tenant exits and property must be re-let.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- §13 METHOD -->
+<section id="method" class="glass p-8 accent-border fade-in">
+  <h2 class="text-3xl font-bold mb-4">§13 · Method + Sources</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <div class="text-accent font-bold mb-3">Research pipeline</div>
+      <ul class="text-sm text-stone-300 space-y-2 ml-4">
+        <li>• Delphi-pro D3 · Output <span class="kbd">~/.nexus/intel/dubai-re-rental-overlay-2026-q2.md</span></li>
+        <li>• EPR 16/20 · 22 sources · Perplexity Sonar-Pro + Brave</li>
+        <li>• Live WebFetch on 3 PropertyFinder listings (2026-04-20)</li>
+        <li>• Cross-reference with v3 report + original Delphi D3 intel</li>
+      </ul>
+
+      <div class="text-accent font-bold mb-3 mt-6">Financial model</div>
+      <ul class="text-sm text-stone-300 space-y-1 ml-4">
+        <li>• 50% LTV mortgage (CBUAE cap, non-residents, ready property)</li>
+        <li>• 4.5% IO, 4-year hold, 2026 entry → 2030 exit</li>
+        <li>• Entry fees 7% (4% DLD + 2% broker + 1% admin)</li>
+        <li>• Exit fees 2%</li>
+        <li>• NOI waterfall per Delphi 2026 Q2 components</li>
+        <li>• Dual exit view: Premium Preserved + Mean Reversion (midpoint blend)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-accent font-bold mb-3">Tier 1 sources</div>
+      <ul class="text-xs text-stone-300 space-y-1 ml-4">
+        <li>• DLD (via Bayut, 42 villa contracts 12mo)</li>
+        <li>• YallaValue (57 Al Barari villa sales, community avg)</li>
+        <li>• Knight Frank Dubai Residential Q3+Q4 2025</li>
+        <li>• PropertyFinder live listings + sold comps 2026</li>
+        <li>• HarperWellington (The Nest DLD rental data)</li>
+        <li>• PwC Tax Summaries UAE 2026</li>
+        <li>• Alvarez &amp; Marsal UAE RE Tax 2026</li>
+        <li>• DET/DTCM GateIn Holiday Home Guide 2026</li>
+        <li>• CBUAE mortgage regulations</li>
+        <li>• Nakheel + Emaar developer data</li>
+      </ul>
+
+      <div class="text-accent font-bold mb-3 mt-6">Tier 2 sources (corroborating)</div>
+      <ul class="text-xs text-stone-300 space-y-1 ml-4">
+        <li>• RituKant Dubai RE Investment Advisor</li>
+        <li>• LuxuryProperty.com Service Charge Index</li>
+        <li>• SandsOfWealth + AirROI Dubai STR</li>
+        <li>• GuestFavorites Dubai Occupancy</li>
+        <li>• EconomyMiddleEast Q1 2026 (total sales)</li>
+        <li>• Renfaze UAE RE Forecast 2030</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<!-- FOOTER -->
+<footer class="max-w-7xl mx-auto px-6 py-10 border-t border-yellow-500/10 text-sm text-stone-400">
+  <div class="grid md:grid-cols-3 gap-6">
+    <div>
+      <div class="text-accent font-bold mb-2">Ehsan Dubai RE · v4</div>
+      <p>Rental overlay + 3 active negotiations. Delphi D3 EPR 16/20 · 22 sources. Generated 2026-04-20.</p>
+    </div>
+    <div>
+      <div class="text-accent font-bold mb-2">Prior versions</div>
+      <ul class="space-y-1">
+        <li>• <a href="./dubai-luxury-verified-2030-v3-20260420-181329.html" class="text-accent hover:underline">v3 — 17-asset full portfolio</a></li>
+        <li>• v2 — Nest/Lunaria live verification (superseded)</li>
+        <li>• v1 — Delphi-verified rebuild (superseded)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-accent font-bold mb-2">Disclosure</div>
+      <p>No rental yield or 2030 forecast figure in this report was generated from training knowledge. All numbers cited Delphi D3 intel dated 2026-04-20. This is investment analysis for a private investor; not a public solicitation.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Theme toggle
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+});
+
+// Share button
+document.getElementById('share-btn').addEventListener('click', async () => {
+  const url = window.location.href;
+  try {
+    await navigator.clipboard.writeText(url);
+    const btn = document.getElementById('share-btn');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = orig, 1500);
+  } catch(e) { console.warn('Clipboard blocked'); }
+});
+
+// Fade-in observer
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+// TOC active section
+const tocLinks = document.querySelectorAll('#toc a');
+const sections = document.querySelectorAll('main section[id]');
+const tocObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.getAttribute('id');
+      tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => tocObserver.observe(s));
+
+// Chart
+const ctx = document.getElementById('returnChart');
+if (ctx) {
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Chorisia 1 (15M)', 'Nest no-reno (22M)', 'Lunaria (33M)'],
+      datasets: [
+        { label: 'Bear 2% CAGR', data: [-19, -15, 0], backgroundColor: 'rgba(239,68,68,0.7)', borderColor: '#ef4444', borderWidth: 1 },
+        { label: 'Base 5% CAGR', data: [0, 6, 22], backgroundColor: 'rgba(234,179,8,0.7)', borderColor: '#eab308', borderWidth: 1 },
+        { label: 'Bull 8% CAGR', data: [21, 27, 47], backgroundColor: 'rgba(34,197,94,0.7)', borderColor: '#22c55e', borderWidth: 1 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#e7e5e4', font: { family: 'Inter', size: 12 } } },
+        title: { display: true, text: 'Total Return % (Capital + 4y NOI, midpoint blend)', color: '#eab308', font: { family: 'Inter', size: 14, weight: 'bold' } },
+        tooltip: {
+          callbacks: { label: (ctx) => ctx.dataset.label + ': ' + ctx.parsed.y + '%' }
+        }
+      },
+      scales: {
+        x: { ticks: { color: '#e7e5e4', font: { family: 'Inter' } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: {
+          ticks: { color: '#e7e5e4', font: { family: 'JetBrains Mono' }, callback: (v) => v + '%' },
+          grid: { color: 'rgba(255,255,255,0.05)' },
+          title: { display: true, text: 'Total Return % on Cash Invested', color: '#eab308' }
+        }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
