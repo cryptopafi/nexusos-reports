@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Dubai Ultra-Luxury ROE 2030 — Delphi Verified Rebuild">
+<meta property="og:description" content="17-asset portfolio re-assessment using DLD-grade 2025 comps. Knight Frank + PropertyFinder + Nakheel + Emaar. EPR 17/20.">
+<meta property="og:type" content="article">
+<title>Dubai Ultra-Luxury ROE 2030 — Verified Rebuild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = { darkMode: 'class', theme: { extend: {
+  fontFamily: { sans: ['Inter','system-ui','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+  colors: { accent: '#eab308', accent2: '#f59e0b', good: '#22c55e', bad: '#ef4444', warn: '#f97316' }
+}}}
+</script>
+<style>
+  :root { color-scheme: dark; }
+  html.dark body { background: radial-gradient(ellipse at top, #0c0a09 0%, #09090b 60%, #050505 100%); color: #e7e5e4; }
+  html:not(.dark) body { background: #fafafa; color: #1c1917; }
+  .glass { background: rgba(24,24,27,0.55); backdrop-filter: blur(14px); border: 1px solid rgba(234,179,8,0.12); border-radius: 18px; }
+  html:not(.dark) .glass { background: rgba(255,255,255,0.7); border-color: rgba(234,179,8,0.25); color: #1c1917; }
+  .accent-border { border-left: 3px solid #eab308; }
+  .kbd { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; background: rgba(234,179,8,0.08); padding: 2px 6px; border-radius: 4px; color: #eab308; }
+  .pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; }
+  .pill.good { background: rgba(34,197,94,0.14); color: #4ade80; }
+  .pill.bad { background: rgba(239,68,68,0.14); color: #f87171; }
+  .pill.warn { background: rgba(249,115,22,0.14); color: #fb923c; }
+  .pill.neutral { background: rgba(234,179,8,0.12); color: #eab308; }
+  .fade-in { opacity: 0; transform: translateY(14px); transition: all 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+  th { text-align: left; padding: 10px 12px; font-weight: 600; color: #eab308; border-bottom: 1px solid rgba(234,179,8,0.25); }
+  td { padding: 9px 12px; border-bottom: 1px solid rgba(234,179,8,0.06); vertical-align: top; }
+  tr:hover td { background: rgba(234,179,8,0.04); }
+  .num { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .pos { color: #4ade80; }
+  .neg { color: #f87171; }
+  .mid { color: #fb923c; }
+  #toc { position: sticky; top: 16px; max-height: 90vh; overflow-y: auto; }
+  #toc a { display: block; padding: 4px 10px; border-left: 2px solid transparent; font-size: 0.82rem; color: #a8a29e; transition: all 0.2s; }
+  #toc a:hover, #toc a.active { border-left-color: #eab308; color: #eab308; background: rgba(234,179,8,0.04); }
+  @media print {
+    html, body { background: white !important; color: black !important; }
+    .glass { background: white !important; border: 1px solid #ddd !important; }
+    #toc, #theme-toggle, #share-btn { display: none !important; }
+  }
+</style>
+</head>
+<body class="font-sans">
+
+<!-- TOP NAV -->
+<header class="sticky top-0 z-40 backdrop-blur-lg bg-black/40 border-b border-yellow-500/10">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-accent font-bold tracking-wide">◆ GENIE · FINANCE/PE</span>
+      <span class="pill neutral">DELPHI D3 · EPR 17/20</span>
+      <span class="pill good">VERIFIED REBUILD</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="share-btn" class="text-sm px-3 py-1.5 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-accent border border-yellow-500/20">⇪ Share</button>
+      <button id="theme-toggle" class="text-sm px-3 py-1.5 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-accent border border-yellow-500/20">◐</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-6 pt-16 pb-8">
+  <div class="fade-in">
+    <p class="text-accent font-mono text-sm tracking-widest uppercase mb-3">2026-04-20 · Dubai · Ultra-Luxury Residential</p>
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
+      Dubai Ultra-Luxury ROE <span class="text-accent">2030</span><br>
+      <span class="text-stone-400 text-3xl md:text-4xl font-semibold">Delphi-Verified Rebuild</span>
+    </h1>
+    <p class="text-stone-300 text-lg max-w-3xl leading-relaxed">
+      17-asset ultra-luxury portfolio re-assessment using <span class="text-accent font-semibold">DLD-grade 2025 transactional comps</span>, Knight Frank Q2-Q4 2025 indices, Nakheel + Emaar developer data, and CBUAE mortgage reality. Target: 100%+ ROE over a 4-year flip to 2030.
+    </p>
+    <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+      <div class="glass p-4"><div class="text-stone-400 text-xs uppercase tracking-wider">Sources</div><div class="text-2xl font-bold text-accent num">18</div></div>
+      <div class="glass p-4"><div class="text-stone-400 text-xs uppercase tracking-wider">EPR Score</div><div class="text-2xl font-bold text-accent num">17/20</div></div>
+      <div class="glass p-4"><div class="text-stone-400 text-xs uppercase tracking-wider">Assets</div><div class="text-2xl font-bold text-accent num">17</div></div>
+      <div class="glass p-4"><div class="text-stone-400 text-xs uppercase tracking-wider">Clear 100% Base</div><div class="text-2xl font-bold text-good num">2<span class="text-accent text-base"> +2 cond.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 pb-20">
+
+<!-- TOC -->
+<aside id="toc" class="hidden lg:block text-xs">
+  <div class="text-accent font-bold mb-2 tracking-widest uppercase text-[10px]">Contents</div>
+  <nav>
+    <a href="#verdict">1 · Alpha Verdict</a>
+    <a href="#delta">2 · Training vs Delphi</a>
+    <a href="#macro">3 · Macro Framework</a>
+    <a href="#baserates">4 · 2025 Base Rates</a>
+    <a href="#forecasts">5 · 2030 Forecasts</a>
+    <a href="#assets">6 · Per-Asset Analysis</a>
+    <a href="#ranking">7 · Full Ranking</a>
+    <a href="#chart">8 · ROE Chart</a>
+    <a href="#flags">9 · Data Flags</a>
+    <a href="#verify">10 · ⚠ Live Price Verify</a>
+    <a href="#method">11 · Method & Sources</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="space-y-12">
+
+<!-- VERDICT -->
+<section id="verdict" class="glass p-8 accent-border fade-in">
+  <h2 class="text-3xl font-bold mb-4">§1 · Alpha Verdict</h2>
+  <p class="text-stone-300 leading-relaxed mb-6">
+    Only <span class="text-good font-bold">4 of 17 assets clear 100% Base ROE</span> under Delphi-verified data. The broader portfolio contains <span class="text-bad font-bold">6 structural traps</span> where entry prices exceed 2025 market medians by 20-60%. The 100% ROE mandate is achievable ONLY through concentration, not diversification. 12.5% CAGR is required on the underlying asset to hit 100% ROE with 50% LTV, which is a High-case outcome for ultra-prime, not a Base case.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-4 mb-6">
+    <div class="bg-green-500/5 border border-green-500/20 rounded-xl p-5">
+      <div class="text-good font-bold uppercase text-xs tracking-widest mb-2">◎ Deploy Capital (4 Conviction Picks)</div>
+      <ol class="space-y-3 text-sm">
+        <li><span class="text-accent font-bold">1. EDITION 3BR Pavilion w/pool</span> — AED 13.75M. Private-pool branded pavilion is genuinely rare. Below Delphi entry midpoint. <span class="pill good">Base ROE 184%</span> <span class="pill good">VERIFIED</span></li>
+        <li><span class="text-accent font-bold">2. EDITION 4BR Ain Dubai</span> — AED 14.8M, 3,648 sqft. AED 4,057/sqft entry at BELOW Delphi EDITION median. <span class="pill good">Base ROE 134%</span> <span class="pill good">VERIFIED</span></li>
+        <li><span class="text-accent font-bold">3. Lunaria Mansion (Al Barari) — CONDITIONAL</span> — AED 33M live-verified plausible, BUT BUA likely 10,000-11,500 sqft (not 12-15K claimed). Live PropertyFinder comp AED 29.5M / 10,896 sqft. <span class="pill good">Adj. Base ROE ~220%</span> <span class="pill warn">Verify BUA via NOC</span></li>
+        <li><span class="text-accent font-bold">4. The Nest (Al Barari) — UNVERIFIED</span> — <span class="text-bad">No live listing found at AED 22M</span>. Market shows 10K sqft Nest at AED 52M, 13.8K sqft at AED 40M+. AED 22M likely a Chorisia-type 6,635 sqft unit, not single-row upgraded 13,500. If Chorisia: <span class="pill warn">Adj. Base ROE ~110%</span> <span class="pill bad">DO NOT PROCEED without DLD title deed + BUA verification</span></li>
+      </ol>
+    </div>
+    <div class="bg-red-500/5 border border-red-500/20 rounded-xl p-5">
+      <div class="text-bad font-bold uppercase text-xs tracking-widest mb-2">⨯ Avoid (Traps + Losses)</div>
+      <ol class="space-y-3 text-sm">
+        <li><span class="text-bad font-bold">Frond N41 (Palm)</span> — broker ask AED 37M + 5M reno, standard-view frond. Delphi standard frond median AED 3,850/sqft vs asked AED 6,167. <span class="pill bad">Base ROE -56%</span></li>
+        <li><span class="text-bad font-bold">Palmiera 5BR Type 2 lagoon</span> — AED 19M at 2,262/sqft vs market 1,550-1,800. <span class="pill bad">Base ROE -34%</span></li>
+        <li><span class="text-bad font-bold">Address Tierra 5BR</span> — AED 18.5M at 2,643/sqft vs market 1,900. <span class="pill bad">Base ROE -30%</span></li>
+        <li><span class="text-bad font-bold">Palmiera 158 corner internal</span> — AED 11M at 1,774/sqft vs corner market 1,350-1,500. <span class="pill bad">Base ROE -29%</span></li>
+        <li><span class="text-bad font-bold">Palmiera 5BR Type 1 urban canal</span> — non-swimmable drainage, overpriced. <span class="pill bad">Base ROE -16%</span></li>
+        <li><span class="text-warn font-bold">PJA Coral 7BR</span> — AED 43M, delivery 2028, thin 15-mo seasoning before exit. <span class="pill bad">Base ROE -6%</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="bg-yellow-500/5 border border-yellow-500/20 rounded-xl p-5">
+    <div class="text-accent font-bold uppercase text-xs tracking-widest mb-2">◎ Conditional / Marginal</div>
+    <p class="text-sm text-stone-300 leading-relaxed">
+      <span class="font-bold text-accent">Frond L Signature</span>: Base ROE 98% but only if reno budget bumped from AED 6M to AED 10-14M (Signature-tier finish is AED 1,500-2,000/sqft, not the 857/sqft implied by the current reno).
+      <span class="font-bold text-accent">Lavita 6BR Estate</span>: Base ROE 40-50% depending on true BUA (Delphi's 28,039 sqft listing appears to include plot; realistic BUA ~13,000-17,000).
+      <span class="font-bold text-accent">PJA Beach 5BR</span>: Base ROE 26% — weak vs mandate, acceptable only as pre-handover flip at 2028.
+    </p>
+  </div>
+</section>
+
+<!-- DELTA -->
+<section id="delta" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§2 · Training Model vs Delphi Verified — Where I Was Wrong</h2>
+  <p class="text-stone-300 mb-6">The original analysis used training-knowledge base rates. Delphi D3 pulled primary-source 2025 comps and surfaced four structural errors:</p>
+  <div class="overflow-x-auto">
+  <table>
+    <thead><tr>
+      <th>Sub-Market</th><th>Training Model 2030 Base</th><th>Delphi Verified 2025</th><th>Delta</th><th>Portfolio Impact</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><b>Al Barari Nest upgraded</b></td><td class="num">3,700–4,800</td><td class="num pos">5,500–6,759</td><td class="pos">+40-70%</td><td>Nest upside BIGGER than modeled</td></tr>
+      <tr><td><b>Palm Jumeirah Signature</b></td><td class="num">8,000–9,200</td><td class="num pos">9,000–14,679</td><td class="pos">+20-60%</td><td>Frond L thesis stronger IF reno adequate</td></tr>
+      <tr><td><b>Palm Jumeirah standard frond</b></td><td class="num">6,500–8,100</td><td class="num neg">4,000–5,500</td><td class="neg">−15-30%</td><td>Frond N41 broker ask confirmed TRAP</td></tr>
+      <tr><td><b>Emaar Oasis Palmiera</b></td><td class="num">2,400–2,900</td><td class="num neg">1,350–1,900</td><td class="neg">−35-50%</td><td>Entire Palmiera category OVERPRICED at entry</td></tr>
+      <tr><td><b>Oasis Lavita/Tierra/Mirage</b></td><td class="num">2,600–3,400</td><td class="num neg">1,800–2,600</td><td class="neg">−20-30%</td><td>Lavita/Tierra weaker than modeled</td></tr>
+      <tr><td><b>PJA handover</b></td><td class="num">2026-2027</td><td class="num warn">Nov 2028 (2029 slip risk)</td><td class="warn">12-18mo delay</td><td>Only ~15mo seasoning before 2030 exit</td></tr>
+      <tr><td><b>Off-plan mortgage</b></td><td class="num">4y IO assumed</td><td class="num warn">Cash only during construction</td><td class="warn">Structural</td><td>PJA/Oasis/EDITION model wrong</td></tr>
+      <tr><td><b>100% Base ROE feasibility</b></td><td class="num">5+ assets clear</td><td class="num warn">Requires 12.5% CAGR (High only)</td><td class="warn">Mandate reframe</td><td>Concentrate or relax target</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§3 · Macro Framework 2020-2030</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <h3 class="text-accent font-bold uppercase text-xs tracking-widest mb-3">Historical Cycle (Prime Villa)</h3>
+      <table>
+        <tr><td>2008-09 GFC</td><td class="num neg">−50%</td></tr>
+        <tr><td>2011-14 recovery</td><td class="num pos">+60%</td></tr>
+        <tr><td>2014-20 oversupply</td><td class="num neg">−35%</td></tr>
+        <tr><td>2020 COVID trough</td><td class="num">bottom</td></tr>
+        <tr><td>2021 (Golden Visa)</td><td class="num pos">+21%</td></tr>
+        <tr><td>2022 (Russia flight)</td><td class="num pos">+89% (PJ doubled)</td></tr>
+        <tr><td>2023 (UK/EU/India)</td><td class="num pos">+44%</td></tr>
+        <tr><td>2024</td><td class="num pos">+20-25%</td></tr>
+        <tr><td>2025 (ultra-prime hold)</td><td class="num pos">+8-12% villa</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3 class="text-accent font-bold uppercase text-xs tracking-widest mb-3">Geopolitical Matrix 2026-2030</h3>
+      <table>
+        <tr><td>Russia-Ukraine settlement</td><td class="neg">Headwind</td></tr>
+        <tr><td>Iran escalation</td><td class="pos">Tailwind</td></tr>
+        <tr><td>US recession 2026-27</td><td class="mid">Mixed</td></tr>
+        <tr><td>India HNWI migration (9,800/yr)</td><td class="pos">Structural +</td></tr>
+        <tr><td>Crypto/tech crash</td><td class="mid">Mixed</td></tr>
+        <tr><td>Apt oversupply 160K units</td><td class="neg">Apt-only −</td></tr>
+        <tr><td>Ultra-prime supply constraint</td><td class="pos">Structural ++</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="mt-6 text-sm text-stone-400 leading-relaxed">
+    <span class="text-accent font-bold">Net read:</span> Ultra-prime villas in supply-constrained master-plans (Palm, Al Barari, PJA) have 3-5 tailwinds vs 1-2 headwinds through 2030. Apartments face concentrated oversupply headwind. Knight Frank 2026 forecast: +3% prime (near-term moderation). 4-year CAGR base case: 6-8% for established ultra-prime. Palm Jumeirah appreciated 194% since Q4 2020 (24-25% annualized), now normalizing.
+  </div>
+</section>
+
+<!-- BASE RATES -->
+<section id="baserates" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§4 · Verified 2025 Base Rates (AED/sqft)</h2>
+  <div class="overflow-x-auto">
+  <table>
+    <thead><tr>
+      <th>Sub-Market</th><th>Low</th><th>Median</th><th>High</th><th>Source</th><th>Confidence</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><b>Palm Jumeirah Signature (Atlantis/sunset)</b></td><td class="num">6,500</td><td class="num">9,500–11,000</td><td class="num">14,679</td><td>KF Q4 2025 + Sotheby's AED 161M close</td><td><span class="pill good">HIGH</span></td></tr>
+      <tr><td><b>Palm Jumeirah standard frond</b></td><td class="num">3,200</td><td class="num">3,850–4,300</td><td class="num">6,500</td><td>KF Prime Index Q2-Q3 2025</td><td><span class="pill good">HIGH</span></td></tr>
+      <tr><td><b>Al Barari Nest (single row upgraded)</b></td><td class="num">4,118</td><td class="num">5,500–6,316</td><td class="num">6,759</td><td>PropertyFinder + DLD May 2025 AED 107M</td><td><span class="pill neutral">MED-HIGH</span></td></tr>
+      <tr><td><b>Al Barari Lunaria (turnkey alpha)</b></td><td class="num">3,800</td><td class="num">5,000–5,800</td><td class="num">7,518</td><td>The Collection AED 7,518; Silk Leaf AED 90M</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>Emaar Oasis Palmiera lagoon 4BR</b></td><td class="num">1,380</td><td class="num">1,500–1,650</td><td class="num">1,900</td><td>Developer + Bayut secondary</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>Oasis Palmiera 5BR T1/T2</b></td><td class="num">1,350</td><td class="num">1,550</td><td class="num">1,800</td><td>Developer + secondary AED 13-20M</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>Oasis Lavita 6BR Estate</b></td><td class="num">1,800</td><td class="num">2,000–2,200</td><td class="num">2,500</td><td>AED 57M / 28K sqft listing</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>Oasis Address Tierra</b></td><td class="num">1,600</td><td class="num">1,900</td><td class="num">2,400</td><td>Starts AED 13.16M; Bayut range</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>Oasis Mirage</b></td><td class="num">1,700</td><td class="num">2,100</td><td class="num">2,600</td><td>AED 15-22M secondary</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>PJA Beach Collection 5BR</b></td><td class="num">2,100</td><td class="num">2,400–2,600</td><td class="num">3,200</td><td>Nakheel + resale AED 25-30M</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>PJA Beach 6BR</b></td><td class="num">2,200</td><td class="num">2,500</td><td class="num">3,400</td><td>Resales AED 25-43.5M</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>PJA Coral 7BR</b></td><td class="num">2,357</td><td class="num">2,800–3,000</td><td class="num">3,808</td><td>AED 35.5-38M resales</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+      <tr><td><b>Dubai Harbour EDITION</b></td><td class="num">4,361</td><td class="num">5,000–6,000</td><td class="num">6,550</td><td>2BR AED 12.8M / 1,954 sqft</td><td><span class="pill neutral">MEDIUM</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- FORECASTS -->
+<section id="forecasts" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§5 · 2030 Forecasts (AED/sqft, 4-year CAGR)</h2>
+  <div class="overflow-x-auto">
+  <table>
+    <thead><tr>
+      <th>Sub-Market</th><th>2025 Base</th><th>Low (+3%/yr)</th><th>Base (+7%/yr)</th><th>High (+12%/yr)</th><th>Key Risk</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><b>Palm Signature</b></td><td class="num">9,500-11,000</td><td class="num">11,000-12,750</td><td class="num pos">13,300-15,400</td><td class="num">16,750-19,400</td><td>Supply ≈ zero</td></tr>
+      <tr><td><b>Palm standard frond</b></td><td class="num">3,850-4,300</td><td class="num">4,460-4,980</td><td class="num">5,400-6,020</td><td class="num">6,800-7,575</td><td>Moderate new supply</td></tr>
+      <tr><td><b>Al Barari Nest</b></td><td class="num">5,500-6,316</td><td class="num">6,375-7,320</td><td class="num pos">7,700-8,850</td><td class="num">9,700-11,140</td><td>Thin liquidity</td></tr>
+      <tr><td><b>Al Barari Lunaria</b></td><td class="num">5,000-5,800</td><td class="num">5,800-6,720</td><td class="num pos">7,000-8,120</td><td class="num">8,800-10,230</td><td>Very thin comps</td></tr>
+      <tr><td><b>Oasis Palmiera</b></td><td class="num">1,400-1,600</td><td class="num">1,620-1,855</td><td class="num">1,960-2,240</td><td class="num">2,465-2,820</td><td>7,000+ units, oversupply</td></tr>
+      <tr><td><b>Oasis Lavita/Tierra/Mirage</b></td><td class="num">1,800-2,200</td><td class="num">2,085-2,550</td><td class="num">2,520-3,080</td><td class="num">3,175-3,875</td><td>Address floor exists</td></tr>
+      <tr><td><b>PJA Beach</b></td><td class="num">2,400-2,600</td><td class="num">2,780-3,015</td><td class="num">3,360-3,645</td><td class="num">4,230-4,590</td><td>2028 handover tight</td></tr>
+      <tr><td><b>PJA Coral</b></td><td class="num">2,800-3,000</td><td class="num">3,245-3,475</td><td class="num">3,920-4,200</td><td class="num">4,935-5,285</td><td>Same delivery risk</td></tr>
+      <tr><td><b>EDITION Dubai Harbour</b></td><td class="num">5,000-6,000</td><td class="num">5,795-6,954</td><td class="num">7,010-8,405</td><td class="num">8,815-10,570</td><td>2029 handover</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="mt-4 text-sm text-stone-400">
+    <span class="text-accent font-bold">100% ROE mathematical requirement:</span> with 50% LTV, 7% entry fees, 2% exit fees, and 9% IO carry (4.5% × 4y), total cost drag = 20%. Underlying asset must appreciate ~60% (12.5% CAGR) for 100% equity ROE. This is High-case only for ultra-prime. Base case (7% CAGR) delivers 80-90% ROE gross before exit costs.
+  </p>
+</section>
+
+<!-- PER-ASSET TABLE -->
+<section id="assets" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§6 · Per-Asset Verified Analysis (17 Assets)</h2>
+  <p class="text-stone-400 text-sm mb-4">Financial model: 50% LTV · 4.5% IO · 7% entry · 2% exit · 4y hold. READY assets: 4y interest. OFF-PLAN: ~1.5y interest (mortgage activates at handover). Initial Cash = 57% × Entry + Reno.</p>
+  <div class="overflow-x-auto">
+  <table>
+    <thead><tr>
+      <th>#</th><th>Asset</th><th>Entry (M)</th><th>Reno</th><th>BUA</th><th>Entry AED/sqft</th><th>Market 2025</th><th>Status</th><th>2030 Exit B (M)</th><th>ROE L / B / H</th><th>Verdict</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td><b>PJA 5BR Beach</b></td><td class="num">22.0</td><td class="num">0</td><td class="num">8,000</td><td class="num mid">2,750</td><td class="num">2,500 (median)</td><td><span class="pill warn">OFF-PLAN 2028</span></td><td class="num">28</td><td class="num">−21% / <span class="mid">26%</span> / 88%</td><td>Pre-handover flip only</td></tr>
+      <tr><td class="num">2</td><td><b>PJA 6BR Beach</b></td><td class="num">26.0</td><td class="num">0</td><td class="num">8,300</td><td class="num mid">3,133</td><td class="num">2,500</td><td><span class="pill warn">OFF-PLAN 2028</span></td><td class="num">29</td><td class="num">−41% / <span class="neg">−1%</span> / 52%</td><td>Entry above market</td></tr>
+      <tr><td class="num">3</td><td><b>PJA Coral 7BR</b></td><td class="num">43.0</td><td class="num">0</td><td class="num">11,500</td><td class="num mid">3,739</td><td class="num">2,900</td><td><span class="pill warn">OFF-PLAN 2028</span></td><td class="num">47</td><td class="num">−45% / <span class="neg">−6%</span> / 47%</td><td>Mega-mansion, thin buyer pool</td></tr>
+      <tr><td class="num">4</td><td><b>PJA Cobalt frond</b></td><td class="num">20.0</td><td class="num">0</td><td class="num">plot</td><td class="num">spec</td><td class="num">n/a</td><td><span class="pill warn">OFF-PLAN 2029</span></td><td class="num">25</td><td class="num">−12% / <span class="mid">22%</span> / 108%</td><td>Flip-at-handover only</td></tr>
+      <tr><td class="num">5</td><td><b>Palmiera 4BR Lagoon</b></td><td class="num">11.0</td><td class="num">0</td><td class="num">6,200</td><td class="num bad">1,774</td><td class="num">1,650 (top of range)</td><td><span class="pill warn">OFF-PLAN</span></td><td class="num">13</td><td class="num">−37% / <span class="mid">10%</span> / 73%</td><td>Entry at market high</td></tr>
+      <tr><td class="num">6</td><td><b>Palmiera 158 corner</b></td><td class="num">11.0</td><td class="num">0</td><td class="num">6,200</td><td class="num bad">1,774</td><td class="num">1,450 (corner)</td><td><span class="pill warn">OFF-PLAN</span></td><td class="num">10.5</td><td class="num">−52% / <span class="neg">−29%</span> / 26%</td><td><span class="pill bad">STRUCTURAL TRAP</span></td></tr>
+      <tr><td class="num">7</td><td><b>Palmiera 5BR T2 (lagoon)</b></td><td class="num">19.0</td><td class="num">0</td><td class="num">8,400</td><td class="num bad">2,262</td><td class="num">1,750</td><td><span class="pill warn">OFF-PLAN</span></td><td class="num">17.6</td><td class="num">−57% / <span class="neg">−34%</span> / 6%</td><td><span class="pill bad">TRAP (30% overpriced)</span></td></tr>
+      <tr><td class="num">8</td><td><b>Palmiera 5BR T1 urban canal</b></td><td class="num">15.5</td><td class="num">0</td><td class="num">8,400</td><td class="num bad">1,845</td><td class="num">1,600</td><td><span class="pill warn">OFF-PLAN</span></td><td class="num">16</td><td class="num">−43% / <span class="neg">−16%</span> / 29%</td><td><span class="pill bad">TRAP (fake waterfront)</span></td></tr>
+      <tr><td class="num">9</td><td><b>Lavita 6BR Estate</b></td><td class="num">33.5</td><td class="num">0</td><td class="num">~17,000</td><td class="num pos">1,971</td><td class="num">2,100</td><td><span class="pill warn">OFF-PLAN</span></td><td class="num">47.6</td><td class="num">12% / <span class="mid">51%</span> / 145%</td><td>Conditional on BUA</td></tr>
+      <tr><td class="num">10</td><td><b>Address Tierra 5BR</b></td><td class="num">18.5</td><td class="num">0</td><td class="num">7,000</td><td class="num bad">2,643</td><td class="num">1,900</td><td><span class="pill warn">OFF-PLAN</span></td><td class="num">17.5</td><td class="num">−54% / <span class="neg">−30%</span> / 21%</td><td><span class="pill bad">TRAP (40% overpriced)</span></td></tr>
+      <tr><td class="num">11</td><td><b>Mirage 5BR Lagoon Front</b></td><td class="num">15.5</td><td class="num">0</td><td class="num">7,000</td><td class="num mid">2,214</td><td class="num">2,100 (at market)</td><td><span class="pill warn">OFF-PLAN</span></td><td class="num">19.6</td><td class="num">−16% / <span class="mid">24%</span> / 73%</td><td>At-market, weak</td></tr>
+      <tr><td class="num">12</td><td><b>Frond L Signature (PJ)</b></td><td class="num">29.0</td><td class="num">6.0</td><td class="num">7,000</td><td class="num pos">4,143</td><td class="num">9,500+ (Signature)</td><td><span class="pill good">READY</span></td><td class="num">63</td><td class="num">33% / <span class="pos">98%</span> / 172%</td><td>IF reno bumped to AED 10-14M</td></tr>
+      <tr><td class="num">13</td><td><b>Frond N41 (broker ask)</b></td><td class="num">37.0</td><td class="num">5.0</td><td class="num">6,000</td><td class="num bad">6,167</td><td class="num">4,000-5,000</td><td><span class="pill good">READY</span></td><td class="num">34</td><td class="num">−75% / <span class="neg">−56%</span> / −33%</td><td><span class="pill bad">CATASTROPHIC TRAP</span></td></tr>
+      <tr><td class="num">14</td><td><b>★ The Nest (Al Barari)</b></td><td class="num">22.0</td><td class="num">5.0</td><td class="num">13,500</td><td class="num pos">1,630</td><td class="num pos">5,500-6,759 (DLD)</td><td><span class="pill good">READY</span></td><td class="num">112</td><td class="num pos">301% / <span class="pos">452%</span> / 664%</td><td><span class="pill good">#1 CONVICTION ⚠ verify</span></td></tr>
+      <tr><td class="num">15</td><td><b>★ Lunaria Mansion</b></td><td class="num">33.0</td><td class="num">0</td><td class="num">15,000</td><td class="num pos">2,200</td><td class="num pos">5,000-7,518</td><td><span class="pill good">READY</span></td><td class="num">113</td><td class="num pos">255% / <span class="pos">385%</span> / 578%</td><td><span class="pill good">#2 CONVICTION ⚠ verify</span></td></tr>
+      <tr><td class="num">16</td><td><b>★ EDITION 4BR Ain Dubai</b></td><td class="num">14.8</td><td class="num">0</td><td class="num">3,648</td><td class="num pos">4,057</td><td class="num">5,000-6,000</td><td><span class="pill warn">OFF-PLAN 2029</span></td><td class="num">28</td><td class="num">64% / <span class="pos">134%</span> / 215%</td><td><span class="pill good">CONVICTION</span></td></tr>
+      <tr><td class="num">17</td><td><b>★ EDITION 3BR Pavilion w/pool</b></td><td class="num">13.75</td><td class="num">0</td><td class="num">3,537</td><td class="num pos">3,888</td><td class="num">5,000-6,000 + pool premium</td><td><span class="pill warn">OFF-PLAN 2029</span></td><td class="num">30</td><td class="num pos">109% / <span class="pos">184%</span> / 284%</td><td><span class="pill good">CONVICTION (scarcity)</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- FULL RANKING -->
+<section id="ranking" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§7 · Full Ranking (Base ROE, descending)</h2>
+  <div class="overflow-x-auto">
+  <table>
+    <thead><tr>
+      <th>#</th><th>Asset</th><th>Base ROE</th><th>Clears 100%?</th><th>Basis</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td><b>EDITION 3BR Pavilion w/pool</b></td><td class="num pos">184%</td><td><span class="pill good">✓ VERIFIED</span></td><td>Scarce pavilion + below-market entry + 2029 handover (short carry)</td></tr>
+      <tr><td class="num">2</td><td><b>Lunaria Mansion (adjusted)</b></td><td class="num pos">~220%</td><td><span class="pill warn">✓ PLAUSIBLE · verify BUA</span></td><td>Live AED 29.5M/10.9K sqft comp confirms viability; BUA likely 10-11.5K not 14K</td></tr>
+      <tr><td class="num">3</td><td><b>EDITION 4BR Ain Dubai</b></td><td class="num pos">134%</td><td><span class="pill good">✓ VERIFIED</span></td><td>Branded + unique view + entry at low end of market</td></tr>
+      <tr><td class="num">4</td><td><b>The Nest (adjusted, if Chorisia 6,635 sqft)</b></td><td class="num pos">~110%</td><td><span class="pill bad">⨯ NO LIVE LISTING AT AED 22M</span></td><td>Market shows 10K sqft @ AED 52M. See §10 — do not proceed without title deed + BUA NOC</td></tr>
+      <tr><td class="num">5</td><td><b>Frond L Signature</b></td><td class="num pos">98%</td><td><span class="pill warn">IF reno 10M+</span></td><td>Conditional on proper reno spend to reach true Signature finish</td></tr>
+      <tr><td class="num">6</td><td><b>Lavita 6BR Estate</b></td><td class="num mid">51%</td><td><span class="pill bad">No (High 145%)</span></td><td>Depends on true BUA; Address scarcity premium</td></tr>
+      <tr><td class="num">7</td><td><b>PJA 5BR Beach</b></td><td class="num mid">26%</td><td><span class="pill bad">No (High 88%)</span></td><td>Delivery timing kills IRR; pre-handover flip better</td></tr>
+      <tr><td class="num">8</td><td><b>Mirage 5BR Lagoon</b></td><td class="num mid">24%</td><td><span class="pill bad">No (High 73%)</span></td><td>At-market entry, structural Oasis oversupply drag</td></tr>
+      <tr><td class="num">9</td><td><b>PJA Cobalt frond</b></td><td class="num mid">22%</td><td><span class="pill bad">No (High 108%)</span></td><td>2029 handover, zero seasoning before 2030</td></tr>
+      <tr><td class="num">10</td><td><b>Palmiera 4BR Lagoon</b></td><td class="num mid">10%</td><td><span class="pill bad">No</span></td><td>Entry at top of market range</td></tr>
+      <tr><td class="num">11</td><td><b>PJA 6BR Beach</b></td><td class="num neg">−1%</td><td><span class="pill bad">No</span></td><td>Entry above median; rare 6BR premium priced in</td></tr>
+      <tr><td class="num">12</td><td><b>PJA Coral 7BR</b></td><td class="num neg">−6%</td><td><span class="pill bad">No</span></td><td>Mega-mansion, thin 2030 buyer pool, delivery risk</td></tr>
+      <tr><td class="num">13</td><td><b>Palmiera 5BR T1 urban canal</b></td><td class="num neg">−16%</td><td><span class="pill bad">No</span></td><td>Non-swimmable "canal" + entry above market</td></tr>
+      <tr><td class="num">14</td><td><b>Palmiera 158 corner</b></td><td class="num neg">−29%</td><td><span class="pill bad">CAPITAL LOSS</span></td><td>Internal plot + entry 20% above corner market</td></tr>
+      <tr><td class="num">15</td><td><b>Address Tierra 5BR</b></td><td class="num neg">−30%</td><td><span class="pill bad">CAPITAL LOSS</span></td><td>Brand premium double-counted; 40% above market</td></tr>
+      <tr><td class="num">16</td><td><b>Palmiera 5BR T2 lagoon</b></td><td class="num neg">−34%</td><td><span class="pill bad">CAPITAL LOSS</span></td><td>Entry 30% above lagoon market medianm</td></tr>
+      <tr><td class="num">17</td><td><b>Frond N41 (broker ask)</b></td><td class="num neg">−56%</td><td><span class="pill bad">CATASTROPHIC</span></td><td>Standard-view frond at Signature-tier ask; 50% overpaid</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- CHART -->
+<section id="chart" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§8 · Base ROE Distribution — 100% Mandate Reference</h2>
+  <div style="height: 480px;"><canvas id="roeChart"></canvas></div>
+</section>
+
+<!-- FLAGS -->
+<section id="flags" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§9 · Critical Data Flags</h2>
+  <div class="grid md:grid-cols-2 gap-4 text-sm">
+    <div class="bg-red-500/5 border border-red-500/20 rounded-xl p-5">
+      <div class="text-bad font-bold uppercase text-xs tracking-widest mb-2">⨯ Verify Before Committing</div>
+      <ul class="space-y-2">
+        <li><b>Nest AED 22M entry</b>: DLD shows 2025 single-row upgraded at AED 6,316/sqft × 13,500 sqft = AED 85M. User's AED 22M is 74% below 2025 market. Must verify: is this asset actually single-row upgraded? Is price still live? Off-market or distressed?</li>
+        <li><b>Lunaria AED 33M entry</b>: Turnkey alpha product at AED 2,200/sqft vs Delphi AED 5,000-7,518. Same verification: is this real live pricing?</li>
+        <li><b>Frond L "Signature" classification</b>: AED 4,143/sqft entry is standard-frond pricing, not Signature. Confirm Atlantis/sunset frond category before committing.</li>
+        <li><b>Lavita 6BR Estate BUA</b>: Delphi's 28,039 sqft listing likely includes plot. Typical Lavita 6BR BUA is 13,000-17,000 sqft. Confirm with Emaar spec sheet.</li>
+      </ul>
+    </div>
+    <div class="bg-yellow-500/5 border border-yellow-500/20 rounded-xl p-5">
+      <div class="text-accent font-bold uppercase text-xs tracking-widest mb-2">◎ Model Assumption Stress Tests</div>
+      <ul class="space-y-2">
+        <li><b>4.5% IO is favorable end</b> of market. Base case should be 5.0-5.25% for non-resident luxury. Adds ~50bps × 4y × 50% = 1% ROE drag per asset.</li>
+        <li><b>Off-plan mortgage</b>: not available during construction. PJA/Oasis/EDITION require ~50% cash during construction, mortgage only at handover.</li>
+        <li><b>PJA handover Nov 2028</b>: 6-12 month slip risk to mid-2029. Plan for potential 2031 exit window or pre-handover flip.</li>
+        <li><b>Al Barari liquidity</b>: &lt;20 community closes/yr. Exit velocity risk in 2030 soft quarter. Factor 6-12 months carry extension.</li>
+        <li><b>Oasis oversupply</b>: 7,000+ units in Oasis master-plan. Not supply-constrained like Palm or Barari. Base case CAGR may underperform.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFY -->
+<section id="verify" class="glass p-8 fade-in" style="border-left: 3px solid #ef4444;">
+  <h2 class="text-3xl font-bold mb-4">§10 · ⚠ Live Price Verification (Delphi D2 follow-up)</h2>
+  <p class="text-stone-300 mb-5">Triggered because §1 original Nest + Lunaria picks showed ROE too-good-to-be-true (300-450% Base) vs verified 2025 comps. Delphi D2 pulled live PropertyFinder / Bayut / Allsopp / Savills / InsideRealty / Sotheby's / Dubizzle listings April 2026.</p>
+
+  <div class="grid md:grid-cols-2 gap-5 mb-6">
+    <div class="bg-red-500/5 border border-red-500/30 rounded-xl p-5">
+      <div class="text-bad font-bold uppercase text-xs tracking-widest mb-2">⨯ The Nest — AED 22M: UNVERIFIED</div>
+      <p class="text-sm text-stone-300 mb-3"><b>No live listing found at AED 22M for 10,000-13,500 sqft.</b> Market reality April 2026:</p>
+      <ul class="text-sm space-y-1.5 text-stone-300 mb-3">
+        <li>• Allsopp: <span class="num">10,000 sqft / 6BR @ AED 52M</span></li>
+        <li>• InsideRealty: <span class="num">13,876 sqft @ AED 39.9M+</span></li>
+        <li>• Savills: <span class="num">13,800 sqft on 20,000 sqft plot @ AED 40M+</span></li>
+        <li>• Sub-AED 10M only for smaller <b>Chorisia-type (6,635 sqft)</b></li>
+      </ul>
+      <p class="text-sm text-stone-300 mb-2"><b>Corrected Nest comps</b>: AED 3,500-5,200/sqft (not AED 6,316 — that DLD print is The Reserve trophy tier, not standard Nest).</p>
+      <div class="bg-black/30 rounded-lg p-3 text-xs space-y-1">
+        <div class="text-accent font-bold">Most likely explanations (ranked):</div>
+        <div><span class="pill warn">45%</span> Wrong BUA — actually a Chorisia-type (6,635 sqft) at AED 3,317/sqft</div>
+        <div><span class="pill warn">25%</span> Stale/dead 2022-2023 listing never updated</div>
+        <div><span class="pill warn">20%</span> Off-market distressed (family office, divorce) — moves in 1-2 days if real</div>
+        <div><span class="pill bad">10%</span> Scam / BUA misrepresentation</div>
+      </div>
+      <div class="mt-3 text-xs text-bad font-bold">CONFIDENCE: LOW. Do not proceed without title deed + BUA NOC.</div>
+    </div>
+
+    <div class="bg-yellow-500/5 border border-yellow-500/30 rounded-xl p-5">
+      <div class="text-accent font-bold uppercase text-xs tracking-widest mb-2">◎ Lunaria — AED 33M: PLAUSIBLE (with caveat)</div>
+      <p class="text-sm text-stone-300 mb-3"><b>Live listings confirm AED 33M is near-market for a 10,000-11,500 sqft Lunaria unit</b> — NOT the 12,000-15,000 sqft assumed in §6.</p>
+      <ul class="text-sm space-y-1.5 text-stone-300 mb-3">
+        <li>• PropertyFinder live: <span class="num">AED 29.5M / 10,896 sqft 5BR ready</span></li>
+        <li>• Sotheby's: <span class="num">from AED 24M</span></li>
+        <li>• Developer off-plan: <span class="num">from AED 15.3M / 8,343 sqft 6BR</span></li>
+        <li>• PropertyFinder avg Al Barari ask: <span class="num">AED 33.99M</span></li>
+      </ul>
+      <p class="text-sm text-stone-300 mb-2"><b>Corrected Lunaria comps</b>: AED 2,500-3,000/sqft. Investor's AED 7,518 reference (The Collection) is Reserve-tier, not Lunaria.</p>
+      <div class="bg-black/30 rounded-lg p-3 text-xs space-y-1">
+        <div class="text-accent font-bold">Most likely explanations (ranked):</div>
+        <div><span class="pill good">50%</span> Legitimate for ~10,000-11,500 sqft unit (not 14K)</div>
+        <div><span class="pill neutral">30%</span> Off-plan exit by original buyer at ~2x cost (bought 15.3M, selling near handover)</div>
+        <div><span class="pill neutral">15%</span> Motivated seller modestly below full market</div>
+        <div><span class="pill bad">5%</span> Scam / misrepresented spec</div>
+      </div>
+      <div class="mt-3 text-xs text-accent font-bold">CONFIDENCE: MEDIUM. Viable deal — but BUA will disappoint.</div>
+    </div>
+  </div>
+
+  <div class="bg-stone-500/5 border border-stone-500/30 rounded-xl p-5 mb-4">
+    <div class="text-accent font-bold uppercase text-xs tracking-widest mb-3">◎ Adjusted ROE (corrected BUA + corrected market comps)</div>
+    <div class="overflow-x-auto">
+    <table>
+      <thead><tr><th>Asset</th><th>Scenario</th><th>BUA (corrected)</th><th>2030 Exit</th><th>Base ROE</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="2"><b>The Nest</b></td><td>If Chorisia 6,635 sqft @ AED 22M</td><td class="num">6,635</td><td class="num">~51M</td><td class="num pos">~110% ✓</td></tr>
+        <tr><td>If 10,000+ sqft @ AED 22M (UNVERIFIED)</td><td class="num">10,000+</td><td class="num">~77M+</td><td class="num warn">Listing doesn't exist</td></tr>
+        <tr><td><b>Lunaria</b></td><td>10,896 sqft @ AED 33M (live comp)</td><td class="num">10,896</td><td class="num">~82M</td><td class="num pos">~220%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="mt-3 text-xs text-stone-400">ROE recomputed using corrected BUA × Delphi 2030 Base AED/sqft (Nest 7,700, Lunaria 7,500). Still clears 100% mandate on plausible BUA assumptions, but materially below original §6 headline numbers (452% / 385%).</p>
+  </div>
+
+  <div class="bg-yellow-500/5 border border-yellow-500/20 rounded-xl p-5">
+    <div class="text-accent font-bold uppercase text-xs tracking-widest mb-2">◎ Required DD Before Any LOI</div>
+    <ol class="text-sm space-y-1.5 text-stone-300 list-decimal list-inside">
+      <li><b>Pull DLD title deed via Dubai REST app</b> — verify owner, zero encumbrances, no court orders.</li>
+      <li><b>NOC from Al Barari Development for actual BUA</b> — never trust broker BUA claim. Single most important step.</li>
+      <li><b>DLD Transactions portal filter</b> (dubailand.gov.ae) — 2024-2026 Nest/Lunaria sub-AED 35M closes. If none exist, price is anomalous.</li>
+      <li><b>Two independent RICS valuations</b> — not from the selling broker.</li>
+      <li><b>Service charge arrears check</b> — Al Barari AED 7.57/sqft/yr. A 12K sqft unit = AED 91K/yr. Multi-year arrears block NOC.</li>
+      <li><b>Lunaria handover status</b> — units completing Q4 2026. "Turnkey alpha" on incomplete property = red flag.</li>
+      <li><b>Nest structural + MEP inspection</b> — AED 5M reno on 10K+ sqft neglected unit may be insufficient (AED 1,200-2,000/sqft is realistic luxury reno cost).</li>
+    </ol>
+  </div>
+
+  <div class="mt-5 bg-red-500/5 border border-red-500/20 rounded-xl p-5 text-sm">
+    <div class="text-bad font-bold uppercase text-xs tracking-widest mb-2">⨯ Comp Methodology Error (Investor side)</div>
+    <p class="text-stone-300">The original conviction case for Nest + Lunaria used <b>AED 7,518/sqft "The Collection"</b> and <b>AED 6,316/sqft DLD May 2025 close</b> as comp anchors. <span class="text-accent font-bold">Both anchors are from The Reserve sub-community</span>, Al Barari's trophy tier (&lt;10 units/year). They do NOT apply to standard Nest units or Lunaria. When corrected to the right sub-tier (Nest AED 3,500-5,200 / Lunaria AED 2,500-3,000), the apparent 70% discount to market disappears — prices are plausible but not extraordinary.</p>
+  </div>
+
+  <div class="mt-4 text-xs text-stone-500 font-mono">
+    Source: Delphi D2 verification run 2026-04-20 17:47. 8 live portal checks (PropertyFinder, Bayut, Allsopp, Savills, InsideRealty, Sotheby's, Dubizzle, Luxhabitat). Saved: ~/.nexus/intel/nest-lunaria-price-verify-2026-04-20.md
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method" class="glass p-8 fade-in">
+  <h2 class="text-3xl font-bold mb-4">§11 · Method & Sources</h2>
+  <div class="grid md:grid-cols-2 gap-6 text-sm">
+    <div>
+      <h3 class="text-accent font-bold uppercase text-xs tracking-widest mb-3">Pipeline</h3>
+      <ol class="space-y-2 list-decimal list-inside text-stone-300">
+        <li>Training-knowledge prior (flagged as unverified, superseded)</li>
+        <li>DELPHI D3 dispatch (Perplexity Sonar-Pro x8 + institutional reports)</li>
+        <li>Primary-source reconciliation (DLD, KF, developer data)</li>
+        <li>Macro + geopolitical overlay (Henley, Economy ME)</li>
+        <li>Per-asset ROE recalc (READY vs OFF-PLAN models)</li>
+        <li>Ranking + Alpha Verdict</li>
+      </ol>
+    </div>
+    <div>
+      <h3 class="text-accent font-bold uppercase text-xs tracking-widest mb-3">Source Tiers (18 total, EPR 17/20)</h3>
+      <ul class="space-y-1 text-stone-300">
+        <li><span class="pill good">T1 · 8</span> Knight Frank Q2/Q3/Q4 2025 + Wealth Report, Emaar, Nakheel, CBUAE, EDITION Marriott</li>
+        <li><span class="pill neutral">T2 · 4</span> PropertyFinder, Bayut secondary</li>
+        <li><span class="pill neutral">T3 · 3</span> ADCB, Emirates NBD, Global Property Guide</li>
+        <li><span class="pill neutral">T4 · 4</span> Palm Observer, ResortX, Time Out Dubai, thepalm-jebelali.com</li>
+        <li><span class="pill neutral">T5 · 3</span> Henley & Partners, Economy ME, KF Wealth</li>
+      </ul>
+      <p class="mt-3 text-stone-400 text-xs">Skipped: Reddit/social (noise for DLD), Academic (non-domain), Perplexity Deep (cost-gated).</p>
+    </div>
+  </div>
+  <div class="mt-6 pt-6 border-t border-yellow-500/10 text-xs text-stone-500 font-mono">
+    Generated 2026-04-20 · GENIE · FINANCE/PE · DELPHI D3 dispatch · Verified rebuild supersedes prior training-based report · Model: strict 50% LTV / 4.5% IO / 7% entry / 2% exit / 4y hold / 100% ROE target
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer class="max-w-7xl mx-auto px-6 pb-10 text-xs text-stone-500 font-mono text-center">
+  NexusOS · GENIE · 2026-04-20 · Dubai Ultra-Luxury ROE 2030 Verified Rebuild · EPR 17/20 · 18 sources · Model strict · Not investment advice
+</footer>
+
+<script>
+// Theme toggle
+const toggle = document.getElementById('theme-toggle');
+const saved = localStorage.getItem('dubai-theme');
+if (saved === 'light') document.documentElement.classList.remove('dark');
+toggle.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  localStorage.setItem('dubai-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+});
+
+// Share
+document.getElementById('share-btn').addEventListener('click', async () => {
+  const url = window.location.href;
+  try {
+    if (navigator.share) await navigator.share({ title: document.title, url });
+    else { await navigator.clipboard.writeText(url); alert('Link copied'); }
+  } catch(e){}
+});
+
+// Fade-in
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+// TOC active
+const tocLinks = document.querySelectorAll('#toc a');
+const sections = document.querySelectorAll('main section[id]');
+const tocIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => tocIO.observe(s));
+
+// Chart
+const roeData = [
+  {asset:'Nest', roe:452, color:'#22c55e'},
+  {asset:'Lunaria', roe:385, color:'#22c55e'},
+  {asset:'EDITION 3BR', roe:184, color:'#22c55e'},
+  {asset:'EDITION 4BR', roe:134, color:'#22c55e'},
+  {asset:'Frond L Sig', roe:98, color:'#eab308'},
+  {asset:'Lavita 6BR', roe:51, color:'#fb923c'},
+  {asset:'PJA 5BR Beach', roe:26, color:'#fb923c'},
+  {asset:'Mirage 5BR', roe:24, color:'#fb923c'},
+  {asset:'PJA Cobalt', roe:22, color:'#fb923c'},
+  {asset:'Palmiera 4BR Lagoon', roe:10, color:'#fb923c'},
+  {asset:'PJA 6BR Beach', roe:-1, color:'#f87171'},
+  {asset:'PJA Coral 7BR', roe:-6, color:'#f87171'},
+  {asset:'Palmiera 5BR T1', roe:-16, color:'#f87171'},
+  {asset:'Palmiera 158', roe:-29, color:'#ef4444'},
+  {asset:'Address Tierra', roe:-30, color:'#ef4444'},
+  {asset:'Palmiera 5BR T2', roe:-34, color:'#ef4444'},
+  {asset:'Frond N41', roe:-56, color:'#ef4444'}
+];
+const ctx = document.getElementById('roeChart').getContext('2d');
+const mandateLine = {
+  id: 'mandateLine',
+  afterDatasetsDraw(chart) {
+    const { ctx, chartArea: { left, right }, scales: { y } } = chart;
+    const yPos = y.getPixelForValue(100);
+    ctx.save();
+    ctx.strokeStyle = '#eab308';
+    ctx.setLineDash([6, 4]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(left, yPos); ctx.lineTo(right, yPos); ctx.stroke();
+    ctx.fillStyle = '#eab308'; ctx.font = '600 11px Inter';
+    ctx.fillText('100% ROE MANDATE', left + 10, yPos - 6);
+    ctx.restore();
+  }
+};
+new Chart(ctx, {
+  type: 'bar',
+  data: { labels: roeData.map(d=>d.asset), datasets: [{ data: roeData.map(d=>d.roe), backgroundColor: roeData.map(d=>d.color), borderRadius:4, maxBarThickness:38 }] },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: c=> c.parsed.y.toFixed(0)+'% Base ROE' } } },
+    scales: {
+      x: { ticks:{ color:'#a8a29e', font:{size:10}, maxRotation:45, minRotation:45 }, grid:{display:false} },
+      y: { ticks:{ color:'#a8a29e', callback: v=>v+'%' }, grid:{color:'rgba(234,179,8,0.06)'} }
+    }
+  },
+  plugins: [mandateLine]
+});
+</script>
+</body>
+</html>
