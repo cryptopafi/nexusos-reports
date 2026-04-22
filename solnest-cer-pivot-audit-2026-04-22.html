@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solnest — CER + Pivot Audit | Delphi D3 | 2026-04-22</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3250;
+    --accent: #4f8ef7;
+    --accent2: #7c5cfc;
+    --green: #22c55e;
+    --red: #ef4444;
+    --amber: #f59e0b;
+    --text: #e2e8f0;
+    --muted: #8892a4;
+    --tag-bg: #1e2a45;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; font-size: 15px; line-height: 1.7; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* HEADER */
+  .header { background: linear-gradient(135deg, #0f1117 0%, #1a1d40 50%, #0f1117 100%); border-bottom: 1px solid var(--border); padding: 40px 48px 32px; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .badge { background: var(--tag-bg); border: 1px solid var(--border); color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
+  .badge.green { background: #0d2a1a; border-color: #22c55e44; color: var(--green); }
+  .badge.amber { background: #2a1f0d; border-color: #f59e0b44; color: var(--amber); }
+  .badge.blue { background: #0d1e3a; border-color: #4f8ef744; color: var(--accent); }
+  .badge.red { background: #2a0d0d; border-color: #ef444444; color: var(--red); }
+  .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .header h1 span { color: var(--accent); }
+  .header-sub { color: var(--muted); font-size: 14px; }
+  .epr-bar { margin-top: 24px; display: flex; align-items: center; gap: 16px; }
+  .epr-label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  .epr-score { font-size: 24px; font-weight: 700; color: var(--green); }
+  .epr-track { flex: 1; max-width: 200px; height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+  .epr-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 3px; width: 85%; }
+
+  /* NAV */
+  .nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; gap: 0; overflow-x: auto; }
+  .nav a { color: var(--muted); font-size: 13px; font-weight: 500; padding: 14px 18px; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+  .nav a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--accent); }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 48px; }
+  @media (max-width: 768px) { .container { padding: 24px 20px; } .header { padding: 28px 20px; } .nav { padding: 0 20px; } }
+
+  /* SECTIONS */
+  .section { margin-bottom: 56px; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .section-icon { font-size: 20px; }
+  .section-title { font-size: 20px; font-weight: 700; }
+  .section-sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+  /* CARDS */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+  .card-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+  .card.green { border-left: 3px solid var(--green); }
+  .card.red { border-left: 3px solid var(--red); }
+  .card.amber { border-left: 3px solid var(--amber); }
+  .card.blue { border-left: 3px solid var(--accent); }
+  .card.purple { border-left: 3px solid var(--accent2); }
+
+  /* EXEC SUMMARY */
+  .exec-box { background: linear-gradient(135deg, #0d1e3a, #1a1d40); border: 1px solid #4f8ef733; border-radius: 16px; padding: 32px; margin-bottom: 40px; }
+  .exec-box h2 { font-size: 16px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .exec-verdict { font-size: 22px; font-weight: 700; color: var(--amber); margin-bottom: 16px; }
+  .exec-points { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .exec-points li { padding-left: 20px; position: relative; color: var(--text); font-size: 14px; }
+  .exec-points li:before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--surface2); color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--surface2); }
+
+  /* STAT GRID */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .stat-number { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+  /* VERDICT BOX */
+  .verdict-box { background: var(--surface2); border: 2px solid var(--amber); border-radius: 12px; padding: 28px; margin-bottom: 32px; }
+  .verdict-label { font-size: 11px; font-weight: 700; color: var(--amber); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .verdict-title { font-size: 24px; font-weight: 800; color: var(--amber); }
+
+  /* EXPERIMENT CARDS */
+  .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .exp-grid { grid-template-columns: 1fr; } }
+  .exp-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .exp-number { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .exp-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .exp-hypo { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .exp-criteria { font-size: 12px; color: var(--green); }
+
+  /* ANGEL SCRIPT */
+  .script-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; font-size: 14px; line-height: 1.9; }
+  .script-label { font-size: 11px; font-weight: 700; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  blockquote { border-left: 3px solid var(--accent2); padding-left: 16px; margin: 16px 0; color: var(--text); font-style: italic; }
+
+  /* MATRIX */
+  .matrix-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  @media (max-width: 900px) { .matrix-grid { grid-template-columns: 1fr; } }
+  .matrix-col { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .matrix-col-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .matrix-col.installer .matrix-col-title { color: #4f8ef7; }
+  .matrix-col.cer .matrix-col-title { color: #22c55e; }
+  .matrix-col.ci .matrix-col-title { color: #f59e0b; }
+  .matrix-item { font-size: 12px; color: var(--muted); margin-bottom: 8px; padding-left: 12px; position: relative; }
+  .matrix-item:before { content: '•'; position: absolute; left: 0; color: var(--muted); }
+  .matrix-score { font-size: 20px; font-weight: 700; margin-top: 12px; }
+
+  /* PILL */
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .pill-green { background: #0d2a1a; color: var(--green); }
+  .pill-red { background: #2a0d0d; color: var(--red); }
+  .pill-amber { background: #2a1f0d; color: var(--amber); }
+  .pill-blue { background: #0d1e3a; color: var(--accent); }
+
+  /* SOURCE COVERAGE */
+  .coverage-table td:nth-child(2) { text-align: center; }
+  .covered { color: var(--green); font-weight: 600; }
+  .skipped { color: var(--muted); }
+  .unavailable { color: var(--amber); }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  /* FOOTNOTE */
+  .footnote { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* SHARE BUTTON */
+  .share-btn { position: fixed; bottom: 24px; right: 24px; background: var(--accent); color: white; border: none; border-radius: 50px; padding: 10px 20px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 20px rgba(79,142,247,0.4); }
+
+  /* THEME TOGGLE */
+  .theme-toggle { position: fixed; top: 20px; right: 24px; background: var(--surface); border: 1px solid var(--border); color: var(--muted); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+
+  /* RISK METER */
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { width: 200px; font-size: 13px; }
+  .risk-track { flex: 1; height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 4px; }
+  .risk-fill.high { background: var(--red); }
+  .risk-fill.med { background: var(--amber); }
+  .risk-fill.low { background: var(--green); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-meta">
+    <span class="badge blue">Delphi D3</span>
+    <span class="badge">2026-04-22</span>
+    <span class="badge green">EPR 17/20</span>
+    <span class="badge amber">Part A + Part B</span>
+    <span class="badge">Solnest.ai</span>
+  </div>
+  <h1>CER Platform + B2B Installer SaaS<br><span>Deep-Dive & Adversarial Pivot Audit</span></h1>
+  <div class="header-sub">Italy-specific CER legislative mechanics, competitive landscape, installer SaaS market, and full stress-test of the pivot recommendation from prior D3 (Cortex 1fddca34).</div>
+  <div class="epr-bar">
+    <span class="epr-label">EPR Score</span>
+    <span class="epr-score">17/20</span>
+    <div class="epr-track"><div class="epr-fill"></div></div>
+    <span class="badge green">PASS</span>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="#exec">Executive Summary</a>
+  <a href="#cer">CER Framework</a>
+  <a href="#competitive">Competitive Map</a>
+  <a href="#installer">Installer SaaS</a>
+  <a href="#model">Revenue Model</a>
+  <a href="#redteam">Red Teams</a>
+  <a href="#verdict">Verdict</a>
+  <a href="#experiments">Experiments</a>
+  <a href="#angel">Angel Script</a>
+  <a href="#coverage">Coverage</a>
+</nav>
+
+<div class="container">
+
+<!-- EXECUTIVE SUMMARY -->
+<div id="exec" class="exec-box">
+  <h2>Executive Summary</h2>
+  <div class="exec-verdict">PROCEED — WITH MODIFICATIONS: CER Platform (V1), Installer SaaS (V2)</div>
+  <ul class="exec-points">
+    <li>The pivot direction is validated. Consumer residential is not Solnest's to win: Otovo is real, growing (69,000 EU customers post-Soly acquisition), and specifically prioritizing Italy for 2026.</li>
+    <li>CER platform is the strongest V1 bet: 212 active CERs + 2,000+ in pipeline, zero dominant digital platform, GSE filing is manual, €5.7B government backstop, 20-year tariff certainty.</li>
+    <li>Installer SaaS is a valid V2: real gap (no Italian-localized CRM/permit/CER-filing tool), but software-readiness of the Italian installer base is unverified — a pre-MVP experiment must validate before committing.</li>
+    <li>C&I marketplace claim has a data problem: 2025 C&I actual data shows -21% YoY contraction, not +24% growth. Do not build a strategy on this number until verified. C&I rebound is projected for 2026 but unconfirmed for Q1.</li>
+    <li>All three sub-bets at once is the main risk. V1 should be: CER simulation + GSE filing assistant, targeted at municipalities and installer/developer firms. Scope to CER first, then layer installer SaaS once CER customers become natural installer channel.</li>
+    <li>Luigi's installer network is a critical cold-start asset. The pivot does NOT break that — it deepens it. CER communities need installers. Installers need CER clients. This is symbiotic, not adversarial.</li>
+    <li>Angel conversation can frame pivot as "Italy-regulation-led product refinement" — not a strategy reversal. The €120/MWh tariff creates a digital service opportunity that did not exist when the original pitch was made.</li>
+  </ul>
+</div>
+
+<!-- CER FRAMEWORK -->
+<div id="cer" class="section">
+  <div class="section-header">
+    <span class="section-icon">⚡</span>
+    <div>
+      <div class="section-title">1. CER Legislative Framework & Market Status</div>
+      <div class="section-sub">D.M. 414/2023 mechanics, GSE numbers, regulatory roadmap</div>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="stat-number">212</div>
+      <div class="stat-label">Active CERs (Mar 2025)</div>
+      <div class="stat-sub">18 MW installed capacity</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">2,000+</div>
+      <div class="stat-label">CER Configs in Pipeline</div>
+      <div class="stat-sub">18,000+ users in submitted configs</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">€5.7B</div>
+      <div class="stat-label">Total CER Funding Pool</div>
+      <div class="stat-sub">€2.2B via PNRR grants</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">20 yrs</div>
+      <div class="stat-label">GSE Tariff Duration</div>
+      <div class="stat-sub">"Tariffa premio" on shared energy</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">€120/MWh</div>
+      <div class="stat-label">Indicative Premium Tariff</div>
+      <div class="stat-sub">Working figure — primary text unconfirmed</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">Jun 2026</div>
+      <div class="stat-label">PNRR Construction Deadline</div>
+      <div class="stat-sub">+24mo for ops start</div>
+    </div>
+  </div>
+
+  <div class="card blue">
+    <div class="card-title">Tariff Mechanics</div>
+    <p>The CER incentive system has two stacked components under D.M. 414/2023:</p>
+    <br>
+    <p><strong>1. Tariffa Premio (Premium Tariff)</strong> — paid by GSE for 20 years on every kWh produced and virtually self-consumed within the CER configuration. The working rate is approximately €120/MWh. This is layered on top of any market revenue from the energy itself.</p>
+    <br>
+    <p><strong>2. Contributo di Valorizzazione</strong> — an additional valorization contribution determined by ARERA (the energy regulator) based on zone pricing. This effectively means the actual total incentive varies by geography (northern Italy with lower zonal prices gets a higher valorization component as compensation).</p>
+    <br>
+    <p><strong>40% PNRR Capital Grant</strong> — available for communities in municipalities under 50,000 inhabitants (threshold expanded in 2025 from 5,000). This reduces capex by 40% upfront.</p>
+    <br>
+    <p><strong>Eligibility rules:</strong> Max 1 MW per plant; CER must be legally constituted before plant commissioning; only SMEs permitted as corporate members (not large enterprises); all members must be under the same primary substation (cabina primaria). Virtual energy sharing through GSE.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">GSE Portal Workflow — Where Platforms Plug In</div>
+    <table>
+      <thead><tr><th>Stage</th><th>Actor</th><th>Digital Gap?</th></tr></thead>
+      <tbody>
+        <tr><td>1. CER legal constitution (statute, membership)</td><td>Notary + commercialista</td><td>Partial — template automation possible</td></tr>
+        <tr><td>2. Plant registration with GSE portal</td><td>Installer/Developer</td><td><strong>YES — manual form-filling, no API</strong></td></tr>
+        <tr><td>3. Configuration submission (members, plants, cabina)</td><td>CER administrator</td><td><strong>YES — complex GSE portal, error-prone</strong></td></tr>
+        <tr><td>4. Energy metering data collection (POD management)</td><td>DSO + GSE + CER</td><td>YES — data normalization pain point</td></tr>
+        <tr><td>5. Monthly energy sharing calculation</td><td>CER administrator</td><td><strong>YES — spreadsheet/manual today</strong></td></tr>
+        <tr><td>6. Tariff incentive reconciliation and distribution to members</td><td>CER administrator</td><td><strong>YES — major pain, billing complexity</strong></td></tr>
+        <tr><td>7. Annual reporting to GSE</td><td>CER administrator</td><td>YES — no standard digital tool</td></tr>
+        <tr><td>8. New member onboarding / POD addition</td><td>CER + member</td><td>YES — back to step 3 iteratively</td></tr>
+      </tbody>
+    </table>
+    <p class="footnote">Steps 3, 5, 6 are the highest-friction manual processes. A SaaS platform automating these three would address 80% of CER administrator pain.</p>
+  </div>
+
+  <div class="card amber">
+    <div class="card-title">2026 Regulatory Roadmap — Stability Assessment</div>
+    <p><strong>Stable tailwinds:</strong> D.M. 414/2023 is established law; DM 127/2025 was a refinement, not a reversal. €5.7B funding pool is largely undeploy as of March 2025 (212 active CERs out of thousands in pipeline). PNRR deadline pressure (June 2026) creates urgency that accelerates CER formation in 2025-2026.</p>
+    <br>
+    <p><strong>Risks:</strong> (1) PNRR disbursement timelines are subject to Italian bureaucratic delays — the June 2026 construction deadline is tight; many communities may miss it. (2) The 40% grant component is PNRR-linked, meaning EU-Italy political tensions could freeze disbursal. (3) Italy has a history of retroactive incentive modifications (see: Superbonus stepdown). (4) The Scambio sul Posto closure (Sept 2025) already showed willingness to terminate incentive regimes.</p>
+    <br>
+    <p><strong>EU RED III cross-border path:</strong> Transposition deadline was November 20, 2025. Italy's existing decrees align domestically. Cross-border CER participation is enabled post-transposition but implementation clarity is still pending. Post-2026 opportunity for expansion to Austria, Slovenia, France.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- COMPETITIVE LANDSCAPE -->
+<div id="competitive" class="section">
+  <div class="section-header">
+    <span class="section-icon">🗺️</span>
+    <div>
+      <div class="section-title">2. CER Competitive Landscape — Italy 2026</div>
+      <div class="section-sub">Who actually serves CER today, gap analysis, incumbents</div>
+    </div>
+  </div>
+
+  <div class="card green">
+    <div class="card-title">Verdict: "No Dominant Digital Platform" — CONFIRMED, with nuance</div>
+    <p>The claim from the prior D3 pivot recommendation is accurate: there is no SaaS company serving CER community management at scale in Italy as of early 2026. However, the space is not completely empty — two players deserve attention:</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Type</th>
+        <th>Product</th>
+        <th>Scale / Status</th>
+        <th>Threat Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Regalgrid</strong></td>
+        <td>Tech Startup (2012, Treviso)</td>
+        <td>SNOCU hardware gateways + digital energy management platform + CER module. Investor: Archeide.</td>
+        <td>9 Veneto municipalities via ANCI Veneto partnership. Bootstrapped-ish. 12+ years. No public revenue/scale data.</td>
+        <td><span class="pill pill-amber">MEDIUM</span></td>
+      </tr>
+      <tr>
+        <td><strong>Energy City Hall (ECH)</strong></td>
+        <td>Platform (Concernet)</td>
+        <td>AI-driven CER aggregation platform. Cross-border Italy-France-Monaco CER pending GSE approval.</td>
+        <td>Pilot stage. Private funding. 2026 registration target. No confirmed revenue.</td>
+        <td><span class="pill pill-amber">LOW-MEDIUM</span></td>
+      </tr>
+      <tr>
+        <td><strong>ENEA LTE</strong></td>
+        <td>Government Research</td>
+        <td>Blockchain-based token economy platform for one CER (RinnovAnguillara). TRL 6.</td>
+        <td>Single pilot, government-funded, not commercially scalable.</td>
+        <td><span class="pill pill-green">NONE</span></td>
+      </tr>
+      <tr>
+        <td><strong>Enel X / Edison / Sorgenia</strong></td>
+        <td>Incumbent Utilities</td>
+        <td>Energy supply and advisory for CERs — NO documented software product for CER management.</td>
+        <td>Large distribution networks. Serve CER energy supply, not community management software.</td>
+        <td><span class="pill pill-green">LOW (supply, not SaaS)</span></td>
+      </tr>
+      <tr>
+        <td><strong>GSE/GME National PPA Platform</strong></td>
+        <td>Government</td>
+        <td>National energy sharing infrastructure. Launched 2025.</td>
+        <td>Infrastructure layer only. Not a CER management UI.</td>
+        <td><span class="pill pill-green">NONE (infrastructure, not product)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Solnest (potential)</strong></td>
+        <td>Pre-MVP</td>
+        <td>CER simulation + GSE filing assistant + billing reconciliation SaaS</td>
+        <td>0</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+
+  <div class="card blue">
+    <div class="card-title">Gap Analysis — Unoccupied Niches in CER</div>
+    <table>
+      <thead><tr><th>Niche</th><th>Pain Level</th><th>Who serves it today</th><th>Platform opportunity</th></tr></thead>
+      <tbody>
+        <tr><td>CER formation simulation (pre-decision)</td><td>High</td><td>Spreadsheets, consultants</td><td>Lead-gen tool + conversion funnel</td></tr>
+        <tr><td>GSE registration filing automation</td><td>Very High</td><td>Manual (consultants, trial-and-error)</td><td>Guided wizard + error checking</td></tr>
+        <tr><td>Monthly energy sharing calculation</td><td>Very High</td><td>Manual spreadsheets</td><td>Automated billing engine</td></tr>
+        <tr><td>Incentive reconciliation + member billing</td><td>Very High</td><td>Excel/manual</td><td>SaaS billing + member portal</td></tr>
+        <tr><td>POD management + new member onboarding</td><td>High</td><td>Back-and-forth with DSO</td><td>Member self-service portal</td></tr>
+        <tr><td>GSE annual reporting</td><td>Medium</td><td>Consultant/manual</td><td>Report export automation</td></tr>
+        <tr><td>Cross-CER analytics for developers/investors</td><td>Medium</td><td>None</td><td>Portfolio dashboard</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- INSTALLER SAAS -->
+<div id="installer" class="section">
+  <div class="section-header">
+    <span class="section-icon">🔧</span>
+    <div>
+      <div class="section-title">3. B2B Installer SaaS — Italy + EU Comparables</div>
+      <div class="section-sub">Incumbents, pricing, pain points, TAM reality</div>
+    </div>
+  </div>
+
+  <div class="card amber">
+    <div class="card-title">Critical Knowledge Gap: Italian Installer Software Adoption is UNKNOWN</div>
+    <p>No public data exists on what percentage of Italian solar installers use any software (vs WhatsApp/paper/Excel). Italy has a highly fragmented installer base — 2M+ installations across thousands of small firms. The TAM claim of "2M fragmented installers" as potential software buyers is misleading: most are sole traders or micro-firms. Actual software-ready buyers are likely a small fraction. <strong>This must be validated pre-MVP before committing to installer SaaS as primary bet.</strong></p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Origin</th>
+        <th>Functionality</th>
+        <th>Italy Presence</th>
+        <th>Est. Pricing</th>
+        <th>Gap it leaves</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Aurora Solar</strong></td>
+        <td>US (SF)</td>
+        <td>Design + sales + delivery. AI roof analysis. 4.7/5 rating.</td>
+        <td>Attending Intersolar EU 2025. No Italy-specific team confirmed.</td>
+        <td>~$2,000-5,000/yr ACV (US market reference)</td>
+        <td>No Italian permitting, no CER filing, no Italian-language workflow</td>
+      </tr>
+      <tr>
+        <td><strong>PV*SOL Premium</strong></td>
+        <td>Germany</td>
+        <td>3D design + shading simulation. Engineering tool.</td>
+        <td>Available Italy, engineering firms primary buyer</td>
+        <td>€79 entry / ~€500-1,200 full license</td>
+        <td>Engineering only; no CRM, no quoting, no permit workflow</td>
+      </tr>
+      <tr>
+        <td><strong>Eturnity</strong></td>
+        <td>Switzerland</td>
+        <td>All-in-one: lead capture, quoting, planning, installation tracking. 10-min customer quote.</td>
+        <td>Used by European installers (primarily DACH). Italy deployment unknown.</td>
+        <td>Not disclosed publicly</td>
+        <td>No Italian permit automation, no CER integration</td>
+      </tr>
+      <tr>
+        <td><strong>OpenSolar</strong></td>
+        <td>Australia</td>
+        <td>Free design + sales. Paid adds.</td>
+        <td>Global (no Italy-specific data)</td>
+        <td>Free base / paid enterprise</td>
+        <td>No Italian localization confirmed</td>
+      </tr>
+      <tr>
+        <td><strong>Solargraf</strong></td>
+        <td>Canada</td>
+        <td>Design + proposal generation</td>
+        <td>Not mentioned in Italian market data</td>
+        <td>~$100-300/mo (global reference)</td>
+        <td>No Italian language or regulatory integration</td>
+      </tr>
+      <tr>
+        <td><strong>OpusFlow</strong></td>
+        <td>Netherlands</td>
+        <td>All-in-one ops: solar + HVAC field service management</td>
+        <td>No Italy focus</td>
+        <td>Not disclosed</td>
+        <td>Not Italy-specific; no CER module</td>
+      </tr>
+      <tr>
+        <td><strong>Pylon</strong></td>
+        <td>Unknown</td>
+        <td>Installer operations</td>
+        <td>No Italy/Europe data found</td>
+        <td>Unknown</td>
+        <td>Unknown</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+
+  <div class="card blue">
+    <div class="card-title">The Italy-Specific Gap (Real)</div>
+    <p>No tool in the current market offers: <strong>(1) Italian-language interface + Italian regulatory terminology, (2) Permitting workflow for Italian communes (SUAP/SCIA/Title I authorization), (3) CER filing integration with GSE portal, (4) Ritiro Dedicato billing automation, (5) Superbonus/tax deduction documentation generation.</strong></p>
+    <br>
+    <p>This is a genuine product gap. The question is whether enough Italian installers will pay for it (vs using international generalist tools at low cost or staying on WhatsApp).</p>
+    <br>
+    <p><strong>Realistic TAM estimate:</strong> Italy has ~12,000-15,000 registered PV installation companies (GSE installer registry, rough estimate). If 20-30% are software-ready (mid-size, 10+ projects/year), that's 2,400-4,500 addressable installers. At €150-300/mo, that's €4.3-16.2M ARR at full penetration — a real but not huge SaaS market for Italy alone. European rollout (DE, ES, FR) expands this 5-10x.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- BUSINESS MODEL SIZING -->
+<div id="model" class="section">
+  <div class="section-header">
+    <span class="section-icon">💶</span>
+    <div>
+      <div class="section-title">4. Business Model Sizing</div>
+      <div class="section-sub">ACV ranges, CER monetization, 24-month trajectory</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Segment</th><th>Monetization Model</th><th>Realistic ACV/Unit</th><th>M12 Target Units</th><th>M12 ARR</th><th>M24 ARR</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CER Platform — Core</strong></td>
+        <td>SaaS per CER community (annual contract, community administrator)</td>
+        <td>€2,400-4,800/yr per CER</td>
+        <td>30-50 communities</td>
+        <td>€72K-240K</td>
+        <td>€240K-600K</td>
+      </tr>
+      <tr>
+        <td><strong>CER Formation Package</strong></td>
+        <td>One-time setup fee (simulation + GSE filing)</td>
+        <td>€500-1,500 per CER formed</td>
+        <td>50-100 CERs</td>
+        <td>€50K-100K</td>
+        <td>€100K-250K</td>
+      </tr>
+      <tr>
+        <td><strong>Installer SaaS (V2)</strong></td>
+        <td>Per-seat or per-project monthly SaaS</td>
+        <td>€150-300/mo per installer (€1,800-3,600/yr)</td>
+        <td>50-100 installers (M18+)</td>
+        <td>€0 (V2)</td>
+        <td>€90K-360K</td>
+      </tr>
+      <tr>
+        <td><strong>CER % Tariff Transaction Fee</strong></td>
+        <td>0.5-1% of incentive collected (managed service option)</td>
+        <td>Avg CER tariff income ~€10K-50K/yr → €50-500/yr fee</td>
+        <td>Viable at scale only (M24+)</td>
+        <td>Negligible</td>
+        <td>€10K-50K</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+
+  <div class="card green">
+    <div class="card-title">Does €625,920 Y1 burn + €300K Angel fit CER platform ramp?</div>
+    <p><strong>Partially, with caveats.</strong> The Y1 burn model was originally sized for a consumer marketplace. A CER platform has lower marketing costs (B2B, consultative sales, not performance marketing) but similar tech build costs (GSE integration adds complexity).</p>
+    <br>
+    <p><strong>What changes for CER pivot:</strong> Sales & Market Entry (€56K BDM) may be undersized — CER sales cycles are 3-6 months; Marketing (€35K) is oversized for B2B early stage. Tech build (€215K, ai-anima) may need scope revision: CER filing + billing engine + member portal is more complex than a consumer quote tool.</p>
+    <br>
+    <p><strong>M24 ARR scenarios:</strong><br>
+    Conservative (30 CERs + formation fees): €72K + €50K = €122K ARR by M12; ~€400K by M24 (CER only)<br>
+    Base (50 CERs + 50 installers by M18): ~€600K ARR by M24<br>
+    Optimistic (with installer SaaS traction): ~€900K-1.1M ARR by M24</p>
+    <br>
+    <p><strong>€300K Angel + €75K upfront barely covers M1-M6 burn at current model (€625K Y1 = ~€52K/mo average).</strong> The model is tight. V1 must show ARR signal by M6 to support a Series Seed or additional Angel tranche. The CER path has shorter sales cycles to first revenue than a consumer marketplace (first paying CER admins possible within M3-4).</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- RED TEAMS -->
+<div id="redteam" class="section">
+  <div class="section-header">
+    <span class="section-icon">⚔️</span>
+    <div>
+      <div class="section-title">Part B — Adversarial Pivot Audit</div>
+      <div class="section-sub">Red Team 1: Pivot is wrong | Red Team 2: Pivot is right but mis-scoped</div>
+    </div>
+  </div>
+
+  <div class="card red">
+    <div class="card-title">RED TEAM 1 — "Pivot is Wrong"</div>
+
+    <p><strong>Attack 1: Otovo-owns-consumer is overstated</strong></p>
+    <p>Otovo Italy has ~4,000-5,000 installations on record (from their own marketing). Italy added 213,200 new systems in 2025. Even if Otovo's Italian pipeline was 2x-3x larger, they hold roughly 2-5% of residential market share. The consumer residential space is genuinely fragmented. The "Otovo owns it" framing is inaccurate — they are <em>the most organized player</em>, not a monopolist. However, they are growing (post-Soly: 69,000 EU customers, Italy a priority market), they are capital-efficient, and their AI roof-analysis creates a barrier. A consumer marketplace competing with Otovo on the same model is a hard fight. The instinct to pivot is correct <em>not because Otovo is dominant but because the consumer segment has a well-funded, experienced incumbent with a head start.</em></p>
+    <br>
+    <p><strong>Attack 2: "No incumbent in C&I marketplace" does NOT withstand scrutiny</strong></p>
+    <p>The C&I segment in Italy is actually dominated by large EPC firms (Enel Green Power, EF Solare Italia, Sonnedix hold ~34.6% share) who approach C&I clients directly, not through a digital marketplace. There is genuinely no digital C&I marketplace — but this is because large C&I deals (100kW-1MW) are sold enterprise-to-enterprise through tenders and direct relationships, not through a platform. The assumption that a marketplace model disrupts this is questionable. C&I solar is not like Airbnb for rooms — it's complex, custom-engineered, long sales cycles. Furthermore, 2025 C&I data shows -21% YoY contraction (not +24% growth), weakening the urgency argument.</p>
+    <br>
+    <p><strong>Attack 3: CER is a regulated utility function that will be absorbed by incumbents</strong></p>
+    <p>This is a real risk with historical precedent. Italy's net metering (Scambio sul Posto) was a platform opportunity that never materialized commercially because GSE managed it directly. Energy utilities (Enel X, Edison, A2A) have the balance sheet to build or buy a CER management tool at low marginal cost. Once CER reaches significant scale (1,000+ communities), Enel X could launch "Enel X CER Manager" for free, destroying the SaaS value. <em>The window is 2024-2026.</em> If Solnest cannot establish 200+ paying communities before incumbents move, the moat disappears.</p>
+    <br>
+    <p><strong>Attack 4: Pivot narrows TAM</strong></p>
+    <p>Consumer solar marketplace: multi-billion EUR market. CER platform: 212 active communities growing to ~2,000+ in 3 years. At €3,600/yr per community, 2,000 communities = €7.2M ARR total addressable. That's a feature, not a company. The CER platform alone is NOT a VC-scale business without installer SaaS (€50M+ TAM) or European expansion (RED III cross-border). The single-market CER-only thesis has a TAM problem for later-stage investors.</p>
+    <br>
+    <p><strong>Attack 5: Founder fit — B2B SaaS DNA question</strong></p>
+    <p>No public information on Pafi/team's prior B2B SaaS experience. Luigi's installer network is operationally focused (MGC does installations). Building CER filing automation and billing engine requires regulatory-API product DNA that may not be in the current team. ai-anima can build the product, but product-market fit discovery for B2B SaaS requires different sales motions than consumer marketplaces. Risk: the team optimizes for the wrong metrics (signups vs ACV).</p>
+    <br>
+    <p><strong>Attack 6: Luigi conflict of interest on pivot</strong></p>
+    <p>Luigi's MGC is an installer business. An installer SaaS that Solnest builds would potentially be used by Luigi's competitors. Luigi may subtly discourage installer SaaS features that disintermediate MGC's competitive advantage. Additionally, if the original pitch to Luigi was a consumer marketplace, a pivot to B2B SaaS changes the revenue model, the valuation logic, and the team's role — potentially undermining his confidence in Pafi's strategic clarity before the SAFE closes.</p>
+  </div>
+
+  <div class="card purple">
+    <div class="card-title">RED TEAM 2 — "Pivot is Right but Mis-Scoped"</div>
+
+    <p><strong>Three sub-bets at once is too broad for pre-MVP</strong></p>
+    <p>Installer SaaS, CER platform, and C&I marketplace are three different products targeting three different buyers (installer SMEs, CER administrators, C&I corporate energy managers). Building all three before a single euro of ARR is a classic pre-MVP trap: the team spreads across three ICPs, zero gets to product-market fit. The burn rate (€52K/mo) leaves only 5-6 months before first revenue is needed or Angel runs dry.</p>
+    <br>
+    <p><strong>Which ONE has highest probability of €1M ARR by Month 24?</strong></p>
+
+    <div class="matrix-grid" style="margin: 16px 0;">
+      <div class="matrix-col installer">
+        <div class="matrix-col-title">Installer SaaS</div>
+        <div class="matrix-item">Known buyer (Luigi's network)</div>
+        <div class="matrix-item">Clear pain (permit delays, quoting)</div>
+        <div class="matrix-item">Precedent (Aurora, Eturnity)</div>
+        <div class="matrix-item">Unknown adoption rate in Italy</div>
+        <div class="matrix-item">Not Italy-unique (global competitors)</div>
+        <div class="matrix-item">Requires many small deals</div>
+        <div class="matrix-score" style="color: #4f8ef7">Probability: 35%</div>
+      </div>
+      <div class="matrix-col cer">
+        <div class="matrix-col-title">CER Platform</div>
+        <div class="matrix-item">Italy-unique regulatory product</div>
+        <div class="matrix-item">No dominant incumbent</div>
+        <div class="matrix-item">2,000+ pipeline CERs = prospects</div>
+        <div class="matrix-item">GSE filing pain = urgent need</div>
+        <div class="matrix-item">Luigi's network connects to CER</div>
+        <div class="matrix-item">TAM limited alone; EU RED III expands</div>
+        <div class="matrix-score" style="color: #22c55e">Probability: 55%</div>
+      </div>
+      <div class="matrix-col ci">
+        <div class="matrix-col-title">C&I Marketplace</div>
+        <div class="matrix-item">2025 actual: -21% YoY decline</div>
+        <div class="matrix-item">+24% Q1 2026 UNVERIFIED</div>
+        <div class="matrix-item">Enterprise sales, long cycles</div>
+        <div class="matrix-item">EPC incumbents dominate directly</div>
+        <div class="matrix-item">No marketplace disruption evidence</div>
+        <div class="matrix-item">Weakest case for pre-MVP</div>
+        <div class="matrix-score" style="color: #f59e0b">Probability: 10%</div>
+      </div>
+    </div>
+
+    <p><strong>V1 → V2 Sequence recommendation:</strong></p>
+    <p><strong>V1 (M0-M12): CER Platform</strong> — CER simulation + GSE filing assistant + monthly billing engine. Target: CER project developers, installer/developer combos (like Luigi's MGC), municipal advisors. First 30 paying CERs by M9. Revenue possible M4 (one-time formation fees).</p>
+    <br>
+    <p><strong>V1.5 (M6-M12): Installer CER Module</strong> — Extend CER platform with an installer-facing view: project pipeline, CER filing for their clients, permit workflow. Uses same codebase. Luigi's network = first 10 installers. Natural upsell path.</p>
+    <br>
+    <p><strong>V2 (M12-M24): Full Installer SaaS</strong> — Expand installer module into standalone SaaS with quoting, CRM, BOM. By M12, you know which installer features have pull. Don't build them all at M0.</p>
+    <br>
+    <p><strong>V3 (M24+): EU Expansion via RED III</strong> — CER regulations now in 27 member states. Italy product = template. Spain, France, Germany energy community frameworks are nascent. Export the platform, localize for each regulatory jurisdiction.</p>
+
+    <br>
+    <p><strong>Evidence pre-MVP can validate before burning capital:</strong></p>
+    <p>5 specific falsifiable experiments exist (see Experiments section). All can be executed in 60-90 days for under €5,000 in opportunity cost. None require the full product to be built. The Angel capital should not be deployed to build until at least 3 of 5 experiments return positive signal.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- VERDICT -->
+<div id="verdict" class="section">
+  <div class="section-header">
+    <span class="section-icon">⚖️</span>
+    <div>
+      <div class="section-title">Synthesis — Final Verdict</div>
+    </div>
+  </div>
+
+  <div class="verdict-box">
+    <div class="verdict-label">Final Verdict</div>
+    <div class="verdict-title">PROCEED — WITH MODIFICATIONS</div>
+  </div>
+
+  <div class="card green">
+    <div class="card-title">What to proceed with</div>
+    <ul style="padding-left: 20px; color: var(--text); line-height: 2;">
+      <li><strong>V1 focus: CER Platform (NOT all three simultaneously)</strong> — CER simulation, GSE filing assistant, monthly billing engine, member portal.</li>
+      <li><strong>Target ICP: CER project developers and installer-developers</strong> (firms like Luigi's MGC that both install solar AND form CER communities for their clients). This buyer is real, has budget, and is sitting in Luigi's network today.</li>
+      <li><strong>V1.5 natural extension: Installer CER module</strong> — same product, installer-facing view. Don't build a separate installer SaaS from scratch.</li>
+      <li><strong>Drop C&I marketplace entirely until data validates</strong> — the "+24% Q1 2026" figure is unverified, 2025 was -21%, and the buyer is enterprise-to-enterprise, not platform-mediated. De-prioritize.</li>
+      <li><strong>Keep Luigi's network as distribution, not product direction</strong> — installer SaaS features that specifically benefit MGC over competitors should be deferred or architected to serve all installers equally.</li>
+    </ul>
+  </div>
+
+  <div class="card red">
+    <div class="card-title">What to modify</div>
+    <ul style="padding-left: 20px; color: var(--text); line-height: 2;">
+      <li><strong>Scope the tech build to CER V1 only</strong> — the current ai-anima €185K SOW was scoped for a consumer marketplace. A CER platform has different requirements. Get a revised SOW before the Angel closes.</li>
+      <li><strong>Add a regulatory risk hedge</strong> — if CER incentive is modified post-2027, the billing engine becomes the moat (not the tariff). Design the product as a community management tool that works regardless of incentive regime.</li>
+      <li><strong>Validate installer software adoption BEFORE committing to installer SaaS</strong> — 30 cold calls to Italian installers (outside Luigi's network) in the next 30 days. If fewer than 30% are using any software, installer SaaS is a V3+ bet, not V2.</li>
+      <li><strong>Resolve Luigi conflict-of-interest formally</strong> — add language to the shareholders agreement or SAFE side letter that Solnest's installer SaaS is designed for market-wide use, and MGC does not receive preferential treatment or veto over competitive features.</li>
+    </ul>
+  </div>
+
+  <div class="card blue">
+    <div class="card-title">Risk Meter — Post-Pivot</div>
+    <div class="risk-row"><span class="risk-label">CER regulatory reversal</span><div class="risk-track"><div class="risk-fill med" style="width: 45%"></div></div><span class="pill pill-amber" style="font-size:11px">MEDIUM</span></div>
+    <div class="risk-row"><span class="risk-label">Incumbent absorption (Enel X)</span><div class="risk-track"><div class="risk-fill med" style="width: 50%"></div></div><span class="pill pill-amber" style="font-size:11px">MEDIUM</span></div>
+    <div class="risk-row"><span class="risk-label">C&I market doesn't materialize</span><div class="risk-track"><div class="risk-fill high" style="width: 70%"></div></div><span class="pill pill-red" style="font-size:11px">HIGH if included</span></div>
+    <div class="risk-row"><span class="risk-label">Installer adoption below threshold</span><div class="risk-track"><div class="risk-fill med" style="width: 55%"></div></div><span class="pill pill-amber" style="font-size:11px">MEDIUM</span></div>
+    <div class="risk-row"><span class="risk-label">TAM too small (CER only)</span><div class="risk-track"><div class="risk-fill med" style="width: 40%"></div></div><span class="pill pill-amber" style="font-size:11px">MEDIUM (EU RED III mitigates)</span></div>
+    <div class="risk-row"><span class="risk-label">Luigi conflict of interest</span><div class="risk-track"><div class="risk-fill med" style="width: 45%"></div></div><span class="pill pill-amber" style="font-size:11px">MEDIUM (manageable)</span></div>
+    <div class="risk-row"><span class="risk-label">Pre-MVP burn vs first ARR gap</span><div class="risk-track"><div class="risk-fill high" style="width: 65%"></div></div><span class="pill pill-red" style="font-size:11px">HIGH (tight)</span></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- EXPERIMENTS -->
+<div id="experiments" class="section">
+  <div class="section-header">
+    <span class="section-icon">🧪</span>
+    <div>
+      <div class="section-title">5. Five Falsifiable Pre-MVP Experiments</div>
+      <div class="section-sub">Validate before burning Angel capital. All executable in 60-90 days, under €5,000 combined cost.</div>
+    </div>
+  </div>
+
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-number">Experiment 01</div>
+      <div class="exp-title">CER Advisor Willingness-to-Pay</div>
+      <div class="exp-hypo">Hypothesis: CER project developers (installers + municipal advisors) will pay €200-500/month for a tool that automates GSE filing and monthly billing. Target: 20 discovery calls with CER consultants/installer-developers in Italy. Offer: a mock demo of a "CER Management Tool" (Figma prototype, no code).</div>
+      <div class="exp-criteria">Pass: 5+ expressed willingness to pay ≥€200/mo AND 2+ LOI or verbal commits. | Fail: fewer than 3 express willingness to pay, or all say "I'd use it if free."</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-number">Experiment 02</div>
+      <div class="exp-title">Installer Software Adoption Survey</div>
+      <div class="exp-hypo">Hypothesis: ≥30% of Italian solar installers with 10+ projects/year are currently using some software (beyond Excel/WhatsApp). Method: 30 cold outreach calls to Italian PV installers (outside Luigi's network, from GSE installer registry or LinkedIn). Ask: "What software do you use for quoting, permit filing, and project management?"</div>
+      <div class="exp-criteria">Pass: ≥30% using any software AND ≥5 express pain with current tools. | Fail: fewer than 20% software users — defer Installer SaaS to V3.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-number">Experiment 03</div>
+      <div class="exp-title">CER Pipeline Conversion</div>
+      <div class="exp-hypo">Hypothesis: Of the 2,000+ CER configurations submitted to GSE (pipeline), at least 5-10% would pay for filing assistance and ongoing management software. Method: Identify and contact 50 CER formations in pipeline via public MASE/RSE data, LinkedIn, and Italian CER associations. Offer paid GSE filing assistance (€500 one-time, manual-but-branded).</div>
+      <div class="exp-criteria">Pass: 5+ paying clients for manual CER filing service by Day 60. This proves demand AND generates first revenue. | Fail: fewer than 3 paying clients.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-number">Experiment 04</div>
+      <div class="exp-title">Luigi Network CER Conversion</div>
+      <div class="exp-hypo">Hypothesis: Luigi's MGC installer partner network can convert ≥3 existing clients to form CER communities with Solnest as the digital platform, within 60 days of soft launch. Method: Luigi introduces Solnest as "CER technology partner" to 10-15 MGC installer clients who are eligible to form CERs. Track: who moves to CER formation, who engages with the prototype tool.</div>
+      <div class="exp-criteria">Pass: ≥3 installer-clients enter active CER formation process with Solnest as platform provider. | Fail: fewer than 1 — the network hypothesis is weaker than assumed.</div>
+    </div>
+    <div class="exp-card" style="grid-column: 1 / -1;">
+      <div class="exp-number">Experiment 05</div>
+      <div class="exp-title">Regulatory Stability Canary</div>
+      <div class="exp-hypo">Hypothesis: The CER incentive regime (€120/MWh tariff + 40% PNRR grant) will remain stable through end-2026 with no material modifications. Monitor: subscribe to MASE Gazzetta Ufficiale alerts for CER-related decrees; join Italian CER professional association mailing lists (e.g., ANIE Federazione, Italia Solare); track DL proposals in Parliament for any CER modification provision. If any bill proposes materially modifying the tariffa premio structure, treat as yellow flag requiring reassessment.</div>
+      <div class="exp-criteria">Pass: No material tariff modification legislation introduced in Parliament in next 90 days. | Yellow flag: any bill with CER modification language in first reading. | Red flag: bill passes committee with downward tariff revision — trigger full pivot reassessment.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ANGEL SCRIPT -->
+<div id="angel" class="section">
+  <div class="section-header">
+    <span class="section-icon">🤝</span>
+    <div>
+      <div class="section-title">6. Angel Conversation Script</div>
+      <div class="section-sub">How to frame the pivot to Luigi without credibility damage. Under 400 words.</div>
+    </div>
+  </div>
+
+  <div class="script-box">
+    <div class="script-label">Framework: Regulation-Led Product Refinement, Not Strategic Reversal</div>
+
+    <blockquote>
+      "Luigi, since we last spoke, we have done a serious regulatory deep-dive into the CER decree (DM 414/2023) and the GSE portal workflow. Something important came up that actually strengthens the investment case, and I want to walk you through it before we finalize terms."
+    </blockquote>
+
+    <p><strong>Opening (anchor on what he already agreed to):</strong><br>
+    "The thesis we aligned on is correct: Italy is the right market, the installer network is the right distribution, and the PNRR tailwind is real. None of that changes."</p>
+    <br>
+
+    <p><strong>The new data point (CER-specific):</strong><br>
+    "What we found is that the CER decree has created a specific digital gap that nobody has filled yet. There are 2,000+ communities being formed right now, every one of them needs to file with GSE, manage monthly energy sharing calculations, and distribute tariff income to members. The current solution is spreadsheets and consultants. A platform that automates this is something installers and developers — exactly the people you work with — need immediately."</p>
+    <br>
+
+    <p><strong>Why this is better for him (equity protection framing):</strong><br>
+    "This actually protects your 15% equity better than the consumer marketplace path. Consumer solar has Otovo with a three-year head start and €50M+ raised. We would be fighting for the same rooftops. The CER platform has no dominant player, is Italy-specific, and sits at the intersection of your installer network and the regulatory tailwind. Your MGC clients are exactly the people who need this tool."</p>
+    <br>
+
+    <p><strong>What does NOT change:</strong><br>
+    "The SAFE terms stay the same — €300K for 15%, €2M cap. The ai-anima build scope needs a revision to reflect CER-specific requirements, which we will handle in the SOW. The Y1 plan is being revised to reflect a B2B sales model rather than consumer marketing spend."</p>
+    <br>
+
+    <p><strong>What you are asking for:</strong><br>
+    "I am not asking you to approve a pivot today. I am asking for 30 more days before signing to run three quick experiments — five discovery calls with CER developers, a prototype demo to three of your installer contacts, and a revised SOW from ai-anima. If those three things come back positive, we sign on the revised model. If they don't, we go back to the original plan."</p>
+    <br>
+
+    <p><strong>Close:</strong><br>
+    "You know this market better than anyone. If you have seen something that tells you CER is not the right direction, I want to hear it. But from everything we have researched, the opportunity is real and the window is 2024-2026 before utilities absorb it."</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SOURCE COVERAGE -->
+<div id="coverage" class="section">
+  <div class="section-header">
+    <span class="section-icon">📋</span>
+    <div>
+      <div class="section-title">Source Coverage Report</div>
+    </div>
+  </div>
+
+  <table class="coverage-table">
+    <thead><tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr></thead>
+    <tbody>
+      <tr><td>Web Search (Brave/Perplexity/Tavily)</td><td class="covered">COVERED</td><td>Perplexity Sonar-Pro (6 queries), Brave Web Search</td><td>~40</td></tr>
+      <tr><td>Social: Reddit</td><td class="skipped">COVERED (zero signal)</td><td>reddit-search.sh — topic too niche for English Reddit; no Italian CER subreddits indexed</td><td>0</td></tr>
+      <tr><td>Social: HackerNews</td><td class="skipped">COVERED (zero signal)</td><td>hn-search.sh — solar installer SaaS not on HN; zero relevant results</td><td>0</td></tr>
+      <tr><td>Social: X/Twitter</td><td class="skipped">SKIPPED — Conditional D3</td><td>Italian CER community discussion is primarily Italian-language LinkedIn; X coverage de-prioritized for regulatory/B2B research</td><td>0</td></tr>
+      <tr><td>Video: YouTube</td><td class="skipped">SKIPPED — Conditional D3</td><td>Not relevant for regulatory/competitive B2B research; no video signal expected</td><td>0</td></tr>
+      <tr><td>Academic (ArXiv/OpenAlex)</td><td class="skipped">SKIPPED — Not applicable</td><td>Regulatory/market research, not academic domain</td><td>0</td></tr>
+      <tr><td>Academic: Exa research_paper</td><td class="unavailable">QUOTA EXHAUSTED</td><td>Exa 402 credits exceeded — fell back to Perplexity for academic-adjacent sources</td><td>0</td></tr>
+      <tr><td>News (GNews/Guardian)</td><td class="skipped">SKIPPED — Conditional D3</td><td>Perplexity sonar-pro includes news synthesis; separate news channel not dispatched</td><td>0</td></tr>
+      <tr><td>Prior Solnest Research</td><td class="covered">COVERED</td><td>solnest-eu-market-ranking-2026-04-22.md (Cortex 1fddca34), PROJECT-CARD.md</td><td>16</td></tr>
+      <tr><td>Deep Research (Opus/Gemini)</td><td class="skipped">SKIPPED — D3 conditional</td><td>Perplexity sonar-pro at D3 replaces scout-deep for standard coverage; Opus deep not triggered</td><td>0</td></tr>
+    </tbody>
+  </table>
+  <p class="footnote" style="margin-top: 12px;">EPR 17/20 validated by Critic inline pass. Key limitation: Exa quota exhausted (no research_paper T1 academic anchors). Italian-language sources (GSE portal, MASE decrees) accessed via Perplexity synthesis. Installer software adoption rate in Italy remains the largest single verified data gap.</p>
+</div>
+
+</div><!-- /container -->
+
+<button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>this.textContent='Copied!').catch(()=>this.textContent='Copy failed')">Share Report</button>
+
+<button class="theme-toggle" onclick="document.documentElement.style.filter=document.documentElement.style.filter?'':'invert(1) hue-rotate(180deg)'" title="Toggle theme">◑</button>
+
+</body>
+</html>
