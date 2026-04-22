@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Orchestrator Model Selection — DELPHI D2 Research</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242836;
+    --border: #2e3348;
+    --text: #e2e8f0;
+    --text-muted: #8892a4;
+    --accent: #6366f1;
+    --accent2: #22d3ee;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --orange: #f97316;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); padding: 40px 24px; border-bottom: 1px solid var(--border); }
+  .header-inner { max-width: 960px; margin: 0 auto; }
+  .badge { display: inline-block; background: var(--accent); color: white; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 16px; }
+  h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: white; margin-bottom: 8px; }
+  .meta { color: var(--text-muted); font-size: 13px; }
+  .meta span { margin-right: 16px; }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+  .winner-card { background: linear-gradient(135deg, #1e3a5f 0%, #1a1d27 100%); border: 2px solid #3b82f6; border-radius: 12px; padding: 28px; margin-bottom: 32px; }
+  .winner-label { color: #60a5fa; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .winner-model { font-size: 24px; font-weight: 800; color: white; font-family: 'SF Mono', 'Fira Code', monospace; margin-bottom: 16px; }
+  .winner-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 20px; }
+  .stat { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; text-align: center; }
+  .stat-value { font-size: 18px; font-weight: 700; color: var(--accent2); }
+  .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .section { margin-bottom: 36px; }
+  h2 { font-size: 18px; font-weight: 700; color: white; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 15px; font-weight: 600; color: var(--accent2); margin-bottom: 10px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .card.backup { border-color: #4ade80; }
+  .card.upgrade { border-color: #fbbf24; }
+  .card.excluded { border-color: #dc2626; opacity: 0.8; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; margin-right: 6px; margin-bottom: 4px; }
+  .tag-green { background: rgba(16,185,129,0.2); color: #10b981; }
+  .tag-red { background: rgba(239,68,68,0.2); color: #ef4444; }
+  .tag-yellow { background: rgba(245,158,11,0.2); color: #f59e0b; }
+  .tag-blue { background: rgba(99,102,241,0.2); color: #818cf8; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--surface2); color: var(--text-muted); font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 12px; border-bottom: 1px solid rgba(46,51,72,0.5); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--surface2); }
+  .score-bar { display: flex; align-items: center; gap: 8px; }
+  .bar { height: 6px; border-radius: 3px; background: var(--accent); }
+  .score-val { font-weight: 700; color: var(--accent2); min-width: 24px; }
+  .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: #a78bfa; }
+  .verdict { background: var(--surface2); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; }
+  .verdict-win { border-color: #3b82f6; }
+  .verdict-warn { border-color: var(--yellow); }
+  .verdict-fail { border-color: var(--red); }
+  .command-block { background: #0d1117; border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: #a5f3fc; overflow-x: auto; white-space: pre; }
+  .coverage-table td:nth-child(2) { font-weight: 700; }
+  .covered { color: var(--green); }
+  .skipped { color: var(--text-muted); }
+  .confidence { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+  .conf-high { background: rgba(16,185,129,0.2); color: #10b981; }
+  .conf-med { background: rgba(245,158,11,0.2); color: #f59e0b; }
+  .conf-low { background: rgba(239,68,68,0.2); color: #ef4444; }
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; color: var(--text-muted); font-size: 12px; }
+  @media (max-width: 600px) { .winner-stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="badge">DELPHI D2 Research · 2026-04-22</div>
+    <h1>OpenClaw Orchestrator Model Selection</h1>
+    <p style="color:#94a3b8; margin-top:8px; max-width:620px;">Best OpenRouter-routable model for richpro agent (OpenAI tool_calls[] fidelity, &lt;3s latency, &lt;$10/mo at 50×10K sessions/day)</p>
+    <div class="meta" style="margin-top:16px;">
+      <span>Sources: 18</span>
+      <span>Channels: Web, OpenRouter live, Perplexity Sonar Pro, Benchmarks</span>
+      <span>Cortex ID: 382bde82</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- WINNER -->
+  <div class="winner-card">
+    <div class="winner-label">Winner — Primary Recommendation</div>
+    <div class="winner-model">openai/gpt-oss-120b</div>
+    <p style="color:#94a3b8; font-size:14px;">OpenAI open-weight MoE (117B params, 5.1B active/token). Native OpenAI tool_calls[] format. Same API lineage as GPT-4o. Full TauBench + agentic tool-use validation.</p>
+    <div class="winner-stats">
+      <div class="stat"><div class="stat-value">$0.039</div><div class="stat-label">Input / 1M tokens</div></div>
+      <div class="stat"><div class="stat-value">$0.19</div><div class="stat-label">Output / 1M tokens</div></div>
+      <div class="stat"><div class="stat-value">$1.27</div><div class="stat-label">Est. monthly cost</div></div>
+      <div class="stat"><div class="stat-value">0.27s</div><div class="stat-label">TTFT (Clarifai p50)</div></div>
+      <div class="stat"><div class="stat-value">313 t/s</div><div class="stat-label">Output speed</div></div>
+      <div class="stat"><div class="stat-value">131K</div><div class="stat-label">Context window</div></div>
+    </div>
+  </div>
+
+  <!-- SCORING TABLE -->
+  <div class="section">
+    <h2>Finalist Scoring Matrix (5 dimensions × /10)</h2>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Tool Fidelity</th>
+          <th>Latency p95</th>
+          <th>Cost ≤$10/mo</th>
+          <th>Context ≥128K</th>
+          <th>Instr. Follow</th>
+          <th>TOTAL</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="mono">openai/gpt-oss-120b</span></td>
+          <td><div class="score-bar"><div class="bar" style="width:90px"></div><span class="score-val">9</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:90px; background:#22d3ee"></div><span class="score-val">9</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:100px; background:#10b981"></div><span class="score-val">10</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:80px"></div><span class="score-val">8</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:80px"></div><span class="score-val">8</span></div></td>
+          <td><strong style="color:#22d3ee">44/50</strong></td>
+          <td><span class="tag tag-green">WINNER</span></td>
+        </tr>
+        <tr>
+          <td><span class="mono">openai/gpt-4o-mini</span></td>
+          <td><div class="score-bar"><div class="bar" style="width:100px; background:#10b981"></div><span class="score-val">10</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:60px"></div><span class="score-val">6</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:70px"></div><span class="score-val">7</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:80px"></div><span class="score-val">8</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:90px; background:#22d3ee"></div><span class="score-val">9</span></div></td>
+          <td><strong style="color:#f59e0b">40/50</strong></td>
+          <td><span class="tag tag-blue">BACKUP</span></td>
+        </tr>
+        <tr>
+          <td><span class="mono">google/gemini-2.5-flash</span></td>
+          <td><div class="score-bar"><div class="bar" style="width:40px; background:#ef4444"></div><span class="score-val">4</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:100px; background:#10b981"></div><span class="score-val">10</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:50px"></div><span class="score-val">5</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:100px; background:#10b981"></div><span class="score-val">10</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:80px"></div><span class="score-val">8</span></div></td>
+          <td><strong style="color:#ef4444">37/50</strong></td>
+          <td><span class="tag tag-red">DISQUALIFIED</span></td>
+        </tr>
+        <tr>
+          <td><span class="mono">anthropic/claude-haiku-4-5</span></td>
+          <td><div class="score-bar"><div class="bar" style="width:90px"></div><span class="score-val">9</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:90px; background:#22d3ee"></div><span class="score-val">9</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:20px; background:#ef4444"></div><span class="score-val">2</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:90px; background:#22d3ee"></div><span class="score-val">9</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:100px; background:#10b981"></div><span class="score-val">10</span></div></td>
+          <td><strong style="color:#f59e0b">39/50</strong></td>
+          <td><span class="tag tag-yellow">UPGRADE PATH</span></td>
+        </tr>
+        <tr>
+          <td><span class="mono">deepseek/deepseek-chat-v3-0324</span></td>
+          <td><div class="score-bar"><div class="bar" style="width:70px"></div><span class="score-val">7</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:50px"></div><span class="score-val">5</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:60px"></div><span class="score-val">6</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:80px"></div><span class="score-val">8</span></div></td>
+          <td><div class="score-bar"><div class="bar" style="width:70px"></div><span class="score-val">7</span></div></td>
+          <td><strong>33/50</strong></td>
+          <td><span class="tag tag-red">ELIMINATED</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="color: var(--text-muted); font-size:12px; margin-top:8px;">* Gemini 2.5 Flash disqualified on Tool Fidelity (4/10) despite best latency — production regressions documented (tool_choice=ANY 500 errors, erratic invocation, Gemini 3 breaks OpenAI compat entirely).</p>
+  </div>
+
+  <!-- KEY EVIDENCE -->
+  <div class="section">
+    <h2>Key Evidence — Decision Drivers</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>gpt-oss-120b — Performance Data</h3>
+        <ul style="list-style:none; padding:0; font-size:13px; line-height:2;">
+          <li>TTFT median: <strong style="color:#22d3ee">0.27s</strong> (Clarifai), 0.79s (benchLM p50)</li>
+          <li>Output speed: <strong style="color:#22d3ee">216–313 tok/s</strong> across providers</li>
+          <li>Cost at 50×10K/day: <strong style="color:#10b981">$1.27/month</strong> (10.5M in + 4.5M out)</li>
+          <li>Architecture: 117B MoE, 5.1B active params / token</li>
+          <li>Tool benchmark: <strong>TauBench</strong> — matches/exceeds o4-mini</li>
+          <li>Format: OpenAI-native (same SDK lineage as gpt-4o)</li>
+          <li>License: Apache 2.0, fine-tunable</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Why Gemini 2.5 Flash Was Disqualified</h3>
+        <ul style="list-style:none; padding:0; font-size:13px; line-height:2;">
+          <li><span class="tag tag-red">BUG</span> <code>tool_choice: ANY</code> → 500 internal errors</li>
+          <li><span class="tag tag-red">BUG</span> Erratic invocation — same query calls tool or doesn't, randomly</li>
+          <li><span class="tag tag-red">BUG</span> Gemini 3 Flash breaks OpenAI compat API tool calling (400)</li>
+          <li><span class="tag tag-red">BUG</span> Responses wrap in markdown code blocks despite instructions</li>
+          <li><span class="tag tag-yellow">NOTE</span> TTFT 0.5s / 238 tok/s — best speed in category</li>
+          <li><span class="tag tag-yellow">NOTE</span> At $14.40/mo also over budget (D2 at stated load)</li>
+          <li>Source: Google AI Dev Forum, github.com/googleapis/google-api-python-client #2701</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Verified Incompatibles (Hard Exclusions)</h3>
+        <ul style="list-style:none; padding:0; font-size:13px; line-height:2;">
+          <li><span class="tag tag-red">VERIFIED TODAY</span> Kimi K2 / moonshot/* — emits <code>&lt;|tool_call_argument_begin|&gt;</code> tokens, parser breaks</li>
+          <li><span class="tag tag-red">VERIFIED TODAY</span> Nemotron-3-Super — narrates tool calls as plain text, no tool_calls[] emission</li>
+          <li><span class="tag tag-red">NOT ON OR</span> deepseek/deepseek-v3 — page returns 404/unavailable on OpenRouter</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>BFCL v3 Context (2026-04-22)</h3>
+        <ul style="list-style:none; padding:0; font-size:13px; line-height:2;">
+          <li>Top model: GLM 4.5 — <strong>76.7%</strong></li>
+          <li>Rank 2: Qwen3 32B — <strong>75.7%</strong></li>
+          <li>Rank 13: Gemini 3 Flash Preview — 53.5%</li>
+          <li>Rank 18: Claude Opus 4 — 25.3%</li>
+          <li>GPT-4o-mini, gpt-oss-120b, Haiku 4.5 not in v3 eval set</li>
+          <li>gpt-oss-120b measured on TauBench (tool-use agentic) — matches o4-mini</li>
+          <li>GLM 4.5 / Qwen3 32B not confirmed on OpenRouter; excluded from shortlist</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINALISTS -->
+  <div class="section">
+    <h2>Finalist Profiles</h2>
+    <div class="grid-2">
+      <div class="card backup">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 style="margin:0; color:#4ade80">BACKUP</h3>
+          <span class="confidence conf-high">HIGH confidence</span>
+        </div>
+        <div class="mono" style="font-size:14px; margin-bottom:12px;">openai/gpt-4o-mini</div>
+        <table style="font-size:12px;">
+          <tr><td style="color:var(--text-muted)">Price</td><td>$0.15 in / $0.60 out per 1M</td></tr>
+          <tr><td style="color:var(--text-muted)">Monthly (50×10K)</td><td>$4.28</td></tr>
+          <tr><td style="color:var(--text-muted)">TTFT</td><td>1.6–3.2s (near 3s ceiling)</td></tr>
+          <tr><td style="color:var(--text-muted)">Context</td><td>128K</td></tr>
+          <tr><td style="color:var(--text-muted)">Tool format</td><td>OpenAI native (gold standard)</td></tr>
+          <tr><td style="color:var(--text-muted)">OR status</td><td>Active (API path, not ChatGPT)</td></tr>
+        </table>
+        <p style="margin-top:12px; font-size:12px; color:var(--text-muted);">Use if gpt-oss-120b shows rate limits or availability issues on OpenRouter. Identical format guarantees. 3× higher cost, marginally slower but proven in production since 2024.</p>
+      </div>
+      <div class="card upgrade">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 style="margin:0; color:#fbbf24">UPGRADE PATH</h3>
+          <span class="confidence conf-med">MEDIUM confidence</span>
+        </div>
+        <div class="mono" style="font-size:14px; margin-bottom:12px;">anthropic/claude-haiku-4-5</div>
+        <table style="font-size:12px;">
+          <tr><td style="color:var(--text-muted)">Price</td><td>$1.00 in / $5.00 out per 1M</td></tr>
+          <tr><td style="color:var(--text-muted)">Monthly (50×10K)</td><td>$33/month (budget breach)</td></tr>
+          <tr><td style="color:var(--text-muted)">TTFT</td><td>0.67s non-reasoning</td></tr>
+          <tr><td style="color:var(--text-muted)">Context</td><td>200K</td></tr>
+          <tr><td style="color:var(--text-muted)">Tool support</td><td>Full (bash, computer-use, web)</td></tr>
+          <tr><td style="color:var(--text-muted)">Trigger</td><td>Context &gt;128K OR Hermes long sessions</td></tr>
+        </table>
+        <p style="margin-top:12px; font-size:12px; color:var(--text-muted);">Trigger when: (1) Hermes session context exceeds 128K tokens, (2) multi-modal tool chains needed, (3) bilingual Romanian/English accuracy is critical. Budget breach — evaluate at 10× volume.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRITIC PASS -->
+  <div class="section">
+    <h2>Critic Pass — Top-3 Risk Flags</h2>
+    <div class="verdict verdict-win">
+      <strong>gpt-oss-120b — Risk: OpenRouter provider routing variance</strong><br>
+      <span style="font-size:13px; color:var(--text-muted);">TTFT ranges 0.27s (Clarifai) to 0.79s (benchLM). OpenRouter auto-routes to cheapest provider. If Clarifai/Baseten aren't the routed backend, latency could degrade. Mitigation: pin provider via OR's <code>provider.order</code> param or test via <code>X-OpenRouter-Provider</code> header. Still well under 3s even at worst-case.</span>
+    </div>
+    <div class="verdict verdict-warn">
+      <strong>gpt-4o-mini (backup) — Risk: TTFT at ceiling</strong><br>
+      <span style="font-size:13px; color:var(--text-muted);">Measured 1.6–3.2s TTFT. At P95 load, can breach 3s target. For richpro dispatching to sub-agents via sessions_spawn, this accumulates per dispatch call. Acceptable as backup but not primary. Had reported 30% failure rate in parallel tool_calls (fixed by strict=true JSON schema).</span>
+    </div>
+    <div class="verdict verdict-win">
+      <strong>gpt-oss-120b — Risk: Rate limits on OpenRouter</strong><br>
+      <span style="font-size:13px; color:var(--text-muted);">Newer/less-popular model on OR. Rate limits may be lower than GPT-4o-mini. At 50 sessions/day the call volume is low (50 RPM bursts max), unlikely to hit OR rate limits. Monitor first 48h after deployment.</span>
+    </div>
+  </div>
+
+  <!-- DEPLOY COMMAND -->
+  <div class="section">
+    <h2>Deployment — Exact Config Change</h2>
+    <p style="color:var(--text-muted); font-size:13px; margin-bottom:12px;">Update OpenClaw richpro agent config on Hetzner VPS (138.201.123.165):</p>
+    <div class="command-block">ssh root@138.201.123.165 "cd /opt/openclaw && \
+  sed -i 's|\"model\": \".*\"|\"model\": \"openai/gpt-oss-120b\"|g' agents/richpro/config.json && \
+  grep model agents/richpro/config.json"
+
+# Or if env-var driven:
+ssh root@138.201.123.165 "echo 'RICHPRO_MODEL=openai/gpt-oss-120b' >> /opt/openclaw/.env && \
+  systemctl restart openclaw-richpro"
+
+# Smoke test — verify tool_calls[] format:
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"openai/gpt-oss-120b","messages":[{"role":"user","content":"ping"}],
+       "tools":[{"type":"function","function":{"name":"pong","description":"reply","parameters":{"type":"object","properties":{}}}}],
+       "tool_choice":"auto"}' | jq '.choices[0].message.tool_calls'</div>
+    <p style="color:var(--text-muted); font-size:12px; margin-top:8px;">Expected output: <code>[{"id": "call_...", "type": "function", "function": {"name": "pong", "arguments": "{}"}}]</code></p>
+  </div>
+
+  <!-- SOURCE COVERAGE -->
+  <div class="section">
+    <h2>Source Coverage Report</h2>
+    <table class="coverage-table">
+      <thead>
+        <tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Web Search</td><td class="covered">COVERED</td><td>Brave Search, Perplexity Sonar Pro</td><td>12</td></tr>
+        <tr><td>Live Pricing (OpenRouter)</td><td class="covered">COVERED</td><td>openrouter.ai direct fetch</td><td>8</td></tr>
+        <tr><td>Benchmark Data</td><td class="covered">COVERED</td><td>BFCL v3 (pricepertoken), Artificial Analysis, benchLM, morphllm</td><td>6</td></tr>
+        <tr><td>Production Reports</td><td class="covered">COVERED</td><td>Google AI Dev Forum, github issues, ofox.ai guide</td><td>4</td></tr>
+        <tr><td>Social / Reddit</td><td class="skipped">SKIPPED</td><td>D2 — conditional. Brave rate-limited; Perplexity covered equivalently</td><td>0</td></tr>
+        <tr><td>Academic</td><td class="skipped">SKIPPED</td><td>Not required — engineering/pricing topic, not science research</td><td>0</td></tr>
+        <tr><td>Video</td><td class="skipped">SKIPPED</td><td>D2 optional — no video-format benchmark sources identified</td><td>0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  DELPHI PRO D2 Research · 2026-04-22 · EPR: UNVALIDATED (D2, no Critic) · Cortex: 382bde82 · Sources: 18
+</footer>
+
+</body>
+</html>
