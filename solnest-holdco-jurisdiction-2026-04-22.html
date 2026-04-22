@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solnest.ai — HoldCo Jurisdiction Analysis 2026 | DELPHI D3</title>
+<meta name="description" content="Decision-grade comparative analysis of 9 HoldCo jurisdictions for Solnest.ai's two-tier corporate structure with Italian operating company.">
+<meta property="og:title" content="Solnest.ai HoldCo Jurisdiction Analysis 2026">
+<meta property="og:description" content="Ireland recommended. 10 dimensions × 9 jurisdictions. Full esterovestizione risk memo + 12-month roadmap.">
+<meta property="og:type" content="article">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --warn: #f78166;
+    --glass: rgba(17,17,24,0.7);
+    --border: rgba(88,166,255,0.15);
+    --text: #e6edf3;
+    --muted: #8b949e;
+  }
+  .light {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --accent: #5E6AD2;
+    --accent2: #2ea043;
+    --warn: #cf222e;
+    --glass: rgba(255,255,255,0.85);
+    --border: rgba(94,106,210,0.2);
+    --text: #1c1c1e;
+    --muted: #57606a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+  .glass-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .accent { color: var(--accent); }
+  .accent2 { color: var(--accent2); }
+  .warn { color: var(--warn); }
+  .muted { color: var(--muted); }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Sidebar TOC */
+  .toc { position: sticky; top: 2rem; max-height: calc(100vh - 4rem); overflow-y: auto; }
+  .toc a { display: block; padding: 0.35rem 0.75rem; border-left: 2px solid transparent; font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+  .toc a:hover, .toc a.active { border-left-color: var(--accent); color: var(--accent); }
+
+  /* Score badge */
+  .score-badge { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; font-weight: 700; font-size: 0.9rem; }
+  .score-5 { background: rgba(63,185,80,0.2); color: #3fb950; border: 1px solid rgba(63,185,80,0.4); }
+  .score-4 { background: rgba(88,166,255,0.2); color: #58a6ff; border: 1px solid rgba(88,166,255,0.4); }
+  .score-3 { background: rgba(210,153,34,0.2); color: #d2991f; border: 1px solid rgba(210,153,34,0.4); }
+  .score-2 { background: rgba(247,129,102,0.2); color: #f78166; border: 1px solid rgba(247,129,102,0.4); }
+  .score-1 { background: rgba(207,34,46,0.2); color: #cf222e; border: 1px solid rgba(207,34,46,0.4); }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.75rem; border-bottom: 1px solid var(--border); }
+  td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+  tr:hover td { background: rgba(88,166,255,0.04); }
+
+  /* Fade in */
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* Print */
+  @media print {
+    .toc, #toggle-btn, #share-btn, nav { display: none !important; }
+    body { background: #fff; color: #000; }
+    .glass-card { border: 1px solid #ddd; background: #fff; }
+    .page-break { page-break-before: always; }
+  }
+
+  /* Red flag callout */
+  .callout-red { border-left: 3px solid var(--warn); background: rgba(247,129,102,0.07); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; }
+  .callout-blue { border-left: 3px solid var(--accent); background: rgba(88,166,255,0.07); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; }
+  .callout-green { border-left: 3px solid var(--accent2); background: rgba(63,185,80,0.07); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; }
+
+  /* Winner badge */
+  .winner-ring { box-shadow: 0 0 0 2px var(--accent), 0 0 24px rgba(88,166,255,0.2); }
+
+  .rank-1 { background: linear-gradient(135deg, rgba(63,185,80,0.15), rgba(88,166,255,0.1)); }
+  .rank-2 { background: linear-gradient(135deg, rgba(88,166,255,0.1), rgba(88,166,255,0.05)); }
+  .rank-3 { background: linear-gradient(135deg, rgba(210,153,34,0.1), rgba(88,166,255,0.05)); }
+</style>
+</head>
+<body>
+
+<!-- Top nav -->
+<nav class="glass-card sticky top-0 z-50 px-6 py-3 flex items-center justify-between" style="border-radius:0; border-left:0; border-right:0; border-top:0;">
+  <div class="flex items-center gap-3">
+    <span class="mono text-xs" style="color:var(--accent)">DELPHI PRO · D3</span>
+    <span class="text-xs" style="color:var(--muted)">2026-04-22</span>
+    <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(247,129,102,0.2); color:var(--warn)">EPR UNVALIDATED</span>
+  </div>
+  <div class="flex gap-2">
+    <button id="toggle-btn" onclick="toggleTheme()" class="text-xs px-3 py-1.5 rounded-full" style="background:var(--glass); border:1px solid var(--border); color:var(--muted); cursor:pointer;">Toggle Light</button>
+    <button id="share-btn" onclick="shareReport()" class="text-xs px-3 py-1.5 rounded-full" style="background:var(--accent); color:#fff; border:none; cursor:pointer; font-weight:500;">Share</button>
+  </div>
+</nav>
+
+<!-- Layout -->
+<div class="max-w-7xl mx-auto px-4 py-8 flex gap-8">
+
+  <!-- TOC Sidebar -->
+  <aside class="hidden lg:block w-52 shrink-0">
+    <nav class="toc glass-card p-4">
+      <p class="text-xs font-semibold mb-3" style="color:var(--muted); text-transform:uppercase; letter-spacing:.06em">Contents</p>
+      <a href="#tldr">TL;DR Rankings</a>
+      <a href="#esterovestizione">Esterovestizione Memo</a>
+      <a href="#matrix">Decision Matrix</a>
+      <a href="#ireland">Ireland (Winner)</a>
+      <a href="#netherlands">Netherlands</a>
+      <a href="#luxembourg">Luxembourg</a>
+      <a href="#estonia">Estonia</a>
+      <a href="#cyprus">Cyprus</a>
+      <a href="#malta">Malta</a>
+      <a href="#uk">UK (Ltd)</a>
+      <a href="#switzerland">Switzerland</a>
+      <a href="#romania">Romania</a>
+      <a href="#excluded">Excluded</a>
+      <a href="#structure">Structure Diagram</a>
+      <a href="#roadmap">12-Month Roadmap</a>
+      <a href="#costs">Cost Model</a>
+      <a href="#questions">Killer Questions</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 min-w-0 space-y-8">
+
+    <!-- Header -->
+    <header class="fade-in">
+      <div class="glass-card p-8 winner-ring">
+        <p class="mono text-xs mb-2" style="color:var(--accent)">SOLNEST.AI · CORPORATE STRUCTURE ANALYSIS</p>
+        <h1 class="text-3xl font-bold mb-3">HoldCo Jurisdiction Analysis</h1>
+        <p class="text-lg mb-4" style="color:var(--muted)">Optimal two-tier structure for an Italian-operating solar SaaS/marketplace with €300K SAFE investment and EU VC roadmap.</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent)">9</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Jurisdictions Evaluated</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent2)">10</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Scoring Dimensions</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent)">20</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Primary Sources</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--warn)">UNVAL</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">EPR Status</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- TL;DR -->
+    <section id="tldr" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--accent); display:inline-block;"></span>
+        TL;DR — Top 3 Ranked
+      </h2>
+      <div class="space-y-3">
+        <div class="glass-card p-5 rank-1 flex items-start gap-4">
+          <div class="text-3xl font-black shrink-0" style="color:var(--accent2)">#1</div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-lg font-bold">Ireland</span>
+              <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background:rgba(63,185,80,0.2); color:var(--accent2)">RECOMMENDED WINNER · 80.5%</span>
+            </div>
+            <p style="color:var(--muted); font-size:0.9rem;">Best all-round: 12.5% CIT, 10% KDB IP box, zero Italy WHT via Parent-Subsidiary Directive, clean Italian reputation, SAFE-native VC ecosystem. Requires real substance post-2022 Revenue practice change.</p>
+          </div>
+        </div>
+        <div class="glass-card p-5 rank-2 flex items-start gap-4">
+          <div class="text-3xl font-black shrink-0" style="color:var(--accent)">#2</div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-lg font-bold">Netherlands</span>
+              <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background:rgba(88,166,255,0.2); color:var(--accent)">RUNNER-UP · 77.8%</span>
+            </div>
+            <p style="color:var(--muted); font-size:0.9rem;">Near-100% participation exemption, 7% innovation box, bulletproof EU reputation. Slightly higher compliance cost and mandatory Dutch director salary (€56K/yr minimum) vs Ireland.</p>
+          </div>
+        </div>
+        <div class="glass-card p-5 rank-3 flex items-start gap-4">
+          <div class="text-3xl font-black shrink-0" style="color:#d2991f">#3</div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-lg font-bold">Luxembourg</span>
+              <span class="text-xs px-2 py-0.5 rounded-full font-semibold" style="background:rgba(210,153,34,0.2); color:#d2991f">THIRD · 75.5%</span>
+            </div>
+            <p style="color:var(--muted); font-size:0.9rem;">SOPARFI with 80% IP exemption (eff. 3.2% on IP income), deepest VC/PE familiarity in Europe, premier exit jurisdiction. Highest compliance cost (~€25-35K/yr) — overkill at Solnest's current scale.</p>
+          </div>
+        </div>
+      </div>
+      <div class="callout-blue mt-4 text-sm">
+        <strong>Tiebreaker:</strong> Ireland vs Netherlands within 5% (72.5/90 vs 70/90). Ireland wins on IP box rate (10% vs 7%) and founder salary cost-efficiency. If Italian partner demands longer-established Italian commercialista familiarity, Netherlands is the safer political pick. Present both to decision-maker.
+      </div>
+    </section>
+
+    <!-- Score chart -->
+    <section class="fade-in">
+      <div class="glass-card p-6">
+        <h3 class="font-semibold mb-4 text-sm" style="color:var(--muted); text-transform:uppercase; letter-spacing:.06em">Weighted Score Comparison (out of 90)</h3>
+        <canvas id="scoreChart" height="120"></canvas>
+      </div>
+    </section>
+
+    <!-- Esterovestizione Memo -->
+    <section id="esterovestizione" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--warn); display:inline-block;"></span>
+        Esterovestizione Risk Memo
+      </h2>
+      <div class="glass-card p-6 space-y-5">
+        <div>
+          <h3 class="font-semibold mb-2" style="color:var(--accent)">When Italy Re-Characterizes a Foreign HoldCo as Italian Tax-Resident</h3>
+          <p class="text-sm" style="color:var(--muted)">Italy's anti-avoidance framework for foreign holding companies rests on <strong style="color:var(--text)">TUIR Article 73</strong> (as reformed 2024) and the <em>esterovestizione</em> doctrine. A company is deemed Italian tax-resident if, for the majority of the tax period, it has its:</p>
+          <ol class="mt-3 space-y-2 text-sm ml-4 list-decimal" style="color:var(--muted)">
+            <li><strong style="color:var(--text)">Registered office</strong> in Italy, OR</li>
+            <li><strong style="color:var(--text)">Place of effective management</strong> — "the continuous and coordinated assumption of strategic decisions concerning the company or entity as a whole" — in Italy, OR</li>
+            <li><strong style="color:var(--text)">Predominant ordinary management</strong> — "the continuous and coordinated execution of current management activities" — in Italy</li>
+          </ol>
+          <p class="text-sm mt-3" style="color:var(--muted);"><strong style="color:var(--warn)">Critical 2024 reform:</strong> Italy now explicitly captures <em>day-to-day management</em>, not just strategic decisions. This closes the gap previously exploited by holding companies where strategic decisions were genuinely abroad but routine operations happened in Italy.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-2" style="color:var(--accent)">Art. 73 Para. 5-bis: The Reversed Burden</h3>
+          <p class="text-sm" style="color:var(--muted);">When a foreign HoldCo <strong style="color:var(--text)">controls an Italian company</strong> AND is <strong style="color:var(--text)">controlled by Italian residents</strong>, Italy presumes the HoldCo is Italian-resident. Solnest triggers this presumption automatically (Pafi + Leo are Italian residents controlling an Irish HoldCo that controls Solnest Italia SRL). <strong style="color:var(--warn)">The burden of proof reverses</strong> — the company must actively prove genuine foreign establishment.</p>
+          <p class="text-sm mt-2" style="color:var(--muted);"><strong style="color:var(--accent2)">CFC Safe Harbor (art. 47-bis TUIR):</strong> EU and EEA member states are explicitly <em>excluded</em> from "paesi a fiscalità privilegiata" regardless of their nominal CIT rate. Ireland, Netherlands, Luxembourg, Estonia, Malta, and Romania are all CFC-safe under this provision.</p>
+          <p class="text-sm mt-2" style="color:var(--muted);"><strong style="color:var(--accent)">New CFC ETR threshold (art. 167, 2024 reform):</strong> A foreign entity is a CFC if its effective tax rate is below 15% — aligned with OECD Pillar 2. Applies to non-EU jurisdictions. Ireland (12.5% nominal, 10% KDB) is above threshold for non-IP income; KDB income needs monitoring.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-2" style="color:var(--warn)">3 Concrete Red Flags Solnest Must Avoid</h3>
+          <div class="space-y-3">
+            <div class="callout-red">
+              <strong style="color:var(--warn)">Red Flag 1: Founder-as-sole-director operating from Italy</strong>
+              <p class="text-sm mt-1" style="color:var(--muted);">If Pafi or Leo are the only directors of the Irish HoldCo and conduct all board decisions from Italian residences (video calls, emails on Italian IP addresses), AdE will argue the "place of effective management" is Italy. Fix: appoint a qualified Irish-resident independent director who attends real board meetings in Dublin. This director must have genuine authority, not rubber-stamp decisions already made in Italy.</p>
+            </div>
+            <div class="callout-red">
+              <strong style="color:var(--warn)">Red Flag 2: Brass-plate HoldCo with no independent substance</strong>
+              <p class="text-sm mt-1" style="color:var(--muted);">A HoldCo with zero payroll, sharing an address with a corporate secretary mill, and whose bank account is operated from Italy is an automatic esterovestizione candidate. Italian Revenue Agency targets exactly this profile. Fix: minimum one local employee or demonstrable management activity in HoldCo country — board meetings with agenda, minutes, independent decisions documented.</p>
+            </div>
+            <div class="callout-red">
+              <strong style="color:var(--warn)">Red Flag 3: Royalty flow without arm's-length TP documentation</strong>
+              <p class="text-sm mt-1" style="color:var(--muted);">If Solnest Italia SRL pays royalties to the Irish HoldCo for the Solnest platform IP without a contemporaneous transfer pricing study, AdE will challenge: (a) deductibility of royalties in Italy, and (b) genuine economic ownership of IP by the HoldCo. Fix: commission a TP study BEFORE the IP assignment and license agreement are executed. At pre-revenue stage, "startup IP" valuation is easier and defensible at lower amounts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Decision Matrix Summary -->
+    <section id="matrix" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--accent); display:inline-block;"></span>
+        Decision Matrix — All Jurisdictions
+      </h2>
+      <div class="glass-card overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Jurisdiction</th>
+              <th>D1 Reputation ×3</th>
+              <th>D2 WHT ×2</th>
+              <th>D3 IP Box ×2</th>
+              <th>D4 Cap-Table ×2</th>
+              <th>D5 Salary ×1.5</th>
+              <th>D6 Setup ×1</th>
+              <th>D7 Compliance ×1</th>
+              <th>D8 Substance ×1.5</th>
+              <th>D9 CFC Risk ×3</th>
+              <th>D10 Exit ×1</th>
+              <th>Score /90</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:rgba(63,185,80,0.06);">
+              <td><strong style="color:var(--accent2)">Ireland ★</strong></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><strong style="color:var(--accent2)">72.5</strong></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--accent)">Netherlands</strong></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><strong style="color:var(--accent)">70.0</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Luxembourg</strong></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><strong>68.0</strong></td>
+            </tr>
+            <tr>
+              <td>UK (Ltd)</td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td>61.5</td>
+            </tr>
+            <tr>
+              <td>Switzerland</td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td>58.0</td>
+            </tr>
+            <tr>
+              <td>Cyprus</td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td>57.0</td>
+            </tr>
+            <tr>
+              <td>Estonia</td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td>56.5</td>
+            </tr>
+            <tr>
+              <td>Romania</td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-1">1</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td>56.0</td>
+            </tr>
+            <tr>
+              <td style="color:var(--warn)">Malta</td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td><span class="score-badge score-5">5</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-4">4</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-3">3</span></td>
+              <td><span class="score-badge score-2">2</span></td>
+              <td>52.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Key Tax Facts per Jurisdiction -->
+    <section id="ireland" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--accent2); display:inline-block;"></span>
+        Ireland — Recommended Winner
+      </h2>
+      <div class="glass-card p-6 winner-ring space-y-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent2)">12.5%</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Standard CIT</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent2)">10%</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">KDB IP Box (2025)</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent2)">0%</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">WHT Italy→IE (PSD)</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent)">€8-12K</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Annual Compliance</div>
+          </div>
+        </div>
+        <div class="text-sm space-y-2" style="color:var(--muted)">
+          <p><strong style="color:var(--text)">Participation exemption:</strong> Ireland introduced a full participation exemption for foreign distributions effective 1 January 2025 (Arthur Cox, 2025). Dividends from Solnest Italia SRL will flow to IE HoldCo tax-free.</p>
+          <p><strong style="color:var(--text)">KDB — Knowledge Development Box:</strong> Effective rate increased from 6.25% to 10% to align with OECD Pillar 2. Qualifying assets include copyrighted software — Solnest's platform code qualifies. R&D must have "Irish nexus" (developed in Ireland or tracked via OECD nexus approach).</p>
+          <p><strong style="color:var(--text)">Substance post-2022:</strong> Revenue withdrew the pandemic-era concession allowing virtual board meetings. From January 2022, "central management and control" requires real board meetings in Ireland with Irish-resident directors present. An independent Irish director (professional NED) is non-negotiable.</p>
+          <p><strong style="color:var(--text)">Cap table:</strong> Common law jurisdiction. SAFE notes directly enforceable. Class A/B ordinary + preferred share structure standard in Irish company law. Recognized by US and EU VC funds. Future Series A priced round compatible.</p>
+          <p><strong style="color:var(--warn)">Founder salary risk:</strong> If Pafi or Leo receive director fees from IE HoldCo while resident in Italy, Italy will tax those fees under Italy-Ireland DTA (Article 16: board fees taxed where company resident, i.e., Ireland, BUT Italy retains right to tax under domestic law if director is Italian resident). Get commercialista opinion before structuring founder comp via HoldCo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="netherlands" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--accent); display:inline-block;"></span>
+        Netherlands — Runner-Up
+      </h2>
+      <div class="glass-card p-6 space-y-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent)">25.8%</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Standard CIT (19% below €200K)</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent)">7%</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Innovation Box IP Rate</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--accent2)">0%</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">WHT Italy→NL (PSD)</div>
+          </div>
+          <div class="glass-card p-4 text-center">
+            <div class="text-2xl font-bold" style="color:var(--warn)">€12-18K</div>
+            <div class="text-xs mt-1" style="color:var(--muted)">Annual Compliance</div>
+          </div>
+        </div>
+        <div class="text-sm space-y-2" style="color:var(--muted)">
+          <p><strong style="color:var(--text)">Participation exemption:</strong> 100% exemption on dividends and capital gains from qualifying subsidiaries. One of Europe's most robust participation exemption regimes.</p>
+          <p><strong style="color:var(--text)">Innovation Box:</strong> 7% effective rate on qualifying IP profits. Requires WBSO (R&D statement) — more administrative burden than Irish KDB for an early-stage startup. Available to "small taxpayers" with group turnover &lt;€250M.</p>
+          <p><strong style="color:var(--text)">Formation:</strong> BV requires notarial deed (approx €1,500-3,000 notary fee). No minimum share capital. Flexible share class structure. SAFE-equivalent convertible instruments fully enforceable.</p>
+          <p><strong style="color:var(--warn)">Director salary:</strong> "Gebruikelijk loon" (customary wage) rules require substantial shareholders who work for a BV to pay themselves at least €56,000/year. This applies if founders are Dutch directors — check Italy-NL DTA for non-resident director treatment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="luxembourg" class="fade-in">
+      <h2 class="text-xl font-semibold mb-2 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:#d2991f; display:inline-block;"></span>
+        Luxembourg — Third (Overkill at Current Scale)
+      </h2>
+      <div class="glass-card p-6 space-y-3 text-sm" style="color:var(--muted)">
+        <div class="grid grid-cols-3 gap-4 mb-2">
+          <div class="glass-card p-3 text-center"><div class="font-bold" style="color:var(--text)">16%</div><div class="text-xs">CIT (Jan 2025)</div></div>
+          <div class="glass-card p-3 text-center"><div class="font-bold" style="color:var(--accent2)">~3.2%</div><div class="text-xs">Eff. rate on IP (80% exemption)</div></div>
+          <div class="glass-card p-3 text-center"><div class="font-bold" style="color:var(--warn)">€25-35K</div><div class="text-xs">Annual compliance</div></div>
+        </div>
+        <p><strong style="color:var(--text)">Best-in-class IP exemption:</strong> 80% of qualifying net IP income exempt → effective rate ~3.2% (16% CIT × 20% taxable). Applies to patents and copyrighted software. Luxembourg CIT reduced from 17% to 16% effective January 2025.</p>
+        <p><strong style="color:var(--text)">SOPARFI:</strong> The standard Luxembourg holding vehicle. No capital restrictions. Participation exemption on dividends and capital gains (qualifying participations). 0% WHT on dividends to Italy under PSD.</p>
+        <p><strong style="color:var(--warn)">Cost verdict:</strong> Annual compliance €25-35K makes Luxembourg non-viable at Solnest's Y1-Y2 revenue. The structure becomes cost-positive only above €3-5M revenue where the IP tax saving exceeds compliance overhead. Revisit at Series A.</p>
+      </div>
+    </section>
+
+    <!-- Excluded jurisdictions -->
+    <section id="excluded" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--warn); display:inline-block;"></span>
+        Explicitly Excluded — With Reasons
+      </h2>
+      <div class="glass-card p-6">
+        <table>
+          <thead><tr><th>Jurisdiction</th><th>Reason for Exclusion</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--warn); font-weight:600;">Delaware (USA)</td><td class="text-sm" style="color:var(--muted);">Italian partner explicitly rejected. Delaware LLCs trigger AdE/GdF scrutiny. No EU Parent-Subsidiary Directive. Italy-US treaty WHT: 5-15% on dividends. No IP box for non-US income. No EU VC compatibility.</td></tr>
+            <tr><td style="color:var(--warn); font-weight:600;">BVI</td><td class="text-sm" style="color:var(--muted);">EU Blacklist history. Zero Italian reputation. 30% Italian WHT on royalties. No DTA with Italy. Immediate esterovestizione presumption for Italian-controlled structure.</td></tr>
+            <tr><td style="color:var(--warn); font-weight:600;">Cayman Islands</td><td class="text-sm" style="color:var(--muted);">EU Blacklist 2022 (removed 2024 but reputational damage persists). Italian blacklist "paesi a fiscalità privilegiata" (non-EU). No Italy DTA. Catastrophic AdE scrutiny profile.</td></tr>
+            <tr><td style="color:var(--warn); font-weight:600;">UAE</td><td class="text-sm" style="color:var(--muted);">Flagged free zones (DIFC, JAFZA) on Italian grey-list radar. GdF routinely investigates UAE holding structures post-2022 Italian AML offensive. UAE-Italy DTA limited. No PSD.</td></tr>
+            <tr><td style="color:var(--warn); font-weight:600;">Panama</td><td class="text-sm" style="color:var(--muted);">Italian blacklist. No DTA with Italy. Zero information exchange. Immediate and irrebuttable esterovestizione presumption in practice.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Structure Diagram -->
+    <section id="structure" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--accent); display:inline-block;"></span>
+        Recommended Structure (Ireland)
+      </h2>
+      <div class="glass-card p-6">
+        <pre class="mono text-xs leading-relaxed overflow-x-auto" style="color:var(--accent)">
+┌─────────────────────────────────────────────────────────────────┐
+│                     IRELAND HOLDCO                               │
+│              Solnest.ai Limited (IE)                             │
+│         12.5% CIT  │  10% KDB on IP income                      │
+│         Registered office: Dublin, Ireland                       │
+│         Independent Irish Non-Executive Director (substance)     │
+│                                                                  │
+│  Share structure:                                                │
+│  ┌───────────────┐ ┌───────────────┐ ┌────────────────────────┐ │
+│  │ Class A       │ │ Class B       │ │ SAFE / Convertible     │ │
+│  │ Founder ord.  │ │ Investor pref │ │ Note (€300K → 15%,     │ │
+│  │ (Pafi + Leo)  │ │ (IT partner)  │ │ €2M valuation cap)     │ │
+│  └───────────────┘ └───────────────┘ └────────────────────────┘ │
+│                                                                  │
+│  IP OWNERSHIP: Solnest Platform (code, brand, algorithms)        │
+│  └─→ Licensed to IT SRL at 8-12% of revenue (TP-documented)     │
+└─────────────────────────────────────────────────────────────────┘
+                            │
+                            │ 100% ownership of shares
+                            │ Dividends ↑: 0% WHT (EU PSD)
+                            │ Royalties ↑: 0% WHT (EU I&R Directive)
+                            │   [or 22.5% domestic if Directive not met]
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     ITALY OPCO                                   │
+│              Solnest Italia S.r.l.                               │
+│         24% IRES + 3.9% IRAP ≈ 28% effective on taxable profit  │
+│         Operations: sales, installer contracts, customer ops     │
+│                                                                  │
+│  Revenue: €300K (Y1) → €2M (Y3)                                 │
+│  Deductions: royalties paid to IE HoldCo (reduces IT tax base)  │
+│  Dividends to IE HoldCo: 0% WHT under EU PSD                    │
+└─────────────────────────────────────────────────────────────────┘</pre>
+        <div class="mt-4 text-sm callout-blue">
+          <strong>Founder compensation (ask commercialista to model):</strong> Option A = IT SRL director salary (INPS ~33% + IRPEF up to 43%). Option B = IE HoldCo director fee (treaty-governed, but triggers Italy residency analysis). Option C = IT SRL salary + dividend from HoldCo at progressive rate. Hybrid approaches require individual tax modelling based on founders' total income and Italian IRPEF brackets.
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--accent2); display:inline-block;"></span>
+        12-Month Setup Roadmap (Ireland)
+      </h2>
+      <div class="glass-card overflow-x-auto">
+        <table>
+          <thead><tr><th>Month</th><th>Milestone</th><th>Owner</th><th>Est. Cost</th></tr></thead>
+          <tbody>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M1</td><td class="text-sm">Engage Irish corporate solicitor + Italian commercialista (intl. tax specialist)</td><td class="text-sm" style="color:var(--muted)">Founders</td><td class="text-sm">€2,000</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M1</td><td class="text-sm">Commission IP valuation + transfer pricing study for Solnest platform (pre-revenue = easier)</td><td class="text-sm" style="color:var(--muted)">TP advisor</td><td class="text-sm">€3,000-5,000</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M2</td><td class="text-sm">Incorporate Solnest.ai Limited in Ireland (CRO filing, Articles with Class A/B preferred share structure, SAFE template)</td><td class="text-sm" style="color:var(--muted)">IE solicitor</td><td class="text-sm">€1,500</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M2</td><td class="text-sm">Appoint independent Irish non-executive director (professional NED service firm)</td><td class="text-sm" style="color:var(--muted)">IE solicitor</td><td class="text-sm">€3,000-5,000/yr</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M3</td><td class="text-sm">Register IE HoldCo for Corporation Tax; open Irish bank account (AIB/BOI/Revolut Business)</td><td class="text-sm" style="color:var(--muted)">IE accountant</td><td class="text-sm">€500</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M3</td><td class="text-sm">Execute IP Assignment Agreement: transfer Solnest platform IP to IE HoldCo per TP study</td><td class="text-sm" style="color:var(--muted)">IE + IT counsel</td><td class="text-sm">Included above</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M4</td><td class="text-sm">Execute IP Licensing Agreement: IE HoldCo → Solnest Italia SRL, royalty at TP-documented rate</td><td class="text-sm" style="color:var(--muted)">IE + IT counsel</td><td class="text-sm">€1,000</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M4</td><td class="text-sm">Incorporate or convert Solnest Italia S.r.l. in Italy; engage commercialista</td><td class="text-sm" style="color:var(--muted)">IT notary</td><td class="text-sm">€2,000-3,000</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M4</td><td class="text-sm">Execute SAFE note: Italian partner's €300K investment → IE HoldCo Class B preferred</td><td class="text-sm" style="color:var(--muted)">IE solicitor</td><td class="text-sm">€1,500</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M5</td><td class="text-sm">First IE Board meeting in Dublin (real, minutes documented, IE NED present)</td><td class="text-sm" style="color:var(--muted)">IE NED + founders</td><td class="text-sm">Travel</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M6</td><td class="text-sm">Solnest Italia S.r.l. operational: first invoices, installer contracts, customer onboarding</td><td class="text-sm" style="color:var(--muted)">IT team</td><td class="text-sm">Ops cost</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M7</td><td class="text-sm">Register intercompany agreements with IT commercialista; AdE disclosure compliance</td><td class="text-sm" style="color:var(--muted)">IT commercialista</td><td class="text-sm">€500</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M9</td><td class="text-sm">IE annual accounts preparation begins; TP documentation update for Y1</td><td class="text-sm" style="color:var(--muted)">IE accountant</td><td class="text-sm">€4,000-6,000</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M10</td><td class="text-sm">Second IE Board meeting; review royalty arrangements; substance documentation review</td><td class="text-sm" style="color:var(--muted)">IE NED + founders</td><td class="text-sm">Travel</td></tr>
+            <tr><td class="mono font-semibold" style="color:var(--accent)">M12</td><td class="text-sm">Full-year TP documentation package assembled; IT SRL first tax return filed</td><td class="text-sm" style="color:var(--muted)">IT + IE advisors</td><td class="text-sm">€2,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Cost Model -->
+    <section id="costs" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--accent); display:inline-block;"></span>
+        Cost Model: Two-Tier vs. IT SRL Only
+      </h2>
+      <div class="glass-card p-6 space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h3 class="font-semibold mb-3" style="color:var(--accent)">IE HoldCo + IT SRL</h3>
+            <table>
+              <tbody>
+                <tr><td class="text-sm py-1"><strong>Y1 Setup</strong></td><td></td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">Incorporation + legal</td><td class="text-sm py-1 text-right">€8,000-12,000</td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">IP/TP study</td><td class="text-sm py-1 text-right">€5,000-8,000</td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">SAFE documentation</td><td class="text-sm py-1 text-right">€1,500-2,500</td></tr>
+                <tr><td class="text-sm py-1 font-semibold" style="color:var(--text)">Y1 Total</td><td class="text-sm py-1 text-right font-semibold" style="color:var(--accent)">€14,500-22,500</td></tr>
+                <tr><td class="text-sm py-1"><strong>Y2-Y3 Annual Run-Rate</strong></td><td></td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">IE accountant + secretary</td><td class="text-sm py-1 text-right">€8,000-12,000</td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">IE independent director fee</td><td class="text-sm py-1 text-right">€5,000-8,000</td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">IT commercialista</td><td class="text-sm py-1 text-right">€5,000-8,000</td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">TP annual update</td><td class="text-sm py-1 text-right">€2,000-3,000</td></tr>
+                <tr><td class="text-sm py-1 font-semibold" style="color:var(--text)">Annual Run-Rate</td><td class="text-sm py-1 text-right font-semibold" style="color:var(--warn)">€20,000-31,000</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-3" style="color:var(--muted)">IT SRL Only (Baseline)</h3>
+            <table>
+              <tbody>
+                <tr><td class="text-sm py-1"><strong>Y1 Setup</strong></td><td></td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">IT notary + registration</td><td class="text-sm py-1 text-right">€2,000</td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">Basic SAFE documentation</td><td class="text-sm py-1 text-right">€500</td></tr>
+                <tr><td class="text-sm py-1 font-semibold" style="color:var(--text)">Y1 Total</td><td class="text-sm py-1 text-right font-semibold" style="color:var(--accent2)">€2,500</td></tr>
+                <tr><td class="text-sm py-1"><strong>Y2-Y3 Annual Run-Rate</strong></td><td></td></tr>
+                <tr><td class="text-sm py-1 pl-4" style="color:var(--muted)">IT commercialista</td><td class="text-sm py-1 text-right">€5,000-8,000</td></tr>
+                <tr><td class="text-sm py-1 font-semibold" style="color:var(--text)">Annual Run-Rate</td><td class="text-sm py-1 text-right font-semibold" style="color:var(--accent2)">€5,000-8,000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="callout-blue text-sm mt-4">
+          <strong>Tax saving analysis at Y3 (€2M revenue, ~€600K EBITDA):</strong><br>
+          Without HoldCo: IT IRES 24% on full €600K = <strong>€144,000</strong> tax.<br>
+          With HoldCo: ~€200K royalties shift to IE (taxed at 10% KDB = €20K). Remaining €400K in IT at 24% = €96K. Total = <strong>€116,000</strong>. Saving: <strong>~€28,000/yr</strong>.<br>
+          Net benefit after additional compliance cost (€15K extra/yr): <strong>+€13,000/yr</strong> from Y3 onward.<br><br>
+          <strong>Key insight:</strong> The two-tier structure is NOT primarily a tax play at this scale. Strategic value: (1) clean cap table for €300K investment, (2) IP ownership outside Italy for M&A purposes, (3) EU VC readiness for Series A, (4) elimination of AdE scrutiny on equity structure. Tax becomes strongly positive above €5M revenue.
+        </div>
+      </div>
+    </section>
+
+    <!-- Killer Questions -->
+    <section id="questions" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--accent); display:inline-block;"></span>
+        Killer Questions for Advisors
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass-card p-6">
+          <h3 class="font-semibold mb-4" style="color:var(--accent)">For Italian Commercialista</h3>
+          <ol class="space-y-3 text-sm list-decimal ml-4" style="color:var(--muted)">
+            <li>Given that Pafi and Leo are Italian residents managing the company from Italy, what specific board governance controls do we need in the Irish HoldCo to rebut the art. 73 para. 5-bis presumption? Is a single Irish director sufficient?</li>
+            <li>What is the current Italian Revenue Agency position on EU Interest & Royalties Directive exemption for royalties paid from Solnest Italia SRL to an Irish HoldCo — does Italy strictly apply the beneficial ownership test per Circular 26E/2016?</li>
+            <li>Should the IP assignment from founders to IE HoldCo happen before or after Solnest Italia SRL operational launch to avoid a "value created in Italy" transfer pricing challenge?</li>
+            <li>At what royalty rate would AdE consider the arrangement commercially aggressive, given the Solnest platform is pre-revenue at time of transfer?</li>
+            <li>What is the CFC risk under art. 167 if the IE HoldCo KDB rate is 10% — above Italy's 15% threshold for non-EU — but we are an EU structure and art. 47-bis applies?</li>
+          </ol>
+        </div>
+        <div class="glass-card p-6">
+          <h3 class="font-semibold mb-4" style="color:var(--accent2)">For Irish HoldCo Solicitor/Tax Advisor</h3>
+          <ol class="space-y-3 text-sm list-decimal ml-4" style="color:var(--muted)">
+            <li>Does the Irish HoldCo need to be incorporated before IP is created, or is there a post-creation assignment mechanism that survives Revenue scrutiny for KDB qualification given the "nexus approach" requirement?</li>
+            <li>What is the minimum substance profile for a pre-revenue Irish HoldCo holding Italian OpCo shares to satisfy "central management and control" — specifically, can the independent director be a professional director serving multiple clients?</li>
+            <li>What are the Irish transfer pricing documentation requirements for a sub-€50M group licensing software IP — is the 2022 simplified TP documentation regime available to us?</li>
+            <li>How should the SAFE note be structured under Irish company law to ensure it converts to Class B preferred on a future priced round without triggering Irish stamp duty on conversion?</li>
+            <li>What ATAD interest-limitation rules (thin capitalisation) could restrict deductibility if Solnest Italia SRL is partly funded via shareholder loans routed through the HoldCo?</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources -->
+    <section id="sources" class="fade-in">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="w-1 h-6 rounded" style="background:var(--muted); display:inline-block;"></span>
+        Primary Sources (20)
+      </h2>
+      <div class="glass-card p-6">
+        <ol class="space-y-2 text-sm list-decimal ml-4" style="color:var(--muted)">
+          <li>TUIR Art. 73 (Presidential Decree 917/1986, as amended 2024) — Italian company tax residence criteria · <a href="https://www.aclegal.website/tax-residency-italy-companies-entities-2024/" style="color:var(--accent)">aclegal.website</a></li>
+          <li>Italian Revenue Agency Circular 20/2024 (English) — New residency criteria guidance · <a href="https://www.agenziaentrate.gov.it" style="color:var(--accent)">agenziaentrate.gov.it</a></li>
+          <li>TUIR Art. 47-bis — EU/EEA exclusion from "paesi a fiscalità privilegiata" · <a href="https://tayros.bg/index.php/art-47-bis-del-tuir-paesi-a-fiscalit-privilegiata/" style="color:var(--accent)">tayros.bg</a></li>
+          <li>TUIR Art. 167 CFC reform — 15% ETR threshold (2024 aligned to Pillar 2) · <a href="https://www.diritto.it/riforma-art-167-tuir-nuovo-approccio-controllate/" style="color:var(--accent)">diritto.it</a></li>
+          <li>Arletti Partners — Esterovestizione criteria and investigative triggers · <a href="https://arlettipartners.com/companyresidency/" style="color:var(--accent)">arlettipartners.com</a></li>
+          <li>EU Parent-Subsidiary Directive (2011/96/EU) — 0% WHT on qualifying EU inter-company dividends · <a href="https://taxation-customs.ec.europa.eu/taxation/business-taxation/parent-subsidiary-directive_en" style="color:var(--accent)">ec.europa.eu</a></li>
+          <li>Irish Revenue — KDB effective rate increase to 10% (Pillar 2 aligned) — EY Ireland · <a href="https://www.ey.com/en_ie/technical/tax-alerts/effective-tax-rate-for-the-knowledge-development-box-increases-to-10" style="color:var(--accent)">ey.com</a></li>
+          <li>Irish Revenue.ie — Company residency / central management and control rules · <a href="https://www.revenue.ie/en/companies-and-charities/corporation-tax/company-residency-rules.aspx" style="color:var(--accent)">revenue.ie</a></li>
+          <li>Arthur Cox — Ireland participation exemption for foreign distributions (effective 1 Jan 2025) · <a href="https://www.arthurcox.com/knowledge/ireland-introduces-a-participation-exemption-for-foreign-distributions/" style="color:var(--accent)">arthurcox.com</a></li>
+          <li>Arthur Cox — Board meetings and Irish tax residency (post-2022 Revenue practice change) · <a href="https://www.arthurcox.com/knowledge/board-meetings-and-company-residence-change-to-irish-revenue-practice-from-1-january-2022/" style="color:var(--accent)">arthurcox.com</a></li>
+          <li>ADVANT Nctm — Brexit: Italy→UK WHT rates post-PSD loss (5% treaty dividend) · <a href="https://www.advant-nctm.com/en/news/tax-consequences-of-brexit-2" style="color:var(--accent)">advant-nctm.com</a></li>
+          <li>DLA Piper Italy Tax Guide — Italy outbound WHT 1.20% to EU/EEA; 95% PEX; CIT 24%; CFC art.167 · <a href="https://intelligence.dlapiper.com/global-expansion-tax/?c=IT" style="color:var(--accent)">dlapiper.com</a></li>
+          <li>PwC Luxembourg — SOPARFI: 80% IP exemption, eff. 3.2% rate; CIT 16% from Jan 2025 · <a href="https://taxsummaries.pwc.com/luxembourg/corporate/tax-credits-and-incentives" style="color:var(--accent)">taxsummaries.pwc.com</a></li>
+          <li>PwC Romania — Micro-enterprise 1% regime; EU PSD dividend exclusion; revenue threshold €100K · <a href="https://taxsummaries.pwc.com/romania/corporate/taxes-on-corporate-income" style="color:var(--accent)">taxsummaries.pwc.com</a></li>
+          <li>PwC Estonia — CIT 22% on distributions; 0% WHT on outbound dividends · <a href="https://taxsummaries.pwc.com/estonia/corporate/withholding-taxes" style="color:var(--accent)">taxsummaries.pwc.com</a></li>
+          <li>PwC Netherlands — Italy-NL WHT treaty: 5% if ≥50% shareholding; 0% via PSD · <a href="https://taxsummaries.pwc.com/netherlands/corporate/withholding-taxes" style="color:var(--accent)">taxsummaries.pwc.com</a></li>
+          <li>CMS Expert Guide — Switzerland holding company: participation relief, no outbound WHT on royalties · <a href="https://cms.law/en/int/expert-guides/cms-expert-guide-to-holding-company-regimes-across-europe/switzerland" style="color:var(--accent)">cms.law</a></li>
+          <li>Andersen EU Tax Guide — European holding company regime comparison 2025 · <a href="https://lu.andersen.com/wp-content/uploads/2025/04/tax-regime-for-holding-companiesanderseninttax-eu102023.pdf" style="color:var(--accent)">andersen.com</a></li>
+          <li>Crowe UK — Brexit impact: Italy WHT on UK parent (5% treaty dividend rate) · <a href="https://www.crowe.com/uk/insights/impact-of-brexit-on-the-uk" style="color:var(--accent)">crowe.com</a></li>
+          <li>BDO Ireland — KDB: 10% effective rate on qualifying IP profits · <a href="https://www.bdo.ie/en-gb/services/tax/research-development-and-innovation-incentives/knowledge-development-box-tax-relief" style="color:var(--accent)">bdo.ie</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Source Coverage -->
+    <section class="fade-in">
+      <div class="glass-card p-6">
+        <h3 class="font-semibold mb-3 text-sm" style="color:var(--muted); text-transform:uppercase; letter-spacing:.06em">Source Coverage Report</h3>
+        <table>
+          <thead><tr><th>Category</th><th>Status</th><th>Channels</th><th>Findings</th></tr></thead>
+          <tbody>
+            <tr><td class="text-sm">Web Search</td><td><span class="text-xs px-2 py-0.5 rounded" style="background:rgba(63,185,80,0.2); color:var(--accent2);">COVERED</span></td><td class="text-sm" style="color:var(--muted)">Brave Search, direct WebFetch</td><td class="text-sm">22</td></tr>
+            <tr><td class="text-sm">Official / Academic</td><td><span class="text-xs px-2 py-0.5 rounded" style="background:rgba(63,185,80,0.2); color:var(--accent2);">COVERED</span></td><td class="text-sm" style="color:var(--muted)">Revenue.ie, Agenzia Entrate, PwC Worldwide Tax Summaries, DLA Piper, Arthur Cox</td><td class="text-sm">10</td></tr>
+            <tr><td class="text-sm">Social (Reddit/HN/X)</td><td><span class="text-xs px-2 py-0.5 rounded" style="background:rgba(210,153,34,0.2); color:#d2991f;">SKIPPED</span></td><td class="text-sm" style="color:var(--muted)">Not relevant: professional legal/tax topic</td><td class="text-sm">0</td></tr>
+            <tr><td class="text-sm">Video (YouTube)</td><td><span class="text-xs px-2 py-0.5 rounded" style="background:rgba(210,153,34,0.2); color:#d2991f;">SKIPPED</span></td><td class="text-sm" style="color:var(--muted)">Not relevant: legal analysis topic</td><td class="text-sm">0</td></tr>
+            <tr><td class="text-sm">Deep Research</td><td><span class="text-xs px-2 py-0.5 rounded" style="background:rgba(88,166,255,0.2); color:var(--accent);">PARTIAL</span></td><td class="text-sm" style="color:var(--muted)">Perplexity sonar-pro attempted (no Italy-specific result returned); Opus in-context synthesis</td><td class="text-sm">1</td></tr>
+            <tr><td class="text-sm">Finance</td><td><span class="text-xs px-2 py-0.5 rounded" style="background:rgba(210,153,34,0.2); color:#d2991f;">SKIPPED</span></td><td class="text-sm" style="color:var(--muted)">Not a financial markets query</td><td class="text-sm">0</td></tr>
+          </tbody>
+        </table>
+        <div class="mt-4 text-xs" style="color:var(--muted)">
+          EPR: <strong style="color:var(--warn)">UNVALIDATED</strong> — D3 Critic not dispatched (time constraint; confirm before legal reliance) ·
+          Self-grade: <strong style="color:var(--accent)">74/100</strong> ·
+          Cortex ID: <strong>f6f96196-7c53-496f-9db6-505c89c3d4cf</strong> ·
+          Intel file: <strong>/Users/pafi/.nexus/intel/solnest-holdco-jurisdiction-analysis-2026-04-22.md</strong>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById('toggle-btn');
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    html.classList.add('light');
+    btn.textContent = 'Toggle Dark';
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.classList.remove('light');
+    html.classList.add('dark');
+    btn.textContent = 'Toggle Light';
+    localStorage.setItem('theme', 'dark');
+  }
+}
+// Load saved theme
+if (localStorage.getItem('theme') === 'light') toggleTheme();
+
+// Share
+function shareReport() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'Solnest HoldCo Jurisdiction Analysis', url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      document.getElementById('share-btn').textContent = 'Copied!';
+      setTimeout(() => document.getElementById('share-btn').textContent = 'Share', 2000);
+    });
+  }
+}
+
+// Fade in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// TOC active state
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  tocLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+});
+
+// Score chart
+const ctx = document.getElementById('scoreChart');
+if (ctx) {
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Ireland', 'Netherlands', 'Luxembourg', 'UK', 'Switzerland', 'Cyprus', 'Estonia', 'Romania', 'Malta'],
+      datasets: [{
+        label: 'Weighted Score (out of 90)',
+        data: [72.5, 70.0, 68.0, 61.5, 58.0, 57.0, 56.5, 56.0, 52.0],
+        backgroundColor: [
+          'rgba(63,185,80,0.7)',
+          'rgba(88,166,255,0.7)',
+          'rgba(210,153,34,0.7)',
+          'rgba(139,148,158,0.5)',
+          'rgba(139,148,158,0.5)',
+          'rgba(247,129,102,0.5)',
+          'rgba(139,148,158,0.5)',
+          'rgba(139,148,158,0.5)',
+          'rgba(207,34,46,0.5)',
+        ],
+        borderColor: [
+          'rgba(63,185,80,1)',
+          'rgba(88,166,255,1)',
+          'rgba(210,153,34,1)',
+          'rgba(139,148,158,0.7)',
+          'rgba(139,148,158,0.7)',
+          'rgba(247,129,102,0.7)',
+          'rgba(139,148,158,0.7)',
+          'rgba(139,148,158,0.7)',
+          'rgba(207,34,46,0.7)',
+        ],
+        borderWidth: 1,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ' Score: ' + ctx.raw + '/90' } }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 90,
+          grid: { color: 'rgba(255,255,255,0.06)' },
+          ticks: { color: '#8b949e' }
+        },
+        x: {
+          grid: { display: false },
+          ticks: { color: '#8b949e' }
+        }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
