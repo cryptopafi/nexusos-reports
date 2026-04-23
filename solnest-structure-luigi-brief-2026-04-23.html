@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solnest.ai — Corporate Structure Decision Brief</title>
+<style>
+:root {
+  --c-bg: #ffffff; --c-surface: #f8f9fa; --c-border: #e2e8f0;
+  --c-text: #1a202c; --c-text-muted: #64748b; --c-primary: #1A9BA5;
+  --c-success: #16a34a; --c-warning: #d97706; --c-danger: #dc2626;
+  --c-accent: #C8BFB0;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+  --space-xs: 0.25rem; --space-sm: 0.5rem; --space-md: 1rem;
+  --space-lg: 1.5rem; --space-xl: 2rem; --space-2xl: 3rem;
+  --content-width: 900px; --radius: 8px;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: var(--font-serif);
+  color: var(--c-text);
+  background: var(--c-bg);
+  margin: 0;
+  padding: var(--space-xl) var(--space-md);
+  line-height: 1.6;
+  font-size: 16px;
+}
+main { max-width: var(--content-width); margin: 0 auto; }
+header {
+  border-bottom: 3px solid var(--c-primary);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+h1 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 var(--space-xs);
+  color: var(--c-text);
+}
+.meta { font-family: var(--font-sans); color: var(--c-text-muted); font-size: 0.9rem; }
+h2 {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-md);
+  color: var(--c-primary);
+}
+h3 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  margin: 0 0 var(--space-sm);
+}
+p { margin: 0 0 var(--space-md); }
+ul, ol { padding-left: var(--space-lg); margin: 0 0 var(--space-md); }
+li { margin-bottom: var(--space-xs); }
+strong { color: var(--c-text); }
+.tldr {
+  background: var(--c-surface);
+  border-left: 4px solid var(--c-primary);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-xl);
+}
+.tldr ul { margin: 0; }
+.tldr li { font-weight: 500; margin-bottom: var(--space-xs); }
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+.option-card {
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  page-break-inside: avoid;
+}
+.option-card.recommended { border: 2px solid var(--c-primary); box-shadow: 0 2px 8px rgba(26,155,165,0.12); }
+.badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: var(--space-sm);
+}
+.badge.rec { background: var(--c-primary); color: white; }
+.badge.alt { background: var(--c-accent); color: var(--c-text); }
+.opt-title {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-xs);
+}
+.opt-structure {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--c-text-muted);
+  margin-bottom: var(--space-md);
+}
+.opt-total {
+  font-family: var(--font-sans);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin: var(--space-sm) 0;
+}
+.opt-total-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+table.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  margin: var(--space-md) 0;
+}
+table.cost-table td {
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--c-border);
+}
+table.cost-table td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+table.cost-table tr.total td {
+  border-top: 2px solid var(--c-text);
+  border-bottom: none;
+  padding-top: var(--space-sm);
+  font-weight: 700;
+}
+.pros-cons {
+  margin-top: var(--space-md);
+  font-size: 0.9rem;
+}
+.pros-cons .label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  margin-top: var(--space-sm);
+}
+.pros-cons ul { margin: 4px 0; padding-left: var(--space-md); }
+.callout {
+  background: #fff8e1;
+  border-left: 4px solid var(--c-warning);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius);
+  margin: var(--space-lg) 0;
+  font-size: 0.95rem;
+}
+.ask-list {
+  background: var(--c-surface);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius);
+}
+.ask-list ol { margin: 0; padding-left: var(--space-lg); }
+.ask-list li { margin-bottom: var(--space-sm); }
+footer {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--c-border);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
+  text-align: center;
+}
+@media print {
+  body { padding: 1cm; }
+  .option-card { page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>Solnest.ai — Corporate Structure Decision Brief</h1>
+  <div class="meta">Prepared for: <strong>Luigi</strong> · Date: 2026-04-23 · From: Pafi</div>
+</header>
+
+<section class="tldr">
+  <ul>
+    <li>We evaluated <strong>five structural options</strong> for operating Solnest in Italy.</li>
+    <li>Recommendation: <strong>Option 1 — Italian company + Irish holding</strong>, with <strong>Option 3 — Irish company with Italian branch</strong> as a close alternative worth your input.</li>
+    <li>Year 1 operating cost: <strong>€638,000</strong> (Option 1) versus <strong>€702,000</strong> (Option 3). Gap is €64,000 per year.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Why this matters</h2>
+  <p>Italy is the most aggressive country in the European Union at asserting authority over foreign platforms. In 2023, Airbnb Ireland settled with the Italian tax authorities for <strong>€576 million</strong> because Italy ruled Airbnb had failed to collect a 21% withholding on short-term rentals made through its platform — despite the contracting entity being Irish. In 2020, the Italian operation of Uber Eats was placed under judicial administration by Milan prosecutors over driver-classification issues.</p>
+  <p>The lesson is clear: <strong>"we are Irish, Italian rules do not apply to us" is not a viable long-term structure</strong>. Every marketplace that scales in Italy ends up with some form of declared Italian presence. The question is not whether, but when and how.</p>
+</section>
+
+<section>
+  <h2>The two real contenders</h2>
+
+  <div class="options-grid">
+
+    <div class="option-card recommended">
+      <span class="badge rec">Recommended</span>
+      <div class="opt-title">Option 1 — Italian company + Irish holding</div>
+      <div class="opt-structure">Italian operating company (SRL) + Irish Limited as holding company</div>
+
+      <div class="opt-total-label">Year 1 total cost</div>
+      <div class="opt-total">€638,160</div>
+
+      <table class="cost-table">
+        <tr><td>Team (2 Italian employees + business-development contractor)</td><td>€348,000</td></tr>
+        <tr><td>Italian accountant + corporate compliance</td><td>€24,000</td></tr>
+        <tr><td>Legal (Italian + Irish dual counsel)</td><td>€36,000</td></tr>
+        <tr><td>Technology + Cloud + AI Agents + software tools</td><td>€60,240</td></tr>
+        <tr><td>Transfer-pricing memo + regulatory</td><td>€15,000</td></tr>
+        <tr><td>Compliance (data protection, privacy, insurance)</td><td>€14,000</td></tr>
+        <tr><td>Payment infrastructure + banking</td><td>€14,400</td></tr>
+        <tr><td>Founder compensation</td><td>€60,000</td></tr>
+        <tr><td>Data room, localization, administration, contingency</td><td>€66,520</td></tr>
+        <tr class="total"><td>Year 1 Total</td><td>€638,160</td></tr>
+      </table>
+
+      <div class="pros-cons">
+        <div class="label">Pros</div>
+        <ul>
+          <li>Audit-clean and investor-clean for Series A due diligence</li>
+          <li>Matches what Airbnb and Uber actually do at scale</li>
+          <li>Lowest legal risk — no contractor-reclassification exposure</li>
+          <li>Full corporate veil between Italian operations and Irish holding</li>
+        </ul>
+        <div class="label">Cons</div>
+        <ul>
+          <li>Two legal entities to administer</li>
+          <li>Transfer-pricing memo required between the two entities (~€8,000/yr)</li>
+          <li>Italian employees carry 1.28× loaded cost (social charges + severance)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="option-card">
+      <span class="badge alt">Alternative</span>
+      <div class="opt-title">Option 3 — Irish company with Italian branch + marketing agency</div>
+      <div class="opt-structure">Single Irish Limited with a registered Italian branch office</div>
+
+      <div class="opt-total-label">Year 1 total cost</div>
+      <div class="opt-total">€701,974</div>
+
+      <table class="cost-table">
+        <tr><td>Team (Irish employees + Italian business-development person as branch employee)</td><td>€380,000</td></tr>
+        <tr><td>Italian marketing agency retainer (€5,000/month)</td><td>€60,000</td></tr>
+        <tr><td>Italian accountant for branch (simpler than full company)</td><td>€15,000</td></tr>
+        <tr><td>Legal (Irish + Italian branch-specific)</td><td>€42,000</td></tr>
+        <tr><td>Technology + Cloud + AI Agents + software tools</td><td>€60,240</td></tr>
+        <tr><td>Branch setup + Italian banking + Chamber of Commerce + insurance</td><td>€8,200</td></tr>
+        <tr><td>Compliance (data protection, privacy)</td><td>€10,000</td></tr>
+        <tr><td>Payment infrastructure</td><td>€9,600</td></tr>
+        <tr><td>Founder compensation</td><td>€60,000</td></tr>
+        <tr><td>Data room, localization, administration, contingency</td><td>€56,934</td></tr>
+        <tr class="total"><td>Year 1 Total</td><td>€701,974</td></tr>
+      </table>
+
+      <div class="pros-cons">
+        <div class="label">Pros</div>
+        <ul>
+          <li>Only one legal entity to administer</li>
+          <li>No transfer-pricing memo between separate companies</li>
+          <li>Visibly declared Italian presence — no hidden-company risk</li>
+          <li>Business-development person is a proper employee (no contractor-reclassification risk)</li>
+        </ul>
+        <div class="label">Cons</div>
+        <ul>
+          <li>€64,000 per year more expensive than Option 1</li>
+          <li>Branch liability flows back to the Irish parent — no corporate veil</li>
+          <li>Profit attribution between branch and head office is its own exercise</li>
+          <li>Italian branch still triggers the same employee loading as a full Italian company</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Why not the cheaper options?</h2>
+  <p>We also modeled an Ireland-only setup with Italian contractors (€566,000 Year 1, saving €72,000 per year) and two Estonia variants. Both save real money on paper but concentrate risk precisely where it hurts most — at Series A due diligence — through two exposures: permanent-establishment treatment by Italian tax authorities, and contractor-to-employee reclassification by Italian labour courts.</p>
+  <p>The Airbnb and Uber precedents show these setups do not survive scale. Italian tax authorities and labour inspectors reach through the foreign-parent structure the moment there is meaningful commercial activity on Italian soil. At the €300,000 SAFE stage, the risk discount a serious Series A investor would apply to a contractor-only Italian setup exceeds the annual tax-efficiency premium.</p>
+  <p>Estonia specifically performs worse than Ireland on founder extraction. At €200,000 per year in distributed profits, the total tax leakage is 35.3% through Ireland versus 42.3% through Estonia — Ireland wins by €14,000 per year per founder.</p>
+</section>
+
+<section>
+  <h2>What we are asking you</h2>
+  <div class="ask-list">
+    <ol>
+      <li>Do you have an accountant in Italy (commercialista) whom you trust to give us a second opinion on Option 1 versus Option 3?</li>
+      <li>For the Italian side, can you recommend a notary experienced with an Irish parent structure and Italian subsidiary or branch operations?</li>
+      <li>On the Irish side, do you or someone in your network have a Dublin corporate solicitor for holding-company structuring and SAFE-to-equity conversion?</li>
+      <li>From your own experience with Italian businesses that had foreign parents — if any — which operational headache is worse: running a full Italian company, or running an Italian branch of a foreign company?</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>Next steps</h2>
+  <ul>
+    <li>Decision locked at the Luigi call (proposed date: <strong>2026-05-05</strong>, adjustable to your schedule).</li>
+    <li>Two external validations already queued: Italian tax-authority enforcement trends 2024–2026, and Italian banks accepting branch accounts for marketplace businesses.</li>
+    <li>Target signing of the SAFE within 30 days of structure lock.</li>
+  </ul>
+</section>
+
+<div class="callout">
+  <strong>Note on methodology.</strong> All figures are Year 1 estimates derived from the Solnest expense-plan model v0.1.1 (dated 2026-04-22) and a structural comparison analysis of five options. The full 7-section analysis, including cost accuracy confidence bands, tax-leakage math, and the stress-test on the two cheaper alternatives, is available on request.
+</div>
+
+<footer>
+  Solnest.ai · Corporate Structure Decision Brief · 2026-04-23 · Source: structure-comparison-2026-04-22.md
+</footer>
+
+</main>
+</body>
+</html>
