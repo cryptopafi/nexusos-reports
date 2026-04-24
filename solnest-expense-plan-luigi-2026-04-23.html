@@ -5,18 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Solnest.ai — Expense Plan Year 1 (Investor Report)</title>
   <meta name="description" content="Solnest.ai Year 1 Expense Plan — €639,360 v1.0 target (v0.1.2 base €627,120) across 15 categories. Pre-seed SAFE €300,000 @ €2,000,000 cap." />
-  <!-- Open Graph -->
   <meta property="og:title" content="Solnest.ai — Expense Plan Year 1 (Investor Report)" />
-  <meta property="og:description" content="Year 1 burn €639,360 · SAFE €300K · 15 expense categories fully loaded." />
+  <meta property="og:description" content="Year 1 burn €639,360 · SAFE €300K @ €2M cap · 15 expense categories fully loaded." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://cryptopafi.github.io/nexusos-reports/solnest-expense-plan-luigi-2026-04-23.html" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
   <script>
@@ -36,102 +32,40 @@
   </script>
 
   <style>
-    /* Base tokens */
     [data-theme="dark"] {
-      --bg: #0A0A0F;
-      --card: #111118;
-      --card2: #16161f;
-      --border: rgba(255,255,255,0.07);
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --heading: #f1f5f9;
-      --glass: rgba(17,17,24,0.75);
+      --bg: #0A0A0F; --card: #111118; --card2: #16161f;
+      --border: rgba(255,255,255,0.07); --text: #e2e8f0; --muted: #94a3b8;
+      --heading: #f1f5f9; --glass: rgba(17,17,24,0.75);
     }
     [data-theme="light"] {
-      --bg: #f7f9fc;
-      --card: #ffffff;
-      --card2: #f0f4f8;
-      --border: rgba(0,0,0,0.08);
-      --text: #1e293b;
-      --muted: #64748b;
-      --heading: #0f172a;
-      --glass: rgba(255,255,255,0.85);
+      --bg: #f7f9fc; --card: #ffffff; --card2: #f0f4f8;
+      --border: rgba(0,0,0,0.08); --text: #1e293b; --muted: #64748b;
+      --heading: #0f172a; --glass: rgba(255,255,255,0.85);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    /* Layout */
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; transition: background 0.3s, color 0.3s; }
     .layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
     @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
-
-    /* Sidebar */
-    .sidebar {
-      position: sticky; top: 0; height: 100vh; overflow-y: auto;
-      background: var(--card);
-      border-right: 1px solid var(--border);
-      padding: 2rem 1.25rem;
-      display: flex; flex-direction: column; gap: 1.5rem;
-    }
+    .sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--card); border-right: 1px solid var(--border); padding: 2rem 1.25rem; display: flex; flex-direction: column; gap: 1.5rem; }
     @media (max-width: 900px) { .sidebar { display: none; } }
-
     .sidebar-logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
     .sidebar-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: #1A9BA5; }
     .sidebar-logo span { font-weight: 700; font-size: 1rem; color: var(--heading); }
-
-    .meta-card {
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem;
-      font-size: 0.78rem;
-    }
+    .meta-card { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; font-size: 0.78rem; }
     .meta-card .label { color: var(--muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.15rem; }
     .meta-card .value { color: var(--heading); font-weight: 600; }
-
-    /* TOC */
-    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
-    .toc-list a {
-      display: block; padding: 0.3rem 0.6rem; border-radius: 6px;
-      font-size: 0.78rem; color: var(--muted); text-decoration: none;
-      transition: all 0.15s;
-    }
+    .toc-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+    .toc-list a { display: block; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: all 0.15s; }
     .toc-list a:hover, .toc-list a.active { background: var(--accent-dim); color: #1A9BA5; }
     .toc-section { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 0.75rem; margin-bottom: 0.2rem; padding-left: 0.6rem; }
-
-    /* Main content */
     .main { padding: 3rem 2.5rem; max-width: 900px; }
     @media (max-width: 700px) { .main { padding: 1.5rem 1rem; } }
-
-    /* Cards / Sections */
     .section { margin-bottom: 3.5rem; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; }
     .section.visible { opacity: 1; transform: translateY(0); }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, #0A0A0F 0%, #0d1a1b 100%);
-      border: 1px solid rgba(26,155,165,0.25);
-      border-radius: 16px;
-      padding: 2.5rem;
-      margin-bottom: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
+    .hero { background: linear-gradient(135deg, #0A0A0F 0%, #0d1a1b 100%); border: 1px solid rgba(26,155,165,0.25); border-radius: 16px; padding: 2.5rem; margin-bottom: 3rem; position: relative; overflow: hidden; }
     [data-theme="light"] .hero { background: linear-gradient(135deg, #e8f9fa 0%, #d0f0f2 100%); }
-    .hero::before {
-      content: '';
-      position: absolute; top: -60px; right: -60px;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(26,155,165,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
+    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(26,155,165,0.18) 0%, transparent 70%); pointer-events: none; }
     .hero-badge { display: inline-block; background: rgba(26,155,165,0.15); border: 1px solid rgba(26,155,165,0.4); color: #1A9BA5; border-radius: 999px; padding: 0.2rem 0.8rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; }
     .hero h1 { font-size: 2rem; font-weight: 700; color: var(--heading); line-height: 1.25; margin-bottom: 0.5rem; }
     .hero-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
@@ -140,21 +74,10 @@
     .hero-stat .s-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
     .hero-stat .s-value { font-size: 1.4rem; font-weight: 700; color: #1A9BA5; margin-top: 0.2rem; }
     .hero-stat .s-sub { font-size: 0.7rem; color: var(--muted); margin-top: 0.1rem; }
-
-    /* Section headings */
     .section-title { font-size: 1.35rem; font-weight: 700; color: var(--heading); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.6rem; }
     .section-title .accent-bar { width: 4px; height: 1.4rem; background: #1A9BA5; border-radius: 4px; }
     .section-title .num { font-size: 0.75rem; background: var(--accent-dim); color: #1A9BA5; border-radius: 6px; padding: 0.15rem 0.5rem; font-weight: 600; }
-
-    /* Category cards */
-    .cat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
+    .cat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; transition: border-color 0.2s, box-shadow 0.2s; }
     .cat-card:hover { border-color: rgba(26,155,165,0.3); box-shadow: 0 4px 20px rgba(26,155,165,0.08); }
     .cat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; gap: 1rem; }
     .cat-num { font-size: 0.68rem; color: #1A9BA5; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -165,8 +88,6 @@
     .cat-block { background: var(--card2); border-radius: 8px; padding: 0.85rem 1rem; }
     .cat-block .blabel { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.07em; color: #1A9BA5; font-weight: 600; margin-bottom: 0.3rem; }
     .cat-block p { font-size: 0.82rem; color: var(--text); line-height: 1.6; }
-
-    /* Tables */
     .table-wrap { overflow-x: auto; margin: 1.25rem 0; border-radius: 10px; border: 1px solid var(--border); }
     table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
     thead tr { background: var(--card2); }
@@ -178,58 +99,35 @@
     tbody td.right { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
     tbody tr.total-row { background: rgba(26,155,165,0.1); }
     tbody tr.total-row td { font-weight: 700; color: var(--heading); border-top: 2px solid rgba(26,155,165,0.35); }
-
-    /* Head-to-head table */
+    tbody tr.subtotal-row td { font-weight: 600; color: var(--muted); background: var(--card2); }
+    tbody tr.contingency-row td { color: var(--muted); font-style: italic; }
     .h2h-table thead th { background: rgba(26,155,165,0.12); }
     .h2h-table .col-opt1 { color: #1A9BA5; font-weight: 600; }
     .h2h-table .col-opt3 { color: #f97316; font-weight: 600; }
     .h2h-table tbody tr.winner-row td.col-opt1 { background: rgba(26,155,165,0.08); }
-
-    /* Option comparison header */
     .opt-badge { display: inline-block; border-radius: 999px; padding: 0.2rem 0.7rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
     .opt-badge.opt1 { background: rgba(26,155,165,0.15); color: #1A9BA5; border: 1px solid rgba(26,155,165,0.35); }
     .opt-badge.opt3 { background: rgba(249,115,22,0.12); color: #f97316; border: 1px solid rgba(249,115,22,0.3); }
-
-    /* Pull quote */
     .pull-quote { border-left: 3px solid #1A9BA5; padding: 0.75rem 1.25rem; margin: 1.5rem 0; background: var(--accent-dim); border-radius: 0 8px 8px 0; font-size: 0.88rem; color: var(--muted); font-style: italic; }
-
-    /* Bullet list */
     .bullet-list { list-style: none; padding: 0; }
     .bullet-list li { display: flex; gap: 0.6rem; padding: 0.4rem 0; font-size: 0.88rem; color: var(--text); }
     .bullet-list li::before { content: '›'; color: #1A9BA5; font-weight: 700; flex-shrink: 0; }
-
-    /* Chart container */
     .chart-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.25rem 0; }
     .chart-wrap h3 { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
-
-    /* Runway box */
     .runway-box { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
     @media (max-width: 600px) { .runway-box { grid-template-columns: 1fr; } }
     .runway-stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; text-align: center; }
     .runway-stat .rv { font-size: 1.6rem; font-weight: 700; color: #1A9BA5; }
     .runway-stat .rl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.3rem; }
-
-    /* Top bar */
     .topbar { display: none; }
-    @media (max-width: 900px) {
-      .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    }
-
-    /* Toggle */
-    #theme-toggle {
-      cursor: pointer; background: var(--card2); border: 1px solid var(--border); color: var(--muted);
-      border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.78rem; transition: all 0.2s;
-    }
+    @media (max-width: 900px) { .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; } }
+    #theme-toggle { cursor: pointer; background: var(--card2); border: 1px solid var(--border); color: var(--muted); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.78rem; transition: all 0.2s; }
     #theme-toggle:hover { border-color: #1A9BA5; color: #1A9BA5; }
-
-    /* Share button */
     #share-btn { cursor: pointer; background: #1A9BA5; color: #fff; border: none; border-radius: 8px; padding: 0.4rem 0.9rem; font-size: 0.78rem; font-weight: 600; transition: opacity 0.2s; }
     #share-btn:hover { opacity: 0.85; }
-
-    /* Print */
+    .rpt-badge { display: inline-block; background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); color: #f59e0b; border-radius: 6px; padding: 0.1rem 0.5rem; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; margin-left: 0.5rem; }
     @media print {
       [data-theme="dark"] { --bg:#fff; --card:#fff; --card2:#f5f5f5; --text:#111; --heading:#000; --muted:#555; --border:rgba(0,0,0,0.12); }
-      html { data-theme: light; }
       .sidebar, .topbar, #theme-toggle, #share-btn { display: none !important; }
       .layout { grid-template-columns: 1fr; }
       .main { padding: 1rem; }
@@ -239,7 +137,6 @@
   </style>
 </head>
 <body>
-<!-- Mobile topbar -->
 <div class="topbar">
   <div style="display:flex;align-items:center;gap:0.5rem">
     <div style="width:8px;height:8px;border-radius:50%;background:#1A9BA5"></div>
@@ -252,14 +149,12 @@
 </div>
 
 <div class="layout">
-  <!-- Sidebar -->
   <aside class="sidebar">
     <div>
       <div class="sidebar-logo"><div class="dot"></div><span>Solnest.ai</span></div>
-      <div style="font-size:0.7rem;color:var(--muted)">Investor Report · 2026-04-23</div>
+      <div style="font-size:0.7rem;color:var(--muted)">Investor Report · 2026-04-23 · v1.0</div>
     </div>
 
-    <!-- Metadata -->
     <div style="display:flex;flex-direction:column;gap:0.6rem">
       <div class="meta-card">
         <div class="label">Year 1 Burn</div>
@@ -287,7 +182,6 @@
       </div>
     </div>
 
-    <!-- TOC -->
     <div>
       <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.4rem">Navigation</div>
       <ul class="toc-list">
@@ -295,25 +189,25 @@
         <li><a href="#at-a-glance">At a Glance</a></li>
         <li><a href="#charts">Budget Breakdown</a></li>
         <li><span class="toc-section">15 Categories</span></li>
-        <li><a href="#cat-1">1 · Team & People</a></li>
-        <li><a href="#cat-2">2 · Accounting</a></li>
-        <li><a href="#cat-3">3 · Legal</a></li>
-        <li><a href="#cat-4">4 · Tech Tooling</a></li>
-        <li><a href="#cat-5">5 · Cloud & SaaS</a></li>
-        <li><a href="#cat-6">6 · AI Agents</a></li>
-        <li><a href="#cat-7">7 · Regulatory</a></li>
-        <li><a href="#cat-8">8 · Founder Comp</a></li>
-        <li><a href="#cat-9">9 · Compliance</a></li>
-        <li><a href="#cat-10">10 · Payments</a></li>
-        <li><a href="#cat-11">11 · Data Room</a></li>
-        <li><a href="#cat-12">12 · Banking</a></li>
-        <li><a href="#cat-13">13 · Localization</a></li>
-        <li><a href="#cat-14">14 · G&A</a></li>
-        <li><a href="#cat-15">15 · Contingency</a></li>
+        <li><a href="#cat-1">1 · Technology Build</a></li>
+        <li><a href="#cat-2">2 · Founder Compensation</a></li>
+        <li><a href="#cat-3">3 · Sales &amp; Market Entry</a></li>
+        <li><a href="#cat-4">4 · Marketing</a></li>
+        <li><a href="#cat-5">5 · Legal &amp; Entity Setup</a></li>
+        <li><a href="#cat-6">6 · Compliance</a></li>
+        <li><a href="#cat-7">7 · Regulatory &amp; Legal</a></li>
+        <li><a href="#cat-8">8 · G&amp;A</a></li>
+        <li><a href="#cat-9">9 · Insurance</a></li>
+        <li><a href="#cat-10">10 · AI Agents</a></li>
+        <li><a href="#cat-11">11 · Payment Infrastructure</a></li>
+        <li><a href="#cat-12">12 · Localization</a></li>
+        <li><a href="#cat-13">13 · Cloud &amp; SaaS</a></li>
+        <li><a href="#cat-14">14 · Data Room</a></li>
+        <li><a href="#cat-15">15 · Banking</a></li>
         <li><span class="toc-section">Financials</span></li>
         <li><a href="#year1-total">Year 1 Total</a></li>
         <li><a href="#options">Option 1 vs Option 3</a></li>
-        <li><a href="#runway">Runway & Raise</a></li>
+        <li><a href="#runway">Runway &amp; Raise</a></li>
         <li><a href="#asks">What We Ask Luigi</a></li>
       </ul>
     </div>
@@ -324,57 +218,56 @@
     </div>
   </aside>
 
-  <!-- Main -->
   <main class="main">
 
     <!-- Hero -->
     <div class="hero section visible" id="at-a-glance">
-      <div class="hero-badge">Investor Report · Pre-Seed · 2026-04-23</div>
+      <div class="hero-badge">Investor Report · Pre-Seed · 2026-04-23 · v1.0</div>
       <h1>Solnest.ai — Year 1 Expense Plan</h1>
-      <p class="hero-sub">Prepared for Luigi · From Pafi · Model baseline: Solnest_Expense_Plan v0.1.2 (BDM rate corrected to €6,000/month — 2026-04-23)</p>
+      <p class="hero-sub">Prepared for Luigi · From Pafi · Model: Solnest_Expense_Plan v0.1.2 + AI Agents ramp (v1.0 target). Source workbook corrected 2026-04-23.</p>
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="s-label">Y1 Total Burn</div>
           <div class="s-value">€639,360</div>
-          <div class="s-sub">Option 1 · Recommended</div>
+          <div class="s-sub">Option 1 · v1.0 target</div>
         </div>
         <div class="hero-stat">
           <div class="s-label">SAFE Raise</div>
           <div class="s-value">€300K</div>
-          <div class="s-sub">€2M post-money cap</div>
+          <div class="s-sub">€2M post-money cap · 15%</div>
         </div>
         <div class="hero-stat">
           <div class="s-label">Runway</div>
-          <div class="s-value">~11 mo</div>
+          <div class="s-value">~10 mo</div>
           <div class="s-sub">SAFE + €180K founder cash</div>
         </div>
         <div class="hero-stat">
-          <div class="s-label">Headcount</div>
-          <div class="s-value">4 FTE</div>
-          <div class="s-sub">€87K avg per FTE</div>
+          <div class="s-label">Core Team</div>
+          <div class="s-value">3 people</div>
+          <div class="s-sub">2 founders + BDM contractor</div>
         </div>
       </div>
 
       <div style="margin-top:1.5rem">
         <ul class="bullet-list">
-          <li>Year 1 burn of €639,360 across 15 categories — fully loaded, contingency included.</li>
-          <li>Funds a four-person team, dual Italian + Irish legal footing, full product stack, AI agent budget.</li>
-          <li>Data room ready for Series A due diligence by month twelve.</li>
+          <li>Year 1 burn of €639,360 across 15 categories — fully loaded, 20% contingency on v0.1.2 base included.</li>
+          <li>Largest single line: Technology Build €215,000 — ai-anima.ai external vendor (MVP M1-M9 + maintenance M10-M12). No internal engineering headcount.</li>
+          <li>Founders at €30K/year each — below market. Preserves investor capital.</li>
           <li>Series A conversation begins month 10; target close months 13–14.</li>
         </ul>
       </div>
     </div>
 
-    <!-- Charts section -->
+    <!-- Charts -->
     <div class="section" id="charts">
       <div class="section-title"><div class="accent-bar"></div>Budget Breakdown</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
         <div class="chart-wrap">
-          <h3>Expense Distribution (Option 1)</h3>
+          <h3>Expense Distribution — Option 1 (v1.0)</h3>
           <canvas id="pieChart" height="220"></canvas>
         </div>
         <div class="chart-wrap">
-          <h3>Option 1 vs Option 3</h3>
+          <h3>Option 1 vs Option 3 — Year 1 Total</h3>
           <canvas id="barChart" height="220"></canvas>
         </div>
       </div>
@@ -383,263 +276,261 @@
     <!-- How to read -->
     <div class="section">
       <div class="pull-quote">
-        Each category has four labelled subsections: <strong>What it covers</strong> (plain language), <strong>Why we need it</strong>, <strong>How we sized it</strong> (numbers &amp; benchmarks), and <strong>Investor angle</strong> (Series A due-diligence framing). Every number ties to the Solnest_Expense_Plan v0.1.2 spreadsheet (BDM rate corrected 2026-04-23).
+        Each category has four labelled subsections: <strong>What it covers</strong>, <strong>Why we need it</strong>, <strong>How we sized it</strong> (numbers &amp; benchmarks), and <strong>Investor angle</strong>. Every number ties to the Solnest_Expense_Plan v0.1.2 workbook (BDM rate corrected 2026-04-23). RPT = Related Party Transaction (ai-anima is also the Angel Investor's company — disclosed, arm's-length SOW required).
       </div>
     </div>
 
-    <!-- ══════════ CATEGORIES ══════════ -->
-
-    <!-- 1 -->
+    <!-- ══════════ CATEGORY 1 ══════════ -->
     <div class="section" id="cat-1">
-      <div class="section-title"><div class="accent-bar"></div>1. Team &amp; People Costs <span class="num">€127,800</span></div>
+      <div class="section-title"><div class="accent-bar"></div>1. Technology Build — ai-anima.ai <span class="num">€215,000</span><span class="rpt-badge">RPT</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 01</div><div class="cat-name">Team &amp; People Costs</div></div>
-          <div class="cat-budget">€127,800</div>
+          <div><div class="cat-num">Category 01 · Largest Line · 41% of base burn</div><div class="cat-name">Technology Build — ai-anima.ai (external vendor)</div></div>
+          <div class="cat-budget">€215,000</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Payroll and contractor fees for the four-person operating team: two technical founders, one full-stack engineer, and one business-development lead. Loaded cost includes gross salary, INPS employer contributions, TFR severance accrual, workplace insurance, and the 13th-month bonus mandated by Italian national labour contract.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Solnest is a two-sided marketplace connecting solar-installation buyers with vetted installers. The engineering team ships and maintains the platform; the business-development lead builds the installer supply side through in-person signings. Nothing here is optional at pre-seed stage.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>Four headcount-equivalents over twelve months. Italian employees carry a 1.28× loaded factor on gross salary (27% employer contributions + TFR + insurance). Business-development kept as Italian contractor on Partita IVA flat-tax for Y1, converts to employee in Y2. Milan mid-level engineer market rate: €55K–€72K gross; Dublin: €65K–€85K.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>€87K per FTE is below Silicon Valley bench but aligned with European pre-seed norms. The business-development contractor line is the only structural risk a Series A auditor will flag — we have a documented conversion plan.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>MVP (Minimum Viable Product) build by external vendor ai-anima.ai across months M1–M9 (€185,000), followed by platform maintenance M10–M12 (€30,000). This is the entire software build budget. Solnest has no internal engineering headcount — all product development is outsourced to ai-anima.ai under a formal SOW (Statement of Work).</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>Building a two-sided solar-installation marketplace requires a functioning platform: installer onboarding, buyer lead capture, quoting workflow, payment escrow, and a CER (Comunità Energetiche Rinnovabili — Italian renewable energy community) module. Pre-revenue, the most capital-efficient path is a single specialist vendor rather than hiring an engineering team.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>€185,000 for M1-M9 build (taper-profiled: lower in M1-M2, peak M4-M7, wind-down M8-M9) + €30,000 annual maintenance from M10. Benchmark: comparable Italian marketplace MVP builds with 9-month delivery range €150K–€250K from specialist shops. Single-vendor concentration is RISK-01 in the risk register — mitigated by IP assignment agreement and source-code escrow in Solnest's name.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Disclosed RPT (Related Party Transaction): ai-anima.ai is also owned by the Angel Investor. A formal SOW with IP assignment and source-code escrow is a pre-condition of any fund release (Gate 2). One competing CEE (Central and Eastern European) quote is required before final SOW sign-off (V1 verification item). Without a binding SOW this line remains ANGEL_BLOCKED.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- 2 -->
+    <!-- ══════════ CATEGORY 2 ══════════ -->
     <div class="section" id="cat-2">
-      <div class="section-title"><div class="accent-bar"></div>2. Commercialista / Accounting <span class="num">€24,000</span></div>
+      <div class="section-title"><div class="accent-bar"></div>2. Founder Compensation <span class="num">€76,800</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 02</div><div class="cat-name">Commercialista / Accounting</div></div>
-          <div class="cat-budget">€24,000</div>
+          <div><div class="cat-num">Category 02</div><div class="cat-name">Founder Compensation — Pafi + Leo (Italian SRL employees)</div></div>
+          <div class="cat-budget">€76,800</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Monthly bookkeeping, quarterly VAT filings, annual corporate tax return, payroll run, and year-end statutory financial statements in both Italy and Ireland. In Italy this role holds statutory reporting responsibility equivalent to a certified public accountant.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Italy runs on a monthly VAT cadence and the Agenzia delle Entrate expects perfect bookkeeping from day one. Missed filings trigger automatic penalties regardless of company size.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€1,500/month Italian commercialista retainer + €500/month Irish bookkeeper. Benchmarks: Milan SRL bookkeeping €1,200–€2,000/month; Dublin holding-company bookkeeping €400–€700/month. Full fee stack includes year-end statement preparation.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>A Series A data room without monthly reconciled books is a deal-killer. This budget line is what makes that data room deliverable.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Gross salary of €30,000/year each for Pafi and Leo, employed through the Italian SRL (Società a Responsabilità Limitata — the Italian limited liability company). The loaded figure of €76,800 applies the mandatory 1.28× Italian employer burden: INPS (Istituto Nazionale della Previdenza Sociale — the Italian social security body) contributions (~30%), INAIL workplace insurance, and TFR (Trattamento di Fine Rapporto — the Italian statutory severance accrual) reserve.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>Founders must be on payroll to work legally inside the Italian SRL. The 1.28× loaded factor is non-negotiable under Italian national labour law — it applies to every employee regardless of company size. Founders are not contractors.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>€30,000 gross × 2 founders × 1.28 loaded factor = €76,800. Benchmark: Italian pre-seed founder compensation typically ranges €24K–€48K gross; we sit at the lower end. This is confirmed in LB-03 (Angel-Blocked item 3 — awaiting written confirmation from Angel Investor).</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Founders at ~40% of market rate for their roles is the strongest trust signal available at pre-seed. Combined with €180,000 founder cash already committed to the balance sheet, this reads as full operational commitment. Below-market comp is a standard Series A due-diligence screen — we pass it cleanly.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- 3 -->
+    <!-- ══════════ CATEGORY 3 ══════════ -->
     <div class="section" id="cat-3">
-      <div class="section-title"><div class="accent-bar"></div>3. Legal (Italian + Irish Dual Counsel) <span class="num">€36,000</span></div>
+      <div class="section-title"><div class="accent-bar"></div>3. Sales &amp; Market Entry <span class="num">€57,000</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 03</div><div class="cat-name">Legal — Dual Counsel</div></div>
-          <div class="cat-budget">€36,000</div>
+          <div><div class="cat-num">Category 03</div><div class="cat-name">Sales &amp; Market Entry — BDM Contractor + Installer Network</div></div>
+          <div class="cat-budget">€57,000</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Italian corporate counsel for the operating company (incorporation, employment contracts, commercial terms, general counsel retainer) plus Irish solicitor for the holding entity (formation, share-allocation resolutions, SAFE note documentation, inter-company service agreement).</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>The two-entity structure needs coordinated legal work on both sides. The SAFE note is Irish-law governed and must be drafted by a Dublin-qualified solicitor.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€24,000/year Italian retainer (€2,000/month) + €12,000/year Irish counsel covering formation and transaction work. Benchmarks: Milan mid-tier corporate retainers €18K–€36K/year; Dublin SAFE-note work €8K–€15K.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Having named counsel in both jurisdictions before closing a Series A shortens due-diligence by two to three weeks.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Business development lead (BDM — Business Development Manager) on Partita IVA (Italian VAT contractor status) at €6,000/month from M3, contracted through month M12. Plus €6,000 for installer-network development costs: travel to site visits, demo events, and LOI (Letter of Intent) facilitation with target installation companies across northern Italy.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>Solnest is a two-sided marketplace. Without a supply-side BDM physically signing up vetted installers in Milan and surrounding provinces, the platform has no listing inventory. MGC (Milano Green Consulting — the Angel Investor's solar holding) brings an initial installer cohort, but organic supply-side growth requires a dedicated field role from M3 onward.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>BDM: €6,000/month × 10 months (M3–M12) = €60,000 contractor invoices — minus Partita IVA flat-tax adjustment = effective €51,000 net cost. Installer network: €6,000 covering site-visit travel, trade-show presence, and LOI paperwork. BDM contractor status is maintained throughout Y1 with a documented secondary client to satisfy Italian anti-abuse rules. Conversion to full employee is planned for Y2 post-revenue.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>The BDM staying as a contractor in Y1 is a deliberate structural choice, not a gap. The anti-abuse mitigation (documented secondary client) is in place. Series A auditors will look for a conversion plan — we have one (Y2, post first-revenue cohort). The installer network €6K is a growth-phase cost centre: each LOI signed is the supply-side pipeline feeding the demand-side funnel.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- 4 -->
+    <!-- ══════════ CATEGORY 4 ══════════ -->
     <div class="section" id="cat-4">
-      <div class="section-title"><div class="accent-bar"></div>4. Tech Tooling &amp; Dev Infrastructure <span class="num">€18,000</span></div>
+      <div class="section-title"><div class="accent-bar"></div>4. Marketing <span class="num">€35,000</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 04</div><div class="cat-name">Tech / Dev Infrastructure</div></div>
-          <div class="cat-budget">€18,000</div>
+          <div><div class="cat-num">Category 04</div><div class="cat-name">Marketing — Italian PV Market, Demand-Side Acquisition</div></div>
+          <div class="cat-budget">€35,000</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Source-control hosting, CI runners, staging-environment costs, developer laptops amortised over the year, observability and error-tracking tooling, and the secrets-management layer.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Every engineer on the team needs a working build pipeline from day one.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>GitHub Team seats (€240/yr), build minutes (€3,600/yr), observability stack — Sentry + logging (€4,800/yr), laptop amortisation €4,800/yr on four machines, miscellaneous developer tooling €4,560/yr.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Conservative by Series A standards; most auditors expect this to double in Y2 as the stack matures.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Demand-side buyer acquisition for the Italian solar-installation market (PV — Photovoltaic). Digital channels: Google Ads on high-intent search terms (impianto fotovoltaico, installatore solare Milano), LinkedIn for C&amp;I (Commercial &amp; Industrial) SMB prospects, and retargeting. Ramped from M3 when the MVP demo environment is live enough to send traffic to.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>A two-sided marketplace with supply (installers) but no demand (buyer leads) does not close transactions. Marketing spend is the demand-side investment. Without it, the BDM has nothing to show installers when pitching Solnest as a lead source.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>€35,000 across M3–M12 = ~€3,500/month average. Back-loaded: M3–M5 at ~€2,000/month (brand + testing), M6–M12 at ~€4,000/month (performance). Benchmark: Italian SaaS marketplace peers at pre-seed typically run €2,000–€5,000/month digital spend in Y1. We are at the mid-range.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Marketing is ramped to match platform readiness — no spend before the product is ready to convert. This is conservative and investor-friendly. Series A will want to see early CAC (Customer Acquisition Cost) data from the M6–M12 spend period.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- 5 -->
+    <!-- ══════════ CATEGORY 5 ══════════ -->
     <div class="section" id="cat-5">
-      <div class="section-title"><div class="accent-bar"></div>5. Cloud &amp; SaaS <span class="num">€30,000</span></div>
+      <div class="section-title"><div class="accent-bar"></div>5. Legal &amp; Entity Setup <span class="num">€28,300</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 05</div><div class="cat-name">Cloud &amp; Software-as-a-Service</div></div>
-          <div class="cat-budget">€30,000</div>
+          <div><div class="cat-num">Category 05</div><div class="cat-name">Legal &amp; Entity Setup — Ireland HoldCo + Italy SRL</div></div>
+          <div class="cat-budget">€28,300</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Production and staging cloud infrastructure, managed database, CDN, transactional email, CRM seats, analytics tooling, and the BI dashboard.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Solnest is a live platform serving real user traffic; none of this is free-tier-able once we cross a few hundred monthly active users.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€1,500/month production cloud (Hetzner dedicated + managed Postgres at OVH), €500/month staging, €150/month email, €350/month CRM seats, €500/month analytics and BI. Full-year €30,000 with modest buffer.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Self-hosted infrastructure (Hetzner over AWS) reads as disciplined cost management. Migration path to hyperscaler briefed for Series A if scale demands it.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>One-time and early-year costs to establish the dual-entity structure: Irish Limited Company (HoldCo) incorporation, Italy SRL incorporation via notaio (Italian notary — mandatory for SRL formation), SAFE (Simple Agreement for Future Equity) note documentation, inter-company service agreement between Irish HoldCo and Italian SRL, IP (Intellectual Property) assignment from founders to HoldCo, and source-code escrow agreement with ai-anima.ai.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>Option 1 (recommended structure) requires two legal entities across two jurisdictions. Each entity requires qualified local counsel. The SAFE note is Irish-law governed and must be drafted by a Dublin-qualified solicitor. The IP assignment is critical — without it, Solnest does not legally own its own product.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>Dublin solicitor: ~€12,000 (HoldCo formation + SAFE + interco agreement). Milan corporate counsel: ~€10,000 (SRL formation, employment contracts, initial advice). Notaio (notary) fees for SRL: ~€3,300. IP assignment + source-code escrow setup: ~€3,000. Benchmark: Dublin SAFE documentation €8K–€15K; Milan SRL notaio €2,500–€4,500.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Having named counsel in both jurisdictions before a Series A shortens due-diligence by two to three weeks and removes a common deal-delay point. IP clearly in HoldCo ownership is the single most important legal hygiene item for any future M&amp;A or secondary transaction.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- 6 -->
+    <!-- ══════════ CATEGORY 6 ══════════ -->
     <div class="section" id="cat-6">
-      <div class="section-title"><div class="accent-bar"></div>6. AI Agents (v1.0 Ramp Line) <span class="num">€12,240</span></div>
+      <div class="section-title"><div class="accent-bar"></div>6. Compliance — AML/KYC, NIS2, GDPR <span class="num">€27,500</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 06</div><div class="cat-name">AI Agents — v1.0 Ramp</div></div>
+          <div><div class="cat-num">Category 06</div><div class="cat-name">Compliance — AML/KYC, NIS2, GDPR</div></div>
+          <div class="cat-budget">€27,500</div>
+        </div>
+        <div class="cat-grid">
+          <div class="cat-block"><div class="blabel">What it covers</div><p>External DPO (Data Protection Officer) retainer for GDPR (General Data Protection Regulation) compliance; NIS2 (EU Network and Information Security Directive v2, transposed in Italy October 2024) readiness assessment — applies because Solnest touches energy-infrastructure data; AML/KYC (Anti-Money Laundering / Know Your Customer) framework for installer identity verification and sanctions screening; and a baseline information-security policy set.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>Processing installer and customer personal data at marketplace scale without a designated DPO is a direct GDPR exposure — fines at €20M or 4% of revenue. NIS2 applies to platforms in the energy-adjacent sector. AML/KYC is operationally required: marketplace platforms handling money flows must verify counterparty identity and screen against EU sanctions lists.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>External DPO retainer: €12,000/year (fractional, covers monthly advisory + incident response protocol). NIS2 readiness engagement (Q3): €8,000 one-time assessment. AML/KYC framework build: €7,500 (legal + tech implementation). Benchmark: external DPO retainers for SMEs in Italy and Ireland range €8K–€18K/year.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Most pre-seed companies defer compliance and get caught at Series A. A DPO in place and NIS2 readiness documented removes two of the most common due-diligence friction points — outright. Series A investors in climate-tech and fintech-adjacent verticals specifically check these boxes.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ CATEGORY 7 ══════════ -->
+    <div class="section" id="cat-7">
+      <div class="section-title"><div class="accent-bar"></div>7. Regulatory &amp; Legal (ongoing) <span class="num">€22,000</span></div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div><div class="cat-num">Category 07</div><div class="cat-name">Regulatory &amp; Legal — Ongoing Counsel, TP Memo</div></div>
+          <div class="cat-budget">€22,000</div>
+        </div>
+        <div class="cat-grid">
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Annual TP (Transfer Pricing) memorandum documenting the arm's-length pricing between the Italian SRL and the Irish HoldCo under OECD guidelines (€9,000); Irish economic-substance filing (€4,000); ongoing Italian corporate counsel retainer covering commercial terms, employment contract updates, and general legal questions arising during operations (€9,000/year).</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>Two-entity structures across EU jurisdictions require an annual TP memo. Without it, the Agenzia delle Entrate (Italy's tax authority) can re-attribute profit from Ireland to Italy and issue back-taxes plus penalties. The Airbnb (€576M settlement, 2023) and Uber Eats Italy (judicial administration, 2020) cases are the documented enforcement precedents.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>TP memo: €9,000 — market rate for a pre-revenue / early-revenue company. Irish economic-substance filing: €4,000 (annual, required since BEPS 2.0 — Base Erosion and Profit Shifting). Ongoing Italian counsel: €9,000 = ~€750/month retainer for general corporate matters. No retainer for Dublin solicitor — on-call only (ad hoc billed under Cat 05 setup budget if needed).</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>A signed TP memo in the data room is explicitly requested by Series A auditors reviewing dual-jurisdiction European structures. Filed in Y1 rather than retroactively removes weeks of due-diligence risk. Under BEPS 2.0 enforcement timelines, Ireland is no longer a "soft" jurisdiction for substance — this line is genuinely required, not optional.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ CATEGORY 8 ══════════ -->
+    <div class="section" id="cat-8">
+      <div class="section-title"><div class="accent-bar"></div>8. G&amp;A <span class="num">€18,500</span></div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div><div class="cat-num">Category 08</div><div class="cat-name">General &amp; Administrative — Co-working, Equipment, Operations</div></div>
+          <div class="cat-budget">€18,500</div>
+        </div>
+        <div class="cat-grid">
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Shared co-working desks in Milan (€16,500 — two desks for the core team, used for the in-person sprint week each month plus full-time BDM base); developer equipment amortised over three years (€2,000 contribution in Y1 for two laptops); registered-office fees for the Irish HoldCo; CCIAA (Camera di Commercio, Industria, Artigianato e Agricoltura — Italian Chamber of Commerce) annual fee (~€90); and unallocated miscellaneous operational costs.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>The engineering and product work is done collaboratively: founders work together in Milan one week per month and the BDM needs a professional base. No vanity office — co-working is flex. The Irish HoldCo requires a registered address in Dublin.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>€16,500/year co-working (2 desks × ~€700/month in central Milan — below co-working market rate of €800–€1,200/month for comparable). €2,000 equipment. Held to the absolute minimum operationally defensible level.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>No dedicated office. No vanity real estate. An auditor reading this line will note capital discipline — one of the highest-variance line items at pre-seed, and we are at the floor.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ CATEGORY 9 ══════════ -->
+    <div class="section" id="cat-9">
+      <div class="section-title"><div class="accent-bar"></div>9. Insurance <span class="num">€15,500</span></div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div><div class="cat-num">Category 09</div><div class="cat-name">Insurance — RC Prof, Cyber, D&amp;O</div></div>
+          <div class="cat-budget">€15,500</div>
+        </div>
+        <div class="cat-grid">
+          <div class="cat-block"><div class="blabel">What it covers</div><p>RC Professionale (Italian professional liability insurance — mandatory for service businesses operating under Italian law, €5,000/year); cyber insurance covering data-breach liability and business interruption (€6,000/year); D&amp;O (Directors &amp; Officers) insurance covering the board from personal liability in company decisions (€4,500/year — activates when the Angel Investor formally takes a board seat).</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>RC Prof is legally mandated and non-negotiable for the Italian SRL. Cyber insurance is effectively required given Solnest handles personal data and payment flows — any breach without cover becomes a balance-sheet event. D&amp;O is standard governance for any company accepting institutional capital: no professional investor will sit on a board without it.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>RC Prof €5,000/year (market: €3,500–€7,000 for Italian marketplace businesses). Cyber €6,000/year (market: €4,000–€10,000 for pre-revenue SaaS/marketplace with payment flows). D&amp;O €4,500/year (market: €3,000–€6,000 for two-director pre-revenue companies). LB-06 (Angel-Blocked item 6): D&amp;O activation depends on Angel Investor confirming board-seat acceptance.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Insurance in a data room signals operational maturity. Series A term sheets for climate-tech and marketplace verticals routinely require RC Prof, cyber cover, and D&amp;O as conditions precedent. Having all three in Y1 removes negotiation friction at closing.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ CATEGORY 10 ══════════ -->
+    <div class="section" id="cat-10">
+      <div class="section-title"><div class="accent-bar"></div>10. AI Agents (v1.0 ramp) <span class="num">€12,240</span></div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div><div class="cat-num">Category 10 · v1.0 addition over v0.1.2 baseline</div><div class="cat-name">AI Agents — LLM APIs, Vector DB, Automation Workflows</div></div>
           <div class="cat-budget">€12,240</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>LLM API usage fees (Anthropic Claude, OpenAI, fallback providers), vector-database hosting for the semantic-search layer, and inference costs of internal automation agents handling lead qualification, document parsing, and installer-onboarding workflows.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>AI agents replace what would otherwise be three additional human hires (lead qualifier, document reviewer, onboarding coordinator). Kill this line and headcount has to grow.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>Ramped from €400/month in Q1 to €1,600/month in Q4 as agent coverage expands — averaging €1,020/month across the year. Benchmark: peer pre-seed marketplaces report €800–€2,500/month by end of Y1.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Dedicated AI spend line, ramped not flat, signals this is a real cost centre rather than a footnote. Series A reviewers read this positively.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>LLM (Large Language Model) API usage fees — Anthropic Claude (primary), OpenAI (fallback) — for inference powering the platform's AI-assisted workflows: installer lead qualification, document parsing for permits and certifications, and buyer-onboarding automation. Plus vector-database hosting (for semantic search of installer capabilities) and internal automation-agent infrastructure costs.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>AI agents replace what would otherwise require three additional human roles: lead qualifier, document reviewer, and onboarding coordinator. Without this line, headcount has to grow or these workflows run manually — neither is defensible at pre-seed burn rates. This is the operating-leverage bet of the build.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>Ramped from €400/month in Q1 (low volume, MVP testing) to €1,600/month in Q4 (live platform, growing workflow coverage). Annual total: €12,240. This line is the v1.0 delta — it is not in the v0.1.2 base workbook and is added to reach the v1.0 target of €639,360. Contingency is not recalculated on the AI Agents addition; the 20% contingency is held at the v0.1.2 base level.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>A dedicated AI spend line, ramped not flat, signals this is a real cost centre rather than a footnote. The ramp profile shows usage discipline — spend follows product adoption, not aspirational projections. Series A reviewers in the 2025–2026 vintage specifically look for this structure in AI-enabled marketplace pitches.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- 7 -->
-    <div class="section" id="cat-7">
-      <div class="section-title"><div class="accent-bar"></div>7. Regulatory &amp; Transfer Pricing <span class="num">€15,000</span></div>
-      <div class="cat-card">
-        <div class="cat-header">
-          <div><div class="cat-num">Category 07</div><div class="cat-name">Regulatory &amp; Transfer Pricing</div></div>
-          <div class="cat-budget">€15,000</div>
-        </div>
-        <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Transfer-pricing memorandum between Italian operating company and Irish holding (required annually under OECD guidelines), economic-substance filing in Ireland, and sector-specific registrations for operating a solar-adjacent marketplace in Italy.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Two-entity structures across EU jurisdictions require a transfer-pricing memo justifying profit allocation. Without it the Italian tax authority can re-attribute profit and issue back-taxes with penalties.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€8,000 transfer-pricing memo (market rate for pre-revenue/early-revenue company), €4,000 Irish economic-substance filing, €3,000 Italian sector registrations and annual renewals.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>A signed transfer-pricing memo in the data room is specifically requested by Series A auditors. Filed in Y1 rather than retroactively = multiple weeks of negotiation time saved.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 8 -->
-    <div class="section" id="cat-8">
-      <div class="section-title"><div class="accent-bar"></div>8. Founder Compensation <span class="num">€60,000</span></div>
-      <div class="cat-card">
-        <div class="cat-header">
-          <div><div class="cat-num">Category 08</div><div class="cat-name">Founder Compensation</div></div>
-          <div class="cat-budget">€60,000</div>
-        </div>
-        <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Pafi and the technical co-founder each draw €30,000/year gross during Year 1. Intentionally below market.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Founders still need to eat and pay rent. Below-market salaries preserve investor capital while keeping the team whole.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€30,000 × 2 founders = €60,000. Benchmark: Italian pre-seed founder compensation €24K–€48K; Irish pre-seed €30K–€60K. We sit at the lower-middle of the band.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Founders at or below 50% of market is the single strongest trust-signal at pre-seed. Combined with €180,000 founder cash already on the balance sheet, this reads as commitment.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 9 -->
-    <div class="section" id="cat-9">
-      <div class="section-title"><div class="accent-bar"></div>9. Compliance (GDPR, DPO, NIS2) <span class="num">€14,000</span></div>
-      <div class="cat-card">
-        <div class="cat-header">
-          <div><div class="cat-num">Category 09</div><div class="cat-name">Compliance</div></div>
-          <div class="cat-budget">€14,000</div>
-        </div>
-        <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>External data-protection-officer (DPO) retainer (required under GDPR for companies processing personal data at scale), NIS2 compliance engagement (Solnest touches energy-infrastructure data), and a baseline information-security policy set.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Processing installer and customer data at scale without a designated DPO is a direct regulatory exposure. GDPR treats this as a fineable offense at €20M or 4% of revenue, whichever is higher.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€8,000/year external DPO retainer, €4,000 NIS2 readiness assessment in Q3, €2,000 information-security policy templates and annual review.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Most pre-seed companies defer this and get caught at Series A. Having it in Y1 removes a due-diligence friction point entirely.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 10 -->
-    <div class="section" id="cat-10">
-      <div class="section-title"><div class="accent-bar"></div>10. Payment Infrastructure <span class="num">€9,600</span></div>
-      <div class="cat-card">
-        <div class="cat-header">
-          <div><div class="cat-num">Category 10</div><div class="cat-name">Payment Infrastructure</div></div>
-          <div class="cat-budget">€9,600</div>
-        </div>
-        <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Payment-processing fees floor (Stripe monthly minimums, SEPA direct-debit processing for Italy), reconciliation tooling, fraud-screening layer, and the escrow-provider setup fee for marketplace transactions.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Solnest handles real money between buyers and installers. The escrow layer is non-negotiable for a marketplace with per-project values in the low four figures.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€500/month Stripe base + reconciliation, €200/month fraud-screening, €100/month escrow-provider retainer = €800/month = €9,600/year. Variable transaction fees are inside the gross-margin assumption, not this line.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Marketplaces without a working escrow story lose Series A conversations on the first call. This line buys a clean answer.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 11 -->
+    <!-- ══════════ CATEGORY 11 ══════════ -->
     <div class="section" id="cat-11">
-      <div class="section-title"><div class="accent-bar"></div>11. Data Room &amp; Investor Operations <span class="num">€6,000</span></div>
+      <div class="section-title"><div class="accent-bar"></div>11. Payment Infrastructure <span class="num">€8,000</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 11</div><div class="cat-name">Data Room &amp; Investor Ops</div></div>
+          <div><div class="cat-num">Category 11</div><div class="cat-name">Payment Infrastructure — Escrow, Stripe, SEPA, Fraud Screening</div></div>
+          <div class="cat-budget">€8,000</div>
+        </div>
+        <div class="cat-grid">
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Monthly floor costs for the payment stack: Stripe monthly minimums and SEPA (Single Euro Payments Area) direct-debit processing for Italian buyers; reconciliation tooling; fraud-screening layer; and the escrow-provider setup fee and retainer for marketplace transactions. Variable transaction fees are inside the gross-margin model, not this fixed-cost line.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>Solnest handles real money flows between buyers and vetted solar installers. Per-project transaction values run €5,000–€50,000. An escrow layer is operationally non-negotiable: without it, neither party trusts the platform with their money. Stripe is the baseline; SEPA is required because Italian SMB buyers pay by bank transfer, not card.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>~€670/month average across the year: Stripe base + SEPA processing (€350/month), fraud screening (€200/month), escrow retainer (€120/month). Total €8,000/year. This is the floor — transaction-volume-based fees sit in gross margin assumptions.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Marketplaces without a documented escrow story lose Series A conversations early. This line buys a clean answer. The separation of fixed infrastructure cost from variable transaction fees signals financial model sophistication.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ CATEGORY 12 ══════════ -->
+    <div class="section" id="cat-12">
+      <div class="section-title"><div class="accent-bar"></div>12. Localization <span class="num">€7,500</span></div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div><div class="cat-num">Category 12</div><div class="cat-name">Localization — Italian Copywriting, Legal Translation</div></div>
+          <div class="cat-budget">€7,500</div>
+        </div>
+        <div class="cat-grid">
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Professional Italian copywriting for all product surfaces, onboarding flows, and marketing pages (part-time freelancer); certified legal translation of contract templates between Italian and English — installer agreements, GDPR notices, and terms of service (ongoing retainer); and translation of investor and reporting documents for dual-jurisdiction governance.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>The operating market is Italy. Solar installation buyers and Italian SMB installers have zero tolerance for machine-translated or anglicised copy — it signals a non-native product immediately. Legal templates must be certified-translated to be enforceable in Italian courts and readable by the Italian commercialista (accountant) and notaio (notary).</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>~€625/month: €350/month part-time Italian copywriter, €275/month certified legal-translation retainer. Total €7,500/year. Benchmark: Italian freelance copywriter rates €300–€600/month part-time; certified legal translation €200–€400/month retainer for a tech company.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Italian-first product without translator-English is a visible differentiator against remote competitors building generic solar platforms. This line is a direct competitive moat investment, not a cost.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ CATEGORY 13 ══════════ -->
+    <div class="section" id="cat-13">
+      <div class="section-title"><div class="accent-bar"></div>13. Cloud &amp; SaaS <span class="num">€6,000</span></div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div><div class="cat-num">Category 13</div><div class="cat-name">Cloud &amp; SaaS — Production Infrastructure</div></div>
           <div class="cat-budget">€6,000</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Virtual data-room software licence (midrange provider), a part-time investor-relations freelancer for quarterly reporting, and cap-table management tooling.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>At Series A the data room needs to be live, organised, and populated with two years of cleanly reconciled material. Building it reactively under deadline pressure destroys investor trust.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€200/month data-room software, €300/month investor-operations freelancer for quarterly updates = €500/month = €6,000/year.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>A data room stocked continuously rather than ad-hoc shortens the Series A due-diligence clock by an additional one to two weeks.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Production and staging cloud infrastructure: Hetzner dedicated server + managed Postgres database at OVH; CDN (Content Delivery Network); transactional email provider; CRM (Customer Relationship Management) software seats; and analytics tooling. Source-control hosting, CI/CD (Continuous Integration / Continuous Deployment) runners, and observability tooling are bundled within the Technology Build line (Category 01) during the M1-M9 build period and transition here from M10 onward.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>A live marketplace serving installer and buyer traffic requires production-grade infrastructure from M9 (MVP live). Free-tier solutions do not survive real user loads, real payments, or real data-privacy obligations.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>€500/month average across the year: Hetzner dedicated + managed Postgres (€250/month), CDN + email (€100/month), CRM + analytics (€150/month). Total €6,000/year. Self-hosted Hetzner over hyperscaler (AWS/GCP) is a deliberate cost decision — migration path to hyperscaler is documented for post-Series A scale.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Self-hosted infrastructure reads as disciplined cost management, not technical debt. The migration-to-hyperscaler brief in the data room signals the team understands the trade-off and has a plan to scale it when justified by revenue.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- 12 -->
-    <div class="section" id="cat-12">
-      <div class="section-title"><div class="accent-bar"></div>12. Banking <span class="num">€4,800</span></div>
-      <div class="cat-card">
-        <div class="cat-header">
-          <div><div class="cat-num">Category 12</div><div class="cat-name">Banking</div></div>
-          <div class="cat-budget">€4,800</div>
-        </div>
-        <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Business-account fees for the Italian operating entity, Irish holding account, inter-company transfer costs, and foreign-exchange margin on euro-to-sterling flows expected during Year 1.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Two-entity structures need two banking rails. Cheap consumer-grade solutions do not survive a Series A audit.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€200/month Italian business banking, €150/month Irish banking, €50/month FX and transfer margin = €400/month = €4,800/year.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Low-effort line, but named Italian and Irish banks in the data room matter.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 13 -->
-    <div class="section" id="cat-13">
-      <div class="section-title"><div class="accent-bar"></div>13. Localization <span class="num">€8,400</span></div>
-      <div class="cat-card">
-        <div class="cat-header">
-          <div><div class="cat-num">Category 13</div><div class="cat-name">Localization</div></div>
-          <div class="cat-budget">€8,400</div>
-        </div>
-        <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Professional Italian copywriting for product surfaces and marketing pages, certified legal translation of contract templates between Italian and English, and an ongoing translation retainer for customer-facing content.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>The operating market is Italy. Selling solar installation to Italian buyers in imperfect Italian loses every deal to a local competitor. Legal templates must be certified-translated for cross-border enforceability.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€400/month Italian copywriter (part-time), €300/month certified legal-translation retainer = €700/month = €8,400/year.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Italian-first product without translator-English tells is a visible differentiator against remote competitors.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 14 -->
+    <!-- ══════════ CATEGORY 14 ══════════ -->
     <div class="section" id="cat-14">
-      <div class="section-title"><div class="accent-bar"></div>14. General &amp; Administrative <span class="num">€18,000</span></div>
+      <div class="section-title"><div class="accent-bar"></div>14. Data Room &amp; Investor Relations <span class="num">€3,000</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 14</div><div class="cat-name">General &amp; Administrative</div></div>
-          <div class="cat-budget">€18,000</div>
+          <div><div class="cat-num">Category 14</div><div class="cat-name">Data Room — Series A Prep, Cap Table, Investor Reporting</div></div>
+          <div class="cat-budget">€3,000</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>Travel between Milan, Dublin, and installer sites; shared coworking desks (four seats in Milan); insurance top-ups; mail-forwarding and registered-office fees; unallocated miscellaneous operating cost.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Business-development is done in person; engineering is done together one week per month in Milan; the holding company needs a registered Irish address.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>€800/month travel, €500/month coworking (four desks), €200/month insurance and miscellaneous = €1,500/month = €18,000/year.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Held at the lowest defensible level. An auditor will note we are not burning on vanity office space.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Virtual data-room software licence (midrange provider — not enterprise-tier, appropriate for pre-seed through Series A); cap-table management tooling; and lightweight investor-reporting infrastructure for quarterly updates to Luigi and any future co-investors. Initial data room populated with corporate documents, financials, and the ai-anima SOW from M1.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>The Angel Investor (Luigi / MGC) requires a clean data room for the initial SAFE due diligence — this is the primary Y1 use case. A Series A data room built from day one (rather than reconstructed under deadline pressure in month 11) is the standard that eliminates a common deal-delay cause.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>€250/month data-room software + cap-table tool = €3,000/year. Intentionally lean — no full-time investor-relations function at pre-seed. Quarterly reporting is founder-written. Data room is Solnest's primary due-diligence artefact for this SAFE transaction.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>A data room built and maintained from M1 shortens Series A due-diligence by one to two weeks and signals operational readiness to sophisticated LPs (Limited Partners) behind the lead Series A fund.</p></div>
         </div>
       </div>
     </div>
 
-    <!-- 15 -->
+    <!-- ══════════ CATEGORY 15 ══════════ -->
     <div class="section" id="cat-15">
-      <div class="section-title"><div class="accent-bar"></div>15. Contingency (8% Buffer) <span class="num">€34,120</span></div>
+      <div class="section-title"><div class="accent-bar"></div>15. Banking <span class="num">€2,500</span></div>
       <div class="cat-card">
         <div class="cat-header">
-          <div><div class="cat-num">Category 15</div><div class="cat-name">Contingency</div></div>
-          <div class="cat-budget">€34,120</div>
+          <div><div class="cat-num">Category 15</div><div class="cat-name">Banking — Italian + Irish Business Accounts, FX</div></div>
+          <div class="cat-budget">€2,500</div>
         </div>
         <div class="cat-grid">
-          <div class="cat-block"><div class="blabel">What it covers</div><p>A disciplined 8% buffer on the sum of the operating lines above, held centrally and released only on a quarterly review.</p></div>
-          <div class="cat-block"><div class="blabel">Why we need it</div><p>Pre-seed forecasts are wrong in both directions. A line-item buffer prevents mid-year panic decisions when an unbudgeted item — an extra legal opinion, an urgent cloud scale-up, a hire brought forward — hits the plan.</p></div>
-          <div class="cat-block"><div class="blabel">How we sized it</div><p>8% of the operating-line subtotal. Benchmark: pre-seed planners commonly run 5–15% contingency. 8% is the middle of the defensible band.</p></div>
-          <div class="cat-block"><div class="blabel">Investor angle</div><p>Labelled contingency rather than hidden padding. Visible discipline.</p></div>
+          <div class="cat-block"><div class="blabel">What it covers</div><p>Business-account fees for the Italian SRL operating account (Intesa Sanpaolo or equivalent Italian business bank); Irish HoldCo account (AIB or Revolut Business Ireland for cost efficiency); inter-company transfer costs for the monthly service-fee payment from SRL to HoldCo; and FX (Foreign Exchange) margin on any non-euro flows arising from Irish operations.</p></div>
+          <div class="cat-block"><div class="blabel">Why we need it</div><p>Two legal entities require two dedicated banking rails. Consumer-grade or fintech-lite solutions do not pass Italian commercialista review or Series A due-diligence — named Italian and Irish business accounts are expected artefacts.</p></div>
+          <div class="cat-block"><div class="blabel">How we sized it</div><p>~€210/month average: Italian business banking €120/month (Intesa Sanpaolo business account), Irish banking €60/month (AIB Business or Revolut Business), FX margin €30/month. Total €2,500/year.</p></div>
+          <div class="cat-block"><div class="blabel">Investor angle</div><p>Lowest line in the plan. Named Italian and Irish bank accounts in the data room — not a fintech workaround — are a structural hygiene check that Series A due-diligence runs. Low cost, high signal.</p></div>
         </div>
       </div>
     </div>
@@ -650,31 +541,33 @@
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Expense Line</th><th class="right">Amount</th></tr>
+            <tr><th>Expense Line</th><th class="right">Y1 Amount</th><th class="right">% of Base</th></tr>
           </thead>
           <tbody>
-            <tr><td>Team (founders + Business Development Manager contractor)</td><td class="right">€127,800</td></tr>
-            <tr><td>Commercialista / Accounting</td><td class="right">€24,000</td></tr>
-            <tr><td>Legal (Italian + Irish dual counsel)</td><td class="right">€36,000</td></tr>
-            <tr><td>Tech (engineering tooling, dev infra)</td><td class="right">€18,000</td></tr>
-            <tr><td>Cloud &amp; Software-as-a-Service</td><td class="right">€30,000</td></tr>
-            <tr><td>AI Agents (v1.0 ramp line)</td><td class="right">€12,240</td></tr>
-            <tr><td>Regulatory &amp; Transfer Pricing</td><td class="right">€15,000</td></tr>
-            <tr><td>Founder Compensation</td><td class="right">€60,000</td></tr>
-            <tr><td>Compliance (GDPR, DPO, NIS2)</td><td class="right">€14,000</td></tr>
-            <tr><td>Payment Infrastructure</td><td class="right">€9,600</td></tr>
-            <tr><td>Data Room &amp; Investor Operations</td><td class="right">€6,000</td></tr>
-            <tr><td>Banking (multi-account, international)</td><td class="right">€4,800</td></tr>
-            <tr><td>Localization (Italian copywriting, legal translation)</td><td class="right">€8,400</td></tr>
-            <tr><td>General &amp; Administrative</td><td class="right">€18,000</td></tr>
-            <tr><td>Contingency (8% buffer)</td><td class="right">€34,120</td></tr>
-            <tr class="total-row"><td>Year 1 Total (Option 1 · Recommended)</td><td class="right">€639,360</td></tr>
+            <tr><td>1 · Technology Build — ai-anima.ai (MVP + maintenance) <span class="rpt-badge">RPT</span></td><td class="right">€215,000</td><td class="right" style="color:var(--muted)">40.3%</td></tr>
+            <tr><td>2 · Founder Compensation (2 founders × €30K × 1.28× loaded)</td><td class="right">€76,800</td><td class="right" style="color:var(--muted)">14.4%</td></tr>
+            <tr><td>3 · Sales &amp; Market Entry (BDM contractor + installer network)</td><td class="right">€57,000</td><td class="right" style="color:var(--muted)">10.7%</td></tr>
+            <tr><td>4 · Marketing (Italian PV market, demand-side, ramp M3)</td><td class="right">€35,000</td><td class="right" style="color:var(--muted)">6.6%</td></tr>
+            <tr><td>5 · Legal &amp; Entity Setup (Ireland HoldCo + Italy SRL)</td><td class="right">€28,300</td><td class="right" style="color:var(--muted)">5.3%</td></tr>
+            <tr><td>6 · Compliance (AML/KYC, NIS2, GDPR / DPO retainer)</td><td class="right">€27,500</td><td class="right" style="color:var(--muted)">5.2%</td></tr>
+            <tr><td>7 · Regulatory &amp; Legal (TP memo, Irish substance, ongoing counsel)</td><td class="right">€22,000</td><td class="right" style="color:var(--muted)">4.1%</td></tr>
+            <tr><td>8 · G&amp;A (co-working Milano, equipment, registered offices)</td><td class="right">€18,500</td><td class="right" style="color:var(--muted)">3.5%</td></tr>
+            <tr><td>9 · Insurance (RC Prof, cyber, D&amp;O)</td><td class="right">€15,500</td><td class="right" style="color:var(--muted)">2.9%</td></tr>
+            <tr><td>10 · AI Agents — v1.0 ramp (LLM APIs, vector DB, automation)</td><td class="right">€12,240</td><td class="right" style="color:var(--muted)">2.3%</td></tr>
+            <tr><td>11 · Payment Infrastructure (Stripe, SEPA, escrow, fraud screening)</td><td class="right">€8,000</td><td class="right" style="color:var(--muted)">1.5%</td></tr>
+            <tr><td>12 · Localization (Italian copywriting, certified legal translation)</td><td class="right">€7,500</td><td class="right" style="color:var(--muted)">1.4%</td></tr>
+            <tr><td>13 · Cloud &amp; SaaS (Hetzner, managed Postgres, email, CRM)</td><td class="right">€6,000</td><td class="right" style="color:var(--muted)">1.1%</td></tr>
+            <tr><td>14 · Data Room &amp; Investor Relations</td><td class="right">€3,000</td><td class="right" style="color:var(--muted)">0.6%</td></tr>
+            <tr><td>15 · Banking (IT + IE accounts, inter-company transfers, FX)</td><td class="right">€2,500</td><td class="right" style="color:var(--muted)">0.5%</td></tr>
+            <tr class="subtotal-row"><td>Operating Subtotal (excl. contingency)</td><td class="right">€534,840</td><td class="right">100%</td></tr>
+            <tr class="contingency-row"><td>Contingency (20% on v0.1.2 base of €522,600)</td><td class="right">€104,520</td><td class="right">—</td></tr>
+            <tr class="total-row"><td>Year 1 Total — Option 1 · v1.0 (Recommended)</td><td class="right">€639,360</td><td class="right">—</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="pull-quote">
-        Three-year flat planning baseline: <strong>€1,918,080</strong> (€639,360 × 3 — v0.1.2 + AI Agents). Presenting a flat three-year figure at pre-seed is deliberate — projecting an aggressive ramp without committed revenue is the exact pattern Series A auditors penalise. Years 2–3 rewrite when the Series A closes.
+        v0.1.2 baseline (without AI Agents line): <strong>€627,120</strong>. v1.0 target adds the AI Agents ramp (€12,240) while holding contingency at the v0.1.2 level → <strong>€639,360</strong>. Three-year flat planning baseline: <strong>€1,918,080</strong>. Years 2–3 rewrite when Series A closes. Contingency is 20% of the v0.1.2 operating base — not 8%; a 20% buffer is the pre-seed standard when technology build is the dominant line.
       </div>
     </div>
 
@@ -684,26 +577,26 @@
 
       <p style="font-size:0.87rem;color:var(--muted);margin-bottom:1.5rem">Five structural options were modelled. Two are live contenders. The structure changes the <em>distribution</em> of costs — not the scope of activities.</p>
 
-      <!-- H2H Table -->
       <div class="table-wrap">
         <table class="h2h-table">
           <thead>
             <tr>
               <th>Dimension</th>
               <th class="col-opt1">Option 1 ✓ Recommended</th>
-              <th class="col-opt3" style="color:#f97316">Option 3 — Alternative</th>
+              <th class="col-opt3">Option 3 — Alternative</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="winner-row"><td>Year 1 Total</td><td class="col-opt1">€639,360</td><td style="color:#f97316">€758,112</td></tr>
-            <tr class="winner-row"><td>3-Year Total</td><td class="col-opt1">€1,918,080</td><td style="color:#f97316">€2,274,336</td></tr>
-            <tr><td>Legal entities</td><td class="col-opt1">2</td><td>1</td></tr>
-            <tr><td>Transfer-pricing memo</td><td style="color:var(--muted)">Required · €8K/yr</td><td class="col-opt1">Not required</td></tr>
-            <tr class="winner-row"><td>Italian presence</td><td class="col-opt1">Full Italian company (SRL)</td><td>Registered branch office</td></tr>
-            <tr><td>Business-dev role</td><td style="color:var(--muted)">Contractor (Y1), converts Y2</td><td class="col-opt1">Branch employee from day 1</td></tr>
-            <tr><td>Marketing</td><td class="col-opt1">In-house</td><td style="color:var(--muted)">Outsourced to Italian agency (+€60K)</td></tr>
-            <tr><td>Branch liability to Irish parent</td><td class="col-opt1">Shielded via SRL</td><td style="color:#ef4444">Direct liability to Irish parent</td></tr>
-            <tr class="winner-row"><td>Series A DD risk</td><td class="col-opt1">Low — known pattern</td><td class="col-opt1">Low — declared presence</td></tr>
+            <tr class="winner-row"><td>Year 1 Total (v0.1.2)</td><td class="col-opt1">€627,120</td><td style="color:#f97316">€758,112</td></tr>
+            <tr class="winner-row"><td>+ AI Agents (v1.0)</td><td class="col-opt1">€639,360</td><td style="color:#f97316">€770,352</td></tr>
+            <tr class="winner-row"><td>3-Year Flat Baseline</td><td class="col-opt1">€1,918,080</td><td style="color:#f97316">€2,310,056</td></tr>
+            <tr><td>Legal entities</td><td class="col-opt1">2 (HoldCo + SRL)</td><td>1 (IE Ltd + IT branch)</td></tr>
+            <tr><td>Transfer-pricing memo</td><td style="color:var(--muted)">Required · €9K/yr</td><td class="col-opt1">Not required</td></tr>
+            <tr class="winner-row"><td>Italian presence</td><td class="col-opt1">Full Italian SRL (own company)</td><td>Registered branch office</td></tr>
+            <tr><td>BDM treatment</td><td style="color:var(--muted)">Contractor Y1 → employee Y2</td><td class="col-opt1">Branch employee from day 1</td></tr>
+            <tr><td>Branch liability to Irish parent</td><td class="col-opt1">Shielded via SRL</td><td style="color:#ef4444">Direct to Irish parent</td></tr>
+            <tr><td>Marketing model</td><td class="col-opt1">In-house (€35K)</td><td style="color:#f97316">Agency + in-house (+€60K delta)</td></tr>
+            <tr class="winner-row"><td>Series A DD risk</td><td class="col-opt1">Low — understood pattern</td><td class="col-opt1">Low — declared presence</td></tr>
           </tbody>
         </table>
       </div>
@@ -712,48 +605,51 @@
       <div style="margin-top:2rem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
           <span class="opt-badge opt1">Option 1 · Recommended</span>
-          <span style="font-size:0.9rem;color:var(--muted)">Italian SRL + Irish Limited Holding · €639,360</span>
+          <span style="font-size:0.9rem;color:var(--muted)">Italian SRL + Irish Limited Holding · €639,360 v1.0</span>
         </div>
-        <p style="font-size:0.87rem;color:var(--text);margin-bottom:1rem">An Italian SRL operates as the operating company employing the team in Milan. An Irish Limited sits above as the holding entity, holds the intellectual property, and issues the SAFE notes to investors. Two legal entities, inter-company service agreement, transfer-pricing memorandum filed annually.</p>
+        <p style="font-size:0.87rem;color:var(--text);margin-bottom:1rem">An Italian SRL operates as the operating company, employing the founders in Milan. An Irish Limited sits above as the HoldCo, holds the IP, and issues the SAFE notes to investors. Two legal entities, inter-company service agreement, transfer-pricing memorandum filed annually. No internal engineering headcount — software built by ai-anima.ai (€215,000 Technology Build).</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem">
           <div style="background:rgba(26,155,165,0.07);border:1px solid rgba(26,155,165,0.2);border-radius:8px;padding:0.85rem">
             <div style="font-size:0.68rem;color:#1A9BA5;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem">Pros</div>
             <ul class="bullet-list" style="font-size:0.81rem">
               <li>Audit-clean — matches Airbnb / Uber / Stripe EU expansion precedent</li>
               <li>Lowest Series A DD risk — pattern understood by every investor</li>
-              <li>IP sits in Ireland — preferred jurisdiction for a future sale</li>
-              <li>Full and declared Italian presence</li>
+              <li>IP sits in Ireland — preferred jurisdiction for future sale</li>
+              <li>Full and declared Italian presence (SRL)</li>
+              <li>€130,992/year cheaper than Option 3</li>
             </ul>
           </div>
           <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:8px;padding:0.85rem">
             <div style="font-size:0.68rem;color:#ef4444;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem">Cons</div>
             <ul class="bullet-list" style="font-size:0.81rem">
-              <li>Two annual audits, two banking rails, transfer-pricing memo annually</li>
+              <li>Two annual audits, two banking rails, annual TP memo</li>
               <li>Italian employees carry 1.28× loaded cost</li>
-              <li>Cross-border inter-company accounting adds commercialista work in both jurisdictions</li>
+              <li>Cross-border interco accounting adds commercialista work</li>
             </ul>
           </div>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Line (Option 1)</th><th class="right">Amount</th></tr></thead>
+            <thead><tr><th>Line (Option 1 · v1.0)</th><th class="right">Amount</th></tr></thead>
             <tbody>
-              <tr><td>Team</td><td class="right">€127,800</td></tr>
-              <tr><td>Commercialista / Accounting</td><td class="right">€24,000</td></tr>
-              <tr><td>Legal</td><td class="right">€36,000</td></tr>
-              <tr><td>Tech</td><td class="right">€18,000</td></tr>
-              <tr><td>Cloud &amp; SaaS</td><td class="right">€30,000</td></tr>
-              <tr><td>AI Agents</td><td class="right">€12,240</td></tr>
-              <tr><td>Regulatory &amp; Transfer Pricing</td><td class="right">€15,000</td></tr>
-              <tr><td>Founder Compensation</td><td class="right">€60,000</td></tr>
-              <tr><td>Compliance</td><td class="right">€14,000</td></tr>
-              <tr><td>Payment Infrastructure</td><td class="right">€9,600</td></tr>
-              <tr><td>Data Room</td><td class="right">€6,000</td></tr>
-              <tr><td>Banking</td><td class="right">€4,800</td></tr>
-              <tr><td>Localization</td><td class="right">€8,400</td></tr>
-              <tr><td>General &amp; Administrative</td><td class="right">€18,000</td></tr>
-              <tr><td>Contingency</td><td class="right">€34,120</td></tr>
-              <tr class="total-row"><td>Option 1 Year 1 Total</td><td class="right">€639,360</td></tr>
+              <tr><td>Technology Build (ai-anima.ai)</td><td class="right">€215,000</td></tr>
+              <tr><td>Founder Compensation (loaded 1.28×)</td><td class="right">€76,800</td></tr>
+              <tr><td>Sales &amp; Market Entry (BDM + installer network)</td><td class="right">€57,000</td></tr>
+              <tr><td>Marketing</td><td class="right">€35,000</td></tr>
+              <tr><td>Legal &amp; Entity Setup</td><td class="right">€28,300</td></tr>
+              <tr><td>Compliance (AML/KYC, NIS2, GDPR)</td><td class="right">€27,500</td></tr>
+              <tr><td>Regulatory &amp; Legal (TP memo, Irish substance)</td><td class="right">€22,000</td></tr>
+              <tr><td>G&amp;A</td><td class="right">€18,500</td></tr>
+              <tr><td>Insurance (RC Prof, cyber, D&amp;O)</td><td class="right">€15,500</td></tr>
+              <tr><td>AI Agents (v1.0 ramp)</td><td class="right">€12,240</td></tr>
+              <tr><td>Payment Infrastructure</td><td class="right">€8,000</td></tr>
+              <tr><td>Localization</td><td class="right">€7,500</td></tr>
+              <tr><td>Cloud &amp; SaaS</td><td class="right">€6,000</td></tr>
+              <tr><td>Data Room</td><td class="right">€3,000</td></tr>
+              <tr><td>Banking</td><td class="right">€2,500</td></tr>
+              <tr class="subtotal-row"><td>Operating Subtotal</td><td class="right">€534,840</td></tr>
+              <tr class="contingency-row"><td>Contingency (20% of v0.1.2 base)</td><td class="right">€104,520</td></tr>
+              <tr class="total-row"><td>Option 1 Year 1 Total (v1.0)</td><td class="right">€639,360</td></tr>
             </tbody>
           </table>
         </div>
@@ -763,34 +659,36 @@
       <div style="margin-top:2.5rem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
           <span class="opt-badge opt3">Option 3 · Alternative</span>
-          <span style="font-size:0.9rem;color:var(--muted)">Irish company + Italian branch + Marketing agency · €758,112</span>
+          <span style="font-size:0.9rem;color:var(--muted)">Irish Ltd + Italian Branch + Marketing Agency · €758,112</span>
         </div>
-        <p style="font-size:0.87rem;color:var(--text);margin-bottom:1rem">A single Irish Limited registers an Italian branch office (<em>stabile organizzazione</em>). Business-development is employed directly by the branch as a proper Italian employee. Product marketing is outsourced to a specialist Italian marketing agency rather than built in-house during Year 1.</p>
+        <p style="font-size:0.87rem;color:var(--text);margin-bottom:1rem">A single Irish Limited registers an Italian branch office (<em>stabile organizzazione</em> — the Italian recognised permanent establishment). The BDM is employed directly by the branch as a full Italian employee (not contractor). Marketing is outsourced to a specialist Italian agency. One legal entity, one audit, no TP memo required — but more expensive and branch liability flows directly to the Irish parent.</p>
         <div style="background:rgba(249,115,22,0.07);border:1px solid rgba(249,115,22,0.2);border-radius:8px;padding:0.85rem;margin-bottom:1rem;font-size:0.82rem;color:var(--muted)">
-          <strong style="color:#f97316">Higher cost by €63,814/year.</strong> The delta comes from: branch-employee loaded cost vs. contractor, outsourced marketing agency (+€60K), and incremental legal. Branch liability flows directly to the Irish parent — no SRL liability shield.
+          <strong style="color:#f97316">Higher cost by €130,992/year vs Option 1 (v0.1.2).</strong> Delta drivers: BDM as branch employee (1.28× loaded on €72K gross) vs contractor (+€41,160); Italian marketing agency (+€60,000); branch setup one-time (+€8,000); 20% contingency on higher base (+€22,032). Prior figure of €701,974 in an earlier draft was incorrect — it used a fabricated Team line of €348,000.
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Line (Option 3)</th><th class="right">Amount</th></tr></thead>
+            <thead><tr><th>Line</th><th class="right">Option 1</th><th class="right">Option 3</th><th class="right">Delta</th></tr></thead>
             <tbody>
-              <tr><td>Team</td><td class="right">€380,000</td></tr>
-              <tr><td>Commercialista / Accounting</td><td class="right">€15,000</td></tr>
-              <tr><td>Legal</td><td class="right">€42,000</td></tr>
-              <tr><td>Tech</td><td class="right">€18,000</td></tr>
-              <tr><td>Cloud &amp; SaaS</td><td class="right">€30,000</td></tr>
-              <tr><td>AI Agents</td><td class="right">€12,240</td></tr>
-              <tr><td>Regulatory</td><td class="right">€6,000</td></tr>
-              <tr><td>Founder Compensation</td><td class="right">€60,000</td></tr>
-              <tr><td>Compliance</td><td class="right">€10,000</td></tr>
-              <tr><td>Payment Infrastructure</td><td class="right">€9,600</td></tr>
-              <tr><td>Data Room</td><td class="right">€6,000</td></tr>
-              <tr><td>Banking</td><td class="right">€3,600</td></tr>
-              <tr><td>Localization</td><td class="right">€10,200</td></tr>
-              <tr><td>General &amp; Administrative</td><td class="right">€16,000</td></tr>
-              <tr><td>Marketing Agency (Italian)</td><td class="right">€60,000</td></tr>
-              <tr><td>Branch Setup, Insurance, Chamber of Commerce</td><td class="right">€4,400</td></tr>
-              <tr><td>Contingency</td><td class="right">€18,934</td></tr>
-              <tr class="total-row"><td>Option 3 Year 1 Total</td><td class="right">€758,112</td></tr>
+              <tr><td>Technology Build (ai-anima.ai)</td><td class="right">€215,000</td><td class="right">€215,000</td><td class="right">—</td></tr>
+              <tr><td>Founder Compensation</td><td class="right">€76,800</td><td class="right">€76,800</td><td class="right">—</td></tr>
+              <tr><td>BDM (contractor vs branch employee)</td><td class="right">€51,000</td><td class="right">€92,160</td><td class="right" style="color:#f97316">+€41,160</td></tr>
+              <tr><td>Installer Network</td><td class="right">€6,000</td><td class="right">€6,000</td><td class="right">—</td></tr>
+              <tr><td>Marketing — in-house</td><td class="right">€35,000</td><td class="right">€35,000</td><td class="right">—</td></tr>
+              <tr><td>Marketing Agency (IT) — NEW in Opt 3</td><td class="right">€0</td><td class="right">€60,000</td><td class="right" style="color:#f97316">+€60,000</td></tr>
+              <tr><td>Legal &amp; Entity Setup</td><td class="right">€28,300</td><td class="right">€28,300</td><td class="right">—</td></tr>
+              <tr><td>Branch Setup one-time — NEW in Opt 3</td><td class="right">€0</td><td class="right">€8,000</td><td class="right" style="color:#f97316">+€8,000</td></tr>
+              <tr><td>Compliance</td><td class="right">€27,500</td><td class="right">€27,500</td><td class="right">—</td></tr>
+              <tr><td>Regulatory &amp; Legal</td><td class="right">€22,000</td><td class="right">€22,000</td><td class="right">—</td></tr>
+              <tr><td>G&amp;A</td><td class="right">€18,500</td><td class="right">€18,500</td><td class="right">—</td></tr>
+              <tr><td>Insurance</td><td class="right">€15,500</td><td class="right">€15,500</td><td class="right">—</td></tr>
+              <tr><td>Payment Infrastructure</td><td class="right">€8,000</td><td class="right">€8,000</td><td class="right">—</td></tr>
+              <tr><td>Localization</td><td class="right">€7,500</td><td class="right">€7,500</td><td class="right">—</td></tr>
+              <tr><td>Cloud &amp; SaaS</td><td class="right">€6,000</td><td class="right">€6,000</td><td class="right">—</td></tr>
+              <tr><td>Data Room</td><td class="right">€3,000</td><td class="right">€3,000</td><td class="right">—</td></tr>
+              <tr><td>Banking</td><td class="right">€2,500</td><td class="right">€2,500</td><td class="right">—</td></tr>
+              <tr class="subtotal-row"><td>Operating Subtotal</td><td class="right">€521,600</td><td class="right">€631,760</td><td class="right" style="color:#f97316">+€110,160</td></tr>
+              <tr class="contingency-row"><td>Contingency (20%)</td><td class="right">€104,320</td><td class="right">€126,352</td><td class="right" style="color:#f97316">+€22,032</td></tr>
+              <tr class="total-row"><td>Year 1 Total (v0.1.2)</td><td class="right">€627,120</td><td class="right">€758,112</td><td class="right" style="color:#f97316">+€130,992</td></tr>
             </tbody>
           </table>
         </div>
@@ -799,11 +697,11 @@
       <!-- Why not cheaper -->
       <div style="margin-top:2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem">
         <div style="font-size:0.8rem;font-weight:700;color:var(--heading);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em">Why not the cheaper options?</div>
-        <p style="font-size:0.84rem;color:var(--text);margin-bottom:0.75rem">The cheapest option — Irish-only entity with Italian contractors and no declared Italian presence — comes in at €566,000 Year 1. It was <strong>rejected</strong>. Italian enforcement history is clear:</p>
+        <p style="font-size:0.84rem;color:var(--text);margin-bottom:0.75rem">The cheapest option — Irish-only entity with Italian contractors and no declared Italian PE (Permanent Establishment) — saves on paper but carries documented enforcement risk:</p>
         <ul class="bullet-list" style="font-size:0.83rem">
-          <li>Airbnb settled <strong>€576 million</strong> with the Agenzia delle Entrate in 2023 for exactly this pattern (operating in Italy without a declared permanent establishment).</li>
-          <li>Uber Eats Italy was placed in <strong>judicial administration in 2020</strong> over its contractor-based logistics force.</li>
-          <li>Estonian variant loses to Ireland on founder-extraction math: 42.3% total tax leakage (Estonia path) vs. 35.3% (Ireland path) at €200K/year distribution-to-founder profile.</li>
+          <li>Airbnb settled <strong>€576 million</strong> with the Agenzia delle Entrate in 2023 for operating in Italy without a declared permanent establishment.</li>
+          <li>Uber Eats Italy was placed in <strong>judicial administration in 2020</strong> over its contractor-based logistics force — the defining Italian requalification precedent.</li>
+          <li>Estonian variant loses to Ireland on founder-extraction math: 42.3% total tax leakage (Estonia path) vs. 35.3% (Ireland path) at €200K/year distribution-to-founder profile. Estonia saves zero after WHT (Withholding Tax) correction.</li>
         </ul>
       </div>
     </div>
@@ -813,14 +711,14 @@
       <div class="section-title"><div class="accent-bar"></div>Runway &amp; Raise Math</div>
 
       <div class="runway-box">
-        <div class="runway-stat"><div class="rv">€480K</div><div class="rl">Deployable capital (SAFE + founder cash)</div></div>
-        <div class="runway-stat"><div class="rv">~11 mo</div><div class="rl">Runway at full-plan burn</div></div>
+        <div class="runway-stat"><div class="rv">€480K</div><div class="rl">Deployable capital (€300K SAFE + €180K founder cash)</div></div>
+        <div class="runway-stat"><div class="rv">~10 mo</div><div class="rl">Runway at full-plan burn</div></div>
         <div class="runway-stat"><div class="rv">Mo 10</div><div class="rl">Series A conversation begins</div></div>
       </div>
 
       <div style="font-size:0.87rem;color:var(--text);margin-top:1rem;line-height:1.75">
-        <p style="margin-bottom:0.75rem">The €300,000 SAFE raise + €180,000 founder cash already on the balance sheet = <strong>€480,000</strong> deployable capital against Option 1's €639,360 Y1 burn. Net of the first-revenue cohort (conservative €80,000 cumulative by month 12), runway lands at approximately <strong>eleven months</strong> of full-plan operation.</p>
-        <p>Bridge plan if Series A slips: a disciplined expense freeze in month 9 (founder compensation cut to zero, contingency reallocated, AI agent budget held flat at month-8 level) extends runway to <strong>fourteen months</strong> without firing anyone. Series A conversation timed to begin month 10, target close months 13–14.</p>
+        <p style="margin-bottom:0.75rem">Deployable capital: €300,000 SAFE raise + €180,000 founder cash already on balance sheet = <strong>€480,000</strong>. Against Option 1's €639,360 Y1 burn (€53,280/month average), net of a conservative €80,000 first-revenue cohort by M12, runway lands at approximately <strong>ten months</strong> of full-plan operation.</p>
+        <p>Bridge plan if Series A slips: expense freeze at month 9 (founder compensation cut to zero, contingency reallocated, AI Agent budget held flat at month-8 level) extends runway to <strong>fourteen months</strong> without any team reductions. Series A conversation timed to begin month 10; target close months 13–14.</p>
       </div>
     </div>
 
@@ -830,19 +728,19 @@
       <div style="display:flex;flex-direction:column;gap:0.75rem">
         <div class="cat-block" style="border-left:3px solid #1A9BA5;border-radius:0 8px 8px 0;background:var(--card)">
           <div class="blabel">1 · Commercialista referral</div>
-          <p style="font-size:0.87rem;color:var(--text)">Is there a Milan commercialista in your network you have used for a multi-entity structure who would take us on at pre-seed stage?</p>
+          <p style="font-size:0.87rem;color:var(--text)">Is there a Milan commercialista in your network who has experience with dual-entity IT SRL (Società a Responsabilità Limitata) + IE HoldCo structures and would take us on at pre-seed stage? RPT (Related Party Transaction) experience a plus.</p>
         </div>
         <div class="cat-block" style="border-left:3px solid #1A9BA5;border-radius:0 8px 8px 0;background:var(--card)">
           <div class="blabel">2 · Italian notary referral</div>
-          <p style="font-size:0.87rem;color:var(--text)">SRL incorporation requires a <em>notaio</em>. A referral avoids the two-week wait for a cold booking in Milan.</p>
+          <p style="font-size:0.87rem;color:var(--text)">SRL (Società a Responsabilità Limitata) incorporation requires a notaio (Italian notary). A warm referral avoids the two-week cold-booking wait in Milan and ensures the notaio understands the IE HoldCo ownership chain above the SRL.</p>
         </div>
         <div class="cat-block" style="border-left:3px solid #1A9BA5;border-radius:0 8px 8px 0;background:var(--card)">
           <div class="blabel">3 · Dublin corporate solicitor referral</div>
-          <p style="font-size:0.87rem;color:var(--text)">Specifically a solicitor comfortable with SAFE notes and inter-company service agreements between an Irish Limited and an Italian SRL.</p>
+          <p style="font-size:0.87rem;color:var(--text)">Specifically a solicitor comfortable with SAFE (Simple Agreement for Future Equity) notes, inter-company service agreements between an Irish Limited and an Italian SRL, and IP (Intellectual Property) assignment documentation.</p>
         </div>
         <div class="cat-block" style="border-left:3px solid #1A9BA5;border-radius:0 8px 8px 0;background:var(--card)">
-          <div class="blabel">4 · Operational preference</div>
-          <p style="font-size:0.87rem;color:var(--text)">Having run both Italian companies and branches, do you have a strong operational preference between Option 1 and Option 3? We lean Option 1 on due-diligence grounds and are open to being pushed to Option 3 on operational grounds.</p>
+          <div class="blabel">4 · Operational preference — Option 1 vs Option 3</div>
+          <p style="font-size:0.87rem;color:var(--text)">Having run both Italian companies and branch structures through MGC (Milano Green Consulting), do you have a strong operational preference between Option 1 (IT SRL + IE HoldCo, €639,360) and Option 3 (IE Ltd + IT branch + agency, €758,112)? We lean Option 1 on due-diligence grounds and are open to a push toward Option 3 on operational grounds.</p>
         </div>
       </div>
     </div>
@@ -850,18 +748,16 @@
     <!-- Methodology -->
     <div class="section">
       <div class="section-title"><div class="accent-bar"></div>Methodology &amp; Sources</div>
-      <p style="font-size:0.83rem;color:var(--muted);line-height:1.75">Numbers derive from the Solnest_Expense_Plan v0.1.2 spreadsheet (BDM rate corrected 2026-04-23), with each line supported either by vendor quote, benchmark data, or documented loaded-cost factor. Structural analysis draws on Delphi research into Italian tax enforcement patterns (Airbnb 2023 settlement, Uber Eats Italy 2020 judicial administration) and Cortex knowledge-base entries b1361601 (IE-only OpCo viability), 2e44a7dc (Luigi structural substitution analysis), b62e4fb1 (eight-category investor defence), a45d8668 (v1.0 change-log), 6832a807 (Otovo competitor intelligence), and 286b15b5 (Spain and Romania market comparison). Full seven-section structural analysis including three rejected options available on request in <code style="font-family:'JetBrains Mono',monospace;font-size:0.8rem">structure-comparison-2026-04-22.md</code>.</p>
+      <p style="font-size:0.83rem;color:var(--muted);line-height:1.75">Numbers derive from the Solnest_Expense_Plan v0.1.2 workbook (BDM rate corrected 2026-04-23). The v1.0 target adds the AI Agents ramp line (€12,240) while holding contingency at the v0.1.2 base level. Each line is supported by vendor quotes, market benchmarks, or documented loaded-cost factors. The 20% contingency is applied to the v0.1.2 operating base (€522,600), yielding €104,520 — pre-seed standard when technology build is the dominant line. Structural analysis draws on Delphi research into Italian tax enforcement (Airbnb 2023 settlement, Uber Eats Italy 2020 judicial administration) and Cortex knowledge-base entries b1361601 (IE-only OpCo viability), 2e44a7dc (Luigi structural substitution analysis), b62e4fb1 (eight-category investor defence), 6832a807 (Otovo competitor intelligence), and 286b15b5 (Spain/Romania market comparison). Option 3 corrected total €758,112 per structure-comparison-2026-04-22.md — prior figure €701,974 was based on a fabricated Team line and is now superseded. Full seven-section structural analysis available in <code style="font-family:'JetBrains Mono',monospace;font-size:0.8rem">structure-comparison-2026-04-22.md</code>.</p>
     </div>
 
-    <!-- Footer -->
     <div style="border-top:1px solid var(--border);padding-top:1.5rem;margin-top:1rem;text-align:center;font-size:0.75rem;color:var(--muted)">
-      Generated by NexusOS shared-reporter · Solnest.ai · 2026-04-23 · <a href="https://cryptopafi.github.io/nexusos-reports/" style="color:#1A9BA5;text-decoration:none">All reports</a>
+      Generated by NexusOS shared-reporter · Solnest.ai · 2026-04-23 · v1.0 (corrected 2026-04-24) · <a href="https://cryptopafi.github.io/nexusos-reports/" style="color:#1A9BA5;text-decoration:none">All reports</a>
     </div>
   </main>
 </div>
 
 <script>
-  // ─── Theme toggle ───────────────────────────────────────
   function toggleTheme() {
     const html = document.documentElement;
     const isDark = html.getAttribute('data-theme') === 'dark';
@@ -876,14 +772,11 @@
     const btn = document.getElementById('theme-toggle');
     if (btn) btn.textContent = saved === 'dark' ? '☀ Light mode' : '🌙 Dark mode';
   })();
-
-  // Mobile toggles
   const mobileTheme = document.getElementById('theme-toggle-mobile');
   const mobileShare = document.getElementById('share-btn-mobile');
   if (mobileTheme) mobileTheme.addEventListener('click', toggleTheme);
   if (mobileShare) mobileShare.addEventListener('click', shareReport);
 
-  // ─── Share ───────────────────────────────────────────────
   function shareReport() {
     const url = window.location.href;
     if (navigator.share) {
@@ -896,13 +789,11 @@
     }
   }
 
-  // ─── Scroll animations ───────────────────────────────────
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.section').forEach(el => observer.observe(el));
 
-  // ─── TOC active link ─────────────────────────────────────
   const tocLinks = document.querySelectorAll('.toc-list a');
   const tocObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -915,64 +806,73 @@
   }, { rootMargin: '-30% 0px -60% 0px' });
   document.querySelectorAll('[id]').forEach(el => tocObserver.observe(el));
 
-  // ─── Charts ─────────────────────────────────────────────
   window.addEventListener('load', () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const textColor = isDark ? '#94a3b8' : '#64748b';
     const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
-
     const teal = '#1A9BA5';
+
     const palette = [
-      '#1A9BA5','#22b8c4','#0d7a84','#34d399','#60a5fa',
+      '#1A9BA5','#0d7a84','#22b8c4','#34d399','#60a5fa',
       '#a78bfa','#f472b6','#fb923c','#fbbf24','#4ade80',
-      '#38bdf8','#818cf8','#e879f9','#f87171','#94a3b8'
+      '#38bdf8','#818cf8','#e879f9','#f87171','#94a3b8','#475569'
     ];
 
-    // Pie chart — expense distribution
+    // Pie chart — 15 operating lines + contingency = 16 slices
     const pieCtx = document.getElementById('pieChart');
     if (pieCtx) {
       new Chart(pieCtx, {
         type: 'doughnut',
         data: {
-          labels: ['Team','Accounting','Legal','Tech','Cloud & SaaS','AI Agents','Regulatory','Founder Comp','Compliance','Payments','Data Room','Banking','Localization','G&A','Contingency'],
-          datasets: [{ data: [348000,24000,36000,18000,30000,12240,15000,60000,14000,9600,6000,4800,8400,18000,34120], backgroundColor: palette, borderWidth: 0 }]
+          labels: [
+            'Technology Build','Founder Comp','Sales & Market Entry','Marketing',
+            'Legal & Entity Setup','Compliance','Regulatory & Legal','G&A',
+            'Insurance','AI Agents','Payment Infra','Localization',
+            'Cloud & SaaS','Data Room','Banking','Contingency'
+          ],
+          datasets: [{
+            data: [215000,76800,57000,35000,28300,27500,22000,18500,15500,12240,8000,7500,6000,3000,2500,104520],
+            backgroundColor: palette,
+            borderWidth: 0
+          }]
         },
         options: {
           plugins: {
             legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: ctx => ` ${ctx.label}: €${ctx.raw.toLocaleString('de-DE')}`
-              }
-            }
+            tooltip: { callbacks: { label: ctx => ` ${ctx.label}: €${ctx.raw.toLocaleString('de-DE')}` } }
           },
           cutout: '60%'
         }
       });
     }
 
-    // Bar chart — option comparison
+    // Bar chart — Option 1 vs Option 3 totals (v0.1.2)
     const barCtx = document.getElementById('barChart');
     if (barCtx) {
       new Chart(barCtx, {
         type: 'bar',
         data: {
-          labels: ['Team','Accounting','Legal','Tech','Cloud','AI','Regulatory','Founder','Compliance','Payments','DataRoom','Banking','Local','G&A','Contingency'],
-          datasets: [
-            { label: 'Option 1', data: [348000,24000,36000,18000,30000,12240,15000,60000,14000,9600,6000,4800,8400,18000,34120], backgroundColor: teal },
-            { label: 'Option 3', data: [380000,15000,42000,18000,30000,12240,6000,60000,10000,9600,6000,3600,10200,16000,18934], backgroundColor: '#f97316' }
-          ]
+          labels: ['Option 1 (IT SRL + IE HoldCo)', 'Option 3 (IE Ltd + IT Branch)'],
+          datasets: [{
+            label: 'Year 1 Total (v0.1.2)',
+            data: [627120, 758112],
+            backgroundColor: [teal, '#f97316'],
+            borderWidth: 0,
+            borderRadius: 6
+          }]
         },
         options: {
+          indexAxis: 'y',
           plugins: {
-            legend: { labels: { color: textColor, font: { size: 10 } } },
-            tooltip: {
-              callbacks: { label: ctx => ` ${ctx.dataset.label}: €${ctx.raw.toLocaleString('de-DE')}` }
-            }
+            legend: { display: false },
+            tooltip: { callbacks: { label: ctx => ` €${ctx.raw.toLocaleString('de-DE')}` } }
           },
           scales: {
-            x: { ticks: { color: textColor, font: { size: 8 } }, grid: { color: gridColor } },
-            y: { ticks: { color: textColor, font: { size: 9 }, callback: v => '€' + (v/1000).toFixed(0) + 'K' }, grid: { color: gridColor } }
+            x: {
+              ticks: { color: textColor, font: { size: 10 }, callback: v => '€' + (v/1000).toFixed(0) + 'K' },
+              grid: { color: gridColor }
+            },
+            y: { ticks: { color: textColor, font: { size: 10 } }, grid: { color: gridColor } }
           }
         }
       });
