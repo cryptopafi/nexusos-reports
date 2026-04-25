@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Nest HYD-4712 — Deep-Dive v3 | DXRE-Hunter v4.2 SCAN-6</title>
+<style>
+  :root {
+    --forest-1: #15803d;
+    --forest-2: #14532d;
+    --forest-3: #166534;
+    --forest-bg: #f0fdf4;
+    --forest-card: #dcfce7;
+    --ink: #052e16;
+    --muted: #4b5563;
+    --warn: #b91c1c;
+    --pass: #15803d;
+    --fail: #b91c1c;
+    --kill: #7f1d1d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(135deg, var(--forest-bg) 0%, #ffffff 100%);
+    color: var(--ink);
+    margin: 0;
+    padding: 32px 24px;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .hero {
+    background: linear-gradient(135deg, var(--forest-1), var(--forest-2));
+    color: white;
+    padding: 32px 36px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(20,83,45,0.25);
+    margin-bottom: 28px;
+  }
+  .hero h1 { margin: 0 0 8px; font-size: 28px; font-weight: 700; }
+  .hero .sub { opacity: 0.85; font-size: 14px; letter-spacing: 0.5px; }
+  .verdict-banner {
+    display: inline-block;
+    background: white;
+    color: var(--forest-2);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  h2 {
+    color: var(--forest-2);
+    border-left: 5px solid var(--forest-1);
+    padding-left: 12px;
+    margin-top: 36px;
+    font-size: 22px;
+  }
+  h3 { color: var(--forest-3); margin-top: 24px; font-size: 17px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 20px;
+    font-size: 13px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(20,83,45,0.08);
+  }
+  th {
+    background: var(--forest-2);
+    color: white;
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #e5e7eb; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f9fafb; }
+  .pass { color: var(--pass); font-weight: 700; }
+  .fail { color: var(--fail); font-weight: 600; }
+  .kill { color: var(--kill); font-weight: 700; background: #fee2e2 !important; }
+  .pass-row td { background: #dcfce7 !important; }
+  .card {
+    background: white;
+    border-left: 4px solid var(--forest-1);
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin: 14px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .warn-card { border-left-color: var(--warn); background: #fef2f2; }
+  pre {
+    background: var(--forest-2);
+    color: #d1fae5;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 12px;
+    overflow-x: auto;
+  }
+  .verdict-final {
+    background: linear-gradient(135deg, var(--forest-1), var(--forest-2));
+    color: white;
+    padding: 28px 32px;
+    border-radius: 14px;
+    margin-top: 32px;
+    box-shadow: 0 8px 24px rgba(20,83,45,0.3);
+  }
+  .verdict-final h2 { color: white; border: none; padding: 0; margin: 0 0 12px; font-size: 26px; }
+  .verdict-final .label { font-size: 11px; text-transform: uppercase; opacity: 0.75; letter-spacing: 1px; }
+  .verdict-final .num { font-size: 22px; font-weight: 700; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
+  .grid-3 > div { background: rgba(255,255,255,0.12); padding: 16px; border-radius: 8px; }
+  .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .badge-high { background: #fee2e2; color: #991b1b; }
+  .badge-med { background: #fef3c7; color: #92400e; }
+  .badge-low { background: #dcfce7; color: #166534; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="sub">DXRE-Hunter v4.2 SCAN-6 · Wave 3 CHIEF Audit · 2026-04-25</div>
+  <h1>The Nest HYD-4712 — Deep-Dive v3</h1>
+  <div class="sub">4BR Villa · Al Barari · Hyde Real Estate · Ask AED 27.75M · Buyer: Ehsan</div>
+  <div class="verdict-banner">VERDICT: NEGOTIATE-AND-BUY @ AED 22.5M (Tier D + Extension)</div>
+</div>
+
+<h2>0. Subject</h2>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td>Reference</td><td><strong>HYD-4712</strong> (Hyde RE / Brad Kirkwood)</td></tr>
+  <tr><td>Sub-community</td><td>The Nest, Al Barari, Wadi Al Safa 3</td></tr>
+  <tr><td>BUA / Plot</td><td>~7,000 sqft / ~11,760 sqft</td></tr>
+  <tr><td>Ask / Ask psf</td><td>AED 27,750,000 / AED 3,964 psf</td></tr>
+  <tr><td>DOM</td><td><strong>UNCONFIRMED</strong> — H10 conservative tier (0.80× stale)</td></tr>
+  <tr><td>CAGR forward</td><td>8% base / 6% pessimistic (DLD-mean-reverted)</td></tr>
+</table>
+
+<h2>1. DLD Calibration (v3 NEW)</h2>
+<table>
+  <tr><th>BUA tier</th><th>n</th><th>1Y CAGR</th><th>3Y CAGR</th><th>Conf</th></tr>
+  <tr><td><strong>Al Barari Villa 5–8k sqft</strong> ← subject</td><td>126</td><td><strong>37.0%</strong></td><td><strong>43.8%</strong></td><td><span class="badge badge-low">HIGH</span></td></tr>
+  <tr><td>Al Barari Villa 8–12k sqft</td><td>58</td><td>—</td><td>43.1%</td><td><span class="badge badge-med">MED</span></td></tr>
+  <tr><td>Al Barari Villa 12k+ sqft</td><td>68</td><td>38.8%</td><td>39.7%</td><td><span class="badge badge-med">MED</span></td></tr>
+</table>
+<div class="card">Historical 2022-2023 surge mean-reverts to <strong>8% forward base / 6% pessimistic floor</strong>. Pessimistic floor moved UP from v2 (5%→6%) on DLD-implied strength. Benchmark <code>compare</code> output discarded (sample_n=2, LOW conf).</div>
+
+<h2>2. v4.2 ROE Math Framework</h2>
+<pre>Equity   = 0.56 × P_close + reno_cost + ext_cost
+Interest = 0.11 × P_close (4yr × 4.5% IO mortgage @ 50% LTV)
+Hold     = 4 − reno_months/12
+
+P_sale formulas:
+  Tier B turnkey: P_close × (1.08)^4 × 1.05
+  Tier C reno:    P_close × (1.085)^4 × 1.10
+  Tier D reno:    P_close × (1.09)^4 × 1.12
+  Tier D+ext:     (P_close + ext_cost + reno_cost) × (1.09)^4 × 1.18
+  Pessimistic:    × (1.06)^4 × 0.90
+
+Profit = 0.98 × P_sale − 1.17 × P_close − reno_cost − ext_cost
+ROE    = Profit / Equity
+
+Reno: B=330psf·6mo | C=875·14mo | D=1,690·20mo | Ext=2,500·Δsqft·30mo</pre>
+
+<h2>3. Scenario Matrix (BUA 7,000, ext +1,500 sqft, ext_cost AED 3.75M)</h2>
+
+<h3>3a. Standard close (−15%, P_close = AED 23.59M)</h3>
+<table>
+  <tr><th>Tier</th><th>Equity</th><th>P_sale</th><th>Profit</th><th>ROE base</th><th>ROE pess</th><th>Hold</th><th>Verdict</th></tr>
+  <tr><td>B turnkey</td><td>15.52M</td><td>33.70M</td><td>3.11M</td><td>20.1%</td><td>−23.5%</td><td>3.50y</td><td class="fail">FAIL</td></tr>
+  <tr><td>C reno</td><td>19.33M</td><td>35.96M</td><td>1.52M</td><td>7.8%</td><td>−38.6%</td><td>2.83y</td><td class="fail">FAIL</td></tr>
+  <tr><td>D reno</td><td>25.04M</td><td>37.29M</td><td>−2.88M</td><td class="kill">−11.5%</td><td>−52.6%</td><td>2.33y</td><td class="kill">KILL</td></tr>
+  <tr class="pass-row"><td><strong>D + 1.5k ext</strong></td><td>28.79M</td><td>65.24M</td><td>20.76M</td><td class="pass">72.1%</td><td class="pass">+1.5%</td><td>1.50y</td><td class="pass">PASS ✅</td></tr>
+</table>
+
+<h3>3b. Stale close (−20%, P_close = AED 22.20M) — APPLIED PER H10</h3>
+<table>
+  <tr><th>Tier</th><th>Equity</th><th>P_sale</th><th>Profit</th><th>ROE base</th><th>ROE pess</th><th>Verdict</th></tr>
+  <tr><td>B turnkey</td><td>14.74M</td><td>31.71M</td><td>2.79M</td><td>19.0%</td><td>−24.2%</td><td class="fail">FAIL</td></tr>
+  <tr><td>C reno</td><td>18.56M</td><td>33.84M</td><td>1.07M</td><td>5.7%</td><td>−39.8%</td><td class="fail">FAIL</td></tr>
+  <tr><td>D reno</td><td>24.26M</td><td>35.10M</td><td>−3.41M</td><td class="kill">−14.0%</td><td>−53.9%</td><td class="kill">KILL</td></tr>
+  <tr class="pass-row"><td><strong>D + ext</strong></td><td>28.01M</td><td>62.93M</td><td>20.12M</td><td class="pass">71.8%</td><td class="pass">+1.8%</td><td class="pass">PASS ✅</td></tr>
+</table>
+
+<h3>3c. Very stale (−25%) and 3d. Aggressive (−35%)</h3>
+<table>
+  <tr><th>Close</th><th>Tier B</th><th>Tier C</th><th>Tier D</th><th>Tier D+ext</th></tr>
+  <tr><td>−25% (20.81M)</td><td>17.7%</td><td>3.5%</td><td class="kill">−16.8%</td><td class="pass">71.5% ✅</td></tr>
+  <tr><td>−35% (18.04M)</td><td>14.8%</td><td class="kill">−1.7%</td><td class="kill">−22.7%</td><td class="pass">70.8% ✅</td></tr>
+</table>
+
+<h2>4. Structural Finding — The Formula Scissors</h2>
+<div class="card warn-card">
+Under v4.2 math, the ROE landscape has a <strong>discontinuity</strong>:
+<ul>
+  <li><strong>Tier B / C / D reno</strong> P_sale = <code>P_close × growth × premium</code> — reno cost adds to equity denominator <em>without compensating sale uplift</em>. The more you spend, the worse the ROE.</li>
+  <li><strong>Tier D + extension</strong> uses <code>total project cost basis × growth × 1.18 premium</code> — reno+ext spend compounds INSIDE the sale price, generating outsized P_sale (~AED 65M).</li>
+</ul>
+<strong>The math says: don't half-renovate this villa. Either turnkey-flip cheap (Tier B) or fully extend (Tier D+ext). Tier C and D-only are structural traps.</strong>
+</div>
+
+<h2>5. Break-even Exit psf for ROE_base ≥ 35%</h2>
+<table>
+  <tr><th>Scenario @ P_close</th><th>BE P_sale</th><th>BE psf needed</th><th>Achievable vs ceiling AED 7,100?</th></tr>
+  <tr><td>B @ −15%</td><td>36.06M</td><td>AED 5,151</td><td class="pass">YES — easy</td></tr>
+  <tr><td>C @ −15%</td><td>41.32M</td><td>AED 5,902</td><td>MAYBE — between Tier C comp and ceiling</td></tr>
+  <tr><td>D @ −15%</td><td>49.17M</td><td>AED 7,025</td><td class="fail">TIGHT — at ceiling</td></tr>
+  <tr class="pass-row"><td><strong>D+ext @ −15%</strong></td><td>54.34M</td><td><strong>AED 6,393</strong></td><td class="pass">YES — comfortable</td></tr>
+  <tr class="pass-row"><td>D+ext @ −25%</td><td>50.47M</td><td>AED 5,938</td><td class="pass">YES with margin</td></tr>
+</table>
+
+<h2>6. Pass/Fail vs ASK (ROE_base ≥ 35% gate)</h2>
+<table>
+  <tr><th>Close</th><th>Tier B</th><th>Tier C</th><th>Tier D</th><th>Tier D+ext</th></tr>
+  <tr><td>0% (full ask 27.75M)</td><td class="fail">22.8%</td><td class="fail">13.2%</td><td class="kill">−4.8%</td><td class="pass">72.9% ✅</td></tr>
+  <tr><td>−15% (23.59M)</td><td class="fail">20.1%</td><td class="fail">7.8%</td><td class="kill">−11.5%</td><td class="pass">72.1% ✅</td></tr>
+  <tr><td>−25% (20.81M)</td><td class="fail">17.7%</td><td class="fail">3.5%</td><td class="kill">−16.8%</td><td class="pass">71.5% ✅</td></tr>
+  <tr><td>−35% (18.04M)</td><td class="fail">14.8%</td><td class="kill">−1.7%</td><td class="kill">−22.7%</td><td class="pass">70.8% ✅</td></tr>
+</table>
+<div class="card">Tier D+ext passes at every close — but pessimistic case is razor-thin (1.5–2.9%). Thesis depends on (a) ARB approval, (b) the 1.18 exit premium materializing.</div>
+
+<h2>7. Critic C-068 — Steelman Against D+ext Verdict</h2>
+<ol>
+  <li><strong>ARB headroom is +311–770 sqft, not +1,500</strong> (v2 finding). Re-running at +773 sqft: ROE_base = <span class="pass">72.7%</span> — extension size doesn't change verdict because formula compounds full basis.</li>
+  <li><strong>1.18 premium is generous.</strong> v2 comps suggest AED 6,759–7,100 psf at exit → AED 52–55M, below brief's AED 65M optimistic. Pessimistic 0.90× partly captures this.</li>
+  <li><strong>Comp size mismatch:</strong> 7,000+ sqft typically takes 5–10% psf discount → effective AED 6,100–6,400 psf. Still above AED 5,938 BE @ −25% close. Holds.</li>
+  <li><strong>Liquidity risk:</strong> Only 6 active Nest listings, single-comp Tier D validation.</li>
+  <li><strong>Tenant lock</strong> (v2): AED 963K vs 1.7M market = AED 737K/yr drag. Vacant possession or AED 1.5M credit MUST be a closing condition.</li>
+</ol>
+<div class="card">Steelman conclusion: Verdict survives. ARB constraint reduces upside but doesn't kill. Tenant clause is the live deal-breaker.</div>
+
+<h2>8. Self-Calib C-072</h2>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td>Confidence in Tier D+ext PASS</td><td><span class="badge badge-med">MED-HIGH (72%)</span></td></tr>
+  <tr><td>Confidence in Tier B/C/D-only FAIL</td><td><span class="badge badge-low">HIGH (88%)</span> — structural math</td></tr>
+  <tr><td><strong>Biggest assumption</strong></td><td>The 1.18 exit premium for Tier D+ext. If actual is 1.10 (Tier C parity), ROE_base drops to ~55% — still passes 35% gate but loses pessimistic safety.</td></tr>
+  <tr><td>Second biggest</td><td>DLD-implied 8% CAGR mean-reverts cleanly. Spike or crash → both ends fail.</td></tr>
+  <tr><td>Disconfirmer</td><td>If extended Nest villa transacts in 2026 at &lt; AED 5,500 psf, thesis collapses. Set watch alert.</td></tr>
+</table>
+
+<h2>9. Negotiation Card</h2>
+<div class="card warn-card">
+<strong>Brief asks: "What close clears Tier C reno ROE_base 50%?"</strong><br>
+<strong>Answer: Mathematically infeasible under v4.2.</strong> Solving the equation yields <code>P_close ≈ AED 87.6M</code> (negative discount, impossible). Even ROE 35% requires <code>P_close ≈ AED 64.6M</code>. <strong>Tier C reno is structurally dead at this listing. Do not entertain.</strong>
+</div>
+
+<h3>The negotiation ladder (Tier D+ext path)</h3>
+<table>
+  <tr><th>Strategy</th><th>Close target</th><th>Rationale</th></tr>
+  <tr><td>Opening offer</td><td>AED 21.5M (−22.5%)</td><td>v2 tenant-adjusted fair value (23.2M) minus liquidity premium</td></tr>
+  <tr class="pass-row"><td><strong>Settle</strong></td><td><strong>AED 22.5M (−19%)</strong></td><td>Tier D+ext ROE_base 71.9%, pess +1.7% — passes both gates</td></tr>
+  <tr><td><strong>Walk-away (hard floor)</strong></td><td><strong>AED 24.0M (−13.5%)</strong></td><td>Above this, pessimistic case turns marginal</td></tr>
+  <tr><td colspan="3"><strong>Pre-conditions (non-negotiable):</strong> (i) Vacant possession at close OR AED 1.5M tenant-exit credit; (ii) Al Barari ARB pre-feasibility letter for +500–1,500 sqft extension; (iii) 60-day inspection + structural survey; (iv) DOM disclosure + price history.</td></tr>
+</table>
+
+<h2>10. v3 Belief Updates vs v2 (Wave 2)</h2>
+<table>
+  <tr><th>#</th><th>v2 conclusion</th><th>v3 verdict</th><th>Driver</th></tr>
+  <tr><td>1</td><td>"All scenarios KILLED at −15%"</td><td class="pass">WRONG — Tier D+ext PASSES at FULL ASK</td><td>v4.2 formula compounds basis with 1.18 premium</td></tr>
+  <tr><td>2</td><td>"Tier C base ROE 28%"</td><td class="kill">Tier C structurally below 35% at any price</td><td>v4.2 doesn't reward Tier C reno spend</td></tr>
+  <tr><td>3</td><td>"Tier D+ext needs psf ≥ 7,000"</td><td class="pass">BE psf @ −15% = 6,393, well below ceiling</td><td>ext_cost in basis improves break-even</td></tr>
+  <tr><td>4</td><td>"Negotiate to 18–20M or pass"</td><td>Walk-away raised to AED 24M</td><td>DLD 27M Apr 2025 sale at-tier; pessimistic floor 6%</td></tr>
+  <tr><td>5</td><td>"5% CAGR base"</td><td>8% base / 6% pessimistic</td><td>DLD n=126 HIGH conf, mean-reverted from 37% spike</td></tr>
+</table>
+
+<h2>11. Risk Register</h2>
+<table>
+  <tr><th>#</th><th>Risk</th><th>Severity</th><th>Mitigation</th></tr>
+  <tr><td>R1</td><td>ARB rejects +1,500 sqft extension</td><td><span class="badge badge-high">HIGH</span></td><td>Pre-feasibility as closing condition; +773 sqft fallback still passes</td></tr>
+  <tr><td>R2</td><td>Tenant locked at AED 963K below-market until April 2027+</td><td><span class="badge badge-high">HIGH</span></td><td>Vacant-possession clause OR AED 1.5M credit</td></tr>
+  <tr><td>R3</td><td>2030 luxury inventory flood (Emaar Oasis handover)</td><td><span class="badge badge-med">MED</span></td><td>Tier D+ext bespoke premium partly insulated</td></tr>
+  <tr><td>R4</td><td>1.18 exit premium doesn't materialize</td><td><span class="badge badge-med">MED</span></td><td>Pessimistic case still +1.5% — bare survival</td></tr>
+  <tr><td>R5</td><td>DOM not verified — could be 12mo+ stale</td><td><span class="badge badge-low">LOW</span></td><td>Priced in via 0.80× tier; demand DOM disclosure</td></tr>
+  <tr><td>R6</td><td>Single-comp Tier D validation</td><td><span class="badge badge-med">MED</span></td><td>Wait for 2nd transaction or accept liquidity premium</td></tr>
+</table>
+
+<div class="verdict-final">
+  <h2>Final Verdict — NEGOTIATE-AND-BUY</h2>
+  <div>Tier D + 500–1,500 sqft extension (ARB-permitted maximum) + bespoke renovation</div>
+  <div class="grid-3">
+    <div>
+      <div class="label">Settle (target)</div>
+      <div class="num">AED 22.5M</div>
+      <div style="font-size: 12px; opacity: 0.85;">−19% off ask</div>
+    </div>
+    <div>
+      <div class="label">Walk-away</div>
+      <div class="num">AED 24.0M</div>
+      <div style="font-size: 12px; opacity: 0.85;">−13.5% hard floor</div>
+    </div>
+    <div>
+      <div class="label">Forecast P_sale 2030</div>
+      <div class="num">~AED 60–65M</div>
+      <div style="font-size: 12px; opacity: 0.85;">ROE_base 71–72%</div>
+    </div>
+  </div>
+  <div style="margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.25);">
+    <strong>DO NOT BUY if:</strong> ARB caps extension &lt; 300 sqft · Tenant cannot be released and AED 1.5M credit refused · Close price &gt; AED 24.0M · Any Tier D-extended Nest comp transacts &lt; AED 5,500 psf during DD window.
+  </div>
+  <div style="margin-top: 16px; font-size: 13px; opacity: 0.9;">
+    Tier C reno path is <strong>structurally dead under v4.2 math</strong> — do not entertain.<br>
+    Tier B turnkey works only as downside hedge if extension fails (ROE 17–22%, lower-quartile).<br>
+    <strong>The trade is Tier D+ext or pass.</strong>
+  </div>
+</div>
+
+<div class="footer">
+  DXRE-Hunter v4.2 SCAN-6 · Wave 3 CHIEF · Generated 2026-04-25 for Ehsan · NexusOS / GENIE
+</div>
+
+</div>
+</body>
+</html>

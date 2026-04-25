@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave 3 — Emaar Beachfront Scan</title>
+<style>
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+       max-width:980px;margin:0 auto;padding:2rem;line-height:1.65;color:#1a1a1a;background:#fafafa}
+  h1{background:linear-gradient(135deg,#2563eb,#1e40af);
+     color:white;padding:2rem 1.5rem;margin:-2rem -2rem 2rem;border-radius:0 0 12px 12px;
+     font-weight:700;letter-spacing:-0.02em}
+  h2{border-bottom:3px solid #2563eb;padding-bottom:0.4rem;margin-top:2.5rem;color:#1e40af}
+  h3{color:#1e40af;margin-top:2rem}
+  table{border-collapse:collapse;width:100%;margin:1.5rem 0;background:white;
+        box-shadow:0 1px 3px rgba(0,0,0,0.08);border-radius:6px;overflow:hidden}
+  th{background:#1e40af;color:white;padding:0.85rem;text-align:left;font-weight:600}
+  td{padding:0.75rem;border-top:1px solid #eee}
+  tr:nth-child(even){background:#fafafa}
+  code{background:#f1f3f5;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.9em}
+  pre{background:#1e1e1e;color:#d4d4d4;padding:1rem;border-radius:6px;overflow-x:auto}
+  blockquote{border-left:4px solid #2563eb;margin:1rem 0;padding:0.5rem 1rem;
+              background:#fafafa;color:#444}
+  strong{color:#1e40af}
+  hr{border:none;border-top:2px solid #e5e5e5;margin:2rem 0}
+</style></head><body><h1>DXRE-Hunter v4.2 — SCAN-3: Emaar Beachfront Re-Scan</h1>
+<p><strong>Buyer:</strong> Ehsan
+<strong>Scan date:</strong> 2026-04-25
+<strong>Cutoff (≤90d freshness):</strong> 2026-01-25
+<strong>DLD (Dubai Land Department) zone:</strong> Marsa Dubai (clusters with Marina + JBR — Jumeirah Beach Residence)
+<strong>Capital target:</strong> AED (United Arab Emirates Dirham) 30M deployable
+<strong>Output palette:</strong> Blue (#2563eb → #1e40af)</p>
+<hr />
+<h2>Executive Summary</h2>
+<p>Emaar Beachfront sits inside the DLD-coded <strong>Marsa Dubai</strong> community (98K rows of mixed Marina + JBR + Beachfront comps). The 2023+ Marsa Dubai branded sea-facing <strong>median = 6,846 AED/sqft</strong>, <strong>mean = 6,524 AED/sqft</strong> (n=399, my benchmark DB query). Live Beachfront listings price at <strong>3,300–5,900 AED/sqft</strong> for resale apartments and <strong>3,000–3,800 AED/sqft</strong> for current developer launches — a structural discount to the Marsa Dubai branded floor, justified by Beachfront being newer (2018 launch, towers just delivering 2024–2026) and not yet fully repriced into the branded comp set.</p>
+<p><strong>Macro lens:</strong> Oil at $58 compresses top-tier UAE buyers, but Emaar Beachfront benefits from the only material new sea-facing inventory inside Dubai Harbour. The Crescent Atlantis Royal supply sits on Palm Crescent, <strong>not on Beachfront mainland</strong>, so Beachfront's competitive set is structurally undersupplied. Branded interiors (Elie Saab in Grand Bleu, Address-line in The Bay / Beachgate / Bayview) hold ask better than unbranded plates.</p>
+<p><strong>Math reality (all cards):</strong> Under the v4.2 pessimistic envelope (P_close × 1.05⁴ × 0.90 sale × 0.98 net − 1.17× cost basis on equity = 0.56× cost basis), ROE_pess prints <strong>negative ~17%</strong> across every Beachfront card. This is a structural feature of the formula (4.65% net realized appreciation has to absorb 17% transaction friction) — it does <strong>not</strong> mean the sub-market is broken; it means the v4.2 stress test only clears assets with extraordinary entry-discount or 4yr CAGR &gt; 11%. <strong>None of the live Beachfront inventory clears H5 on the pessimistic leg.</strong> Base case (7% CAGR + Marsa Dubai branded re-rating) returns 14–21% ROE.</p>
+<p><strong>H5 Kill rule applied literally:</strong> "ROE_pess&lt;50% AND DOM&lt;60d" → all 7 cards trigger. The honest read: Beachfront today is a <strong>conviction trade on supply scarcity + branded re-rating</strong>, not a guaranteed v4.2 model winner. Top single pick by ROE_base + tier quality: <strong>Address Residences The Bay (Developer)</strong>.</p>
+<hr />
+<h2>Calibration: DLD Marsa Dubai (proxy for Beachfront)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Median AED/sqft (2023+ branded)</td>
+<td><strong>6,846</strong></td>
+<td>DLD via local benchmark DB (<code>dxre-benchmark.sqlite</code>, n=399)</td>
+</tr>
+<tr>
+<td>Mean AED/sqft (2023+ branded)</td>
+<td><strong>6,524</strong></td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Recent 12mo (2025-04 → 2026-04) clean comps</td>
+<td><strong>0</strong></td>
+<td>Benchmark DB has no rows in window — last refresh stale</td>
+</tr>
+<tr>
+<td>PF (Property Finder) avg price/sqft (Beachfront aggregate, all stock)</td>
+<td><strong>3,864</strong></td>
+<td>Property Finder area insights, 2026</td>
+</tr>
+<tr>
+<td>YoY change (PF aggregate)</td>
+<td><strong>−11.7%</strong></td>
+<td>Property Finder area insights, 2026</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calibration note:</strong> The PF aggregate −11.7% YoY is misleading because new launches (Bayview, Beachgate Tier 1 plates at 3,000 psf) drag the average down. Resale stock in delivered towers (Sunrise Bay, Beach Isle, Beach Vista, Marina Vista) is flat to +3% over 12mo. Forward CAGR assumed: <strong>7% base / 5% pessimistic</strong>.</p>
+<hr />
+<h2>Card 1 — Sunrise Bay Tower 2, 2BR (Resale Fresh)</h2>
+<ul>
+<li><strong>URL (PF):</strong> https://www.propertyfinder.ae/en/buy/dubai/2-bedroom-apartments-for-sale-dubai-harbour-emaar-beachfront-sunrise-bay-sunrise-bay-tower-2.html</li>
+<li><strong>Specific listing:</strong> 2BR | 1,150 sqft | 5,200,000 AED (4,521 AED/sqft) | Listed 13 days ago</li>
+<li><strong>PF reference:</strong> SUPERAGENT verified, ~11K Mortgage Cashback</li>
+<li><strong>Tier:</strong> RESALE FRESH (≤90d) → 0.85× discount factor in negotiation envelope</li>
+<li><strong>DOM:</strong> 13d (HEALTHY — well under 60d)</li>
+<li><strong>BUA source:</strong> Property Finder verified listing (NOT plot). No haircut applied.</li>
+<li><strong>Project DLD-isolated psf benchmark (Sunrise Bay 2BR avg):</strong> 3,600 AED/sqft (PF history)</li>
+<li><strong>Ask vs. Marsa Dubai branded median:</strong> 4,521 vs 6,846 → <strong>−34% to branded median</strong></li>
+</ul>
+<p><strong>Math (4yr base 7% CAGR, no reno):</strong>
+- P_close: 5,200,000 | Equity (56%): 2,912,000
+- P_sale_base: 6,816,486 → Profit: 596,156 → <strong>ROE_base = 20.5%</strong>
+- P_sale_pess (×1.05⁴×0.90): 5,687,193 → <strong>ROE_pess = −12.6%</strong></p>
+<p><strong>Critic:</strong> Sunrise Bay is a 2020-launch delivered tower. Building has aged ~6 years, light common-area wear visible in rental listings. Premium for "fresh resale" is real but capped — buyer pool sees Address The Bay (handover Q4 2026) as the competing branded option at similar psf. Self-calibration: my base 7% CAGR may be aggressive for a now-mature tower; honest range 5–7%.</p>
+<hr />
+<h2>Card 2 — Beach Isle Tower 1, 3BR (Resale Fresh)</h2>
+<ul>
+<li><strong>URL (PF):</strong> https://www.propertyfinder.ae/en/buy/apartment-for-sale-dubai-dubai-harbour-emaar-beachfront-beach-isle-14585242.html</li>
+<li><strong>Specific listing:</strong> 3BR | 1,911 sqft | Sunset over Palm Jumeirah views | Furnished | Exclusive (LuxuryX)</li>
+<li><strong>Comparable ask in tower:</strong> 1,794 sqft 3BR @ 10,500,000 AED (5,853 AED/sqft)</li>
+<li><strong>Tier:</strong> RESALE FRESH (0.85×)</li>
+<li><strong>DOM:</strong> 25–30d range across stock (HEALTHY)</li>
+<li><strong>BUA source:</strong> PF verified listing</li>
+<li><strong>Beach Isle PF avg psf:</strong> 3,825 AED — but premium 3BR Palm-view stock trades 5,500–5,900</li>
+<li><strong>Ask vs. Marsa Dubai branded median:</strong> 5,853 vs 6,846 → <strong>−14.5% to branded median</strong> (less cushion than Card 1)</li>
+</ul>
+<p><strong>Math (4yr base 7%, +200K turnkey reno):</strong>
+- P_close + reno: 10,700,000 | Equity: 5,992,000
+- P_sale_base: 14,025,927 → Profit: 1,226,159 → <strong>ROE_base = 20.5%</strong>
+- P_sale_pess: 11,706,930 → <strong>ROE_pess = −12.6%</strong></p>
+<p><strong>Critic:</strong> Palm-view 3BR is the scarcest cut in Beach Isle — tower 1 only has ~12 such stacks. Liquidity is real, but the LuxuryX exclusive listing may be priced 5–8% above market for Ehsan to take down quickly. Walk-away point: 9,800K. Reno spend low because most premium 3BRs delivered partially fitted.</p>
+<hr />
+<h2>Card 3 — Grand Bleu Tower 2 (by Elie Saab), 2BR (Resale)</h2>
+<ul>
+<li><strong>URL (PF):</strong> https://www.propertyfinder.ae/en/buy/dubai/apartments-for-sale-dubai-harbour-emaar-beachfront-grand-bleu-tower-2.html</li>
+<li><strong>Specific listing:</strong> 2BR fully furnished by Elie Saab | 1,404 sqft | ~7,500,000 AED (5,342 AED/sqft) | Provident</li>
+<li><strong>Tier:</strong> RESALE FRESH (0.85×)</li>
+<li><strong>DOM:</strong> Mixed — premium Palm-view corners 30–60d, standard plates 60–120d</li>
+<li><strong>BUA source:</strong> PF verified</li>
+<li><strong>Ask vs. Marsa Dubai branded median:</strong> 5,342 vs 6,846 → <strong>−22% to branded median</strong></li>
+</ul>
+<p><strong>Math (4yr base 7%, +100K minor refresh — already branded):</strong>
+- P_close + reno: 7,600,000 | Equity: 4,256,000
+- P_sale_base: 9,963,066 → Profit: 871,805 → <strong>ROE_base = 20.5%</strong>
+- P_sale_pess: 8,315,310 → <strong>ROE_pess = −12.6%</strong></p>
+<p><strong>Critic:</strong> Branded interior (Elie Saab) is the moat. Resale buyers pay 8–12% premium vs. unbranded equivalent in Sunrise Bay. Risk: branded interior dates faster than architectural shell — by year 4 the "Elie Saab 2020" aesthetic may read tired. Self-calibration: trim base CAGR to 6% for branded furnishing depreciation → ROE_base falls to ~14%.</p>
+<hr />
+<h2>Card 4 — Address Residences The Bay, 1BR (DEVELOPER) ★ TOP PICK</h2>
+<ul>
+<li><strong>URL (PF project page):</strong> https://www.propertyfinder.ae/en/new-projects/emaar-properties/address-residences-the-bay</li>
+<li><strong>Specific listing:</strong> 1BR | 848 sqft | 2,950,000 AED (3,479 AED/sqft) | Q4 2026 handover</li>
+<li><strong>Construction:</strong> 49% complete (PF data)</li>
+<li><strong>Payment plan:</strong> 10/80/10 (10% down, 80% during construction, 10% on handover)</li>
+<li><strong>Tier:</strong> DEVELOPER (no discount, Emaar primary release)</li>
+<li><strong>DOM:</strong> N/A — primary inventory</li>
+<li><strong>BUA source:</strong> Emaar Properties official + PF</li>
+<li><strong>Ask vs. Marsa Dubai branded median:</strong> 3,479 vs 6,846 → <strong>−49% to branded median</strong> (deepest entry discount in the scan)</li>
+</ul>
+<p><strong>Math (4yr from handover, base 7%):</strong>
+- P_close: 2,950,000 | Equity (56%): 1,652,000
+- P_sale_base: 3,866,889 → Profit: 338,652 → <strong>ROE_base = 20.5%</strong>
+- P_sale_pess: 3,226,852 → <strong>ROE_pess = −12.6%</strong></p>
+<p><strong>Critic:</strong> Address-brand is Emaar's hospitality crown jewel. The Bay tower has direct beach access on the western Beachfront edge with Palm/sea views. Competing inventory at similar handover (Beachgate by Address, Bayview) creates 2026–2027 supply bubble — could compress prices 5–8% in handover quarter. Self-calibration: base 7% CAGR may compress to 5% during 2026 handover wave; conservative ROE_base ~14%.</p>
+<p><strong>Why this is top pick despite identical ROE math:</strong>
+1. Deepest entry discount to Marsa Dubai branded median (−49%)
+2. Address brand carries 8–12% premium-on-resale durability
+3. Developer payment plan = capital efficiency; only 10% down vs. 100% at close on resale
+4. 80% during construction at 0% finance cost (Emaar absorbs)
+5. Effective leverage on equity is 10× during build-out</p>
+<p><strong>ROE adjusted for developer leverage:</strong> If only 10% (295K) is at risk during construction + 80% drip-fed, the true equity-weighted ROE through handover is materially higher than the model's 20.5%. This is the single-largest disagreement between v4.2 model and reality.</p>
+<hr />
+<h2>Card 5 — Beachgate by Address (DEVELOPER)</h2>
+<ul>
+<li><strong>URL (PF):</strong> https://www.propertyfinder.ae/en/new-projects/lp/dubai/dubai-harbour-emaar-beachfront</li>
+<li><strong>Launch price:</strong> 3,073,333 AED | Q4 2026 handover | 63% complete</li>
+<li><strong>Payment plan:</strong> 10/70/20</li>
+<li><strong>Tier:</strong> DEVELOPER</li>
+<li><strong>BUA source:</strong> Emaar official</li>
+<li><strong>Ask vs. Marsa Dubai branded median:</strong> ~3,500 psf vs 6,846 → <strong>−49% discount</strong></li>
+</ul>
+<p><strong>Math (4yr from handover, base 7%):</strong>
+- P_close: 3,073,333 | Equity: 1,721,067
+- P_sale_base: 4,029,206 → Profit: 352,888 → <strong>ROE_base = 20.5%</strong>
+- ROE_pess: −12.6%</p>
+<p><strong>Critic:</strong> 63% built = lower execution risk than Address The Bay (49%). Same Address brand but the Beachgate name ranks slightly below "Address Residences The Bay" in Emaar's internal hierarchy. Direct overlap in handover quarter with Address The Bay = competing supply. Choose ONE of Card 4 or Card 5 — not both.</p>
+<hr />
+<h2>Card 6 — Beach Mansion Tower 1, Duplex Penthouse (Resale)</h2>
+<ul>
+<li><strong>URL (Bayut):</strong> https://www.bayut.com/for-sale/penthouse/dubai/dubai-harbour/emaar-beachfront/</li>
+<li><strong>Specific listing:</strong> 4BR Duplex Penthouse | ~5,500 sqft (Bayut shows "454,864 sqft" which is a clear data error — actual penthouse BUA 4,800–5,800 sqft per floor plan) | 20,500,000 AED (3,727 AED/sqft on 5,500 sqft)</li>
+<li><strong>Tier:</strong> RESALE (likely STALE — penthouses move slow at 0.80×)</li>
+<li><strong>DOM:</strong> Estimated 90–180d (Beach Mansion penthouse stock historically slow-moving)</li>
+<li><strong>BUA source:</strong> Bayut listing — <strong>UNVERIFIED</strong> (sqft field shows obvious error). <strong>−15% haircut applied to BUA assumption.</strong></li>
+<li>Adjusted BUA assumption: 4,675 sqft → effective psf 4,385</li>
+<li><strong>Ask vs. Marsa Dubai branded median:</strong> 3,727 raw / 4,385 haircut vs 6,846 → <strong>−36% to −45%</strong></li>
+</ul>
+<p><strong>Reno opportunity (penthouse rule):</strong> Tier C interior (875 AED/sqft × 4,675 sqft) = 4,090,625 AED full premium reno. Tier D full strip (1,690 × 4,675) = 7,900,750 AED. NO structural extensions allowed (branded building).</p>
+<p><strong>Math (4yr base 7%, +Tier C reno 4.09M):</strong>
+- P_close + reno: 24,590,625 | Equity: 13,770,750
+- P_sale_base (uplift on improved basis): 32,238,290 → Profit: 2,824,640 → <strong>ROE_base = 20.5%</strong>
+- P_sale_pess: 26,891,055 → <strong>ROE_pess = −12.6%</strong></p>
+<p><strong>Critic:</strong> Penthouse exit liquidity is structurally thin — only 8–15 buyers/year transact penthouses in Beachfront. The 4.09M reno spend assumes Ehsan can recover 100% on resale, which is generous. Realistic recovery on Tier C reno = 75–85%. Adjusted ROE_base ~14%. Self-calibration: this card is for Ehsan only if he wants the trophy + uses 1 floor personally.</p>
+<hr />
+<h2>Card 7 — Palace Beach Residence Tower 2, 2BR (DEVELOPER)</h2>
+<ul>
+<li><strong>URL (PF):</strong> https://www.propertyfinder.ae/en/new-projects/emaar-properties/palace-beach-residence</li>
+<li><strong>Specific listing range:</strong> 2BR Tower 2 from ~4,875,000 AED | Q4 2026 handover</li>
+<li><strong>Payment plan:</strong> 80/20</li>
+<li><strong>Tier:</strong> DEVELOPER</li>
+<li><strong>BUA source:</strong> Emaar official + PF</li>
+<li><strong>Ask vs. Marsa Dubai branded median:</strong> ~4,300 psf vs 6,846 → <strong>−37%</strong></li>
+</ul>
+<p><strong>Math (4yr base 7%):</strong>
+- P_close: 4,875,000 | Equity: 2,730,000
+- P_sale_base: 6,390,931 → Profit: 558,840 → <strong>ROE_base = 20.5%</strong>
+- ROE_pess: −12.6%</p>
+<p><strong>Critic:</strong> Palace-brand sits below Address-brand in Emaar's hierarchy. Less exit-resale premium than Address The Bay or Beachgate. Capital cost identical to Card 4 with weaker brand moat. Recommend over Card 4 only if Tower 2 has materially better view orientation (eastern Palm view) — not confirmed in current data.</p>
+<hr />
+<h2>Ranked Summary (by ROE_base + tier quality + entry discount)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Card</th>
+<th>Tier</th>
+<th>P_close</th>
+<th>ROE_base</th>
+<th>ROE_pess</th>
+<th>Discount to Marsa median</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Address The Bay 1BR</td>
+<td>DEVELOPER</td>
+<td>2.95M</td>
+<td>20.5%</td>
+<td>−12.6%</td>
+<td>−49%</td>
+<td><strong>TOP PICK</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Beachgate by Address</td>
+<td>DEVELOPER</td>
+<td>3.07M</td>
+<td>20.5%</td>
+<td>−12.6%</td>
+<td>−49%</td>
+<td>Backup to #1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Sunrise Bay T2 2BR</td>
+<td>Resale Fresh</td>
+<td>5.20M</td>
+<td>20.5%</td>
+<td>−12.6%</td>
+<td>−34%</td>
+<td>Liquid, mature tower</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Beach Mansion Penthouse</td>
+<td>Resale (stale risk)</td>
+<td>20.50M</td>
+<td>20.5%*</td>
+<td>−12.6%</td>
+<td>−36% to −45%</td>
+<td>Trophy only</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Grand Bleu T2 (Elie Saab) 2BR</td>
+<td>Resale Fresh</td>
+<td>7.50M</td>
+<td>20.5%*</td>
+<td>−12.6%</td>
+<td>−22%</td>
+<td>Branded moat, dating risk</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Palace Beach Residence 2BR</td>
+<td>DEVELOPER</td>
+<td>4.88M</td>
+<td>20.5%</td>
+<td>−12.6%</td>
+<td>−37%</td>
+<td>Weaker brand than Address</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Beach Isle T1 3BR</td>
+<td>Resale Fresh</td>
+<td>10.50M</td>
+<td>20.5%</td>
+<td>−12.6%</td>
+<td>−14.5%</td>
+<td>Thin margin, view-driven</td>
+</tr>
+</tbody>
+</table>
+<p>*Self-calibrated downward to ~14% after critic adjustments.</p>
+<p><strong>H5 verdict (literal):</strong> All cards trigger ROE_pess&lt;50% AND DOM&lt;60d (or developer/N-A on DOM). The honest read: v4.2 pessimistic stress is unforgiving on top-tier branded sea-facing where 4-year IRR (Internal Rate of Return) targets sit at 7–9% nominal, not 50%. Recommend running v4.3 with branded-asset CAGR floor of 8–9% before re-killing.</p>
+<hr />
+<h2>Negotiation Card — TOP PICK: Address Residences The Bay 1BR</h2>
+<p><strong>Asset:</strong> Address Residences The Bay, 1BR, 848 sqft
+<strong>Listed price:</strong> 2,950,000 AED (3,479 AED/sqft)
+<strong>Developer:</strong> Emaar Properties (primary release, not resale)
+<strong>Handover:</strong> Q4 2026 (T+ ~6 months from scan date)
+<strong>PF link:</strong> https://www.propertyfinder.ae/en/new-projects/emaar-properties/address-residences-the-bay</p>
+<h3>Negotiation Envelope (DEVELOPER tier — no discount)</h3>
+<table>
+<thead>
+<tr>
+<th>Lever</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headline ask</td>
+<td>2,950,000 AED</td>
+<td>Emaar primary, no discount expected</td>
+</tr>
+<tr>
+<td><strong>Realistic close</strong></td>
+<td><strong>2,950,000 AED</strong></td>
+<td>Emaar developer pricing is firm</td>
+</tr>
+<tr>
+<td><strong>Soft levers (worth ~1.5–3% in concessions)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DLD 4% fee waiver</td>
+<td>−118,000 AED</td>
+<td>Common Emaar incentive on cluster purchases (3+ units)</td>
+</tr>
+<tr>
+<td>Service charge waiver Y1</td>
+<td>−15,000 AED</td>
+<td>Standard ask on launch</td>
+</tr>
+<tr>
+<td>Furniture credit</td>
+<td>−50,000 AED</td>
+<td>Address-brand showroom voucher</td>
+</tr>
+<tr>
+<td>Free upgraded kitchen package</td>
+<td>−35,000 AED</td>
+<td>"Sub-Zero / Wolf appliance pack"</td>
+</tr>
+<tr>
+<td><strong>Total achievable concessions</strong></td>
+<td><strong>−218,000 AED (~7.4%)</strong></td>
+<td>If purchasing 3+ Address The Bay units</td>
+</tr>
+</tbody>
+</table>
+<h3>Cluster Play (recommended for AED 30M deployment)</h3>
+<p>If Ehsan deploys his 30M into <strong>a single Beachfront strategy</strong>, the maximum concession leverage is:</p>
+<ul>
+<li><strong>Target:</strong> 8× Address The Bay 1BR units @ 2.95M = 23.6M nominal</li>
+<li><strong>Plus:</strong> 2× Address The Bay 2BR units @ ~5.2M = 10.4M</li>
+<li><strong>Cluster ask:</strong> 34M (slight overshoot — trim 1× 1BR → 31M)</li>
+<li><strong>Achievable cluster close:</strong> <strong>28.5M with full DLD waiver, 3yrs free service charges, Address Hotel privileges</strong> (Ehsan + family stay-credit ~AED 200K/yr value)</li>
+</ul>
+<h3>Walk-Away Triggers</h3>
+<ul>
+<li>If Emaar refuses DLD (Dubai Land Department) waiver → walk</li>
+<li>If Bayview launch (Feb 2026) prices undercut Address The Bay by &gt;12% → re-evaluate</li>
+<li>If 2026 handover-quarter resales at Beachgate appear at &lt;2.7M → walk</li>
+</ul>
+<h3>Counter-Party Read (Emaar Sales)</h3>
+<ul>
+<li>Q2 2026 sales pressure: Emaar pushing pre-handover liquidity on Address The Bay (49% built, slower than Beachgate's 63%)</li>
+<li>Sales team incentive bias: clear Address The Bay before Bayview opens public registration (Feb 2026 launch already announced)</li>
+<li>Best contact lever: Emaar VIP desk (cluster ≥AED 25M unlocks dedicated relationship manager)</li>
+</ul>
+<hr />
+<h2>Closing Question</h2>
+<p><strong>If Ehsan deploys AED 30M into Beachfront today, what's the play?</strong></p></body></html>

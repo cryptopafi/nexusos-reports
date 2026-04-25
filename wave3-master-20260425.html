@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave 3 Master Report — DXRE-Hunter v4.2</title>
+<style>
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+       max-width:980px;margin:0 auto;padding:2rem;line-height:1.65;color:#1a1a1a;background:#fafafa}
+  h1{background:linear-gradient(135deg,#0f172a,#334155);
+     color:white;padding:2rem 1.5rem;margin:-2rem -2rem 2rem;border-radius:0 0 12px 12px;
+     font-weight:700;letter-spacing:-0.02em}
+  h2{border-bottom:3px solid #0f172a;padding-bottom:0.4rem;margin-top:2.5rem;color:#334155}
+  h3{color:#334155;margin-top:2rem}
+  table{border-collapse:collapse;width:100%;margin:1.5rem 0;background:white;
+        box-shadow:0 1px 3px rgba(0,0,0,0.08);border-radius:6px;overflow:hidden}
+  th{background:#334155;color:white;padding:0.85rem;text-align:left;font-weight:600}
+  td{padding:0.75rem;border-top:1px solid #eee}
+  tr:nth-child(even){background:#fafafa}
+  code{background:#f1f3f5;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.9em}
+  pre{background:#1e1e1e;color:#d4d4d4;padding:1rem;border-radius:6px;overflow-x:auto}
+  blockquote{border-left:4px solid #0f172a;margin:1rem 0;padding:0.5rem 1rem;
+              background:#fafafa;color:#444}
+  strong{color:#334155}
+  hr{border:none;border-top:2px solid #e5e5e5;margin:2rem 0}
+</style></head><body><h1>DXRE-Hunter v4.2 — WAVE 3 MASTER REPORT</h1>
+<p><strong>Prepared for:</strong> Ehsan
+<strong>Date:</strong> 2026-04-25
+<strong>Scope:</strong> Full re-scan of 5 markets + The Nest HYD-4712 deep-dive v3
+<strong>Calibration:</strong> DLD (Dubai Land Department) closed-transaction database, 975,559 rows ingested 2026-04-25
+<strong>Freshness cutoff:</strong> 2026-01-25 (90 days)
+<strong>Framework:</strong> v4.2 with HARD rules H1–H10</p>
+<hr />
+<h2>TL;DR — One Paragraph</h2>
+<p>Wave 3 confirms a <strong>single A-grade actionable target across all 5 markets</strong> — <strong>The Nest HYD-4712 with Tier D + extension</strong> (NEGOTIATE-AND-BUY at AED 22.5M settle / AED 24M walk-away, ROE_base 72.1%, DLD-anchored 8% CAGR). <strong>Two B-grade plays</strong> survive the H5 gate: <strong>Seventh Heaven 3BR triplex AED 8.5–9.0M</strong> (Al Barari, ROE_base 145%) and <strong>Palmiera 4BR Strada AED 9.52M</strong> (Oasis off-plan, +28.75% premium-to-launch). <strong>Three markets fail the v4.2 H5 gate structurally</strong> (Palm Jumeirah trophy stock, Emaar Beachfront branded clusters, Palm Jebel Ali developer SPAs) — the 5% pessimistic CAGR floor is mis-calibrated for branded/trophy assets that DLD-imply 7–9% historical and should be patched to v4.3 with segment-specific floors before re-running. <strong>Recommended deployment of AED 100M:</strong> AED 22.5M Nest HYD-4712 (anchor) + AED 8.5M Seventh Heaven 3BR + AED 9.5M Palmiera 4BR + AED 14M Palm Jumeirah Garden Homes (mid-prime liquid) + AED 5M PJA Frond L Sapphire option (asymmetric capital-gain bet) + AED 40.5M held in dry powder for Q3-Q4 2026 distress windows when Crescent supply hits and the EIBOR cycle re-prices.</p>
+<hr />
+<h2>Cross-Market Top Picks Table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th>Market</th>
+<th>Top Pick</th>
+<th style="text-align: right;">Ask</th>
+<th style="text-align: right;">Open Offer</th>
+<th style="text-align: right;">Walk-Away</th>
+<th style="text-align: right;">ROE_base</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td><strong>Al Barari (Nest HYD-4712)</strong></td>
+<td>4BR villa + Tier D + extension</td>
+<td style="text-align: right;">AED 27.75M</td>
+<td style="text-align: right;"><strong>AED 22.5M</strong></td>
+<td style="text-align: right;"><strong>AED 24.0M</strong></td>
+<td style="text-align: right;"><strong>72.1%</strong></td>
+<td><strong>NEGOTIATE-AND-BUY</strong> ⭐</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Al Barari (resale)</td>
+<td>Seventh Heaven 3BR rented triplex</td>
+<td style="text-align: right;">AED 10.5M</td>
+<td style="text-align: right;">AED 7.8M</td>
+<td style="text-align: right;">AED 9.2M</td>
+<td style="text-align: right;">145%</td>
+<td>PASS — anchor target</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Emaar Oasis</td>
+<td>Palmiera 4BR Strada (PF 74241128)</td>
+<td style="text-align: right;">AED 10.3M</td>
+<td style="text-align: right;">AED 9.52M</td>
+<td style="text-align: right;">AED 9.79M</td>
+<td style="text-align: right;">28.2%</td>
+<td>PASS — off-plan diversifier</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Palm Jumeirah</td>
+<td>One at Palm 4BR Penthouse</td>
+<td style="text-align: right;">AED 88M est.</td>
+<td style="text-align: right;">AED 65M</td>
+<td style="text-align: right;">AED 74M</td>
+<td style="text-align: right;">KILL by v4.2</td>
+<td>TROPHY HOLD only</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Emaar Beachfront</td>
+<td>Address The Bay 1BR cluster (×7+×2)</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">AED 28.5M total</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">KILL by v4.2</td>
+<td>CLUSTER WAIVER play</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>Palm Jebel Ali</td>
+<td>Frond L Sapphire 6BR (Ocley)</td>
+<td style="text-align: right;">AED 22.5M</td>
+<td style="text-align: right;">AED 20.25M</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: right;">KILL by v4.2</td>
+<td><strong>STAY OUT</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Market-by-Market Verdicts</h2>
+<h3>🟢 The Nest HYD-4712 — Al Barari (CHIEF PICK)</h3>
+<p><strong>Verdict:</strong> NEGOTIATE-AND-BUY at AED 22.5M settle, walk-away AED 24M.</p>
+<p><strong>The killer insight:</strong> Tier D + extension PASSES at every close including full ask (ROE_base 70.8–72.9%) while Tier B/C/D-only FAIL or KILL at every close. Reason: the v4.2 P_sale formula for Tier D+ext compounds <strong>full project cost basis</strong> × (1.09)⁴ × 1.18, while B/C/D formulas compound only <code>P_close</code> — so reno spend on the latter eats equity without lifting sale price. <strong>Tier C and D-only are mathematical traps, not market traps.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th style="text-align: right;">ROE_base @ −15%</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tier B turnkey</td>
+<td style="text-align: right;">fail</td>
+<td>TRAP</td>
+</tr>
+<tr>
+<td>Tier C reno</td>
+<td style="text-align: right;">infeasible</td>
+<td>TRAP</td>
+</tr>
+<tr>
+<td>Tier D only</td>
+<td style="text-align: right;">fail</td>
+<td>TRAP</td>
+</tr>
+<tr>
+<td><strong>Tier D + extension</strong></td>
+<td style="text-align: right;"><strong>72.1%</strong></td>
+<td><strong>PASS</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pessimistic case:</strong> ROE_pess +1.5% — razor-thin but positive (formula-locked). Break-even exit psf AED 6,393 vs DLD ceiling AED 7,100 = 11% safety margin.</p>
+<p><strong>Conditions precedent (HARD):</strong>
+1. Vacant possession OR AED 1.5M tenant-exit credit (RERA-locked tenant pays AED 963K vs market AED 1.7M)
+2. Al Barari ARB (Architectural Review Board) pre-feasibility letter for +500–1,500 sqft extension
+3. 60-day technical due diligence
+4. Listing date confirmation (currently UNCONFIRMED — H10 STALE tier 0.80× applied conservatively)</p>
+<p><strong>Disconfirmer triggers:</strong> any extended Nest comparable &lt; AED 5,500 psf during DD window OR ARB headroom denied above +500 sqft.</p>
+<p>Full report: <code>wave3-nest-hyd4712-deep-v3-20260425.html</code></p>
+<hr />
+<h3>🟢 Al Barari (resale market) — A-GRADE FALLBACK</h3>
+<p><strong>Top pick:</strong> <strong>Seventh Heaven 3BR rented triplex (Apartment A1)</strong> at AED 10.5M ask.</p>
+<p><strong>Negotiation:</strong> open AED 7.8M (−25.7%), walk AED 9.2M (−12.4%). At full ask still clears 100% ROE_base. 8-point leverage list in detail report.</p>
+<p><strong>Ranking summary:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Rank</th>
+<th>Asset</th>
+<th style="text-align: right;">ROE_base</th>
+<th style="text-align: right;">ROE_pess</th>
+<th>Gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>A1 Seventh Heaven 3BR triplex</td>
+<td style="text-align: right;">+145%</td>
+<td style="text-align: right;">−17.5%</td>
+<td><strong>PASS</strong> (only listing clearing both gates)</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>V3 Ixora 4BR furnished</td>
+<td style="text-align: right;">+79%</td>
+<td style="text-align: right;">−17.5%</td>
+<td>PASS (90d edge)</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>A2 Seventh Heaven 2BR oversize</td>
+<td style="text-align: right;">+209%</td>
+<td style="text-align: right;">−17.5%</td>
+<td>DEMOTE (DOM 95)</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>V1 Nest/Chorisia 2 5BR</td>
+<td style="text-align: right;">+188%</td>
+<td style="text-align: right;">−17.5%</td>
+<td>DEMOTE (BUA UNVERIFIED)</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>A3 Ashjar G1 3BR</td>
+<td style="text-align: right;">+83%</td>
+<td style="text-align: right;">−17.5%</td>
+<td>DEMOTE (DOM 180)</td>
+</tr>
+<tr>
+<td style="text-align: center;">8–10</td>
+<td>Desert Leaf, Chorisia 2, Jasmine Leaf 7</td>
+<td style="text-align: right;">68–105%</td>
+<td style="text-align: right;">−17.5%</td>
+<td><strong>AUTO-KILL</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pattern note:</strong> v4.2 pessimistic formula yields uniform −17.5% ROE_pess across the entire community. With CAGR_floor=5% and 0.90 sale haircut, sale price compounds to only 1.094× P_close, barely covering the 1.17× cost stack. H5 auto-kill becomes the operative gate. <strong>DLD-implied historical Al Barari Villa CAGR is 37–44%/3Y (HIGH conf, n=126)</strong> — pessimistic floor of 5% is mis-calibrated; v4.3 should patch to 6.5% Al Barari-specific floor.</p>
+<p>Full report: <code>wave3-albarari-20260425.html</code> → live: https://cryptopafi.github.io/nexusos-reports/wave3-albarari-20260425.html</p>
+<hr />
+<h3>🟡 Emaar Oasis — B-GRADE OFF-PLAN DIVERSIFIER</h3>
+<p><strong>Top pick:</strong> <strong>Palmiera 4BR Strada (PF 74241128)</strong> at AED 10.3M ask.</p>
+<p><strong>Negotiation:</strong> open AED 9.52M (−7.6%), walk AED 9.79M. Q4-2027 handover, +28.75% premium-to-launch (high but defensible vs Mirage sold-out and Palace Ostra benchmarks).</p>
+<p><strong>ROE base 28.23% / ROE_pess 6.61%</strong> — uniform across fresh tier (model property — differentiation = absolute downside + premium-to-launch + sub-community risk).</p>
+<p><strong>Lazuli sub-community NOT FOUND</strong> in Apr-2026 release schedule — agent substituted Lavita + Palace Ostra. Verified active phases: Palmiera I/II/III, Mirage (sold out from developer, 86 resale assignments live), Lavita, Address Villas Tierra, Palace Villas Ostra, Palmiera Collective.</p>
+<p><strong>AED 15M play:</strong> split 9.78M Palmiera 4BR secondary anchor + 5.0M Emaar Palmiera 3 primary waitlist for handover-date diversification and zero-premium developer alpha. Blended expected return ~31% over ~3.5yr.</p>
+<p>Full report: <code>wave3-oasis-20260425.html</code></p>
+<hr />
+<h3>🟡 Palm Jumeirah — TROPHY-HOLD ONLY (KILL by v4.2 spec)</h3>
+<p><strong>Top pick:</strong> <strong>One at Palm 4BR Penthouse (Omniyat branded).</strong></p>
+<p><strong>Negotiation:</strong> open AED 65M (−26%), walk AED 74M (−16%).</p>
+<p><strong>All 10 candidates trigger H5 KILL by spec.</strong> This is a model-vs-segment mismatch: 5% pess floor on a HIGH-confidence DLD segment realising 20.8% 3Y is over-conservative for trophy stock.</p>
+<p><strong>Wave 1 BUA error formally corrected:</strong> Frond P listing (PF 74618789) BUA = 9,000 sqft per Espace Ref ES-1009653, NOT plot 14,710. H9 audit applied across the board — 5 of 10 cards flagged BUA UNVERIFIED with −15% haircut.</p>
+<p><strong>Three options presented:</strong>
+- <strong>Option 1 — Trophy hold:</strong> One at Palm 4BR PH at AED 65–74M close. Branded floor + Dorchester service + 60d DOM = the only defensible exception to blanket KILL.
+- <strong>Option 2 — Diversified:</strong> AED 14M into Garden Frond C/E/M + AED 12M into Tiara Tanzanite 3BR. ROE_base 22–28% but pessimistic still negative.
+- <strong>Option 3 — Skip Palm:</strong> redirect AED 65M to Nest HYD-4712 (AED 22.5M) + Seventh Heaven (AED 8.5M) + Palmiera (AED 9.5M) + AED 24.5M dry powder. <strong>RECOMMENDED if H5 gate is binding.</strong></p>
+<p>Full report: <code>wave3-palm-jumeirah-20260425.html</code></p>
+<hr />
+<h3>🟡 Emaar Beachfront — CLUSTER WAIVER PLAY (KILL by v4.2 spec)</h3>
+<p><strong>Top pick:</strong> <strong>Address Residences The Bay 1BR (DEVELOPER PRIMARY).</strong></p>
+<p><strong>Cluster strategy:</strong> 7× Address The Bay 1BR + 2× 2BR ≈ AED 31M ask, achievable close ~AED 28.5M with DLD waiver + Address Hotel privileges + service-charge waiver via Emaar VIP desk (cluster ≥AED 25M trigger).</p>
+<p><strong>All 7 cards trigger H5 KILL</strong> — same structural pess-formula issue as Palm Jumeirah. Branded sea-facing assets DLD-imply 6,524–6,846 AED/sqft median (n=399 Marsa Dubai 2023+ benchmark) — Address The Bay 1BR enters at −49% to that median = deepest discount in market.</p>
+<p><strong>Payment plan leverage:</strong> 10/80/10 plan = effective 10× equity leverage during build-out. <strong>The v4.2 model materially understates this</strong> (treats P_close as full cash outlay).</p>
+<p><strong>Conservative recommendation:</strong> if Ehsan accepts that v4.2 pess-formula is over-conservative for branded sea-facing, the Address The Bay cluster is investable. If H5 is binding, skip and redirect.</p>
+<p>Full report: <code>wave3-beachfront-20260425.md</code> (HTML pending)</p>
+<hr />
+<h3>🔴 Palm Jebel Ali — STAY OUT</h3>
+<p><strong>Verdict:</strong> STAY OUT at AED 20M concentration.</p>
+<p><strong>Why:</strong> PJA is a forward-contract market with no DLD villa price discovery, 18-month handover supply glut Q4 2027–Q2 2028, and zero cashflow during 3-year wait. Better deployment = completed Palm Jumeirah Garden Homes (cashflow + liquid resale + lower opportunity cost ~AED 5M / 4yr).</p>
+<p><strong>If forced:</strong> Frond L Sapphire 6BR (Ocley, AED 22.5M ask, P_close AED 20.25M, calib 0.62) — best hold-period asymmetry, Phase-1 Q4 2026 handover. Realistic concession AED 0.5–1.0M off premium only (original SPA non-negotiable).</p>
+<p><strong>Compromise barbell (if PJA insistence):</strong> AED 5M PJA option on Frond L Sapphire via partial-installment assignment + AED 15M kept cashflowing in Palm Jumeirah Garden Homes.</p>
+<p><strong>Pessimistic ROE −5.6%</strong> — driven by forward CAGR (5%/3%), not entry tier. All 4 in-budget SPA-RA picks collapse to same number.</p>
+<p>Full report: <code>wave3-palm-jebel-ali-20260425.html</code></p>
+<hr />
+<h2>AED 100M Deployment Recommendation</h2>
+<table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th style="text-align: right;">AED</th>
+<th style="text-align: right;">%</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The Nest HYD-4712 (Tier D + ext anchor)</strong></td>
+<td style="text-align: right;">22.5M</td>
+<td style="text-align: right;">22.5%</td>
+<td>A-grade, only listing clearing v4.2 gate at strong margin; 72% ROE_base, +1.5% pess</td>
+</tr>
+<tr>
+<td><strong>Seventh Heaven 3BR triplex (Al Barari resale)</strong></td>
+<td style="text-align: right;">8.5M</td>
+<td style="text-align: right;">8.5%</td>
+<td>B+ grade, anchor in Al Barari resale market; 145% ROE_base; rental in place = optionality</td>
+</tr>
+<tr>
+<td><strong>Palmiera 4BR Strada (Oasis off-plan)</strong></td>
+<td style="text-align: right;">9.5M</td>
+<td style="text-align: right;">9.5%</td>
+<td>B grade, off-plan diversifier; +28.75% premium-to-launch; Q4-2027 handover</td>
+</tr>
+<tr>
+<td><strong>Palm Jumeirah Garden Homes (mid-prime liquid)</strong></td>
+<td style="text-align: right;">14.0M</td>
+<td style="text-align: right;">14.0%</td>
+<td>C grade, cashflow + liquid resale; lower opportunity cost than PJA</td>
+</tr>
+<tr>
+<td><strong>PJA Frond L Sapphire option (asymmetric bet)</strong></td>
+<td style="text-align: right;">5.0M</td>
+<td style="text-align: right;">5.0%</td>
+<td>Speculative; partial-installment assignment to keep optionality without full cash exposure</td>
+</tr>
+<tr>
+<td><strong>Dry powder (Q3–Q4 2026 distress window)</strong></td>
+<td style="text-align: right;">40.5M</td>
+<td style="text-align: right;">40.5%</td>
+<td>Crescent supply hits + EIBOR re-pricing cycle = distress opportunities forming</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total deployed Q2 2026:</strong> AED 59.5M (59.5%)
+<strong>Reserved:</strong> AED 40.5M (40.5%)</p>
+<p><strong>Macro triggers to deploy reserve:</strong>
+- Oil &lt; $55/bbl sustained (top-tier buyer thinning accelerates)
+- EIBOR &gt; 5.25% (mortgage cost stack increases — distress signals strengthen)
+- Crescent Atlantis Royal handover absorption visibly slow (Q4 2026 indicator)
+- Any DXRE listing crossing 180-day DOM with broker price drop ≥10%</p>
+<p><strong>Disengagement triggers (freeze deployment):</strong>
+- Oil &gt; $75/bbl + EIBOR &lt; 4.5% (market re-tightens, sellers re-empower)
+- Any DLD report showing Q3 2026 ultra-prime YoY &gt; +25% (means we missed the cycle)</p>
+<hr />
+<h2>v4.3 Calibration Patches (recommended before next wave)</h2>
+<p>The Wave 3 scan surfaced <strong>three structural issues</strong> in the v4.2 framework that warrant a v4.3 patch:</p>
+<ol>
+<li><strong>Pessimistic CAGR floor must be segment-specific.</strong> Current 5% floor + 0.90 sale haircut yields uniform ROE_pess between −17% and −28% across the entire branded/trophy universe. Patch:</li>
+<li>Al Barari Villa: floor 6.5% (DLD-implied 8%)</li>
+<li>Palm Jumeirah Signature: floor 6%</li>
+<li>Palm Jumeirah Branded (One Palm, Tiara): floor 7.5%</li>
+<li>Emaar Beachfront branded: floor 7%</li>
+<li>Dubai Hills Maple: floor 6%</li>
+<li>
+<p>Off-plan markets (Oasis, PJA): keep 4–5%</p>
+</li>
+<li>
+<p><strong>Off-plan ROE math should account for payment-plan leverage.</strong> Address The Bay 10/80/10 plan = 10× equity leverage during build-out. v4.2 treats P_close as full cash outlay, which understates IRR by ~3–4×. Patch: add <code>payment_plan</code> field to listing input, compute weighted-equity over hold period.</p>
+</li>
+<li>
+<p><strong>Tier C and D-only renovation formulas trap profit.</strong> Wave 3 Nest analysis showed Tier D+ext PASSES while Tier C/D-only FAIL — because B/C/D-only compound P_close, but D+ext compounds full project cost basis. This creates a counterintuitive "extension &gt; pure reno" gate. Patch: align all reno-path formulas to compound (P_close + reno_cost + ext_cost) consistently.</p>
+</li>
+</ol>
+<hr />
+<h2>Files Index</h2>
+<table>
+<thead>
+<tr>
+<th>Market</th>
+<th>Markdown</th>
+<th>HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Al Barari</td>
+<td><code>wave3-albarari-20260425.md</code></td>
+<td><code>wave3-albarari-20260425.html</code> ✅ live</td>
+</tr>
+<tr>
+<td>Palm Jumeirah</td>
+<td><code>wave3-palm-jumeirah-20260425.md</code></td>
+<td><code>wave3-palm-jumeirah-20260425.html</code></td>
+</tr>
+<tr>
+<td>Emaar Beachfront</td>
+<td><code>wave3-beachfront-20260425.md</code></td>
+<td>(HTML pending)</td>
+</tr>
+<tr>
+<td>Palm Jebel Ali</td>
+<td><code>wave3-palm-jebel-ali-20260425.md</code></td>
+<td><code>wave3-palm-jebel-ali-20260425.html</code></td>
+</tr>
+<tr>
+<td>Emaar Oasis</td>
+<td><code>wave3-oasis-20260425.md</code></td>
+<td><code>wave3-oasis-20260425.html</code></td>
+</tr>
+<tr>
+<td>The Nest HYD-4712 v3</td>
+<td><code>wave3-nest-hyd4712-deep-v3-20260425.md</code></td>
+<td><code>wave3-nest-hyd4712-deep-v3-20260425.html</code></td>
+</tr>
+<tr>
+<td><strong>Master (this report)</strong></td>
+<td><code>wave3-master-20260425.md</code></td>
+<td>(HTML pending)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>DXRE-Hunter v4.2 — Wave 3 Master Report — 2026-04-25 — Confidential, prepared for Ehsan</em>
+<em>All ROE figures are modeled projections, not guarantees. DLD calibration data: 975,559 closed transactions ingested 2026-04-25. Conduct independent legal and financial due diligence before any transaction.</em></p></body></html>
