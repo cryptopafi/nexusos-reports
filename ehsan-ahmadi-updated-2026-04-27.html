@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ehsan Ahmadi — Updated Health Audit v2.1 — April 27, 2026</title>
+<style>
+  :root {
+    --bg-0: #0a0e14;
+    --bg-1: #0f1620;
+    --bg-2: #161f2c;
+    --bg-3: #1c2738;
+    --line: #233246;
+    --text: #e6edf3;
+    --muted: #9aa7b8;
+    --teal: #1A9BA5;
+    --teal-bright: #2dd4bf;
+    --teal-glow: rgba(45, 212, 191, 0.18);
+    --cream: #C8BFB0;
+    --green: #22c55e;
+    --green-soft: rgba(34, 197, 94, 0.12);
+    --amber: #f59e0b;
+    --amber-soft: rgba(245, 158, 11, 0.14);
+    --red: #ef4444;
+    --red-soft: rgba(239, 68, 68, 0.14);
+    --crimson: #dc2626;
+    --purple: #a78bfa;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 48px 28px 96px; }
+
+  /* HEADER */
+  .hero {
+    background:
+      radial-gradient(900px 320px at 88% -10%, var(--teal-glow), transparent 60%),
+      linear-gradient(180deg, #0e1722 0%, #0a0e14 100%);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 38px 36px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(26,155,165,0.06) 100%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    margin: 0 0 6px; font-size: 30px; font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .hero .sub { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
+  .hero-meta {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px; margin-top: 20px;
+  }
+  .meta-card {
+    background: rgba(22, 31, 44, 0.65);
+    border: 1px solid var(--line);
+    border-radius: 12px; padding: 12px 14px;
+  }
+  .meta-card .k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .meta-card .v { font-size: 15px; font-weight: 600; margin-top: 3px; }
+
+  .v-pill {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--teal) 0%, #0e7c84 100%);
+    color: #001014; font-size: 11px; font-weight: 700;
+    padding: 4px 10px; border-radius: 999px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  /* SECTIONS */
+  h2 {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.01em;
+    margin: 48px 0 18px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 10px;
+  }
+  h2 .num {
+    background: var(--teal);
+    color: #001014;
+    font-size: 12px; font-weight: 800;
+    padding: 3px 9px; border-radius: 6px;
+    letter-spacing: 0.05em;
+  }
+  h3 { font-size: 17px; margin: 28px 0 10px; color: var(--teal-bright); font-weight: 600; }
+  h4 { font-size: 14px; margin: 18px 0 6px; color: var(--cream); text-transform: uppercase; letter-spacing: 0.06em; }
+  p, li { font-size: 15px; color: #d6dee8; }
+  strong { color: #fff; }
+
+  /* CARDS */
+  .card {
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin: 16px 0;
+  }
+  .card.accent-teal { border-left: 3px solid var(--teal-bright); }
+  .card.accent-amber { border-left: 3px solid var(--amber); }
+  .card.accent-red { border-left: 3px solid var(--red); }
+  .card.accent-green { border-left: 3px solid var(--green); }
+
+  /* EXEC SUMMARY */
+  .exec {
+    background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-1) 100%);
+    border-left: 3px solid var(--teal-bright);
+  }
+
+  /* TABLES */
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0;
+    background: var(--bg-1); border: 1px solid var(--line);
+    border-radius: 10px; overflow: hidden; font-size: 14px;
+  }
+  th {
+    background: var(--bg-3); color: var(--cream);
+    text-align: left; padding: 11px 14px; font-weight: 600;
+    text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--line);
+  }
+  td { padding: 11px 14px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(45, 212, 191, 0.04); }
+
+  /* BADGES */
+  .badge {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 3px 9px; border-radius: 999px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .badge.green { background: var(--green-soft); color: var(--green); border: 1px solid rgba(34,197,94,0.35); }
+  .badge.amber { background: var(--amber-soft); color: var(--amber); border: 1px solid rgba(245,158,11,0.4); }
+  .badge.red { background: var(--red-soft); color: var(--red); border: 1px solid rgba(239,68,68,0.4); }
+  .badge.gap { background: rgba(167, 139, 250, 0.12); color: var(--purple); border: 1px solid rgba(167, 139, 250, 0.35); }
+
+  /* FLAG BLOCKS */
+  .flag {
+    border-radius: 14px; padding: 22px 24px; margin: 16px 0;
+    background: var(--bg-2);
+  }
+  .flag.critical { border: 1px solid rgba(239,68,68,0.4); background: linear-gradient(135deg, rgba(239,68,68,0.08), var(--bg-2)); }
+  .flag.warn { border: 1px solid rgba(245,158,11,0.4); background: linear-gradient(135deg, rgba(245,158,11,0.06), var(--bg-2)); }
+  .flag.info { border: 1px solid rgba(45,212,191,0.35); background: linear-gradient(135deg, rgba(45,212,191,0.06), var(--bg-2)); }
+  .flag h3 { margin-top: 0; }
+  .flag .header-row {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .flag .value-display {
+    font-family: "SF Mono", "JetBrains Mono", Menlo, monospace;
+    font-size: 26px; font-weight: 700; color: #fff;
+  }
+  .flag .ref { color: var(--muted); font-size: 13px; }
+
+  /* CHANGE TABLE */
+  .delta-up { color: var(--red); font-weight: 600; }
+  .delta-down { color: var(--green); font-weight: 600; }
+  .delta-flat { color: var(--muted); font-weight: 600; }
+
+  /* ACTION GRID */
+  .action-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px; margin: 14px 0;
+  }
+  .action-item {
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .action-item .when {
+    font-size: 11px; color: var(--teal-bright); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;
+  }
+  .action-item .what { font-weight: 600; margin-bottom: 4px; }
+  .action-item .why { font-size: 13px; color: var(--muted); }
+
+  /* PRIORITY LIST */
+  ol.priority { padding-left: 0; counter-reset: pri; }
+  ol.priority > li {
+    list-style: none; counter-increment: pri;
+    background: var(--bg-1); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px 16px 14px 56px;
+    margin-bottom: 10px; position: relative;
+  }
+  ol.priority > li::before {
+    content: counter(pri);
+    position: absolute; left: 14px; top: 14px;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--teal); color: #001014;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px;
+  }
+  ol.priority > li.urgent::before { background: var(--red); color: #fff; }
+
+  blockquote {
+    margin: 12px 0; padding: 12px 16px;
+    border-left: 3px solid var(--teal-bright);
+    background: rgba(45, 212, 191, 0.05);
+    border-radius: 0 8px 8px 0; color: #c9d3e0; font-style: italic;
+  }
+
+  .footer {
+    margin-top: 60px; padding-top: 22px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 12px; line-height: 1.7;
+  }
+  .disclaimer {
+    background: rgba(245, 158, 11, 0.06);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 10px; padding: 14px 16px; margin-top: 16px;
+    font-size: 12px; color: #c9b478;
+  }
+  code {
+    background: var(--bg-3); padding: 1px 6px;
+    border-radius: 4px; font-size: 13px;
+    font-family: "SF Mono", Menlo, monospace; color: var(--teal-bright);
+  }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 24px 14px 60px; }
+    .hero { padding: 26px 22px; }
+    .hero h1 { font-size: 23px; }
+    table { font-size: 12.5px; }
+    th, td { padding: 9px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="v-pill">Updated Report — v2.1</span>
+    <h1>Ehsan Ahmadi — Comprehensive Health Audit</h1>
+    <p class="sub">Incorporates new Intel-Lab LLC bloodwork (collected 2026-04-13, reported 2026-04-14) and cross-references the April 11, 2026 baseline.</p>
+    <div class="hero-meta">
+      <div class="meta-card"><div class="k">Patient</div><div class="v">MR. EHSAN AHMADI</div></div>
+      <div class="meta-card"><div class="k">DOB · Age</div><div class="v">09 Jul 1983 · 42Y 9M</div></div>
+      <div class="meta-card"><div class="k">Sex</div><div class="v">Male</div></div>
+      <div class="meta-card"><div class="k">Lab File</div><div class="v">111242 · G9656402213</div></div>
+      <div class="meta-card"><div class="k">Ordering Physician</div><div class="v">Dr. Saira Hyder</div></div>
+      <div class="meta-card"><div class="k">Provider</div><div class="v">Justlife Home Healthcare</div></div>
+      <div class="meta-card"><div class="k">Lab</div><div class="v">Intel-Lab LLC</div></div>
+      <div class="meta-card"><div class="k">Report Date</div><div class="v">2026-04-27</div></div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section class="card exec">
+    <h3 style="margin-top:0;">Executive Summary</h3>
+    <p>This update confirms and refines the picture established in the April 11 baseline. The April 13 bloodwork re-validates four clinically meaningful flags: <strong>severely low DHEA-S (88 µg/dL)</strong>, <strong>borderline-low AM cortisol (5.76 µg/dL)</strong>, <strong>upper-normal homocysteine (15.01 µmol/L)</strong>, and <strong>average-zone Hs-CRP (1.39 mg/L)</strong> — the latter clinically relevant given the documented LAD (left anterior descending artery) calcific plaque on CCTA (coronary computed tomography angiography). Reassuring findings dominate the rest of the panel: thyroid axis (fT3, fT4), iron homeostasis, gonadotropins (FSH, LH), prolactin, PSA (prostate specific antigen) with a 50% free-PSA ratio, B12, and folate are all within optimal ranges.</p>
+    <p>The dominant clinical signal is an <strong>HPA axis (hypothalamic-pituitary-adrenal axis) and adrenal-androgen depletion pattern</strong> sitting on top of a known atherosclerotic substrate. Two material gaps remain: (1) total/free Testosterone, SHBG (sex hormone binding globulin), E2 (estradiol) and IGF-1 (insulin-like growth factor 1) were NOT re-tested in this panel — urgent given low DHEA-S and the active Tesamorelin protocol; (2) no lipid panel and no Vitamin D were drawn this cycle. Recommended actions are operationalized in §6 and §7 below.</p>
+  </section>
+
+  <!-- §1 NEW BLOODWORK -->
+  <h2><span class="num">§1</span> New Bloodwork — Intel-Lab LLC (Collected 2026-04-13)</h2>
+
+  <h3>Biochemistry</h3>
+  <table>
+    <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Bilirubin, total</td><td>10</td><td>µmol/L</td><td>1.70–20.0</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>Alkaline Phosphatase (ALP)</td><td>59</td><td>U/L</td><td>46–116</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>Urea, serum</td><td>5.6</td><td>mmol/L</td><td>3.2–8.2</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>Ferritin</td><td>149.8</td><td>ng/mL</td><td>23.9–336.2</td><td><span class="badge green">Optimal</span></td></tr>
+      <tr><td>Hs-CRP (high-sensitivity C-reactive protein)</td><td>1.39</td><td>mg/L</td><td>&lt;1.00 low / 1.00–3.00 avg / &gt;3.00 high</td><td><span class="badge amber">Avg cardiac risk</span></td></tr>
+      <tr><td>Homocysteine</td><td>15.01</td><td>µmol/L</td><td>5.5–16.2</td><td><span class="badge amber">Upper limit</span></td></tr>
+      <tr><td>PSA total</td><td>0.74</td><td>ng/mL</td><td>≤2.0</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>Folic acid (Folate)</td><td>14.5</td><td>ng/mL</td><td>3–17.24</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>Cortisol AM</td><td>5.76</td><td>µg/dL</td><td>5.27–22.45</td><td><span class="badge red">Borderline low</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Iron Profile</h3>
+  <table>
+    <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Iron (serum)</td><td>22.9 (128 µg/dL)</td><td>µmol/L</td><td>10.6–36.7</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>TIBC (total iron-binding capacity)</td><td>347</td><td>µg/dL</td><td>250–425</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>Transferrin Saturation</td><td>36.85</td><td>%</td><td>20–50</td><td><span class="badge green">Optimal</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Immunology — Prostate</h3>
+  <table>
+    <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>PSA free (fPSA)</td><td>0.37</td><td>ng/mL</td><td>—</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>PSA free/total ratio</td><td>50</td><td>%</td><td>&gt;25%</td><td><span class="badge green">Reassuring</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Endocrinology</h3>
+  <table>
+    <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>fT3 (free Triiodothyronine)</td><td>3.01</td><td>pg/mL</td><td>2.0–4.2</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>fT4 (free Thyroxine)</td><td>1.13</td><td>ng/dL</td><td>0.90–1.75</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>FSH (Follicle Stimulating Hormone)</td><td>5.81</td><td>mIU/mL</td><td>1.4–18.1</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>LH (Luteinizing Hormone)</td><td>4.49</td><td>mIU/mL</td><td>1.5–9.3</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>Prolactin</td><td>6.14</td><td>ng/mL</td><td>2.1–17.7</td><td><span class="badge green">Normal</span></td></tr>
+      <tr><td>DHEA-S (Dehydroepiandrosterone Sulfate)</td><td>88</td><td>µg/dL</td><td>34.5–568.9</td><td><span class="badge red">Critically low for age</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Vitamins</h3>
+  <table>
+    <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Vitamin B12</td><td>661</td><td>pg/mL</td><td>180–914</td><td><span class="badge green">Normal-high</span></td></tr>
+    </tbody>
+  </table>
+
+  <!-- §2 DEEP ANALYSIS OF FLAGS -->
+  <h2><span class="num">§2</span> Deep Analysis — Clinical Flags</h2>
+
+  <!-- FLAG 1 -->
+  <div class="flag critical">
+    <div class="header-row">
+      <h3>Flag 1 — DHEA-S 88 µg/dL · CRITICALLY LOW</h3>
+      <span class="badge red">Critical</span>
+    </div>
+    <div class="value-display">88 <span class="ref" style="font-size:14px;">µg/dL · Ref 34.5–568.9</span></div>
+    <p><strong>Clinical context.</strong> The lab range is intentionally wide (it spans 18-year-olds to octogenarians). For a 42-year-old male, a healthy <em>functional</em> DHEA-S sits at <strong>~150–400 µg/dL</strong>. Ehsan is at 88 — the absolute floor of the reference window and well below the age-adjusted functional optimum. This pattern is consistent with severe adrenal-androgen decline / accelerated adrenopausal aging.</p>
+    <p><strong>Why this matters for Ehsan specifically.</strong> Low DHEA-S in mid-40s males correlates with: (a) increased cardiovascular risk — directly relevant given his documented LAD calcific plaque; (b) impaired immune surveillance; (c) accelerated sarcopenia (muscle loss); (d) blunted energy, mood, libido, and cognitive resilience; (e) downstream substrate deficit for testosterone and estradiol pathways. Combined with the borderline AM cortisol below, the picture is HPA-axis depletion, not isolated adrenopause.</p>
+    <p><strong>Action.</strong></p>
+    <ul>
+      <li><strong>Hormone gap-fill (URGENT, before initiating supplementation):</strong> draw Total Testosterone, Free Testosterone, SHBG, Estradiol (E2), and IGF-1. Without these, DHEA dosing is partially blind.</li>
+      <li><strong>DHEA supplementation</strong> 25 mg PO each morning with food, retest DHEA-S + Total T + E2 at 8 weeks. Titrate to mid-range (~250–350 µg/dL), not ceiling. Over-dosing converts to E2 in adipose tissue — relevant given prior fatty-liver imaging.</li>
+      <li><strong>Re-test cadence:</strong> 8 weeks after initiation, then quarterly.</li>
+    </ul>
+  </div>
+
+  <!-- FLAG 2 -->
+  <div class="flag critical">
+    <div class="header-row">
+      <h3>Flag 2 — Cortisol AM 5.76 µg/dL · BORDERLINE LOW</h3>
+      <span class="badge red">Investigate</span>
+    </div>
+    <div class="value-display">5.76 <span class="ref" style="font-size:14px;">µg/dL · Ref 5.27–22.45 (lower limit 5.27)</span></div>
+    <p><strong>Clinical context.</strong> An AM cortisol barely above the floor is suspicious in isolation; combined with the very low DHEA-S, it points strongly toward <strong>suboptimal HPA-axis function</strong> rather than two independent findings. This is not diagnostic of primary adrenal insufficiency (Addison's disease) on its own — true Addisonian cortisol typically runs &lt;3 µg/dL with elevated ACTH (adrenocorticotropic hormone) — but it sits in a zone that warrants formal evaluation, especially before adding any cortisol-suppressing intervention (e.g., higher-dose Tesamorelin).</p>
+    <p><strong>Action.</strong></p>
+    <ul>
+      <li><strong>ACTH stimulation test (Synacthen / Cosyntropin 250 µg IV):</strong> measure cortisol at 0, 30, and 60 minutes. A peak &lt;18 µg/dL is abnormal and confirms adrenal insufficiency. This is the gold-standard differentiator.</li>
+      <li><strong>Salivary cortisol — 4-point diurnal curve</strong> (wake / +30 min / noon / 22:00) to characterize the full circadian envelope. Mid-day and evening readings often expose flattening missed by a single AM draw.</li>
+      <li><strong>Plasma ACTH</strong> drawn AM concurrently with serum cortisol — distinguishes primary (high ACTH) from secondary/tertiary (low or normal ACTH) adrenal insufficiency.</li>
+      <li><strong>Lifestyle (interim):</strong> protect 7–8 hours sleep, anchor a consistent wake time, eliminate fasted high-intensity training until cortisol clarified, manage psychosocial stressors. Avoid licorice withdrawal effects if currently consumed.</li>
+    </ul>
+  </div>
+
+  <!-- FLAG 3 -->
+  <div class="flag warn">
+    <div class="header-row">
+      <h3>Flag 3 — Hs-CRP 1.39 mg/L · AVERAGE CARDIAC-RISK ZONE</h3>
+      <span class="badge amber">Monitor + Treat</span>
+    </div>
+    <div class="value-display">1.39 <span class="ref" style="font-size:14px;">mg/L · Target &lt;1.0</span></div>
+    <p><strong>Clinical context.</strong> Hs-CRP partitions risk into three bands: &lt;1.0 (low), 1.0–3.0 (average), &gt;3.0 (high). At 1.39 Ehsan is firmly in the average band. In a primary-prevention 42-year-old this would be unremarkable; in <strong>this</strong> patient — with documented LAD calcific plaque on CCTA — every increment of inflammatory burden compounds vascular risk. The inflammatory signal also independently correlates with plaque instability, not just plaque growth.</p>
+    <p><strong>Target: &lt;1.0 mg/L.</strong> Achievable through:</p>
+    <ul>
+      <li><strong>Omega-3 fatty acids:</strong> 2–4 g combined EPA/DHA per day (high-purity, third-party-tested, e.g., Nordic Naturals ProOmega 2000 or Carlson Elite). Re-test CRP at 12 weeks.</li>
+      <li><strong>Dietary inflammation control:</strong> reduce refined carbohydrate and seed-oil load; emphasize Mediterranean pattern (olive oil, fatty fish 3×/week, polyphenol-dense produce).</li>
+      <li><strong>Statin maintenance</strong> (if prescribed by the attending cardiologist) — statins independently lower Hs-CRP by 15–30%, an effect partially decoupled from LDL reduction.</li>
+      <li><strong>Periodontal screen:</strong> low-grade gum disease is a frequent silent driver of mid-band CRP; book dental cleaning + probing if &gt;6 months overdue.</li>
+      <li><strong>Re-test:</strong> Hs-CRP at 12 weeks. If still &gt;1.0, broaden differential (subclinical infection, autoimmune, NAFLD progression).</li>
+    </ul>
+  </div>
+
+  <!-- FLAG 4 -->
+  <div class="flag warn">
+    <div class="header-row">
+      <h3>Flag 4 — Homocysteine 15.01 µmol/L · UPPER-NORMAL</h3>
+      <span class="badge amber">Methylation gap</span>
+    </div>
+    <div class="value-display">15.01 <span class="ref" style="font-size:14px;">µmol/L · Lab UL 16.2 · Cardiovascular optimum &lt;8</span></div>
+    <p><strong>Clinical context.</strong> Lab "normal" is generous (&lt;16.2). The cardiovascular literature is clear: optimal is <strong>&lt;10 µmol/L</strong>, ideal <strong>&lt;8 µmol/L</strong>. Each 5 µmol/L increment above 10 raises coronary event risk meaningfully. At 15.01, Ehsan is "high-normal" by lab standards but <em>elevated</em> by longevity/cardiology standards — and again, his LAD plaque puts him in a population where this matters.</p>
+    <p><strong>Crucial nuance — this is NOT a B-vitamin deficiency.</strong> His B12 (661 pg/mL) and Folate (14.5 ng/mL) are both normal-high. When homocysteine is elevated despite adequate B12/folate, the bottleneck is almost always <strong>methylation pathway efficiency</strong> — typically a MTHFR (methylenetetrahydrofolate reductase) C677T or A1298C polymorphism reducing the conversion of folate to its active form (5-MTHF / methylfolate). Standard cyanocobalamin and folic acid will not solve this; methylated forms will.</p>
+    <p><strong>Action.</strong></p>
+    <ul>
+      <li><strong>Methylated B-stack daily:</strong> Methylfolate (L-5-MTHF) 400–800 µg + Methylcobalamin (B12) 1000 µg sublingual + P5P (active B6) 25–50 mg. A combined formula such as Thorne Methyl-Guard Plus or Pure Encapsulations B-Complex Plus is appropriate.</li>
+      <li><strong>Optional MTHFR genotyping</strong> (23andMe or LabCorp panel) to confirm — actionable because it informs lifelong supplementation strategy and family screening.</li>
+      <li><strong>TMG (trimethylglycine / betaine)</strong> 1–3 g daily can be added if homocysteine remains &gt;10 after 8 weeks of methylated B-stack — provides an alternative remethylation pathway.</li>
+      <li><strong>Re-test:</strong> homocysteine at 8 weeks. Target &lt;10, aspirational &lt;8.</li>
+    </ul>
+  </div>
+
+  <!-- POSITIVES -->
+  <div class="card accent-green">
+    <h3 style="margin-top:0;">Positive Findings — Worth Naming</h3>
+    <ul>
+      <li><strong>Liver chemistry (Bilirubin 10 µmol/L, ALP 59 U/L):</strong> entirely normal — a clean signal in the context of prior fatty-liver findings on abdominal ultrasound. Note: ALT and AST were NOT in this panel; full LFT (liver function test) recommended next cycle.</li>
+      <li><strong>Iron homeostasis (Iron 22.9, TIBC 347, Transferrin saturation 36.85%, Ferritin 149.8):</strong> textbook. No iron overload despite mid-range ferritin — saturation is the more sensitive overload marker, and it is well within band.</li>
+      <li><strong>Thyroid (fT3 3.01, fT4 1.13):</strong> mid-range — TSH (thyroid stimulating hormone) was not drawn this cycle; recommended next panel for completeness.</li>
+      <li><strong>Pituitary axis (FSH 5.81, LH 4.49, Prolactin 6.14):</strong> all normal. No primary hypogonadism (would show high LH/FSH) and no prolactinoma signal.</li>
+      <li><strong>Prostate (PSA 0.74, free PSA ratio 50%):</strong> excellent. A free/total ratio &gt;25% is reassuring; 50% is essentially benign.</li>
+      <li><strong>B12 661 / Folate 14.5:</strong> good substrate — confirms the homocysteine elevation is methylation-pathway, not deficiency.</li>
+    </ul>
+  </div>
+
+  <!-- §3 CROSS-REFERENCE -->
+  <h2><span class="num">§3</span> Cross-Reference — April 11 Baseline vs April 13 Bloodwork</h2>
+  <p>The April 13 panel re-tests the same nine biochemistry / endocrinology / iron-profile markers reported in the April 11 baseline (which itself integrated the April 2026 first-batch labs). Values are within laboratory reproducibility — no meaningful drift.</p>
+  <table>
+    <thead><tr><th>Marker</th><th>Baseline (Apr 11)</th><th>New (Apr 13)</th><th>Δ</th><th>Interpretation</th></tr></thead>
+    <tbody>
+      <tr><td>Cortisol AM</td><td>5.76</td><td>5.76</td><td class="delta-flat">flat</td><td>Confirms low-baseline; not lab artifact</td></tr>
+      <tr><td>DHEA-S</td><td>88</td><td>88</td><td class="delta-flat">flat</td><td>Confirms critical low; not transient</td></tr>
+      <tr><td>Homocysteine</td><td>15.01</td><td>15.01</td><td class="delta-flat">flat</td><td>Confirms methylation bottleneck</td></tr>
+      <tr><td>Hs-CRP</td><td>1.39</td><td>1.39</td><td class="delta-flat">flat</td><td>Persistent average-zone inflammation</td></tr>
+      <tr><td>Folate</td><td>14.5</td><td>14.5</td><td class="delta-flat">flat</td><td>Substrate adequate</td></tr>
+      <tr><td>B12</td><td>661</td><td>661</td><td class="delta-flat">flat</td><td>Substrate adequate</td></tr>
+      <tr><td>Free T3</td><td>3.01</td><td>3.01</td><td class="delta-flat">flat</td><td>Mid-range</td></tr>
+      <tr><td>Free T4</td><td>1.13</td><td>1.13</td><td class="delta-flat">flat</td><td>Mid-range</td></tr>
+      <tr><td>Ferritin</td><td>149.8</td><td>149.8</td><td class="delta-flat">flat</td><td>Optimal</td></tr>
+    </tbody>
+  </table>
+  <p><strong>What this means.</strong> The April 11 baseline flags were not lab transients or pre-analytic artifacts. They are the patient's <em>true operating state</em>. This converts every flag in §2 from "watch" to "act." The same panel reproducibility also strengthens confidence in the unflagged values — Ehsan's thyroid, iron, and pituitary axes are genuinely well, not coincidentally clean on a single draw.</p>
+  <p><strong>What is NOT yet re-tested or newly addressed:</strong> Total Testosterone, Free Testosterone, SHBG, E2, IGF-1, lipid panel (LDL/HDL/TG/ApoB), Vitamin D 25-OH, full CBC (complete blood count), TSH, ALT/AST. These are the operational priorities in §6.</p>
+
+  <!-- §4 IMAGING & PRIOR FINDINGS -->
+  <h2><span class="num">§4</span> Carry-Forward — Imaging &amp; Standing Findings</h2>
+  <div class="card accent-amber">
+    <h4>Cardiology — CCTA (Acıbadem Taksim, July 2025)</h4>
+    <p>Calcific plaque identified in the LAD (left anterior descending artery). Stenosis percentage and lesion length not formally quantified in baseline document. <strong>Pending:</strong> obtain the original CCTA report and a CAC (coronary artery calcium) Agatston score for objective baseline.</p>
+    <h4>Echocardiography</h4>
+    <p>Functionally unremarkable per baseline (no wall-motion abnormality, preserved ejection fraction reported).</p>
+    <h4>Abdominal Ultrasound</h4>
+    <p>Hepatic steatosis (fatty liver) noted. Today's ALP (59) and bilirubin (10) are reassuring on synthetic/excretory function but do <strong>not</strong> rule out ongoing steatohepatitis — ALT, AST, GGT, and FIB-4 score recommended next panel.</p>
+    <h4>Spine — Thoracic MRI</h4>
+    <p>Schmorl node at T10 documented. Relevant only as anatomical reference for AOD-9604 paraspinal injection targeting under the existing peptide protocol.</p>
+  </div>
+
+  <!-- §5 PROTOCOL UPDATE -->
+  <h2><span class="num">§5</span> Updated Protocol Recommendations</h2>
+  <p>The new bloodwork does not invalidate any standing element of the Layer 1 (Tesamorelin) or staged Layer 2 (CJC-1295 + Ipamorelin) peptide framework. It does <em>add</em> three operational guardrails:</p>
+
+  <div class="card accent-teal">
+    <h4>Adjustment 1 — Hold Tesamorelin dose escalation pending HPA clarification</h4>
+    <p>Tesamorelin acts via GHRH (growth-hormone releasing hormone) signaling and at higher doses can suppress endogenous cortisol pulse architecture. With AM cortisol already at floor (5.76 µg/dL), <strong>do not escalate beyond current physician-prescribed dose</strong> until the ACTH stimulation test and 4-point salivary curve return. If they confirm functional hypocortisolism, defer the Layer 2 CJC-1295 + Ipamorelin transition until cortisol is supported.</p>
+  </div>
+
+  <div class="card accent-teal">
+    <h4>Adjustment 2 — Add DHEA 25 mg PO AM (after hormone gap-fill labs are drawn)</h4>
+    <p>Sequence matters: <strong>draw Total T, Free T, SHBG, E2, IGF-1 first</strong>, then start DHEA. Starting DHEA before the draw confounds interpretation. Re-check DHEA-S + Total T + E2 at 8 weeks; titrate DHEA to mid-range (~250–350 µg/dL).</p>
+  </div>
+
+  <div class="card accent-teal">
+    <h4>Adjustment 3 — Methylated B-stack as standing daily addition</h4>
+    <p>Methylfolate 400–800 µg + Methyl-B12 1000 µg + P5P 25–50 mg, taken with breakfast. This is the right intervention even if MTHFR genotyping is deferred — and it is cardiovascular-protective in a patient with documented coronary plaque.</p>
+  </div>
+
+  <div class="card accent-teal">
+    <h4>Adjustment 4 — Anti-inflammatory dose of high-purity Omega-3</h4>
+    <p>EPA + DHA 2–4 g/day. Targets Hs-CRP &lt;1.0. Do not stack with NSAIDs without physician input given peptide-driven repair work already in flight.</p>
+  </div>
+
+  <div class="card accent-teal">
+    <h4>Adjustment 5 — Lipid panel + ApoB before any statin discussion is re-opened</h4>
+    <p>The April 11 baseline left the statin debate (Bachmeyer extended position vs AHA/ESC mainstream guidance) unresolved, deferring to attending cardiologist with target ApoB &lt;80 / LDL &lt;100 on statin. The April 13 panel did not include lipids — this gap must close before any decision. Order: full lipid panel, ApoB, Lp(a) (one-time), Hs-CRP repeat.</p>
+  </div>
+
+  <!-- §6 MISSING TESTS -->
+  <h2><span class="num">§6</span> Missing Tests — Priority-Ordered Next Draw</h2>
+  <ol class="priority">
+    <li class="urgent"><strong>Total Testosterone + Free Testosterone + SHBG</strong> <span class="badge red">URGENT</span> — Core hormone gap. Required before DHEA initiation. AM draw, fasted, between 07:00–10:00.</li>
+    <li class="urgent"><strong>Estradiol (E2, ultrasensitive LC-MS assay)</strong> <span class="badge red">URGENT</span> — DHEA aromatizes to E2; baseline mandatory. Use LC-MS, not immunoassay (immunoassay over-reads in males).</li>
+    <li class="urgent"><strong>IGF-1 (insulin-like growth factor 1)</strong> <span class="badge red">URGENT</span> — Required to titrate Tesamorelin response and to monitor any future GH-axis intervention.</li>
+    <li><strong>Vitamin D 25-OH (25-hydroxyvitamin D)</strong> — Not in the April 13 panel; relevant for cardiac, immune, and bone targets in this protocol. Goal: 50–80 ng/mL.</li>
+    <li><strong>Full lipid panel + ApoB + Lp(a)</strong> — Closes the statin-decision gap. Lp(a) is a one-time test (genetically determined).</li>
+    <li><strong>ACTH stimulation test (Synacthen 250 µg)</strong> — Definitive workup of the cortisol/DHEA-S co-flag.</li>
+    <li><strong>Plasma ACTH (drawn AM concurrently with cortisol)</strong> — Differentiates primary vs secondary adrenal insufficiency.</li>
+    <li><strong>Salivary cortisol — 4-point diurnal curve</strong> — Characterizes circadian flattening missed by single AM serum draw.</li>
+    <li><strong>Full CBC (complete blood count) with differential</strong> — Not in this panel; baseline hematology before continuing peptide protocol.</li>
+    <li><strong>Comprehensive Metabolic Panel (CMP) — including ALT, AST, GGT, creatinine, eGFR, glucose, HbA1c, electrolytes</strong> — Synthesizes liver, kidney, glycemic. ALT/AST are particularly important given fatty-liver history.</li>
+    <li><strong>TSH (thyroid stimulating hormone)</strong> — Completes the thyroid axis (fT3 and fT4 already in this panel).</li>
+    <li><strong>FIB-4 (calculated from ALT, AST, platelets, age)</strong> — Non-invasive liver fibrosis screen given steatosis history.</li>
+    <li><strong>MTHFR genotyping (C677T, A1298C)</strong> — Optional but informative given the homocysteine pattern.</li>
+  </ol>
+
+  <!-- §7 PHYSICIAN NOTES -->
+  <h2><span class="num">§7</span> Physician Notes — For Dr. Saira Hyder</h2>
+  <div class="card accent-teal">
+    <p><strong>Patient summary.</strong> 42-year-old male, active peptide-based metabolic and cardiovascular protocol (Tesamorelin Layer 1, staged CJC-1295 + Ipamorelin Layer 2 from Week 12), known LAD calcific plaque on July 2025 CCTA, hepatic steatosis on abdominal ultrasound, otherwise well.</p>
+    <p><strong>Key new findings (April 13 Intel-Lab panel) replicating April 11 baseline:</strong></p>
+    <ul>
+      <li>DHEA-S 88 µg/dL — adrenal-androgen depletion well below age-functional optimum (~150–400)</li>
+      <li>AM cortisol 5.76 µg/dL — at lower lab limit; suspicious for HPA-axis insufficiency in combination with low DHEA-S</li>
+      <li>Hs-CRP 1.39 mg/L — average-band; clinically meaningful given documented coronary plaque</li>
+      <li>Homocysteine 15.01 µmol/L — upper-normal by lab, elevated by cardiovascular standards; isolated methylation-pathway pattern (B12 and folate adequate)</li>
+    </ul>
+    <p><strong>Recommended next-visit workup:</strong> ACTH stimulation test + plasma ACTH + 4-point salivary cortisol curve; full hormone panel (Total T, Free T, SHBG, E2 by LC-MS, IGF-1); lipid + ApoB + Lp(a); Vitamin D; CMP with LFTs; CBC; TSH; FIB-4 screen.</p>
+    <p><strong>Suggested interventions pending workup:</strong> hold Tesamorelin escalation; defer Layer 2 transition until HPA clarified; initiate methylated B-stack and high-purity Omega-3 immediately (no contraindication on current panel); start DHEA 25 mg AM <em>only after</em> baseline hormone draw.</p>
+    <blockquote>This document is decision support for the attending clinician. All dosing, sequencing, and diagnostic ordering remain at physician discretion.</blockquote>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Source data:</strong> Intel-Lab LLC bloodwork — patient MR. EHSAN AHMADI, file 111242, sample G9656402213, collected 2026-04-13, reported 2026-04-14 — ordered by Dr. Saira Hyder via Justlife Home Healthcare. Cross-referenced against the April 11, 2026 baseline audit (cryptopafi.github.io/nexusos-reports/ehsan-ahmadi-baseline-audit-2026-04-11.html).<br>
+    <strong>Report version:</strong> v2.1 · Generated 2026-04-27 · NexusOS health-report engine.<br>
+    <div class="disclaimer"><strong>Disclaimer.</strong> This document is an analytical synthesis of laboratory and imaging data prepared as decision support. It is not a substitute for direct medical evaluation, diagnosis, or treatment. All interventions, dose changes, and diagnostic test orders must be reviewed and authorized by a licensed physician with full access to the patient's history and physical examination findings. Reference ranges shown are those provided by the issuing laboratory; functional optima cited reflect cardiovascular-longevity literature and may differ from local laboratory cut-offs.</div>
+  </div>
+</div>
+</body>
+</html>
