@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Elevate × VOX — JV Strategic Brief (2026-04-27)</title>
+<meta name="description" content="VOX Joint Venture proposal — corporate audit, KPIs, valuation framework, negotiation playbook. Confidential strategic brief." />
+<meta property="og:title" content="Elevate × VOX — JV Strategic Brief" />
+<meta property="og:description" content="VOX JV proposal: corporate intel, KPIs, valuation, protections, negotiation positions." />
+<meta property="og:type" content="article" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --card-hover: #15151E;
+    --border: #1F1F2E;
+    --text: #E8E8F0;
+    --text-dim: #9090A8;
+    --accent: #58a6ff;
+    --green: #3FB950;
+    --amber: #F7B955;
+    --red: #F85149;
+    --glass: rgba(17,17,24,0.7);
+  }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  }
+  .accent { color: var(--accent); }
+  .text-dim { color: var(--text-dim); }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+  .badge-red { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+  .badge-amber { background: rgba(247,185,85,0.15); color: var(--amber); border: 1px solid rgba(247,185,85,0.3); }
+  .badge-green { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .badge-accent { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: var(--card-hover); color: var(--text); font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .alert {
+    border-left: 3px solid var(--red);
+    background: rgba(248,81,73,0.05);
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 16px 0;
+  }
+  .alert-amber { border-left-color: var(--amber); background: rgba(247,185,85,0.05); }
+  .alert-green { border-left-color: var(--green); background: rgba(63,185,80,0.05); }
+  code, pre { font-family: 'JetBrains Mono', Menlo, monospace; }
+  pre { background: var(--card-hover); border: 1px solid var(--border); padding: 16px; border-radius: 6px; overflow-x: auto; font-size: 13px; line-height: 1.6; }
+  code { background: var(--card-hover); padding: 1px 6px; border-radius: 3px; font-size: 13px; color: var(--accent); }
+  pre code { background: transparent; padding: 0; color: inherit; }
+  h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; }
+  h1 { font-size: 2.5rem; line-height: 1.1; }
+  h2 { font-size: 1.75rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  h3 { font-size: 1.25rem; margin-top: 2rem; color: var(--accent); }
+  h4 { font-size: 1rem; margin-top: 1.5rem; color: var(--text); }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted rgba(88,166,255,0.3); }
+  a:hover { border-bottom-color: var(--accent); }
+  .toc { position: sticky; top: 16px; }
+  .toc ol { padding-left: 1.25rem; font-size: 13px; }
+  .toc li { padding: 4px 0; color: var(--text-dim); }
+  .toc a { color: var(--text-dim); border: none; }
+  .toc a:hover { color: var(--accent); }
+  .hero-grad {
+    background: radial-gradient(ellipse at top, rgba(88,166,255,0.08), transparent 60%),
+                radial-gradient(ellipse at bottom right, rgba(248,81,73,0.05), transparent 50%);
+  }
+  ul li { margin-bottom: 6px; }
+  .kpi-box { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .kpi-floor { border-color: rgba(247,185,85,0.4); }
+  .kpi-target { border-color: rgba(88,166,255,0.5); }
+  .kpi-stretch { border-color: rgba(63,185,80,0.4); }
+  .number { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--text); }
+  .stamp { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 4px; background: var(--card-hover); font-size: 12px; color: var(--text-dim); border: 1px solid var(--border); }
+  @media print {
+    body { background: white; color: black; }
+    .glass, .kpi-box, pre, code { background: white !important; color: black !important; border-color: #ccc !important; }
+    h2, h3 { page-break-after: avoid; }
+    table, .alert, .kpi-box { page-break-inside: avoid; }
+    .no-print { display: none; }
+    a { color: black; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<div class="hero-grad">
+  <div class="max-w-6xl mx-auto px-6 pt-16 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="stamp">🔒 CONFIDENTIAL</span>
+      <span class="stamp">📅 2026-04-27</span>
+      <span class="stamp">📩 To: Leo (Lio)</span>
+      <span class="stamp">From: Pafi</span>
+    </div>
+    <h1 class="mb-4">Elevate × VOX<br/><span class="accent">Joint Venture Strategic Brief</span></h1>
+    <p class="text-xl text-dim max-w-3xl">
+      Corporate intelligence on VOX Solutions Global Ltd, decoded JV proposal, capital structure, KPI ratchet, valuation formula, founder economics, and the negotiation playbook for our next call.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-6">
+      <span class="badge badge-red">3 RED Flags</span>
+      <span class="badge badge-amber">4 AMBER Watch-outs</span>
+      <span class="badge badge-accent">12 Mandatory Protections</span>
+      <span class="badge badge-green">$300M VOX Anchor</span>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-6xl mx-auto px-6 pb-24 grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-12">
+
+  <!-- TABLE OF CONTENTS -->
+  <aside class="toc no-print hidden lg:block">
+    <div class="text-xs uppercase tracking-wider text-dim mb-3 font-semibold">Contents</div>
+    <ol>
+      <li><a href="#exec">Executive Summary</a></li>
+      <li><a href="#corporate">VOX Corporate Intel</a></li>
+      <li><a href="#proposal">JV Proposal Decoded</a></li>
+      <li><a href="#third-party">Third-Party Choice</a></li>
+      <li><a href="#captable">Cap Table</a></li>
+      <li><a href="#kpi">KPI Tiers</a></li>
+      <li><a href="#valuation">Valuation Formula</a></li>
+      <li><a href="#economics">Founder Economics</a></li>
+      <li><a href="#comps">Industry Comparables</a></li>
+      <li><a href="#protections">Mandatory Protections</a></li>
+      <li><a href="#stock-trap">Stock-Option Trap</a></li>
+      <li><a href="#playbook">Negotiation Playbook</a></li>
+      <li><a href="#actions">This Week</a></li>
+      <li><a href="#questions">Open Questions</a></li>
+    </ol>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <section id="exec">
+      <h2>Executive Summary</h2>
+      <p>
+        VOX is proposing a <strong>three-party Joint Venture</strong> (JV) — Pafi + Leo + a VOX-side party (the parent VOX Solutions Global Ltd, its VOX Ads division, or Ehsan Ahmadi personally), capped at 33% — to handle all affiliate marketing separate from Elevate. VOX provides capital and people. Pre-negotiated KPIs (Key Performance Indicators) trigger acquisition; consideration is paid as <strong>stock options in VOX Solutions Global Ltd</strong>, a private Hong Kong company.
+      </p>
+      <p>
+        The structural improvement of the 33% cap is real — founders combined hold 67%, controlling ordinary resolutions. But VOX retains <strong>blocking minority rights</strong> on every special resolution (mergers, dilution, IPO, charter changes), plus <strong>operational squeeze power</strong> via the existing Framework Agreement (Annex 1 §2.2 lets VOX raise SMS+ rates unilaterally, crushing AffCo margin and missing KPIs).
+      </p>
+      <p>
+        With the right protections — make-whole clauses, cross-default triggers, tag-along, anti-dilution, parent guarantee, and external M&A (Mergers & Acquisitions) counsel — this can be a <strong class="accent">€2-10M+ outcome per founder</strong>. Without them, it is a slow-acquisition trap.
+      </p>
+      <div class="alert alert-green">
+        <strong>$300M VOX Ads target = our biggest leverage.</strong> Aggressive growth implies VOX has capital to deploy and a board willing to pay strategic premiums for tuck-in acquisitions. AffCo at $10-20M revenue = 3-7% of their target — small enough to swallow, big enough to matter. Anchor every conversation against this number.
+      </div>
+    </section>
+
+    <section id="corporate">
+      <h2>VOX Solutions — Corporate Intelligence</h2>
+      <p>What we now know about the counterparty (cross-referenced public sources + signed Framework Agreement + folder docs):</p>
+      <table>
+        <thead><tr><th>Field</th><th>Verified</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Legal name</strong></td><td>VOX Solutions Global Limited</td></tr>
+          <tr><td><strong>Hong Kong CR (Companies Registry)</strong></td><td>2485589</td></tr>
+          <tr><td><strong>Incorporation date</strong></td><td>16 February 2017</td></tr>
+          <tr><td><strong>Registered address</strong></td><td>Wing On Centre, 21F, 111 Connaught Road Central, Hong Kong</td></tr>
+          <tr><td><strong>Origin / predecessor</strong></td><td>2010 merger of VOX Carrier + VOX Technologies</td></tr>
+          <tr><td><strong>Controlling figure since 2010</strong></td><td><span class="badge badge-amber">Ehsan Ahmadi</span> — assembled initial team, predates the 2017 HK incorporation</td></tr>
+          <tr><td><strong>Director on Framework Agreement</strong></td><td>Lavinia Ahmadi (same surname as Ehsan — almost certainly related)</td></tr>
+          <tr><td><strong>Banking</strong></td><td>Citibank N.A. London / IBAN GB92CITI18500810654396 / SWIFT CITIGB2L</td></tr>
+          <tr><td><strong>Audited financials</strong></td><td><span class="badge badge-red">Not publicly available</span> — must demand pre-signing</td></tr>
+          <tr><td><strong>Beneficial ownership</strong></td><td><span class="badge badge-red">Not disclosed</span> — UBO (Ultimate Beneficial Owner) request mandatory</td></tr>
+          <tr><td><strong>Parent / holding structure</strong></td><td>Not visible in public filings</td></tr>
+          <tr><td><strong>VOX Ads target FY (Fiscal Year)</strong></td><td><strong class="accent">$300M revenue</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="alert alert-amber" style="margin-top: 24px;">
+        <strong>Material finding:</strong> Ehsan Ahmadi is not the friendly intro person — he is the controlling principal of VOX Solutions since 2010. Lavinia Ahmadi (Director who signs contracts) shares his surname. <strong>Treat any direct conversation with Ehsan as a VOX-principal conversation</strong>, with formal documentation and external counsel oversight, regardless of personal relationship.
+      </div>
+    </section>
+
+    <section id="proposal">
+      <h2>The Proposal — Decoded</h2>
+      <p>In M&A vocabulary, this is a <strong>strategic acqui-hire via captive JV with KPI-ratchet earn-out</strong>. Industry-standard structure. The deal lives entirely in clauses negotiated <em>before</em> signing — after signing, our leverage drops to zero.</p>
+      <table>
+        <thead><tr><th>Component</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td><strong>NewCo (AffCo)</strong></td><td>A new vehicle holds all affiliate-marketing operations, separate from Elevate Marketing LLC (Bogdan's Delaware company)</td></tr>
+          <tr><td><strong>Shareholders</strong></td><td>Pafi 33.5% · Leo 33.5% · VOX-side 33% (one of three options — see below)</td></tr>
+          <tr><td><strong>Capital injection</strong></td><td>VOX provides cash + people in exchange for the 33%</td></tr>
+          <tr><td><strong>Earn-out trigger</strong></td><td>Pre-defined KPIs hit → VOX is obligated to acquire AffCo at a pre-defined multiple</td></tr>
+          <tr><td><strong>Consideration form</strong></td><td>VOX Solutions Global Ltd <strong>stock options</strong> at acquisition (NOT cash, in current proposal)</td></tr>
+          <tr><td><strong>Time horizon</strong></td><td>Typically 18-36 months from formation to acquisition trigger</td></tr>
+        </tbody>
+      </table>
+      <h3>VOX's likely strategic motive (steelmanning their side)</h3>
+      <ul>
+        <li><strong>Vertical de-risking:</strong> Affiliate gambling/finance is messy compliance-wise. Spinning into AffCo keeps the VOX brand clean.</li>
+        <li><strong>Captive demand flywheel:</strong> VOX captures both sides — SMS+ delivery margin AND affiliate-network margin.</li>
+        <li><strong>Talent capture:</strong> Pafi (network connections, tech stack) + Leo (strategy, market access). Cheaper than hiring + retaining.</li>
+        <li><strong>Compliance firewall:</strong> AffCo holds the licenses. Regulator hits AffCo, parent stays insulated.</li>
+        <li><strong>Preempt competition:</strong> Smsads.net + Elevate could pivot to a competing aggregator. JV kills that optionality.</li>
+        <li><strong>EBITDA dressing:</strong> Low cash + earn-out + stock structure has minimal cash impact for VOX but reportable revenue accretion.</li>
+        <li><strong>Reach $300M target:</strong> AffCo at $10-20M revenue = 3-7% of next-year target — material, achievable, justifies acquisition spend.</li>
+      </ul>
+    </section>
+
+    <section id="third-party">
+      <h2>The Third-Party Choice — Critical Decision</h2>
+      <p>VOX has signaled the third party can be <strong>any one of three options</strong>. Each has materially different protection profiles for us:</p>
+      <table>
+        <thead><tr><th>Option</th><th>Substance</th><th>For Us</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>VOX Solutions Global Ltd<br/>(parent, HK)</strong></td>
+            <td>8-year-old operating company, real revenue, real MNO partnerships, corporate balance sheet</td>
+            <td><span class="badge badge-green">Best protection</span><br/><br/>Corporate counterparty has corporate liability. Real assets to claim against if anything goes wrong. Stock-option exit at acquisition is meaningful (parent IS the acquirer). Audited financials accessible.</td>
+          </tr>
+          <tr>
+            <td><strong>VOX Ads<br/>(division/subsidiary)</strong></td>
+            <td>Likely a doing-business-as label inside VOX Solutions; verify legal-entity status</td>
+            <td><span class="badge badge-amber">Ambiguous</span><br/><br/>If only a brand of parent → equivalent to Option 1. If separately incorporated as a thin-substance vehicle → zero balance sheet, requires <strong>parent guarantee</strong> for all obligations.</td>
+          </tr>
+          <tr>
+            <td><strong>Ehsan Ahmadi<br/>(personal)</strong></td>
+            <td>Individual. No follow-on capital. Death/divorce/illness/bankruptcy concentrates risk on one human.</td>
+            <td><span class="badge badge-red">Worst protection</span><br/><br/>Sounds friendly but transfers institutional risk to a single person whose heirs/creditors could become our partner overnight. No audited financials, no balance sheet. Acquisition still requires VOX Solutions parent → parent must guarantee Ehsan's obligations regardless.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert">
+        <strong>Recommended position:</strong> Insist the third party = <strong>VOX Solutions Global Ltd (parent)</strong>. If they push for Ehsan personally, demand a <strong>VOX Solutions parent guarantee</strong> for all his obligations under the Shareholders Agreement.
+      </div>
+    </section>
+
+    <section id="captable">
+      <h2>Recommended Cap Table</h2>
+      <pre><code>Pafi:        33.5%
+Leo:         33.5%
+VOX-side:    33.0%   (preferably parent, NOT Ehsan personally)
+ESOP pool:    0.0%   (defer — avoid pre-allocating dilution VOX can later force)</code></pre>
+      <p><strong>Founder bloc combined:</strong> 67% — majority on ordinary resolutions (operations, hiring, budgets).</p>
+      <p><strong>VOX-side at 33%:</strong> blocking minority on special resolutions (the 75%-supermajority threshold matters in nearly every common-law and EU jurisdiction).</p>
+      <h3>What 33% VOX-side can block</h3>
+      <table>
+        <thead><tr><th>Action requiring 75%+ supermajority</th><th>VOX can block?</th></tr></thead>
+        <tbody>
+          <tr><td>Amending Articles of Association / charter</td><td><span class="badge badge-red">Yes</span></td></tr>
+          <tr><td>Approving a merger or sale of substantially all assets</td><td><span class="badge badge-red">Yes</span></td></tr>
+          <tr><td>Issuing new equity (capital raise, ESOP — Employee Stock Option Pool)</td><td><span class="badge badge-red">Yes</span></td></tr>
+          <tr><td>Voluntary liquidation / dissolution</td><td><span class="badge badge-red">Yes</span></td></tr>
+          <tr><td>Changing share rights, dividends, preferences</td><td><span class="badge badge-red">Yes</span></td></tr>
+          <tr><td>Going public (IPO — Initial Public Offering)</td><td><span class="badge badge-red">Yes</span></td></tr>
+          <tr><td>Cross-border re-domicile of AffCo</td><td><span class="badge badge-red">Yes</span></td></tr>
+          <tr><td>Day-to-day operations, hiring, budgets, normal contracts</td><td><span class="badge badge-green">No</span></td></tr>
+        </tbody>
+      </table>
+      <p><strong>Internal between you and Leo</strong> — you are <em>two people, not one bloc by default</em>. We need a Pafi-Leo Shareholders Agreement <strong>before any VOX talks</strong>: vote-as-one obligation, tag-along between us, ROFR (Right of First Refusal), deadlock protocol, exit/death clauses. Otherwise founder bloc isn't reliable.</p>
+    </section>
+
+    <section id="kpi">
+      <h2>KPI Tiers — 3-Tier Earn-Out Ratchet</h2>
+      <p>Industry-standard structure: <strong>Floor / Target / Stretch</strong>. Hit any 3 of 5 KPIs at any month-end after month 18 → triggers the corresponding tier acquisition. Multi-window measurement gives us breathing room and prevents single-quarter sandbagging.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <div class="kpi-box kpi-floor">
+          <div class="text-xs uppercase tracking-wider text-dim mb-2">Tier 1 — Floor</div>
+          <div class="text-2xl font-bold mb-3" style="color: var(--amber);">Min. acquisition</div>
+          <ul class="space-y-2 text-sm">
+            <li>Net Revenue (TTM): <span class="number">$5M</span></li>
+            <li>Active advertisers: <span class="number">15</span></li>
+            <li>GEOs ≥ $50K/mo: <span class="number">3</span></li>
+            <li>Gross Margin: <span class="number">30%</span></li>
+            <li>Repeat advertiser %: <span class="number">50%</span></li>
+            <li>Months to achieve: <span class="number">24</span></li>
+          </ul>
+        </div>
+        <div class="kpi-box kpi-target">
+          <div class="text-xs uppercase tracking-wider text-dim mb-2">Tier 2 — Target</div>
+          <div class="text-2xl font-bold mb-3" style="color: var(--accent);">Base acquisition</div>
+          <ul class="space-y-2 text-sm">
+            <li>Net Revenue (TTM): <span class="number">$10M</span></li>
+            <li>Active advertisers: <span class="number">30</span></li>
+            <li>GEOs ≥ $50K/mo: <span class="number">5</span></li>
+            <li>Gross Margin: <span class="number">40%</span></li>
+            <li>Repeat advertiser %: <span class="number">65%</span></li>
+            <li>Months to achieve: <span class="number">30</span></li>
+          </ul>
+        </div>
+        <div class="kpi-box kpi-stretch">
+          <div class="text-xs uppercase tracking-wider text-dim mb-2">Tier 3 — Stretch</div>
+          <div class="text-2xl font-bold mb-3" style="color: var(--green);">Premium acquisition</div>
+          <ul class="space-y-2 text-sm">
+            <li>Net Revenue (TTM): <span class="number">$20M</span></li>
+            <li>Active advertisers: <span class="number">50</span></li>
+            <li>GEOs ≥ $50K/mo: <span class="number">8</span></li>
+            <li>Gross Margin: <span class="number">45%</span></li>
+            <li>Repeat advertiser %: <span class="number">75%</span></li>
+            <li>Months to achieve: <span class="number">36</span></li>
+          </ul>
+        </div>
+      </div>
+      <h3>Why these specific KPIs (and which to resist)</h3>
+      <table style="margin-top: 16px;">
+        <thead><tr><th>KPI</th><th>Push For / Resist</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Net Revenue (TTM)</td><td><span class="badge badge-green">Push for</span></td><td>Direct throughput, hard for VOX to manipulate</td></tr>
+          <tr><td>Active paying advertisers</td><td><span class="badge badge-green">Push for</span></td><td>Forces diversification; not single-advertiser concentration</td></tr>
+          <tr><td>GEOs (Geographies) ≥ $50K/mo</td><td><span class="badge badge-green">Push for</span></td><td>Geographic diversification; addresses single-MNO risk</td></tr>
+          <tr><td>Gross margin %</td><td><span class="badge badge-green">Push for</span></td><td>Forces VOX to keep SMS+ costs reasonable</td></tr>
+          <tr><td>Repeat advertiser % (cohort retention)</td><td><span class="badge badge-green">Push for</span></td><td>Real product quality, not churn-and-burn</td></tr>
+          <tr><td>EBITDA / Net Income only</td><td><span class="badge badge-red">Resist</span></td><td>VOX controls cost line via Annex 1 §2.2 unilateral rate change</td></tr>
+          <tr><td>VOX-channel-only revenue</td><td><span class="badge badge-red">Resist</span></td><td>Excludes any non-VOX channel value we build</td></tr>
+          <tr><td>Subjective "performance reviews"</td><td><span class="badge badge-red">Resist</span></td><td>"VOX's reasonable judgement" = VOX wins</td></tr>
+          <tr><td>Single-year measurement only</td><td><span class="badge badge-red">Resist</span></td><td>Punishes seasonality; allows short-term gaming</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="valuation">
+      <h2>Valuation Formula</h2>
+      <p>Don't fix a number — fix a <strong>formula tied to KPI overshoot</strong>. Industry-standard for earn-outs.</p>
+      <pre><code>Acquisition Price = max( R × Net Revenue (TTM),
+                         M × EBITDA (TTM) )
+
+Tier        R     M     Multiplier rationale
+─────────  ───   ───    ──────────────────────────────────────────
+Floor      2.5×   8×    Pure-financial affiliate baseline
+                        (Awin/CJ comparable)
+Target     3.5×  11×    Strategic-captive premium
+Stretch    5.0×  14×    Strategic + retention + growth premium</code></pre>
+      <p><strong>Why max(R × Rev, M × EBITDA):</strong> protects us against VOX margin-squeeze. If they raise SMS+ rates and crush EBITDA, the revenue floor still holds.</p>
+      <div class="alert">
+        <strong>Make-Whole clause is mandatory:</strong> if VOX takes any action that mathematically prevents KPI achievement (rate hike beyond X%, market exit, blocking access, withdrawing operational support), the relevant KPI is <strong>deemed met</strong>. Without this, VOX can squeeze us at the precise moment our earn-out measures.
+      </div>
+    </section>
+
+    <section id="economics">
+      <h2>Founder Economics — Each Tier</h2>
+      <p>Founder bloc = 67% × AffCo value. Pafi-Leo internal split assumed 50/50 (= 33.5% each of total). Adjust if asymmetric contribution warrants.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Net Revenue at trigger</th>
+            <th>AffCo total value</th>
+            <th>VOX-side share (33%)</th>
+            <th>Founder bloc (67%)</th>
+            <th>Pafi (33.5%)</th>
+            <th>Leo (33.5%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-amber">Floor</span></td>
+            <td><span class="number">$5M</span></td>
+            <td><span class="number">$12.5M</span></td>
+            <td><span class="number">$4.1M</span></td>
+            <td><span class="number">$8.4M</span></td>
+            <td><span class="number" style="color: var(--accent)">$4.2M</span></td>
+            <td><span class="number">$4.2M</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-accent">Target</span></td>
+            <td><span class="number">$10M</span></td>
+            <td><span class="number">$35M</span></td>
+            <td><span class="number">$11.5M</span></td>
+            <td><span class="number">$23.5M</span></td>
+            <td><span class="number" style="color: var(--accent)">$11.7M</span></td>
+            <td><span class="number">$11.7M</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-green">Stretch</span></td>
+            <td><span class="number">$20M</span></td>
+            <td><span class="number">$100M</span></td>
+            <td><span class="number">$33M</span></td>
+            <td><span class="number">$67M</span></td>
+            <td><span class="number" style="color: var(--accent)">$33.5M</span></td>
+            <td><span class="number">$33.5M</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>With recommended consideration mix (40% cash / 30% vested options / 30% performance options)</h3>
+      <table>
+        <thead><tr><th>Tier</th><th>Pafi cash at closing (40%)</th><th>Pafi stock (60%)</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge badge-amber">Floor</span></td><td><span class="number">$1.7M</span></td><td><span class="number">$2.5M</span></td></tr>
+          <tr><td><span class="badge badge-accent">Target</span></td><td><span class="number">$4.7M</span></td><td><span class="number">$7.0M</span></td></tr>
+          <tr><td><span class="badge badge-green">Stretch</span></td><td><span class="number">$13.4M</span></td><td><span class="number">$20.1M</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="comps">
+      <h2>Industry Comparables (Use In The Call)</h2>
+      <table>
+        <thead><tr><th>Deal</th><th>Year</th><th>Multiple</th><th>Relevance</th></tr></thead>
+        <tbody>
+          <tr><td>Publicis acquired CJ Affiliate (Conversant)</td><td>2014</td><td>~2.5× revenue</td><td>Pure affiliate baseline</td></tr>
+          <tr><td>Axel Springer acquired Awin (majority)</td><td>2017</td><td>~2× revenue</td><td>Affiliate baseline</td></tr>
+          <tr><td>Sinch acquired Inteliquent</td><td>2021</td><td>~3.5× revenue</td><td>CPaaS (Communications Platform as a Service) comparable</td></tr>
+          <tr><td>MessageBird raised at $3.8B valuation</td><td>2021</td><td>~5× revenue</td><td>CPaaS strategic</td></tr>
+          <tr><td>AppLovin acquired MoPub</td><td>2022</td><td>~3× revenue</td><td>AdTech (Advertising Technology) mid-tier</td></tr>
+          <tr><td>Twilio acquired Segment</td><td>2020</td><td>~25× revenue</td><td>Strategic-premium ceiling</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Industry mean for affiliate / AdTech with proprietary data:</strong> 2-4× revenue, 8-15× EBITDA. <strong>Strategic captive premium</strong> adds another 30-50% on top. Our 3.5× target multiple sits squarely in the defensible band.</p>
+    </section>
+
+    <section id="protections">
+      <h2>Mandatory Protections — Red Lines</h2>
+      <p>These 12 must-have clauses are <strong>walk-away conditions</strong>. If VOX rejects any, we walk and stay independent.</p>
+      <table>
+        <thead><tr><th>#</th><th>Term</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Audited financial statements of VOX Solutions Global Ltd, last 2 years, before signing</td><td>We're being asked to take stock options. We need to know what they're worth.</td></tr>
+          <tr><td>2</td><td>UBO disclosure of any non-corporate VOX-side party (notarized affidavit)</td><td>Eliminates captive-third-party trap</td></tr>
+          <tr><td>3</td><td>Right to convert stock options to cash at acquisition (FMV — Fair Market Value, third-party-validated)</td><td>Liquidity escape valve</td></tr>
+          <tr><td>4</td><td>Cross-default: if VOX terminates the FMA (Framework Master Agreement) or materially raises rates pre-acquisition, AffCo earn-out is <strong>deemed met</strong></td><td>Closes the squeeze loophole</td></tr>
+          <tr><td>5</td><td>Information rights: quarterly audited financials of VOX post-acquisition</td><td>Otherwise we're buying a black box</td></tr>
+          <tr><td>6</td><td>Tag-along: if VOX-bloc sells AffCo (or VOX itself), we sell at the same price/terms</td><td>Prevents being left behind in a transfer</td></tr>
+          <tr><td>7</td><td>Anti-dilution (full-ratchet or weighted-average) protecting against down-round dilution before earn-out</td><td>Without this, VOX can issue new shares to push us below threshold</td></tr>
+          <tr><td>8</td><td>Vesting accelerates on "Good Reason" or "Bad Leaver" termination → 100% vest</td><td>Protects shares when VOX changes the game</td></tr>
+          <tr><td>9</td><td>Drag-along threshold ≥ 75% (not 51%)</td><td>Prevents VOX from flipping AffCo at fire-sale</td></tr>
+          <tr><td>10</td><td>Founder approval required for: changing AffCo's bank, opening/closing GEOs, hiring/firing senior staff, taking on debt &gt; threshold, changing constitutional documents</td><td>Operational control floor</td></tr>
+          <tr><td>11</td><td>Carve-outs from non-circumvent for non-VOX channels + pre-AffCo IP (NexusOS, smsads.net, Genie pipelines stay ours)</td><td>Lets us keep optionality + protects what we built</td></tr>
+          <tr><td>12</td><td>Confidentiality penalty = actual damages (kill the EUR 1M flat penalty from FMA Art 12.3)</td><td>Removes the Sword of Damocles</td></tr>
+        </tbody>
+      </table>
+      <h3>Strong-asks (negotiate hard, don't necessarily walk)</h3>
+      <ul>
+        <li>Reverse vesting (start 100%, lose if you leave) instead of forward vesting</li>
+        <li>ROFR (Right of First Refusal) on any AffCo equity sales by VOX-bloc</li>
+        <li>Pre-emption rights on future AffCo financing rounds</li>
+        <li>Founder protection: 12-month severance + accelerated vesting on any termination without cause</li>
+        <li>Independent board seat (mutually-agreed third party) — breaks 2-vs-1 deadlocks</li>
+        <li>Right to audit VOX's SMS+ cost line at AffCo's expense, twice per year</li>
+        <li>Earn-out acceleration on change of control of VOX (if VOX gets acquired during earn-out window, our trigger is deemed met)</li>
+      </ul>
+    </section>
+
+    <section id="stock-trap">
+      <h2>The Stock-Option Trap</h2>
+      <p>VOX Solutions Global Ltd is a <strong>private Hong Kong company</strong>. Stock options in a private foreign company carry these realities:</p>
+      <table>
+        <thead><tr><th>Realities</th><th>Consequence</th></tr></thead>
+        <tbody>
+          <tr><td>No liquidity / no public market</td><td>You can sell only when VOX is acquired, IPOs (no announced plan), or buys back voluntarily</td></tr>
+          <tr><td>Valuation is set by VOX</td><td>No 409A in HK, no independent appraiser. VOX picks the number.</td></tr>
+          <tr><td>Standard 4-year vest with 1-year cliff</td><td>If VOX terminates "for cause" (vague definition) at month 11 → zero shares vested</td></tr>
+          <tr><td>Drag-along risk</td><td>If VOX sells parent at low multiple (1.2× revenue), we drag at the same multiple</td></tr>
+          <tr><td>Tax double-hit</td><td>HK options to RO/IE-resident individuals can trigger taxation at grant, vest, exercise, AND sale — 30-55% leakage possible</td></tr>
+          <tr><td>Foreign currency risk</td><td>HKD-denominated, 5-10 year horizon, FX swings unpredictable</td></tr>
+          <tr><td>Information asymmetry forever</td><td>Minority option-holder in private foreign co may never see audited financials post-acquisition</td></tr>
+        </tbody>
+      </table>
+      <h3>Recommended consideration mix</h3>
+      <pre><code>Total Acquisition Price (when KPI hit):
+  40% CASH at closing
+  30% Vested stock options (1-yr cliff already passed → immediate vest)
+  30% Performance-vested options (vest over 18 months post-acquisition)</code></pre>
+      <h3>If VOX refuses cash component</h3>
+      <p>Counter with: "We will accept 100% stock options ONLY if VOX commits to <strong>one of three</strong>:
+        <ol>
+          <li>Public IPO process within 36 months, OR</li>
+          <li>Mandatory buyback at 1.5× FMV at month 36 if no IPO, OR</li>
+          <li>Right-to-put clause: founders can sell options back to VOX at FMV any time after month 24"</li>
+        </ol>
+      If VOX refuses all three → cash component is mandatory. No exceptions.</p>
+    </section>
+
+    <section id="playbook">
+      <h2>Negotiation Playbook</h2>
+      <h3>Capital injection ask (what VOX puts in for 33%)</h3>
+      <table>
+        <thead><tr><th>Tier</th><th>Cash</th><th>Operational Resources</th><th>Implied Pre-money Valuation</th></tr></thead>
+        <tbody>
+          <tr><td>Conservative open</td><td><span class="number">$1.5M</span></td><td>~$0.5M equivalent</td><td><span class="number">$4M</span></td></tr>
+          <tr><td><strong>Recommended open</strong></td><td><strong class="number" style="color: var(--accent)">$2.5M</strong></td><td><strong>~$1M equivalent</strong></td><td><strong class="number" style="color: var(--accent)">$7M</strong></td></tr>
+          <tr><td>Aggressive open</td><td><span class="number">$4M</span></td><td>~$1.5M equivalent</td><td><span class="number">$11M</span></td></tr>
+        </tbody>
+      </table>
+      <p><strong>Justification we bring to the table:</strong> founders' IP (smsads.net brand, NexusOS pipelines, 47 affiliate-network accounts, 23-month VOX intel work, Genie automation stack), network (Pafi-Ehsan relationship, Leo's market access, 3SNET, Dr.Cash, Mobidea, Admitad), forgone market salary (€100-180K each × 2 founders × 2 years = $800K-1.4M in-kind contribution).</p>
+
+      <h3>What VOX will push back, our counter</h3>
+      <table>
+        <thead><tr><th>Pushback</th><th>Translation</th><th>Counter</th></tr></thead>
+        <tbody>
+          <tr><td>"Floor multiple too high — 1.5× revenue"</td><td>Cheap option to acquire if you struggle</td><td>Hold at 2.5× — cite Awin/CJ comps</td></tr>
+          <tr><td>"$300M target is internal, don't anchor on it"</td><td>Removing our leverage</td><td>Anchor on industry comps with same multiples</td></tr>
+          <tr><td>"EBITDA-based only, not revenue"</td><td>They control cost line via Annex 1 §2.2</td><td>Demand max(rev, EBITDA) formula + Make-Whole clause</td></tr>
+          <tr><td>"Cash injection $1M, not $2.5M"</td><td>Lowering their risk</td><td>Counter $2M cash + $1M ops</td></tr>
+          <tr><td>"Stretch tier unrealistic — drop it"</td><td>Don't want to pay premium</td><td>Hold; stretch costs them nothing unless we deliver</td></tr>
+          <tr><td>"Window only month 24-30, not 18-36"</td><td>Tight window favors VOX</td><td>Demand 18-36 month minimum</td></tr>
+          <tr><td>"No revenue floor — only EBITDA"</td><td>Margin-squeeze trap closing</td><td><span class="badge badge-red">Walk</span> — non-negotiable</td></tr>
+          <tr><td>"No audited financials of VOX"</td><td>Something to hide</td><td><span class="badge badge-red">Walk</span> — non-negotiable</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Opening 5-minute pitch (memorize this)</h3>
+      <div class="alert alert-green">
+        <em>"Based on VOX Ads targeting $300M next year, we believe AffCo can be a $10-20M revenue contributor by month 30 — call it 3-7% of your target — at 40%+ gross margin, captive to your SMS+ stack. We're proposing $2.5M cash plus operational support from VOX for 33% equity. Three-tier KPI ratchet — Floor at $5M revenue and 15 advertisers triggers a 2.5× revenue acquisition; Target at $10M and 30 advertisers triggers 3.5×; Stretch at $20M and 50 advertisers triggers 5×. Consideration mix: 40% cash, 60% stock at closing. We bring the affiliate-network relationships (3SNET, Awin, Admitad, Mobidea, Dr.Cash, MaxBounty), the brand (smsads.net), the technical stack, and 18 months of VOX-trained intel. You bring capital, people, and the SMS+ delivery infrastructure. Win-win when AffCo helps you hit $300M and gets us a meaningful exit."</em>
+      </div>
+    </section>
+
+    <section id="actions">
+      <h2>This Week — 5 Actions</h2>
+      <ol class="space-y-3" style="padding-left: 1.5rem;">
+        <li><strong>Pafi-Leo internal Shareholders Agreement</strong> — document the 50/50 (or agreed split) inside the founder bloc, voting protocol, tag-along, ROFR, deadlock mechanism. 1 hour.</li>
+        <li><strong>External M&A counsel scoping</strong> — get 2-3 referrals + quotes. Target Cyprus/Malta/Ireland boutique with HK + EU AdTech experience. Budget €30-50K opening retainer.</li>
+        <li><strong>Email to Tudor</strong> with formal pre-conditions: (1) audited VOX financials last 2yrs, (2) third-party UBO + parent guarantee if not VOX Solutions parent, (3) fully countersigned FMA + Annex 2 (rate-mechanism details), (4) indicative 1-page term sheet (cap structure, KPI logic, valuation formula, consideration mix). Response window 14 days.</li>
+        <li><strong>HK Companies Registry pull</strong> — VOX Solutions Global Ltd Annual Return + director list. ~$10 USD. Documents corporate substance + Ahmadi family ties.</li>
+        <li><strong>BATNA (Best Alternative To Negotiated Agreement) memo</strong> — 1-page on independent Elevate economics: solve postback, diversify aggregators (Infobip, D7 Networks, SMSPM), raise €250-500K angel round at €2-4M valuation. Strength of BATNA = strength of our JV negotiation leverage.</li>
+      </ol>
+    </section>
+
+    <section id="questions">
+      <h2>Open Questions Before The Call</h2>
+      <ol style="padding-left: 1.5rem;">
+        <li>Confirm "$300M" — VOX Ads (the AdTech division) or VOX Solutions Global Ltd (parent total)?</li>
+        <li>VOX's current AdTech revenue — to size the growth gap. Fish from Tudor: <em>"Where's VOX Ads tracking against the $300M target today?"</em></li>
+        <li>VOX funding status — institutional capital? PE/VC backing? Changes their willingness to deploy cash.</li>
+        <li>Capital ratio — how much money do they put in for what % of AffCo? Without their number, we can't fully evaluate dilution.</li>
+        <li>Who's pushing this internally — Tudor (Sales)? Ehsan (principal)? Lavinia (Director)? The proposer's level signals VOX's seriousness.</li>
+        <li>Timeline pressure — are they pushing for a quick close? If yes, why?</li>
+        <li>Geographic scope of AffCo — VOX-only, or open?</li>
+        <li>Already-signed Order Forms (#5572, #3642, #5598) — do they get assigned to AffCo? At what value?</li>
+        <li>smsads.net brand — stays with us, transferred to AffCo, or licensed?</li>
+        <li>NexusOS / Genie / pipeline tooling — stays with Pafi/Elevate, licensed to AffCo, or transferred?</li>
+        <li>Leo's contribution: capital, time, network, all three? Document precisely before signing.</li>
+        <li>Are we signing as Bogdan personally, or via Elevate? Different tax + liability profiles.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Bottom Line</h2>
+      <div class="alert alert-green">
+        This deal is a <strong>slow-acquisition trap</strong> without strong protections, or a <strong>real €2-10M+ outcome per founder</strong> with them. The single biggest determinant is whether we bring M&A counsel from day 1. Without legal, we will be outmaneuvered — VOX has done this before, we haven't. With legal, the right protections, and the $300M anchor as leverage, this can work.
+      </div>
+      <p style="margin-top: 24px;">
+        Full underlying analyses on disk:
+      </p>
+      <ul>
+        <li><code>~/.nexus/intel/elevate-ingest-2026-04-27.md</code> — 24-document audit (Framework Agreement decomposition, 12 alerts)</li>
+        <li><code>~/.nexus/intel/elevate-vox-jv-proposal-analysis-2026-04-27.md</code> — full strategic analysis (term-sheet skeleton, BATNA, decision tree)</li>
+        <li><code>~/.nexus/projects/smsads/PROJECT-CARD.md</code> — current state of truth</li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 13px;">
+      <p>
+        <strong>Confidential strategic brief</strong> — not for redistribution.<br/>
+        Prepared by Genie (NexusOS) for Pafi → Leo. Cross-referenced against signed VOX Framework Agreement (2025-12-02) + 24 source documents in /Users/pafi/Desktop/Elevate Marketing /.<br/>
+        Disclaimer: nothing in this document is legal or financial advice. Engage qualified M&A counsel before any term-sheet signature.
+      </p>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
