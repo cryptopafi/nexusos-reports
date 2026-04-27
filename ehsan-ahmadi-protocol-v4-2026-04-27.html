@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ehsan Ahmadi — Full Health Protocol Report v4</title>
+<meta property="og:title" content="Ehsan Ahmadi — Full Health Protocol Report v4">
+<meta property="og:description" content="Complete protocol: April 7 + April 13 2026 Intel-Lab bloodwork + July 2025 Acibadem imaging + Bachmeyer NLM. 9 flagged biomarkers including IGF-1 LOW, E2 HIGH, LDL HIGH. Full imaging, urology, statin decision.">
+<meta property="og:type" content="article">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      colors: {
+        accent: '#e11d48',
+        'accent-glow': 'rgba(225,29,72,0.18)',
+      }
+    }
+  }
+}
+</script>
+<style>
+:root { --accent: #e11d48; --accent-glow: rgba(225,29,72,0.18); }
+html.dark { --bg: #0A0A0F; --card: #111118; --text: #e5e7eb; --muted: #9ca3af; --border: rgba(255,255,255,0.08); --glass: rgba(17,17,24,0.7); }
+html:not(.dark) { --bg: #fafafa; --card: #ffffff; --text: #0f172a; --muted: #475569; --border: rgba(15,23,42,0.08); --glass: rgba(255,255,255,0.7); }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+.glass { background: var(--glass); backdrop-filter: blur(12px); border: 1px solid var(--border); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+.accent-bar { background: linear-gradient(90deg, var(--accent) 0%, transparent 100%); height: 3px; }
+.glow { box-shadow: 0 0 40px var(--accent-glow); }
+.fade-in { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.toc-link { color: var(--muted); transition: color .15s; display:block; padding: 4px 0; font-size: 0.85rem; }
+.toc-link:hover { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: rgba(225,29,72,0.06); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+tr:hover td { background: rgba(225,29,72,0.03); }
+.flag-normal { color: #22c55e; }
+.flag-warn { color: #eab308; }
+.flag-crit { color: #ef4444; font-weight: 600; }
+.flag-good { color: #22c55e; font-weight: 600; }
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: 1.6rem; margin-top: 2.2rem; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.6rem; color: var(--accent); }
+h4 { font-size: 1rem; margin-top: 1rem; margin-bottom: 0.4rem; }
+p { margin-bottom: 0.75rem; line-height: 1.65; }
+ul, ol { margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.65; }
+li { margin-bottom: 0.3rem; }
+.pull-quote { border-left: 3px solid var(--accent); padding: 0.6rem 1rem; margin: 1rem 0; font-style: italic; color: var(--muted); background: rgba(225,29,72,0.04); border-radius: 0 8px 8px 0; }
+code, .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; background: rgba(225,29,72,0.08); padding: 1px 6px; border-radius: 4px; color: var(--accent); }
+.chip { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em; }
+.chip-red { background: rgba(239,68,68,0.15); color: #f87171; }
+.chip-amber { background: rgba(234,179,8,0.15); color: #facc15; }
+.chip-green { background: rgba(34,197,94,0.15); color: #4ade80; }
+.chip-blue { background: rgba(88,166,255,0.15); color: #58a6ff; }
+.share-btn { background: var(--accent); color: white; padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; cursor: pointer; border: none; transition: opacity .15s; }
+.share-btn:hover { opacity: 0.85; }
+@media print {
+  html { class: ''; }
+  body { background: white !important; color: black !important; }
+  .no-print { display: none !important; }
+  .card { border: 1px solid #ddd !important; box-shadow: none !important; page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+  table { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="no-print sticky top-0 z-50 glass border-b" style="border-color: var(--border)">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-2 h-2 rounded-full" style="background: var(--accent); box-shadow: 0 0 12px var(--accent);"></div>
+      <span class="text-xs font-mono" style="color: var(--muted)">NEXUSOS · HEALTH · v4</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="theme-toggle" class="share-btn" style="background: transparent; border: 1px solid var(--border); color: var(--text);">Toggle theme</button>
+      <button id="share-btn" class="share-btn">Share</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="max-w-7xl mx-auto px-6 pt-12 pb-8">
+  <div class="flex items-center gap-2 mb-4">
+    <span class="chip chip-red">HIGH RISK</span>
+    <span class="chip chip-blue">Tier 2 — Full Report</span>
+    <span class="chip chip-amber">9 / 35+ flagged</span>
+  </div>
+  <h1 class="text-4xl md:text-5xl mb-3" style="letter-spacing: -0.03em;">Ehsan Ahmadi — Full Health Protocol Report</h1>
+  <div class="accent-bar w-32 mb-5"></div>
+  <p class="text-lg" style="color: var(--muted); max-width: 60ch;">
+    Version 4 (2026-04-27). Incorporates April 7 + April 13, 2026 Intel-Lab bloodwork · July 2025 Acibadem imaging (Echo, CT, USG, Stress ECG, Thyroid US) · Bachmeyer NLM (NotebookLM) protocol · urology findings · full supplement crossref.
+  </p>
+</header>
+
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 pb-20">
+
+<!-- Sidebar -->
+<aside class="no-print lg:sticky lg:top-20 self-start space-y-4">
+  <div class="card p-5">
+    <div class="text-xs uppercase tracking-wider mb-3" style="color: var(--muted)">Patient</div>
+    <div class="text-sm leading-relaxed">
+      <div><b>Mr. Ehsan Ahmadi</b></div>
+      <div style="color: var(--muted)">Male · DOB 09/07/1983</div>
+      <div style="color: var(--muted)">Age 42Y 9M</div>
+      <hr class="my-3" style="border-color: var(--border)">
+      <div><b>Clinic:</b> Justlife Home Healthcare</div>
+      <div><b>Doctor:</b> Dr. Saira Hyder</div>
+      <div><b>Lab:</b> Intel-Lab LLC, Deira Dubai</div>
+      <hr class="my-3" style="border-color: var(--border)">
+      <div><b>Samples:</b> 07 Apr + 13 Apr 2026</div>
+      <div><b>Imaging:</b> 21 Jul 2025 (Acibadem)</div>
+      <div><b>Report:</b> 27 Apr 2026 · v4</div>
+      <div><b>Risk:</b> <span class="flag-crit">High (confirmed CAD)</span></div>
+    </div>
+  </div>
+
+  <div class="card p-5">
+    <div class="text-xs uppercase tracking-wider mb-3" style="color: var(--muted)">Contents</div>
+    <nav>
+      <a class="toc-link" href="#s1">1. Bloodwork (Apr 13, 2026)</a>
+      <a class="toc-link" href="#s1b">1b. Bloodwork (Apr 7, 2026)</a>
+      <a class="toc-link" href="#s2">2. Key Clinical Flags</a>
+      <a class="toc-link" href="#s3">3. Bachmeyer Protocol</a>
+      <a class="toc-link" href="#s4">4. Stack Cross-Reference</a>
+      <a class="toc-link" href="#s5">5. Statin Decision</a>
+      <a class="toc-link" href="#s6">6. Independent Additions</a>
+      <a class="toc-link" href="#s7">7. Priority Labs</a>
+      <a class="toc-link" href="#s8">8. Bachmeyer NLM Answers</a>
+      <a class="toc-link" href="#s9">9. Imaging (Jul 2025)</a>
+      <a class="toc-link" href="#s10">10. Urology</a>
+    </nav>
+  </div>
+
+  <div class="card p-5">
+    <div class="text-xs uppercase tracking-wider mb-3" style="color: var(--muted)">Biomarker mix</div>
+    <canvas id="bioPie" width="200" height="200"></canvas>
+  </div>
+</aside>
+
+<!-- Main -->
+<main class="space-y-8">
+
+  <!-- Hero numbers row 1 — Apr 13 -->
+  <section class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
+    <div class="card p-4 glow">
+      <div class="text-xs uppercase tracking-wider" style="color: var(--muted)">DHEA-S</div>
+      <div class="text-3xl font-bold flag-crit">88</div>
+      <div class="text-xs" style="color: var(--muted)">µg/dL · target 280–450</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wider" style="color: var(--muted)">AM Cortisol</div>
+      <div class="text-3xl font-bold flag-warn">5.76</div>
+      <div class="text-xs" style="color: var(--muted)">µg/dL · floor of range</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wider" style="color: var(--muted)">Hs-CRP</div>
+      <div class="text-3xl font-bold flag-warn">1.39</div>
+      <div class="text-xs" style="color: var(--muted)">mg/L · target &lt;1.0</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wider" style="color: var(--muted)">Homocysteine</div>
+      <div class="text-3xl font-bold flag-warn">15.01</div>
+      <div class="text-xs" style="color: var(--muted)">µmol/L · target &lt;8–10</div>
+    </div>
+  </section>
+  <!-- Hero numbers row 2 — Apr 7 (new in v4) -->
+  <section class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
+    <div class="card p-4 glow">
+      <div class="text-xs uppercase tracking-wider" style="color: var(--muted)">IGF-1 <span style="font-weight:400;color:var(--muted)">Apr 7</span></div>
+      <div class="text-3xl font-bold flag-crit">75.1</div>
+      <div class="text-xs" style="color: var(--muted)">ng/mL · ref 86.2–214 · GH axis deficient</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wider" style="color: var(--muted)">LDL <span style="font-weight:400;color:var(--muted)">Apr 7</span></div>
+      <div class="text-3xl font-bold flag-crit">139</div>
+      <div class="text-xs" style="color: var(--muted)">mg/dL · ref &lt;100 (CAD patient)</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wider" style="color: var(--muted)">Estradiol E2 <span style="font-weight:400;color:var(--muted)">Apr 7</span></div>
+      <div class="text-3xl font-bold flag-crit">46.9</div>
+      <div class="text-xs" style="color: var(--muted)">pg/mL · ref ND–39.8 · aromatization</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wider" style="color: var(--muted)">Vitamin D <span style="font-weight:400;color:var(--muted)">Apr 7</span></div>
+      <div class="text-3xl font-bold flag-warn">39.7</div>
+      <div class="text-xs" style="color: var(--muted)">ng/mL · sufficient but target 60–80</div>
+    </div>
+  </section>
+
+  <div class="pull-quote fade-in">
+    Functionally deficient DHEA-S + borderline AM cortisol = HPA-axis suppression pattern. Combined with confirmed calcific LAD plaque, the protocol pivots from GH peptides to HPA reset (DSIP-led) + inflammation-targeted CV stack.
+  </div>
+
+  <!-- Section 1 -->
+  <section id="s1" class="fade-in">
+    <h2>1 · Bloodwork Results (April 13, 2026)</h2>
+
+    <h3>Biochemistry</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Bilirubin, total</td><td>10</td><td>µmol/L</td><td>1.70–20.0</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>Alkaline Phosphatase (ALP)</td><td>59</td><td>U/L</td><td>46–116</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>Urea, serum</td><td>5.6</td><td>mmol/L</td><td>3.2–8.2</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>Ferritin</td><td>149.8</td><td>ng/mL</td><td>23.9–336.2</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>Hs-CRP</td><td>1.39</td><td>mg/L</td><td>&lt;1 / 1–3 / &gt;3</td><td class="flag-warn">⚠ Average risk</td></tr>
+        <tr><td>Homocysteine</td><td>15.01</td><td>µmol/L</td><td>5.5–16.2</td><td class="flag-warn">⚠ Near upper limit</td></tr>
+        <tr><td>PSA total</td><td>0.74</td><td>ng/mL</td><td>≤2.0</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>Folic acid</td><td>14.5</td><td>ng/mL</td><td>3–17.24</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>Cortisol AM</td><td>5.76</td><td>µg/dL</td><td>5.27–22.45</td><td class="flag-warn">⚠ Borderline low</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Iron Profile</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Iron</td><td>22.9 (128 µg/dL)</td><td>µmol/L</td><td>10.6–36.7</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>TIBC</td><td>347</td><td>µg/dL</td><td>250–425</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>Transferrin Saturation</td><td>36.85</td><td>%</td><td>20–50</td><td class="flag-normal">Normal</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Immunology</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>PSA free (fPSA)</td><td>0.37</td><td>ng/mL</td><td>—</td><td>—</td></tr>
+        <tr><td>PSA free/total ratio</td><td>50</td><td>%</td><td>&gt;25%</td><td class="flag-good">✅ Excellent — low cancer risk</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Endocrinology</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>fT3</td><td>3.01</td><td>pg/mL</td><td>2.0–4.2</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>fT4</td><td>1.13</td><td>ng/dL</td><td>0.90–1.75</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>FSH</td><td>5.81</td><td>mIU/mL</td><td>1.4–18.1</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>LH</td><td>4.49</td><td>mIU/mL</td><td>1.5–9.3</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>Prolactin</td><td>6.14</td><td>ng/mL</td><td>2.1–17.7</td><td class="flag-normal">Normal</td></tr>
+        <tr><td>DHEA-S</td><td>88</td><td>µg/dL</td><td>34.5–568.9</td><td class="flag-crit">🚨 Functionally deficient</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Vitamins</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Vitamin B12</td><td>661</td><td>pg/mL</td><td>180–914</td><td class="flag-normal">Normal</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Missing — not tested, urgent</h3>
+    <ul>
+      <li>Total Testosterone, Free Testosterone, SHBG, Estradiol E2</li>
+      <li>Full lipid panel: LDL, HDL, TG, ApoB, Lp(a)</li>
+      <li>HbA1c + fasting glucose + HOMA-IR (Homeostatic Model Assessment of Insulin Resistance)</li>
+      <li>Creatinine + eGFR (estimated Glomerular Filtration Rate) + urine ACR (Albumin-to-Creatinine Ratio)</li>
+      <li>IGF-1 (Insulin-like Growth Factor 1), Vitamin D, CBC (Complete Blood Count), TSH (Thyroid-Stimulating Hormone), CK (Creatine Kinase), ALT/AST/GGT</li>
+    </ul>
+  </section>
+
+  <!-- Section 1b -->
+  <section id="s1b" class="fade-in">
+    <h2>1b · Bloodwork Results (April 7, 2026 — Justlife Home Healthcare)</h2>
+    <p style="color:var(--muted); font-size:0.85rem;"><em>Intel-Lab LLC · Sample G9656401604 · Collected 07/04/2026 · Reported 08/04/2026 · Dr. Saira Hyder</em></p>
+
+    <h3>Lipid Panel Extended</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Total Cholesterol</td><td><b>212.63</b></td><td>mg/dL</td><td>&lt;200</td><td class="flag-crit">🔴 HIGH</td></tr>
+        <tr><td>LDL Cholesterol (direct)</td><td><b>139.18</b></td><td>mg/dL</td><td>&lt;100 (CAD patient)</td><td class="flag-crit">🔴 HIGH</td></tr>
+        <tr><td>HDL Cholesterol</td><td>59.15</td><td>mg/dL</td><td>40–60+</td><td class="flag-normal">✅ Good</td></tr>
+        <tr><td>Triglycerides</td><td>69.92</td><td>mg/dL</td><td>&lt;150</td><td class="flag-good">✅ Excellent</td></tr>
+        <tr><td>VLDL (very-low-density lipoprotein)</td><td>13.92</td><td>mg/dL</td><td>0–30</td><td class="flag-normal">✅ Normal</td></tr>
+        <tr><td>Non-HDL Cholesterol</td><td><b>153.48</b></td><td>mg/dL</td><td>&lt;130</td><td class="flag-crit">🔴 HIGH</td></tr>
+        <tr><td>Total Chol / HDL Ratio</td><td>3.59</td><td>ratio</td><td>&lt;4.9</td><td class="flag-normal">✅ Normal</td></tr>
+        <tr><td>LDL / HDL Ratio</td><td>2.35</td><td>ratio</td><td>&lt;4.5</td><td class="flag-normal">✅ Normal</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:0.83rem; color:var(--muted)">Pattern: elevated LDL/total with excellent TG + good HDL — constitutional/genetic LDL pattern rather than metabolic syndrome. Retatrutide (already active) projected −21% LDL. Monitor before initiating statin.</p>
+
+    <h3>Endocrinology — Hormonal Panel</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>IGF-1 (Insulin-like Growth Factor 1)</td><td><b>75.10</b></td><td>ng/mL</td><td>86.2–214</td><td class="flag-crit">🔴 LOW — GH axis deficiency confirmed</td></tr>
+        <tr><td>Estradiol E2</td><td><b>46.95</b></td><td>pg/mL</td><td>ND–39.8 (male)</td><td class="flag-crit">🔴 HIGH — adipose aromatization</td></tr>
+        <tr><td>Testosterone, total</td><td>472.6</td><td>ng/dL</td><td>197–670</td><td class="flag-normal">✅ Mid-normal</td></tr>
+        <tr><td>Testosterone, free</td><td>13</td><td>pg/mL</td><td>9.57–40.6</td><td class="flag-warn">⚠ Low-normal</td></tr>
+        <tr><td>SHBG (sex hormone-binding globulin)</td><td>35.47</td><td>nmol/L</td><td>11.54–54.49</td><td class="flag-normal">✅ Normal</td></tr>
+        <tr><td>TSH (thyroid-stimulating hormone)</td><td>2.08</td><td>uIU/mL</td><td>0.38–5.33</td><td class="flag-normal">✅ Normal</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="background:rgba(239,68,68,0.08); border-left:3px solid #ef4444; padding:0.75rem 1rem; border-radius:4px; margin-top:0.75rem;">
+      <strong>IGF-1 75.10 — clinical significance:</strong> Below lab lower reference (86.2) and well below longevity-optimal (120–180 ng/mL). Directly confirms GH (growth hormone) axis deficiency and validates Bachmeyer's Phase 1 secretagogue protocol (Tesamorelin/Ipamorelin/CJC-1295 w/ DAC). Current DSIP Phase 0 HPA (hypothalamic-pituitary-adrenal) reset must complete before initiating GH secretagogues.
+    </div>
+    <div style="background:rgba(234,179,8,0.08); border-left:3px solid #eab308; padding:0.75rem 1rem; border-radius:4px; margin-top:0.5rem;">
+      <strong>E2 46.95 HIGH — clinical significance:</strong> Male reference ND–39.8 pg/mL. Elevated E2 in males = adipose tissue aromatization of testosterone. Retatrutide-driven fat loss will reduce aromatization over time. Consider DIM (diindolylmethane) 200–400 mg/day as a natural aromatase modulator. Discuss pharmaceutical AI (aromatase inhibitor, e.g., anastrozole 0.25 mg 2×/week) with Dr. Saira Hyder if E2 remains elevated at recheck.
+    </div>
+
+    <h3>Metabolic / Diabetic Profile</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Fasting Glucose</td><td>72.08</td><td>mg/dL</td><td>70–99</td><td class="flag-good">✅ Optimal</td></tr>
+        <tr><td>HbA1c (glycated haemoglobin)</td><td>5.1</td><td>%</td><td>&lt;5.7</td><td class="flag-good">✅ No diabetes/prediabetes</td></tr>
+        <tr><td>Fasting Insulin</td><td>8.76</td><td>uIU/mL</td><td>3–25</td><td class="flag-normal">✅ Normal — no insulin resistance</td></tr>
+        <tr><td>Creatinine, serum</td><td>0.89</td><td>mg/dL</td><td>0.7–1.3</td><td class="flag-normal">✅ Normal — kidneys clear</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Liver Enzymes</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>ALT/SGPT (alanine transaminase)</td><td>22</td><td>U/L</td><td>10–49</td><td class="flag-normal">✅ Normal</td></tr>
+        <tr><td>AST/SGOT (aspartate transaminase)</td><td>21</td><td>U/L</td><td>13–40</td><td class="flag-normal">✅ Normal</td></tr>
+        <tr><td>GGT (gamma-glutamyl transferase)</td><td>23</td><td>U/L</td><td>7–50</td><td class="flag-normal">✅ Normal</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:0.83rem; color:var(--muted)">All liver enzymes normal despite confirmed mild-moderate steatosis on USG (July 2025). Reassuring for statin initiation (if chosen) and oral Cardarine continuation.</p>
+
+    <h3>Vitamins</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Vitamin D 25-OH (total)</td><td>39.74</td><td>ng/mL</td><td>30–96 (sufficient); optimal 60–80</td><td class="flag-warn">⚠ Sufficient but suboptimal — supplement D3 + K2</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>CBC (Complete Blood Count) — April 7, 2026</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>RBC (red blood cells)</td><td>5.34 ×10⁶/µL</td><td>4.33–5.72</td><td class="flag-normal">✅</td></tr>
+        <tr><td>Haemoglobin</td><td>15.28 g/dL</td><td>12.55–16.99</td><td class="flag-normal">✅</td></tr>
+        <tr><td>Haematocrit</td><td>44.3%</td><td>38.3–49.3</td><td class="flag-normal">✅</td></tr>
+        <tr><td>MCV (mean corpuscular volume)</td><td>82.9 fL</td><td>78.3–95.5</td><td class="flag-normal">✅</td></tr>
+        <tr><td>Platelets</td><td>252.6 ×10³/µL</td><td>146.5–351.5</td><td class="flag-normal">✅</td></tr>
+        <tr><td>WBC (white blood cells)</td><td>7.99 ×10³/µL</td><td>3.53–9.52</td><td class="flag-normal">✅</td></tr>
+        <tr><td>Neutrophils</td><td>56.48%</td><td>40.62–70.51</td><td class="flag-normal">✅</td></tr>
+        <tr><td>Lymphocytes</td><td>33.09%</td><td>20.23–43.53</td><td class="flag-normal">✅</td></tr>
+        <tr><td>Eosinophils</td><td>3.77%</td><td>0.84–7.67</td><td class="flag-normal">✅</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Additional Markers — April 13, 2026 (supplemental draw)</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Test</th><th>Result</th><th>Reference</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>IL-6 (Interleukin-6)</td><td>3.2 pg/mL</td><td>0–7.0</td><td class="flag-normal">✅ Normal systemic inflammation</td></tr>
+        <tr><td>Fibrinogen</td><td>296 mg/dL</td><td>200–400</td><td class="flag-normal">✅ Normal coagulation</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="s2" class="fade-in">
+    <h2>2 · Key Clinical Flags (Deep Analysis)</h2>
+
+    <h3>Flag 1 — DHEA-S: 88 µg/dL (Functionally Deficient)</h3>
+    <p>Lab reference 34.5–568.9 is age-agnostic. Age-adjusted functional optimal for a 42-year-old male: ~280–450 µg/dL (Orentreich norms). At 88 he is bottom decile for his age group.</p>
+    <ul>
+      <li>Consistent with HPA (Hypothalamic-Pituitary-Adrenal) axis suppression</li>
+      <li>Correlates with increased cardiovascular risk, muscle loss, fatigue, immune suppression</li>
+      <li>Combined with borderline AM cortisol — suggests systemic HPA dysfunction</li>
+      <li>Note: "critically low" overstates it without ACTH stimulation test — correct framing is "functionally deficient, consistent with HPA suppression"</li>
+    </ul>
+
+    <h3>Flag 2 — AM Cortisol: 5.76 µg/dL (Borderline Low)</h3>
+    <p>Floor of reference range (5.27). Needs confirmed 7–9 AM draw + ACTH (Adrenocorticotropic Hormone) stim before HPA dysfunction is formally diagnosed. Combined with DHEA-S 88 — pattern is consistent but not yet confirmed.</p>
+
+    <h3>Flag 3 — Hs-CRP: 1.39 mg/L (Average Cardiac Risk)</h3>
+    <p>In a healthy patient this would be "average." In a patient with CONFIRMED calcific plaque in LAD (Left Anterior Descending coronary artery) — every CRP increment has clinical weight. Target &lt;1.0 mg/L.</p>
+
+    <h3>Flag 4 — Homocysteine: 15.01 µmol/L (Near Upper Limit)</h3>
+    <p>Lab upper limit 16.2 is permissive. Cardiovascular-optimal: &lt;8–10 µmol/L. At 15.01 with normal B12 (661) and folate (14.5) — this points to methylation pathway inefficiency (possible MTHFR (Methylenetetrahydrofolate Reductase) polymorphism), not simple deficiency.</p>
+
+    <h3>Positives</h3>
+    <ul>
+      <li>Liver function (Bilirubin, ALP): Normal — reassuring given fatty liver history</li>
+      <li>Iron profile: Completely normal</li>
+      <li>Thyroid (fT3, fT4): Normal</li>
+      <li>FSH/LH/Prolactin: Normal — pituitary intact</li>
+      <li>PSA free/total 50%: Excellent — very low prostate cancer risk</li>
+      <li>B12 661: Good</li>
+      <li>Folate 14.5: Good</li>
+    </ul>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="s3" class="fade-in">
+    <h2>3 · Dr. Bachmeyer Protocol</h2>
+    <p style="color: var(--muted); font-size: 0.9rem;"><em>Source: Dr Trevor Bachmeyer NLM (NotebookLM) corpus <code>1eef6220</code> — queried April 27, 2026. All recommendations in this section are Dr. Bachmeyer's protocols as extracted from his video corpus.</em></p>
+
+    <h3>3a · DHEA-S &amp; HPA Axis</h3>
+    <p>Dr. Bachmeyer does NOT recommend supplementing DHEA directly (oral, cream, or injectable). He views low DHEA-S as a downstream symptom of a misfiring HPA axis. His protocol relies entirely on upstream repair to restore native DHEA production:</p>
+    <ul>
+      <li><b>DSIP (Delta Sleep-Inducing Peptide):</b> Primary HPA recalibration tool. Does not suppress cortisol — stabilizes and harmonizes it. Restores healthy morning cortisol peak and evening decline.</li>
+      <li><b>MOTS-c:</b> Optimizes adrenal cellular environment to efficiently manufacture DHEA natively.</li>
+      <li><b>BPC-157 (Body Protection Compound 157):</b> Modulates vagal tone, shifts autonomic nervous system from sympathetic into parasympathetic recovery. Directly calms HPA axis.</li>
+      <li><b>CAX (Semax/Selank):</b> Restores hypothalamus-pituitary-adrenal communication. Tells hypothalamus to exit "panic emergency mode."</li>
+      <li><b>Morning sunlight:</b> 20–30 minutes direct sun on face daily — resets cortisol and cortical rhythm.</li>
+    </ul>
+
+    <h3>3b · Tesamorelin / GH Peptide Sequencing</h3>
+    <p>Bachmeyer's rule is absolute: <b>GH (Growth Hormone) peptides cannot run concurrently with a misfiring HPA axis.</b> With Cortisol AM at floor and DHEA-S at 88, the pituitary cannot respond effectively to Tesamorelin. His sequencing:</p>
+    <ol>
+      <li>Complete 20-day DSIP cycle first</li>
+      <li>Reintroduce Tesamorelin ONLY after natural cortisol rhythm is restored (healthy morning peak + evening drop, confirmed subjectively by sleep quality + mental clarity + libido)</li>
+    </ol>
+    <div class="pull-quote">Current status: Tesamorelin correctly NOT in stack.</div>
+
+    <h3>3c · Homocysteine / Methylation Support</h3>
+    <p>Bachmeyer targets one-carbon metabolism directly:</p>
+    <ul>
+      <li><b>Methylated B-vitamins + Riboflavin B2:</b> Clinical-grade methylated B-complex + <b>80 mg of Vitamin B2 twice daily</b> (160 mg/day total) — provides exact cofactors for the folate cycle</li>
+      <li><b>MOTS-c:</b> Specifically boosts the folate cycle and optimizes one-carbon metabolism</li>
+      <li><b>5-Amino-1MQ (5-Amino-1-Methylquinolinium):</b> 50–100 mg daily. Blocks NNMT (Nicotinamide N-Methyltransferase) enzyme, preventing NAD+ (Nicotinamide Adenine Dinucleotide) waste and metabolic roadblocks that elevate homocysteine</li>
+    </ul>
+
+    <h3>3d · Cardiovascular / CRP Reduction</h3>
+    <p>Bachmeyer views CV (cardiovascular) disease as an inflammatory disease, not a cholesterol problem. Chronic inflammation damages endothelial lining → micro-tears → LDL (Low-Density Lipoprotein) sent as "ambulance" → oxidized LDL → foam cells → plaque. His CV repair stack:</p>
+    <ul>
+      <li><b>KPV (Lysine-Proline-Valine):</b> Directly inhibits NF-κB (Nuclear Factor kappa-B) pathway, shuts down inflammatory cytokines, stops macrophages turning into foam cells. Dose: <b>250 mcg SubQ ×2/day.</b> Cycle: 4–6 weeks ON, 2–4 weeks OFF. <em>Note: the "52% CRP drop" and "11% calcification reduction" figures cited in earlier analysis are not indexed in human clinical literature — KPV's anti-inflammatory evidence base is primarily preclinical/inflammatory bowel models. Use KPV as anti-inflammatory adjunct, not as a calcification reversal agent.</em></li>
+      <li><b>BPC-157:</b> Patches micro-tears in arterial endothelial lining. Dose: <b>500 mcg to 1 mg daily SubQ.</b></li>
+      <li><b>TB-500 (Thymosin Beta-4):</b> Cardiac tissue repair. Dose: <b>5 mg every 5 days SubQ.</b> Loading: 5 mg ×2/week for first 4 weeks, then taper to 2.5 mg/week maintenance. <em>Note: human RCT (Randomized Controlled Trial) evidence for myocardial fibrosis reversal is limited — primarily rodent post-MI (Myocardial Infarction) studies. Reframe as speculative regenerative adjunct.</em></li>
+    </ul>
+
+    <h3>3e · Retatrutide + MOTS-c Nutrition Rule</h3>
+    <p>Mandatory: <b>100–200 g quality carbohydrates daily</b> (rice, potatoes, fruit) while on Retatrutide + MOTS-c. Retatrutide's glucagon component burns fat via carbohydrate oxidation. Without carbs, it burns muscle. MOTS-c rapidly depletes glycogen stores — insufficient carb intake causes metabolic disaster.</p>
+
+    <h3>3f · Bachmeyer Phased Protocol Calendar</h3>
+
+    <h4>Phase 0 — HPA Reset + Acute Repair (Days 1–20)</h4>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Timing</th><th>Compound</th><th>Dose</th><th>Route</th></tr></thead>
+      <tbody>
+        <tr><td>Nightly pre-bed</td><td>DSIP</td><td>250 mcg</td><td>SubQ</td></tr>
+        <tr><td>Daily AM fasted</td><td>5-Amino-1MQ</td><td>50–100 mg</td><td>Oral</td></tr>
+        <tr><td>Daily AM or PM</td><td>BPC-157</td><td>500 mcg–1 mg</td><td>SubQ</td></tr>
+        <tr><td>Daily AM or PM</td><td>KPV</td><td>250 mcg ×2/day</td><td>SubQ</td></tr>
+        <tr><td>Mon/Wed/Fri AM</td><td>MOTS-c</td><td>5 mg</td><td>SubQ</td></tr>
+        <tr><td>Mon/Wed/Fri AM</td><td>Kisspeptin-10</td><td>100–500 mcg</td><td>SubQ</td></tr>
+        <tr><td>Every 5 days</td><td>TB-500</td><td>5 mg</td><td>SubQ</td></tr>
+        <tr><td>Weekly</td><td>Retatrutide</td><td>0.25 mg → titrate toward 4 mg</td><td>SubQ</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>Phase 1 — GH Axis Activation (Weeks 4–12, after cortisol rhythm confirmed restored)</h4>
+    <ul>
+      <li>STOP DSIP (20-day reset complete)</li>
+      <li>START Tesamorelin: 1–2 mg SubQ nightly, 30 min pre-bed, empty stomach</li>
+      <li>Stop KPV at 4–6 weeks (cycle complete)</li>
+      <li>Stop Kisspeptin-10 at weeks 8–10 (prevent receptor desensitization)</li>
+      <li>Continue: BPC-157, TB-500, MOTS-c, 5-Amino-1MQ, Retatrutide at Phase 0 schedules</li>
+    </ul>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="s4" class="fade-in">
+    <h2>4 · Current Stack Cross-Reference</h2>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Compound</th><th>Ehsan Currently</th><th>Bachmeyer Rec</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>Retatrutide</td><td>2 mg/week</td><td>Titrate to 4 mg sweet spot</td><td class="flag-warn">⚠ Sub-target — continue titrating (slow: +0.5 mg every 4 weeks, not 1–2)</td></tr>
+        <tr><td>MOTS-c</td><td>3×5 mg/week</td><td>5 mg SubQ Mon/Wed/Fri</td><td class="flag-good">✅ Match</td></tr>
+        <tr><td>BPC-157</td><td>1 mg/day</td><td>500 mcg–1 mg/day</td><td class="flag-good">✅ Match</td></tr>
+        <tr><td>DSIP</td><td>250 mcg/day pre-bed</td><td>100–500 mcg pre-bed</td><td class="flag-good">✅ Match</td></tr>
+        <tr><td>GHK-Cu</td><td>2 mg/day</td><td>Not in protocol</td><td class="flag-warn">⚠ Off-protocol. Low harm. Monitor serum copper + ceruloplasmin at 12 weeks.</td></tr>
+        <tr><td>Cardarine (GW501516)</td><td>20 mg/day</td><td>Not in protocol</td><td class="flag-crit">🚨 STOP — multi-organ carcinogenicity in 2-year rodent studies at multiple dose levels. Not theoretical. Benefits covered by Retatrutide + MOTS-c.</td></tr>
+        <tr><td>Methyl B-complex</td><td>✓</td><td>Clinical-grade daily</td><td class="flag-good">✅ Match</td></tr>
+        <tr><td>Riboflavin B2</td><td>✓ (dose unconfirmed)</td><td>80 mg ×2/day (160 mg total)</td><td class="flag-good">✅ Match — verify dose</td></tr>
+        <tr><td>Omega-3</td><td>✓ (dose unconfirmed)</td><td>2–4 g EPA/DHA/day</td><td class="flag-good">✅ Match — verify dose; switch to EPA-dominant</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>Missing from Current Stack (Bachmeyer-critical)</h3>
+    <div class="card p-2 overflow-x-auto">
+    <table>
+      <thead><tr><th>Compound</th><th>Priority</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>KPV 250 mcg ×2/day SubQ</td><td><span class="chip chip-red">P0</span></td><td>NF-κB inhibition, CRP reduction — directly targets Hs-CRP 1.39 + LAD plaque inflammation</td></tr>
+        <tr><td>TB-500 5 mg/5 days SubQ</td><td><span class="chip chip-red">P0</span></td><td>Cardiac tissue support — LAD plaque context</td></tr>
+        <tr><td>5-Amino-1MQ 50–100 mg oral</td><td><span class="chip chip-amber">P1</span></td><td>Homocysteine clearance via NNMT inhibition + NAD+</td></tr>
+        <tr><td>Kisspeptin-10 Mon/Wed/Fri</td><td><span class="chip chip-amber">P1</span></td><td>HPG (Hypothalamic-Pituitary-Gonadal) axis support given DHEA-S 88</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="s5" class="fade-in">
+    <h2>5 · Statin Decision</h2>
+    <p><b>Bachmeyer's position:</b> CV disease is inflammatory, not cholesterol-driven. Statins deplete CoQ10 (Coenzyme Q10) → mitochondrial dysfunction. His approach: address inflammation with KPV + BPC-157 + TB-500, not lipid-lowering.</p>
+    <p><b>Clinical reality for Ehsan:</b> Confirmed calcific plaque in LAD = documented coronary artery disease. AHA/ESC (American Heart Association / European Society of Cardiology) guidelines: high-intensity statin is Class I indication for confirmed calcific coronary plaque regardless of LDL level.</p>
+    <div class="pull-quote"><b>Verdict:</b> Accept the statin — Bachmeyer's anti-statin position is defensible for primary prevention but is overridden by documented CAD (Coronary Artery Disease).</div>
+    <p>The two approaches are complementary, not antagonistic:</p>
+    <ul>
+      <li>Statin → addresses lipids (guideline-mandated)</li>
+      <li>Bachmeyer stack (KPV + BPC-157 + TB-500) → addresses inflammation (root cause)</li>
+    </ul>
+    <p><b>When statin starts: add Ubiquinol 200 mg/day</b> (reduced form CoQ10, preferred for &gt;40yo) — offsets statin-induced mitochondrial CoQ10 depletion.</p>
+    <p><b>Preferred statin:</b> Rosuvastatin 20–40 mg/day (preferred over atorvastatin in fatty liver — less hepatic metabolism, lower drug interaction risk).</p>
+    <p><b>GATE:</b> Do not initiate statin before lipid panel + ApoB (Apolipoprotein B) + Lp(a) (Lipoprotein-a) + ALT/AST/CK baseline.</p>
+  </section>
+
+  <!-- Section 6 -->
+  <section id="s6" class="fade-in">
+    <h2>6 · Independent Clinical Additions</h2>
+    <p style="color: var(--muted); font-size: 0.9rem;"><em>These supplement Bachmeyer's recommendations where his protocol has evidence gaps or omissions. They do not replace any Bachmeyer recommendation.</em></p>
+
+    <h3>A · Omega-3: Switch to EPA-Dominant Formulation</h3>
+    <p>Icosapent ethyl (pure EPA — Eicosapentaenoic Acid) 4 g/day. REDUCE-IT trial demonstrated 25% reduction in MACE (Major Adverse Cardiovascular Events) in patients with elevated triglycerides + statin therapy. Mixed EPA/DHA (Docosahexaenoic Acid) — STRENGTH trial — failed. Given confirmed LAD plaque — EPA-dominant is the evidence-based choice.</p>
+
+    <h3>B · Retatrutide Titration — Slow to Monthly Steps</h3>
+    <p>Published Phase 2 protocol used 4-week titration intervals. In MASLD (Metabolic Dysfunction-Associated Steatotic Liver Disease), faster titration increases GI adverse events and dehydration-driven AKI (Acute Kidney Injury) risk. Slow to +0.5 mg every 4 weeks.</p>
+
+    <h3>C · BPC-157 + TB-500 Cycling (VEGF Consideration)</h3>
+    <p>Both BPC-157 and TB-500 upregulate VEGF (Vascular Endothelial Growth Factor) and pro-angiogenic pathways. In a patient with coronary plaque, indefinite concurrent open-ended use warrants a defined cycling schedule: BPC-157 5-on/2-off weekly cycle; TB-500 maximum 8-week course per cycle with 4-week break.</p>
+
+    <h3>D · KPV Calcification Claim — Clarification</h3>
+    <p>The "11% calcification reduction" figure cited in earlier analysis is not supported by indexed human literature. KPV's evidence base is anti-inflammatory (NF-κB, colitis models). Use as CRP adjunct — not as a calcification reversal therapy.</p>
+
+    <h3>E · Consider TMG (Trimethylglycine) for Homocysteine</h3>
+    <p>1–3 g/day. Acts as direct methyl donor, independent of MTHFR status. Complementary to the methylated B-stack. Recheck homocysteine at 12 weeks.</p>
+
+    <h3>F · Check MTHFR Genotype</h3>
+    <p>One-time genetic test. If MTHFR C677T homozygous — explains why normal B12/folate is not clearing homocysteine. Determines lifetime methylation strategy.</p>
+  </section>
+
+  <!-- Section 7 -->
+  <section id="s7" class="fade-in">
+    <h2>7 · Priority Labs (Ranked by Urgency)</h2>
+    <ol>
+      <li><b>Full lipid panel + ApoB + Lp(a)</b> — gates statin type and intensity</li>
+      <li><b>Creatinine + eGFR + urine ACR</b> — gates Retatrutide titration (hard gate)</li>
+      <li><b>HbA1c + fasting glucose + HOMA-IR</b> — mandatory monitoring on Retatrutide</li>
+      <li><b>ALT + AST + GGT (Gamma-Glutamyl Transferase) + FibroScan</b> — fatty liver + statin safety baseline</li>
+      <li><b>Total T + Free T + SHBG (Sex Hormone-Binding Globulin) + E2 (Estradiol, sensitive LC-MS — Liquid Chromatography Mass Spectrometry — assay)</b> — entire gonadal axis unmeasured on a man with DHEA-S 88</li>
+      <li><b>8 AM Cortisol + ACTH + ACTH stimulation test</b> — confirms/refutes HPA axis dysfunction</li>
+      <li><b>IGF-1</b> — required before Tesamorelin resumes</li>
+      <li><b>25-OH Vitamin D</b></li>
+      <li><b>CBC with differential</b> — pre-expansion baseline</li>
+      <li><b>CK (creatine kinase)</b> — pre-statin baseline</li>
+      <li><b>TSH</b> — fT3/fT4 alone is incomplete thyroid panel</li>
+      <li><b>Serum copper + ceruloplasmin</b> — GHK-Cu monitoring at 12 weeks</li>
+      <li><b>MTHFR genotype + RBC folate</b> — homocysteine root cause workup</li>
+      <li><b>Agatston CAC (coronary artery calcium) score quantification</b> — calcific plaque mentioned on CT but not yet scored</li>
+    </ol>
+  </section>
+
+  <!-- Section 8 -->
+  <section id="s8" class="fade-in">
+    <h2>8 · Bachmeyer Protocol — Pending Questions Resolved</h2>
+    <p style="color: var(--muted); font-size: 0.85rem;"><em>Retrieved 2026-04-27 from both Bachmeyer NLM (NotebookLM) notebooks: <code>1eef6220</code> (Dr Trevor Bachmeyer Extended) + <code>cb9cf1fd</code> (Dr Trevor Bachmeyer).</em></p>
+
+    <!-- 8.1 Statins -->
+    <div class="card" style="margin-top:1.5rem;">
+      <h3 style="color:var(--accent-red, #ef4444); margin-top:0;">8.1 · High Cholesterol + Statins — Bachmeyer Position</h3>
+      <p><strong>Verdict: Vehemently against statins.</strong> Bachmeyer states statins poison the HMG-CoA (3-hydroxy-3-methyl-glutaryl coenzyme A) reductase enzyme, causing CoQ10 (coenzyme Q10) depletion, mitochondrial dysfunction, muscle damage, cognitive impairment, and crashed hormone production. He argues the brain is largely made of cholesterol and that a total cholesterol of <strong>275–300 mg/dL is actually healthy</strong>; driving it to 160–180 mg/dL is "killing people." The real danger is <strong>oxidized cholesterol accumulating in an inflamed endothelium</strong> — not cholesterol itself.</p>
+      <p><strong>Bachmeyer alternatives for Ehsan (already on stack or recommended):</strong></p>
+      <ul>
+        <li><strong>Retatrutide</strong> (already active at 2 mg/wk): Clinically shown to reduce LDL (low-density lipoprotein) −21%, raise HDL (high-density lipoprotein) +11%, lower triglycerides −26%, clear hepatic fat, resolve metabolic syndrome.</li>
+        <li><strong>Cardarine / GW501516</strong>: Clears VLDL (very-low-density lipoprotein) from liver, improves endothelial function, drives hepatic fatty acid oxidation — directly addressing lipid dysfunction root causes.</li>
+        <li><strong>Address root cause: oxidized cholesterol in inflamed endothelium</strong> via BPC-157 (already active) + KPV (already active) anti-inflammatory stack.</li>
+      </ul>
+      <div style="background:rgba(239,68,68,0.08); border-left: 3px solid #ef4444; padding: 0.75rem 1rem; border-radius: 4px; margin-top:0.75rem;">
+        <strong>Clinical note (Section 6 context):</strong> Ehsan has <em>confirmed calcific plaque in LAD (left anterior descending artery)</em> — this is a Class I AHA/ESC (American Heart Association / European Society of Cardiology) indication. The attending physician's recommendation to start a statin carries guideline weight. If Ehsan and Dr. Saira Hyder decide to initiate one despite Bachmeyer's position, prefer <strong>rosuvastatin</strong> (better hepatic profile) over atorvastatin, add <strong>Ubiquinol 200 mg/day</strong> to offset CoQ10 depletion, and recheck ALT/AST (alanine transaminase / aspartate transaminase) at 6 weeks.
+      </div>
+    </div>
+
+    <!-- 8.2 GHK-Cu -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.2 · GHK-Cu — Bachmeyer Protocol</h3>
+      <ul>
+        <li><strong>What it does:</strong> Master gene modulator regulating 4,000+ genes toward healing. Increases cellular antioxidants (superoxide dismutase, catalase, glutathione), promotes angiogenesis via VEGF (vascular endothelial growth factor), rebuilds collagen/elastin, reduces oxidative stress. Also described as "neuronal armor" for brain protection.</li>
+        <li><strong>Dose:</strong> <strong>2 mg/day SubQ (subcutaneous)</strong> (Extended notebook) / 300 mcg up to 2–3 mg/day (original notebook). Ehsan's current dose of 2 mg/day is confirmed as within Bachmeyer range.</li>
+        <li><strong>Timing:</strong> Morning, fasted state. If GI (gastrointestinal) sensitivity, inject with food. Space hours apart from growth factor peptides.</li>
+        <li><strong>HARD WARNING — Never mix in syringe:</strong> The reactive copper ion immediately destroys co-injected peptides. Always inject GHK-Cu solo. Never use blend products (e.g., KLOW, GLOW) — mixing causes rapid peptide degradation.</li>
+        <li><strong>Cycling:</strong> Must be cycled to prevent copper toxicity. Bachmeyer does not specify an exact cycle in these notebooks; standard practice is 8 weeks on / 2–4 weeks off.</li>
+      </ul>
+    </div>
+
+    <!-- 8.3 Cardarine -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.3 · Cardarine (GW501516) — Bachmeyer Position</h3>
+      <p><strong>Verdict: Highly recommended</strong> — described as the "ultimate control system for metabolic fuel usage." Activates PPAR-delta (peroxisome proliferator-activated receptor delta), forcing fat oxidation over carbohydrate dependency and triggering mitochondrial biogenesis.</p>
+      <p><strong>Cardiovascular benefits per Bachmeyer:</strong> Spikes HDL, lowers triglycerides, clears atherogenic LDL particles, improves endothelial function, clears VLDL from liver.</p>
+      <p><strong>Cancer narrative — Bachmeyer's debunk:</strong> The carcinogenicity studies used cancer-prone rats given <em>100–320× the therapeutic human equivalent</em> via continuous implants, not normal dosing. Human safety data shows zero carcinogenic signaling; Cardarine may actually <em>protect</em> against cancer via improved mitochondrial function and enhanced NK (natural killer) cell immune surveillance.</p>
+      <ul>
+        <li><strong>Bachmeyer protocol:</strong> SubQ injection 30 minutes before workouts, cycled <strong>30 days on / 30 days off</strong>.</li>
+        <li><strong>Ehsan's current use:</strong> 20 mg/day <strong>oral</strong>. Dose is within range, but route differs from Bachmeyer's specified SubQ. Oral Cardarine is absorbed via GI tract and does reach systemic circulation, but SubQ bypasses first-pass hepatic metabolism — relevant given Ehsan's elevated liver enzymes and fatty liver history. If continuing oral, consider switching to SubQ to reduce hepatic load.</li>
+      </ul>
+      <div style="background:rgba(234,179,8,0.08); border-left: 3px solid #eab308; padding: 0.75rem 1rem; border-radius: 4px; margin-top:0.75rem;">
+        <strong>Independent safety note (see Section 6):</strong> The carcinogenicity findings in 2-year rodent studies are considered serious by regulatory bodies regardless of dose scaling. Ehsan should make an informed decision. If continuing Cardarine, strict 30-on/30-off cycling per Bachmeyer's own protocol is non-negotiable.
+      </div>
+    </div>
+
+    <!-- 8.4 Additional CV Peptides -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.4 · Additional Cardiovascular Peptides — Bachmeyer Recommendations</h3>
+      <p>Beyond KPV, BPC-157, and TB-500, Bachmeyer identifies the following for atherosclerosis and endothelial repair:</p>
+      <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align:left; padding:0.5rem 0.75rem;">Peptide</th>
+            <th style="text-align:left; padding:0.5rem 0.75rem;">Mechanism</th>
+            <th style="text-align:left; padding:0.5rem 0.75rem;">Key Claim</th>
+            <th style="text-align:left; padding:0.5rem 0.75rem;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.75rem;"><strong>Retatrutide</strong></td>
+            <td style="padding:0.5rem 0.75rem;">Triple agonist → eNOS (endothelial nitric oxide synthase) activation, epicardial fat elimination</td>
+            <td style="padding:0.5rem 0.75rem;">31% reduction in CV mortality, 28% reduction in MI (myocardial infarction) in clinical trials; reverses LV (left ventricular) ejection fraction issues</td>
+            <td style="padding:0.5rem 0.75rem; color:#22c55e;">✅ Active (2 mg/wk)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.75rem;"><strong>MOTS-c</strong></td>
+            <td style="padding:0.5rem 0.75rem;">Cardiac fuel metabolism optimization, nitric oxide for vasodilation</td>
+            <td style="padding:0.5rem 0.75rem;">Directly supports cardiac energy efficiency and vascular tone</td>
+            <td style="padding:0.5rem 0.75rem; color:#22c55e;">✅ Active (3×5 mg/wk)</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.75rem;"><strong>SS-31 (Elamipretide)</strong></td>
+            <td style="padding:0.5rem 0.75rem;">Armors inner mitochondrial membrane of cardiomyocytes</td>
+            <td style="padding:0.5rem 0.75rem;">Improves myocardial energy efficiency by 35% within hours</td>
+            <td style="padding:0.5rem 0.75rem; color:#eab308;">⚠ Consider adding</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.75rem;"><strong>LL-37 (Cathelicidin)</strong></td>
+            <td style="padding:0.5rem 0.75rem;">Destroys bacterial biofilms/pathogens inside arterial plaque</td>
+            <td style="padding:0.5rem 0.75rem;">Used in short 4-week bursts to clear infectious components of plaque</td>
+            <td style="padding:0.5rem 0.75rem; color:#eab308;">⚠ Consider adding</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.75rem;"><strong>HGH Analogues</strong> (CJC-1295 w/ DAC, Ipamorelin, Tesamorelin)</td>
+            <td style="padding:0.5rem 0.75rem;">IGF-1 (insulin-like growth factor 1) → PI3K/AKT pathway in cardiomyocytes; apolipoprotein A1 → reverse cholesterol transport</td>
+            <td style="padding:0.5rem 0.75rem;">"100% cardioprotective" per Bachmeyer; actively clears cholesterol from arteries; reverses LV hypertrophy</td>
+            <td style="padding:0.5rem 0.75rem; color:#eab308;">⚠ Phase 1 (pending HPA reset completion)</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem 0.75rem;"><strong>MT2 (Melanotan II)</strong></td>
+            <td style="padding:0.5rem 0.75rem;">Suppresses systemic inflammation, improves endothelial nitric oxide bioavailability, reduces foam cell formation</td>
+            <td style="padding:0.5rem 0.75rem;">Directly shrinks and prevents atherosclerotic plaque via foam cell reduction</td>
+            <td style="padding:0.5rem 0.75rem; color:#6b7280;">○ Not currently active</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 8.5 Supplement Crossref -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.5 · Supplement Crossref — Bachmeyer Position</h3>
+      <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <th style="text-align:left; padding:0.5rem 0.75rem;">Supplement</th>
+            <th style="text-align:left; padding:0.5rem 0.75rem;">Ehsan's Dose</th>
+            <th style="text-align:left; padding:0.5rem 0.75rem;">Bachmeyer Protocol</th>
+            <th style="text-align:left; padding:0.5rem 0.75rem;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.75rem;"><strong>Methyl B Complex</strong></td>
+            <td style="padding:0.5rem 0.75rem;">Per label</td>
+            <td style="padding:0.5rem 0.75rem;">Recommended — supports one-carbon metabolism, hormone detox, neurotransmitter synthesis (dopamine, serotonin). Must use clinical-grade brands only: <strong>Thorne, Orthomolecular, Standard Process, or Professional Complementary Health Formulas</strong>. Avoid standard retail.</td>
+            <td style="padding:0.5rem 0.75rem; color:#22c55e;">✅ Aligned — verify brand is clinical-grade</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.75rem;"><strong>Riboflavin B2</strong></td>
+            <td style="padding:0.5rem 0.75rem;">Per label</td>
+            <td style="padding:0.5rem 0.75rem;"><strong>80 mg twice daily</strong>. Core precursor for FAD (flavin adenine dinucleotide) and FMN (flavin mononucleotide) — essential cofactors for mitochondrial electron transport chain (complexes I and II), directly boosting ATP (adenosine triphosphate) production. Note: turns urine neon yellow — normal, not concerning.</td>
+            <td style="padding:0.5rem 0.75rem; color:#eab308;">⚠ Verify dose — Bachmeyer uses 80 mg ×2/day</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem 0.75rem;"><strong>Omega-3 / Fish Oil</strong></td>
+            <td style="padding:0.5rem 0.75rem;">Per label</td>
+            <td style="padding:0.5rem 0.75rem;"><strong>3,000–4,000 mg EPA (eicosapentaenoic acid) + DHA (docosahexaenoic acid) daily</strong>, split into two doses. Explicitly dismisses flaxseed oil ("garbage") and krill oil. EPA/DHA form required for neuronal membrane integrity and production of resolvins, protectins, and maresins (specialized pro-resolving mediators for active tissue repair). No interactions with BPC-157, TB-500, KPV, GHK-Cu, MOTS-c stack — views as essential raw material enabling peptide repair signals. <strong>Caution:</strong> high-dose Omega-3 impairs clotting — relevant pre-surgery or trauma.</td>
+            <td style="padding:0.5rem 0.75rem; color:#eab308;">⚠ Verify dose is 3–4g EPA+DHA, not total oil</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.82rem; color:var(--muted); margin-top:0.75rem;">Note: Bachmeyer's Extended notebook contains no specific protocols for Methyl B or B2 — data sourced from the Dr Trevor Bachmeyer notebook. Omega-3 protocol confirmed in both notebooks.</p>
+    </div>
+
+    <!-- 8.6 IGF-1 -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.6 · IGF-1 75.10 LOW — GH Secretagogue Protocol</h3>
+      <p><strong>Phase 0 completion (per Dr Trevor Bachmeyer notebook):</strong> DSIP 20-day cycle done + deep sleep restored + morning cortisol normalized. The Extended notebook takes a different position — run GH secretagogues concurrently from Day 1, as restoring the GH/IGF-1 axis lowers inflammation and helps the HPA axis heal. Both positions are captured; clinical judgment call for Dr. Saira Hyder.</p>
+      <p><strong>Bachmeyer's GH secretagogue protocol:</strong></p>
+      <ul>
+        <li><strong>Option A (preferred stack):</strong> CJC-1295 w/ DAC (2 mg once weekly SubQ) + Ipamorelin (100–200 mcg nightly SubQ) — dual-pathway stimulation yielding 40% greater GH increase than either alone.</li>
+        <li><strong>Option B:</strong> Tesamorelin 1–2 mg SubQ nightly. <em>Never mix Tesamorelin with Ipamorelin in the same protocol.</em></li>
+        <li><strong>Timing:</strong> 30–60 minutes before bed, strictly empty stomach — aligns with natural circadian GH pulses during deep sleep.</li>
+        <li><strong>Duration:</strong> Minimum 6–9 months to meaningfully raise IGF-1 from 75.10 toward optimal (120–180 ng/mL).</li>
+      </ul>
+    </div>
+
+    <!-- 8.7 E2 -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.7 · Estradiol E2 46.95 HIGH (Male) — Bachmeyer Protocol</h3>
+      <p><strong>Both notebooks agree: NO aromatase inhibitors (AIs)</strong> — anastrozole and exemestane only treat the symptom; once stopped, aromatase rebounds violently above baseline.</p>
+      <p><strong>Bachmeyer's approach (Extended notebook):</strong></p>
+      <ul>
+        <li><strong>DIM (diindolylmethane) 300 mg/day</strong> — enhances Phase 2 liver conjugation, converting estrogen to water-soluble form for urinary excretion. Clinically reduces circulating estrogen by ~30%.</li>
+        <li><strong>Retatrutide</strong> (already active): reducing adipose tissue below 15% body fat eliminates aromatase at the source.</li>
+      </ul>
+      <p><strong>Bachmeyer's approach (original notebook):</strong></p>
+      <ul>
+        <li><strong>Enclomiphene</strong> — blocks estrogen receptors at pituitary/hypothalamus, forcing the body to correct hormonal balance upstream. Does not mention DIM.</li>
+        <li>Retatrutide for visceral fat reduction — same mechanism.</li>
+      </ul>
+      <p style="font-size:0.83rem; color:var(--muted)">Practical path: start with DIM 300mg/day (low risk, non-pharmaceutical). Recheck E2 at 8 weeks alongside Retatrutide. If still elevated and symptomatic, discuss Enclomiphene with Dr. Saira Hyder.</p>
+    </div>
+
+    <!-- 8.8 Testosterone -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.8 · Free Testosterone 13 pg/mL — Bachmeyer Protocol</h3>
+      <p>Bachmeyer: men should have total T ~1,000 ng/dL with free T "through the roof." He prefers natural restoration over exogenous TRT (which shuts down endogenous production).</p>
+      <p><strong>Natural restoration (preferred):</strong> <strong>Kisspeptin</strong> — the "master switch" stimulating GnRH neurons → LH/FSH → natural testosterone production. Preserves testicular function.</p>
+      <p><strong>If TRT is chosen:</strong> IM (intramuscular) injection <strong>50 mg every 2nd day</strong> or <strong>100 mg every 3.5 days</strong> (micro-dosing protocol to prevent 5-alpha reductase saturation → DHT/E2 conversion). Alternatively: Cypionate/Enanthate 100–150 mg/week for primary hypogonadism. <strong>Never transdermal creams/gels</strong> — causes localized DHT spikes driving prostate growth.</p>
+      <p><strong>Secondary hypogonadism approach:</strong> Enclomiphene — tricks the pituitary into boosting its own LH/FSH output. Appropriate if pituitary-hypothalamic axis is the limiting factor (likely given low IGF-1 + HPA suppression).</p>
+      <p style="font-size:0.83rem; color:var(--muted)">No specific free T cutoff for intervention — Bachmeyer bases it on symptoms (fatigue, brain fog, muscle loss). Ehsan's current E2 suppression of free T should improve as E2 drops. Recheck at 8 weeks post-DIM initiation.</p>
+    </div>
+
+    <!-- 8.9 Vitamin D -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.9 · Vitamin D 39.74 ng/mL — Bachmeyer Protocol</h3>
+      <ul>
+        <li><strong>Dose:</strong> 5,000–10,000 IU of Vitamin D3 daily. Bachmeyer frames D3 as a prohormone, not a vitamin.</li>
+        <li><strong>K2 mandatory:</strong> Must pair with Vitamin K2 — mobilized calcium must go to bones, not calcify arteries. Critical given Ehsan's confirmed LAD calcific plaque.</li>
+        <li><strong>Target blood level:</strong> 40–60 ng/mL (per original notebook). Ehsan at 39.74 is at the floor of this range — supplement immediately.</li>
+        <li><strong>Timing:</strong> Not specified in sources. Standard practice: with largest fat-containing meal (D3 is fat-soluble).</li>
+      </ul>
+    </div>
+
+    <!-- 8.10 Lipids -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.10 · Lipid Pattern (LDL 139 HIGH, TG 70 EXCELLENT) — Bachmeyer Protocol</h3>
+      <p>Bachmeyer dismisses isolated high LDL + total cholesterol as a primary threat when TG/HDL ratio is excellent. He considers TC 250–300 healthy as a building block for brain, cell membranes, and sex hormones. The real danger is <em>oxidized LDL in inflamed endothelium</em>.</p>
+      <p><strong>Protocol for this specific pattern (high LDL, excellent TG/HDL):</strong></p>
+      <ul>
+        <li><strong>BPC-157</strong> (already active): repairs endothelial lining, preventing LDL from oxidizing into dangerous plaque.</li>
+        <li><strong>KPV</strong> (already active): stops systemic inflammation that oxidizes LDL at the vessel wall.</li>
+        <li><strong>Retatrutide + Cardarine</strong> (already active): increase hepatic fatty acid oxidation, clear VLDL, projected −21% LDL reduction.</li>
+        <li>No additional specific protocol beyond the existing active stack for isolated constitutional LDL pattern with excellent metabolic markers.</li>
+      </ul>
+    </div>
+
+    <!-- 8.11 Diastolic Dysfunction -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.11 · Diastolic Dysfunction E/A 0.68 — Bachmeyer Protocol</h3>
+      <p><strong>Both notebooks cite TB-500 (thymosin beta-4) as the primary intervention.</strong></p>
+      <ul>
+        <li><strong>TB-500:</strong> 5 mg every 5 days SubQ. Deprograms activated cardiac fibroblasts (stops scar tissue deposition), promotes cardiac angiogenesis, restores oxygen delivery to hypoxic tissue. Bachmeyer explicitly cites: <em>"normalized LV wall thickness, improved diastolic function — the ability to relax and fill with blood, reduced fibrosis markers, preserved systolic function."</em></li>
+        <li><strong>SS-31 (Elamipretide)</strong> (original notebook): armors the inner mitochondrial membrane of cardiomyocytes — prevents pathological remodeling and cardiac thickening. Strongly complements TB-500 for diastolic dysfunction.</li>
+        <li><strong>GH secretagogues</strong> (Phase 1): restoring IGF-1 improves ejection fraction and reverses LV hypertrophy — directly relevant to diastolic improvement.</li>
+      </ul>
+      <p style="font-size:0.83rem; color:var(--muted)">TB-500 is already indicated for CV repair; the diastolic dysfunction finding adds urgency to initiating it if not already active.</p>
+    </div>
+
+    <!-- 8.12 LUTS -->
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="color:var(--accent, #6366f1); margin-top:0;">8.12 · LUTS / Urological Symptoms — Bachmeyer Protocol</h3>
+      <p>Bachmeyer: LUTS and BPH (benign prostatic hyperplasia) are systemic metabolic + inflammatory diseases, not structural issues. Urinary hesitancy is driven by elevated sympathetic tone → excessive norepinephrine → alpha-1 adrenergic receptor activation in prostate smooth muscle → constant low-level contraction. Root cause: high E2 + visceral fat + chronic stress.</p>
+      <p><strong>Bachmeyer's LUTS protocol (Extended notebook):</strong></p>
+      <ul>
+        <li><strong>BPC-157:</strong> 500 mcg every 2nd day SubQ (already active at 1mg/day — consider splitting to bid)</li>
+        <li><strong>DIM:</strong> 300 mg/day (also addresses E2 — double benefit)</li>
+        <li><strong>GHK-Cu:</strong> 2 mg/day (already active)</li>
+        <li><strong>MOTS-c:</strong> 3.5 mg 3×/week or 5 mg 2×/week (already active at 3×5mg/wk)</li>
+        <li><strong>KPV:</strong> 300–400 mcg/day (already active)</li>
+        <li><strong>Alpha-7 nAChR (nicotinic acetylcholine receptor) agonist patch:</strong> 3.5 mg/day — modulates vagal tone, halts neurogenic inflammation in smooth muscle</li>
+        <li><strong>Zinc Picolinate:</strong> 50 mg/day</li>
+        <li><strong>Body fat:</strong> below 15% — eliminates aromatase-driven E2 excess that feeds prostate inflammation</li>
+      </ul>
+      <p><strong>Original notebook addition:</strong> DMSO (dimethyl sulfoxide) — powerful anti-inflammatory + free radical scavenger, FDA-approved for bladder instillation. Prostate pathology driven by estrogen (not testosterone) — never use Finasteride or DHT blockers.</p>
+      <p style="font-size:0.83rem; color:var(--muted)">Most of this protocol is already active (BPC-157, GHK-Cu, MOTS-c, KPV). Add DIM 300mg/day and Zinc Picolinate 50mg/day. Request Alpha-7 nAChR patch from Dr. Saira Hyder if LUTS persists.</p>
+    </div>
+
+  </section>
+
+  <!-- Section 9 -->
+  <section id="s9" class="fade-in">
+    <h2>9 · Imaging Results (July 21, 2025 — Acibadem Taksim Hospital)</h2>
+    <p style="color:var(--muted); font-size:0.85rem;"><em>Annual check-up. All studies from Acibadem Hosp. Taksim, Istanbul. Pre-peptide protocol baseline.</em></p>
+
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="margin-top:0;">CT Thorax (Low-Dose, Non-Contrast) — 21.07.2025</h3>
+      <p>Physician: Assoc.Prof.Dr. Serpil Kurtcan</p>
+      <ul>
+        <li><strong>🔴 Millimetric calcific plaque in the LAD (left anterior descending artery)</strong> — clinical evaluation recommended. This is the primary cardiovascular finding driving the protocol.</li>
+        <li>Mild wall thickening in central portions of bilateral bronchi — mild airway inflammation.</li>
+        <li>Lung aeration slightly heterogeneous in lower zones. Sequelae subpleural curvilinear parenchymal band formations in posterobasal areas of both lower lobes.</li>
+        <li>Noncalcific nodule &lt;5mm (left lower lobe, laterobasal) + calcific nodule (posterobasal/laterobasal) — both &lt;5mm, nonspecific, no follow-up indicated at this size.</li>
+        <li>Accessory spleen adjacent to lower pole of spleen — benign anatomical variant.</li>
+        <li>Mild thoracic spondylosis with mild degenerative osteophytic tapering. Millimetric Schmorl nodule on inferior endplate of T10.</li>
+        <li>Increase in paracardiac fat pad — consistent with epicardial fat, a cardiovascular risk amplifier (addressed by Retatrutide).</li>
+        <li>Mild hypodense effusion in pericardial recesses — trace, clinically insignificant.</li>
+        <li>No pleural effusion, no mediastinal lymphadenopathy, no lytic/destructive bony lesions.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="margin-top:0;">Transthoracic Echocardiography (TTE) — 21.07.2025</h3>
+      <p>Physician: Dr. Doğaç Çağlar Gürbüz · LVEF (left ventricular ejection fraction): <strong>65.82%</strong> (normal ≥55%)</p>
+      <table>
+        <thead><tr><th>Parameter</th><th>Value</th><th>Significance</th></tr></thead>
+        <tbody>
+          <tr><td>LVEF</td><td>65.82%</td><td class="flag-normal">✅ Preserved systolic function</td></tr>
+          <tr><td>E/A ratio (mitral inflow)</td><td>0.68</td><td class="flag-warn">⚠ Borderline — mild diastolic dysfunction pattern (Grade I)</td></tr>
+          <tr><td>Mitral Valve</td><td>Mild insufficiency (MR 1+)</td><td class="flag-warn">⚠ Mild — monitor annually</td></tr>
+          <tr><td>Tricuspid Valve</td><td>Mild insufficiency (TR 1+)</td><td class="flag-warn">⚠ Mild — monitor annually</td></tr>
+          <tr><td>PAP (pulmonary artery pressure)</td><td>28 mmHg</td><td class="flag-normal">✅ Normal (&lt;35 mmHg)</td></tr>
+          <tr><td>LV dimensions (LVDD/LVDS)</td><td>42mm / 25mm</td><td class="flag-normal">✅ Normal</td></tr>
+          <tr><td>Aortic valve, pericardium</td><td>Normal</td><td class="flag-normal">✅</td></tr>
+          <tr><td>All LV segmental motions</td><td>Normal</td><td class="flag-normal">✅ No wall motion abnormalities</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.83rem; color:var(--muted); margin-top:0.5rem;">E/A 0.68 suggests early/borderline diastolic dysfunction (impaired relaxation pattern). Not alarming at age 42 with preserved EF, but warrants monitoring. MOTS-c (already active) supports cardiac fuel metabolism and may improve diastolic function over time.</p>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="margin-top:0;">Stress ECG (Bruce Protocol) — 21.07.2025</h3>
+      <ul>
+        <li><strong>Result: Maximal Negative Stress Test</strong> — no ischemia provoked at maximal exercise.</li>
+        <li>MET (metabolic equivalent) value: <strong>10.1</strong> — good functional capacity (above average for age 42).</li>
+        <li>No arrhythmia, no ST depression or elevation, no symptoms during test.</li>
+        <li>Termination reason: test duration sufficient (not symptom-limited).</li>
+      </ul>
+      <p style="font-size:0.83rem; color:var(--muted)">Reassuring: despite calcific LAD plaque on CT, no exercise-induced ischemia. The plaque is present but not flow-limiting at current stage. This supports conservative management focus rather than urgent revascularization.</p>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="margin-top:0;">USG Abdomen Whole — 21.07.2025</h3>
+      <p>Physician: Prof.Dr. Ufuk Kemal Gülsoy</p>
+      <ul>
+        <li><strong>🟡 Mild-moderate liver steatosis</strong> — diffusely increased parenchymal echogenicity, liver extends 1–2cm below costal arc. NAFLD (non-alcoholic fatty liver disease) pattern, confirmed on imaging.</li>
+        <li>1cm echogenic nodular formation in upper medial right lobe — compatible with <strong>benign capillary hemangioma</strong>. No further workup needed unless size increases.</li>
+        <li>Gallbladder, pancreas, spleen, bilateral kidneys: all normal.</li>
+        <li>Prostate: 30×43×32mm, volume ~22mL — <strong>normal size for age 42</strong>. Homogeneous parenchyma.</li>
+        <li>No ascites, no paraaortic lymphadenopathy.</li>
+      </ul>
+      <p style="font-size:0.83rem; color:var(--muted)">Liver steatosis confirms fatty liver context. Normal liver enzymes (ALT 22, AST 21, GGT 23 on April 7 panel) despite steatosis is reassuring. Retatrutide has proven efficacy in hepatic fat clearance. Oral Cardarine route adds hepatic first-pass load — consider switching to SubQ per Bachmeyer protocol.</p>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h3 style="margin-top:0;">Thyroid Ultrasound — 21.07.2025</h3>
+      <p>Result: <strong>TIRADS (Thyroid Imaging Reporting and Data System) 1 — Normal.</strong> Both lobes homogeneous, no nodules, no cystic/solid lesions. No action required.</p>
+    </div>
+  </section>
+
+  <!-- Section 10 -->
+  <section id="s10" class="fade-in">
+    <h2>10 · Urology (July 21, 2025 — Acibadem Taksim)</h2>
+    <p>Physician: Prof.Dr. Can Obek</p>
+    <p><strong>Complaint:</strong> LUTS (lower urinary tract symptoms) for 5+ years — urinary hesitancy, post-void dribbling, nocturia 1–2×/night. Unable to empty bladder completely.</p>
+    <p><strong>Diagnosis code:</strong> R39.8 — other symptoms and signs involving the genitourinary system.</p>
+    <p><strong>Prostate size:</strong> 22mL (normal for age 42 — BPH / benign prostatic hyperplasia not the cause by volume).</p>
+    <p><strong>PSA (prostate-specific antigen):</strong> 0.74 ng/mL (April 13, 2026) — well within normal (&lt;2.0). No prostate pathology suspected.</p>
+    <p><strong>Uroflowmetry + Bladder Scan:</strong> Ordered on 21.07.2025 — results not available in current files.</p>
+    <div style="background:rgba(99,102,241,0.08); border-left:3px solid #6366f1; padding:0.75rem 1rem; border-radius:4px; margin-top:0.75rem;">
+      <strong>Likely aetiology:</strong> Bladder detrusor dysfunction or bladder neck hypertonicity rather than prostatic obstruction (prostate volume normal, PSA normal). Possible contributing factors: metabolic syndrome history, elevated E2 (aromatization affects prostate/bladder smooth muscle), sedentary lifestyle. LUTS may improve with Retatrutide-driven metabolic correction and E2 normalisation.
+    </div>
+    <p style="margin-top:0.75rem;"><strong>Action items for Dr. Saira Hyder:</strong> Request uroflowmetry results if available. Consider urology follow-up at 6 months post-Retatrutide. BPC-157 (already active) has documented smooth muscle repair properties relevant to bladder/prostate tissue.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="pt-8 mt-8 border-t" style="border-color: var(--border); color: var(--muted); font-size: 0.8rem;">
+    <p>Generated 2026-04-27 · NexusOS Health Agent · Tier 2 Full Report · v4</p>
+    <p>This report is for personal medical reference and does not replace direct consultation with a licensed physician. All peptide dosing requires physician supervision.</p>
+  </footer>
+
+</main>
+</div>
+
+<script>
+// Theme toggle
+const root = document.documentElement;
+const saved = localStorage.getItem('ehsan-theme');
+if (saved === 'light') root.classList.remove('dark');
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  root.classList.toggle('dark');
+  localStorage.setItem('ehsan-theme', root.classList.contains('dark') ? 'dark' : 'light');
+  renderChart();
+});
+
+// Share
+document.getElementById('share-btn').addEventListener('click', async () => {
+  const url = window.location.href;
+  if (navigator.share) {
+    try { await navigator.share({ title: document.title, url }); } catch {}
+  } else {
+    navigator.clipboard.writeText(url);
+    const btn = document.getElementById('share-btn');
+    const t = btn.textContent; btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = t, 1500);
+  }
+});
+
+// Fade-in
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+// Chart
+let chart;
+function renderChart() {
+  const ctx = document.getElementById('bioPie');
+  if (!ctx) return;
+  if (chart) chart.destroy();
+  const isDark = root.classList.contains('dark');
+  chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Normal', 'Watch', 'Critical/Flagged'],
+      datasets: [{
+        data: [22, 8, 6],
+        backgroundColor: ['#22c55e', '#eab308', '#ef4444'],
+        borderColor: isDark ? '#111118' : '#ffffff',
+        borderWidth: 2,
+      }]
+    },
+    options: {
+      plugins: {
+        legend: { labels: { color: isDark ? '#9ca3af' : '#475569', font: { size: 10, family: 'Inter' } }, position: 'bottom' }
+      },
+      cutout: '62%',
+    }
+  });
+}
+renderChart();
+</script>
+</body>
+</html>
