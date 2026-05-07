@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Omni Ads SMS Minimum Prepay Benchmark — Research R-A</title>
+<meta property="og:title" content="Omni Ads SMS Minimum Prepay Benchmark"/>
+<meta property="og:description" content="D3 Research: Platform entry minimums, per-GEO CPM, and recommended prepay floors for Romania, Bolivia, Ecuador. EPR 17/20."/>
+<meta property="og:type" content="article"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0A0A0F; --card: #111118; --accent: #58a6ff; --accent2: #7c3aed;
+    --text: #e6edf3; --muted: #8b949e; --border: rgba(88,166,255,0.12);
+    --glass: rgba(17,17,24,0.7); --glow: rgba(88,166,255,0.08);
+  }
+  [data-theme="light"] {
+    --bg: #fafafa; --card: #ffffff; --accent: #5E6AD2; --accent2: #7c3aed;
+    --text: #1a1a2e; --muted: #6b7280; --border: rgba(94,106,210,0.15);
+    --glass: rgba(255,255,255,0.8); --glow: rgba(94,106,210,0.06);
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; min-height: 100vh; transition: background 0.3s, color 0.3s; }
+  .glass { background: var(--glass); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 12px; }
+  .accent { color: var(--accent); }
+  .badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+  .badge-blue { background: rgba(88,166,255,0.12); color: var(--accent); }
+  .badge-green { background: rgba(34,197,94,0.12); color: #22c55e; }
+  .badge-red { background: rgba(239,68,68,0.12); color: #ef4444; }
+  .badge-yellow { background: rgba(234,179,8,0.12); color: #eab308; }
+  .badge-purple { background: rgba(124,58,237,0.12); color: #a78bfa; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: rgba(88,166,255,0.06); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--glow); }
+  code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(88,166,255,0.08); padding: 1px 5px; border-radius: 4px; color: var(--accent); }
+  .sidebar { position: fixed; top: 0; left: 0; height: 100vh; width: 220px; padding: 24px 16px; overflow-y: auto; border-right: 1px solid var(--border); background: var(--card); z-index: 50; }
+  .sidebar a { display: block; color: var(--muted); text-decoration: none; font-size: 13px; padding: 6px 10px; border-radius: 6px; margin-bottom: 2px; transition: all 0.15s; }
+  .sidebar a:hover, .sidebar a.active { color: var(--accent); background: rgba(88,166,255,0.08); }
+  .main { margin-left: 220px; padding: 40px 48px; max-width: 1000px; }
+  .fade-in { opacity: 0; transform: translateY(16px); transition: all 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  @media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; padding: 20px; } }
+  @media print { .sidebar, #topbar { display: none; } .main { margin: 0; padding: 20px; } body { background: white; color: black; } .glass { background: white; border: 1px solid #ddd; } }
+  .epr-bar { height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .verdict-no { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 16px 20px; }
+  .verdict-floor { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); border-radius: 10px; padding: 16px 20px; }
+  h2 { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .section { margin-bottom: 40px; scroll-margin-top: 80px; }
+  .pull-quote { border-left: 3px solid var(--accent); padding: 12px 20px; background: var(--glow); border-radius: 0 8px 8px 0; font-size: 14px; font-style: italic; color: var(--muted); margin: 16px 0; }
+  .highlight-box { background: rgba(88,166,255,0.06); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; }
+</style>
+</head>
+<body>
+
+<div id="topbar" style="position:fixed;top:0;left:0;right:0;height:48px;background:var(--card);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;z-index:100;gap:12px;">
+  <span style="font-size:13px;font-weight:700;color:var(--accent);">DELPHI PRO</span>
+  <span style="color:var(--border);">|</span>
+  <span style="font-size:12px;color:var(--muted);">Omni Ads Research R-A</span>
+  <div style="margin-left:auto;display:flex;gap:8px;align-items:center;">
+    <span class="badge badge-blue">D3</span>
+    <span class="badge badge-green">EPR 17/20</span>
+    <button onclick="toggleTheme()" style="background:none;border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12px;">Toggle Theme</button>
+    <button onclick="shareReport()" style="background:var(--accent);border:none;color:#0A0A0F;padding:4px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;">Share</button>
+  </div>
+</div>
+
+<nav class="sidebar" style="top:48px;height:calc(100vh - 48px);">
+  <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Contents</div>
+  <a href="#summary">Executive Summary</a>
+  <a href="#platforms">1. Platform Minimums</a>
+  <a href="#romania">2. Romania</a>
+  <a href="#bolivia">3. Bolivia</a>
+  <a href="#ecuador">4. Ecuador</a>
+  <a href="#cpm">5. CPM by GEO</a>
+  <a href="#vox">6. VOX Backend Signal</a>
+  <a href="#verdict">7. Verdict + Floors</a>
+  <a href="#coverage">Coverage Report</a>
+</nav>
+
+<div class="main" style="padding-top:80px;">
+
+<!-- HERO -->
+<div class="section fade-in" id="summary">
+  <div style="margin-bottom:8px;">
+    <span class="badge badge-purple" style="margin-right:8px;">Research ID: R-A</span>
+    <span class="badge badge-blue">Omni Ads</span>
+    <span style="margin-left:8px;font-size:12px;color:var(--muted);">2026-04-28 (run: 2026-05-07)</span>
+  </div>
+  <h1 style="font-size:28px;font-weight:800;margin:12px 0 6px;line-height:1.2;">SMS Minimum Prepay Benchmark<br/><span style="color:var(--accent);">Romania · Bolivia · Ecuador</span></h1>
+  <p style="color:var(--muted);font-size:14px;max-width:600px;line-height:1.6;">What SMB owners actually pay to start an SMS marketing campaign, what platforms charge at entry tier, and what Omni Ads should charge as a minimum prepay floor per GEO.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0;">
+    <div class="glass" style="padding:16px 18px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">EPR Score</div>
+      <div style="font-size:28px;font-weight:800;color:var(--accent);">17<span style="font-size:14px;color:var(--muted);font-weight:400;">/20</span></div>
+      <div class="epr-bar" style="margin-top:6px;width:85%;"></div>
+    </div>
+    <div class="glass" style="padding:16px 18px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Sources</div>
+      <div style="font-size:28px;font-weight:800;color:var(--text);">15+</div>
+      <div style="font-size:11px;color:var(--muted);">Primary + secondary</div>
+    </div>
+    <div class="glass" style="padding:16px 18px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Platforms Benchmarked</div>
+      <div style="font-size:28px;font-weight:800;color:var(--text);">8</div>
+      <div style="font-size:11px;color:var(--muted);">Twilio · Sinch · Klaviyo + 5 more</div>
+    </div>
+    <div class="glass" style="padding:16px 18px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Global Floor Verdict</div>
+      <div style="font-size:18px;font-weight:800;color:#ef4444;">NO-GO</div>
+      <div style="font-size:11px;color:var(--muted);">Per-GEO floors recommended</div>
+    </div>
+  </div>
+
+  <div class="verdict-no" style="margin:16px 0;">
+    <div style="font-size:13px;font-weight:700;color:#ef4444;margin-bottom:4px;">Verdict: NO-GO on $50 uniform global floor</div>
+    <div style="font-size:13px;color:var(--muted);">Ecuador: $50 buys &lt;150 messages — campaigns fail. Bolivia: $50 is too high when VOX-native routing could enable viable $20-30 pilots. Romania: $50 is adequate but undifferentiated. Recommend per-GEO floors.</div>
+  </div>
+</div>
+
+<!-- CHART ROW -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:36px;" class="fade-in">
+  <div class="glass" style="padding:20px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:14px;">Platform Entry Minimums</div>
+    <canvas id="platformChart" height="200"></canvas>
+  </div>
+  <div class="glass" style="padding:20px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:14px;">CPM by GEO (USD/1K msgs, mid-tier)</div>
+    <canvas id="cpmChart" height="200"></canvas>
+  </div>
+</div>
+
+<!-- SECTION 1: PLATFORMS -->
+<div class="section fade-in" id="platforms">
+  <h2>1. Platform Entry Minimums — 8 Benchmarks</h2>
+  <div class="glass" style="overflow:hidden;margin-top:12px;">
+    <table>
+      <thead><tr>
+        <th>Platform</th>
+        <th>Hard Minimum</th>
+        <th>Entry Model</th>
+        <th>Per-Message (US)</th>
+        <th>SMB-Viable?</th>
+        <th>Confidence</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>Twilio</strong></td><td><code>$0</code> PAYG</td><td>Per-message</td><td>$0.0079–$0.0083</td><td><span class="badge badge-green">Yes (US/EU)</span></td><td><span class="badge badge-green">HIGH</span></td></tr>
+        <tr><td><strong>Sinch Engage</strong></td><td><code>$49/mo</code></td><td>Subscription</td><td>$0.049 (at entry)</td><td><span class="badge badge-green">Yes</span></td><td><span class="badge badge-green">HIGH</span></td></tr>
+        <tr><td><strong>Klaviyo</strong></td><td><code>$35/mo</code> Email+SMS</td><td>Subscription+credits</td><td>~$0.028 (credits incl. carrier)</td><td><span class="badge badge-yellow">US/UK only</span></td><td><span class="badge badge-green">HIGH</span></td></tr>
+        <tr><td><strong>Attentive</strong></td><td><code>~$667/mo</code> effective</td><td>6-12mo contract</td><td>$0.01/SMS</td><td><span class="badge badge-red">No (enterprise)</span></td><td><span class="badge badge-green">HIGH</span></td></tr>
+        <tr><td><strong>Brevo</strong></td><td><code>~$1.09</code> (100 SMS)</td><td>Prepay credits</td><td>$0.0109 (US/CA)</td><td><span class="badge badge-green">Yes</span></td><td><span class="badge badge-green">HIGH</span></td></tr>
+        <tr><td><strong>Bird (MessageBird)</strong></td><td><code>$0</code> PAYG</td><td>Per-message</td><td>$0.007</td><td><span class="badge badge-green">Yes</span></td><td><span class="badge badge-yellow">MEDIUM</span></td></tr>
+        <tr><td><strong>Vonage</strong></td><td><code>$0</code> PAYG</td><td>Per-message</td><td>$0.00809</td><td><span class="badge badge-yellow">Enterprise posture</span></td><td><span class="badge badge-green">HIGH</span></td></tr>
+        <tr><td><strong>ProTexting (LATAM)</strong></td><td><code>$49/mo</code></td><td>Subscription</td><td>$0.049 (worldwide)</td><td><span class="badge badge-green">Yes (LATAM)</span></td><td><span class="badge badge-yellow">MEDIUM</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pull-quote" style="margin-top:16px;">"Market consensus for SMB entry: $20–$50/month subscription, or $0 PAYG with effective campaign minimums of $20–$100. Omni Ads hybrid prepay wallet is structurally superior to subscriptions — one-time prepay, no recurring friction, credits don't expire."</div>
+
+  <div style="margin-top:16px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Key observations:</div>
+    <ul style="color:var(--muted);font-size:13px;line-height:2;padding-left:20px;">
+      <li>Attentive ($667/mo effective) is irrelevant as an SMB comparable — enterprise-only, no SMB enters here</li>
+      <li>Brevo has the lowest stated minimum (100 credits / ~$1) but high per-message rates in Europe</li>
+      <li>Sinch Engage and ProTexting converge on $49/month as the SMB-friendly subscription floor</li>
+      <li>Klaviyo SMS is US/UK/AU only — not usable for Romania, Bolivia, or Ecuador directly</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 2: ROMANIA -->
+<div class="section fade-in" id="romania">
+  <h2>2. Romania — Cluj / Bucharest</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+    <div class="glass" style="padding:16px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Per-Message Rates (API)</div>
+      <table>
+        <thead><tr><th>Provider</th><th>Rate (USD)</th></tr></thead>
+        <tbody>
+          <tr><td>Infobip</td><td><code>$0.0600</code></td></tr>
+          <tr><td>Sinch</td><td><code>$0.06105</code></td></tr>
+          <tr><td>Plivo</td><td><code>$0.06141</code></td></tr>
+          <tr><td>Twilio</td><td><code>$0.0737</code></td></tr>
+          <tr><td>Messaggio (flat)</td><td><code>€0.0433 (~$0.047)</code></td></tr>
+          <tr><td>Local aggregator (est.)</td><td><code>€0.02–0.04 ($0.022–0.043)</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass" style="padding:16px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">SMB Campaign Economics</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;">
+        <div>Typical first campaign: <strong style="color:var(--text);">500–2,000 contacts</strong></div>
+        <div>At Messaggio (€0.0433/msg):</div>
+        <div style="padding-left:12px;">500 msgs = <strong style="color:#22c55e;">€21.65</strong></div>
+        <div style="padding-left:12px;">1,000 msgs = <strong style="color:#22c55e;">€43.30</strong></div>
+        <div style="padding-left:12px;">2,000 msgs = <strong style="color:#eab308;">€86.60</strong></div>
+        <div style="margin-top:8px;">Typical first spend: <strong style="color:var(--text);">€25–€80 (~$27–$87)</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="highlight-box">
+    <span style="font-size:12px;font-weight:700;color:var(--accent);">RECOMMENDED FLOOR: <code>$50 USD</code></span>
+    <div style="font-size:13px;color:var(--muted);margin-top:4px;">€25–€50 is local norm. At Messaggio rates, $50 ≈ 1,060 SMS to Romanian numbers. Psychologically accessible. Aligns with local market expectations. <span class="badge badge-green" style="margin-left:6px;">CONFIDENCE: MEDIUM</span></div>
+  </div>
+  <div style="font-size:12px;color:var(--muted);margin-top:8px;">Sources: <a href="https://www.sent.dm/en/resources/sms-pricing/romania-sms-pricing" style="color:var(--accent);">sent.dm Romania pricing</a> · <a href="https://messaggio.com/sms-pricing/romania/" style="color:var(--accent);">Messaggio Romania</a> · Romania Media Fact Book 2025</div>
+</div>
+
+<!-- SECTION 3: BOLIVIA -->
+<div class="section fade-in" id="bolivia">
+  <h2>3. Bolivia — La Paz / Santa Cruz</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+    <div class="glass" style="padding:16px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Per-Message Rates</div>
+      <table>
+        <thead><tr><th>Provider</th><th>Rate</th></tr></thead>
+        <tbody>
+          <tr><td>Twilio (intl API)</td><td><code>$0.2215</code></td></tr>
+          <tr><td>Bulk aggregator</td><td><code>$0.040</code></td></tr>
+          <tr><td>Local carrier est.</td><td><code>$0.012–0.022</code> (0.08–0.15 BOB)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass" style="padding:16px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">SMB Campaign Economics</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;">
+        <div>Typical first campaign: <strong style="color:var(--text);">200–500 contacts</strong></div>
+        <div>Local aggregator ($0.04/msg):</div>
+        <div style="padding-left:12px;">200 msgs = <strong style="color:#22c55e;">$8</strong></div>
+        <div style="padding-left:12px;">500 msgs = <strong style="color:#22c55e;">$20</strong></div>
+        <div>Twilio ($0.22/msg):</div>
+        <div style="padding-left:12px;">200 msgs = <strong style="color:#eab308;">$44</strong></div>
+        <div style="padding-left:12px;">500 msgs = <strong style="color:#ef4444;">$110</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="glass" style="padding:14px 18px;margin-bottom:12px;border-left:3px solid #a78bfa;">
+    <div style="font-size:12px;font-weight:700;color:#a78bfa;margin-bottom:4px;">VOX Backend Signal — September 2025</div>
+    <div style="font-size:13px;color:var(--muted);">VIVA Bolivia signed VOX Solutions as exclusive international A2P SMS and Voice gateway. Omni Ads runs on VOX backend — this creates potential preferential termination rates vs. third-party API providers. International API ($0.22/msg) may be replaced by VOX-native routing at significantly lower cost.</div>
+    <div style="margin-top:6px;"><a href="https://voxsolutions.co/viva-bolivia-has-selected-vox-solutions-as-exclusive-international-gateway-for-a2p-sms-and-voice-traffic-into-its-network/" style="color:var(--accent);font-size:12px;">Source: VOX Solutions press release, Sept 2, 2025</a></div>
+  </div>
+  <div class="highlight-box">
+    <span style="font-size:12px;font-weight:700;color:var(--accent);">RECOMMENDED FLOOR: <code>$30 USD</code> (VOX-native routing)</span>
+    <div style="font-size:13px;color:var(--muted);margin-top:4px;">At $0.03–0.05/msg (VOX-optimized), $30 = 600–1,000 msgs — viable pilot. If international API rates apply, raise to $50. <span class="badge badge-yellow" style="margin-left:6px;">ROUTING DEPENDENCY</span></div>
+  </div>
+  <div style="font-size:12px;color:var(--muted);margin-top:8px;">Sources: <a href="https://www.twilio.com/en-us/sms/pricing/bo" style="color:var(--accent);">Twilio Bolivia</a> · <a href="https://www.sent.dm/resources/bolivia-sms-pricing" style="color:var(--accent);">sent.dm Bolivia</a> · <a href="https://voxsolutions.co" style="color:var(--accent);">VOX Solutions</a></div>
+</div>
+
+<!-- SECTION 4: ECUADOR -->
+<div class="section fade-in" id="ecuador">
+  <h2>4. Ecuador — Quito / Guayaquil</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+    <div class="glass" style="padding:16px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Per-Message Rates</div>
+      <table>
+        <thead><tr><th>Provider / Route</th><th>Rate</th></tr></thead>
+        <tbody>
+          <tr><td>Twilio (intl)</td><td><code>$0.3390</code></td></tr>
+          <tr><td>Plivo — Claro (Conecel)</td><td><code>$0.2969</code></td></tr>
+          <tr><td>Plivo — Movistar (Otecel)</td><td><code>$0.4267</code></td></tr>
+          <tr><td>Plivo — Others</td><td><code>$0.2516</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="glass" style="padding:16px;">
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">SMB Campaign Economics</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;">
+        <div>Typical first campaign: <strong style="color:var(--text);">200–400 contacts</strong></div>
+        <div>At $0.25–$0.34/msg:</div>
+        <div style="padding-left:12px;">200 msgs = <strong style="color:#eab308;">$50–$68</strong></div>
+        <div style="padding-left:12px;">400 msgs = <strong style="color:#ef4444;">$100–$136</strong></div>
+        <div style="margin-top:8px;font-size:12px;color:#ef4444;">$50 wallet = only 147–200 messages<br/>Below useful campaign threshold</div>
+      </div>
+    </div>
+  </div>
+  <div class="highlight-box" style="border-left:3px solid #ef4444;background:rgba(239,68,68,0.06);">
+    <span style="font-size:12px;font-weight:700;color:#ef4444;">RECOMMENDED FLOOR: <code>$75–100 USD</code></span>
+    <div style="font-size:13px;color:var(--muted);margin-top:4px;">$50 delivers &lt;150 messages at Claro/Movistar rates — statistically useless and a churn trigger. $75 = ~220–300 messages (bare minimum). $100 is strongly preferred for better first-campaign UX. Note: Movistar Ecuador sold to Millicom 2025 (same Tigo Bolivia owner) — potential cross-GEO routing optimization. <span class="badge badge-yellow" style="margin-left:6px;">CONFIDENCE: MEDIUM</span></div>
+  </div>
+  <div style="font-size:12px;color:var(--muted);margin-top:8px;">Sources: <a href="https://www.twilio.com/en-us/sms/pricing/ec" style="color:var(--accent);">Twilio Ecuador</a> · <a href="https://www.plivo.com/sms/pricing/ec/" style="color:var(--accent);">Plivo Ecuador</a> · <a href="https://www.sent.dm/resources/ecuador-sms-pricing" style="color:var(--accent);">sent.dm Ecuador</a></div>
+</div>
+
+<!-- SECTION 5: CPM TABLE -->
+<div class="section fade-in" id="cpm">
+  <h2>5. CPM (Cost Per Mille) Ranges by GEO</h2>
+  <div class="glass" style="overflow:hidden;margin-top:12px;">
+    <table>
+      <thead><tr><th>GEO</th><th>Low (local agg.)</th><th>Mid (API platform)</th><th>High (premium API)</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>USA / Canada</strong></td><td>$8–$11</td><td>$10–$15</td><td>$20–$50</td><td>After carrier fees; Klaviyo/Sinch mid</td></tr>
+        <tr><td><strong>Romania</strong></td><td>$22–$43</td><td>$60–$74</td><td>$75–$100</td><td>Messaggio flat €40–50/1K; Twilio $73.70</td></tr>
+        <tr><td><strong>Bolivia</strong></td><td>$12–$22 (local)</td><td>$40–$50 (agg.)</td><td>$200–$225 (Twilio)</td><td>VOX-Viva routing may improve mid</td></tr>
+        <tr><td><strong>Ecuador</strong></td><td>$25–$50 (local est.)</td><td>$180–$250</td><td>$300–$430</td><td>Claro vs. Movistar split</td></tr>
+        <tr><td><strong>Europe avg (ref.)</strong></td><td>$34–$49</td><td>$60–$87</td><td>$87–$104</td><td>UK, FR, DE from Brevo data</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pull-quote">"A $50 wallet at $60/CPM (Romania mid) = 833 messages — viable for small list campaign. A $50 wallet at $220/CPM (Bolivia Twilio) = 227 messages — borderline. A $50 wallet at $340/CPM (Ecuador Twilio) = 147 messages — campaign will fail."</div>
+</div>
+
+<!-- SECTION 6: VOX -->
+<div class="section fade-in" id="vox">
+  <h2>6. VOX Backend — Strategic Signal</h2>
+  <div class="glass" style="padding:20px;border-left:3px solid #a78bfa;">
+    <div style="display:flex;align-items:flex-start;gap:12px;">
+      <div style="flex:1;">
+        <div style="font-size:14px;font-weight:700;margin-bottom:8px;">VIVA Bolivia + VOX Solutions Partnership <span class="badge badge-purple" style="margin-left:8px;">September 2, 2025</span></div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">VOX Solutions was named exclusive international A2P (Application-to-Person) SMS and Voice gateway for VIVA Bolivia. The VOX-360 platform handles anti-fraud capabilities including flash call authentication and A2P SMS monetization for Viva's entire network. This is one of Bolivia's 3 major carriers (Tigo, Entel, Viva).</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-top:8px;"><strong style="color:var(--text);">Implication for Omni Ads:</strong> Omni Ads campaigns routing to Viva Bolivia subscribers go through the same VOX backend infrastructure. This creates potential preferential termination rates vs. third-party API providers quoting $0.22/msg, and the architecture for negotiating direct rates.</p>
+        <div style="margin-top:12px;"><a href="https://voxsolutions.co/viva-bolivia-has-selected-vox-solutions-as-exclusive-international-gateway-for-a2p-sms-and-voice-traffic-into-its-network/" style="color:var(--accent);font-size:12px;">Full press release — voxsolutions.co</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: VERDICT -->
+<div class="section fade-in" id="verdict">
+  <h2>7. Verdict — Recommended Per-GEO Floors</h2>
+  <div class="verdict-no" style="margin-bottom:16px;">
+    <div style="font-size:14px;font-weight:700;color:#ef4444;margin-bottom:4px;">NO-GO: Uniform $50 Global Floor</div>
+    <div style="font-size:13px;color:var(--muted);">Ecuador: $50 buys &lt;150 messages, campaigns fail, SMBs churn. Bolivia: $50 is too high if VOX-native routing achieves $0.03–0.05/msg (kills acquisition at the top of funnel). Romania: $50 is adequate but not differentiated from competition.</div>
+  </div>
+
+  <div class="glass" style="overflow:hidden;margin-bottom:16px;">
+    <table>
+      <thead><tr><th>GEO</th><th>Recommended Floor</th><th>At Floor: Messages</th><th>Reasoning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Global default (US/EU)</strong></td><td><code>$30</code></td><td>~2,000–3,000 (US)</td><td>Lower than Klaviyo $35, competitive for acquisition. Omni Ads wallet is more flexible than subscriptions.</td></tr>
+        <tr><td><strong>Romania</strong></td><td><code>$50</code></td><td>~1,060 msgs (Messaggio)</td><td>Matches local market norm €25–50. Psychologically accessible. Sufficient for SMB test campaign.</td></tr>
+        <tr><td><strong>Bolivia</strong></td><td><code>$30</code> (VOX-native)</td><td>~600–1,000 msgs</td><td>At $0.03–0.05/msg via VOX routing. Flag routing dependency in UI. If only intl API: raise to $50.</td></tr>
+        <tr><td><strong>Ecuador</strong></td><td><code>$75–$100</code></td><td>~220–400 msgs</td><td>$50 is below viable threshold. $75 min, $100 recommended for better first-campaign UX and lower churn.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict-floor">
+    <div style="font-size:13px;font-weight:700;color:#22c55e;margin-bottom:8px;">Competitive Positioning</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.7;">The market has two SMB entry tiers: (A) No-minimum PAYG (Twilio, Bird, Vonage) with high per-message LATAM rates creating economic barriers, and (B) $49/month subscriptions (Sinch Engage, ProTexting) with recurring friction. <strong style="color:var(--text);">Omni Ads hybrid prepay wallet is structurally superior</strong> — one-time prepay, no subscription, credits don't expire. Differentiated per-GEO floors with transparent messaging ("Your $50 sends X messages in Romania") creates the right SMB expectation and reduces first-campaign failure rates.</div>
+  </div>
+</div>
+
+<!-- COVERAGE REPORT -->
+<div class="section fade-in" id="coverage">
+  <h2>Source Coverage Report</h2>
+  <div class="glass" style="overflow:hidden;">
+    <table>
+      <thead><tr><th>Category</th><th>Status</th><th>Channels / Sources</th><th>Findings</th></tr></thead>
+      <tbody>
+        <tr><td>Web Search</td><td><span class="badge badge-green">COVERED</span></td><td>Brave, Tavily, Exa, Perplexity Sonar Pro</td><td>22+</td></tr>
+        <tr><td>Platform Official Pages</td><td><span class="badge badge-green">COVERED</span></td><td>Twilio, Plivo, Sinch, Vonage (live extractions)</td><td>8</td></tr>
+        <tr><td>Social: Reddit</td><td><span class="badge badge-yellow">NO RELEVANT RESULTS</span></td><td>scout-social/reddit (off-topic posts returned)</td><td>0</td></tr>
+        <tr><td>Social: YouTube/X/Instagram</td><td><span class="badge badge-yellow">SKIPPED</span></td><td>Conditional — pricing not covered in video/visual</td><td>0</td></tr>
+        <tr><td>Academic</td><td><span class="badge badge-yellow">SKIPPED</span></td><td>Not relevant to SMS pricing benchmarks</td><td>0</td></tr>
+        <tr><td>News</td><td><span class="badge badge-green">COVERED</span></td><td>VOX/Viva Bolivia press release (Sept 2025), Romania Media Fact Book 2025</td><td>2</td></tr>
+        <tr><td>Deep Research</td><td><span class="badge badge-green">COVERED</span></td><td>Perplexity Sonar Pro (OpenRouter), direct pricing page extractions</td><td>1</td></tr>
+        <tr><td>Local GEO aggregators</td><td><span class="badge badge-green">COVERED</span></td><td>Messaggio (RO), ProTexting (BO), bulk-sms-marketing.com (BO), sent.dm (RO/BO/EC)</td><td>6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="margin-top:12px;font-size:12px;color:var(--muted);">
+    <strong>Coverage gaps (documented):</strong> No direct SMB owner survey data from Romania, Bolivia, or Ecuador chambers/press. No Vodafone Adsmart Romania direct pricing. No Bolivia Tigo/Entel direct pricing pages found. Bolivia/Ecuador SMB campaign spend estimates are inferred from per-message rates and estimated campaign sizes, not local primary sources.
+  </div>
+  <div style="margin-top:16px;padding:12px 16px;background:rgba(88,166,255,0.04);border-radius:8px;font-size:12px;color:var(--muted);">
+    <strong>Cortex anchor:</strong> <code>124d3186-1cfb-43db-8d82-d2228468cece</code> · collection: <code>intelligence</code> · metadata: <code>{project: "omniads", research_id: "R-A", date: "2026-04-28"}</code><br/>
+    <strong>File:</strong> <code>/Users/pafi/.nexus/intel/delphi-omniads-R-A-min-prepay-2026-04-28.md</code> · <strong>EPR:</strong> 17/20 · <strong>Self-grade:</strong> 74/100
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const d = document.documentElement;
+  d.setAttribute('data-theme', d.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  localStorage.setItem('theme', d.getAttribute('data-theme'));
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const t = localStorage.getItem('theme');
+  if (t) document.documentElement.setAttribute('data-theme', t);
+});
+
+// Share
+function shareReport() {
+  if (navigator.share) {
+    navigator.share({ title: 'Omni Ads SMS Minimum Prepay Benchmark', url: window.location.href });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => alert('URL copied to clipboard'));
+  }
+}
+
+// Fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Active sidebar
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(s => {
+    const rect = s.getBoundingClientRect();
+    if (rect.top <= 100 && rect.bottom >= 100) {
+      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`.sidebar a[href="#${s.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+});
+
+// Charts
+window.addEventListener('DOMContentLoaded', () => {
+  const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+  const textColor = () => isDark() ? '#8b949e' : '#6b7280';
+
+  // Platform chart
+  new Chart(document.getElementById('platformChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Twilio', 'Sinch Engage', 'Klaviyo', 'Attentive', 'Brevo', 'Bird', 'Vonage', 'ProTexting'],
+      datasets: [{
+        label: 'Entry Min (USD/mo equivalent)',
+        data: [0, 49, 35, 667, 1.09, 0, 0, 49],
+        backgroundColor: ['#58a6ff','#58a6ff','#58a6ff','#ef4444','#22c55e','#58a6ff','#58a6ff','#eab308'],
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      scales: { y: { ticks: { color: '#8b949e', callback: v => v > 100 ? '$'+v : '$'+v }, grid: { color: 'rgba(88,166,255,0.05)' } }, x: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { display: false } } },
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  // CPM chart
+  new Chart(document.getElementById('cpmChart'), {
+    type: 'bar',
+    data: {
+      labels: ['USA/CA', 'Romania', 'Bolivia', 'Ecuador'],
+      datasets: [
+        { label: 'Low', data: [9, 33, 31, 38], backgroundColor: 'rgba(34,197,94,0.6)', borderRadius: 4 },
+        { label: 'Mid', data: [12, 67, 45, 215], backgroundColor: 'rgba(88,166,255,0.7)', borderRadius: 4 },
+        { label: 'High', data: [35, 87, 213, 365], backgroundColor: 'rgba(239,68,68,0.5)', borderRadius: 4 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      scales: {
+        y: { ticks: { color: '#8b949e', callback: v => '$'+v }, grid: { color: 'rgba(88,166,255,0.05)' } },
+        x: { ticks: { color: '#8b949e' }, grid: { display: false } }
+      },
+      plugins: { legend: { labels: { color: '#8b949e', font: { size: 11 } } } }
+    }
+  });
+});
+</script>
+</body>
+</html>
