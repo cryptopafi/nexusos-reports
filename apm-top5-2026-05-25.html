@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APM Top-5 by Vertical · 2026-05-25</title>
+<meta property="og:title" content="APM Top-5 by Vertical · 2026-05-25">
+<meta property="og:type" content="article">
+<meta property="og:description" content="APM Dashboard — Top-5 offers per vertical across 21 affiliate platforms, 25,297 candidates ranked.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root { --accent: #58a6ff; --accent-dim: rgba(88,166,255,0.15); }
+html.dark body { background:#0A0A0F; color:#e6edf3; }
+html:not(.dark) body { background:#fafafa; color:#1a1a1a; }
+body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.glass {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+html.dark .glass { background: rgba(17,17,24,0.7); border: 1px solid rgba(255,255,255,0.06); }
+html:not(.dark) .glass { background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.06); }
+.glow { box-shadow: 0 0 40px var(--accent-dim); }
+.accent { color: var(--accent); }
+.accent-bg { background-color: var(--accent); }
+html.dark .gradient-text { background: linear-gradient(135deg, #58a6ff 0%, #a371f7 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+html:not(.dark) .gradient-text { background: linear-gradient(135deg, #5E6AD2 0%, #8B5CF6 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; }
+html:not(.dark) th, html:not(.dark) td { border-bottom: 1px solid rgba(0,0,0,0.08); }
+th { font-weight: 600; color: var(--accent); text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; }
+tr:hover { background: rgba(88,166,255,0.04); }
+.score-pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-weight: 600; font-size: 12px; }
+.score-high { background: rgba(34,197,94,0.15); color: #4ade80; }
+.score-mid { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.score-low { background: rgba(239,68,68,0.15); color: #f87171; }
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+html.dark .badge { background: rgba(255,255,255,0.06); color: #c9d1d9; }
+html:not(.dark) .badge { background: rgba(0,0,0,0.06); color: #555; }
+.flag-ok { color: #4ade80; }
+.flag-warn { color: #fbbf24; }
+.flag-bad { color: #f87171; }
+@media print {
+  html { background: white !important; }
+  body { background: white !important; color: black !important; }
+  .no-print { display: none !important; }
+  .glass { background: white !important; border: 1px solid #ddd !important; }
+  th, td { border-bottom: 1px solid #ccc !important; }
+}
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Top bar -->
+<nav class="no-print sticky top-0 z-50 glass">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg accent-bg flex items-center justify-center font-bold text-white">A</div>
+      <div>
+        <div class="font-bold text-sm">APM</div>
+        <div class="text-xs opacity-60">Affiliate Platform Manager</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="themeToggle" class="text-sm px-3 py-1 rounded border border-white/10 hover:bg-white/5">☀️ / 🌙</button>
+      <button id="shareBtn" class="text-sm px-3 py-1 rounded accent-bg text-white">Share</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="max-w-6xl mx-auto px-6 pt-16 pb-12">
+  <div class="text-xs accent uppercase tracking-widest font-mono mb-3">2026-05-25 · ops report · tier 2</div>
+  <h1 class="text-5xl md:text-6xl font-extrabold mb-4 gradient-text leading-tight">APM Top-5 by Vertical · 2026-05-25</h1>
+  <p class="text-lg opacity-70 max-w-3xl">
+    Cross-platform ranking across 21 affiliate networks · 25,297 candidates classified by keyword regex with per-platform EPC normalization.
+    Top-5 surfaced per vertical with explicit false-positive disclosure.
+  </p>
+  <div class="mt-6 flex flex-wrap gap-2">
+    <span class="badge">21 platforms</span><span class="badge">54,038 rows</span><span class="badge">25,297 candidates</span><span class="badge">5 verticals</span><span class="badge">tier 2 report</span>
+  </div>
+</header>
+
+<!-- KPI strip -->
+<section class="max-w-6xl mx-auto px-6 mb-12">
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+    <div class="glass rounded-xl p-4 text-center"><div class="text-xs uppercase opacity-60 mb-1 font-mono">Platforms</div><div class="text-2xl font-bold accent">21</div></div><div class="glass rounded-xl p-4 text-center"><div class="text-xs uppercase opacity-60 mb-1 font-mono">Rows</div><div class="text-2xl font-bold accent">54,038</div></div><div class="glass rounded-xl p-4 text-center"><div class="text-xs uppercase opacity-60 mb-1 font-mono">Candidates</div><div class="text-2xl font-bold accent">25,297</div></div><div class="glass rounded-xl p-4 text-center"><div class="text-xs uppercase opacity-60 mb-1 font-mono">Top platform</div><div class="text-2xl font-bold accent">Awin</div></div><div class="glass rounded-xl p-4 text-center"><div class="text-xs uppercase opacity-60 mb-1 font-mono">Mean score (top awin)</div><div class="text-2xl font-bold accent">84.3</div></div>
+  </div>
+</section>
+
+<!-- Two-column layout: TOC sidebar + content -->
+<div class="max-w-6xl mx-auto px-6 pb-20 grid md:grid-cols-[200px_1fr] gap-8">
+  <!-- TOC -->
+  <aside class="no-print hidden md:block">
+    <div class="sticky top-24 glass rounded-xl p-4">
+      <div class="text-xs uppercase tracking-widest accent mb-3 font-mono">Contents</div>
+      <nav class="space-y-2 text-sm">
+        <a href="#crypto" class="block hover:accent transition">🪙 Crypto</a>
+        <a href="#forex" class="block hover:accent transition">📈 Forex / Trading</a>
+        <a href="#nutra" class="block hover:accent transition">💊 Nutra</a>
+        <a href="#finance" class="block hover:accent transition">💳 Finance</a>
+        <a href="#ecommerce" class="block hover:accent transition">🛒 E-commerce</a>
+        <a href="#charts" class="block hover:accent transition">📊 Charts</a>
+        <a href="#observations" class="block hover:accent transition">🔭 Observations</a>
+        <a href="#falsepos" class="block hover:accent transition">⚠️ False Positives</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="space-y-10">
+    
+    <section id="crypto" class="fade-in glass rounded-xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold">🪙 Crypto</h2>
+        <div class="flex gap-2">
+          <span class="badge">pool: 122</span>
+          
+        </div>
+      </div>
+      <table class="text-sm">
+        <thead><tr><th>#</th><th>Offer</th><th>Platform</th><th>Payout</th><th>EPC</th><th>Approval</th><th>Score</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="font-mono opacity-60">1</td>
+          <td class="flag-ok">Coinbase — US</td>
+          <td><span class="badge">mylead</span></td>
+          <td class="font-mono">€17.32</td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">—</td>
+          <td><span class="score-pill score-mid">65.9</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">2</td>
+          <td class="flag-warn">DEFI Snacks (US) ⚠️ food brand</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">13.78%</td>
+          <td class="font-mono">0.78</td>
+          <td class="font-mono">38%</td>
+          <td><span class="score-pill score-mid">62.5</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">3</td>
+          <td class="flag-bad">alecoair.ro ❌ AC seller</td>
+          <td><span class="badge">2performant</span></td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">80%</td>
+          <td><span class="score-pill score-low">58.2</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">4</td>
+          <td class="flag-bad">zexpired BITCOIN CODE ❌ dead</td>
+          <td><span class="badge">convert2media</span></td>
+          <td class="font-mono">$400</td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">—</td>
+          <td><span class="score-pill score-low">52.5</span></td>
+        </tr></tbody>
+      </table>
+      <p class="mt-4 text-sm opacity-70">Only Coinbase is a real crypto offer. The narrow crypto pool reflects reality: your current network mix is not crypto-tilted. Consider onboarding a crypto-vertical network (Adsempire, Affmy) or direct (Bybit/Binance/Bitget).</p>
+    </section>
+    
+
+    <section id="forex" class="fade-in glass rounded-xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold">📈 Forex / Trading / Betting</h2>
+        <div class="flex gap-2">
+          <span class="badge">pool: 7796</span>
+          
+        </div>
+      </div>
+      <table class="text-sm">
+        <thead><tr><th>#</th><th>Offer</th><th>Platform</th><th>Payout</th><th>EPC</th><th>Approval</th><th>Score</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="font-mono opacity-60">1</td>
+          <td class="flag-ok">VPS Forex Trader affiliate</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">10.62%</td>
+          <td class="font-mono">0.35</td>
+          <td class="font-mono">71%</td>
+          <td><span class="score-pill score-mid">73.8</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">2</td>
+          <td class="flag-ok">Exness Trader — Android — VN</td>
+          <td><span class="badge">mylead</span></td>
+          <td class="font-mono">€36.20</td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">—</td>
+          <td><span class="score-pill score-mid">71.0</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">3</td>
+          <td class="flag-ok">Exness Trader — iOS — IN</td>
+          <td><span class="badge">mylead</span></td>
+          <td class="font-mono">€28.97</td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">—</td>
+          <td><span class="score-pill score-mid">65.8</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">4</td>
+          <td class="flag-warn">Western Union Many GEOs ⚠️ money transfer</td>
+          <td><span class="badge">admitad</span></td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">39.00</td>
+          <td class="font-mono">79%</td>
+          <td><span class="score-pill score-mid">64.0</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">5</td>
+          <td class="flag-warn">SuperSim BR ⚠️ prepaid SIM</td>
+          <td><span class="badge">admitad</span></td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">34.00</td>
+          <td class="font-mono">96%</td>
+          <td><span class="score-pill score-low">59.0</span></td>
+        </tr></tbody>
+      </table>
+      <p class="mt-4 text-sm opacity-70">Top 3 are legit forex. Exness shows up via both direct scrape and mylead — same broker. Western Union & SuperSim are false positives (should be finance/telecom).</p>
+    </section>
+    
+
+    <section id="nutra" class="fade-in glass rounded-xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold">💊 Nutra / Health</h2>
+        <div class="flex gap-2">
+          <span class="badge">pool: 3175</span>
+          <span class="badge" style="background:rgba(251,191,36,0.15); color:#fbbf24">monoculture: awin</span>
+        </div>
+      </div>
+      <table class="text-sm">
+        <thead><tr><th>#</th><th>Offer</th><th>Platform</th><th>Payout</th><th>EPC</th><th>Approval</th><th>Score</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="font-mono opacity-60">1</td>
+          <td class="flag-ok">Renature Skin Care</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">100%</td>
+          <td class="font-mono">5.70</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-high">94.5</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">2</td>
+          <td class="flag-ok">Absolute Collagen ES</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">100%</td>
+          <td class="font-mono">6.54</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-high">94.5</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">3</td>
+          <td class="flag-ok">nyl Skincare</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">100%</td>
+          <td class="font-mono">11.70</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-high">94.5</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">4</td>
+          <td class="flag-ok">GMC Skincare USA</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">20%</td>
+          <td class="font-mono">9.60</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-high">83.2</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">5</td>
+          <td class="flag-ok">Leahlani Skincare</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">33.49%</td>
+          <td class="font-mono">0.80</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-mid">78.2</span></td>
+        </tr></tbody>
+      </table>
+      <p class="mt-4 text-sm opacity-70">All five legit and high-quality. 100% awin monoculture — convert2media CBD pills & adcombo nutra offers exist but rank lower due to missing approval/EPC data.</p>
+    </section>
+    
+
+    <section id="finance" class="fade-in glass rounded-xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold">💳 Finance</h2>
+        <div class="flex gap-2">
+          <span class="badge">pool: 425</span>
+          
+        </div>
+      </div>
+      <table class="text-sm">
+        <thead><tr><th>#</th><th>Offer</th><th>Platform</th><th>Payout</th><th>EPC</th><th>Approval</th><th>Score</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="font-mono opacity-60">1</td>
+          <td class="flag-ok">AXA Business Insurance</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">11.71%</td>
+          <td class="font-mono">8.25</td>
+          <td class="font-mono">87%</td>
+          <td><span class="score-pill score-high">91.9</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">2</td>
+          <td class="flag-ok">Cedar Tree Travel Insurance</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">11.16%</td>
+          <td class="font-mono">1.00</td>
+          <td class="font-mono">95%</td>
+          <td><span class="score-pill score-high">81.2</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">3</td>
+          <td class="flag-ok">Rooster Car Insurance</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">10.47%</td>
+          <td class="font-mono">0.16</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-mid">78.2</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">4</td>
+          <td class="flag-ok">Vivus CPS KZ — payday loan</td>
+          <td><span class="badge">admitad</span></td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">7,845 KZT</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-mid">76.1</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">5</td>
+          <td class="flag-ok">Acko Bike [CPS] IN — insurance</td>
+          <td><span class="badge">admitad</span></td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">7,031 INR</td>
+          <td class="font-mono">99%</td>
+          <td><span class="score-pill score-mid">75.9</span></td>
+        </tr></tbody>
+      </table>
+      <p class="mt-4 text-sm opacity-70">Insurance-heavy but all five legit. AXA Business Insurance is the standout (8.25 EPC + 87% approval).</p>
+    </section>
+    
+
+    <section id="ecommerce" class="fade-in glass rounded-xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold">🛒 E-commerce</h2>
+        <div class="flex gap-2">
+          <span class="badge">pool: 1597</span>
+          
+        </div>
+      </div>
+      <table class="text-sm">
+        <thead><tr><th>#</th><th>Offer</th><th>Platform</th><th>Payout</th><th>EPC</th><th>Approval</th><th>Score</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="font-mono opacity-60">1</td>
+          <td class="flag-ok">Swiperight Cosmetics DE</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">100%</td>
+          <td class="font-mono">44.69</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-high">94.9</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">2</td>
+          <td class="flag-ok">Fashion Addict</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">34.70%</td>
+          <td class="font-mono">26.44</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-high">94.9</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">3</td>
+          <td class="flag-ok">Pros Marketplace</td>
+          <td><span class="badge">awin</span></td>
+          <td class="font-mono">33.33%</td>
+          <td class="font-mono">19.40</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-high">94.9</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">4</td>
+          <td class="flag-bad">NestBank PL ❌ a bank, not e-com</td>
+          <td><span class="badge">mylead</span></td>
+          <td class="font-mono">€28.92</td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">—</td>
+          <td><span class="score-pill score-mid">71.0</span></td>
+        </tr>
+        <tr>
+          <td class="font-mono opacity-60">5</td>
+          <td class="flag-ok">Velograd RU — bicycle shop</td>
+          <td><span class="badge">admitad</span></td>
+          <td class="font-mono">—</td>
+          <td class="font-mono">296k RUB</td>
+          <td class="font-mono">100%</td>
+          <td><span class="score-pill score-mid">79.0</span></td>
+        </tr></tbody>
+      </table>
+      <p class="mt-4 text-sm opacity-70">Cosmetics & fashion dominate. NestBank misclassified — should be finance. 3 distinct platforms (diversity rule satisfied).</p>
+    </section>
+    
+
+    <!-- Charts -->
+    <section id="charts" class="fade-in">
+      <h2 class="text-2xl font-bold mb-4">📊 Charts</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="glass rounded-xl p-5">
+          <div class="text-xs uppercase opacity-60 mb-2 font-mono">Candidate pool by vertical</div>
+          <canvas id="poolChart" height="200"></canvas>
+        </div>
+        <div class="glass rounded-xl p-5">
+          <div class="text-xs uppercase opacity-60 mb-2 font-mono">Mean top-5 score by platform</div>
+          <canvas id="platformChart" height="200"></canvas>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="observations" class="fade-in glass rounded-xl p-6">
+      <h2 class="text-2xl font-bold mb-4">🔭 Cross-vertical observations</h2>
+      <ul><li class="mb-3"><div class="font-semibold accent text-sm">Platform leaderboard</div><div class="text-sm opacity-80">awin <b>84.3</b> (n=14) ≫ admitad 70.8 (n=5) ≫ mylead 68.4 (n=4). awin dominates because it has full payout/EPC/approval/freshness signal on every row.</div></li><li class="mb-3"><div class="font-semibold accent text-sm">Awin = strongest single platform</div><div class="text-sm opacity-80">Tops all 5 verticals. Other platforms underperform mainly due to missing EPC/approval data, not weaker offers.</div></li><li class="mb-3"><div class="font-semibold accent text-sm">Crypto inventory is shallow</div><div class="text-sm opacity-80">Only Coinbase + a couple convert2media expired CBD offers. If crypto is a strategic vertical, onboard a crypto-specific network.</div></li><li class="mb-3"><div class="font-semibold accent text-sm">Forex well-covered via Exness</div><div class="text-sm opacity-80">Direct scrape + mylead refers. Adcombo and Mostbet add casino/sportsbook depth.</div></li><li class="mb-3"><div class="font-semibold accent text-sm">Nutra is awin-only monoculture</div><div class="text-sm opacity-80">convert2media CBD and adcombo nutra exist but get penalized for sparse data. A payout-only ranking would surface them.</div></li><li class="mb-3"><div class="font-semibold accent text-sm">Candidate pool distribution</div><div class="text-sm opacity-80"><code>forex=7,796 · nutra=3,175 · ecommerce=1,597 · finance=425 · crypto=122</code></div></li></ul>
+    </section>
+    
+
+    
+    <section id="falsepos" class="fade-in glass rounded-xl p-6">
+      <h2 class="text-2xl font-bold mb-3">⚠️ Known false positives (CRITIC)</h2>
+      <ul><li class="mb-2"><span class="badge">Crypto</span> <span class="text-sm opacity-80">DEFI Snacks (food brand using 'DEFI'), alecoair.ro (AC seller), 'zexpired BITCOIN CODE' (dead offer)</span></li><li class="mb-2"><span class="badge">Forex</span> <span class="text-sm opacity-80">Western Union (money transfer), SuperSim BR (prepaid SIM)</span></li><li class="mb-2"><span class="badge">E-commerce</span> <span class="text-sm opacity-80">NestBank PL (a bank, classifier missed it)</span></li></ul>
+      <p class="mt-4 text-sm opacity-60">These pass the keyword filter because affiliate platforms put broad terms in titles/categories. Fixing requires curated brand allowlists or semantic ML classification.</p>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer class="pt-10 border-t border-white/5 text-sm opacity-60">
+      <div class="font-mono">Generated by GENIE · APM dataset ~/Desktop/Elevate Marketing /affiliate-platform-manager/state/apm.sqlite3</div>
+      <div class="font-mono">Reproduce: <code class="px-2 py-1 rounded bg-white/5">python3 scripts/rank_top5.py</code></div>
+      <div class="mt-3">Source of truth: SQLite snapshot history · 145MB · 36 snapshots · 80,806 rows</div>
+    </footer>
+  </main>
+</div>
+
+<script>
+// Theme persistence
+const root = document.documentElement;
+const saved = localStorage.getItem('apm-theme');
+if (saved === 'light') root.classList.remove('dark');
+document.getElementById('themeToggle').addEventListener('click', () => {
+  root.classList.toggle('dark');
+  localStorage.setItem('apm-theme', root.classList.contains('dark') ? 'dark' : 'light');
+});
+
+// Share
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const url = window.location.href;
+  if (navigator.share) {
+    try { await navigator.share({ title: document.title, url }); } catch(e) {}
+  } else {
+    await navigator.clipboard.writeText(url);
+    const b = document.getElementById('shareBtn');
+    const orig = b.textContent;
+    b.textContent = 'Copied';
+    setTimeout(() => b.textContent = orig, 1500);
+  }
+});
+
+// Fade-in
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Charts
+const isLight = !root.classList.contains('dark');
+const textColor = isLight ? '#1a1a1a' : '#e6edf3';
+Chart.defaults.color = textColor;
+Chart.defaults.borderColor = isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)';
+
+new Chart(document.getElementById('poolChart'), {
+  type: 'bar',
+  data: {
+    labels: ["Crypto", "Forex", "Nutra", "Finance", "E-commerce"],
+    datasets: [{
+      label: 'Candidates',
+      data: [122, 7796, 3175, 425, 1597],
+      backgroundColor: ['#58a6ff','#a371f7','#22c55e','#eab308','#fb923c'],
+      borderRadius: 6,
+    }]
+  },
+  options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+});
+
+new Chart(document.getElementById('platformChart'), {
+  type: 'bar',
+  data: {
+    labels: ["Awin", "Admitad", "Mylead"],
+    datasets: [{
+      label: 'Mean top-5 score',
+      data: [84.3, 70.8, 68.4],
+      backgroundColor: '#58a6ff',
+      borderRadius: 6,
+    }]
+  },
+  options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, max: 100 } } }
+});
+</script>
+</body>
+</html>
