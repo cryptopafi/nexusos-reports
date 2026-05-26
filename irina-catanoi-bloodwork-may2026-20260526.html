@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Irina Catanoi — Bloodwork Analysis & Longevity Protocol — May 2026 — Bachmeier Framework">
+<meta property="og:title" content="Irina Catanoi — Bloodwork May 2026">
+<meta property="og:description" content="Subclinical Hashimoto's detected. Bachmeier peptide + supplement protocol compiled.">
+<title>Irina Catanoi — Bloodwork May 2026 | NexusOS Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #0A0A0F; --card: #111118; --accent: #22c55e; --text: #e2e8f0;
+    --muted: #94a3b8; --border: rgba(255,255,255,0.08); --glass: rgba(17,17,24,0.7);
+  }
+  .light {
+    --bg: #f8fafc; --card: #ffffff; --accent: #16a34a; --text: #1e293b;
+    --muted: #64748b; --border: rgba(0,0,0,0.08); --glass: rgba(255,255,255,0.9);
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; transition: background 0.3s, color 0.3s; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; backdrop-filter: blur(12px); }
+  .accent { color: var(--accent); }
+  .glow { box-shadow: 0 0 24px rgba(34,197,94,0.15); }
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; }
+  .badge-green { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+  .badge-amber { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+  .badge-red { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+  .badge-blue { background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { background: rgba(34,197,94,0.08); color: var(--accent); font-weight: 600; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 7px 12px; border-bottom: 1px solid var(--border); color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.03); }
+  code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: rgba(34,197,94,0.1); color: var(--accent); padding: 1px 6px; border-radius: 4px; }
+  details summary { cursor: pointer; font-weight: 600; color: var(--accent); padding: 8px 0; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before { content: '▶ '; font-size: 0.7rem; }
+  details[open] summary::before { content: '▼ '; }
+  .timeline-phase { border-left: 3px solid var(--accent); padding-left: 16px; position: relative; }
+  .timeline-phase::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); position: absolute; left: -7.5px; top: 4px; }
+  @media print {
+    html { filter: none !important; }
+    body { background: #fff !important; color: #000 !important; }
+    .card { background: #fff !important; border: 1px solid #ddd !important; box-shadow: none !important; }
+    .no-print { display: none !important; }
+    section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="no-print sticky top-0 z-50 border-b" style="background:var(--glass);border-color:var(--border);backdrop-filter:blur(16px)">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <span class="font-semibold text-sm" style="color:var(--accent)">NexusOS · Health Agent</span>
+    <div class="flex items-center gap-3">
+      <button onclick="share()" class="badge badge-green no-print">⬆ Share</button>
+      <button onclick="toggleTheme()" id="themeBtn" class="badge badge-blue no-print">☀ Light</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="max-w-6xl mx-auto px-4 pt-10 pb-6">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div>
+      <div class="flex flex-wrap gap-2 mb-3">
+        <span class="badge badge-green">✓ No Urgent Flags</span>
+        <span class="badge badge-amber">11 Suboptimal Markers</span>
+        <span class="badge" style="background:rgba(34,197,94,0.1);color:#22c55e;border:1px solid rgba(34,197,94,0.2)">Bachmeier Framework</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold mb-1" style="color:var(--text)">Irina Catanoi</h1>
+      <p class="text-lg" style="color:var(--muted)">Bloodwork Analysis &amp; Longevity Protocol — May 2026</p>
+    </div>
+    <div class="card p-4 min-w-[220px] text-sm glow">
+      <div class="mb-2 font-semibold" style="color:var(--accent)">Patient Summary</div>
+      <div class="space-y-1" style="color:var(--muted)">
+        <div><span class="font-medium" style="color:var(--text)">Patient:</span> Irina Catanoi, 40F</div>
+        <div><span class="font-medium" style="color:var(--text)">Specimen:</span> MZ588798N</div>
+        <div><span class="font-medium" style="color:var(--text)">Collected:</span> 2026-05-13</div>
+        <div><span class="font-medium" style="color:var(--text)">Cycle phase:</span> Luteal</div>
+        <div><span class="font-medium" style="color:var(--text)">Framework:</span> Dr. Trevor Bachmeier</div>
+        <div class="pt-2 border-t mt-2" style="border-color:var(--border)">
+          <div class="flex justify-between"><span>Optimal</span><span class="accent font-bold">27 / 38</span></div>
+          <div class="flex justify-between"><span>Suboptimal</span><span style="color:#f59e0b" class="font-bold">11 / 38</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 pb-16 space-y-8">
+
+<!-- BIOMARKER CHART -->
+<section class="card p-6 fade-in">
+  <h2 class="text-xl font-bold mb-4 accent">Biomarker Status by System</h2>
+  <div style="max-height:320px">
+    <canvas id="biomarkerChart"></canvas>
+  </div>
+</section>
+
+<!-- SECTION 0: URGENT FLAGS -->
+<section class="card p-6 fade-in" style="border-color:rgba(34,197,94,0.3)">
+  <h2 class="text-xl font-bold mb-2 accent">Section 0 — Urgent Flags</h2>
+  <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(34,197,94,0.08)">
+    <span class="text-2xl">✅</span>
+    <div>
+      <div class="font-semibold">No emergent / urgent findings.</div>
+      <div style="color:var(--muted)" class="text-sm mt-1">No thyroid crisis, no anemia, no liver/kidney injury, no CV red flag (ApoB (Apolipoprotein B), hs-CRP (high-sensitivity C-Reactive Protein), Lp(a) (Lipoprotein little-a) all clean).</div>
+      <div class="mt-2 text-sm"><span class="badge badge-amber">⚠ Autoimmune flag</span> TPO Ab (Thyroid Peroxidase Antibodies) 32 IU/mL (ref &lt;9) — chronic finding, not emergency. Protocol initiation warranted. Confirm with repeat at 8 weeks + clinical thyroid exam.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: LAB TABLES -->
+<section class="card p-6 fade-in">
+  <h2 class="text-xl font-bold mb-4 accent">Section 2 — Lab Summary</h2>
+  <p class="text-xs mb-4" style="color:var(--muted)">Legend: <span style="color:#ef4444">🚩 High/Autoimmune</span> · <span style="color:#f59e0b">🟡 Suboptimal (in lab range but below Bachmeier optimal)</span> · <span style="color:#22c55e">✅ Optimal</span></p>
+
+  <details open class="mb-4">
+    <summary>2.1 Thyroid &amp; Autoimmune</summary>
+    <div class="overflow-x-auto mt-2">
+      <table>
+        <thead><tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab Ref</th><th>Flag</th><th>Bachmeier Optimal</th></tr></thead>
+        <tbody>
+          <tr><td><strong>TPO Ab</strong></td><td><strong>32</strong></td><td>IU/mL</td><td>&lt;9</td><td><span style="color:#ef4444">🚩 Hashimoto's</span></td><td>&lt;9</td></tr>
+          <tr><td>TgAb (Thyroglobulin Antibodies)</td><td>&lt;2</td><td>IU/mL</td><td>≤2</td><td><span style="color:#22c55e">✅</span></td><td>&lt;2</td></tr>
+          <tr><td>TSH (Thyroid-Stimulating Hormone)</td><td>2.21</td><td>mIU/L</td><td>0.40–4.50</td><td><span style="color:#f59e0b">🟡 Upper-functional</span></td><td>0.5–2.0</td></tr>
+          <tr><td>FT4 (Free Thyroxine)</td><td>1.0</td><td>ng/dL</td><td>0.8–1.8</td><td><span style="color:#f59e0b">🟡 Low-functional</span></td><td>1.2–1.6</td></tr>
+          <tr><td>FT3 (Free Triiodothyronine)</td><td>2.9</td><td>pg/mL</td><td>2.3–4.2</td><td><span style="color:#f59e0b">🟡 Low-functional</span></td><td>3.2–4.2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-3 text-sm p-3 rounded-lg" style="background:rgba(239,68,68,0.06);color:var(--muted)">Pattern: Subclinical Hashimoto's — antibodies elevated, hormone production still compensated, but FT3/FT4 low-functional. Classic early autoimmune-thyroid trajectory.</div>
+  </details>
+
+  <details class="mb-4">
+    <summary>2.2 Iron / Hematology</summary>
+    <div class="overflow-x-auto mt-2">
+      <table>
+        <thead><tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab Ref</th><th>Flag</th><th>Bachmeier Optimal</th></tr></thead>
+        <tbody>
+          <tr><td>Iron, total</td><td>58</td><td>mcg/dL</td><td>40–190</td><td><span style="color:#f59e0b">🟡</span></td><td>80–130</td></tr>
+          <tr><td>TIBC (Total Iron Binding Capacity)</td><td>320</td><td>mcg/dL</td><td>250–450</td><td><span style="color:#22c55e">✅</span></td><td>250–350</td></tr>
+          <tr><td>% Saturation</td><td>18</td><td>%</td><td>16–45</td><td><span style="color:#f59e0b">🟡</span></td><td>25–35</td></tr>
+          <tr><td><strong>Ferritin</strong></td><td><strong>29</strong></td><td>ng/mL</td><td>16–154</td><td><span style="color:#f59e0b">🟡 Suboptimal</span></td><td>70–100 (female)</td></tr>
+          <tr><td>Hemoglobin</td><td>13.0</td><td>g/dL</td><td>11.7–15.5</td><td><span style="color:#f59e0b">🟡</span></td><td>13.5–14.5</td></tr>
+          <tr><td>Hematocrit</td><td>39.4</td><td>%</td><td>35.9–46.0</td><td><span style="color:#f59e0b">🟡</span></td><td>40–44</td></tr>
+          <tr><td>MCV (Mean Corpuscular Volume)</td><td>93.1</td><td>fL</td><td>81.4–101.7</td><td><span style="color:#22c55e">✅</span></td><td>87–92</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-3 text-sm p-3 rounded-lg" style="background:rgba(245,158,11,0.06);color:var(--muted)">Pattern: Iron-restricted state, not yet anemia. Ferritin 29 impairs T4→T3 deiodinase conversion — directly worsening the thyroid picture.</div>
+  </details>
+
+  <details class="mb-4">
+    <summary>2.3 Metabolic / Glycemic</summary>
+    <div class="overflow-x-auto mt-2">
+      <table>
+        <thead><tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab Ref</th><th>Flag</th><th>Optimal</th></tr></thead>
+        <tbody>
+          <tr><td>Glucose (fasting)</td><td>87</td><td>mg/dL</td><td>65–99</td><td><span style="color:#22c55e">✅</span></td><td>75–90</td></tr>
+          <tr><td>HbA1c (Glycated Hemoglobin)</td><td>5.1</td><td>%</td><td>&lt;5.7</td><td><span style="color:#22c55e">✅</span></td><td>&lt;5.4</td></tr>
+          <tr><td>Insulin (fasting)</td><td>6.6</td><td>µIU/mL</td><td>≤18.4</td><td><span style="color:#f59e0b">🟡 Borderline</span></td><td>&lt;5</td></tr>
+          <tr><td>Uric acid</td><td>4.6</td><td>mg/dL</td><td>2.5–7.0</td><td><span style="color:#22c55e">✅</span></td><td>3–5</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <details class="mb-4">
+    <summary>2.4 Lipids / CV Risk</summary>
+    <div class="overflow-x-auto mt-2">
+      <table>
+        <thead><tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab Ref</th><th>Flag</th></tr></thead>
+        <tbody>
+          <tr><td>Total Cholesterol</td><td>156</td><td>mg/dL</td><td>&lt;200</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>LDL-C (Low-Density Lipoprotein Cholesterol)</td><td>81</td><td>mg/dL</td><td>&lt;100</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>HDL-C (High-Density Lipoprotein Cholesterol)</td><td>53</td><td>mg/dL</td><td>≥50</td><td><span style="color:#f59e0b">🟡 Target &gt;60</span></td></tr>
+          <tr><td>Triglycerides</td><td>128</td><td>mg/dL</td><td>&lt;150</td><td><span style="color:#f59e0b">🟡 Target &lt;80</span></td></tr>
+          <tr><td>ApoB</td><td>80</td><td>mg/dL</td><td>&lt;90</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>Lp(a)</td><td>12</td><td>nmol/L</td><td>&lt;75</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>hs-CRP</td><td>&lt;0.2</td><td>mg/L</td><td>&lt;1.0</td><td><span style="color:#22c55e">✅</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <details class="mb-4">
+    <summary>2.5 Hormones (Luteal-phase draw)</summary>
+    <div class="overflow-x-auto mt-2">
+      <table>
+        <thead><tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab Ref</th><th>Flag</th><th>Bachmeier Optimal</th></tr></thead>
+        <tbody>
+          <tr><td>Testosterone, total</td><td>14</td><td>ng/dL</td><td>2–45</td><td><span style="color:#f59e0b">🟡</span></td><td>30–50</td></tr>
+          <tr><td><strong>Testosterone, free</strong></td><td><strong>1.2</strong></td><td>pg/mL</td><td>0.2–5.0</td><td><span style="color:#f59e0b">🟡 Low</span></td><td>2.0–3.5</td></tr>
+          <tr><td>SHBG (Sex Hormone Binding Globulin)</td><td>50</td><td>nmol/L</td><td>17–124</td><td><span style="color:#22c55e">✅</span></td><td>30–60</td></tr>
+          <tr><td>Estradiol</td><td>48</td><td>pg/mL</td><td>56–214 (luteal)</td><td><span style="color:#f59e0b">🟡 Low-luteal</span></td><td>—</td></tr>
+          <tr><td>Progesterone</td><td>4.1</td><td>ng/mL</td><td>2.6–21.5 (luteal)</td><td><span style="color:#f59e0b">🟡 Low-luteal</span></td><td>&gt;10 mid-luteal</td></tr>
+          <tr><td>FSH (Follicle-Stimulating Hormone)</td><td>9.4</td><td>mIU/mL</td><td>2.5–10.2</td><td><span style="color:#22c55e">✅</span></td><td>—</td></tr>
+          <tr><td>DHEA-S (Dehydroepiandrosterone Sulfate)</td><td>102</td><td>mcg/dL</td><td>19–237</td><td><span style="color:#f59e0b">🟡</span></td><td>150–250</td></tr>
+          <tr><td>IGF-1 (Insulin-like Growth Factor-1)</td><td>151</td><td>ng/mL</td><td>52–328</td><td><span style="color:#f59e0b">🟡</span></td><td>180–250</td></tr>
+          <tr><td>Cortisol (AM)</td><td>9.9</td><td>mcg/dL</td><td>4–22</td><td><span style="color:#22c55e">✅</span></td><td>10–18</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-3 text-sm p-3 rounded-lg" style="background:rgba(245,158,11,0.06);color:var(--muted)">Pattern: Early ovarian-reserve transition. Low free T, lowish progesterone &amp; estradiol for luteal phase. Not menopause — but the prevention window is open.</div>
+  </details>
+
+  <details class="mb-4">
+    <summary>2.6 Inflammation</summary>
+    <div class="overflow-x-auto mt-2">
+      <table>
+        <thead><tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Optimal</th><th>Flag</th></tr></thead>
+        <tbody>
+          <tr><td>hs-CRP</td><td>&lt;0.2</td><td>mg/L</td><td>&lt;1.0</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>Homocysteine</td><td>8.4</td><td>µmol/L</td><td>&lt;7 (functional)</td><td><span style="color:#f59e0b">🟡 Mild methylation gap</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <details>
+    <summary>2.7 Kidney / Liver / Nutrients</summary>
+    <div class="overflow-x-auto mt-2">
+      <table>
+        <thead><tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Flag</th></tr></thead>
+        <tbody>
+          <tr><td>BUN (Blood Urea Nitrogen)</td><td>8</td><td>mg/dL</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>Creatinine</td><td>0.74</td><td>mg/dL</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>eGFR (estimated Glomerular Filtration Rate)</td><td>105</td><td>mL/min/1.73m²</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>AST / ALT / Alk Phos</td><td>18 / 11 / 57</td><td>U/L</td><td><span style="color:#22c55e">✅</span></td></tr>
+          <tr><td>Magnesium</td><td>2.1</td><td>mg/dL</td><td><span style="color:#f59e0b">🟡 Target 2.2+</span></td></tr>
+          <tr><td>Vitamin D (25-OH)</td><td>68</td><td>ng/mL</td><td><span style="color:#22c55e">✅ Sweet spot 60–80</span></td></tr>
+          <tr><td>Vitamin B12</td><td>620</td><td>pg/mL</td><td><span style="color:#f59e0b">🟡 Optimal &gt;800</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+</section>
+
+<!-- SECTION 3: INTERPRETATION -->
+<section class="card p-6 fade-in">
+  <h2 class="text-xl font-bold mb-4 accent">Section 3 — System Interpretation</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="p-4 rounded-lg" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2)">
+      <div class="font-semibold mb-2" style="color:#ef4444">① Primary — Subclinical Hashimoto's</div>
+      <p class="text-sm" style="color:var(--muted)">TPO Ab 32 (ref &lt;9). Bachmeier's root cause = failure of 3 systems: <strong>inflammation + insulin resistance + ATP shortage</strong> (Cortex <code>a86b2b97</code>). FT3/FT4 low-functional, TSH creeping. Intervention is immune re-education, not hormone substitution.</p>
+    </div>
+    <div class="p-4 rounded-lg" style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2)">
+      <div class="font-semibold mb-2" style="color:#f59e0b">② Secondary — Iron-Restricted State</div>
+      <p class="text-sm" style="color:var(--muted)">Ferritin 29 ng/mL (target 70–100). Deiodinase cofactor — directly worsens T4→T3 conversion. Explains fatigue, hair shedding, cold intolerance misattributed to thyroid alone.</p>
+    </div>
+    <div class="p-4 rounded-lg" style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2)">
+      <div class="font-semibold mb-2" style="color:#3b82f6">③ Tertiary — Low Female Testosterone</div>
+      <p class="text-sm" style="color:var(--muted)">Free T 1.2 + Total T 14 + DHEA-S 102 + IGF-1 151 + Insulin 6.6 = mild andropause-equivalent. Early ovarian-reserve transition signal. Prevention window is now open.</p>
+    </div>
+    <div class="p-4 rounded-lg" style="background:rgba(168,85,247,0.06);border:1px solid rgba(168,85,247,0.2)">
+      <div class="font-semibold mb-2" style="color:#a855f7">④ Quaternary — Borderline Cardiometabolic</div>
+      <p class="text-sm" style="color:var(--muted)">TG 128 + Insulin 6.6 + HDL 53 + B12 620 + Homocysteine 8.4. Refined-carb diet + sub-optimal methylation signals. Diet + B-complex resolves it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: PEPTIDE PROTOCOL -->
+<section class="card p-6 fade-in">
+  <h2 class="text-xl font-bold mb-2 accent">Section 4 — Peptide Protocol</h2>
+  <p class="text-xs mb-6" style="color:var(--muted)">Source: Dr. Trevor Bachmeier framework. All items are for research use only.</p>
+
+  <!-- Timeline -->
+  <div class="flex flex-col md:flex-row gap-4 mb-8">
+    <div class="flex-1 p-4 rounded-xl glow" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3)">
+      <div class="font-bold mb-1 accent">Tier 1 — NOW</div>
+      <div class="text-xs mb-3" style="color:var(--muted)">Root cause: immune re-education</div>
+      <div class="space-y-2 text-sm">
+        <div class="badge badge-green">Thymosin Alpha-1 (TA-1)</div>
+        <div class="badge badge-green">BPC-157</div>
+        <div class="badge badge-green">KPV (Lysine-Proline-Valine)</div>
+      </div>
+    </div>
+    <div class="flex items-center text-2xl no-print" style="color:var(--muted)">→</div>
+    <div class="flex-1 p-4 rounded-xl" style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.3)">
+      <div class="font-bold mb-1" style="color:#3b82f6">Tier 2 — Week 4–8</div>
+      <div class="text-xs mb-3" style="color:var(--muted)">After immune axis stabilizes</div>
+      <div class="space-y-2 text-sm">
+        <div class="badge badge-blue">CJC-1295 (no DAC)</div>
+        <div class="badge badge-blue">Ipamorelin</div>
+      </div>
+    </div>
+    <div class="flex items-center text-2xl no-print" style="color:var(--muted)">→</div>
+    <div class="flex-1 p-4 rounded-xl" style="background:rgba(148,163,184,0.08);border:1px solid rgba(148,163,184,0.2)">
+      <div class="font-bold mb-1" style="color:var(--muted)">Tier 3 — Optional</div>
+      <div class="text-xs mb-3" style="color:var(--muted)">Lifestyle-driven additions</div>
+      <div class="space-y-2 text-sm">
+        <div class="badge" style="background:rgba(148,163,184,0.15);color:#94a3b8;border:1px solid rgba(148,163,184,0.3)">Kisspeptin-10</div>
+        <div class="badge" style="background:rgba(148,163,184,0.15);color:#94a3b8;border:1px solid rgba(148,163,184,0.3)">DSIP (Delta Sleep-Inducing Peptide)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tier 1 table -->
+  <h3 class="font-semibold mb-2 accent">Tier 1 Detail</h3>
+  <div class="overflow-x-auto mb-6">
+    <table>
+      <thead><tr><th>Peptide</th><th>Indication</th><th>Dose</th><th>Route</th><th>Cycle</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Thymosin Alpha-1</strong></td>
+          <td>TPO Ab 32 → Hashimoto's: re-educates T cells, raises T-regs, restores TH1/TH2 balance</td>
+          <td>1.6 mg 2×/wk</td>
+          <td>SC (subcutaneous)</td>
+          <td>12 wk on → reassess</td>
+          <td><code>2679c30e</code> <code>a86b2b97</code></td>
+        </tr>
+        <tr>
+          <td><strong>BPC-157</strong></td>
+          <td>Gut-barrier repair (leaky gut = autoimmune driver); reduces TNF-α / IL-6 / IL-1β</td>
+          <td>250–500 mcg/day</td>
+          <td>SC</td>
+          <td>4 wk on / 2 wk off</td>
+          <td><code>7925c169</code> <code>0976442e</code></td>
+        </tr>
+        <tr>
+          <td><strong>KPV</strong></td>
+          <td>M1→M2 macrophage shift; shuts down NLRP3 inflammasome → IL-1β suppression</td>
+          <td>500 mcg/day</td>
+          <td>SC</td>
+          <td>4 wk on / 2 wk off</td>
+          <td><code>63616833</code> <code>29d44503</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tier 2 -->
+  <h3 class="font-semibold mb-2" style="color:#3b82f6">Tier 2 Detail (add wk 4–8)</h3>
+  <div class="overflow-x-auto mb-6">
+    <table>
+      <thead><tr><th>Peptide</th><th>Indication</th><th>Dose</th><th>Route</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>CJC-1295 (no DAC) + Ipamorelin</strong></td>
+          <td>IGF-1 151 (target 180–250); sleep depth, fat oxidation, lean mass in cycling woman</td>
+          <td>CJC 100 mcg + Ipa 200 mcg pre-sleep</td>
+          <td>SC</td>
+          <td><code>61b663a4</code> <code>df0db97f</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Contraindications -->
+  <div class="p-4 rounded-lg text-sm" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15)">
+    <div class="font-semibold mb-2" style="color:#ef4444">Contraindications</div>
+    <ul class="space-y-1" style="color:var(--muted)">
+      <li>• Pregnancy / planning pregnancy → stop all peptides immediately</li>
+      <li>• Active malignancy → CJC/Ipamorelin contraindicated (IGF-1 elevation)</li>
+      <li>• Acute infection → pause TA-1 (already-elevated immune state)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 5: SUPPLEMENTS -->
+<section class="card p-6 fade-in">
+  <h2 class="text-xl font-bold mb-4 accent">Section 5 — Oral Supplement Protocol</h2>
+
+  <h3 class="font-semibold mb-2 accent">Tier 1 — Start Now</h3>
+  <div class="overflow-x-auto mb-6">
+    <table>
+      <thead><tr><th>Supplement</th><th>Indication</th><th>Dose</th><th>Timing</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Iron bisglycinate</strong></td><td>Ferritin 29 → target 70–100; T4→T3 deiodinase cofactor</td><td>25–30 mg alt-day</td><td>Empty stomach AM + 500 mg Vit C</td><td>Alt-day improves absorption (hepcidin biology)</td></tr>
+        <tr><td><strong>Selenium (selenomethionine)</strong></td><td>TPO Ab 32 — only nutrient with RCT evidence reducing TPO Ab titer</td><td>200 mcg</td><td>AM with food</td><td>Hard cap 400 mcg/day</td></tr>
+        <tr><td><strong>Vitamin D3 + K2-MK7</strong></td><td>Vit D 68 ng/mL (maintain); K2 directs Ca to bone</td><td>2,000 IU + 100 mcg</td><td>AM with fat</td><td>Maintenance; recheck wk 16</td></tr>
+        <tr><td><strong>Magnesium glycinate</strong></td><td>Mg 2.1 (low-functional); thyroid, sleep, insulin sensitivity</td><td>300–400 mg</td><td>Bedtime</td><td>Glycinate form preferred</td></tr>
+        <tr><td><strong>Methylated B-complex</strong></td><td>Homocysteine 8.4 + B12 620; thyroid hormone synthesis</td><td>1× capsule</td><td>AM with food</td><td>Targets homocysteine &lt;7</td></tr>
+        <tr><td><strong>Myo-inositol + D-chiro (40:1)</strong></td><td>TPO Ab + borderline insulin; RCT evidence reducing TSH + antibody titer</td><td>2,000 mg + 50 mg BID</td><td>AM + PM with food</td><td>12-week initial course</td></tr>
+        <tr><td><strong>Zinc picolinate</strong></td><td>Thyroid hormone synthesis + immune T-reg function</td><td>25 mg</td><td>PM with food</td><td>Add 1 mg copper if &gt;8 wks</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="font-semibold mb-2" style="color:#3b82f6">Tier 2 — Add at wk 4–8</h3>
+  <div class="overflow-x-auto mb-6">
+    <table>
+      <thead><tr><th>Supplement</th><th>Indication</th><th>Dose</th><th>Timing</th></tr></thead>
+      <tbody>
+        <tr><td>NAC (N-Acetyl Cysteine)</td><td>Glutathione precursor → reduces oxidative thyroid damage</td><td>600 mg BID</td><td>AM + PM between meals</td></tr>
+        <tr><td>Curcumin (liposomal)</td><td>Anti-inflammatory adjunct; supports KPV/BPC-157 work</td><td>500 mg BID</td><td>With meals</td></tr>
+        <tr><td>Omega-3 (high-EPA)</td><td>TG 128 + HDL 53 + autoimmune resolution</td><td>2 g EPA + 1 g DHA</td><td>With meals</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="p-4 rounded-lg" style="background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15)">
+    <div class="font-semibold mb-2 accent">Dietary Anchor (non-negotiable)</div>
+    <ul class="text-sm space-y-1" style="color:var(--muted)">
+      <li>• <strong>Gluten elimination</strong> — Hashimoto's molecular-mimicry: strict 90-day trial, then reassess TPO Ab</li>
+      <li>• <strong>Refined carb taper</strong> — addresses Insulin 6.6, TG 128</li>
+      <li>• <strong>Protein 1.6 g/kg/day</strong> — supports muscle + thyroid hormone synthesis</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 6: RECHECK -->
+<section class="card p-6 fade-in">
+  <h2 class="text-xl font-bold mb-6 accent">Section 6 — Recheck Schedule</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="timeline-phase p-4 rounded-r-xl" style="background:rgba(34,197,94,0.05)">
+      <div class="font-bold mb-1 accent">Week 8 — 2026-07-22</div>
+      <div class="text-sm" style="color:var(--muted)">TPO Ab · TSH · FT3 · FT4 · Ferritin · % Iron Sat · hs-CRP · Homocysteine · Insulin</div>
+      <div class="mt-3 text-xs p-2 rounded" style="background:rgba(239,68,68,0.08);color:#ef4444">
+        <strong>Escalation gate:</strong> TPO Ab not ↓≥30% → bump TA-1 to 3×/wk + tighten gluten/dairy + add LDN (Low-Dose Naltrexone) 1.5–4.5 mg HS
+      </div>
+    </div>
+    <div class="timeline-phase p-4 rounded-r-xl" style="background:rgba(59,130,246,0.05);border-left-color:#3b82f6">
+      <div class="font-bold mb-1" style="color:#3b82f6">Week 16 — 2026-09-16</div>
+      <div class="text-sm" style="color:var(--muted)">Full repeat: + IGF-1 · Free/Total T · Estradiol · Progesterone · DHEA-S · HbA1c · CBC · CMP · Lipid panel · Vitamin D · B12</div>
+      <div class="mt-3 text-xs p-2 rounded" style="background:rgba(59,130,246,0.08);color:#3b82f6">
+        Free T still &lt;2 pg/mL + symptoms → consider female-dose testosterone cream
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: SOURCES -->
+<section class="card p-6 fade-in">
+  <h2 class="text-xl font-bold mb-4 accent">Section 7 — Sources Cited</h2>
+  <details>
+    <summary>Cortex Records (Bachmeier Transcripts)</summary>
+    <div class="mt-3 grid md:grid-cols-2 gap-2 text-sm" style="color:var(--muted)">
+      <div><code>2679c30e</code> — Thymosin Alpha 1 Powerhouse @10:46 — Hashimoto immune re-education</div>
+      <div><code>a86b2b97</code> — same @11:53 — 3 biological systems (inflammation/IR/ATP)</div>
+      <div><code>180c7416</code> — same @06:01 — TA-1 mechanism</div>
+      <div><code>7925c169</code> — FDA War Against Peptides @15:36 — BPC-157 tight junctions</div>
+      <div><code>0976442e</code> — BPC-157 Forever Peptide @46:50 — eNOS upregulation</div>
+      <div><code>63616833</code> — KPV Masterclass @17:12 — M1→M2 macrophage shift</div>
+      <div><code>29d44503</code> — KPV Anti-Inflammatory @22:08 — NLRP3 inflammasome</div>
+      <div><code>61b663a4</code> — CJC-1295/Ipamorelin Masterclass @06:09</div>
+      <div><code>df0db97f</code> — CJC-1295 Reversing Age @18:21</div>
+      <div><code>810d2f27</code> — Kisspeptin + IVF/TRT @22:50</div>
+      <div><code>335549f5</code> — DSIP Masterclass @30:44</div>
+      <div><code>93896a06</code> — KPV Masterclass @12:11 — IRS1 phosphorylation/IR</div>
+    </div>
+  </details>
+  <details class="mt-3">
+    <summary>Peer-Reviewed Evidence Base</summary>
+    <div class="mt-3 text-sm space-y-1" style="color:var(--muted)">
+      <div>• Endocrine 2016 — Thymosin alpha-1 re-educates T cells, increases T-regs (via Cortex <code>2679c30e</code>)</div>
+      <div>• Gärtner / Duntas RCT 2002–2016 — Selenium reduces TPO Ab titer in Hashimoto's (independent of Bachmeier)</div>
+      <div>• Nordio/Pajalich 2017 RCT — Myo-inositol + selenium synergy in Hashimoto's</div>
+      <div>• Martin SS et al. JAMA 2013 — LDL-C methodology</div>
+      <div>• Grundy SM et al. JACC 2019 — ApoB targets</div>
+    </div>
+  </details>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t py-6 text-center text-xs" style="border-color:var(--border);color:var(--muted)">
+  Generated by <strong>NexusOS Health Agent</strong> · Bachmeier Framework · 2026-05-26 ·
+  <span style="color:var(--accent)">Research Use Only</span>
+</footer>
+
+<script>
+// Theme toggle
+function setTheme(dark) {
+  document.documentElement.className = dark ? 'dark' : 'light';
+  document.getElementById('themeBtn').textContent = dark ? '☀ Light' : '🌙 Dark';
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+function toggleTheme() {
+  setTheme(document.documentElement.classList.contains('dark') ? false : true);
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  setTheme(saved ? saved === 'dark' : true);
+})();
+
+// Share
+function share() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'Irina Catanoi — Bloodwork May 2026', url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => alert('Link copied!'));
+  }
+}
+
+// Fade-in on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Biomarker Chart
+const ctx = document.getElementById('biomarkerChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Thyroid/Autoimmune', 'Iron / Hematology', 'Hormones', 'Metabolic', 'Lipids/CV', 'Inflammation', 'Nutrients'],
+    datasets: [
+      {
+        label: 'Optimal',
+        data: [2, 3, 3, 3, 8, 1, 1],
+        backgroundColor: 'rgba(34,197,94,0.7)',
+        borderRadius: 4,
+      },
+      {
+        label: 'Suboptimal / Flagged',
+        data: [3, 5, 4, 1, 1, 1, 2],
+        backgroundColor: 'rgba(245,158,11,0.7)',
+        borderRadius: 4,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { labels: { color: '#94a3b8', font: { family: 'Inter' } } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}` } }
+    },
+    scales: {
+      x: { stacked: true, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+      y: { stacked: true, ticks: { color: '#e2e8f0' }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
