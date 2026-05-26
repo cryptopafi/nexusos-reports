@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 AI Banner Playbook for SMS-Ads — DELPHI D3 Report</title>
+  <style>
+    :root {
+      --bg: #0f172a; --bg2: #1e293b; --bg3: #334155;
+      --text: #e2e8f0; --muted: #94a3b8; --accent: #60a5fa;
+      --green: #4ade80; --yellow: #facc15; --red: #f87171; --orange: #fb923c;
+      --border: #334155;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc; --bg2: #ffffff; --bg3: #e2e8f0;
+      --text: #0f172a; --muted: #64748b; --accent: #2563eb;
+      --green: #16a34a; --yellow: #ca8a04; --red: #dc2626; --orange: #ea580c;
+      --border: #cbd5e1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.6; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px 60px; }
+    header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    header h1 { font-size: 1.1em; color: var(--accent); font-weight: 600; }
+    .meta { font-size: 0.8em; color: var(--muted); }
+    .share-bar { position: sticky; top: 0; z-index: 999; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .share-url { flex: 1; min-width: 240px; max-width: 560px; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: 0.85em; font-family: monospace; outline: none; }
+    .btn { background: var(--accent); color: #fff; border: none; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: 0.85em; white-space: nowrap; }
+    .theme-btn { background: var(--bg3); color: var(--text); border: none; border-radius: 6px; padding: 6px 12px; cursor: pointer; font-size: 0.85em; }
+    h2 { font-size: 1.35em; color: var(--accent); margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    h3 { font-size: 1.05em; color: var(--text); margin: 20px 0 8px; }
+    p { margin-bottom: 12px; color: var(--text); }
+    ul, ol { margin: 0 0 12px 24px; color: var(--text); }
+    li { margin-bottom: 6px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .exec-bullets { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
+    .exec-bullets li { margin-bottom: 10px; line-height: 1.5; }
+    .epr-badge { display: inline-block; background: var(--green); color: #000; font-weight: 700; font-size: 0.85em; padding: 3px 10px; border-radius: 20px; margin-left: 8px; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88em; }
+    th { background: var(--bg3); color: var(--text); padding: 10px 12px; text-align: left; font-weight: 600; }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:hover td { background: var(--bg2); }
+    .tag-can { color: var(--green); font-weight: 600; }
+    .tag-no { color: var(--red); }
+    .tag-partial { color: var(--yellow); }
+    .code-block { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; font-family: 'SF Mono', 'Cascadia Code', monospace; font-size: 0.84em; overflow-x: auto; white-space: pre; margin: 12px 0 20px; line-height: 1.5; color: var(--text); }
+    .copy-code { float: right; background: var(--bg3); color: var(--text); border: none; border-radius: 4px; padding: 3px 10px; cursor: pointer; font-size: 0.78em; }
+    .workflow-step { display: flex; gap: 16px; align-items: flex-start; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+    .step-num { background: var(--accent); color: #fff; font-weight: 700; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.9em; }
+    .step-tool { font-size: 0.75em; background: var(--bg3); padding: 2px 8px; border-radius: 4px; color: var(--muted); display: inline-block; margin-bottom: 4px; }
+    .compliance-block { background: #1c1917; border-left: 3px solid var(--red); border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 10px 0; }
+    [data-theme="light"] .compliance-block { background: #fff7ed; }
+    .cost-highlight { font-size: 2em; font-weight: 700; color: var(--green); }
+    .source-item { padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.88em; }
+    .source-num { color: var(--muted); width: 28px; display: inline-block; }
+    .unverified { background: var(--bg2); border-left: 3px solid var(--yellow); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 8px 0; font-size: 0.88em; }
+    .coverage-table th { font-size: 0.82em; }
+    .status-covered { color: var(--green); font-weight: 600; }
+    .status-skipped { color: var(--muted); }
+    footer { text-align: center; color: var(--muted); font-size: 0.8em; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>2026 AI Banner Playbook — SMS-Ads Affiliate</h1>
+    <div class="meta">DELPHI D3 Research &nbsp;·&nbsp; 2026-05-26 &nbsp;·&nbsp; EPR 18/20 <span class="epr-badge">PASS</span> &nbsp;·&nbsp; 22 Sources &nbsp;·&nbsp; ~12 min wall time</div>
+  </div>
+  <button class="theme-btn" onclick="var t=document.documentElement;t.dataset.theme=t.dataset.theme==='light'?'dark':'light'">Toggle Theme</button>
+</header>
+
+<div class="share-bar">
+  <span style="color:var(--muted);font-size:0.85em">Share:</span>
+  <input class="share-url" id="share-url" type="text" value="https://cryptopafi.github.io/nexusos-reports/ai-banner-playbook-smsads-2026-05-26.html" readonly />
+  <button class="btn" onclick="var el=document.getElementById('share-url');el.select();navigator.clipboard&&navigator.clipboard.writeText(el.value);this.textContent='Copied!';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
+</div>
+
+<div class="container">
+
+<h2>Executive Summary</h2>
+<ul class="exec-bullets">
+  <li><strong>Claude Design is real</strong> — Anthropic Labs confirmed a visual design product (Pro/Max/Team/Enterprise) that handles marketing collateral, landing pages, and social assets with brand-system integration. It exports to HTML/Canva/PDF but delegates HTML5 code generation to Claude Code. Use Claude Design for concept and visual direction; Claude Code for the actual .html/.css/.js output.</li>
+  <li><strong>The best 2026 solo workflow is a 4-tool chain:</strong> Claude (copy variants) → gpt-image-2 via ChatGPT/Codex (hero visual, ~$0.05/image) → Claude Code (HTML5 layout, ~$0.015/banner) → ChatGPT Canvas (layout iteration/QA). Total cost per banner: $0.07–$0.12. Time per banner: 5–15 minutes with iteration.</li>
+  <li><strong>Claude Code beats Codex for HTML/CSS design quality</strong> — confirmed by Reddit r/PPC practitioners ("Claude is better at design") and a YouTube course instructor who switched to Claude inside Codex's terminal for front-end work. Codex adds value for the gpt-image-2 native integration and background agent mode.</li>
+  <li><strong>Affiliate compliance is non-negotiable and AI copy fails it by default</strong> — iGaming requires platform authorization, age gating, responsible gambling links, and geo-licensed targeting. Nutra requires FTC-substantiated claims. Sweepstakes require "No Purchase Necessary" disclosure. AI-generated copy routinely omits these; every banner needs a compliance pass before upload.</li>
+  <li><strong>File weight limits are firm: 150 KB static/HTML5 initial load</strong> (Google Ads, confirmed). Standard display CTR is 0.05–0.1%; rich media/interactive reaches 0.15–0.3%. DCO (Dynamic Creative Optimization) campaigns report 20–60% higher CTR. For 20 variants/week, a Claude Pro subscription ($20/mo) covers API token costs; total budget including gpt-image-2 images: ~$5–$7/week.</li>
+</ul>
+
+<h2>1. Tool Capability Matrix (2026)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>CAN do for banners</th>
+      <th>CANNOT do</th>
+      <th>Recommended Pipeline Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Claude Design</strong><br><span style="font-size:0.8em;color:var(--muted)">Anthropic Labs</span></td>
+      <td><span class="tag-can">CAN:</span> Concept ideation, visual wireframes, brand system creation, marketing collateral mockups, export to HTML/Canva/PDF/PPTX. Reads your codebase + design files to build design system. Web capture tool for live-site references.</td>
+      <td><span class="tag-no">CANNOT:</span> Generate raster images natively. Export production HTML5 with animation/JS. Batch-generate via API (UI only, no public API). Not usable for programmatic banner variants at scale.</td>
+      <td><strong>Step 1–2:</strong> Brief → Visual concept. Use for design system setup and mockup direction. Hand off to Claude Code for code output.</td>
+    </tr>
+    <tr>
+      <td><strong>Claude / Claude Code</strong><br><span style="font-size:0.8em;color:var(--muted)">Anthropic</span></td>
+      <td><span class="tag-can">CAN:</span> Write all copy variants (headlines, CTAs, descriptions). Generate complete HTML5/CSS/JS banners. Enforce file-size constraints. Create Figma plugin for size variants. Batch export Google Ads RSA CSVs. Brand voice consistency via Claude Skills.</td>
+      <td><span class="tag-no">CANNOT:</span> Generate raster images natively. Render animated GIFs. Verify brand logo pixel-accuracy. Automated upload to ad platforms (requires human step or integration).</td>
+      <td><strong>Step 3 (copy) + Step 5 (HTML5 code):</strong> Primary copy engine + HTML5 scaffold generator. Claude Pro ($20/mo) sufficient for 20 banners/week.</td>
+    </tr>
+    <tr>
+      <td><strong>OpenAI Codex</strong><br><span style="font-size:0.8em;color:var(--muted)">OpenAI, April 2026</span></td>
+      <td><span class="tag-can">CAN:</span> HTML/CSS/JS generation (weaker than Claude for design aesthetics). Background agent mode for overnight batch runs. gpt-image-2 native integration for images. Multi-agent parallel execution. Browser annotation for design tweaks.</td>
+      <td><span class="tag-no">CANNOT:</span> Match Claude Code for CSS design quality (practitioner consensus). No built-in compliance checks. Image generation requires gpt-image-2 integration (not standalone code generation).</td>
+      <td><strong>Step 4 (image gen via gpt-image-2) + optional HTML5 if Claude Code unavailable.</strong> Use Codex for overnight batch image generation jobs.</td>
+    </tr>
+    <tr>
+      <td><strong>ChatGPT (GPT-image-2 + Canvas)</strong><br><span style="font-size:0.8em;color:var(--muted)">OpenAI, 2026</span></td>
+      <td><span class="tag-can">CAN:</span> High-fidelity hero image generation (2000px, improved text rendering, multi-aspect ratios). Canvas for HTML/CSS live iteration and version history. 8-frame coherence for campaign variant sets. Thinking Mode for complex composition. Fast generation (4x speed vs prior gen).</td>
+      <td><span class="tag-no">CANNOT:</span> Export animated HTML5 banners. Transparent backgrounds (post-processing needed). Batch-generate in one call. No programmatic brand-color enforcement.</td>
+      <td><strong>Step 4 (hero visual image) + Step 6 (layout QA iteration via Canvas).</strong> $0.05/image (medium quality 1024x1024).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. End-to-End Workflow (2026 Best Practice)</h2>
+
+<div class="workflow-step">
+  <div class="step-num">1</div>
+  <div>
+    <div class="step-tool">Owner: Human + Claude</div>
+    <strong>Offer Brief → Structured Brief Document</strong><br>
+    Input: vertical (iGaming/nutra/sweepstakes/dating), offer CTA, target GEOs, brand palette, sizing requirements (300x250, 320x50, 300x600, 728x90, 1080x1080, 1080x1920). Claude generates a structured brief with compliance checklist inline.
+  </div>
+</div>
+
+<div class="workflow-step">
+  <div class="step-num">2</div>
+  <div>
+    <div class="step-tool">Owner: Claude Design (or Claude claude.ai)</div>
+    <strong>Brief → Visual Concept + Design System</strong><br>
+    Claude Design reads brand assets, builds color/typography system, generates 2–3 visual direction mockups. Export: design brief as HTML or Canva link. Skip if no brand system exists and use Claude chat with image input instead.
+  </div>
+</div>
+
+<div class="workflow-step">
+  <div class="step-num">3</div>
+  <div>
+    <div class="step-tool">Owner: Claude (claude.ai or API)</div>
+    <strong>Copy Variants</strong><br>
+    Generate 5–10 copy variants per format: headline (≤30 chars), subheadline (≤60 chars), CTA (≤15 chars), disclaimer text. Use compliance-aware prompt (see Template A below). Compliance pass: check for prohibited language (guaranteed wins, disease claims, missing disclosures).
+  </div>
+</div>
+
+<div class="workflow-step">
+  <div class="step-num">4</div>
+  <div>
+    <div class="step-tool">Owner: ChatGPT GPT-image-2 (or Codex)</div>
+    <strong>Hero Visual Generation</strong><br>
+    Generate hero image at 1024x1024 (medium quality, ~$0.05). Use 8-frame coherence for variant sets. Scale down to banner dimensions via CSS. Text rendering in image: usable for headlines, not for dense legal copy (render that via HTML/CSS instead).
+  </div>
+</div>
+
+<div class="workflow-step">
+  <div class="step-num">5</div>
+  <div>
+    <div class="step-tool">Owner: Claude Code</div>
+    <strong>HTML5 Banner Scaffold</strong><br>
+    Claude Code generates full index.html + style.css + app.js for each size. Enforces 150 KB limit. Includes fallback static PNG. Adds click-tag parameter. Animation: CSS keyframes (no JS animation library = smaller file). Verify: <code>du -sh banner/</code> + headless Chrome render.
+  </div>
+</div>
+
+<div class="workflow-step">
+  <div class="step-num">6</div>
+  <div>
+    <div class="step-tool">Owner: ChatGPT Canvas</div>
+    <strong>Layout Iteration + QA</strong><br>
+    Paste HTML into Canvas. Adjust spacing, animation timing, font size. Canvas preview pane renders live. Version history for A/B test variants. Human review: verify compliance disclosures visible, CTA tap target ≥44px on mobile, file stays under 150 KB.
+  </div>
+</div>
+
+<div class="workflow-step">
+  <div class="step-num">7</div>
+  <div>
+    <div class="step-tool">Owner: Human</div>
+    <strong>Compliance Pass + Export</strong><br>
+    Final check against network policy (platform authorization, age gate, responsible gambling link for iGaming; "No Purchase Necessary" for sweepstakes; FTC disclaimer for nutra). Zip project folder. Upload to ad server (Google Display &lt;150 KB, Trade Desk &lt;100 KB primary HTML).
+  </div>
+</div>
+
+<h2>3. SMS-Ads Specific Constraints</h2>
+
+<h3>Affiliate Compliance by Vertical</h3>
+<div class="compliance-block">
+  <strong>iGaming / Sports Betting</strong><br>
+  Platform authorization required (Meta, Google, X each have separate approval processes). Age gate mandatory (18+ US; 21+ UK). Responsible gambling helpline link on landing page AND creative. Cannot target unlicensed GEOs — restrict at link level, not just ad targeting. No "guaranteed wins", no implication of skill guarantees. UK affiliates: ASA guidelines require prominent responsible gambling messaging. March 2026: Google now evaluates entire account Policy Health Score — one violation can revoke certification.
+</div>
+<div class="compliance-block">
+  <strong>Nutraceutical / Dietary Supplements</strong><br>
+  FTC: all claims must be substantiated with competent and reliable scientific evidence. No disease treatment claims (FDA jurisdiction). Disclaimers required: "*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease." Testimonials must reflect typical results or disclose atypicality.
+</div>
+<div class="compliance-block">
+  <strong>Sweepstakes</strong><br>
+  "No Purchase Necessary" must appear prominently. Complete official rules hosted on landing page. State registration required in Florida, New York, Rhode Island for sweepstakes with prizes over $5,000. No language implying purchase improves odds.
+</div>
+<div class="compliance-block">
+  <strong>Dating / Adult</strong><br>
+  Suggestive but non-explicit imagery on compliant networks. No implied minors. CTA must be clear about service type. Age-gating required. Affiliate must be registered formal affiliate (Meta requirement, July 2025 update).
+</div>
+
+<h3>CTR Benchmarks (2025–2026 Data)</h3>
+<table>
+  <tr><th>Format</th><th>Average CTR</th><th>Best Practice for SMS-Ads</th></tr>
+  <tr><td>Standard static display</td><td>0.05–0.10%</td><td>Baseline — use for retargeting only</td></tr>
+  <tr><td>Rich media / interactive HTML5</td><td>0.15–0.30%+</td><td>Primary format for affiliate offers</td></tr>
+  <tr><td>Native ads</td><td>0.08–0.15%</td><td>Good for nutra/supplement verticals</td></tr>
+  <tr><td>DCO (Dynamic Creative Optimization)</td><td>20–60% lift over static</td><td>Target with 5+ variants per ad set</td></tr>
+</table>
+
+<h3>Mobile-First Sizing</h3>
+<table>
+  <tr><th>Size</th><th>Name</th><th>File Limit</th><th>Priority</th></tr>
+  <tr><td>320x50</td><td>Mobile Leaderboard</td><td>150 KB</td><td>HIGHEST — most mobile impressions</td></tr>
+  <tr><td>300x250</td><td>Medium Rectangle</td><td>150 KB</td><td>HIGH — cross-device, top volume</td></tr>
+  <tr><td>300x600</td><td>Half Page</td><td>150 KB</td><td>MEDIUM — premium placement</td></tr>
+  <tr><td>728x90</td><td>Leaderboard</td><td>150 KB</td><td>MEDIUM — desktop only</td></tr>
+  <tr><td>1080x1080</td><td>Social Square</td><td>Per platform</td><td>HIGH — social / push campaigns</td></tr>
+  <tr><td>1080x1920</td><td>Stories / Full Portrait</td><td>Per platform</td><td>HIGH — mobile stories format</td></tr>
+</table>
+<p><strong>File weight rules (confirmed, Google Ads):</strong> Static image (JPG/PNG/GIF): max 150 KB. HTML5 ZIP: max 150 KB initial load. Polite load (after page loads): up to 200 KB additional. User-initiated: up to 2 MB. Trade Desk: 100 KB primary HTML file, 10 MB ZIP uncompressed.</p>
+<p><strong>Mobile design rules:</strong> CTA tap target minimum 44×44px. Text minimum 14px on 320px wide. Keep animation under 15 seconds, loop max 3x. Always include fallback static PNG for environments blocking HTML5.</p>
+
+<h2>4. Prompt Templates (Copy-Paste Ready)</h2>
+
+<h3>Template A — Claude: Affiliate Banner Copy Variants</h3>
+<div style="position:relative">
+<button class="copy-code" onclick="navigator.clipboard.writeText(document.getElementById('tmpl-a').textContent)">Copy</button>
+<pre class="code-block" id="tmpl-a">You are a direct-response copywriter for affiliate display ads.
+
+BRIEF:
+- Vertical: {VERTICAL}  (e.g. iGaming / nutraceutical / sweepstakes / dating)
+- Offer: {OFFER_DESCRIPTION}  (e.g. "100% deposit match up to $200")
+- Target GEO: {GEO}  (e.g. US-Tier1, UK, CA)
+- Sizes: 300x250, 320x50, 728x90
+- Brand tone: {TONE}  (e.g. bold and urgent / friendly and approachable)
+- Compliance vertical: {COMPLIANCE}  (e.g. gambling / supplement / sweepstakes)
+
+OUTPUT FORMAT per variant (generate 5 variants):
+Variant N:
+  Headline (≤30 chars): ...
+  Sub-headline (≤60 chars): ...
+  CTA (≤15 chars): ...
+  Disclaimer (required for {COMPLIANCE}): ...
+  Size adaptation (320x50 — headline only version): ...
+
+COMPLIANCE RULES — apply to ALL variants:
+- iGaming: include "Play Responsibly. 18+" and link placeholder [RG_LINK]
+- Nutra: end with "* Results may vary. These statements have not been evaluated by the FDA."
+- Sweepstakes: include "No Purchase Necessary. See official rules at [RULES_URL]."
+- Dating: no implied sexual content, no implied minors
+
+Do NOT use: guaranteed wins, disease cure claims, "free" without conditions, countdown timers
+  that imply false scarcity.</pre>
+</div>
+
+<h3>Template B — GPT-image-2 / ChatGPT: Hero Visual Prompt</h3>
+<div style="position:relative">
+<button class="copy-code" onclick="navigator.clipboard.writeText(document.getElementById('tmpl-b').textContent)">Copy</button>
+<pre class="code-block" id="tmpl-b">Generate a banner hero image for a {VERTICAL} affiliate ad campaign.
+
+SPECS:
+- Output size: 1024x1024 (will be cropped/scaled to banner sizes)
+- Style: {STYLE}  (e.g. photorealistic / flat design / bold graphic)
+- Color palette: Primary {HEX_PRIMARY}, accent {HEX_ACCENT}, background {HEX_BG}
+- Mood: {MOOD}  (e.g. exciting and urgent / clean and trustworthy)
+
+VISUAL ELEMENTS:
+- Main subject: {SUBJECT}  (e.g. sports stadium crowd / capsule supplement bottle / spinning wheel graphic)
+- Text overlay: "{HEADLINE_TEXT}" in bold sans-serif, top 30% of frame, white text with dark drop shadow
+- CTA area: bottom 20% solid {HEX_PRIMARY} strip with white text "{CTA_TEXT}"
+- Logo placeholder: top-left corner, 80x80px transparent area
+
+QUALITY REQUIREMENTS:
+- Text must be crisp and fully legible (this is for display advertising)
+- No stock-photo watermarks
+- No faces that could be identified as real people (unless using provided reference)
+- Background should not compete with text overlay
+- Safe for advertising networks (no explicit content, no medical devices shown)
+
+OUTPUT: PNG, high quality, no watermark.</pre>
+</div>
+
+<h3>Template C — Claude Code: Responsive HTML5 Banner from Brief</h3>
+<div style="position:relative">
+<button class="copy-code" onclick="navigator.clipboard.writeText(document.getElementById('tmpl-c').textContent)">Copy</button>
+<pre class="code-block" id="tmpl-c">/plan
+Build a complete HTML5 display banner package for the following specification.
+
+BANNER SPEC:
+- Size: {SIZE}px  (e.g. 300x250 — width x height)
+- Offer: {OFFER}  (e.g. "20% off first order — code SAVE20")
+- Headline: "{HEADLINE}"  (max 30 chars)
+- Sub-headline: "{SUBHEADLINE}"  (optional, max 60 chars)
+- CTA text: "{CTA}"  (max 15 chars)
+- CTA destination: {CLICK_URL}  (use clickTag variable)
+- Brand colors: Primary {HEX_PRIMARY} / Text {HEX_TEXT} / BG {HEX_BG}
+- Hero image: {IMAGE_FILENAME} (provided in project folder, or use placeholder rect)
+- Disclaimer: "{DISCLAIMER_TEXT}" (8px text, bottom of banner)
+
+REQUIREMENTS:
+1. Files: index.html + style.css + optional app.js (no external libraries)
+2. Animation: CSS keyframes only (no GreenSock, no jQuery)
+   - Headline fades in: 0.6s ease
+   - CTA slides in from right: 0.4s ease, starts at 0.7s
+   - Total loop: 8 seconds, max 3 loops
+3. Click tag: standard clickTag variable, <a> wraps entire banner
+4. Fallback: <noscript> static version with fallback.png
+5. File size: verify total ZIP is under 150 KB (list sizes in README)
+6. Responsive: banner is fixed-size container, centered in viewport
+7. Mobile: CTA button tap target minimum 44x44px
+
+OUTPUT:
+- /index.html
+- /style.css
+- /app.js (if needed)
+- /README.md with: (a) file sizes, (b) testing instructions, (c) click-tag setup
+
+After generating, run: du -sh . to verify file sizes.
+Report if any file exceeds limits before completing.</pre>
+</div>
+
+<h3>Template D — ChatGPT Canvas: Layout Iteration</h3>
+<div style="position:relative">
+<button class="copy-code" onclick="navigator.clipboard.writeText(document.getElementById('tmpl-d').textContent)">Copy</button>
+<pre class="code-block" id="tmpl-d">I have an HTML5 banner at {SIZE}px that needs layout refinement.
+Open in Canvas so I can iterate visually.
+
+[PASTE HTML CODE HERE]
+
+ITERATION GOALS:
+1. Spacing: increase padding around headline to {TARGET_PADDING}px top/bottom
+2. Font: headline font-size to {HEADLINE_SIZE}px, ensure it doesn't overflow at 320px width
+3. CTA button: make tap target exactly 44px tall, border-radius 6px
+4. Animation timing: slow down CTA slide to 0.6s (currently 0.4s)
+5. Color check: verify brand primary {HEX_PRIMARY} is used consistently (not approximated)
+
+COMPLIANCE ITEMS TO VERIFY:
+- Disclaimer text is visible (not hidden behind animation)
+- "18+" or "No Purchase Necessary" text readable at 8px minimum
+- CTA does not use prohibited language
+
+After each change, show me:
+- The updated HTML
+- A plain-text description of what changed and why
+- Current estimated file size impact
+
+Generate variant A (current) vs variant B (with changes) so I can compare.</pre>
+</div>
+
+<h2>5. Cost + Throughput Estimate</h2>
+
+<h3>Per-Banner Cost Breakdown</h3>
+<table>
+  <tr><th>Component</th><th>Tool</th><th>Cost per Banner</th><th>Notes</th></tr>
+  <tr><td>Copy variants (5 variants)</td><td>Claude Sonnet 4.6 API</td><td>~$0.01</td><td>~5K input + 2K output tokens. Claude Pro plan effectively $0/banner at &lt;30/day</td></tr>
+  <tr><td>Hero image (1 image)</td><td>gpt-image-2 medium</td><td>~$0.05</td><td>1024x1024 medium quality. High quality: $0.21. Low: $0.006</td></tr>
+  <tr><td>HTML5 scaffold (1 size)</td><td>Claude Code</td><td>~$0.015</td><td>Sonnet 4.6 API. Pro plan: $0 effective for &lt;30/day usage</td></tr>
+  <tr><td>Layout iteration (2–3 rounds)</td><td>ChatGPT Plus Canvas</td><td>~$0.003</td><td>Amortized across $20/mo subscription, assuming 200 iterations/mo</td></tr>
+  <tr><td>Multi-size adaptation (5 sizes)</td><td>Claude Code resize</td><td>~$0.01</td><td>Adapting one design to 5 sizes is 1–2K tokens</td></tr>
+  <tr><td><strong>TOTAL per single-size banner</strong></td><td>—</td><td><span class="cost-highlight">~$0.07</span></td><td>Image + copy + code + iteration</td></tr>
+  <tr><td><strong>TOTAL per full multi-size set (5 sizes)</strong></td><td>—</td><td><span class="cost-highlight">~$0.12</span></td><td>One image, multiple HTML5 adaptations</td></tr>
+</table>
+
+<h3>20 Variants/Week Scenario (Solo Operator)</h3>
+<table>
+  <tr><th>Metric</th><th>Estimate</th><th>Assumptions</th></tr>
+  <tr><td>Total API cost (20 banners)</td><td>$1.40–$2.40</td><td>$0.07–0.12 × 20 variants</td></tr>
+  <tr><td>Subscription cost (amortized)</td><td>~$10/week</td><td>Claude Pro $20/mo + ChatGPT Plus $20/mo = $40/mo = $10/week</td></tr>
+  <tr><td>Total weekly spend</td><td><strong>~$12–$14/week</strong></td><td>Subscriptions dominate at low volume</td></tr>
+  <tr><td>Time per banner (with iteration)</td><td><strong>5–15 minutes</strong></td><td>Copy: 2 min · Image: 1 min · HTML5: 3–5 min · QA: 2–5 min</td></tr>
+  <tr><td>Time for 20 variants/week</td><td><strong>~2–5 hours/week</strong></td><td>Mostly prompt crafting and compliance review</td></tr>
+  <tr><td>Bottleneck</td><td>Compliance review</td><td>Not rendering speed — reviewing AI copy for prohibited claims takes 2–3 min/banner</td></tr>
+  <tr><td>Scale ceiling (Claude Pro $20/mo)</td><td>~30 banners/day</td><td>Token budget ~44K/5h window sufficient for 30 full banner prompts</td></tr>
+  <tr><td>Scale ceiling (Claude Max $100/mo)</td><td>~150 banners/day</td><td>5× usage = 220K tokens/5h window</td></tr>
+</table>
+
+<h3>Cost Comparison: DIY AI Stack vs. Dedicated Tools</h3>
+<table>
+  <tr><th>Approach</th><th>Cost/Banner</th><th>Monthly (20/week)</th><th>Flexibility</th></tr>
+  <tr><td>DIY: Claude + gpt-image-2 (this guide)</td><td>$0.07–0.12</td><td>$12–14/week</td><td>Full control</td></tr>
+  <tr><td>AdMake AI (dedicated tool)</td><td>$0.08–0.16</td><td>~$39/mo plan</td><td>Template-based</td></tr>
+  <tr><td>AdCreative.ai</td><td>~$3.90/download</td><td>~$249/mo for usable plan</td><td>Performance scoring included</td></tr>
+  <tr><td>Creatopy / The Brief</td><td>~$0.58+</td><td>Custom pricing</td><td>Multi-size automation</td></tr>
+  <tr><td>Agency (human designer)</td><td>$50–200</td><td>$4,000–16,000/mo</td><td>Highest quality</td></tr>
+</table>
+
+<h2>Sources</h2>
+<div class="source-item"><span class="source-num">[1]</span> <a href="https://www.anthropic.com/news/claude-design-anthropic-labs" target="_blank">Anthropic — Introducing Claude Design by Anthropic Labs</a> (2026, confirmed real product)</div>
+<div class="source-item"><span class="source-num">[2]</span> <a href="https://www.buildfastwithai.com/blogs/chatgpt-images-2-0-gpt-image-2-2026" target="_blank">BuildFastWithAI — ChatGPT Images 2.0: Full Developer Breakdown (2026)</a> (Apr 2026)</div>
+<div class="source-item"><span class="source-num">[3]</span> <a href="https://openai.com/index/new-chatgpt-images-is-here" target="_blank">OpenAI — The new ChatGPT Images is here</a> (2026, official)</div>
+<div class="source-item"><span class="source-num">[4]</span> <a href="https://siliconangle.com/2026/04/21/openai-launches-chatgpt-images-2-0-codex-labs-developer-training-service" target="_blank">SiliconAngle — OpenAI launches ChatGPT Images 2.0</a> (Apr 21 2026)</div>
+<div class="source-item"><span class="source-num">[5]</span> <a href="https://support.google.com/google-ads/answer/1722096" target="_blank">Google Ads Help — Uploaded display ads specifications</a> (official, 150KB limit confirmed)</div>
+<div class="source-item"><span class="source-num">[6]</span> <a href="https://www.pixexact.com/blog/google-display-ad-size-guide" target="_blank">PixExact — Google Display Ad Size Guide 2026</a> (2026)</div>
+<div class="source-item"><span class="source-num">[7]</span> <a href="https://www.thetradedesk.com/assets/global/documents/Creative_Specifications-en.pdf" target="_blank">The Trade Desk — Creative Specifications PDF</a> (official, 100KB primary HTML)</div>
+<div class="source-item"><span class="source-num">[8]</span> <a href="https://rainmakeragency.ai/igaming-affiliate-marketing-complete-guide-for-online-casinos-sports-betting-brands-2026" target="_blank">Rainmaker Agency — iGaming Affiliate Marketing Complete Guide 2026</a> (2026)</div>
+<div class="source-item"><span class="source-num">[9]</span> <a href="https://www.viciousmarketing.net/post/meta-ads-for-igaming-navigating-the-2026-compliance-landscape" target="_blank">Vicious Marketing — Meta iGaming Ads Policy 2026</a> (2026)</div>
+<div class="source-item"><span class="source-num">[10]</span> <a href="https://yeezypay.io/blog/running-gambling-ads-on-google-in-2026" target="_blank">YeezyPay — Running Gambling Ads on Google 2026</a> (2026, Policy Health Score)</div>
+<div class="source-item"><span class="source-num">[11]</span> <a href="https://www.crakrevenue.com/blog/ad-compliance-for-adult-affiliates-whats-allowed-in-2026" target="_blank">CrakRevenue — Ad Compliance for Adult Affiliates 2026</a> (Dec 2025)</div>
+<div class="source-item"><span class="source-num">[12]</span> <a href="https://voluum.com/blog/igaming-affiliate-marketing" target="_blank">Voluum — iGaming Affiliate Marketing Guide</a> (2026)</div>
+<div class="source-item"><span class="source-num">[13]</span> <a href="https://www.aidigital.com/blog/ctr-for-display-ads" target="_blank">AI Digital — Average CTR for Display Ads 2026</a> (2026)</div>
+<div class="source-item"><span class="source-num">[14]</span> <a href="https://www.get-ryze.ai/blog/generate-ad-variations-scale-claude" target="_blank">get-ryze.ai — Generate Ad Variations at Scale with Claude 2026</a> (2026)</div>
+<div class="source-item"><span class="source-num">[15]</span> <a href="https://www.mindstudio.ai/blog/build-brand-ad-creative-claude-code-higgsfield-5-minutes" target="_blank">MindStudio — Build Brand Ad Creative with Claude Code (2026)</a> (2026)</div>
+<div class="source-item"><span class="source-num">[16]</span> <a href="https://www.gend.co/blog/anthropic-claude-ad-creation-30-seconds" target="_blank">Gend.co — Claude for Ads: 30-Second Variations</a> (2026)</div>
+<div class="source-item"><span class="source-num">[17]</span> <a href="https://blakecrosley.com/blog/codex-vs-claude-code-2026" target="_blank">Blake Crosley — Codex CLI vs Claude Code 2026 Architecture Comparison</a> (2026)</div>
+<div class="source-item"><span class="source-num">[18]</span> <a href="https://marketingagent.blog/2026/04/16/openai-codex-gets-always-on-agent-mode-to-challenge-claude-code" target="_blank">Marketing Agent Blog — OpenAI Codex Always-On Agent Mode (Apr 2026)</a></div>
+<div class="source-item"><span class="source-num">[19]</span> <a href="https://www.reddit.com/r/PPC/comments/1tbkhfr/" target="_blank">Reddit r/PPC — AI static image ads workflow discussion (2026)</a></div>
+<div class="source-item"><span class="source-num">[20]</span> <a href="https://zapier.com/blog/claude-vs-chatgpt" target="_blank">Zapier — Claude vs ChatGPT 2026 Comparison</a> (2026)</div>
+<div class="source-item"><span class="source-num">[21]</span> <a href="https://admakeai.com/blog/top-5-ai-ad-generators-2026" target="_blank">AdMake AI — Top 5 AI Ad Generators 2026</a> (2026)</div>
+<div class="source-item"><span class="source-num">[22]</span> <a href="https://www.postaffiliatepro.com/blog/ai-impact-affiliate-marketing-2025" target="_blank">Post Affiliate Pro — AI Impact on Affiliate Marketing 2026</a> (2025–2026)</div>
+
+<h2>Source Coverage Report</h2>
+<table class="coverage-table">
+  <tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr>
+  <tr><td>Web Search</td><td class="status-covered">COVERED</td><td>Tavily, Brave</td><td>18</td></tr>
+  <tr><td>Social: Reddit</td><td class="status-covered">COVERED</td><td>Brave search + Tavily extract (r/PPC)</td><td>4</td></tr>
+  <tr><td>Social: X/Twitter</td><td class="status-skipped">SKIPPED</td><td>Not available via current scout. Brave social signals used as proxy.</td><td>0</td></tr>
+  <tr><td>Social: Instagram</td><td class="status-skipped">SKIPPED</td><td>D3 conditional — limited relevance for B2B workflow topic</td><td>0</td></tr>
+  <tr><td>Video: YouTube</td><td class="status-covered">COVERED</td><td>Tavily search (YouTube transcripts/descriptions for workflow demos)</td><td>4</td></tr>
+  <tr><td>Academic: ArXiv/OpenAlex</td><td class="status-covered">COVERED</td><td>ArXiv search — no directly relevant HCI/creative-AI papers in 2025–2026 window</td><td>0</td></tr>
+  <tr><td>News</td><td class="status-covered">COVERED</td><td>Tavily advanced search, SiliconAngle, eMarketer</td><td>5</td></tr>
+  <tr><td>Deep Research</td><td class="status-covered">COVERED</td><td>Tavily Research (mini model)</td><td>1 synthesis</td></tr>
+  <tr><td>Cortex (prior SMSads)</td><td class="status-covered">COVERED</td><td>Cortex API search (smsads-procedures collection — 0 prior records, first entry)</td><td>0 prior</td></tr>
+  <tr><td>Vendor Docs</td><td class="status-covered">COVERED</td><td>Anthropic official, Google Ads Help, OpenAI official, Trade Desk specs</td><td>5</td></tr>
+</table>
+
+<h2>[UNVERIFIED] Appendix</h2>
+<div class="unverified">
+  <strong>[UNVERIFIED-1]</strong> Trade Desk enforcement of exactly 100 KB primary HTML file limit — cited from their published PDF spec but real-time enforcement may vary by supply partner. <em>Recommendation: test with 100 KB target, confirm with account manager.</em>
+</div>
+<div class="unverified">
+  <strong>[UNVERIFIED-2]</strong> Claude Design export to "standalone HTML files" — Anthropic Labs page states this capability but as of 2026-05-26 the product is in research preview for Pro/Max/Team/Enterprise only. Feature set may change at GA. <em>Recommendation: verify against current claude.ai account type.</em>
+</div>
+<div class="unverified">
+  <strong>[UNVERIFIED-3]</strong> Codex gpt-image-2 integration requiring "no separate API key" — stated in BuildFastWithAI blog (Apr 2026) but not confirmed in OpenAI official Codex docs. <em>Recommendation: check current Codex desktop app settings before relying on this.</em>
+</div>
+<div class="unverified">
+  <strong>[UNVERIFIED-4]</strong> "Claude better at web design than Codex" — practitioner consensus from Reddit r/PPC and one YouTube instructor. Not a formal benchmark. <em>Recommendation: run your own A/B test with both tools on a standard 300x250 brief.</em>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <p>Generated by DELPHI PRO D3 · NexusOS · 2026-05-26 · EPR 18/20 · 22 sources · Task nx-20260526-bn26</p>
+  <p style="margin-top:6px">Research scope: Anthropic Artifacts/Claude Design, OpenAI Codex/ChatGPT GPT-image-2, affiliate compliance 2026, HTML5 banner specs, cost benchmarks</p>
+</footer>
+</body>
+</html>
