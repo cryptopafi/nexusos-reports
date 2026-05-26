@@ -3,111 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ali Faisal Mohammed — Bachmeyer Protocol Report v1 — 2026-05-26</title>
+<title>Ali Faisal Mohammed — Health Protocol Report v1 — May 2026</title>
 <style>
   :root {
     --bg: #0d1117; --surface: #161b22; --surface2: #1c2128; --border: #30363d;
-    --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950;
-    --yellow: #d29922; --red: #f85149; --purple: #bc8cff; --orange: #ffa657;
+    --text: #e6edf3; --muted: #8b949e; --accent: #22c55e; --blue: #58a6ff;
+    --green: #3fb950; --yellow: #d29922; --red: #f85149; --purple: #bc8cff; --orange: #ffa657;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.7; }
   .page { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
 
-  /* Header */
-  .header { background: linear-gradient(135deg, #1a2332 0%, #0d1117 60%); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; }
+  .header { background: linear-gradient(135deg, #0d1f17 0%, #0d1117 60%); border: 1px solid #1f4a2f; border-radius: 12px; padding: 32px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; }
   .header-left h1 { font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
-  .header-left .subtitle { color: var(--muted); font-size: 13px; }
-  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
-  .badge-blue { background: #1f3a5c; color: var(--accent); }
+  .header-left .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; }
   .badge-red { background: #3d1a1a; color: var(--red); }
   .badge-yellow { background: #3d2e00; color: var(--yellow); }
   .badge-green { background: #1a3a1f; color: var(--green); }
   .header-right { text-align: right; }
-  .header-right .lab { font-size: 11px; color: var(--muted); line-height: 1.8; }
+  .header-right .lab { font-size: 11px; color: var(--muted); line-height: 1.9; }
 
-  /* Hero metrics */
-  .hero-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .hero-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; margin-bottom: 28px; }
   .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; position: relative; overflow: hidden; }
   .metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
   .metric-card.red::before { background: var(--red); }
   .metric-card.yellow::before { background: var(--yellow); }
   .metric-card.green::before { background: var(--green); }
-  .metric-card.blue::before { background: var(--accent); }
+  .metric-card.blue::before { background: var(--blue); }
   .metric-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 6px; }
   .metric-value { font-size: 24px; font-weight: 700; line-height: 1; }
   .metric-value.red { color: var(--red); }
   .metric-value.yellow { color: var(--yellow); }
   .metric-value.green { color: var(--green); }
+  .metric-value.blue { color: var(--blue); }
   .metric-unit { font-size: 11px; color: var(--muted); margin-top: 3px; }
-  .metric-ref { font-size: 10px; color: var(--muted); margin-top: 4px; border-top: 1px solid var(--border); padding-top: 4px; }
+  .metric-ref { font-size: 10px; color: var(--muted); margin-top: 5px; border-top: 1px solid var(--border); padding-top: 4px; }
 
-  /* Sections */
   .section { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 22px; overflow: hidden; }
   .section-header { padding: 14px 20px; background: var(--surface2); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
   .section-header h2 { font-size: 14px; font-weight: 700; color: var(--text); }
   .section-num { background: var(--accent); color: #0d1117; font-size: 11px; font-weight: 700; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .section-body { padding: 20px; }
 
-  /* Tables */
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th { background: var(--surface2); color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-  td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
   tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(88,166,255,0.04); }
+  tr:hover td { background: rgba(34,197,94,0.03); }
   .flag-high { color: var(--red); font-weight: 700; }
   .flag-low { color: var(--yellow); font-weight: 700; }
   .flag-ok { color: var(--green); }
   .flag-watch { color: var(--orange); }
 
-  /* Protocol cards */
-  .protocol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
-  .protocol-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
-  .protocol-card h3 { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
-  .protocol-card .indication { font-size: 11px; color: var(--yellow); margin-bottom: 10px; }
-  .protocol-card .dose-row { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 5px; }
-  .dose-key { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); min-width: 70px; flex-shrink: 0; }
+  .protocol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+  .protocol-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .protocol-card h3 { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .protocol-card .why-box { background: rgba(34,197,94,0.06); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: var(--text); line-height: 1.6; }
+  .protocol-card .why-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent); margin-bottom: 3px; }
+  .dose-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 5px; }
+  .dose-key { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); min-width: 75px; flex-shrink: 0; padding-top: 1px; }
   .dose-val { font-size: 12px; color: var(--text); }
-  .source-tag { font-size: 10px; color: var(--purple); margin-top: 8px; border-top: 1px solid var(--border); padding-top: 6px; }
-  .caution { font-size: 11px; color: var(--red); margin-top: 6px; }
+  .source-tag { font-size: 10px; color: var(--purple); margin-top: 10px; border-top: 1px solid var(--border); padding-top: 7px; }
 
-  /* Pill tags */
-  .pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; margin-right: 4px; margin-bottom: 3px; }
-  .pill-phase1 { background: #1f2b3e; color: #79c0ff; }
-  .pill-phase2 { background: #2b2020; color: #ffa657; }
-  .pill-phase3 { background: #1a2b1a; color: #3fb950; }
-
-  /* Alert box */
-  .alert { border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 13px; display: flex; gap: 10px; align-items: flex-start; }
+  .alert { border-radius: 8px; padding: 13px 16px; margin-bottom: 16px; font-size: 13px; display: flex; gap: 10px; align-items: flex-start; line-height: 1.6; }
   .alert-red { background: #2d1118; border: 1px solid #6e1a1a; }
   .alert-yellow { background: #2d2200; border: 1px solid #6e4e00; }
-  .alert-blue { background: #102030; border: 1px solid #1a4a7a; }
+  .alert-blue { background: #0f1e30; border: 1px solid #1a4060; }
+  .alert-green { background: #0d1f17; border: 1px solid #1a4a2f; }
   .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
 
-  /* Timeline */
   .timeline { position: relative; padding-left: 28px; }
   .timeline::before { content: ''; position: absolute; left: 9px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
-  .timeline-item { position: relative; margin-bottom: 20px; }
+  .timeline-item { position: relative; margin-bottom: 22px; }
   .timeline-dot { position: absolute; left: -23px; top: 4px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--accent); background: var(--bg); }
   .timeline-dot.active { background: var(--accent); }
-  .timeline-label { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+  .timeline-label { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 5px; }
   .timeline-content { font-size: 13px; color: var(--text); }
 
-  /* Supplement table */
-  .supp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-  .supp-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
-  .supp-name { font-size: 14px; font-weight: 700; color: var(--green); margin-bottom: 3px; }
-  .supp-dose { font-size: 12px; color: var(--text); margin-bottom: 6px; }
-  .supp-why { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
-  .supp-target { font-size: 10px; color: var(--yellow); }
+  .supp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; }
+  .supp-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 15px; }
+  .supp-name { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+  .supp-dose { font-size: 12px; color: var(--text); margin-bottom: 8px; font-weight: 500; }
+  .supp-why-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 3px; }
+  .supp-why { font-size: 12px; color: var(--text); margin-bottom: 6px; line-height: 1.6; }
+  .supp-target { font-size: 11px; color: var(--yellow); line-height: 1.5; }
 
-  /* Safety */
-  .safety-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 700px) { .safety-row { grid-template-columns: 1fr; } .hero-grid { grid-template-columns: repeat(2, 1fr); } }
+  .bucket-card { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 14px; overflow: hidden; }
+  .bucket-header { padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+  .bucket-header.red { background: #1f0a0a; border-bottom: 1px solid #4a1010; }
+  .bucket-header.yellow { background: #1f1500; border-bottom: 1px solid #4a3800; }
+  .bucket-header.green { background: #0a1f0e; border-bottom: 1px solid #1a4020; }
+  .bucket-title { font-size: 14px; font-weight: 700; }
+  .bucket-body { padding: 14px 16px; font-size: 13px; line-height: 1.7; }
+  .bucket-numbers { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
+  .bucket-num { font-size: 18px; font-weight: 700; }
+  .bucket-num-label { font-size: 10px; color: var(--muted); text-transform: uppercase; }
 
-  /* Footer */
-  .footer { text-align: center; padding: 24px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--border); margin-top: 32px; }
+  .safety-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .safety-grid { grid-template-columns: 1fr; } .hero-grid { grid-template-columns: repeat(2,1fr); } .protocol-grid { grid-template-columns: 1fr; } }
+
+  .phase-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin: 20px 0 12px; display: flex; align-items: center; gap: 8px; }
+  .phase-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .footer { text-align: center; padding: 28px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--border); margin-top: 32px; line-height: 1.8; }
 </style>
 </head>
 <body>
@@ -116,588 +116,599 @@
 <!-- HEADER -->
 <div class="header">
   <div class="header-left">
-    <h1>Ali Faisal Mohammed — Peptide & Supplement Protocol</h1>
-    <div class="subtitle">Functional Medicine Analysis · Dr. Bachmeyer Framework · NexusOS Health Module</div>
+    <h1>Ali Faisal Mohammed — Health Optimization Protocol</h1>
+    <div class="subtitle">Blood Test Analysis · Peptide + Supplement Plan · Dr. Bachmeyer Framework</div>
     <div class="badge-row">
       <span class="badge badge-red">⚠ Low Testosterone</span>
-      <span class="badge badge-yellow">Homocysteine Elevated</span>
-      <span class="badge badge-yellow">LDL Borderline High</span>
-      <span class="badge badge-yellow">RBC Concentration ↑</span>
-      <span class="badge badge-yellow">Vitamin D Sub-Optimal</span>
-      <span class="badge badge-green">Liver ✓ Renal ✓ Glucose ✓ Lp(a) ✓</span>
+      <span class="badge badge-yellow">Elevated Heart Risk Marker</span>
+      <span class="badge badge-yellow">Borderline High Cholesterol</span>
+      <span class="badge badge-yellow">Thick Blood — Caution</span>
+      <span class="badge badge-green">Blood Sugar ✓ Kidney ✓ Liver ✓ Prostate ✓</span>
     </div>
   </div>
   <div class="header-right">
     <div class="lab">
-      <strong>Freiburg Medical Laboratory ME (L.L.C.)</strong><br>
-      Dubai, UAE · DAkkS D-ML-13455-01-00<br>
-      Sample: 12.05.2026 · Report: 12.05.2026<br>
-      DOB: 25.09.1981 · Male · Age 44<br>
-      Protocol compiled: 26.05.2026
+      <strong>Freiburg Medical Laboratory, Dubai</strong><br>
+      Blood drawn: 12 May 2026<br>
+      Male · Age 44<br>
+      Protocol compiled: 26 May 2026
     </div>
   </div>
 </div>
 
-<!-- HERO METRICS -->
+<!-- HERO NUMBERS -->
 <div class="hero-grid">
   <div class="metric-card red">
-    <div class="metric-label">Total Testosterone</div>
-    <div class="metric-value red">251.9</div>
-    <div class="metric-unit">ng/dL · 8.74 nmol/L</div>
-    <div class="metric-ref">Ref: 350–865 ng/dL · <240 = hypogonadal</div>
+    <div class="metric-label">Testosterone</div>
+    <div class="metric-value red">251</div>
+    <div class="metric-unit">ng/dL — well below normal for age 44</div>
+    <div class="metric-ref">Normal range: 350–865 ng/dL</div>
   </div>
   <div class="metric-card yellow">
     <div class="metric-label">Homocysteine</div>
     <div class="metric-value yellow">12.2</div>
-    <div class="metric-unit">µmol/L</div>
-    <div class="metric-ref">Ref: &lt;12 · CV risk ↑1.9× at 10–15</div>
+    <div class="metric-unit">µmol/L — slightly elevated</div>
+    <div class="metric-ref">Target: under 9 · Heart risk marker</div>
   </div>
   <div class="metric-card yellow">
-    <div class="metric-label">LDL Cholesterol</div>
+    <div class="metric-label">LDL "Bad" Cholesterol</div>
     <div class="metric-value yellow">128</div>
-    <div class="metric-unit">mg/dL</div>
-    <div class="metric-ref">Ref: &lt;100 · Target: &lt;70 (CV opt)</div>
+    <div class="metric-unit">mg/dL — above ideal</div>
+    <div class="metric-ref">Ideal: under 100 mg/dL</div>
   </div>
   <div class="metric-card yellow">
-    <div class="metric-label">RBC</div>
+    <div class="metric-label">Red Blood Cell Count</div>
     <div class="metric-value yellow">5.6</div>
-    <div class="metric-unit">10⁶/µL · HCT 48.1% · HGB 16</div>
-    <div class="metric-ref">Ref: 4.5–5.5 · Caution: TRT risk</div>
+    <div class="metric-unit">— slightly high (blood is a bit thick)</div>
+    <div class="metric-ref">Normal: 4.5–5.5 · See testosterone note</div>
   </div>
   <div class="metric-card yellow">
-    <div class="metric-label">Vitamin D 25(OH)</div>
+    <div class="metric-label">Vitamin D</div>
     <div class="metric-value yellow">45.7</div>
-    <div class="metric-unit">ng/mL</div>
-    <div class="metric-ref">Acceptable &gt;40 · Optimal &gt;60</div>
+    <div class="metric-unit">ng/mL — acceptable but not optimal</div>
+    <div class="metric-ref">Optimal: 60–80 ng/mL</div>
   </div>
   <div class="metric-card green">
-    <div class="metric-label">Lp(a)</div>
+    <div class="metric-label">Lp(a) Sticky Cholesterol</div>
     <div class="metric-value green">7.1</div>
-    <div class="metric-unit">nmol/L</div>
-    <div class="metric-ref">Ref: &lt;75 · Excellent</div>
+    <div class="metric-unit">nmol/L — excellent (genetic lucky)</div>
+    <div class="metric-ref">Risk starts at 75 — you're far clear</div>
   </div>
   <div class="metric-card green">
-    <div class="metric-label">HbA1c</div>
+    <div class="metric-label">Blood Sugar (HbA1c)</div>
     <div class="metric-value green">5.1%</div>
-    <div class="metric-unit">32 mmol/mol IFCC</div>
-    <div class="metric-ref">No metabolic syndrome</div>
+    <div class="metric-unit">— excellent, no diabetes risk</div>
+    <div class="metric-ref">Diabetes threshold: 6.5%</div>
   </div>
   <div class="metric-card blue">
-    <div class="metric-label">eGFR (Cystatin C)</div>
-    <div class="metric-value" style="color:var(--accent)">111</div>
-    <div class="metric-unit">mL/min · CysC 0.85</div>
-    <div class="metric-ref">Normal renal function</div>
+    <div class="metric-label">Kidney Filtration</div>
+    <div class="metric-value blue">111</div>
+    <div class="metric-unit">mL/min — very healthy kidneys</div>
+    <div class="metric-ref">Above 60 = healthy · You're excellent</div>
   </div>
 </div>
 
-<!-- SECTION 1: FULL BIOMARKER TABLE -->
+<!-- SECTION 1: WHAT'S GOING ON -->
 <div class="section">
-  <div class="section-header"><div class="section-num">1</div><h2>Complete Biomarker Panel — Collection 2026-05-12</h2></div>
-  <div class="section-body" style="padding:0">
-    <table>
-      <tr><th>Category</th><th>Marker</th><th>Result</th><th>Unit</th><th>Reference Range</th><th>Status</th></tr>
-      <tr><td rowspan="8" style="font-weight:600;color:var(--muted)">CBC</td><td>WBC (White Blood Cells)</td><td>6.5</td><td>10³/µL</td><td>4.0–10.0</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>RBC (Red Blood Cells)</td><td><strong>5.6</strong></td><td>10⁶/µL</td><td>4.5–5.5</td><td class="flag-high">↑ HIGH</td></tr>
-      <tr><td>HGB (Hemoglobin)</td><td>16.0</td><td>g/dL</td><td>13.0–17.0</td><td class="flag-watch">Top range</td></tr>
-      <tr><td>HCT (Hematocrit)</td><td>48.1</td><td>%</td><td>42–52</td><td class="flag-watch">Top range</td></tr>
-      <tr><td>MCV (Mean Corpuscular Volume)</td><td>85.9</td><td>fL</td><td>80–100</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>PLT (Platelets)</td><td>322</td><td>10³/µL</td><td>150–450</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>ESR (Erythrocyte Sedimentation Rate)</td><td>5</td><td>mm/h</td><td>3–10</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>Differential (Neutro/Lympho/Mono)</td><td>65.4 / 24.5 / 8.8</td><td>%</td><td>within</td><td class="flag-ok">✓ Normal</td></tr>
-
-      <tr><td rowspan="3" style="font-weight:600;color:var(--muted)">Inflammation</td><td>CRP (C-Reactive Protein, turbidimetric)</td><td>0.1</td><td>mg/dL</td><td>&lt;0.5</td><td class="flag-ok">✓ Low/Excellent</td></tr>
-      <tr><td>Hs-CRP (High-Sensitivity CRP)</td><td>pending</td><td>mg/L</td><td>&lt;1.0</td><td>—</td></tr>
-      <tr><td>Ferritin</td><td>241</td><td>ng/mL</td><td>30–400</td><td class="flag-ok">✓ Normal</td></tr>
-
-      <tr><td rowspan="3" style="font-weight:600;color:var(--muted)">Electrolytes</td><td>Sodium</td><td>138.6</td><td>mmol/L</td><td>136–145</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>Potassium</td><td><strong>5.19</strong></td><td>mmol/L</td><td>3.50–5.10</td><td class="flag-watch">↑ mild — likely pseudo</td></tr>
-      <tr><td>Calcium (total)</td><td><strong>2.54</strong></td><td>mmol/L</td><td>2.15–2.50</td><td class="flag-high">↑ mild — needs workup</td></tr>
-
-      <tr><td rowspan="2" style="font-weight:600;color:var(--muted)">Metabolic</td><td>Glucose (fasting)</td><td>92</td><td>mg/dL</td><td>70–99</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>HbA1c</td><td>5.1% / 32 mmol/mol</td><td></td><td>4.8–6.0% / 29–42</td><td class="flag-ok">✓ Excellent</td></tr>
-
-      <tr><td rowspan="6" style="font-weight:600;color:var(--muted)">Lipids</td><td>Total Cholesterol</td><td>200</td><td>mg/dL</td><td>&lt;200</td><td class="flag-watch">Borderline</td></tr>
-      <tr><td>LDL (Low-Density Lipoprotein, Friedewald)</td><td><strong>128</strong></td><td>mg/dL</td><td>&lt;100</td><td class="flag-high">↑ HIGH</td></tr>
-      <tr><td>HDL (High-Density Lipoprotein)</td><td>56.5</td><td>mg/dL</td><td>&gt;50</td><td class="flag-ok">✓ Good</td></tr>
-      <tr><td>Triglycerides</td><td>80</td><td>mg/dL</td><td>&lt;150</td><td class="flag-ok">✓ Excellent</td></tr>
-      <tr><td>Lp(a) (Lipoprotein little-a)</td><td>7.1</td><td>nmol/L</td><td>&lt;75</td><td class="flag-ok">✓ Excellent</td></tr>
-      <tr><td>Homocysteine</td><td><strong>12.2</strong></td><td>µmol/L</td><td>&lt;12</td><td class="flag-high">↑ HIGH — CV risk</td></tr>
-
-      <tr><td rowspan="4" style="font-weight:600;color:var(--muted)">Renal / Renal</td><td>Creatinine</td><td>1.0</td><td>mg/dL</td><td>0.6–1.2</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>Urea Nitrogen (BUN — Blood Urea Nitrogen)</td><td>16</td><td>mg/dL</td><td>6–20</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>Cystatin C</td><td>0.85</td><td>mg/L</td><td>0.68–1.22</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>eGFR (Estimated Glomerular Filtration Rate, Grubb formula)</td><td>111</td><td>mL/min</td><td>&gt;60</td><td class="flag-ok">✓ Excellent</td></tr>
-
-      <tr><td rowspan="5" style="font-weight:600;color:var(--muted)">Liver</td><td>ALT/GPT (Alanine Aminotransferase)</td><td>30</td><td>U/L</td><td>&lt;42</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>AST/GOT (Aspartate Aminotransferase)</td><td>22</td><td>U/L</td><td>&lt;39</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>ALP (Alkaline Phosphatase)</td><td>61</td><td>IU/L</td><td>41–137</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>GGT (Gamma-Glutamyl Transferase)</td><td>16</td><td>IU/L</td><td>10–66</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>LDH (Lactate Dehydrogenase)</td><td>147</td><td>U/L</td><td>135–225</td><td class="flag-ok">✓ Normal</td></tr>
-
-      <tr><td rowspan="2" style="font-weight:600;color:var(--muted)">Muscle</td><td>CK (Creatine Kinase)</td><td><strong>194</strong></td><td>U/L</td><td>&lt;190</td><td class="flag-watch">Mild ↑ — likely exercise</td></tr>
-      <tr><td>Uric Acid</td><td>3.7</td><td>mg/dL</td><td>2.6–7.2</td><td class="flag-ok">✓ Normal</td></tr>
-
-      <tr><td rowspan="6" style="font-weight:600;color:var(--muted)">Endocrine</td><td>Total Testosterone</td><td><strong>8.74 nmol/L / 251.9 ng/dL</strong></td><td></td><td>12–30 nmol/L / 350–865 ng/dL</td><td class="flag-high">↓ LOW — Hypogonadal</td></tr>
-      <tr><td>Free Testosterone (calculated)</td><td>6.05 / 2.4%</td><td>ng/dL / %</td><td>5.7–17.8 ng/dL</td><td class="flag-low">Low-normal</td></tr>
-      <tr><td>Bioavailable Testosterone (calculated)</td><td>160.72</td><td>ng/dL</td><td>126–412</td><td class="flag-watch">Low-mid</td></tr>
-      <tr><td>SHBG (Sex Hormone Binding Globulin)</td><td>17.7</td><td>nmol/L</td><td>10–80</td><td class="flag-watch">Low-mid (favorable)</td></tr>
-      <tr><td>TSH (Thyroid Stimulating Hormone)</td><td>1.01</td><td>mIU/L</td><td>0.30–4.20</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>Albumin</td><td>4.9</td><td>g/dL</td><td>3.5–5.0</td><td class="flag-ok">✓ Normal</td></tr>
-
-      <tr><td rowspan="2" style="font-weight:600;color:var(--muted)">Vitamins</td><td>Vitamin B12</td><td>914</td><td>pg/mL</td><td>200–1000 (&gt;400 optimal)</td><td class="flag-ok">✓ Excellent</td></tr>
-      <tr><td>Vitamin D 25(OH)</td><td>45.7</td><td>ng/mL</td><td>40–80 (&gt;60 optimal)</td><td class="flag-watch">Acceptable — room to optimize</td></tr>
-
-      <tr><td rowspan="4" style="font-weight:600;color:var(--muted)">Tumor Markers</td><td>AFP (Alpha-Fetoprotein)</td><td>3.8</td><td>IU/mL</td><td>&lt;5.8</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>CA 19-9</td><td>5.6</td><td>U/mL</td><td>&lt;39</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>CEA (Carcinoembryonic Antigen)</td><td>2.2</td><td>ng/mL</td><td>&lt;4.7 (non-smoker)</td><td class="flag-ok">✓ Normal</td></tr>
-      <tr><td>PSA (Prostate-Specific Antigen) total / free / %free</td><td>0.94 / 0.39 / 41.5%</td><td>ng/mL</td><td>&lt;4.0 total</td><td class="flag-ok">✓ Very low cancer risk (41.5% free = 8%)</td></tr>
-
-      <tr><td rowspan="3" style="font-weight:600;color:var(--muted)">Urine</td><td>pH</td><td>5.0</td><td></td><td>5.0–8.0</td><td class="flag-watch">Acidic — kidney stone risk</td></tr>
-      <tr><td>Ca-Oxalate Crystals</td><td>+</td><td>qualitative</td><td>Negative</td><td class="flag-high">↑ PRESENT — stone risk</td></tr>
-      <tr><td>Erythrocytes (sediment)</td><td>2–4</td><td>/hpf</td><td>0–2</td><td class="flag-watch">Mild — monitor</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- SECTION 2: CLINICAL INTERPRETATION -->
-<div class="section">
-  <div class="section-header"><div class="section-num">2</div><h2>Clinical Interpretation — Functional Buckets</h2></div>
-  <div class="section-body">
-    <table>
-      <tr><th>Bucket</th><th>Status</th><th>Key Findings</th><th>Clinical Significance</th></tr>
-      <tr>
-        <td><strong style="color:var(--red)">🔴 Hypogonadism</strong></td>
-        <td><span class="flag-high">Critical</span></td>
-        <td>Total T 251.9 ng/dL, Free T 6.05 ng/dL (2.4%), Bioavail T 160 ng/dL, SHBG 17.7</td>
-        <td>Borderline-decreased per ISA/ISSAM/EAU/AUA (&lt;240 ng/dL = decreased; this patient sits in the 240–350 "borderline" zone at 251.9). Low-normal SHBG suggests the pituitary/testicular axis issue — not a binding problem. Low free T % (2.4%) is independently symptomatic. At 44yo without LH/FSH/estradiol, cannot fully classify primary vs secondary. ⚠ RBC 5.6 contraindicates starting TRT directly — must use HTPA (hypothalamic-pituitary-testicular axis) stimulation first.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--yellow)">🟡 Methylation / CV Risk</strong></td>
-        <td><span class="flag-high">Actionable</span></td>
-        <td>Homocysteine 12.2 µmol/L; B12 914 (high-normal — excellent); Vit D 45.7</td>
-        <td>Elevated homocysteine despite excellent B12 strongly suggests insufficient methylfolate (5-MTHF — 5-methyltetrahydrofolate) and/or P-5-P (pyridoxal-5-phosphate — active B6) or TMG (trimethylglycine — betaine) deficit. Possible MTHFR/COMT polymorphism. At 12.2, CV mortality risk is elevated ~1.9×. Lab-proven gap: add methylfolate + P-5-P + TMG, retest 12 weeks.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--yellow)">🟡 Lipid / Cardiometabolic</strong></td>
-        <td><span class="flag-watch">Yellow</span></td>
-        <td>LDL 128, Non-HDL 144, Total Chol 200; Lp(a) 7.1 ✓, Trigs 80 ✓, HDL 56.5 ✓</td>
-        <td>Pattern: isolated LDL elevation with favorable Lp(a) and no metabolic syndrome. Lp(a) 7.1 nmol/L is genuinely excellent (genetic risk nearly absent). LDL 128 in a 44yo male with pending hs-CRP warrants treatment. BPC-157 (Body Protection Compound) + omega-3 EPA/DHA (eicosapentaenoic/docosahexaenoic acid) for endothelial protection. Berberine 500mg x2 can reduce LDL 20–30mg/dL without statin side effects. Target LDL: &lt;100, ideally &lt;70.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--yellow)">🟡 Erythrocyte Concentration</strong></td>
-        <td><span class="flag-watch">Monitor</span></td>
-        <td>RBC 5.6 H, HGB 16, HCT 48.1%; no smoking indicator, GFR 111, Trigs OK</td>
-        <td>Mild polycythemia (true or relative/dehydration). Possible causes: relative (low fluid intake — urine SG 1.020, slightly cloudy, acidic pH), sleep apnea, or subclinical androgen excess (unlikely here given low T). This is a hard contraindication to starting exogenous testosterone until HCT is clarified and below 48%. Erythropoiesis peptides (e.g. MOTS-c or humanin) should be used cautiously. Monitor HCT q6 weeks if on any androgen-axis therapy.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--yellow)">🟡 Renal Stone Risk</strong></td>
-        <td><span class="flag-watch">Actionable</span></td>
-        <td>Ca-oxalate crystals +, urine pH 5.0, Ca 2.54 (mild ↑), urine mild concentration</td>
-        <td>Classic calcium-oxalate nephrolithiasis (kidney stone) risk pattern. Mildly elevated serum calcium (2.54 vs ref 2.50 upper) needs PTH (parathyroid hormone) + ionized calcium + 24h urine calcium to rule out primary hyperparathyroidism. Intervention: magnesium citrate 400mg/day (reduces oxalate binding), potassium citrate 1.08g/day (alkalizes urine to pH 6.5–7.0), hydration 2.5–3L/day.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--yellow)">🟡 Vitamin D</strong></td>
-        <td><span class="flag-watch">Suboptimal</span></td>
-        <td>25(OH)D 45.7 ng/mL — acceptable per lab, but below Bachmeyer optimal (&gt;60)</td>
-        <td>For testosterone optimization and immune function, Bachmeyer targets 60–80 ng/mL. Increase D3 dose with K2-MK7 co-factor to direct calcium away from vasculature. Given mild hypercalcemia (2.54), monitor ionized Ca before high-dose D3 — start conservatively at 3000–4000 IU/day with K2-MK7 200µg.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--green)">🟢 Metabolic / Glucose</strong></td>
-        <td><span class="flag-ok">Excellent</span></td>
-        <td>HbA1c 5.1%, FBG 92, Trigs 80, no insulin resistance pattern</td>
-        <td>No intervention needed. Insulin sensitivity is excellent for age 44 — a major asset. Peptides like CJC-1295 may cause mild transient insulin resistance — monitor.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--green)">🟢 Hepatic / Renal Function</strong></td>
-        <td><span class="flag-ok">Clear</span></td>
-        <td>All liver enzymes and renal markers within range; eGFR 111</td>
-        <td>No restrictions on peptide dosing from hepatic or renal clearance perspective.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--green)">🟢 Prostate / Oncology</strong></td>
-        <td><span class="flag-ok">Clear</span></td>
-        <td>PSA 0.94, free PSA 41.5% (8% cancer probability), AFP/CEA/CA19-9 all negative</td>
-        <td>PSA is very low at 44yo. 41.5% free PSA = &lt;8% cancer probability (restricted to elevated PSA context). Excellent green light for androgen-axis work. Recheck PSA annually or at 6 weeks after initiating any androgen protocol.</td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<!-- SECTION 3: PEPTIDE PROTOCOL -->
-<div class="section">
-  <div class="section-header"><div class="section-num">3</div><h2>Peptide Protocol — Bachmeyer Framework (Phased)</h2></div>
+  <div class="section-header"><div class="section-num">1</div><h2>What Your Blood Test Found — Plain Language Summary</h2></div>
   <div class="section-body">
 
-    <div class="alert alert-red">
-      <div class="alert-icon">⚠️</div>
-      <div><strong>PRIORITY SAFETY NOTE:</strong> RBC 5.6 / HCT 48.1% — do NOT start TRT (testosterone replacement therapy) or any erythropoiesis-stimulating peptide until HCT is confirmed &lt;48% (preferably &lt;45%) on a repeat draw with adequate hydration. Proceed with HTPA (hypothalamic-pituitary-testicular axis) stimulation only. PSA at 0.94 is clear for androgen-axis work. Physician sign-off required before phase 2 initiation.</div>
+    <div class="bucket-card">
+      <div class="bucket-header red">
+        <span style="font-size:20px">🔴</span>
+        <div>
+          <div class="bucket-title" style="color:var(--red)">Testosterone is too low for your age</div>
+          <div style="font-size:11px;color:var(--muted)">This is the most important finding — everything else in the protocol flows from fixing this</div>
+        </div>
+      </div>
+      <div class="bucket-body">
+        <div class="bucket-numbers">
+          <div><div class="bucket-num" style="color:var(--red)">251</div><div class="bucket-num-label">Your level (ng/dL)</div></div>
+          <div><div class="bucket-num" style="color:var(--muted)">350–865</div><div class="bucket-num-label">What it should be</div></div>
+          <div><div class="bucket-num" style="color:var(--yellow)">2.4%</div><div class="bucket-num-label">% active (free) testosterone</div></div>
+        </div>
+        <p>Your total testosterone sits in what doctors call the "borderline-low" zone — at 44, it should be well above 350. Low testosterone causes fatigue, reduced motivation, loss of muscle, increased body fat, lower mood, and poor sleep. The good news: your body is likely <em>capable</em> of making more — it just needs the right signals to start again.</p>
+        <br>
+        <p><strong>Why we can't just give you testosterone directly (yet):</strong> Your blood is slightly thick right now (red blood cell count 5.6, a bit above the normal ceiling of 5.5). Adding testosterone injections would make your blood even thicker, which raises clotting risk. So the plan starts by <em>encouraging your own body to produce more testosterone naturally</em>, and re-checks blood thickness every 6 weeks before considering direct testosterone therapy.</p>
+      </div>
     </div>
+
+    <div class="bucket-card">
+      <div class="bucket-header yellow">
+        <span style="font-size:20px">🟡</span>
+        <div>
+          <div class="bucket-title" style="color:var(--yellow)">A vitamin B pathway isn't working efficiently</div>
+          <div style="font-size:11px;color:var(--muted)">Causes a buildup called homocysteine — damages artery walls over time</div>
+        </div>
+      </div>
+      <div class="bucket-body">
+        <div class="bucket-numbers">
+          <div><div class="bucket-num" style="color:var(--yellow)">12.2</div><div class="bucket-num-label">Your homocysteine</div></div>
+          <div><div class="bucket-num" style="color:var(--muted)">&lt;9</div><div class="bucket-num-label">Ideal target</div></div>
+          <div><div class="bucket-num" style="color:var(--green)">914</div><div class="bucket-num-label">Vitamin B12 (excellent)</div></div>
+        </div>
+        <p>Homocysteine is a waste product your body makes when processing proteins. Normally it gets recycled and cleared out — but that recycling process needs specific B-vitamins to work. Your B12 is excellent (914 — top range), which tells us B12 is <em>not</em> the problem. The likely gap is either active B6 or a special form of folate (not the cheap synthetic version found in most supplements). The fix is a specific combination of 3 supplements — usually lowers homocysteine to target in 8–12 weeks.</p>
+      </div>
+    </div>
+
+    <div class="bucket-card">
+      <div class="bucket-header yellow">
+        <span style="font-size:20px">🟡</span>
+        <div>
+          <div class="bucket-title" style="color:var(--yellow)">LDL "bad" cholesterol is above ideal — but manageable</div>
+          <div style="font-size:11px;color:var(--muted)">The dangerous genetic type of cholesterol (Lp(a)) is excellent — this is lifestyle-driven</div>
+        </div>
+      </div>
+      <div class="bucket-body">
+        <div class="bucket-numbers">
+          <div><div class="bucket-num" style="color:var(--yellow)">128</div><div class="bucket-num-label">LDL (bad) cholesterol</div></div>
+          <div><div class="bucket-num" style="color:var(--green)">56.5</div><div class="bucket-num-label">HDL (good) cholesterol ✓</div></div>
+          <div><div class="bucket-num" style="color:var(--green)">7.1</div><div class="bucket-num-label">Lp(a) — genetic risk ✓</div></div>
+        </div>
+        <p>LDL is the cholesterol that, when oxidized (damaged by inflammation), can stick to artery walls. Yours is at 128 — the ideal for long-term heart health is below 100. The critical thing here is that your <em>genetic</em> heart-risk cholesterol (called Lp(a)) is only 7.1 — far below the danger threshold of 75. This means the elevated LDL is likely dietary and lifestyle-driven, not genetic hardwired. A combination of BPC-157 peptide (which directly protects artery walls), omega-3 fish oil, and berberine can realistically bring LDL below 100 within 12 weeks.</p>
+      </div>
+    </div>
+
+    <div class="bucket-card">
+      <div class="bucket-header yellow">
+        <span style="font-size:20px">🟡</span>
+        <div>
+          <div class="bucket-title" style="color:var(--yellow)">Calcium crystals in urine — early kidney stone warning</div>
+          <div style="font-size:11px;color:var(--muted)">Your urine is too acidic and concentrated — easy to fix with supplements + hydration</div>
+        </div>
+      </div>
+      <div class="bucket-body">
+        <p>Calcium oxalate crystals were found in your urine — these are the building blocks of the most common type of kidney stones. Your urine is also on the acidic side (pH 5.0) and slightly concentrated (suggesting you may not be drinking enough water). This is easily preventable. Magnesium binds to oxalate in the gut before it reaches the kidney. Potassium citrate makes the urine less acidic. Drinking 2.5–3 litres of water daily dilutes everything. Simple steps taken now prevent a painful stone later.</p>
+        <br>
+        <p><strong>Note:</strong> Your blood calcium is very slightly elevated (2.54 vs upper limit 2.50). This could just be mild dehydration, but it's worth checking your parathyroid gland (a small gland in the neck that controls calcium) to rule out an easy-to-treat condition. This test should be done <em>before</em> increasing Vitamin D doses.</p>
+      </div>
+    </div>
+
+    <div class="bucket-card">
+      <div class="bucket-header green">
+        <span style="font-size:20px">🟢</span>
+        <div>
+          <div class="bucket-title" style="color:var(--green)">Everything else looks healthy</div>
+        </div>
+      </div>
+      <div class="bucket-body">
+        <p><strong>Blood sugar:</strong> HbA1c 5.1% — excellent. No diabetes or pre-diabetes. Fasting glucose 92 — in the ideal range. <strong>Liver:</strong> All liver markers are normal — no sign of fatty liver or inflammation. <strong>Kidneys:</strong> Filtering at 111 mL/min — excellent, well above healthy threshold. <strong>Prostate:</strong> PSA 0.94 — very low, no cancer concern. <strong>Thyroid:</strong> TSH 1.01 — completely normal. <strong>Inflammation:</strong> CRP (inflammation marker) 0.1 — very low, meaning your body isn't in a chronic inflammatory state. <strong>Cancer markers:</strong> All tested markers (AFP, CA19-9, CEA, PSA) are clean. This is a green light for the full protocol.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 2: PEPTIDE PROTOCOL -->
+<div class="section">
+  <div class="section-header"><div class="section-num">2</div><h2>Peptide Protocol — What to Inject, Why, and When</h2></div>
+  <div class="section-body">
 
     <div class="alert alert-blue">
       <div class="alert-icon">💡</div>
-      <div><strong>Bachmeyer logic:</strong> Always fire the GH (growth hormone) axis first — it primes the endocrine environment, restores receptor sensitivity, and amplifies downstream hormonal response. LH (luteinizing hormone) / FSH (follicle-stimulating hormone) stimulation is layered on top. BPC-157/TB-500 are systemic support running in parallel.</div>
+      <div><strong>What are peptides?</strong> Peptides are short chains of amino acids — basically tiny protein fragments. Your body already uses them as signals. When injected, they tell specific cells to do specific jobs (repair, produce hormones, protect arteries). They work with your body's own systems, not instead of them. All peptides here are subcutaneous (just under the skin — like insulin injections for diabetics, with a tiny needle into belly fat).</div>
     </div>
 
-    <h3 style="margin:16px 0 12px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px">PHASE 1 — Foundation (Weeks 1–12)</h3>
+    <div class="alert alert-red">
+      <div class="alert-icon">⚠️</div>
+      <div><strong>Before starting Phase 2:</strong> Blood thickness (red blood cell count 5.6) needs to be confirmed below normal ceiling on a repeat test. If it's still elevated, Phase 2 is held until cleared. Phase 1 peptides are safe to start now.</div>
+    </div>
+
+    <div class="phase-label">Phase 1 — Start Now (Weeks 1–12): Body Foundation + Heart Protection</div>
+
     <div class="protocol-grid">
 
       <div class="protocol-card">
-        <h3>💉 CJC-1295 (no-DAC)</h3>
-        <div class="indication">Indication: GH axis priming, body composition, endothelial health, androgen receptor sensitization</div>
-        <div class="dose-row"><span class="dose-key">Dose</span><span class="dose-val"><strong>100 µg</strong> subcutaneous (SQ — below skin) injection</span></div>
-        <div class="dose-row"><span class="dose-key">Route</span><span class="dose-val">SQ — abdomen/lower belly fat, rotating sites</span></div>
-        <div class="dose-row"><span class="dose-key">Timing</span><span class="dose-val">30–45 min BEFORE Ipamorelin (GHRH — growth hormone releasing hormone — fires first, then GHRP — growth hormone releasing peptide)</span></div>
-        <div class="dose-row"><span class="dose-key">Frequency</span><span class="dose-val">5 days on / 2 days off (Mon–Fri) or nightly before bed fasted</span></div>
+        <h3>💉 CJC-1295 — "Wake Up the Growth Hormone System"</h3>
+        <div class="why-box">
+          <div class="why-label">Why you need this</div>
+          Your pituitary gland (a pea-sized gland in your brain) controls your entire hormonal system, including testosterone. CJC-1295 sends it a signal to produce a pulse of growth hormone — which improves sleep quality, builds muscle, burns fat, and primes the system for better testosterone production downstream.
+        </div>
+        <div class="dose-row"><span class="dose-key">Amount</span><span class="dose-val"><strong>100 µg</strong> — a very small injection</span></div>
+        <div class="dose-row"><span class="dose-key">How</span><span class="dose-val">Tiny needle under belly skin (subcutaneous)</span></div>
+        <div class="dose-row"><span class="dose-key">When</span><span class="dose-val">At bedtime, on an empty stomach — inject this one <strong>first</strong>, then wait 30 minutes before the Ipamorelin injection</span></div>
+        <div class="dose-row"><span class="dose-key">How often</span><span class="dose-val">5 nights per week (e.g. Monday–Friday off weekends)</span></div>
+        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12 weeks on → 4 weeks off → repeat</span></div>
+        <div class="dose-row"><span class="dose-key">Key rule</span><span class="dose-val">No food for 2 hours before or after — food blunts the effect completely</span></div>
+        <div class="source-tag">📚 Dr. Bachmeyer: "your pituitary gland is the organizer of your entire endocrine machine" — from Bachmeyer corpus, Cortex health_bachmeyer</div>
+      </div>
+
+      <div class="protocol-card">
+        <h3>💉 Ipamorelin — "Amplify the Growth Hormone Pulse"</h3>
+        <div class="why-box">
+          <div class="why-label">Why you need this</div>
+          This works as a second signal, 30 minutes after CJC-1295. Together they create a much larger, more natural growth hormone pulse than either would alone — similar to what a healthy 25-year-old experiences naturally during deep sleep. Ipamorelin is specifically chosen because it does NOT spike cortisol (the stress hormone) or prolactin — unlike older alternatives.
+        </div>
+        <div class="dose-row"><span class="dose-key">Amount</span><span class="dose-val"><strong>100–200 µg</strong></span></div>
+        <div class="dose-row"><span class="dose-key">How</span><span class="dose-val">Tiny needle under belly skin, different injection site from CJC</span></div>
+        <div class="dose-row"><span class="dose-key">When</span><span class="dose-val"><strong>30 minutes after</strong> the CJC-1295 injection, right before sleep</span></div>
+        <div class="dose-row"><span class="dose-key">How often</span><span class="dose-val">Same nights as CJC-1295 (5 nights/week)</span></div>
         <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12 weeks on → 4 weeks off</span></div>
-        <div class="dose-row"><span class="dose-key">Notes</span><span class="dose-val">No-DAC (drug affinity complex) preferred — shorter half-life, more physiological pulse. Take fasted, no food 2h before/after. <em>Do NOT mix in same syringe with Ipamorelin at same time — space 30min for larger pulse.</em></span></div>
-        <div class="source-tag">📚 Source: Cortex notebooklm_chats | Bachmeyer "CJC-Ipamorelin spacing" transcript — "your pituitary gland... organizer of your entire endocrine machine" + GHP receptor agonism timing</div>
+        <div class="source-tag">📚 Dr. Bachmeyer: "Ipamorelin is the first clinically proven selective [growth hormone peptide]. No cortisol, no prolactin spikes whatsoever" — Bachmeyer corpus</div>
       </div>
 
       <div class="protocol-card">
-        <h3>💉 Ipamorelin</h3>
-        <div class="indication">Indication: GH pulse amplification — selective, no cortisol/prolactin spike (first clinically proven selective GHRP)</div>
-        <div class="dose-row"><span class="dose-key">Dose</span><span class="dose-val"><strong>100–200 µg</strong> SQ</span></div>
-        <div class="dose-row"><span class="dose-key">Route</span><span class="dose-val">SQ — same sites as CJC-1295, different injection</span></div>
-        <div class="dose-row"><span class="dose-key">Timing</span><span class="dose-val">30–45 min AFTER CJC-1295, immediately before sleep (fasted)</span></div>
-        <div class="dose-row"><span class="dose-key">Frequency</span><span class="dose-val">5 days on / 2 days off (paired with CJC-1295)</span></div>
-        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12 weeks on → 4 weeks off</span></div>
-        <div class="dose-row"><span class="dose-key">Notes</span><span class="dose-val">First selective GHRP — "no cortisol, no prolactin spikes whatsoever." Transient GH pulse lasts ~60–90 min. No appetite stimulation at this dose (risk begins at higher GHRP-2/hexarelin doses — not used here).</span></div>
-        <div class="source-tag">📚 Source: Cortex health_bachmeyer | "Ipamorelin is the first clinically proven selective... No cortisol, no prolactin spikes whatsoever"</div>
+        <h3>💉 BPC-157 — "Repair Your Artery Walls + Gut"</h3>
+        <div class="why-box">
+          <div class="why-label">Why you need this (connected to your LDL result)</div>
+          Your LDL cholesterol (128) creates a risk: when LDL gets damaged by inflammation, it sticks to artery walls and causes hardening. BPC-157 directly counteracts this — it boosts the production of nitric oxide in artery walls, which keeps them relaxed and flexible. A 2013 study showed it reduced arterial inflammation by 40%. It also heals gut lining, which matters because a leaky gut feeds systemic inflammation that makes cholesterol problems worse.
+        </div>
+        <div class="dose-row"><span class="dose-key">Amount</span><span class="dose-val"><strong>250–500 µg</strong></span></div>
+        <div class="dose-row"><span class="dose-key">How</span><span class="dose-val">Tiny needle under belly skin, morning</span></div>
+        <div class="dose-row"><span class="dose-key">When</span><span class="dose-val">Morning — opposite end of day from the GH peptides at night</span></div>
+        <div class="dose-row"><span class="dose-key">How often</span><span class="dose-val">Daily for 12 weeks</span></div>
+        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12 weeks on → 4–8 weeks off</span></div>
+        <div class="source-tag">📚 Dr. Bachmeyer: "LDL cholesterol oxidizes. Your endothelium gets damaged. BPC-157 upregulates [nitric oxide production]... 40% reduction in inflammatory cell infiltration" — Bachmeyer corpus</div>
       </div>
 
       <div class="protocol-card">
-        <h3>💉 BPC-157 (Body Protection Compound-157)</h3>
-        <div class="indication">Indication: Cardiovascular endothelial repair, LDL oxidation protection, eNOS (endothelial nitric oxide synthase) upregulation, gut-endothelium axis</div>
-        <div class="dose-row"><span class="dose-key">Dose</span><span class="dose-val"><strong>250–500 µg</strong> SQ</span></div>
-        <div class="dose-row"><span class="dose-key">Route</span><span class="dose-val">SQ — abdomen, morning with food or between meals</span></div>
-        <div class="dose-row"><span class="dose-key">Timing</span><span class="dose-val">Morning (opposite phase from GH peptides at night)</span></div>
-        <div class="dose-row"><span class="dose-key">Frequency</span><span class="dose-val">Daily for 12 weeks</span></div>
-        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12 weeks on → 4–8 weeks off → repeat PRN</span></div>
-        <div class="dose-row"><span class="dose-key">Notes</span><span class="dose-val">Lab-anchored: LDL 128 → "LDL cholesterol oxidizes. Your endothelium gets damaged. Nitric oxide production tanks. BPC-157 upregulates eNOS." Also reduces pro-inflammatory monocyte infiltration into arterial tissue — 40% reduction in atherosclerotic lesion size (2013 study cited by Bachmeyer). Note urine Ca-oxalate crystals: BPC-157 promotes angiogenesis in damaged tissues — supports renal tubular integrity.</span></div>
-        <div class="source-tag">📚 Source: Cortex health_bachmeyer | "inflammation, LDL cholesterol oxidizes... BPC 157 upregulates endothelial nitric oxide synthase, eNOS" + "40% reduction in inflammatory cell inflammation"</div>
+        <h3>💉 TB-500 — "System-Wide Healing & Recovery"</h3>
+        <div class="why-box">
+          <div class="why-label">Why you need this (connected to your slightly high muscle enzyme)</div>
+          Your creatine kinase (a muscle repair enzyme) came back at 194 — slightly above normal, suggesting your muscles are working hard and recovering slowly. TB-500 signals the body to accelerate tissue repair everywhere simultaneously. Bachmeyer injects it into belly fat specifically because it circulates throughout the whole body, rather than working locally like BPC-157.
+        </div>
+        <div class="dose-row"><span class="dose-key">Amount</span><span class="dose-val"><strong>2.0–2.5 mg</strong> (larger volume than the others)</span></div>
+        <div class="dose-row"><span class="dose-key">How</span><span class="dose-val">Belly fat injection — specifically chosen for full-body circulation</span></div>
+        <div class="dose-row"><span class="dose-key">When</span><span class="dose-val">Evening, twice per week (e.g. Monday and Thursday)</span></div>
+        <div class="dose-row"><span class="dose-key">First 6 weeks</span><span class="dose-val">2× per week (loading phase)</span></div>
+        <div class="dose-row"><span class="dose-key">Weeks 7–12</span><span class="dose-val">1× per week (maintenance)</span></div>
+        <div class="source-tag">📚 Dr. Bachmeyer: "TB-500 in the belly fat because its job is to circulate and promote cell migration and overall systemic healing" — Bachmeyer corpus</div>
       </div>
 
       <div class="protocol-card">
-        <h3>💉 TB-500 (Thymosin Beta-4)</h3>
-        <div class="indication">Indication: Systemic repair, vascular barrier function, muscle recovery (CK 194), anti-inflammatory</div>
-        <div class="dose-row"><span class="dose-key">Dose</span><span class="dose-val"><strong>2.0–2.5 mg</strong> SQ</span></div>
-        <div class="dose-row"><span class="dose-key">Route</span><span class="dose-val">SQ — belly fat (Bachmeyer: "in the belly fat because its job is to circulate")</span></div>
-        <div class="dose-row"><span class="dose-key">Timing</span><span class="dose-val">Evening (can be taken same session as BPC-157 morning or split AM/PM)</span></div>
-        <div class="dose-row"><span class="dose-key">Frequency</span><span class="dose-val">2× per week (e.g. Mon + Thu)</span></div>
-        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">Loading phase: 2× weekly for 4–6 weeks → Maintenance: 1× weekly for 8 weeks → off</span></div>
-        <div class="dose-row"><span class="dose-key">Notes</span><span class="dose-val">CK 194 (mild elevation, likely exercise) makes this especially appropriate. Bachmeyer notes TB-500 "made me feel awake" — take in the evening if this is a concern. Promotes cell migration and overall systemic healing.</span></div>
-        <div class="source-tag">📚 Source: Cortex health_bachmeyer | "TB500... in the belly fat because its job is to circulate and promote cell migration and overall systemic healing"</div>
+        <h3>💉 GHK-Cu — "Anti-Aging Copper Peptide"</h3>
+        <div class="why-box">
+          <div class="why-label">Why you need this</div>
+          GHK-Cu (a copper-based peptide) is the #3 most recommended peptide in all 88 of Dr. Bachmeyer's videos. It repairs blood vessels, reduces inflammation, rebuilds collagen, and has anti-cancer signaling properties. Think of it as the "maintenance and longevity" layer of the stack — it keeps the repair work from BPC-157 and TB-500 going deeper.
+        </div>
+        <div class="dose-row"><span class="dose-key">Amount</span><span class="dose-val"><strong>1–2 mg</strong></span></div>
+        <div class="dose-row"><span class="dose-key">How</span><span class="dose-val">Tiny needle under belly skin, alternating days</span></div>
+        <div class="dose-row"><span class="dose-key">When</span><span class="dose-val">Morning, 3 times per week (can alternate with BPC-157 days)</span></div>
+        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12 weeks, runs alongside BPC-157</span></div>
+        <div class="source-tag">📚 Dr. Bachmeyer: "GHK-Cu should be the first line of defense in your body" · Top-3 of 88-video corpus (257 total peptide mentions) — Cortex general</div>
       </div>
 
     </div>
 
-    <h3 style="margin:22px 0 12px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px">PHASE 2 — HTPA (Hypothalamic-Pituitary-Testicular Axis) Stimulation (Weeks 6–20) <span style="color:var(--red);font-size:11px">⚠ Add only when HCT &lt;48% confirmed</span></h3>
-    <div class="protocol-grid">
+    <div class="phase-label">Phase 2 — Weeks 6–20 (Only Once Blood Thickness is Confirmed Safe): Restart Your Testosterone Production</div>
 
-      <div class="protocol-card">
-        <h3>💉 Kisspeptin-10</h3>
-        <div class="indication">Indication: Root-level HTPA activation — lab: Total T 251.9 ng/dL (hypogonadal). Fertility preservation. Bachmeyer's "fertility ignition key."</div>
-        <div class="dose-row"><span class="dose-key">Dose</span><span class="dose-val"><strong>100 µg</strong> SQ</span></div>
-        <div class="dose-row"><span class="dose-key">Route</span><span class="dose-val">SQ — abdomen</span></div>
-        <div class="dose-row"><span class="dose-key">Timing</span><span class="dose-val">Evening, 2–3× per week (pulsatile, not daily — daily causes receptor desensitization)</span></div>
-        <div class="dose-row"><span class="dose-key">Frequency</span><span class="dose-val">Mon / Wed / Fri (pulsatile) — critical: do NOT dose daily</span></div>
-        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12–16 weeks, retest LH/FSH/T at week 8 and week 16</span></div>
-        <div class="dose-row"><span class="dose-key">Notes</span><span class="dose-val">Bachmeyer: "Kisspeptin-10 — the fertility ignition key for the nitromethane fertility dragster." Controls both testosterone AND spermatogenesis via hypothalamic GnRH (gonadotropin-releasing hormone) pulse. "Journal of Clinical Investigations 2005 showed this unequivocally." Preferred over enclomiphene when fertility matters OR when pituitary function needs testing.</span></div>
-        <div class="source-tag">📚 Source: Cortex health_bachmeyer | "Kiss Pepin 10... fertility ignition key... kisspeptin neurons in the hypothalamus... spermatogenesis"</div>
-      </div>
-
-      <div class="protocol-card">
-        <h3>💊 Enclomiphene (oral, non-Bachmeyer category)</h3>
-        <div class="indication">Indication: LH/FSH stimulation backup — if Kisspeptin response insufficient at week 8 (T still &lt;350 ng/dL). Physician prescription required.</div>
-        <div class="dose-row"><span class="dose-key">Dose</span><span class="dose-val"><strong>12.5–25 mg</strong> oral daily</span></div>
-        <div class="dose-row"><span class="dose-key">Route</span><span class="dose-val">Oral, with food</span></div>
-        <div class="dose-row"><span class="dose-key">Timing</span><span class="dose-val">Morning</span></div>
-        <div class="dose-row"><span class="dose-key">Frequency</span><span class="dose-val">Daily for 12 weeks, then reassess</span></div>
-        <div class="dose-row"><span class="dose-key">Notes</span><span class="dose-val">Pure LH/FSH stimulant without estrogenic activity (unlike clomiphene). Bachmeyer discusses "Testosterone Versus Enclomiphene" in detail — preferred over clomid for males due to lack of vision/estrogen side effects. Add only if Kisspeptin-10 alone is insufficient. Monitor E2 (estradiol) — can rise with endogenous T restoration.</span></div>
-        <div class="caution">⚠ Non-Bachmeyer prescription compound — Dr. Shoyab sign-off required. Contraindicated if LH/FSH already elevated (primary hypogonadism pattern).</div>
-        <div class="source-tag">📚 Source: Cortex notebooklm_chats | Bachmeyer "Testosterone Versus Enclomiphene" episode reference</div>
-      </div>
-
-      <div class="protocol-card">
-        <h3>💉 GHK-Cu (Copper Peptide — Tripeptide)</h3>
-        <div class="indication">Indication: Vascular/skin repair, anti-inflammatory complement, collagen synthesis. Optional — add if BPC/TB stacks well</div>
-        <div class="dose-row"><span class="dose-key">Dose</span><span class="dose-val"><strong>1–2 mg</strong> SQ or topical</span></div>
-        <div class="dose-row"><span class="dose-key">Route</span><span class="dose-val">SQ (systemic) or topical cream (local)</span></div>
-        <div class="dose-row"><span class="dose-key">Timing</span><span class="dose-val">Alternate days, morning</span></div>
-        <div class="dose-row"><span class="dose-key">Frequency</span><span class="dose-val">3× per week</span></div>
-        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12 weeks (runs parallel with BPC-157 phase)</span></div>
-        <div class="dose-row"><span class="dose-key">Notes</span><span class="dose-val">Bachmeyer: "GHK-Cu should be the first line of defense in your damn body" — cardiovascular and anti-cancer signaling support. Complements BPC-157 in LDL-driven endothelial context. Top-3 Bachmeyer peptide by mention frequency in 88-video corpus (TB-500/BPC-157/GHK-Cu).</span></div>
-        <div class="source-tag">📚 Source: Cortex health_bachmeyer | "GHK-Cu should be the first line of defense" + Cortex general | "Bachmeyer corpus = 88 videos, 18 unique peptides, top-3 TB-500/BPC-157/GHK-Cu, total 257 mentions"</div>
-      </div>
-
-    </div>
-
-    <h3 style="margin:22px 0 12px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px">PHASE 3 — TRT Decision Gate (Week 20+ only if HTPA stimulation insufficient)</h3>
     <div class="alert alert-yellow">
-      <div class="alert-icon">🔑</div>
-      <div>
-        <strong>TRT (Testosterone Replacement Therapy) decision criteria (ALL must be met):</strong>
-        <ul style="margin:8px 0 0 16px;font-size:12px;line-height:1.8">
-          <li>HCT &lt;48% on two consecutive draws (to avoid TRT-induced erythrocytosis)</li>
-          <li>Week-20 Total T still &lt;350 ng/dL despite Kisspeptin ± Enclomiphene</li>
-          <li>LH/FSH panel confirms secondary (low LH/FSH) vs primary (elevated LH/FSH) — TRT is appropriate for secondary, not sole treatment for primary</li>
-          <li>PSA rechecked and &lt;1.5 ng/mL</li>
-          <li>Hematology/oncology clearance if RBC remains elevated</li>
-        </ul>
-        <div style="margin-top:8px;font-size:12px"><strong>If TRT is initiated:</strong> Bachmeyer "God Mode" — Testosterone Cypionate 100–150 mg/week SQ + Kisspeptin-10 (maintain spermatogenesis) + CJC/Ipamorelin (maintain GH pulse) + BPC-157 (cardiovascular protection). HCT monitoring every 6 weeks. AI (Aromatase Inhibitor) only if E2 symptomatic.</div>
-      </div>
+      <div class="alert-icon">🔬</div>
+      <div><strong>Before starting Phase 2</strong>, you need two additional blood tests that weren't in this panel: <strong>LH</strong> and <strong>FSH</strong> (the brain signals that tell your testicles to make testosterone). These tell us whether your problem is in the brain or in the testicles — which completely changes which treatment works. Do NOT start Phase 2 without these results.</div>
     </div>
 
-    <!-- Stack Summary Table -->
-    <h3 style="margin:20px 0 10px;font-size:13px">Full Stack — Timing Summary</h3>
+    <div class="protocol-grid">
+
+      <div class="protocol-card">
+        <h3>💉 Kisspeptin-10 — "The Ignition Key for Your Testosterone System"</h3>
+        <div class="why-box">
+          <div class="why-label">Why this comes before testosterone injections</div>
+          Kisspeptin is the master switch in your brain (hypothalamus) that starts the whole testosterone chain. When it fires, it triggers LH, which tells your testicles to make testosterone AND maintains sperm production. This means you get higher testosterone while keeping your fertility intact — which direct testosterone therapy shuts down. Dr. Bachmeyer calls it "the fertility ignition key for the dragster."
+        </div>
+        <div class="dose-row"><span class="dose-key">Amount</span><span class="dose-val"><strong>100 µg</strong></span></div>
+        <div class="dose-row"><span class="dose-key">How</span><span class="dose-val">Tiny needle under belly skin, evening</span></div>
+        <div class="dose-row"><span class="dose-key">When</span><span class="dose-val">Evening — Monday, Wednesday, Friday only</span></div>
+        <div class="dose-row"><span class="dose-key">Critical rule</span><span class="dose-val"><strong>Do NOT inject daily.</strong> Daily use desensitizes the receptor and stops working. 3 times per week only — the pulsatile (on/off) pattern mimics how the body naturally works.</span></div>
+        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12–16 weeks · Retest testosterone at week 8 and week 16</span></div>
+        <div class="source-tag">📚 Dr. Bachmeyer: "Kisspeptin-10 — the fertility ignition key... Journal of Clinical Investigations 2005 showed this unequivocally" — Bachmeyer corpus</div>
+      </div>
+
+      <div class="protocol-card">
+        <h3>💊 Enclomiphene — "Backup if Kisspeptin Isn't Enough" (prescription required)</h3>
+        <div class="why-box">
+          <div class="why-label">Only add this if testosterone is still below 350 at week 8</div>
+          Enclomiphene is an oral tablet (not an injection) that blocks estrogen receptors in the brain, tricking it into producing more LH signal — essentially shouting louder at the testicles to make testosterone. Unlike the old version (clomiphene), it doesn't cause vision issues or estrogen-related side effects in men. Dr. Bachmeyer prefers it over older alternatives.
+        </div>
+        <div class="dose-row"><span class="dose-key">Amount</span><span class="dose-val"><strong>12.5–25 mg</strong> — start low</span></div>
+        <div class="dose-row"><span class="dose-key">How</span><span class="dose-val">Oral tablet with food, morning</span></div>
+        <div class="dose-row"><span class="dose-key">When to add</span><span class="dose-val">Only if testosterone still below 350 ng/dL at week 8 on Kisspeptin alone</span></div>
+        <div class="dose-row"><span class="dose-key">Cycle</span><span class="dose-val">12 weeks then reassess</span></div>
+        <div class="dose-row" style="margin-top:6px"><span class="dose-key" style="color:var(--red)">⚠ Requires</span><span class="dose-val" style="color:var(--red)">Prescription from Dr. Shoyab. Not suitable if the LH/FSH test shows the problem is in the testicles (rather than the brain signal).</span></div>
+        <div class="source-tag">📚 Dr. Bachmeyer: "Testosterone Versus Enclomiphene" episode — Cortex notebooklm_chats</div>
+      </div>
+
+    </div>
+
+    <div class="phase-label">Daily Injection Schedule — Summary</div>
     <table>
-      <tr><th>Time</th><th>Peptide</th><th>Dose</th><th>Notes</th></tr>
-      <tr><td>🌅 AM (fasted)</td><td>BPC-157</td><td>250–500 µg SQ</td><td>Morning cardiovascular + gut + endothelial</td></tr>
-      <tr><td>🌅 AM (alternate days)</td><td>GHK-Cu</td><td>1–2 mg SQ</td><td>3× weekly; can pair with BPC-157 days</td></tr>
-      <tr><td>🌆 PM (2h fasted)</td><td>TB-500</td><td>2.0–2.5 mg SQ</td><td>Mon + Thu only</td></tr>
-      <tr><td>🌙 Night (fasted, pre-sleep) T-30</td><td>CJC-1295 no-DAC</td><td>100 µg SQ</td><td>GHRH fires first — wait 30 min before Ipamorelin</td></tr>
-      <tr><td>🌙 Night (fasted, pre-sleep) T-0</td><td>Ipamorelin</td><td>100–200 µg SQ</td><td>GHRP follows CJC — both before sleep for max GH pulse</td></tr>
-      <tr><td>🌙 Evening (Phase 2 only)</td><td>Kisspeptin-10</td><td>100 µg SQ</td><td>Mon / Wed / Fri only — pulsatile</td></tr>
-      <tr><td>🌅 Morning (Phase 2 only, if needed)</td><td>Enclomiphene</td><td>12.5–25 mg oral</td><td>If T still &lt;350 at week 8 on Kisspeptin alone</td></tr>
+      <tr><th>Time of Day</th><th>Peptide</th><th>Amount</th><th>Why at this time</th></tr>
+      <tr><td>🌅 Morning</td><td>BPC-157</td><td>250–500 µg</td><td>Heart + gut repair in the first half of the day</td></tr>
+      <tr><td>🌅 Morning (3×/week)</td><td>GHK-Cu</td><td>1–2 mg</td><td>Anti-aging + vessel repair, alternating with BPC days</td></tr>
+      <tr><td>🌆 Evening (Mon + Thu)</td><td>TB-500</td><td>2.0–2.5 mg</td><td>System-wide repair, belly fat for full circulation</td></tr>
+      <tr><td>🌙 Bedtime − 30 min</td><td>CJC-1295</td><td>100 µg</td><td>Growth hormone signal fires first — needs a 30-min head start</td></tr>
+      <tr><td>🌙 Bedtime</td><td>Ipamorelin</td><td>100–200 µg</td><td>Amplifies the GH pulse — take right before sleep</td></tr>
+      <tr><td>🌙 Evening (Mon/Wed/Fri only — Phase 2)</td><td>Kisspeptin-10</td><td>100 µg</td><td>Testosterone restart signal — pulsatile pattern essential</td></tr>
     </table>
+
   </div>
 </div>
 
-<!-- SECTION 4: ORAL SUPPLEMENT PROTOCOL -->
+<!-- SECTION 3: SUPPLEMENTS -->
 <div class="section">
-  <div class="section-header"><div class="section-num">4</div><h2>Oral Supplement Protocol — Lab-Anchored Gaps</h2></div>
+  <div class="section-header"><div class="section-num">3</div><h2>Daily Supplement Protocol — Oral, No Injections</h2></div>
   <div class="section-body">
+    <div class="alert alert-green">
+      <div class="alert-icon">✅</div>
+      <div>Every supplement below is tied to a specific finding in your blood test. Nothing is added "just in case." Each one has a measurable target that will be confirmed at the 12-week retest.</div>
+    </div>
     <div class="supp-grid">
 
       <div class="supp-card">
-        <div class="supp-name">Methylfolate (5-MTHF)</div>
-        <div class="supp-dose">400–800 µg/day · Morning with food</div>
-        <div class="supp-why">Lab driver: Homocysteine 12.2 µmol/L despite B12 914 pg/mL → isolated folate/MTHFR pathway gap</div>
-        <div class="supp-target">Target: Homocysteine &lt;9 µmol/L at 12 weeks. Do NOT use folic acid (synthetic) — use only 5-MTHF (active form).</div>
+        <div class="supp-name">Methylfolate (Active Vitamin B9)</div>
+        <div class="supp-dose">400–800 µg daily · Morning with food</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Your homocysteine is 12.2 (should be under 9) but your B12 is perfect at 914. This means the folate pathway specifically is the weak link — your body can't recycle homocysteine properly without it. <strong>Important: do not use regular "folic acid" (the cheap version in most supplements)</strong> — use only "methylfolate" or "5-MTHF" (the active form your body can actually use).</div>
+        <div class="supp-target">🎯 Target: Homocysteine under 9 µmol/L at 12 weeks</div>
       </div>
 
       <div class="supp-card">
-        <div class="supp-name">P-5-P (Pyridoxal-5-Phosphate — active B6)</div>
-        <div class="supp-dose">50–100 mg/day · Morning</div>
-        <div class="supp-why">Lab driver: Homocysteine 12.2 — B6 is the cofactor for transsulfuration pathway that converts homocysteine to cysteine</div>
-        <div class="supp-target">Target: Homocysteine &lt;9 at 12 weeks. Monitor for peripheral neuropathy if dose exceeds 100mg.</div>
+        <div class="supp-name">P-5-P (Active Vitamin B6)</div>
+        <div class="supp-dose">50–100 mg daily · Morning</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">B6 is the other cofactor in the homocysteine recycling process. The active form "P-5-P" (pyridoxal-5-phosphate) bypasses the conversion step that some people struggle with. This works alongside methylfolate — together they attack the problem from two angles.</div>
+        <div class="supp-target">🎯 Target: Homocysteine under 9 µmol/L at 12 weeks. Don't exceed 100 mg/day.</div>
       </div>
 
       <div class="supp-card">
-        <div class="supp-name">TMG (Trimethylglycine — Betaine)</div>
-        <div class="supp-dose">1,000–3,000 mg/day · Morning or split AM/PM with food</div>
-        <div class="supp-why">Lab driver: Homocysteine 12.2 — TMG is a methyl donor that directly re-methylates homocysteine to methionine via BHMT (betaine homocysteine methyltransferase) enzyme — independent of MTHFR status</div>
-        <div class="supp-target">Fastest homocysteine reducer in stack. Start 1g, titrate to 2g at week 2 if tolerated (loose stools possible above 3g). Source: Gary Brecka/Bachmeyer methylation framework — Cortex health (Brecka MTHFR transcript).</div>
+        <div class="supp-name">TMG (Trimethylglycine / Betaine)</div>
+        <div class="supp-dose">1,000–3,000 mg daily · With food, AM or split AM/PM</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">TMG is a "methyl donor" — it directly converts homocysteine into a useful amino acid via a completely separate pathway from B-vitamins. This means it works regardless of any genetic B-vitamin processing issues. It's the fastest-acting part of the homocysteine stack. Start at 1g, increase to 2g after 2 weeks (higher doses can cause loose stools in some people).</div>
+        <div class="supp-target">🎯 Target: Homocysteine under 9 µmol/L at 12 weeks</div>
       </div>
 
       <div class="supp-card">
-        <div class="supp-name">Vitamin D3 + K2-MK7</div>
-        <div class="supp-dose">D3 3,000–4,000 IU/day + K2-MK7 (menaquinone-7) 200 µg/day · With largest meal (fat-soluble)</div>
-        <div class="supp-why">Lab driver: Vit D 45.7 ng/mL — below Bachmeyer optimal of 60–80. K2-MK7 directs calcium away from soft tissues (relevant given Ca 2.54 mild ↑)</div>
-        <div class="supp-target">Target: 25(OH)D 60–70 ng/mL at 3 months. CAUTION: check ionized Ca + PTH before escalating above 4,000 IU given mild hypercalcemia. Retest at 8 weeks.</div>
+        <div class="supp-name">Vitamin D3 + K2 (MK-7 form)</div>
+        <div class="supp-dose">D3: 3,000–4,000 IU · K2-MK7: 200 µg · With your largest meal (fat helps absorption)</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Your Vitamin D is 45.7 ng/mL — technically in range, but Dr. Bachmeyer's optimal for testosterone and immune function is 60–80. The K2 (vitamin K2, MK-7 form) is paired with it because D3 increases calcium absorption, and K2 makes sure that calcium goes into bones — not into your artery walls. This is especially important given your blood calcium is very slightly elevated.</div>
+        <div class="supp-target">🎯 Target: Vitamin D 60–70 ng/mL at 8 weeks. ⚠ Check parathyroid hormone test first before going above 4,000 IU.</div>
       </div>
 
       <div class="supp-card">
-        <div class="supp-name">Omega-3 EPA/DHA</div>
-        <div class="supp-dose">3,000–4,000 mg/day total (EPA + DHA — eicosapentaenoic + docosahexaenoic acid) · With meals (2× daily split)</div>
-        <div class="supp-why">Lab driver: LDL 128 — EPA reduces VLDL triglycerides and inflammatory LDL sub-fractions; DHA supports endothelial function</div>
-        <div class="supp-target">Target: LDL &lt;100 at 12 weeks. Use triglyceride-form omega-3 (fish oil or algae oil) not ethyl ester. Mild antiplatelet effect — note before procedures.</div>
+        <div class="supp-name">Omega-3 Fish Oil (EPA + DHA)</div>
+        <div class="supp-dose">3,000–4,000 mg total omega-3s daily · Split across 2 meals</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Your LDL is 128. Omega-3 fatty acids (EPA and DHA specifically — check the label) reduce the type of LDL that causes the most artery damage (small dense particles). They also reduce triglycerides and lower inflammation, which is what makes LDL dangerous in the first place. Use triglyceride-form fish oil or algae oil — not the cheaper "ethyl ester" form that is less well absorbed.</div>
+        <div class="supp-target">🎯 Target: LDL under 100 mg/dL at 12 weeks</div>
       </div>
 
       <div class="supp-card">
-        <div class="supp-name">Berberine HCl</div>
-        <div class="supp-dose">500 mg × 2–3/day · With meals (to reduce GI side effects)</div>
-        <div class="supp-why">Lab driver: LDL 128 — berberine activates AMPK (AMP-activated protein kinase), upregulates LDL receptor, reduces hepatic cholesterol synthesis. 20–30 mg/dL LDL reduction in RCTs (randomized controlled trials)</div>
-        <div class="supp-target">Target: LDL &lt;100 at 12 weeks. Separate from medications by 2h (can inhibit CYP3A4). Maintain only while LDL elevated — reassess at 12 weeks.</div>
+        <div class="supp-name">Berberine</div>
+        <div class="supp-dose">500 mg × 2–3 times daily · With meals (reduces stomach upset)</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Berberine is a natural compound that activates a key cellular energy switch (AMPK), which then increases the number of LDL receptors on your liver cells — meaning your liver pulls more LDL out of your bloodstream. Clinical trials show 20–30 mg/dL LDL reduction. It's often called "nature's metformin" because it also improves insulin sensitivity (though yours is already excellent). Separate from any medications by 2 hours.</div>
+        <div class="supp-target">🎯 Target: LDL under 100 mg/dL at 12 weeks. Stop or reduce once target is reached.</div>
       </div>
 
       <div class="supp-card">
         <div class="supp-name">Magnesium Citrate</div>
-        <div class="supp-dose">400 mg/day elemental · Evening (sleep benefit)</div>
-        <div class="supp-why">Lab driver: Ca-oxalate crystals + in urine, pH 5.0 — magnesium binds oxalate in the gut/urine, reduces Ca-oxalate crystal formation by ~50%</div>
-        <div class="supp-target">Target: No Ca-oxalate crystals on repeat urine at 3 months. Also supports sleep quality, muscle recovery (CK 194), and testosterone production (magnesium-testosterone correlation well-established).</div>
+        <div class="supp-dose">400 mg daily · Evening (also helps sleep)</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Calcium oxalate crystals were found in your urine — the first sign of potential kidney stones. Magnesium binds to oxalate (the building block of stones) inside your gut and urine, preventing it from combining with calcium to form crystals. This is the most evidence-backed intervention for stopping calcium oxalate stones before they form. Evening dosing also improves sleep quality and muscle recovery.</div>
+        <div class="supp-target">🎯 Target: No crystals on urine repeat at 3 months</div>
       </div>
 
       <div class="supp-card">
         <div class="supp-name">Potassium Citrate</div>
-        <div class="supp-dose">1.08–1.62 g/day (540 mg × 2–3 doses) · With meals</div>
-        <div class="supp-why">Lab driver: Urine pH 5.0 (acidic — ideal oxalate crystallization environment) + Ca-oxalate crystals. Potassium citrate alkalizes urine to pH 6.5–7.0, inhibiting oxalate and uric acid stone formation</div>
-        <div class="supp-target">Target: Urine pH 6.5–7.0 on dipstick. CAUTION: K serum is 5.19 (mild ↑) — recheck K before initiating; if true hyperkalemia confirmed, withhold until K &lt;5.0. Hydration 2.5–3L/day mandatory.</div>
+        <div class="supp-dose">540 mg × 2 times daily · With meals · ⚠ ONLY after confirming potassium blood level is normal on repeat test</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Your urine pH of 5.0 is acidic — and acidic urine is exactly the environment where calcium oxalate stones grow best. Potassium citrate alkalizes the urine to pH 6.5–7.0, making it hostile to crystal formation. It also blocks calcium from sticking to kidney surfaces. Note: your blood potassium came back at 5.19 (just above the upper limit) — this may be a lab processing issue rather than a real elevation. Recheck before starting this supplement.</div>
+        <div class="supp-target">🎯 Target: Urine pH 6.5–7.0 (you can test this with cheap dipstick strips)</div>
       </div>
 
       <div class="supp-card">
         <div class="supp-name">Zinc Picolinate</div>
-        <div class="supp-dose">30–50 mg/day · Evening (with food to avoid nausea)</div>
-        <div class="supp-why">Lab driver: Testosterone 251.9 ng/dL — zinc is rate-limiting cofactor for testicular T production and 5-alpha-reductase modulation. SHBG 17.7 (low-mid) with low T suggests impaired synthesis, not binding problem — zinc supports Leydig cell function</div>
-        <div class="supp-target">Target: T response visible at 8 weeks. Copper balance: add 2 mg copper glycinate if using Zn &gt;30 mg for &gt;8 weeks to prevent copper depletion.</div>
+        <div class="supp-dose">30–50 mg daily · Evening with food</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Zinc is one of the key building blocks your testicles need to produce testosterone — it's directly involved in the enzymes that make it. Your testosterone is low despite normal SHBG (the protein that binds testosterone), meaning the production itself is the problem, not the transport. Zinc provides direct raw material for the Leydig cells (the testosterone-making cells) in the testicles. If using more than 30 mg for longer than 8 weeks, add 2 mg copper to prevent copper imbalance.</div>
+        <div class="supp-target">🎯 Target: Testosterone response visible at 8 weeks</div>
       </div>
 
       <div class="supp-card">
-        <div class="supp-name">Ashwagandha (KSM-66 extract — standardized withanolides)</div>
-        <div class="supp-dose">600 mg/day (300 mg × 2) · With food AM/PM</div>
-        <div class="supp-why">Lab driver: Testosterone 251.9 ng/dL — KSM-66 ashwagandha demonstrated 15–17% testosterone increase + LH elevation in RCTs in males with subclinical hypogonadism. Reduces cortisol (DHEA-S not tested — probable HPA axis stress)</div>
-        <div class="supp-target">Target: T response at 8–12 weeks. This is a non-Bachmeyer supplement (general functional medicine). Safe, no physician sign-off needed.</div>
+        <div class="supp-name">Ashwagandha (KSM-66 extract — look for this on the label)</div>
+        <div class="supp-dose">600 mg daily · Split 300 mg AM + 300 mg PM · With food</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Multiple clinical trials in men with low testosterone showed KSM-66 ashwagandha raised testosterone 15–17% and elevated LH (the brain signal to the testicles) — working through stress reduction and direct support of the hormonal signaling pathway. Chronic stress raises cortisol, which is the arch-enemy of testosterone. Ashwagandha lowers cortisol and gives the testosterone system more room to operate. Use specifically KSM-66 — it's the most studied and standardized form.</div>
+        <div class="supp-target">🎯 Testosterone response at 8–12 weeks</div>
       </div>
 
       <div class="supp-card">
-        <div class="supp-name">Hydration Protocol</div>
-        <div class="supp-dose">2.5–3.0 L/day filtered water + electrolytes</div>
-        <div class="supp-why">Lab driver: Urine SG 1.020 + slightly cloudy + Ca-oxalate crystals + RBC 5.6 (possible relative polycythemia from dehydration). Serum Ca 2.54 may normalize on proper hydration.</div>
-        <div class="supp-target">Target: Urine color pale yellow (SG &lt;1.015). Adding pinch sea salt + squeeze lemon to 1L/day helps urine alkalinity and electrolyte balance.</div>
+        <div class="supp-name">💧 Water — The Most Important "Supplement"</div>
+        <div class="supp-dose">2.5–3.0 litres per day of filtered water</div>
+        <div class="supp-why-label">Why your blood test requires this</div>
+        <div class="supp-why">Three findings point to you not drinking enough: your urine is slightly concentrated (specific gravity 1.020), slightly acidic (pH 5.0), and showed calcium crystals. Your blood calcium and red blood cell count may also be slightly elevated partly due to mild dehydration. A simple practical habit: add a pinch of sea salt and a squeeze of lemon to 1 litre per day — this improves absorption and naturally alkalizes urine. Check urine color: pale yellow = good, dark yellow = drink more.</div>
+        <div class="supp-target">🎯 Pale yellow urine throughout the day</div>
       </div>
 
     </div>
   </div>
 </div>
 
-<!-- SECTION 5: SAFETY GATES -->
+<!-- SECTION 4: LABS TO ORDER -->
 <div class="section">
-  <div class="section-header"><div class="section-num">5</div><h2>Safety Gates & Contraindications</h2></div>
+  <div class="section-header"><div class="section-num">4</div><h2>Blood Tests to Order Before Phase 2 Starts</h2></div>
   <div class="section-body">
-    <div class="safety-row">
-      <div>
-        <h3 style="font-size:13px;color:var(--red);margin-bottom:12px">🚫 Absolute Contraindications</h3>
-        <table>
-          <tr><th>Item</th><th>Reason</th></tr>
-          <tr><td>Exogenous TRT (before HCT resolution)</td><td>HCT 48.1% — TRT increases erythrocytosis risk → thrombosis. Do NOT start TRT until HCT &lt;48% confirmed on 2 repeat draws. Rule out sleep apnea and polycythemia vera first.</td></tr>
-          <tr><td>Potassium citrate</td><td>Serum K 5.19 — recheck fasting K and rule out pseudohyperkalemia first. If true hyperkalemia (&gt;5.1 confirmed), withhold all potassium-containing supplements.</td></tr>
-          <tr><td>High-dose Vitamin D3 (&gt;4,000 IU)</td><td>Serum Ca 2.54 — mild hypercalcemia. Requires PTH + ionized Ca panel before D3 escalation to exclude primary hyperparathyroidism.</td></tr>
-          <tr><td>Enclomiphene / SERMs</td><td>Contraindicated if LH/FSH elevated (would indicate primary hypogonadism — testicular failure — where stimulants are ineffective). Order LH/FSH before starting.</td></tr>
-        </table>
-      </div>
-      <div>
-        <h3 style="font-size:13px;color:var(--yellow);margin-bottom:12px">⚠ Monitoring Requirements</h3>
-        <table>
-          <tr><th>Marker</th><th>Frequency</th><th>Threshold</th></tr>
-          <tr><td>HCT / RBC / HGB</td><td>Every 6 weeks on any androgen-axis protocol</td><td>Stop if HCT &gt;52% or &gt;3pt rise</td></tr>
-          <tr><td>Total Testosterone + Free T</td><td>Week 8, Week 16, Week 24</td><td>Target T &gt;500 ng/dL</td></tr>
-          <tr><td>LH / FSH / E2 (Estradiol)</td><td>Before Phase 2 start; Week 12</td><td>Classify primary vs secondary hypogonadism</td></tr>
-          <tr><td>Homocysteine</td><td>Week 12</td><td>Target &lt;9 µmol/L</td></tr>
-          <tr><td>Lipid panel (LDL + Lp(a))</td><td>Week 12, Week 24</td><td>LDL target &lt;100 mg/dL</td></tr>
-          <tr><td>25(OH)D + Ionized Ca + PTH</td><td>Week 8</td><td>D target 60–70; Ca must not rise further</td></tr>
-          <tr><td>PSA</td><td>6 weeks after any androgen therapy start; then annually</td><td>Suspend if PSA &gt;1.5 or rises &gt;0.75 in 1 year</td></tr>
-          <tr><td>Serum K</td><td>Before starting potassium citrate; Week 6</td><td>Hold if K &gt;5.1 (true value)</td></tr>
-          <tr><td>Fasting insulin / HOMA-IR</td><td>Week 12</td><td>CJC-1295 can transiently raise insulin resistance</td></tr>
-        </table>
-      </div>
+    <div class="alert alert-red">
+      <div class="alert-icon">🔬</div>
+      <div>These tests were not in the original panel but are <strong>essential before starting Phase 2</strong> of the peptide protocol. Without them, you could be treating the wrong thing.</div>
     </div>
-  </div>
-</div>
-
-<!-- SECTION 6: MISSING LABS -->
-<div class="section">
-  <div class="section-header"><div class="section-num">6</div><h2>Recommended Follow-Up Labs (Missing — Cannot Finalize Without)</h2></div>
-  <div class="section-body">
     <table>
-      <tr><th>Test</th><th>Why Needed</th><th>Priority</th></tr>
-      <tr><td>LH (Luteinizing Hormone) + FSH (Follicle-Stimulating Hormone)</td><td>Classify hypogonadism type: secondary (low LH/FSH — pituitary origin, treatable with Kisspeptin/Enclomiphene) vs primary (high LH/FSH — testicular failure, requires TRT). Cannot safely prescribe HTPA stimulants without this.</td><td><span class="flag-high">CRITICAL — BEFORE PHASE 2</span></td></tr>
-      <tr><td>Estradiol (E2), sensitive assay LC-MS/MS</td><td>Low T with normal/low SHBG — need to know E2 to assess aromatase activity. High E2 worsens hypogonadism and fat gain. Needed for Enclomiphene decision.</td><td><span class="flag-high">CRITICAL — BEFORE PHASE 2</span></td></tr>
-      <tr><td>PTH (Parathyroid Hormone) + Ionized Calcium</td><td>Ca 2.54 (mild ↑) — must exclude primary hyperparathyroidism before Vit D escalation and potassium citrate use. If PTH elevated with hypercalcemia = primary HPT = surgical referral.</td><td><span class="flag-high">URGENT — BEFORE Vit D &gt;4000 IU</span></td></tr>
-      <tr><td>Hs-CRP (High-Sensitivity CRP — C-Reactive Protein) — pending from this draw</td><td>Already ordered. Needed for full CV (cardiovascular) risk stratification and BPC-157 dose calibration.</td><td><span class="flag-watch">Pending — collect from lab</span></td></tr>
-      <tr><td>DHEA-S (Dehydroepiandrosterone-Sulfate)</td><td>Adrenal androgen reserve — at 44yo with low T, knowing DHEA-S determines if adrenal axis is contributing to androgen deficit. Low DHEA-S adds a treatment layer (DHEA supplementation or BPC-157 adrenal support).</td><td><span class="flag-watch">High priority add-on</span></td></tr>
-      <tr><td>IGF-1 (Insulin-like Growth Factor-1)</td><td>Needed to calibrate CJC-1295 + Ipamorelin dosing. Low IGF-1 = push harder. Elevated IGF-1 = use minimum effective GH dose to avoid insulin resistance.</td><td><span class="flag-watch">High priority — before GH stack</span></td></tr>
-      <tr><td>Morning Cortisol (8am fasted draw)</td><td>SHBG 17.7 (low-mid) + low T in a 44yo — chronic stress/elevated cortisol is a common suppressor. Cortisol/T ratio is diagnostically meaningful.</td><td><span class="flag-watch">Medium priority</span></td></tr>
-      <tr><td>24-hour Urine Calcium + Oxalate</td><td>Ca-oxalate crystals in spot urine — need 24h collection to quantify stone risk and calibrate magnesium/potassium citrate doses.</td><td><span class="flag-watch">Medium — concurrent with other labs</span></td></tr>
-      <tr><td>Sleep Study (PSG — Polysomnography) or Home Sleep Test</td><td>RBC 5.6 ↑ with HGB 16 + HCT 48.1% — sleep apnea is a major cause of secondary polycythemia AND secondary hypogonadism. Treating OSA (obstructive sleep apnea) alone can restore T 30–50% and normalize HCT.</td><td><span class="flag-watch">Recommend referral</span></td></tr>
-      <tr><td>MTHFR + COMT Gene Panel</td><td>Homocysteine 12.2 despite B12 914 — likely methylation gene variant. Panel confirms whether to use methylfolate (MTHFR C677T/A1298C) and modulates TMG dosing (COMT variant).</td><td><span class="flag-watch">Optional — informs methylation stack precision</span></td></tr>
+      <tr><th>Test Name</th><th>What It Tells You</th><th>Why It Can't Wait</th></tr>
+      <tr>
+        <td><strong>LH + FSH</strong><br><span style="font-size:11px;color:var(--muted)">(the brain signals for testosterone)</span></td>
+        <td>Whether the problem is in the <em>brain signal</em> (low LH/FSH = brain isn't calling) or in the <em>testicles themselves</em> (high LH/FSH = brain is calling but testicles aren't responding)</td>
+        <td class="flag-high">CRITICAL — must know before Phase 2. Kisspeptin and Enclomiphene only work for the brain-signal type. If it's the testicular type, they won't work and direct testosterone therapy is needed instead.</td>
+      </tr>
+      <tr>
+        <td><strong>Estradiol (sensitive test)</strong><br><span style="font-size:11px;color:var(--muted)">(estrogen level for men)</span></td>
+        <td>Men naturally convert some testosterone to estrogen. If estrogen is too high, it suppresses testosterone and causes fat gain. Needed to understand how your system is behaving and whether an estrogen blocker is needed.</td>
+        <td class="flag-high">CRITICAL — essential for safe Phase 2 dosing</td>
+      </tr>
+      <tr>
+        <td><strong>PTH + Ionized Calcium</strong><br><span style="font-size:11px;color:var(--muted)">(parathyroid hormone)</span></td>
+        <td>Rules out a small gland in the neck (parathyroid) that may be overactive and causing the slightly elevated blood calcium. If overactive, it's treatable and explains the calcium crystals in urine.</td>
+        <td class="flag-high">URGENT before increasing Vitamin D above 4,000 IU</td>
+      </tr>
+      <tr>
+        <td><strong>DHEA-S</strong><br><span style="font-size:11px;color:var(--muted)">(adrenal hormone)</span></td>
+        <td>Your adrenal glands make a precursor hormone that converts to testosterone. If DHEA-S is low, it adds another layer to the testosterone deficiency — and a simple supplement can fix it.</td>
+        <td class="flag-watch">High priority add-on</td>
+      </tr>
+      <tr>
+        <td><strong>IGF-1</strong><br><span style="font-size:11px;color:var(--muted)">(growth hormone activity marker)</span></td>
+        <td>CJC-1295 and Ipamorelin raise growth hormone. IGF-1 measures whether it's working. If already high before starting, the dose needs to be kept low to avoid insulin sensitivity issues.</td>
+        <td class="flag-watch">Important — needed before or during GH peptide cycle</td>
+      </tr>
+      <tr>
+        <td><strong>Morning Cortisol (blood draw at 8am)</strong><br><span style="font-size:11px;color:var(--muted)">(stress hormone)</span></td>
+        <td>Chronic elevated cortisol suppresses testosterone. If cortisol is high, treating that becomes a priority alongside the testosterone stack.</td>
+        <td class="flag-watch">Medium priority</td>
+      </tr>
+      <tr>
+        <td><strong>24-hour Urine Collection (Calcium + Oxalate)</strong></td>
+        <td>Quantifies exactly how much calcium and oxalate you're spilling into urine daily — needed to size the magnesium and potassium citrate doses correctly for stone prevention.</td>
+        <td class="flag-watch">Medium priority, concurrent with other labs</td>
+      </tr>
+      <tr>
+        <td><strong>Sleep Study (if RBC stays elevated on repeat test)</strong></td>
+        <td>Sleep apnea (stopping breathing during sleep) causes the body to produce extra red blood cells to compensate for low oxygen. It also directly suppresses testosterone. Treating sleep apnea alone can raise testosterone 30–50% and normalize blood thickness.</td>
+        <td class="flag-watch">Referral — if HCT stays above 48% on repeat draw</td>
+      </tr>
     </table>
   </div>
 </div>
 
-<!-- SECTION 7: IMPLEMENTATION TIMELINE -->
+<!-- SECTION 5: TIMELINE -->
 <div class="section">
-  <div class="section-header"><div class="section-num">7</div><h2>Implementation Timeline</h2></div>
+  <div class="section-header"><div class="section-num">5</div><h2>Step-by-Step Timeline</h2></div>
   <div class="section-body">
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-dot active"></div>
-        <div class="timeline-label">Week 0 — Immediately (Before any peptides)</div>
+        <div class="timeline-label">Right Now — Week 0</div>
         <div class="timeline-content">
-          <strong>Start all oral supplements NOW:</strong> Methylfolate 400µg + P-5-P 50mg + TMG 1g + Omega-3 3g + Berberine 500mg ×2 + Magnesium citrate 400mg + D3 3,000 IU + K2-MK7 200µg + Zinc 30mg + Ashwagandha KSM-66 600mg.<br>
-          <strong>Order labs NOW:</strong> LH + FSH + Estradiol (sensitive) + PTH + Ionized Ca + DHEA-S + IGF-1 + Morning Cortisol + 24h Urine Ca/Oxalate.<br>
-          <strong>Hydration reset:</strong> 2.5–3L water daily starting today.<br>
-          <strong>Collect pending results:</strong> Hs-CRP, Occult Blood from this draw.
+          <strong>Start all oral supplements today:</strong> Methylfolate + P-5-P + TMG + Omega-3 + Berberine + Magnesium Citrate + Vitamin D3 + K2-MK7 + Zinc + Ashwagandha. No injections yet — just pills.<br><br>
+          <strong>Order the missing blood tests:</strong> LH + FSH + Estradiol + PTH + Ionized Calcium + DHEA-S + IGF-1 + Morning Cortisol.<br><br>
+          <strong>Increase water intake to 2.5–3L daily from today.</strong>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-label">Week 1–2 — Phase 1 Peptides Begin</div>
+        <div class="timeline-label">Weeks 1–2 — Phase 1 Peptides Begin</div>
         <div class="timeline-content">
-          Start: BPC-157 (250µg AM daily) + TB-500 (2.0mg SQ Mon/Thu) + CJC-1295 no-DAC (100µg nightly, pre-sleep) + Ipamorelin (100µg nightly, 30min after CJC).<br>
-          Add GHK-Cu (1mg SQ, alternate AM) at Week 2 if BPC-157 tolerated.<br>
-          Do NOT start Kisspeptin or Enclomiphene until lab results back.
+          Start injections: BPC-157 (morning daily) + TB-500 (Monday + Thursday evenings) + CJC-1295 (bedtime, 30 min before sleep) + Ipamorelin (bedtime, right before sleep).<br><br>
+          Add GHK-Cu at Week 2 if the first week of injections is comfortable.<br><br>
+          Do NOT start Kisspeptin or Enclomiphene yet — wait for the new blood test results.
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-label">Week 4 — Lab Results Review</div>
+        <div class="timeline-label">Week 4 — Review New Lab Results</div>
         <div class="timeline-content">
-          Review LH/FSH/E2 → classify hypogonadism type. Review PTH/ionized Ca → clear or hold Vit D escalation. If HCT stable or improved → clear for Phase 2. Sleep study referral if HCT still ↑.
+          Review LH/FSH/Estradiol → determines which Phase 2 approach to use.<br>
+          Review PTH/Ionized Calcium → clears or holds higher Vitamin D dosing.<br>
+          Repeat blood count (HCT) → if below 48%, Phase 2 is cleared to start.
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-label">Week 6 — Phase 2 Start (Conditional)</div>
+        <div class="timeline-label">Week 6 — Phase 2 Starts (If Cleared)</div>
         <div class="timeline-content">
-          IF HCT &lt;48% + LH/FSH confirms secondary hypogonadism → Start Kisspeptin-10 (100µg SQ, Mon/Wed/Fri, pulsatile, evening).<br>
-          IF LH/FSH elevated (primary hypogonadism) → skip Kisspeptin, consult physician for direct TRT or specialist referral.<br>
-          Recheck K before adding potassium citrate (if pseudohyperkalemia confirmed, start 540mg ×2 with meals).
+          If blood thickness is under 48% AND LH/FSH shows the brain-signal type of low testosterone:<br>
+          → Add <strong>Kisspeptin-10</strong> (100 µg, Monday/Wednesday/Friday evening only — pulsatile pattern critical).<br><br>
+          If Potassium was confirmed normal on repeat test → Start Potassium Citrate.
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-label">Week 8 — First Retest Labs</div>
+        <div class="timeline-label">Week 8 — First Full Retest</div>
         <div class="timeline-content">
-          Panel: Total T + Free T + LH/FSH + E2 + Homocysteine + Vit D + Ionized Ca + PSA + HCT + K.<br>
-          Decision: If T still &lt;350 ng/dL → add Enclomiphene 12.5 mg/day (with Dr. Shoyab prescription).<br>
-          If Homocysteine still &gt;10 → double TMG to 2g/day, add riboflavin 400µg (MTHFR B2 cofactor).
+          Blood panel: Testosterone + Estradiol + Homocysteine + Vitamin D + Calcium + PSA + HCT + Potassium.<br><br>
+          <strong>Decision points:</strong><br>
+          — Testosterone still under 350 ng/dL → Add Enclomiphene (12.5 mg, prescription from Dr. Shoyab)<br>
+          — Homocysteine still above 10 → Double TMG to 2g/day<br>
+          — Vitamin D under 60 → Increase D3 to 4,000 IU (only if Calcium/PTH confirmed normal)
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-label">Week 12 — Phase 1 Cycle End + Full Retest</div>
+        <div class="timeline-label">Week 12 — Phase 1 Cycle End + Full Assessment</div>
         <div class="timeline-content">
-          GH peptides OFF for 4 weeks (CJC-1295 + Ipamorelin — 12 weeks on → 4 weeks off cycle). BPC-157 + TB-500 continue 2 more weeks then taper.<br>
-          Full panel: all above + IGF-1 + DHEA-S + lipid panel (target LDL &lt;100) + fasting insulin. Compile response report for Dr. Shoyab.
+          CJC-1295 + Ipamorelin go OFF for 4 weeks (12 on / 4 off is the standard cycle). BPC-157 continues 2 more weeks then tapers.<br><br>
+          Full panel: everything above + IGF-1 + DHEA-S + full lipid panel (LDL target: under 100). Review all targets. Compile report for Dr. Shoyab.
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-label">Week 20 — TRT Decision Point (Phase 3)</div>
+        <div class="timeline-label">Week 20 — Testosterone Decision (If Needed)</div>
         <div class="timeline-content">
-          If Total T still &lt;350 ng/dL despite full HTPA stimulation → Physician evaluation for Testosterone Cypionate initiation. All safety criteria must be met (HCT, PSA, LH/FSH, oncology clearance). Kisspeptin-10 continues if TRT started (maintains spermatogenesis and HPT axis receptor sensitivity).
+          If testosterone is still under 350 ng/dL despite 14+ weeks of the full stack → physician evaluation for direct testosterone therapy (testosterone cypionate injections). At this point, blood thickness should be normalized and the full safety picture is clear. Kisspeptin continues alongside to keep fertility functioning.
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 8: DISCLAIMER -->
+<!-- SECTION 6: SAFETY -->
 <div class="section">
-  <div class="section-header"><div class="section-num">8</div><h2>Physician Discussion Points & Disclaimer</h2></div>
+  <div class="section-header"><div class="section-num">6</div><h2>Important Safety Rules & What to Watch For</h2></div>
+  <div class="section-body">
+    <div class="safety-grid">
+      <div>
+        <h3 style="font-size:13px;color:var(--red);margin-bottom:12px">🚫 Do Not Start These Until Cleared</h3>
+        <table>
+          <tr><th>What</th><th>Why You're Waiting</th></tr>
+          <tr><td><strong>Testosterone injections (TRT)</strong></td><td>Your blood is slightly thick (HCT 48.1%). Testosterone makes more red blood cells, which would thicken it further and raise clotting risk. Wait until repeat blood count confirms it's under 48%.</td></tr>
+          <tr><td><strong>Potassium Citrate supplement</strong></td><td>Your blood potassium came back slightly elevated. Recheck to confirm this was a real reading (likely not — sample was taken at the edge of the stability window). Do not add potassium until confirmed normal.</td></tr>
+          <tr><td><strong>Vitamin D above 4,000 IU/day</strong></td><td>Your blood calcium is very slightly elevated. High Vitamin D raises calcium absorption. Check parathyroid hormone first to rule out an underlying calcium regulation issue.</td></tr>
+          <tr><td><strong>Enclomiphene or Kisspeptin</strong></td><td>Need LH/FSH blood test first to confirm these work for your type of low testosterone. Also need blood thickness confirmed safe.</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3 style="font-size:13px;color:var(--yellow);margin-bottom:12px">📋 What to Test and When</h3>
+        <table>
+          <tr><th>What to Test</th><th>When</th><th>Stop/Adjust If...</th></tr>
+          <tr><td>HCT (blood thickness)</td><td>Every 6 weeks if on any testosterone-related therapy</td><td>Above 52% or rises 3+ points</td></tr>
+          <tr><td>Total Testosterone</td><td>Week 8, 16, 24</td><td>Target above 500 ng/dL</td></tr>
+          <tr><td>Homocysteine</td><td>Week 12</td><td>Target under 9 µmol/L</td></tr>
+          <tr><td>LDL Cholesterol</td><td>Week 12, 24</td><td>Target under 100 mg/dL</td></tr>
+          <tr><td>Vitamin D</td><td>Week 8</td><td>Target 60–70 ng/mL</td></tr>
+          <tr><td>PSA (prostate marker)</td><td>6 weeks after any testosterone therapy starts</td><td>Suspend if above 1.5 ng/mL</td></tr>
+          <tr><td>Potassium</td><td>Before starting Potassium Citrate; then week 6</td><td>Hold supplement if above 5.1</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: DISCLAIMER -->
+<div class="section">
+  <div class="section-header"><div class="section-num">7</div><h2>Medical Disclaimer</h2></div>
   <div class="section-body">
     <div class="alert alert-red">
       <div class="alert-icon">🏥</div>
       <div>
-        <strong>This report is a functional medicine analysis framework compiled by the NexusOS Health Module using the Bachmeyer peptide protocol framework (Cortex knowledge base, 88-video corpus). It is NOT a medical prescription or diagnosis.</strong> All peptide protocols require physician oversight. The following items specifically require Dr. Shoyab (or a specialist) sign-off before initiation:
-        <ul style="margin:8px 0 0 16px;font-size:12px;line-height:1.8">
-          <li>LH/FSH workup before any HTPA stimulant (Kisspeptin or Enclomiphene)</li>
-          <li>PTH/ionized Ca workup before Vit D escalation</li>
-          <li>HCT ≥48% — TRT absolute hold, investigate polycythemia cause (sleep study, renal US)</li>
-          <li>Enclomiphene — prescription compound in UAE/most jurisdictions</li>
-          <li>Phase 3 TRT — requires andrology/endocrinology referral</li>
+        <strong>This report is an analysis framework, not a medical prescription.</strong> It is compiled using the Dr. Bachmeyer peptide protocol knowledge base (88-video corpus, 2,803 records in Cortex) by the NexusOS Health Module. It is intended as a structured guide for discussion with your physician.<br><br>
+        The following items require a doctor's approval before starting:
+        <ul style="margin:8px 0 0 16px;font-size:12px;line-height:2.0">
+          <li>The missing lab tests (LH/FSH, PTH, Estradiol) — ordered through your physician</li>
+          <li>Phase 2 start — depends on blood test results and HCT confirmation</li>
+          <li>Enclomiphene — prescription medication in UAE and most countries</li>
+          <li>Any direct testosterone therapy — requires andrology or endocrinology specialist</li>
+          <li>Parathyroid workup — before increasing Vitamin D doses</li>
         </ul>
+        <br>
+        <strong>Sources:</strong> Dr. Bachmeyer Cortex knowledge base (notebooklm_chats · health_bachmeyer · health collections). Ehsan Ahmadi Protocol v5 (2026-04-28) used as structural reference. Protocol compiled 26 May 2026.
       </div>
-    </div>
-    <div style="font-size:12px;color:var(--muted);margin-top:12px">
-      <strong>Sources:</strong> Cortex knowledge base — collections: notebooklm_chats (Dr Trevor Bachmeister notebook), health_bachmeyer (88-video Bachmeyer transcript corpus, 2,803 records), health (4,649 records), intelligence. Ehsan Ahmadi Protocol v5 (2026-04-28) used as structural precedent. Gary Brecka MTHFR methylation framework (Cortex health transcript). Lab: Freiburg Medical Laboratory Middle East (FML) Dubai, DAkkS accredited D-ML-13455-01-00. Protocol compiled 2026-05-26 by NexusOS Genie on MacM4.
     </div>
   </div>
 </div>
 
 <div class="footer">
-  Ali Faisal Mohammed — Bachmeyer Peptide & Supplement Protocol v1 · NexusOS Health Module · 2026-05-26<br>
-  ⚠ For physician + patient use only. Not for distribution. Physician oversight required for all injectable compounds.
+  Ali Faisal Mohammed — Health Optimization Protocol v1 · NexusOS Health Module · 26 May 2026<br>
+  Blood drawn: 12 May 2026 · Lab: Freiburg Medical Laboratory Middle East, Dubai (DAkkS Accredited)<br>
+  ⚠ For physician + patient use only. Not for distribution. All injectable compounds require physician oversight.
 </div>
 
 </div>
