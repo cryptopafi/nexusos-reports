@@ -20,6 +20,27 @@ h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter
 .metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
 .two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
 .card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
 .metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
 .metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
 .metric span { color:var(--muted); }
@@ -43,12 +64,13 @@ pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(
 summary { cursor:pointer; color:var(--muted); }
 a { color:var(--blue); text-decoration:none; }
 @media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
 </style>
 </head>
 <body>
 <main class="wrap">
   <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
-  <header class="hero"><h1>Split Council Report - council-20260528-1802-1b37</h1><p class="subtitle">Summary Two advisors return REVISE and one returns PASS.</p><div class="meta">Generated 2026-05-28 18:15 UTC | Task council-20260528-1802-1b37</div></header>
+  <header class="hero"><h1>Split Council Report - council-20260528-1802-1b37</h1><p class="subtitle">Summary Two advisors return REVISE and one returns PASS.</p><div class="meta">Generated 2026-05-28 18:20 UTC | Task council-20260528-1802-1b37</div></header>
   <section class="grid metrics">
     <article class="card metric"><small>Outcome</small><strong>SPLIT</strong><span>Verdict</span></article>
     <article class="card metric"><small>Certainty</small><strong>0.84</strong><span>Confidence</span></article>
@@ -56,6 +78,11 @@ a { color:var(--blue); text-decoration:none; }
     <article class="card metric"><small>Run Spend</small><strong>$0.5913</strong><span>Cost</span></article>
     <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
   </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>1 PASS / 2 REVISE</strong><span>Final reconciler tier: SPLIT</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>PASS + REVISE + REVISE</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>SPLIT after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor A</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.95</strong></div><h3>Why this advisor voted this way</h3><p>Exceptional mathematical clarity regarding the required 228.46x multiple (72.14% CAGR) and the inherent limitations of large-cap holdings for this specific mandate.</p><h3>Main objection or warning</h3><p>The baseline probability of success in public equities remains mathematically near-zero, requiring nearly perfect execution, extreme volatility tolerance, and exogenous luck.</p></article>
+<article class='advisor-card vote-revise'><div class='advisor-head'><span>Advisor B</span><b>REVISE</b></div><div class='confidence'><span>Confidence</span><strong>0.72</strong></div><h3>Why this advisor voted this way</h3><p>Exceptional legibility: the brief specifies a crisp per-holding output schema (current market cap, portfolio weight, 100x-implied market cap, plausibility, biggest specific risk, hold/trim/exit/add, target weight, kill trigger) plus a fully enumerated scenario distribution from top 1% to catastrophic bottom 5%, leaving almost no room for hand-waving.</p><h3>Main objection or warning</h3><p>Mathematical near-impossibility of the underlying target: 228.46x / 72.14% CAGR sustained for 10 years on a liquid multi-million public-equity sleeve has effectively no historical precedent (best long-run liquid records cluster well below 40% CAGR and are capacity-constrained). The cited 6%-10% upper-bound probability is presented without a rigorous derivation and reads as optimistic; the optimized strategy may still leave the realistic probability in the low single digits.</p></article>
+<article class='advisor-card vote-revise'><div class='advisor-head'><span>Advisor C</span><b>REVISE</b></div><div class='confidence'><span>Confidence</span><strong>0.82</strong></div><h3>Why this advisor voted this way</h3><p>The brief correctly frames the core mathematical problem: $4.377M requires 228.46x, or 72.14% CAGR over 10 years, which forces explicit rejection of many otherwise attractive large-cap exposures.</p><h3>Main objection or warning</h3><p>The mandate depends on market data and issuer fundamentals, but the brief asks the advisor to use current market data while also saying the provided data should be treated as verification rather than audited statements, creating a risk of false precision unless filings are pulled for every material balance-sheet claim.</p></article></section>
   <section class="grid two">
     <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:80.0%'></i></b><strong>3.20</strong></div>
 <div class='score'><span>Plan</span><b><i style='width:65.0%'></i></b><strong>2.60</strong></div>
@@ -110,34 +137,34 @@ a { color:var(--blue); text-decoration:none; }
 <h2>Advisor Positions</h2>
 <h3>A</h3>
 <ul>
-<li>- Position: PASS</li>
-<li>- Confidence: 0.95</li>
-<li>- Agrees on: Exceptional mathematical clarity regarding the required 228.46x multiple (72.14% CAGR) and the inherent limitations of large-cap holdings for this specific mandate.; Strict, well-defined constraints that explicitly ban value-destroying private bank structures like capped upside and worst-of payoffs.; Comprehensive risk mapping that mandates exact kill triggers, correlation assessments, and catastrophic scenario analysis.</li>
-<li>- Disagrees or warns on: The baseline probability of success in public equities remains mathematically near-zero, requiring nearly perfect execution, extreme volatility tolerance, and exogenous luck.; Heavy reliance on complex structured products and IPO access introduces severe counterparty, liquidity, and structural risks.; Extreme sector concentration in highly correlated frontier tech (Crypto, Space, AI, Quantum) creates systemic exposure to a single macro or regulatory shock.</li>
+<li>Position: PASS</li>
+<li>Confidence: 0.95</li>
+<li>Agrees on: Exceptional mathematical clarity regarding the required 228.46x multiple (72.14% CAGR) and the inherent limitations of large-cap holdings for this specific mandate.; Strict, well-defined constraints that explicitly ban value-destroying private bank structures like capped upside and worst-of payoffs.; Comprehensive risk mapping that mandates exact kill triggers, correlation assessments, and catastrophic scenario analysis.</li>
+<li>Disagrees or warns on: The baseline probability of success in public equities remains mathematically near-zero, requiring nearly perfect execution, extreme volatility tolerance, and exogenous luck.; Heavy reliance on complex structured products and IPO access introduces severe counterparty, liquidity, and structural risks.; Extreme sector concentration in highly correlated frontier tech (Crypto, Space, AI, Quantum) creates systemic exposure to a single macro or regulatory shock.</li>
 </ul>
 <h3>B</h3>
 <ul>
-<li>- Position: REVISE</li>
-<li>- Confidence: 0.72</li>
-<li>- Agrees on: Exceptional legibility: the brief specifies a crisp per-holding output schema (current market cap, portfolio weight, 100x-implied market cap, plausibility, biggest specific risk, hold/trim/exit/add, target weight, kill trigger) plus a fully enumerated scenario distribution from top 1% to catastrophic bottom 5%, leaving almost no room for hand-waving.; Enforced intellectual honesty: constraints explicitly forbid motivational language, require separating verified facts from assumptions, mandate citing sources, and demand the auditor state clearly when a position or the target is mathematically unsuitable; prior art already anchors probabilities at 0.2%-10% rather than pretending the mandate is likely.; Strong risk discipline baked into the mandate: mandatory kill triggers per holding and for the overall strategy, required factor/correlation analysis across crypto, space, AI infrastructure, biotech, quantum and the missing power/grid sleeve, and a hard rejection list for predatory structured-product payoffs (autocallables, worst-of, capped-upside, opaque downside).</li>
-<li>- Disagrees or warns on: Mathematical near-impossibility of the underlying target: 228.46x / 72.14% CAGR sustained for 10 years on a liquid multi-million public-equity sleeve has effectively no historical precedent (best long-run liquid records cluster well below 40% CAGR and are capacity-constrained). The cited 6%-10% upper-bound probability is presented without a rigorous derivation and reads as optimistic; the optimized strategy may still leave the realistic probability in the low single digits.; Data-integrity fragility: the analysis rests on yfinance pulls and app screenshots requiring a manual 10x divisor, an unverified SPACE42 market cap pending ADX filings, and explicitly non-audited figures. A single error in the corrected $4,377,094.34 base or in any market cap corrupts every downstream multiple, weight, and probability estimate; the brief defers exact balance-sheet work to filings not yet obtained.; Concentration and correlation: the sleeve is ~100% high-beta, liquidity-sensitive risk-on exposure (crypto 28.1%, space 26.8%, AI compute 25.8%, biotech 9.7%, quantum 9.6%) that historically draws down together. A single macro/liquidity shock can trigger simultaneous 50-70%+ drawdowns across the entire book, while large-caps (AMD, PLTR, COIN, MSTR) are structurally incapable of 100x and dilute the very tail-convexity the mandate requires.</li>
+<li>Position: REVISE</li>
+<li>Confidence: 0.72</li>
+<li>Agrees on: Exceptional legibility: the brief specifies a crisp per-holding output schema (current market cap, portfolio weight, 100x-implied market cap, plausibility, biggest specific risk, hold/trim/exit/add, target weight, kill trigger) plus a fully enumerated scenario distribution from top 1% to catastrophic bottom 5%, leaving almost no room for hand-waving.; Enforced intellectual honesty: constraints explicitly forbid motivational language, require separating verified facts from assumptions, mandate citing sources, and demand the auditor state clearly when a position or the target is mathematically unsuitable; prior art already anchors probabilities at 0.2%-10% rather than pretending the mandate is likely.; Strong risk discipline baked into the mandate: mandatory kill triggers per holding and for the overall strategy, required factor/correlation analysis across crypto, space, AI infrastructure, biotech, quantum and the missing power/grid sleeve, and a hard rejection list for predatory structured-product payoffs (autocallables, worst-of, capped-upside, opaque downside).</li>
+<li>Disagrees or warns on: Mathematical near-impossibility of the underlying target: 228.46x / 72.14% CAGR sustained for 10 years on a liquid multi-million public-equity sleeve has effectively no historical precedent (best long-run liquid records cluster well below 40% CAGR and are capacity-constrained). The cited 6%-10% upper-bound probability is presented without a rigorous derivation and reads as optimistic; the optimized strategy may still leave the realistic probability in the low single digits.; Data-integrity fragility: the analysis rests on yfinance pulls and app screenshots requiring a manual 10x divisor, an unverified SPACE42 market cap pending ADX filings, and explicitly non-audited figures. A single error in the corrected $4,377,094.34 base or in any market cap corrupts every downstream multiple, weight, and probability estimate; the brief defers exact balance-sheet work to filings not yet obtained.; Concentration and correlation: the sleeve is ~100% high-beta, liquidity-sensitive risk-on exposure (crypto 28.1%, space 26.8%, AI compute 25.8%, biotech 9.7%, quantum 9.6%) that historically draws down together. A single macro/liquidity shock can trigger simultaneous 50-70%+ drawdowns across the entire book, while large-caps (AMD, PLTR, COIN, MSTR) are structurally incapable of 100x and dilute the very tail-convexity the mandate requires.</li>
 </ul>
 <h3>C</h3>
 <ul>
-<li>- Position: REVISE</li>
-<li>- Confidence: 0.82</li>
-<li>- Agrees on: The brief correctly frames the core mathematical problem: $4.377M requires 228.46x, or 72.14% CAGR over 10 years, which forces explicit rejection of many otherwise attractive large-cap exposures.; The scope is unusually precise for a high-risk investment review, requiring corrected real exposures, per-holding 100x implied market caps, kill triggers, scenario analysis, probability bands, and structured-product payoff scrutiny.; The constraints appropriately reject common private-bank products that cap upside or transfer convexity to the issuer, which is essential for a 100x mandate.</li>
-<li>- Disagrees or warns on: The mandate depends on market data and issuer fundamentals, but the brief asks the advisor to use current market data while also saying the provided data should be treated as verification rather than audited statements, creating a risk of false precision unless filings are pulled for every material balance-sheet claim.; The practical probability of reaching $1B from a $4.377M public-markets sleeve remains extremely low even after optimization, and the brief may overstate the actionable value of probability estimates such as 6%-10% without a defined empirical base or model.; The strategy allows structured products but does not yet define enforceable minimum terms for issuer credit, collateralization, secondary liquidity, downside participation, margin treatment, or tax drag, all of which could materially reduce survival and redeployment probability.</li>
+<li>Position: REVISE</li>
+<li>Confidence: 0.82</li>
+<li>Agrees on: The brief correctly frames the core mathematical problem: $4.377M requires 228.46x, or 72.14% CAGR over 10 years, which forces explicit rejection of many otherwise attractive large-cap exposures.; The scope is unusually precise for a high-risk investment review, requiring corrected real exposures, per-holding 100x implied market caps, kill triggers, scenario analysis, probability bands, and structured-product payoff scrutiny.; The constraints appropriately reject common private-bank products that cap upside or transfer convexity to the issuer, which is essential for a 100x mandate.</li>
+<li>Disagrees or warns on: The mandate depends on market data and issuer fundamentals, but the brief asks the advisor to use current market data while also saying the provided data should be treated as verification rather than audited statements, creating a risk of false precision unless filings are pulled for every material balance-sheet claim.; The practical probability of reaching $1B from a $4.377M public-markets sleeve remains extremely low even after optimization, and the brief may overstate the actionable value of probability estimates such as 6%-10% without a defined empirical base or model.; The strategy allows structured products but does not yet define enforceable minimum terms for issuer credit, collateralization, secondary liquidity, downside participation, margin treatment, or tax drag, all of which could materially reduce survival and redeployment probability.</li>
 </ul>
 <h2>Scoring</h2>
 <ul>
-<li>- Tier: SPLIT</li>
-<li>- Confidence: 0.84</li>
-<li>- Cost: $0.5913</li>
-<li>- N: 3.20/4</li>
-<li>- P: 2.60/4</li>
-<li>- L: 3.50/4</li>
-<li>- F: 2.80/4</li>
+<li>Tier: SPLIT</li>
+<li>Confidence: 0.84</li>
+<li>Cost: $0.5913</li>
+<li>N: 3.20/4</li>
+<li>P: 2.60/4</li>
+<li>L: 3.50/4</li>
+<li>F: 2.80/4</li>
 </ul>
 <h2>Source Brief</h2>
 <p>&lt;council_brief&gt;</p>
