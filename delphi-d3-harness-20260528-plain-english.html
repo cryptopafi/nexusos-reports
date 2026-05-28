@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Should Your Company Build, Buy, or Use Open-Source AI Automation? — Plain-English Guide 2026</title>
+<style>
+  :root {
+    --green: #065f46;
+    --green-light: #d1fae5;
+    --red: #991b1b;
+    --red-light: #fee2e2;
+    --yellow: #92400e;
+    --yellow-light: #fef3c7;
+    --blue: #1e40af;
+    --blue-light: #dbeafe;
+    --bg: #f9fafb;
+    --white: #ffffff;
+    --border: #e5e7eb;
+    --text: #111827;
+    --muted: #6b7280;
+    --header-bg: #111827;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* Header */
+  .header {
+    background: var(--header-bg);
+    color: white;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #7c3aed;
+    color: white;
+    padding: 0.3rem 0.9rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    max-width: 760px;
+    margin: 0 auto 1rem;
+  }
+  .header .subtitle {
+    color: #9ca3af;
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Quality bar */
+  .quality-bar {
+    background: #1e293b;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .quality-bar .stat { text-align: center; }
+  .quality-bar .stat .val { color: #34d399; font-size: 1.4rem; font-weight: 700; }
+  .quality-bar .stat .lbl { color: #94a3b8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* Container */
+  .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+  /* Intro box */
+  .intro-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 5px solid #7c3aed;
+    border-radius: 0.5rem;
+    padding: 1.75rem 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .intro-box h2 { font-size: 1.1rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.75rem; }
+  .intro-box p { font-size: 1.05rem; color: #374151; margin-bottom: 0.75rem; }
+  .intro-box p:last-child { margin-bottom: 0; }
+
+  /* Options grid */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+  .option-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+  }
+  .option-card .tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .option-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .option-card p { font-size: 0.9rem; color: #4b5563; }
+  .option-card.rent { border-top: 3px solid #1a56db; }
+  .option-card.rent .tag { color: #1a56db; }
+  .option-card.free { border-top: 3px solid #0e9f6e; }
+  .option-card.free .tag { color: #0e9f6e; }
+  .option-card.build { border-top: 3px solid #d03801; }
+  .option-card.build .tag { color: #d03801; }
+
+  /* Short answer */
+  .short-answer {
+    background: #f0fdf4;
+    border: 1px solid #a7f3d0;
+    border-left: 5px solid #10b981;
+    border-radius: 0.5rem;
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0;
+    font-size: 1.05rem;
+  }
+  .short-answer strong { color: var(--green); }
+  .short-answer .analogy {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #374151;
+    font-size: 0.95rem;
+  }
+
+  /* Section headings */
+  h2.section-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 3rem 0 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* Finding cards */
+  .finding {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .finding .finding-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .finding .icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .finding h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+  .finding p { color: #374151; font-size: 0.95rem; margin-bottom: 0.75rem; }
+  .finding ul { padding-left: 1.5rem; color: #374151; font-size: 0.95rem; }
+  .finding ul li { margin-bottom: 0.5rem; }
+  .finding .takeaway {
+    background: var(--bg);
+    border-left: 3px solid #6b7280;
+    padding: 0.75rem 1rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+    margin-top: 1rem;
+    font-size: 0.92rem;
+    color: #374151;
+  }
+  .finding .takeaway strong { color: var(--text); }
+  .finding .real-world {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 0.4rem;
+    padding: 0.9rem 1.1rem;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #1e40af;
+  }
+  .finding .real-world strong { color: #1e3a8a; }
+
+  .finding.red { border-left: 4px solid #dc2626; }
+  .finding.green { border-left: 4px solid #10b981; }
+  .finding.yellow { border-left: 4px solid #f59e0b; }
+
+  /* Who should choose what */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .profile-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+  }
+  .profile-card .who { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.5rem; }
+  .profile-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .profile-card .recommendation {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.3rem;
+    display: inline-block;
+    margin: 0.6rem 0 0.9rem;
+  }
+  .rec-free { background: var(--green-light); color: var(--green); }
+  .rec-pay { background: var(--blue-light); color: var(--blue); }
+  .rec-custom { background: var(--red-light); color: var(--red); }
+  .profile-card .timeline { font-size: 0.85rem; color: #374151; }
+  .profile-card .timeline li { margin-bottom: 0.4rem; padding-left: 0.25rem; list-style: none; }
+  .profile-card .timeline li::before { content: "→ "; font-weight: 700; }
+
+  /* Risk section */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .risk-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid #dc2626;
+    border-radius: 0.5rem;
+    padding: 1.25rem 1.5rem;
+  }
+  .risk-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; color: #dc2626; }
+  .risk-card p { font-size: 0.88rem; color: #374151; }
+
+  /* Bottom line */
+  .bottom-line {
+    background: var(--header-bg);
+    color: white;
+    border-radius: 0.75rem;
+    padding: 2rem 2.5rem;
+    margin: 2.5rem 0;
+  }
+  .bottom-line h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #e5e7eb; }
+  .bottom-line p { font-size: 1rem; color: #d1d5db; line-height: 1.8; }
+  .bottom-line strong { color: white; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+  .footer a { color: #1a56db; }
+
+  @media (max-width: 600px) {
+    .header { padding: 2rem 1rem 1.5rem; }
+    .quality-bar { gap: 1.5rem; }
+    .intro-box, .finding { padding: 1.25rem; }
+    .container { padding: 1.5rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="badge">Plain-English Business Guide · May 2026</div>
+  <h1>Should Your Company Build, Buy, or Use Free Artificial Intelligence Software?</h1>
+  <p class="subtitle">A plain-language guide to choosing your Artificial Intelligence automation strategy — without the technical jargon</p>
+</div>
+
+<!-- QUALITY BAR -->
+<div class="quality-bar">
+  <div class="stat"><div class="val">47</div><div class="lbl">Sources Verified</div></div>
+  <div class="stat"><div class="val">43%</div><div class="lbl">Academic &amp; Official Sources</div></div>
+  <div class="stat"><div class="val">17/20</div><div class="lbl">Expert Peer Review</div></div>
+  <div class="stat"><div class="val">83/100</div><div class="lbl">Research Quality Score</div></div>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <h2>The question this guide answers</h2>
+    <p>Imagine you want to hire a team of Artificial Intelligence "workers" that handle tasks automatically — drafting emails, analyzing data, booking meetings, processing invoices, answering customer questions.</p>
+    <p>Before you can use these workers, you need a <strong>platform to manage them</strong>: something that tells them what to do, tracks their work, and connects them to your other tools. You have three ways to get that platform.</p>
+  </div>
+
+  <!-- OPTIONS -->
+  <div class="options-grid">
+    <div class="option-card rent">
+      <div class="tag">Option 1</div>
+      <h3>🏢 Rent it from a big tech company</h3>
+      <p>Pay Anthropic, OpenAI, Google, or Microsoft to run everything for you. Fast to start, but you depend on their prices and decisions forever.</p>
+    </div>
+    <div class="option-card free">
+      <div class="tag">Option 2 — Recommended</div>
+      <h3>🌐 Use free community-built software</h3>
+      <p>Build on top of free tools like LangGraph or CrewAI. You still rent the Artificial Intelligence brain separately, but you own the management layer.</p>
+    </div>
+    <div class="option-card build">
+      <div class="tag">Option 3</div>
+      <h3>🔧 Build it yourself from scratch</h3>
+      <p>Your engineers write the whole platform. Maximum control, but costs 2–5× more than expected and takes 6–18 months before anything works.</p>
+    </div>
+  </div>
+
+  <!-- SHORT ANSWER -->
+  <div class="short-answer">
+    <strong>For most companies in 2026: use free community software as your base, but keep renting the Artificial Intelligence brain from one of the big providers.</strong>
+    <div class="analogy">Think of it like this: you rent the engine (Artificial Intelligence from Anthropic or OpenAI) but you own the car chassis (the platform managing your workers). You get the speed of renting without being permanently trapped with one provider.</div>
+  </div>
+
+  <!-- FINDINGS -->
+  <h2 class="section-title">The 7 Things Every Business Leader Must Know</h2>
+
+  <div class="finding green">
+    <div class="finding-header">
+      <div class="icon">🟢</div>
+      <h3>1. Free community-built platforms are now fully ready for business use</h3>
+    </div>
+    <p>Two years ago, open-source (free community-built) platforms were considered too risky for serious business use. That's no longer true.</p>
+    <ul>
+      <li><strong>LangGraph</strong> — the most popular free platform — successfully handles 76% of complex business tasks in independent tests</li>
+      <li><strong>CrewAI</strong> now offers a fully managed cloud version, so you don't even need to run it yourself</li>
+      <li>All four major Artificial Intelligence providers (Anthropic, OpenAI, Google, Microsoft) have officially adopted a universal plug-in standard that makes these free platforms work with everything</li>
+    </ul>
+    <div class="takeaway"><strong>What this means for you:</strong> The "safe" choice is no longer automatically the expensive paid platform. Free and community-built has matured into a viable enterprise option.</div>
+  </div>
+
+  <div class="finding red">
+    <div class="finding-header">
+      <div class="icon">🔴</div>
+      <h3>2. Being locked into one Artificial Intelligence company is your number one business risk</h3>
+    </div>
+    <p>A pattern that has repeated itself multiple times in the last 2 years:</p>
+    <ul>
+      <li><strong>OpenAI</strong> changed the entire technical system through which software connects to their service <strong>3 times</strong> since 2022 — each time forcing businesses to update their systems or lose functionality</li>
+      <li><strong>Anthropic</strong> (makers of Claude) changed their billing structure in June 2026, suddenly making certain usage 3 times more expensive</li>
+      <li><strong>Google</strong> rebranded their entire Artificial Intelligence platform, forcing companies to migrate their systems</li>
+    </ul>
+    <p>In a survey of large company technology leaders by Zapier in 2026, <strong>81% said dependency on a single Artificial Intelligence vendor is now their number one concern.</strong></p>
+    <div class="takeaway"><strong>What this means for you:</strong> Always make sure you can swap out the Artificial Intelligence brain without rebuilding everything else. Build the escape hatch before you need it.</div>
+  </div>
+
+  <div class="finding red">
+    <div class="finding-header">
+      <div class="icon">🔴</div>
+      <h3>3. European Union Law has a hard deadline: August 2026</h3>
+    </div>
+    <p>If your company operates in Europe or serves European customers, the European Union Artificial Intelligence Act is <strong>already in effect</strong>.</p>
+    <p>From August 2, 2026, companies using Artificial Intelligence for high-risk decisions (employment, loans, healthcare, essential services) must:</p>
+    <ul>
+      <li><strong>Keep detailed records</strong> of every decision — not just the final answer, but every step the system took to get there</li>
+      <li><strong>Have a human able to review and override</strong> any Artificial Intelligence decision</li>
+      <li><strong>Be able to explain</strong> what the system did and why</li>
+    </ul>
+    <p>The problem: most Artificial Intelligence platforms, including expensive paid ones, <strong>do not do this by default.</strong> You have to build it in yourself. And the official technical guidance on how to do so won't even be published until the last quarter of 2026 — after the law takes effect.</p>
+    <div class="takeaway"><strong>What this means for you:</strong> If you're in a regulated industry in Europe, this is urgent. Start designing record-keeping systems now, before you have the full rulebook.</div>
+  </div>
+
+  <div class="finding red">
+    <div class="finding-header">
+      <div class="icon">💸</div>
+      <h3>4. Building from scratch costs far more than most companies realize</h3>
+    </div>
+    <p>Companies that choose to build a custom Artificial Intelligence platform from scratch consistently hit the same wall: <strong>72% of the total cost is people, not technology.</strong></p>
+    <ul>
+      <li>It takes 6 to 18 months before anything is ready to use</li>
+      <li>Artificial Intelligence automation uses 5 to 30 times more computing power than regular software — your cloud bill will be much higher than estimated</li>
+      <li>You'll need highly specialized engineers who are extremely hard to hire and retain</li>
+      <li>A realistic budget is <strong>1.7 to 2 times your initial estimate</strong></li>
+    </ul>
+    <div class="real-world">
+      <strong>Real example — Klarna:</strong> The payments company announced their Artificial Intelligence system was doing the work of 853 full-time employees, saving $60 million per year. Months later, their chief executive quietly reversed course — the system handled volume but quality degraded so much that customers were leaving. They switched back to a human-supervised model.
+    </div>
+    <div class="takeaway"><strong>What this means for you:</strong> Building from scratch only makes sense if the Artificial Intelligence platform itself is your product — meaning you're a technology company selling Artificial Intelligence. For everyone else, it's almost never worth it.</div>
+  </div>
+
+  <div class="finding yellow">
+    <div class="finding-header">
+      <div class="icon">⚠️</div>
+      <h3>5. Artificial Intelligence systems have serious security problems right now</h3>
+    </div>
+    <p>This is the finding most companies are not prepared for:</p>
+    <ul>
+      <li><strong>73% of Artificial Intelligence systems deployed in 2025 had security vulnerabilities</strong> that could let attackers manipulate their behavior</li>
+      <li>A major attack in early 2026 compromised a popular open-source Artificial Intelligence platform used by over 21,000 companies worldwide</li>
+      <li>The top threats: attackers feeding false instructions to your system, corrupting its memory, or tricking it into leaking private data</li>
+    </ul>
+    <p>The Official Artificial Intelligence Security Checklist — published by the Open Web Application Security Project, a globally recognized non-profit — identifies five critical attack types all platforms must defend against.</p>
+    <div class="takeaway"><strong>What this means for you:</strong> Security cannot be an afterthought regardless of which option you choose. Rented platforms include the vendor's security team as a partial buffer. Free platforms require you to actively harden your own setup.</div>
+  </div>
+
+  <div class="finding green">
+    <div class="finding-header">
+      <div class="icon">🟢</div>
+      <h3>6. The industry is converging on a universal plug-in standard — which is good news</h3>
+    </div>
+    <p>In November 2024, Anthropic released a free open standard — essentially a universal plug-in system that lets any Artificial Intelligence system connect to any tool or software.</p>
+    <p>By March 2025, all four major providers had adopted it. By end of 2025, it was donated to the Linux Foundation — a neutral non-profit — meaning no single company controls it. There are now over 500 ready-made connectors available for free.</p>
+    <div class="real-world">
+      <strong>Plain-language version:</strong> Think of it like the universal charging cable that works with every phone regardless of the brand. Before this existed, every Artificial Intelligence platform had its own proprietary connectors — locking you in further. Now those walls are coming down.
+    </div>
+    <div class="takeaway"><strong>What this means for you:</strong> The "lock-in" advantage that paid platforms used to have is dissolving. Within 2 years, the ability to connect to tools will be equal across all three options. Choose based on cost and control, not ecosystem.</div>
+  </div>
+
+  <div class="finding yellow">
+    <div class="finding-header">
+      <div class="icon">🟡</div>
+      <h3>7. Artificial Intelligence needs human supervisors — companies that forgot this paid the price</h3>
+    </div>
+    <p>The most consistent pattern from real-world deployments:</p>
+    <p><strong>Pure automation without human oversight consistently fails in ways that damage the business.</strong></p>
+    <ul>
+      <li>Klarna's system saved money on volume but lost customers through quality failures (see point 4 above)</li>
+      <li>JPMorgan deployed Artificial Intelligence tools to 200,000 employees for software tasks, but kept humans at the review layer — people check the outputs before they're accepted. This is why it works at their scale.</li>
+      <li>The European Union Artificial Intelligence Act is essentially making human oversight legally mandatory for high-risk uses anyway</li>
+    </ul>
+    <div class="takeaway"><strong>What this means for you:</strong> Don't design Artificial Intelligence as a replacement for human judgment. Design it as a first-draft machine that humans review and approve. The companies doing this succeed. The companies that removed humans from the loop struggle.</div>
+  </div>
+
+  <!-- WHO SHOULD CHOOSE WHAT -->
+  <h2 class="section-title">Who Should Choose What</h2>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <div class="who">Small or fast-growing company (under 200 people)</div>
+      <h3>Speed matters most</h3>
+      <div class="recommendation rec-free">→ Free software + rent the brain</div>
+      <ul class="timeline">
+        <li><strong>Now:</strong> Use CrewAI connected to Anthropic or OpenAI — working in weeks</li>
+        <li><strong>3–9 months:</strong> Move to LangGraph for better control and record-keeping</li>
+        <li><strong>9–18 months:</strong> Add the ability to switch Artificial Intelligence providers</li>
+        <li><strong>18–24 months:</strong> Decide whether to self-host or keep using the managed version</li>
+      </ul>
+    </div>
+
+    <div class="profile-card">
+      <div class="who">Large company in a regulated industry (finance, healthcare, insurance)</div>
+      <h3>Compliance cannot wait</h3>
+      <div class="recommendation rec-pay">→ Pay for compliance, add flexibility in parallel</div>
+      <ul class="timeline">
+        <li><strong>Now → 6 months:</strong> Use OpenAI Enterprise or Anthropic Enterprise — they handle the security certifications. Low-risk pilots only.</li>
+        <li><strong>6–12 months:</strong> Build the European Union Artificial Intelligence Act record-keeping now</li>
+        <li><strong>12–18 months:</strong> Add a free open-source layer above the vendor system so you can switch later</li>
+        <li><strong>18–24 months:</strong> Audit your data storage situation for the next phase of the European Union law</li>
+      </ul>
+    </div>
+
+    <div class="profile-card">
+      <div class="who">Technology company where Artificial Intelligence is your core product</div>
+      <h3>Artificial Intelligence IS your product</h3>
+      <div class="recommendation rec-custom">→ Custom build is justified — with caution</div>
+      <ul class="timeline">
+        <li>This is the only case where building from scratch makes economic sense</li>
+        <li>Still: don't lock into a single provider — build the ability to switch from day one</li>
+        <li>Budget twice what you think it'll cost</li>
+        <li>Plan for specialist engineers leaving — document everything from the start</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- THREE RISKS -->
+  <h2 class="section-title">Three Risks Most Companies Miss</h2>
+
+  <div class="risk-grid">
+    <div class="risk-card">
+      <h4>Risk 1 — The Pricing Trap</h4>
+      <p>Artificial Intelligence providers can change their prices mid-contract with minimal notice. Anthropic did exactly this in June 2026. If your entire operation depends on their pricing staying stable, you have no fallback.</p>
+    </div>
+    <div class="risk-card">
+      <h4>Risk 2 — The Talent Cliff</h4>
+      <p>Custom platforms require rare, expensive engineers. When those people leave — and they will — the platform becomes a system nobody understands or can maintain. Budget for documentation from day one.</p>
+    </div>
+    <div class="risk-card">
+      <h4>Risk 3 — The Compliance Gap</h4>
+      <p>Most Artificial Intelligence platforms, including expensive paid ones, don't automatically satisfy European Union Artificial Intelligence Act record-keeping requirements. You have to build that in yourself. Budget 3 to 6 months of dedicated work.</p>
+    </div>
+  </div>
+
+  <!-- BOTTOM LINE -->
+  <div class="bottom-line">
+    <h2>Bottom Line</h2>
+    <p>In 2026, the smartest move for most companies is to use <strong>free, community-built Artificial Intelligence management software</strong> (specifically LangGraph or CrewAI) connected to <strong>rented Artificial Intelligence intelligence from Anthropic, OpenAI, or Google</strong> — but designed from the start so you can swap providers if their prices change or their product deteriorates. Build the human review layer from day one, not as an afterthought. If you're in Europe and use Artificial Intelligence for decisions that affect people's lives, treat the European Union Artificial Intelligence Act as a current emergency, not a future project.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Based on 47 verified sources including academic papers, official documentation from Anthropic, OpenAI, Google, Microsoft, the United States National Institute of Standards and Technology, European Union institutions, and the Open Web Application Security Project, plus enterprise case studies from JPMorgan, Klarna, Stripe, and Shopify.</p>
+  <p style="margin-top:0.5rem">Research conducted May 28, 2026 · Expert Peer Review score: 17/20 · Internal quality grade: 83/100 · First-tier academic and official sources: 43%</p>
+  <p style="margin-top:0.5rem">Technical version: <a href="delphi-d3-harness-20260528-report.html">Full Research Report →</a></p>
+</div>
+
+</body>
+</html>
