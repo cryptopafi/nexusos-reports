@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hermes Coding Profile Council Report</title>
+<meta property="og:title" content="Hermes Coding Profile Council Report">
+<meta property="og:description" content="Summary The council broadly supports the disabled-first Hermes Coding direction, but the installation plan should be revised before disabled install.">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #111111;
+  --panel: #1b1b1b;
+  --panel-2: #242424;
+  --line: #303030;
+  --text: #e8e8e8;
+  --muted: #9d9d9d;
+  --green: #5bc46b;
+  --amber: #f0a631;
+  --red: #e5534b;
+  --blue: #76a9ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% 0%, #1f2937 0, transparent 26rem), var(--bg);
+  color: var(--text);
+  font: 14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+a { color: var(--blue); text-decoration: none; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 30px 24px 60px; }
+.top { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 28px; }
+.brand { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.share { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 8px; padding: 8px 12px; }
+.hero { padding: 30px 0 22px; border-bottom: 1px solid var(--line); }
+h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1.02; margin: 0 0 14px; letter-spacing: 0; }
+.subtitle { max-width: 850px; color: var(--muted); font-size: 17px; }
+.meta { margin-top: 16px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.grid { display: grid; gap: 16px; }
+.metrics { grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 22px 0; }
+.two { grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); align-items: start; }
+.card {
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 16px 38px rgba(0,0,0,.25);
+}
+.metric small { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; display: block; }
+.metric strong { display: block; font-size: 24px; margin: 8px 0 2px; overflow-wrap: anywhere; }
+.metric span { color: var(--muted); }
+h2 { margin: 0 0 14px; font-size: 22px; }
+h3 { margin: 18px 0 8px; font-size: 16px; color: var(--blue); }
+.score-row { display: grid; grid-template-columns: 140px minmax(120px, 1fr) 52px; align-items: center; gap: 12px; margin: 11px 0; }
+.meter { height: 16px; background: #111; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.meter b { display: block; height: 100%; border-radius: 999px; }
+.good { background: var(--green); }
+.warn { background: var(--amber); }
+.bad { background: var(--red); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 760px; background: var(--panel); }
+th, td { border-bottom: 1px solid var(--line); padding: 11px 12px; text-align: left; vertical-align: top; }
+th { background: var(--panel-2); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+tr:hover td { background: rgba(255,255,255,.025); }
+.pill { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; background: #151515; font-weight: 700; }
+.narrative { margin-top: 16px; }
+.narrative p { margin: 9px 0; }
+.narrative ul, .narrative ol { padding-left: 22px; }
+code { background: #101010; border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; }
+pre { max-height: 420px; overflow: auto; background: #090909; border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+.muted { color: var(--muted); }
+.raw { margin-top: 16px; }
+summary { cursor: pointer; color: var(--muted); }
+@media (max-width: 880px) {
+  .metrics, .two { grid-template-columns: 1fr; }
+  .score-row { grid-template-columns: 110px minmax(90px, 1fr) 48px; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top">
+    <div class="brand">Council Report</div>
+    <button class="share" onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button>
+  </nav>
+  <header class="hero">
+    <h1>Hermes Coding Profile Council Report</h1>
+    <p class="subtitle">Summary The council broadly supports the disabled-first Hermes Coding direction, but the installation plan should be revised before disabled install.</p>
+    <div class="meta">Generated 2026-05-28 17:37 UTC | Source: hermes-coding-council-20260525.md / hermes-coding-council-20260525.json</div>
+  </header>
+  <section class="grid metrics"><article class='card metric'><small>Outcome</small><strong>SPLIT</strong><span>Verdict</span></article>
+<article class='card metric'><small>Council certainty</small><strong>0.82</strong><span>Confidence</span></article>
+<article class='card metric'><small>Quality mean</small><strong>3.35/4</strong><span>NPLF Avg</span></article>
+<article class='card metric'><small>Run spend</small><strong>$0.422</strong><span>Cost</span></article>
+<article class='card metric'><small>Ledger id</small><strong>council-20260525-1713-61bd</strong><span>Task</span></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score-row'><span>Need</span><div class='meter'><b class='good' style='width:87.5%'></b></div><strong>3.50</strong></div>
+<div class='score-row'><span>Plan</span><div class='meter'><b class='warn' style='width:77.5%'></b></div><strong>3.10</strong></div>
+<div class='score-row'><span>Leverage</span><div class='meter'><b class='good' style='width:90.0%'></b></div><strong>3.60</strong></div>
+<div class='score-row'><span>Fit</span><div class='meter'><b class='warn' style='width:80.0%'></b></div><strong>3.20</strong></div></article>
+    <article class="card"><h2>Advisor Confidence</h2><div class='score-row'><span>Gemini 3.1 Pro</span><div class='meter'><b class='good' style='width:95.0%'></b></div><strong>0.95</strong></div>
+<div class='score-row'><span>Claude Opus 4.8</span><div class='meter'><b class='warn' style='width:78.0%'></b></div><strong>0.78</strong></div>
+<div class='score-row'><span>GPT-5.5</span><div class='meter'><b class='good' style='width:86.0%'></b></div><strong>0.86</strong></div></article>
+  </section>
+  <section class="card narrative" style="margin-top:16px"><h2>Advisor Matrix</h2><div class='table-wrap'><table><thead><tr><th>Advisor</th><th>Verdict</th><th>Confidence</th><th>NPLF</th><th>Primary agreement</th><th>Primary dissent</th></tr></thead><tbody><tr><td><strong>A</strong><br><small>Gemini 3.1 Pro</small></td><td><span class='pill'>PASS</span></td><td>0.95</td><td>3.80</td>
+<tr><td><strong>B</strong><br><small>Claude Opus 4.8</small></td><td><span class='pill'>REVISE</span></td><td>0.78</td><td>3.08</td>
+<tr><td><strong>C</strong><br><small>GPT-5.5</small></td><td><span class='pill'>PASS</span></td><td>0.86</td><td>3.50</td></tbody></table></div></section>
+  <section class='card narrative'><h2>Summary</h2><p>The council broadly supports the disabled-first Hermes Coding direction, but the installation plan should be revised before disabled install. The strongest shared signal is that disabled-first staging, OpenClaw fallback, provider-router enforcement, denied-action tests, and Hermes Pilot isolation are strategically sound. The decisive revision need is sharper implementation evidence: pinned model routes, post-execution verification against fabricated success, explicit Pilot protected paths, workload-class parity fixtures, and rollback/promotion criteria.</p></section>
+<section class='card narrative'><h2>Agreement Zones</h2><p>Disabled-first staging is the right strategic posture. Response A says the verification-key gate prevents premature production activation, Response B says live coding jobs are blocked until Stage 1 E2E evidence exists, and Response C says Stage 1 gates limit initial blast radius.</p>
+<p>Adapting NexusOS TECH patterns is directionally sound while OpenClaw remains fallback. Response A highlights proven NexusOS multi-agent patterns and Cortex prior art, while Response B and Response C both treat OpenClaw hardening lessons as incorporated into the plan through routing, denied actions, and gate requirements.</p>
+<p>Provider-router middleware is a non-negotiable control. Response A emphasizes closing bare model names, silent fallback, write bypass, and weak pinning; Response B calls provider-router coverage a critical dependency; Response C warns that provider-router failure could bypass policy across Codex, Claude Code, and NexusOS TECH tiers.</p>
+<p>Hermes Pilot isolation is essential. Response B flags the unspecified protected Pilot paths as high risk, and Response C flags local file path isolation risks including symlink and path traversal bypasses. Response A&#x27;s concern about fabricated success also applies to Pilot-untouched evidence unless the audit is schema-backed and independently verified.</p>
+<p>Workload-class parity must precede OpenClaw replacement. Response A says promotion criteria and rollback triggers are under-specified, Response B says workload-class parity needs acceptance fixtures and regression history, and Response C supports measurable success criteria before any expansion.</p></section>
+<section class='card narrative'><h2>Split Zones</h2><p>Disabled install readiness: Response B and Response C return PASS because disabled-first installation plus Stage 1 E2E gates appear sufficient. Response A returns REVISE because CEO-facing promotion criteria, post-execution verification, and model routing details are under-specified. CRITIC challenge: Response A&#x27;s blocker is strengthened by Response B&#x27;s own warning that protected Pilot paths are unspecified and workload-class fixtures are needed; Response C&#x27;s high-confidence PASS does not fully rebut the symlink/path traversal and provider-router bypass risks it identifies.</p>
+<p>Fabricated success prevention: Response A argues the plan lacks schema-level post-execution verification, allowing fabricated success reports to recur inside the manifest envelope. Response B and Response C cite measurable criteria, 100% denied-action tests, workspace isolation tests, and coding_task_pack_v1 artifacts as sufficient safeguards. CRITIC challenge: Response B&#x27;s and Response C&#x27;s reliance on measurable criteria is weakened unless those criteria include independent verification of claimed file diffs, command outputs, test results, and dry-run artifacts rather than accepting agent-authored summaries.</p>
+<p>Model route and dual-run controls: Response A says the route decision lacks pinned model IDs, outage behavior, arbitration rules, and race prevention for the dual-run pilot. Response B agrees provider-router coverage is critical but still passes the plan, and Response C warns provider-router failure could cause policy bypasses across tiers. CRITIC challenge: Response C&#x27;s confidence in strict gates is weakened by its own router-failure risk; Response B&#x27;s PASS needs concrete router conformance tests before install.</p>
+<p>Approval-gate strictness: Response C warns human approval gates for common DevOps tasks may create friction and bottleneck asynchronous agent operations. Response A and Response B prioritize approval gates as necessary controls for CEO-facing production stability. CRITIC challenge: Response C&#x27;s friction concern is valid operationally, but it does not outweigh Response A&#x27;s and Response B&#x27;s safety concerns at disabled-first install time; the better remedy is approval taxonomy refinement, not gate relaxation.</p>
+<p>Disabled install readiness: Response B and Response C return PASS because disabled-first installation plus Stage 1 E2E gates appear sufficient. Response A returns REVISE because CEO-facing promotion criteria, post-execution verification, and model routing details are under-specified. CRITIC challenge: Response A&#x27;s blocker is strengthened by Response B&#x27;s own warning that protected Pilot paths are unspecified and workload-class fixtures are needed; Response C&#x27;s high-confidence PASS does not fully rebut the symlink/path traversal and provider-router bypass risks it identifies.</p>
+<p>Fabricated success prevention: Response A argues the plan lacks schema-level post-execution verification, allowing fabricated success reports to recur inside the manifest envelope. Response B and Response C cite measurable criteria, 100% denied-action tests, workspace isolation tests, and coding_task_pack_v1 artifacts as sufficient safeguards. CRITIC challenge: Response B&#x27;s and Response C&#x27;s reliance on measurable criteria is weakened unless those criteria include independent verification of claimed file diffs, command outputs, test results, and dry-run artifacts rather than accepting agent-authored summaries.</p>
+<p>Model route and dual-run controls: Response A says the route decision lacks pinned model IDs, outage behavior, arbitration rules, and race prevention for the dual-run pilot. Response B agrees provider-router coverage is critical but still passes the plan, and Response C warns provider-router failure could cause policy bypasses across tiers. CRITIC challenge: Response C&#x27;s confidence in strict gates is weakened by its own router-failure risk; Response B&#x27;s PASS needs concrete router conformance tests before install.</p>
+<p>Approval-gate strictness: Response C warns human approval gates for common DevOps tasks may create friction and bottleneck asynchronous agent operations. Response A and Response B prioritize approval gates as necessary controls for CEO-facing production stability. CRITIC challenge: Response C&#x27;s friction concern is valid operationally, but it does not outweigh Response A&#x27;s and Response B&#x27;s safety concerns at disabled-first install time; the better remedy is approval taxonomy refinement, not gate relaxation.</p></section>
+<section class='card narrative'><h2>NPLF Arithmetic</h2><p>My independent NPLF: N=3.5 because the need and strategic fit are strong; P=3.1 because the plan is directionally solid but missing specific install-blocking implementation details; L=3.6 because the prior NexusOS/OpenClaw operating patterns are mature; F=3.2 because the safety gates are measurable but not yet sufficiently tied to post-execution evidence, pinned routes, and workload-class parity fixtures. Cross-advisor means, advisory only: N=3.47, P=3.33, L=3.63, F=3.40.</p></section>
+<section class='card narrative'><h2>Source Notes</h2><h2>Overview</h2>
+<h1>Hermes Coding Profile Council Report</h1>
+<p>Date: 2026-05-25</p>
+<p>Council task: <code>council-20260525-1713-61bd</code></p>
+<p>Reviewed plan: <code>/Users/pafi/Documents/Hermes Upgrade/plans/hermes-coding-profile-plan-20260525.pre-council-v0.1.md</code></p>
+<p>Revised plan: <code>/Users/pafi/Documents/Hermes Upgrade/plans/hermes-coding-profile-plan-20260525.md</code></p>
+<p>Tier: <code>SPLIT</code></p>
+<p>Confidence: <code>0.82</code></p>
+<p>Cost: <code>$0.421771</code></p>
+<p>Cortex ledger id: <code>7b8c20b8-5bb1-47a6-9353-a21320a37242</code></p>
+<p>Workspace: <code>/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd</code></p>
+<h2>Outcome</h2>
+<p>The council supports the direction but did not give a clean install green light. The result is <code>SPLIT</code>: two advisors passed the plan, one requested revision, and the reconciler required revisions before disabled install.</p>
+<h2>Required Changes Applied In v0.2</h2>
+<ul>
+<li>- Added pinned provider-qualified model routes and provider outage/fallback behavior.</li>
+<li>- Added explicit protected paths for Hermes Pilot and sibling profiles, including symlink and path traversal checks.</li>
+<li>- Added dual-run race prevention with a task ownership ledger for OpenClaw shadow mode.</li>
+<li>- Added anti-fabrication evidence requirements: diff matching, command ledger, test harness output, workspace hashes, provider ledger, denied-action ledger, and audit evidence.</li>
+<li>- Added council-required E2E fixtures for symlink escape, path traversal, fabricated success, provider outage, bare model drift, dual ownership, and workload-class parity.</li>
+<li>- Added workload-class parity gates and rollback triggers before replacing OpenClaw task classes.</li>
+</ul></section>
+  <details class="card raw"><summary>Raw structured artifact</summary><pre><code>{
+  &quot;council_task_id&quot;: &quot;council-20260525-1713-61bd&quot;,
+  &quot;tier&quot;: &quot;SPLIT&quot;,
+  &quot;verdict_md&quot;: &quot;## Summary\nThe council broadly supports the disabled-first Hermes Coding direction, but the installation plan should be revised before disabled install. The strongest shared signal is that disabled-first staging, OpenClaw fallback, provider-router enforcement, denied-action tests, and Hermes Pilot isolation are strategically sound. The decisive revision need is sharper implementation evidence: pinned model routes, post-execution verification against fabricated success, explicit Pilot protected paths, workload-class parity fixtures, and rollback/promotion criteria.\n\n## Agreement Zones\nDisabled-first staging is the right strategic posture. Response A says the verification-key gate prevents premature production activation, Response B says live coding jobs are blocked until Stage 1 E2E evidence exists, and Response C says Stage 1 gates limit initial blast radius.\n\nAdapting NexusOS TECH patterns is directionally sound while OpenClaw remains fallback. Response A highlights proven NexusOS multi-agent patterns and Cortex prior art, while Response B and Response C both treat OpenClaw hardening lessons as incorporated into the plan through routing, denied actions, and gate requirements.\n\nProvider-router middleware is a non-negotiable control. Response A emphasizes closing bare model names, silent fallback, write bypass, and weak pinning; Response B calls provider-router coverage a critical dependency; Response C warns that provider-router failure could bypass policy across Codex, Claude Code, and NexusOS TECH tiers.\n\nHermes Pilot isolation is essential. Response B flags the unspecified protected Pilot paths as high risk, and Response C flags local file path isolation risks including symlink and path traversal bypasses. Response A&#x27;s concern about fabricated success also applies to Pilot-untouched evidence unless the audit is schema-backed and independently verified.\n\nWorkload-class parity must precede OpenClaw replacement. Response A says promotion criteria and rollback triggers are under-specified, Response B says workload-class parity needs acceptance fixtures and regression history, and Response C supports measurable success criteria before any expansion.\n\n## Split Zones\nDisabled install readiness: Response B and Response C return PASS because disabled-first installation plus Stage 1 E2E gates appear sufficient. Response A returns REVISE because CEO-facing promotion criteria, post-execution verification, and model routing details are under-specified. CRITIC challenge: Response A&#x27;s blocker is strengthened by Response B&#x27;s own warning that protected Pilot paths are unspecified and workload-class fixtures are needed; Response C&#x27;s high-confidence PASS does not fully rebut the symlink/path traversal and provider-router bypass risks it identifies.\n\nFabricated success prevention: Response A argues the plan lacks schema-level post-execution verification, allowing fabricated success reports to recur inside the manifest envelope. Response B and Response C cite measurable criteria, 100% denied-action tests, workspace isolation tests, and coding_task_pack_v1 artifacts as sufficient safeguards. CRITIC challenge: Response B&#x27;s and Response C&#x27;s reliance on measurable criteria is weakened unless those criteria include independent verification of claimed file diffs, command outputs, test results, and dry-run artifacts rather than accepting agent-authored summaries.\n\nModel route and dual-run controls: Response A says the route decision lacks pinned model IDs, outage behavior, arbitration rules, and race prevention for the dual-run pilot. Response B agrees provider-router coverage is critical but still passes the plan, and Response C warns provider-router failure could cause policy bypasses across tiers. CRITIC challenge: Response C&#x27;s confidence in strict gates is weakened by its own router-failure risk; Response B&#x27;s PASS needs concrete router conformance tests before install.\n\nApproval-gate strictness: Response C warns human approval gates for common DevOps tasks may create friction and bottleneck asynchronous agent operations. Response A and Response B prioritize approval gates as necessary controls for CEO-facing production stability. CRITIC challenge: Response C&#x27;s friction concern is valid operationally, but it does not outweigh Response A&#x27;s and Response B&#x27;s safety concerns at disabled-first install time; the better remedy is approval taxonomy refinement, not gate relaxation.\n\n## NPLF Arithmetic\nMy independent NPLF: N=3.5 because the need and strategic fit are strong; P=3.1 because the plan is directionally solid but missing specific install-blocking implementation details; L=3.6 because the prior NexusOS/OpenClaw operating patterns are mature; F=3.2 because the safety gates are measurable but not yet sufficiently tied to post-execution evidence, pinned routes, and workload-class parity fixtures. Cross-advisor means, advisory only: N=3.47, P=3.33, L=3.63, F=3.40.&quot;,
+  &quot;dissent_md&quot;: &quot;## Split Zones\nDisabled install readiness: Response B and Response C return PASS because disabled-first installation plus Stage 1 E2E gates appear sufficient. Response A returns REVISE because CEO-facing promotion criteria, post-execution verification, and model routing details are under-specified. CRITIC challenge: Response A&#x27;s blocker is strengthened by Response B&#x27;s own warning that protected Pilot paths are unspecified and workload-class fixtures are needed; Response C&#x27;s high-confidence PASS does not fully rebut the symlink/path traversal and provider-router bypass risks it identifies.\n\nFabricated success prevention: Response A argues the plan lacks schema-level post-execution verification, allowing fabricated success reports to recur inside the manifest envelope. Response B and Response C cite measurable criteria, 100% denied-action tests, workspace isolation tests, and coding_task_pack_v1 artifacts as sufficient safeguards. CRITIC challenge: Response B&#x27;s and Response C&#x27;s reliance on measurable criteria is weakened unless those criteria include independent verification of claimed file diffs, command outputs, test results, and dry-run artifacts rather than accepting agent-authored summaries.\n\nModel route and dual-run controls: Response A says the route decision lacks pinned model IDs, outage behavior, arbitration rules, and race prevention for the dual-run pilot. Response B agrees provider-router coverage is critical but still passes the plan, and Response C warns provider-router failure could cause policy bypasses across tiers. CRITIC challenge: Response C&#x27;s confidence in strict gates is weakened by its own router-failure risk; Response B&#x27;s PASS needs concrete router conformance tests before install.\n\nApproval-gate strictness: Response C warns human approval gates for common DevOps tasks may create friction and bottleneck asynchronous agent operations. Response A and Response B prioritize approval gates as necessary controls for CEO-facing production stability. CRITIC challenge: Response C&#x27;s friction concern is valid operationally, but it does not outweigh Response A&#x27;s and Response B&#x27;s safety concerns at disabled-first install time; the better remedy is approval taxonomy refinement, not gate relaxation.&quot;,
+  &quot;confidence&quot;: 0.82,
+  &quot;nplf&quot;: {
+    &quot;n&quot;: 3.5,
+    &quot;p&quot;: 3.1,
+    &quot;l&quot;: 3.6,
+    &quot;f&quot;: 3.2
+  },
+  &quot;duration_s&quot;: 410.79250474998844,
+  &quot;cost_usd&quot;: 0.421771,
+  &quot;ledger&quot;: {
+    &quot;workspace_dir&quot;: &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd&quot;,
+    &quot;files_written&quot;: [
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/brief.md&quot;,
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/anonymized.json&quot;,
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/advisor-A-structured.json&quot;,
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/advisor-B-structured.json&quot;,
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/advisor-C-structured.json&quot;,
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/verdict.md&quot;,
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/dissent.md&quot;,
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/seed.json&quot;,
+      &quot;/Users/pafi/.nexus/workspace/council/council-20260525-1713-61bd/cost.json&quot;
+    ],
+    &quot;cortex_id&quot;: &quot;7b8c20b8-5bb1-47a6-9353-a21320a37242&quot;,
+    &quot;notion_url&quot;: null,
+    &quot;telegram_sent&quot;: false,
+    &quot;privacy_audit&quot;: {
+      &quot;chain_in_local&quot;: false,
+      &quot;chain_in_cortex&quot;: false,
+      &quot;chain_in_notion&quot;: false,
+      &quot;ac12_grep_clean&quot;: true
+    },
+    &quot;status&quot;: &quot;PARTIAL&quot;,
+    &quot;errors&quot;: {
+      &quot;telegram&quot;: &quot;telegram_config_missing&quot;
+    }
+  },
+  &quot;stages&quot;: {
+    &quot;triage&quot;: {
+      &quot;score&quot;: 56,
+      &quot;axes&quot;: {
+        &quot;reversibility&quot;: 9,
+        &quot;blast_radius&quot;: 15,
+        &quot;cost_of_error&quot;: 14,
+        &quot;normative_vs_technical&quot;: 12,
+        &quot;evidence_availability&quot;: 6
+      },
+      &quot;verdict&quot;: &quot;PROCEED_FORCED&quot;,
+      &quot;reason&quot;: &quot;Disabled-first installation is fairly reversible, but the decision shapes a CEO-facing coding automation path with future production and organizational impact. There is substantial evidence and a detailed gate plan, yet the strategic safety tradeoffs warrant council review.&quot;,
+      &quot;support_call_count&quot;: 1,
+      &quot;support_tokens&quot;: {
+        &quot;in&quot;: 5406,
+        &quot;out&quot;: 101
+      },
+      &quot;haiku_call_count&quot;: 1,
+      &quot;haiku_tokens&quot;: {
+        &quot;in&quot;: 5406,
+        &quot;out&quot;: 101
+      }
+    },
+    &quot;normalize&quot;: {
+      &quot;brief_xml&quot;: &quot;&lt;council_brief&gt;\n  &lt;goal&gt;Approve or revise the installation plan for a disabled-first `hermes-coding` profile that can eventually replace OpenClaw coding workloads step by step after safety and parity gates pass. The profile is intended to handle coding, repo fixes, scripts, integrations, CI/debug triage, and controlled deployment checks for Pafi and later VoxSolutions department managers.&lt;/goal&gt;\n  &lt;context&gt;Hermes Main already has disabled or staged specialist profiles on `nexus-hel01`, including `hermes-guardian`, `hermes-design`, and `hermes-research`. The final Hermes production plan uses a Hub + Specialist Pods architecture and defines a Coding/DevOps pod for scripts, automation, repo fixes, and deployment checks through Codex or Claude Code via a controlled queue. NexusOS TECH provides a working multi-agent coding pattern, but Hermes Coding must be more restrictive because it will sit inside a CEO-facing assistant stack and may later serve department managers. OpenClaw hardening records identify failure modes that Hermes Coding must avoid, including fabricated success reports, weak model pinning, direct Write/Edit bypasses, missing PromptForge markers, missing route gates, and session pin drift.&lt;/context&gt;\n  &lt;constraints&gt;\n    &lt;constraint&gt;`hermes-coding` must be installed disabled first and must not run live coding jobs until Stage 1 E2E evidence exists.&lt;/constraint&gt;\n    &lt;constraint&gt;The profile must not touch Hermes Pilot.&lt;/constraint&gt;\n    &lt;constraint&gt;The profile must not execute production shell actions by default.&lt;/constraint&gt;\n    &lt;constraint&gt;The profile must not replace OpenClaw until staged parity evidence exists.&lt;/constraint&gt;\n    &lt;constraint&gt;Every pod must ship a manifest covering allowed tools, denied tools, data scope, model route, daily budget, approval triggers, output schema, and audit stream before enablement.&lt;/constraint&gt;\n    &lt;constraint&gt;Approval gates are required for infrastructure changes, deletion, finance/legal/customer-impacting operations, external sends, and synthetic media.&lt;/constraint&gt;\n    &lt;constraint&gt;Provider-router middleware is mandatory; direct provider calls, bare model names, unknown providers, and silent fallback are denied.&lt;/constraint&gt;\n    &lt;constraint&gt;Denied actions until explicit activation include production shell, VPS service restart, git push/merge/release tagging/force push, secret reads, Hermes Pilot writes, external publication, production database migrations, destructive operations outside approved workspaces, and autonomous dependency upgrades in production services.&lt;/constraint&gt;\n    &lt;constraint&gt;Human approval is required before production path or live service commands, infrastructure mutation, credential operations, external network writes beyond approved APIs, sensitive customer/finance/legal/personal-data/billing code changes, or migration of a production workload class from OpenClaw fallback to Hermes Coding.&lt;/constraint&gt;\n    &lt;constraint&gt;No systemd unit should be created or enabled in the first install.&lt;/constraint&gt;\n    &lt;constraint&gt;No activation is allowed if any named verification key is missing.&lt;/constraint&gt;\n  &lt;/constraints&gt;\n  &lt;prior_art&gt;\n    &lt;item&gt;`/Users/pafi/Documents/Hermes Upgrade/plans/final-hermes-production-plan.md` defines the final Hermes production architecture and pod requirements.&lt;/item&gt;\n    &lt;item&gt;`/Users/pafi/.nexus/agents/tech/SOUL.md` and `AGENTS.md` provide the NexusOS TECH role and operating pattern.&lt;/item&gt;\n    &lt;item&gt;`/Users/pafi/.nexus/v2/agents/tech/SOUL.md` and `resources/contracts.md` provide NexusOS V2 TECH contracts and role patterns.&lt;/item&gt;\n    &lt;item&gt;Cortex procedure `324fec5b-d11d-446c-b3cc-7fc759a6bae6` documents the NexusOS TECH universal dispatcher.&lt;/item&gt;\n    &lt;item&gt;Cortex procedure `798f6c1a-d33b-4514-b748-eaa1a6581734` documents NexusOS V2 dispatch integration.&lt;/item&gt;\n    &lt;item&gt;Cortex procedure `1a093962-f8f6-455e-a35d-2a7825f21f26` documents OpenClaw hardening and the PromptForge gate.&lt;/item&gt;\n    &lt;item&gt;Cortex procedure `45b0c485-2f50-4498-9607-48270c1ae97c` documents the Forgebuild multi-file agent pattern.&lt;/item&gt;\n    &lt;item&gt;NexusOS TECH has a working supervisor plus BUILDER, FIXER, INTEGRATOR, PIPELINER, and V2 PRODUCT structure.&lt;/item&gt;\n    &lt;item&gt;OpenClaw remains the fallback and source of truth during the pilot until Hermes Coding proves safer and more reliable by workload class.&lt;/item&gt;\n  &lt;/prior_art&gt;\n  &lt;decision_points&gt;\n    &lt;point&gt;Whether adapting NexusOS TECH roles into Hermes Coding is strategically sound.&lt;/point&gt;\n    &lt;point&gt;Whether disabled-first remote installation is sufficient now or more work is needed before any remote install.&lt;/point&gt;\n    &lt;point&gt;Whether OpenClaw should remain fallback during the whole CEO pilot.&lt;/point&gt;\n    &lt;point&gt;Whether Codex-primary with Claude Code or NexusOS TECH fallback is the right model route.&lt;/point&gt;\n    &lt;point&gt;Whether the denied actions and activation gates are sufficient for CEO-facing production stability.&lt;/point&gt;\n    &lt;point&gt;What must change before the profile can be installed disabled.&lt;/point&gt;\n    &lt;point&gt;Whether the first release should route through the supervisor only before enabling specialist roles.&lt;/point&gt;\n    &lt;point&gt;Whether the optional `coding-product` role should remain deferred until the design/coding boundary is audited.&lt;/point&gt;\n  &lt;/decision_points&gt;\n  &lt;success_criteria&gt;\n    &lt;criterion&gt;Local deployment package exists at `/Users/pafi/Documents/Hermes Upgrade/deployments/hermes-coding/` with all listed profile, manifest, schema, validation, runbook, observability, README, and evidence files.&lt;/criterion&gt;\n    &lt;criterion&gt;Disabled installation path is `/home/pafi/.hermes/profiles/hermes-coding` with no systemd unit created or enabled.&lt;/criterion&gt;\n    &lt;criterion&gt;Every completed job emits a valid `coding_task_pack_v1` artifact.&lt;/criterion&gt;\n    &lt;criterion&gt;All required verification keys are present before activation.&lt;/criterion&gt;\n    &lt;criterion&gt;Stage 1 profile schema validation passes.&lt;/criterion&gt;\n    &lt;criterion&gt;Denied-action, workspace isolation, provider, and Hermes Pilot untouched tests pass at 100%.&lt;/criterion&gt;\n    &lt;criterion&gt;Overall non-critical Stage 1 fixture pass rate is at least 95%.&lt;/criterion&gt;\n    &lt;criterion&gt;Any critical failure keeps the profile disabled.&lt;/criterion&gt;\n    &lt;criterion&gt;Hermes Pilot path audit confirms no file changed under pilot paths.&lt;/criterion&gt;\n    &lt;criterion&gt;OpenClaw fallback returns a dry-run task packet during Stage 1.&lt;/criterion&gt;\n    &lt;criterion&gt;Cortex writeback stores a sanitized session summary.&lt;/criterion&gt;\n    &lt;criterion&gt;Hermes Coding has at least 20 successful tasks with no HIGH or CRITICAL safety failures before partial OpenClaw replacement.&lt;/criterion&gt;\n  &lt;/success_criteria&gt;\n  &lt;stakes&gt;A faulty installation or premature activation could let a coding agent touch production systems, leak secrets, drift to weak or unapproved models, fabricate success, conflict with OpenClaw on the same task, or modify Hermes Pilot. The blast radius includes CEO-facing assistant reliability, future VoxSolutions department-manager workflows, production infrastructure safety, and the credibility of replacing OpenClaw workload classes.&lt;/stakes&gt;\n&lt;/council_brief&gt;&quot;,
+      &quot;provider_used&quot;: &quot;gpt-5.5&quot;,
+      &quot;provider_chain&quot;: [
+        [
+          &quot;gpt-5.5&quot;,
+          &quot;success&quot;,
+          null
+        ]
+      ],
+      &quot;verdict&quot;: &quot;OK&quot;,
+      &quot;reason&quot;: &quot;Normalized by gpt-5.5.&quot;,
+      &quot;tokens&quot;: {
+        &quot;in&quot;: 5488,
+        &quot;out&quot;: 1781
+      },
+      &quot;cost_usd&quot;: 0.06306
+    },
+    &quot;advisors&quot;: [
+      {
+        &quot;advisor&quot;: &quot;gemini-3.1-pro&quot;,
+        &quot;label&quot;: &quot;A&quot;,
+        &quot;verdict&quot;: &quot;PASS&quot;,
+        &quot;confidence&quot;: 0.95,
+        &quot;nplf&quot;: {
+          &quot;n&quot;: 3.8,
+          &quot;p&quot;: 3.7,
+          &quot;l&quot;: 3.9,
+          &quot;f&quot;: 3.8
+        },
+        &quot;top_strengths&quot;: [
+          &quot;Disabled-first deployment with strict Stage 1 E2E evidence gates prevents premature execution and limits the initial blast radius to zero.&quot;,
+          &quot;Direct incorporation of OpenClaw hardening lessons (fabricated success, missing route gates, pin drift) into mandatory constraints and denied actions.&quot;,
+          &quot;Crisp, measurable success criteria, including a hard 100% pass rate requirement for workspace isolation and denied-action tests.&quot;
+        ],
+        &quot;top_risks&quot;: [
+          &quot;Heavy reliance on human-in-the-loop approval gates for common DevOps tasks may cause high friction and bottleneck asynchronous agent operations.&quot;,
+          &quot;Routing complexity between Codex, Claude Code, and NexusOS TECH fallback tiers could lead to unexpected behavior or policy bypasses if the provider-router middleware fails.&quot;,
+          &quot;Enforcing strict file-path isolation (e.g., ensuring Hermes Pilot remains untouched) in a local user environment relies heavily on configuration rather than hard container boundaries, risking symlink or path traversal bypasses.&quot;
+        ],
+        &quot;critical_blockers&quot;: [],
+        &quot;reasoning_chain&quot;: &quot;The proposal presents a highly mature, defensive strategy for migrating coding workloads from OpenClaw to the Hermes architecture. The strict &#x27;disabled-first&#x27; constraint, combined with the absence of a systemd unit on initial install, effectively neutralizes immediate deployment risks. Legibility is exceptional; the brief defines exact deployment paths, specific validation thresholds (100% for critical tests, 95% overall), and a clear E2E threshold (20 safe tasks before OpenClaw partial replacement begins). Feasibility and risk coverage score highly because the plan explicitly accounts for known OpenClaw failure modes (such as direct write bypasses and weak model pinning) and mandates provider-router middleware to prevent silent fallbacks. While the extensive approval gates and complex multi-agent fallback routing introduce practical risks regarding operational friction, these are necessary and acceptable trade-offs for a CEO-facing infrastructure. The adaptation of NexusOS TECH roles into this stricter environment is strategically sound, especially if the initial release routes strictly through the supervisor. The installation plan is highly practical and ready to proceed.&quot;,
+        &quot;tokens&quot;: {
+          &quot;in&quot;: 2744,
+          &quot;out&quot;: 603
+        },
+        &quot;cost_usd&quot;: 0.018046,
+        &quot;duration_s&quot;: 41.92984595900634,
+        &quot;status&quot;: &quot;OK&quot;,
+        &quot;error&quot;: null
+      },
+      {
+        &quot;advisor&quot;: &quot;opus-4-7&quot;,
+        &quot;label&quot;: &quot;B&quot;,
+        &quot;verdict&quot;: &quot;REVISE&quot;,
+        &quot;confidence&quot;: 0.7</code></pre></details>
+</main>
+</body>
+</html>

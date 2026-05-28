@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit-Pro Final Report — Council Skill v1.0.7</title>
+<meta property="og:title" content="Audit-Pro Final Report — Council Skill v1.0.7">
+<meta property="og:description" content="Audit-Pro Final Report — Council Skill v1.0.7 EXECUTIVE SUMMARY Score: 3.72/4.00.">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #111111;
+  --panel: #1b1b1b;
+  --panel-2: #242424;
+  --line: #303030;
+  --text: #e8e8e8;
+  --muted: #9d9d9d;
+  --green: #5bc46b;
+  --amber: #f0a631;
+  --red: #e5534b;
+  --blue: #76a9ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% 0%, #1f2937 0, transparent 26rem), var(--bg);
+  color: var(--text);
+  font: 14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+a { color: var(--blue); text-decoration: none; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 30px 24px 60px; }
+.top { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 28px; }
+.brand { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.share { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 8px; padding: 8px 12px; }
+.hero { padding: 30px 0 22px; border-bottom: 1px solid var(--line); }
+h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1.02; margin: 0 0 14px; letter-spacing: 0; }
+.subtitle { max-width: 850px; color: var(--muted); font-size: 17px; }
+.meta { margin-top: 16px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.grid { display: grid; gap: 16px; }
+.metrics { grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 22px 0; }
+.two { grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); align-items: start; }
+.card {
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 16px 38px rgba(0,0,0,.25);
+}
+.metric small { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; display: block; }
+.metric strong { display: block; font-size: 24px; margin: 8px 0 2px; overflow-wrap: anywhere; }
+.metric span { color: var(--muted); }
+h2 { margin: 0 0 14px; font-size: 22px; }
+h3 { margin: 18px 0 8px; font-size: 16px; color: var(--blue); }
+.score-row { display: grid; grid-template-columns: 140px minmax(120px, 1fr) 52px; align-items: center; gap: 12px; margin: 11px 0; }
+.meter { height: 16px; background: #111; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.meter b { display: block; height: 100%; border-radius: 999px; }
+.good { background: var(--green); }
+.warn { background: var(--amber); }
+.bad { background: var(--red); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 760px; background: var(--panel); }
+th, td { border-bottom: 1px solid var(--line); padding: 11px 12px; text-align: left; vertical-align: top; }
+th { background: var(--panel-2); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+tr:hover td { background: rgba(255,255,255,.025); }
+.pill { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; background: #151515; font-weight: 700; }
+.narrative { margin-top: 16px; }
+.narrative p { margin: 9px 0; }
+.narrative ul, .narrative ol { padding-left: 22px; }
+code { background: #101010; border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; }
+pre { max-height: 420px; overflow: auto; background: #090909; border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+.muted { color: var(--muted); }
+.raw { margin-top: 16px; }
+summary { cursor: pointer; color: var(--muted); }
+@media (max-width: 880px) {
+  .metrics, .two { grid-template-columns: 1fr; }
+  .score-row { grid-template-columns: 110px minmax(90px, 1fr) 48px; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top">
+    <div class="brand">Council Report</div>
+    <button class="share" onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button>
+  </nav>
+  <header class="hero">
+    <h1>Audit-Pro Final Report — Council Skill v1.0.7</h1>
+    <p class="subtitle">Audit-Pro Final Report — Council Skill v1.0.7 EXECUTIVE SUMMARY Score: 3.72/4.00.</p>
+    <div class="meta">Generated 2026-05-28 17:37 UTC | Source: council-skill-audit-pro-final-20260528.md</div>
+  </header>
+  <section class="grid metrics"><article class='card metric'><small>Outcome</small><strong>PASS</strong><span>Verdict</span></article>
+<article class='card metric'><small>Council certainty</small><strong>n/a</strong><span>Confidence</span></article>
+<article class='card metric'><small>Quality mean</small><strong>n/a</strong><span>NPLF Avg</span></article>
+<article class='card metric'><small>Run spend</small><strong>n/a</strong><span>Cost</span></article>
+<article class='card metric'><small>Ledger id</small><strong>council-skill-audit-pro-final-20260528</strong><span>Task</span></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><p class='muted'>No NPLF score was present in the source artifact.</p></article>
+    <article class="card"><h2>Advisor Confidence</h2><p class='muted'>No advisor confidence chart available.</p></article>
+  </section>
+  <section class="card narrative" style="margin-top:16px"><h2>Advisor Matrix</h2><p class='muted'>No structured advisor lanes found.</p></section>
+  <section class='card narrative'><h2>Source Notes</h2><h2>Overview</h2>
+<h1>Audit-Pro Final Report — Council Skill v1.0.7</h1>
+<h2>EXECUTIVE SUMMARY</h2>
+<p>Score: 3.72/4.00. Verdict: PASS.</p>
+<p>Target: <code>/Users/pafi/.agents/skills/council</code> plus synchronized local runtime copies.</p>
+<p>The Council skill now satisfies the requested explainability upgrade: <code>verdict.md</code> includes each advisor&#x27;s public position, agreement/disagreement matrices, and a final synthesis trace explaining how the visible advisor fields led to the final tier. The implementation does not expose hidden chain-of-thought; the deterministic fallback builds explanations from sanitized advisor fields only.</p>
+<p>Claude-backed Audit-Pro wrapper attempt:</p>
+<ul>
+<li>- Command: <code>/Users/pafi/.agents/skills/audit-pro/scripts/audit-pro.sh /Users/pafi/.agents/skills/council --profile default</code></li>
+<li>- Result: wrapper terminated without report output after header-only startup, matching the existing local Claude CLI stall pattern.</li>
+<li>- Fallback: in-session Audit-Pro rubric applied statically, with deterministic tests and drift checks below.</li>
+</ul>
+<h2>FINDINGS</h2>
+<p>No CRITICAL or HIGH findings remain.</p>
+<h3>F1 — LOW — Remote Hermes/Pilot deploy verification remains blocked</h3>
+<p>SSH to the latest VPS IP <code>138.201.123.165</code> failed due to a changed host key. Older targets <code>100.81.233.9</code> and <code>89.116.229.189</code> timed out in the earlier audit. Local MacM4 copies are synchronized and tested, but remote Hermes main/Pilot/OpenClaw copies could not be verified in this run.</p>
+<p>Fix: verify host identity out-of-band, refresh <code>known_hosts</code>, then sync and test remote Council installs.</p>
+<h3>F2 — LOW — Notion sink is still deferred</h3>
+<p><code>_write_notion()</code> now returns visible non-fatal warning <code>notion_mcp_unavailable</code>; this is acceptable for v1.0.7 and accurately documented, but full Notion MCP writeback remains v1.1 work.</p>
+<p>Fix: implement real Notion MCP sink in v1.1 if Notion evidence records are required.</p>
+<h2>NPLF SCORES</h2>
+<ul>
+<li>- Naming: 3.7/4.0 — all local runtime copies now share v1.0.7 naming/versioning; Claude-specific frontmatter preserved.</li>
+<li>- Protocol: 3.7/4.0 — Cortex verdicts route to <code>sessions</code>; procedure documents sequential v1.0 dispatch and Notion stub.</li>
+<li>- Logic: 3.8/4.0 — explainability fallback is deterministic, privacy-preserving, and regression tested.</li>
+<li>- Fitness: 3.7/4.0 — output now shows advisor positions, agreement/disagreement, and final rationale rather than only verdict tier.</li>
+</ul>
+<p>Combined: 3.72/4.00.</p>
+<h2>VERIFICATION</h2>
+<p>Test suites:</p>
+<ul>
+<li>- <code>/Users/pafi/.agents/skills/council</code>: <code>247 passed, 3 skipped</code></li>
+<li>- <code>/Users/pafi/.codex/skills/council</code>: <code>247 passed, 3 skipped</code></li>
+<li>- <code>/Users/pafi/.claude/skills/council</code>: <code>247 passed, 3 skipped</code></li>
+<li>- <code>/Users/pafi/.claude/skills/advisor-council</code>: <code>247 passed, 3 skipped</code></li>
+<li>- <code>/Users/pafi/.nexus/library/repos/nexusos-skills/council</code>: <code>247 passed, 3 skipped</code></li>
+</ul>
+<p>Additional checks:</p>
+<ul>
+<li>- <code>python3 -m py_compile</code> passed for <code>/Users/pafi/.agents/skills/council/lib/*.py</code>.</li>
+<li>- <code>.agents</code> vs <code>.codex</code> diff clean excluding runtime caches.</li>
+<li>- <code>.agents</code> vs Nexus library diff clean excluding runtime caches.</li>
+<li>- Runtime cache directories removed after verification.</li>
+</ul></section>
+  <details class="card raw"><summary>Raw structured artifact</summary><pre><code>{}</code></pre></details>
+</main>
+</body>
+</html>

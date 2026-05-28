@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Council Skill Audit — 2026-05-28</title>
+<meta property="og:title" content="Council Skill Audit — 2026-05-28">
+<meta property="og:description" content="Council Skill Audit — 2026-05-28 Scope Audited the general `/council` skill across local MacM4 installs and canonical NexusOS references: - `/Users/pafi/.agents/skills/council` - `/Users/pafi/.codex/skills/council` - `/Users/pafi/.claude/skills/council` - `/Us">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #111111;
+  --panel: #1b1b1b;
+  --panel-2: #242424;
+  --line: #303030;
+  --text: #e8e8e8;
+  --muted: #9d9d9d;
+  --green: #5bc46b;
+  --amber: #f0a631;
+  --red: #e5534b;
+  --blue: #76a9ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% 0%, #1f2937 0, transparent 26rem), var(--bg);
+  color: var(--text);
+  font: 14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+a { color: var(--blue); text-decoration: none; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 30px 24px 60px; }
+.top { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 28px; }
+.brand { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.share { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 8px; padding: 8px 12px; }
+.hero { padding: 30px 0 22px; border-bottom: 1px solid var(--line); }
+h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1.02; margin: 0 0 14px; letter-spacing: 0; }
+.subtitle { max-width: 850px; color: var(--muted); font-size: 17px; }
+.meta { margin-top: 16px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.grid { display: grid; gap: 16px; }
+.metrics { grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 22px 0; }
+.two { grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); align-items: start; }
+.card {
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 16px 38px rgba(0,0,0,.25);
+}
+.metric small { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; display: block; }
+.metric strong { display: block; font-size: 24px; margin: 8px 0 2px; overflow-wrap: anywhere; }
+.metric span { color: var(--muted); }
+h2 { margin: 0 0 14px; font-size: 22px; }
+h3 { margin: 18px 0 8px; font-size: 16px; color: var(--blue); }
+.score-row { display: grid; grid-template-columns: 140px minmax(120px, 1fr) 52px; align-items: center; gap: 12px; margin: 11px 0; }
+.meter { height: 16px; background: #111; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.meter b { display: block; height: 100%; border-radius: 999px; }
+.good { background: var(--green); }
+.warn { background: var(--amber); }
+.bad { background: var(--red); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 760px; background: var(--panel); }
+th, td { border-bottom: 1px solid var(--line); padding: 11px 12px; text-align: left; vertical-align: top; }
+th { background: var(--panel-2); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+tr:hover td { background: rgba(255,255,255,.025); }
+.pill { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; background: #151515; font-weight: 700; }
+.narrative { margin-top: 16px; }
+.narrative p { margin: 9px 0; }
+.narrative ul, .narrative ol { padding-left: 22px; }
+code { background: #101010; border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; }
+pre { max-height: 420px; overflow: auto; background: #090909; border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+.muted { color: var(--muted); }
+.raw { margin-top: 16px; }
+summary { cursor: pointer; color: var(--muted); }
+@media (max-width: 880px) {
+  .metrics, .two { grid-template-columns: 1fr; }
+  .score-row { grid-template-columns: 110px minmax(90px, 1fr) 48px; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top">
+    <div class="brand">Council Report</div>
+    <button class="share" onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button>
+  </nav>
+  <header class="hero">
+    <h1>Council Skill Audit — 2026-05-28</h1>
+    <p class="subtitle">Council Skill Audit — 2026-05-28 Scope Audited the general `/council` skill across local MacM4 installs and canonical NexusOS references: - `/Users/pafi/.agents/skills/council` - `/Users/pafi/.codex/skills/council` - `/Users/pafi/.claude/skills/council` - `/Us</p>
+    <div class="meta">Generated 2026-05-28 17:37 UTC | Source: council-skill-audit-20260528.md</div>
+  </header>
+  <section class="grid metrics"><article class='card metric'><small>Outcome</small><strong>CONDITIONAL</strong><span>Verdict</span></article>
+<article class='card metric'><small>Council certainty</small><strong>n/a</strong><span>Confidence</span></article>
+<article class='card metric'><small>Quality mean</small><strong>n/a</strong><span>NPLF Avg</span></article>
+<article class='card metric'><small>Run spend</small><strong>n/a</strong><span>Cost</span></article>
+<article class='card metric'><small>Ledger id</small><strong>council-skill-audit-20260528</strong><span>Task</span></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><p class='muted'>No NPLF score was present in the source artifact.</p></article>
+    <article class="card"><h2>Advisor Confidence</h2><p class='muted'>No advisor confidence chart available.</p></article>
+  </section>
+  <section class="card narrative" style="margin-top:16px"><h2>Advisor Matrix</h2><p class='muted'>No structured advisor lanes found.</p></section>
+  <section class='card narrative'><h2>Source Notes</h2><h2>Overview</h2>
+<h1>Council Skill Audit — 2026-05-28</h1>
+<h2>Scope</h2>
+<p>Audited the general <code>/council</code> skill across local MacM4 installs and canonical NexusOS references:</p>
+<ul>
+<li>- <code>/Users/pafi/.agents/skills/council</code></li>
+<li>- <code>/Users/pafi/.codex/skills/council</code></li>
+<li>- <code>/Users/pafi/.claude/skills/council</code></li>
+<li>- <code>/Users/pafi/.claude/skills/advisor-council</code></li>
+<li>- <code>/Users/pafi/.nexus/library/repos/nexusos-skills/council</code></li>
+<li>- <code>/Users/pafi/.nexus/skills-src/council</code></li>
+<li>- <code>/Users/pafi/.nexus/procedures/PROC-COUNCIL-DESIGN-001.md</code></li>
+</ul>
+<p>Remote Hermes main / Hermes Pilot verification could not be completed from this host: SSH to <code>pafi@100.81.233.9</code> and <code>pafi@89.116.229.189</code> timed out. Local <code>~/.hermes</code> exists but has no <code>skills/council</code> or <code>skills/advisor-council</code> path at max depth 5.</p>
+<h2>Verdict</h2>
+<p>CONDITIONAL.</p>
+<p>The Council implementation is broadly functional and well-tested, but the runtime copies are not synchronized. The freshest local copy is <code>/Users/pafi/.agents/skills/council</code> with 244 passing tests. The Codex, Claude, advisor-council alias, and Nexus library copies all lag at 242 passing tests and miss two important fixes.</p>
+<h2>Test Results</h2>
+<ul>
+<li>- <code>/Users/pafi/.agents/skills/council</code>: <code>244 passed, 3 skipped</code></li>
+<li>- <code>/Users/pafi/.codex/skills/council</code>: <code>242 passed, 3 skipped</code></li>
+<li>- <code>/Users/pafi/.claude/skills/council</code>: <code>242 passed, 3 skipped</code></li>
+<li>- <code>/Users/pafi/.claude/skills/advisor-council</code>: <code>242 passed, 3 skipped</code></li>
+<li>- <code>/Users/pafi/.nexus/library/repos/nexusos-skills/council</code>: <code>242 passed, 3 skipped</code></li>
+</ul>
+<p>All runs emitted the same Python 3.14 <code>google.genai.types</code> deprecation warning.</p>
+<h2>Findings</h2>
+<h3>F1 — HIGH — Runtime copies are stale versus <code>.agents</code></h3>
+<p>The newer <code>.agents</code> copy includes fixes missing from <code>.codex</code>, <code>.claude</code>, <code>advisor-council</code>, and the Nexus library copy:</p>
+<ul>
+<li>- <code>lib/_providers.py</code>: accepts valid leading JSON from Claude CLI stdout even when trailing noise or non-zero return code is present.</li>
+<li>- <code>lib/ledger.py</code>: routes Cortex writeback to <code>sessions</code>, adds AC-12 overlap redaction, and prefers Telegram env aliases before file aliases.</li>
+<li>- <code>tests/test_ledger.py</code>: adds regression tests for AC-12 redaction and env alias precedence.</li>
+</ul>
+<p>Impact: depending on which runtime loads <code>/council</code>, behavior differs. The stale copies can reject valid Claude CLI JSON, write council verdicts to the <code>procedures</code> collection, and fail AC-12 on benign reconciler overlap that the maintained copy self-redacts before remote sink writes.</p>
+<p>Fix: promote <code>/Users/pafi/.agents/skills/council</code> as the current source, then sync it to <code>.codex</code>, both <code>.claude</code> skill aliases, Nexus library, and Hermes runtime installs. Re-run tests in every target.</p>
+<h3>F2 — HIGH — Procedure and stale copies still write verdicts to <code>procedures</code></h3>
+<p>The canonical procedure still says council verdicts go to Cortex <code>procedures</code>, and the stale runtime copies still set <code>_CORTEX_COLLECTION = &quot;procedures&quot;</code>. The maintained <code>.agents</code> copy changed this to <code>sessions</code>, matching the current Cortex rule that <code>procedures</code> requires FORGE format.</p>
+<p>Impact: stale runtime verdict writeback can fail schema validation or pollute the procedures collection with non-procedure records.</p>
+<p>Fix: update <code>PROC-COUNCIL-DESIGN-001.md</code> and all runtime copies to <code>sessions</code> for individual council verdicts. Keep the design procedure itself in <code>procedures</code>.</p>
+<h3>F3 — MEDIUM — Docs still claim parallel advisor execution where code is sequential</h3>
+<p>The procedure and SKILL.md claim Gemini, Opus, and GPT advisors run &quot;in parallel&quot;. The orchestrator explicitly documents and implements sequential advisor calls in v1.0.</p>
+<p>Impact: operators will expect lower latency and stronger isolation than the current implementation delivers. README limitations document the truth, but the main procedure/SKILL paths contradict it.</p>
+<p>Fix: change the procedure and SKILL flow text to &quot;independent sequential lanes in v1.0; parallel dispatch is v1.1 roadmap&quot; unless actual parallel execution is implemented.</p>
+<h3>F4 — MEDIUM — Remote deployment state is unverified</h3>
+<p>Cortex says v1.0.4 was deployed to Hermes VPS-2 and OpenClaw VPS-2, but both known SSH targets timed out during this audit. Local <code>~/.hermes</code> has no discoverable council skill path.</p>
+<p>Impact: Hermes main and Pilot may be running an older copy, no copy, or a divergent copy. This matters because Council is being used as a governance gate for Hermes production plans.</p>
+<p>Fix: when VPS access is restored, run <code>find ~/.hermes ~/hermes-pilot/data ~/.openclaw -path &#x27;*/skills/*council*&#x27;</code> and <code>python3 -m pytest tests -q</code> in each deployed skill. Sync to the same source revision as MacM4.</p>
+<h3>F5 — LOW — Notion sink contract is partly aspirational</h3>
+<p>SKILL.md/procedure text describes Notion writeback for STRONG_PASS/BLOCK, while README admits Notion is a v1.0.4 stub. In code, <code>_write_notion</code> returns success-shaped <code>(None, None)</code> rather than a visible <code>notion_mcp_unavailable</code> warning.</p>
+<p>Impact: strong/block verdicts can appear fully written while Notion was never updated.</p>
+<p>Fix: either remove Notion from the active sink contract until v1.1, or return a visible non-fatal warning from <code>_write_notion</code> and test it.</p></section>
+  <details class="card raw"><summary>Raw structured artifact</summary><pre><code>{}</code></pre></details>
+</main>
+</body>
+</html>
