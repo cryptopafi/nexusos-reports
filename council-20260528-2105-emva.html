@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split Council Report - council-20260528-2105-emva</title>
+<style>
+:root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --panel2:#242424; --line:#303030; --text:#e8e8e8; --muted:#a0a0a0; --green:#5bc46b; --amber:#f0a631; --red:#e5534b; --blue:#76a9ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 16% 0%, #1f2937 0, transparent 28rem), var(--bg); color:var(--text); font:14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:30px 24px 60px; }
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:26px; }
+.brand { font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+button { border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:8px; padding:8px 12px; }
+.hero { padding:28px 0 22px; border-bottom:1px solid var(--line); }
+h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter-spacing:0; }
+.subtitle { max-width:850px; color:var(--muted); font-size:17px; }
+.meta { margin-top:16px; color:var(--muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+.grid { display:grid; gap:16px; }
+.metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
+.two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
+.card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
+.metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
+.metric span { color:var(--muted); }
+h2 { margin:0 0 14px; font-size:22px; }
+h3 { margin:18px 0 8px; color:var(--blue); }
+.score { display:grid; grid-template-columns:130px minmax(120px, 1fr) 52px; align-items:center; gap:12px; margin:11px 0; }
+.score b { height:16px; background:#111; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.score i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--red), var(--amber), var(--green)); }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+table { border-collapse:collapse; width:100%; min-width:760px; background:var(--panel); }
+th,td { border-bottom:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; }
+th { background:var(--panel2); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+tr:hover td { background:rgba(255,255,255,.025); }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:#151515; font-weight:700; }
+.narrative { margin-top:16px; }
+.narrative p { margin:9px 0; }
+.narrative ul { padding-left:22px; }
+code { background:#101010; border:1px solid var(--line); border-radius:5px; padding:1px 5px; }
+pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(--line); border-radius:8px; padding:14px; }
+.muted { color:var(--muted); }
+summary { cursor:pointer; color:var(--muted); }
+a { color:var(--blue); text-decoration:none; }
+@media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
+  <header class="hero"><h1>Split Council Report - council-20260528-2105-emva</h1><p class="subtitle">Final Council Tier Computed Council tier: SPLIT.</p><div class="meta">Generated 2026-05-28 21:36 UTC | Task council-20260528-2105-emva</div></header>
+  <section class="grid metrics">
+    <article class="card metric"><small>Outcome</small><strong>SPLIT</strong><span>Verdict</span></article>
+    <article class="card metric"><small>Certainty</small><strong>0.82</strong><span>Confidence</span></article>
+    <article class="card metric"><small>Quality</small><strong>2.60/4</strong><span>NPLF average</span></article>
+    <article class="card metric"><small>Run Spend</small><strong>$0.3967</strong><span>Cost</span></article>
+    <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
+  </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>1 ABSTAIN / 1 BLOCK / 1 REVISE</strong><span>Final reconciler tier: SPLIT</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>BLOCK + ABSTAIN + REVISE</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>SPLIT after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-block'><div class='advisor-head'><span>Advisor A</span><b>BLOCK</b></div><div class='confidence'><span>Confidence</span><strong>0.95</strong></div><h3>Why this advisor voted this way</h3><p>High risk tolerance and acceptance of extreme drawdowns are necessary prerequisites for this mandate.</p><h3>Main objection or warning</h3><p>Over 50% of the current portfolio is mathematically incapable of generating a 100x return due to the law of large numbers.</p></article>
+<article class='advisor-card vote-abstain'><div class='advisor-head'><span>Advisor B</span><b>ABSTAIN</b></div><div class='confidence'><span>Confidence</span><strong>0.0</strong></div><h3>Why this advisor voted this way</h3><p>No public motivation recorded.</p><h3>Main objection or warning</h3><p>No public objection recorded.</p></article>
+<article class='advisor-card vote-revise'><div class='advisor-head'><span>Advisor C</span><b>REVISE</b></div><div class='confidence'><span>Confidence</span><strong>0.78</strong></div><h3>Why this advisor voted this way</h3><p>The mandate correctly recognizes that a 100x public-markets target requires convexity, not Sharpe optimization.</p><h3>Main objection or warning</h3><p>The current sleeve is too exposed to already-repriced large-cap or mega-cap names whose 100x implied market caps are economically implausible.</p></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:90.0%'></i></b><strong>3.60</strong></div>
+<div class='score'><span>Plan</span><b><i style='width:50.0%'></i></b><strong>2.00</strong></div>
+<div class='score'><span>Leverage</span><b><i style='width:75.0%'></i></b><strong>3.00</strong></div>
+<div class='score'><span>Fit</span><b><i style='width:45.0%'></i></b><strong>1.80</strong></div></article>
+    <article class="card"><h2>Advisor Matrix</h2><div class="table-wrap"><table><thead><tr><th>Advisor</th><th>Position</th><th>Confidence</th><th>Agrees On</th><th>Disagrees / Warns On</th></tr></thead><tbody><tr><td><strong>A</strong></td><td><span class='pill'>BLOCK</span></td><td>0.95</td><td>High risk tolerance and acceptance of extreme drawdowns are necessary prerequisites for this mandate.; Willingness to use aggressive structures and global public venture investments.; Exposure to legitimately convex themes like quantum, space, and AI biology.</td><td>Over 50% of the current portfolio is mathematically incapable of generating a 100x return due to the law of large numbers.; Starting from an effective ~$4.38M base requires a 228x return (72% CAGR) to reach $1B, significantly harder than the 100x stated.; Severe correlation risk among AI and crypto holdings, exposing the portfolio to a catastrophic terminal failure.</td></tr>
+<tr><td><strong>B</strong></td><td><span class='pill'>ABSTAIN</span></td><td>0.0</td><td>not specified</td><td>not specified</td></tr>
+<tr><td><strong>C</strong></td><td><span class='pill'>REVISE</span></td><td>0.78</td><td>The mandate correctly recognizes that a 100x public-markets target requires convexity, not Sharpe optimization.; The allowed universe is broad enough to include listed venture-style equities, IPOs, follow-ons, crypto-linked equities, and bespoke payoff structures.; The brief explicitly rejects capped autocallable/worst-of private-bank products that would destroy the required upside profile.</td><td>The current sleeve is too exposed to already-repriced large-cap or mega-cap names whose 100x implied market caps are economically implausible.; The portfolio is factor-crowded across AI, crypto, space, and quantum momentum, so a single risk-off reset could impair multiple sleeves simultaneously.; The required return from the reconstructed current alpha value to $1B is about 228x, which is materially harder than 100x from $10M.</td></tr></tbody></table></div></article>
+  </section>
+  <section class="card narrative"><h2>Decision Trace</h2><p># Council Report</p>
+<h2>Final Verdict</h2>
+<h2>Final Council Tier</h2>
+<p>Computed Council tier: SPLIT. Reconciler raw verdict field: REVISE. The computed tier controls when quorum, blocker, confidence, and NPLF gates override narrative wording.</p>
+<h2>Summary</h2>
+<p>The council does not produce a clean 2-of-3 verdict: Response A says BLOCK, Response B says REVISE, and Response C abstains with no substantive analysis. The usable advisor evidence is still directionally aligned: the current portfolio is not engineered for a $1B outcome, large-cap/passive exposures should be cut, and the strategy must become an actively recycled public-venture portfolio with uncapped convexity. Final verdict: REVISE, not PASS, because the current book fails the mandate; not full BLOCK, because Responses A and B both identify a revised path that may raise probability into the high single digits or low double digits only with exceptional execution.</p>
+<h2>Substantive Answer</h2>
+<h3>1. Portfolio Reconstruction</h3>
+<p>Responses A and B independently reconstruct the alpha sleeve at about $4.377M real market value after dividing app-implied values by 10. Response A estimates cost basis at about $3.677M and unrealized P/L at about +$700K / +19.0%; Response B gives essentially the same result.</p>
+<p>Consolidated largest weights from the shared reconstruction: RKLB about 12.1%, SMCI 10.9%, IBIT 10.6%, AMD 10.5%, EZET 7.8%, COIN 7.7%, SPACE42 6.6%, ASTS 5.8%, IONQ 5.5%, TEM 5.1%, PLTR 4.4%, RXRX 3.1%, RGTI 2.4%, LUNR 2.3%, MSTR 2.0%, QBTS 1.8%, BEAM 1.6%.</p>
+<p>Theme exposure is dominated by AI/compute/software, crypto, and space. Response A estimates AI compute/software/hardware at 30.9%, crypto at 28.1%, space at 26.8%, quantum at 9.7%, and AI biology/biotech at 4.7%. Response B instead counts AI biology/biotech at 9.7% and AI compute/software/hardware at 25.8%, a classification difference driven by where TEM/RXRX/BEAM are grouped. The practical conclusion is unchanged: the book is highly correlated to speculative liquidity, AI, crypto, space, quantum, and biotech risk.</p>
+<h3>2. Mathematical Audit</h3>
+<p>The current alpha sleeve must grow from about $4.38M to $1B, which requires roughly 228x and about 72% CAGR. From the full stated $10M base, the target is 100x and about 58.5% CAGR. Response A treats the current book as effectively impossible because too much capital is in assets already too large. Response B is slightly less absolute, saying an unchanged book can reach $1B only in an extreme right-tail scenario with roughly sub-1% to low-single-digit odds.</p>
+<p>The key mathematical flaw is market-cap starting point. Response B’s sourced market-cap figures are more current and more internally useful than Response A’s older-looking estimates: AMD around $808B implies about $80T at 100x; PLTR around $300B-$328B implies over $30T; RKLB around $72.6B implies about $7.3T; COIN around $51B implies about $5.1T. These may be tradable, but they are poor 100x candidates from current size.</p>
+<h3>3. Position Critique</h3>
+<p>Sell or exit for mandate fit: AMD, PLTR, IBIT, EZET. Response A also exits SMCI, COIN, and MSTR; Response B trims SMCI and COIN and keeps MSTR small. The synthesized view: AMD, PLTR, IBIT, and EZET are clean exits because they are large-cap or passive beta exposures with insufficient convexity. SMCI and COIN should be materially reduced unless held tactically through explicit catalysts. MSTR should be capped small because it layers leverage/premium risk on crypto beta.</p>
+<p>Trim: RKLB, SMCI, COIN, ASTS, IONQ, SPACE42. Response A is more constructive on RKLB, SPACE42, ASTS, IONQ, and TEM than Response B, but both agree current sizing is too loose for the mandate.</p>
+<p>Keep or selectively add after diligence: TEM, BEAM, RXRX, LUNR, QBTS, RGTI, and possibly selected recent listings/follow-ons. Response A is more aggressive on micro-cap quantum and biotech. Response B warns that several of these are already much larger than Response A assumes and are still exposed to dilution, weak revenue quality, and hype-cycle compression.</p>
+<h3>4. Current Portfolio Flaws</h3>
+<p>The current book has large-cap dead weight, passive crypto exposure, duplicated factor exposure, high crash correlation, dilution risk, and momentum risk. Response A’s strongest critique is that over 50% of capital is mathematically incapable of delivering the needed payoff. Response B adds that risk-off liquidity can hit AI, crypto, space, quantum, and biotech simultaneously, so apparent thematic diversification may fail exactly when capital preservation for redeployment matters.</p>
+<h3>5. Structured Products Strategy</h3>
+<p>Structured products help only if they preserve uncapped convexity. Both Response A and Response B reject autocallables, capped notes, income notes, worst-of baskets, and opaque barriers.</p>
+<p>Suitable structures to request from Citi:</p>
+<p>1. Uncapped funded call note on a public-venture basket.</p>
+<p>Underlying: equal-weight or risk-weighted basket including LUNR, RGTI, QBTS, RXRX, BEAM, TEM, RKLB, ASTS, RDW, OKLO or similar diligence-approved names. Tenor: 3-5 years. Upside: target 180%-300% participation if possible. Cap: none. Downside: premium/funded note amount at risk or transparent 1:1 downside. Principal protection: none unless participation remains high. Barrier: none. Autocall: prohibited. Worst-of: prohibited. Issuer risk: split across issuers. Liquidity risk: high.</p>
+<p>2. Long-tenor uncapped principal-protected participation note.</p>
+<p>Underlying: public-venture basket. Tenor: 5-7 years. Upside: minimum 120%-160% participation, uncapped. Principal protection: maturity-only, issuer-credit dependent. Barrier/autocall/worst-of: none. Relevance: improves survival and redeployment, but cannot be the main 100x engine.</p>
+<p>3. Uncapped outperformance certificate.</p>
+<p>Underlying: long moonshot basket, short QQQ/MSCI growth or comparable beta basket. Tenor: 2-3 years. Downside: transparent relative underperformance. No principal protection, no barrier, no autocall, no worst-of. Relevance: isolates alpha, but basis risk is material.</p>
+<h3>6. Recommended Target Portfolio</h3>
+<p>A defensible synthesis is closer to Response B’s diversified active public-venture allocation than Response A’s more concentrated micro-cap-only prescription.</p>
+<p>Target weights: direct equities 65%-70%; structured products 15%-20%; IPO/recent-listing/dislocation reserve 10%-15%; tactical cash 0%-5%.</p>
+<p>Illustrative exact target: direct equities 68%, structured products 17%, IPO/dislocation reserve 10%, tactical cash 5%.</p>
+<p>Direct equity sleeve: RKLB 5%, ASTS 4%, LUNR 3%, SPACE42 3%, TEM 5%, SMCI 3%, COIN 3%, MSTR 2%, BEAM 4%, RXRX 4%, IONQ 3%, QBTS 3%, RGTI 3%, OKLO/advanced nuclear 4%, CCJ/uranium or nuclear fuel 3%, power/grid/data-center basket 5%, RDW/space infrastructure 3%, recent IPO/follow-on basket 8%.</p>
+<p>Structured sleeve: 8% uncapped funded call note on moonshot basket; 5% uncapped principal-protected participation note only if terms are not upside-destructive; 4% uncapped outperformance certificate.</p>
+<p>Maximum position sizes: 6% initial single-name max; 8% only after fundamental proof; 3%-4% max for binary biotech or very weak-liquidity names; 15% max structured exposure per issuer group; 25% max crypto-linked exposure; 25% max space; 15% max quantum until revenue quality improves.</p>
+<h3>7. Probability Estimate</h3>
+<p>Current unchanged portfolio: Response A says 0.00%; Response B says 0.3%-1.0%. Synthesis: 0.2%-1.0%.</p>
+<p>Cleaned-up public-equity-only portfolio: Response A 2%-4%; Response B 2%-5%. Synthesis: 2%-5%.</p>
+<p>Public equities plus IPO/recent-listing access: Response A 5%-7%; Response B 4%-7%. Synthesis: 4%-7%.</p>
+<p>Public equities plus structured products: Response A 6%-9%; Response B 5%-8%. Synthesis: 5%-9%.</p>
+<p>Public equities plus structured products plus active quarterly recycling: Response A 8%-12%; Response B 6%-10%. Synthesis: 6%-10%, with 10% plausible only if the investor has exceptional security selection, termsheet discipline, liquidity timing, and willingness to kill losers quickly.</p>
+<h3>8. Scenario Analysis</h3>
+<p>Top 1%: $1B-$3B terminal value, about 58%-77% CAGR from $10M. Drivers: 2-3 true 50x-100x winners, successful structured convexity, IPO access, aggressive recycling.</p>
+<p>Top 5%: $400M-$900M, about 45%-57% CAGR. Drivers: several 10x-30x winners, favorable AI/space/quantum/biotech cycle, good timing. Failure: no monster winner.</p>
+<p>Top 10%: $150M-$350M, about 31%-43% CAGR. Drivers: cleaned-up book avoids dead weight and captures multiple winners. Failure: still short of 100x.</p>
+<p>Median: $8M-$30M, roughly -2% to 21% CAGR depending on starting base and recycling success. Drivers: some winners offset by dilution, valuation compression, and failed binaries.</p>
+<p>Bottom 20%: $1.5M-$6M. Drivers: risk-off crash, funding stress, dilution, clinical or mission failures.</p>
+<p>Catastrophic bottom 5%: below $1M to zero in the harshest case. Drivers: correlated crash, failed binaries, issuer/counterparty exposure, and no surviving redeployment capital.</p>
+<h3>9. 30-Day Action Plan</h3>
+<p>Sell now: AMD, PLTR, IBIT, EZET.</p>
+<p>Trim now: RKLB, SMCI, COIN, ASTS, IONQ, SPACE42; cap each to mandate-appropriate weights.</p>
+<p>Keep: TEM, BEAM, RXRX, LUNR, QBTS, RGTI, with diligence gates.</p>
+<p>Diligence-only adds: OKLO, RDW, CEG, VST, CCJ, BWXT, recent IPOs/follow-ons, broken high-growth listings, and additional space/power/grid/data-center names.</p>
+<p>Citi termsheets to request: uncapped funded call note, uncapped long-tenor participation note, and uncapped outperformance certificate. Reject any autocall, worst-of, low cap, opaque barrier, or upside-transfer structure.</p>
+<p>Missing data: live prices, current market caps, liquidity by exchange, borrow/short interest where relevant, insider lockups, cash runway, dilution overhang, debt maturities, revenue quality, backlog quality, and catalyst calendar.</p>
+<h3>10. Final Committee Verdict</h3>
+<p>Current portfolio rating for the $1B objective: 1.5/10. It contains some convex names, but too much capital is allocated to assets whose starting market caps or passive payoff profiles make the mandate mathematically weak.</p>
+<p>Optimized portfolio rating: 6.5/10. It may make a 6%-10% probability plausible under exceptional execution, but it is still an extreme right-tail strategy with high permanent impairment risk.</p>
+<p>Single biggest required change: replace large-cap/passive beta exposure with an actively recycled public-venture architecture: smaller starting market caps, uncapped convex structures, IPO/follow-on access, hard kill triggers, and quarterly capital reallocation.</p>
+<h2>Where Models Agree</h2>
+<p>Response A and Response B agree that the current portfolio is not fit for the $1B mandate as constructed. Response A calls it BLOCK because large-cap/passive exposures make the target mathematically unreachable; Response B calls it REVISE because the book can be reshaped into an active public-venture strategy.</p>
+<p>Response A and Response B agree that the reconstructed alpha sleeve is about $4.38M, not $10M, making the actual required return to $1B roughly 228x rather than 100x.</p>
+<p>Response A and Response B agree that structured products are useful only if uncapped and convex; both reject autocalls, worst-of structures, capped upside, and opaque downside.</p>
+<h2>Where Models Disagree</h2>
+<p>Response A is more absolute: it says the current portfolio is effectively impossible and assigns a BLOCK verdict. Response B is less absolute: it gives a REVISE verdict and estimates unchanged odds at 0.3%-1.0% rather than zero.</p>
+<p>Response A is more aggressive about exiting SMCI, COIN, and MSTR entirely. Response B trims SMCI and COIN and allows a small MSTR allocation.</p>
+<p>Response A’s market-cap assumptions for several names appear materially lower than Response B’s sourced current figures. Response B’s sourced figures make the 100x case even harder for RKLB, IONQ, QBTS, and RGTI than Response A’s table implies.</p>
+<p>Response C provides no substantive position, no risks, no strengths, and no direct answer, so it contributes no analytical support.</p>
+<h2>Unique Discoveries</h2>
+<p>Response B uniquely provides cited market-data references and current/recent market-cap examples, including AMD around $808B, PLTR around $328B, RKLB around $72.6B, IONQ around $24.4B, RGTI around $7.33B, and IBIT net assets around $64.8B.</p>
+<p>Response A uniquely frames the single biggest action as liquidating all $10B+ market-cap assets immediately. This is useful as a hard-line convexity discipline, though Response B’s more nuanced treatment of some mid-cap/high-beta names is more implementable.</p>
+<p>Response B uniquely proposes an uncapped relative outperformance certificate, long the moonshot basket and short broad growth beta, to isolate alpha rather than merely add more correlated beta.</p>
+<h2>Advisor Positions</h2>
+<p>Response A: BLOCK, confidence 0.95. Primary support: the current alpha sleeve starts at about $4.38M and therefore needs about 228x / 72% CAGR, while over half the capital is in large-cap or passive assets that cannot plausibly 100x. Primary concern: current sizing and factor correlation make the $1B mandate mathematically broken.</p>
+<p>Response B: REVISE, confidence 0.78. Primary support: the portfolio can be redesigned into an active public-venture book with IPO/recent-listing access, uncapped structures, and quarterly recycling. Primary concern: the current book is too crowded in repriced AI, crypto, space, and quantum momentum and requires exceptional execution even after revision.</p>
+<p>Response C: ABSTAIN, confidence 0.0. Primary support: none provided. Primary concern: none provided. Its abstention is treated as non-substantive rather than agreement with either Response A or Response B.</p>
+<h2>Agreement Zones</h2>
+<p>1. Current portfolio is not adequate for the mandate. Response A says the current portfolio is BLOCK-level flawed because large-cap/passive holdings make the 100x target mathematically implausible. Response B says the current portfolio is not realistically engineered to reach $1B and must be revised. Response C provides no contrary evidence.</p>
+<p>2. Starting alpha sleeve value is about $4.38M. Response A reconstructs total real market value at about $4.377M, and Response B reconstructs about $4.377M. This means the alpha sleeve requires about 228x to reach $1B.</p>
+<p>3. Large-cap and passive beta exposures are poor 100x instruments. Response A identifies AMD, IBIT, SMCI, COIN, PLTR, EZET, and MSTR as mathematically unsuitable or weak. Response B specifically identifies AMD, PLTR, IBIT, and EZET as sell/exit candidates and trims other large or crowded exposures.</p>
+<p>4. Structured products must be uncapped and non-autocallable. Response A proposes uncapped call-style notes and rejects generic private-bank products. Response B also rejects autocallables, worst-of baskets, capped notes, income notes, and opaque barriers.</p>
+<p>5. Active recycling is required. Response A says quarterly recycling plus structured products can raise the probability to 8%-12%. Response B says active quarterly recycling may raise probability to 6%-10%, with 10% requiring exceptional execution.</p>
+<h2>Split Zones</h2>
+<p>1. Final verdict severity: Response A says BLOCK because the current portfolio is mathematically incapable as structured. Response B says REVISE because the strategy can be re-engineered. Response C abstains. CRITIC challenge: Response A’s hard BLOCK is weakened by its own proposed optimized portfolio rating of 8/10; Response B’s REVISE is weakened by its admission that even the revised strategy only reaches 6%-10% under exceptional execution.</p>
+<p>2. Market-cap inputs and 100x plausibility: Response A uses lower market-cap assumptions for RKLB, RGTI, QBTS, IONQ, and other speculative names, making them appear more plausible as 100x candidates. Response B cites higher current/recent market caps, which make many of those same names less mathematically attractive. CRITIC challenge: Response A’s micro-cap recommendation is weakened if Response B’s sourced market caps are correct; Response B’s skepticism is weakened only if the investor can access much earlier listings/follow-ons beyond the current book.</p>
+<p>3. SMCI, COIN, and MSTR treatment: Response A exits all three. Response B trims or holds them small. CRITIC challenge: Response A’s full-exit stance may discard tactical convex beta, but Response B’s small-retention stance risks preserving correlated dead weight in a strategy that cannot afford low-convexity capital.</p>
+<p>4. Structured product design: Response A emphasizes principal-protected uncapped custom basket notes. Response B warns principal protection is useful only if participation remains high and also proposes funded call notes and outperformance certificates. CRITIC challenge: Response A’s principal-protection preference may dilute upside too much; Response B’s non-protected funded structures may improve convexity but increase permanent impairment risk.</p>
+<h2>Agreement Matrix</h2>
+<p>Portfolio reconstruction around $4.377M: Response A + Response B agree; Response C no view.</p>
+<p>Current book fails the $1B mandate as constructed: Response A + Response B agree; Response C no view.</p>
+<p>Required alpha-sleeve return is about 228x / 72% CAGR: Response A + Response B agree; Response C no view.</p>
+<p>Large-cap/passive holdings are unsuitable for 100x-style mandate: Response A + Response B agree; Response C no view.</p>
+<p>Uncapped convex structures are preferable to autocallables/worst-of/capped notes: Response A + Response B agree; Response C no view.</p>
+<p>Active recycling and IPO/dislocation access improve odds: Response A + Response B agree; Response C no view.</p>
+<h2>Disagreement Matrix</h2>
+<p>Final verdict: Response A BLOCK; Response B REVISE; Response C ABSTAIN. The final synthesis chooses REVISE because the current portfolio must not be approved, but the visible advisor answers identify a feasible redesign path.</p>
+<p>Probability of unchanged current portfolio: Response A says 0.00%; Response B says 0.3%-1.0%. Synthesis uses 0.2%-1.0% because mathematical impossibility is too strong, but odds are extremely low.</p>
+<p>Treatment of SMCI/COIN/MSTR: Response A exits; Response B trims or keeps small. Synthesis trims SMCI/COIN and caps MSTR small or removes it if crypto beta is otherwise retained.</p>
+<p>Market-cap data quality: Response A’s market caps appear stale or materially lower in several cases; Response B provides cited current/recent figures. Synthesis gives more weight to Response B on current market-cap math.</p>
+<h2>Final Synthesis Trace</h2>
+<p>The final verdict cannot be PASS because Response A and Response B both reject the current portfolio as engineered. It also should not be a pure BLOCK because the brief asks how to change the strategy, and both substantive advisors provide a revised architecture that could plausibly improve odds. Response C abstains and supplies no evidence, so the synthesis relies on the two substantive responses while explicitly preserving the split.</p>
+<p>The strongest shared conclusion is that the current book has too much capital in assets whose market caps or passive payoff profiles make 100x contribution implausible. The strongest disagreement is severity: Response A treats this as a hard block; Response B treats it as a revision problem. The reconciled answer is: block the current portfolio, revise the strategy.</p>
+<p>My independent NPLF reflects a strong opportunity set but a weak current plan: N is high because the allowed universe contains real convex themes; P is low because the existing portfolio is not mathematically aligned with the goal; L is moderate because the investor has risk tolerance and access but execution demands are severe; F is low because the required CAGR and drawdown/permanent impairment risks are extreme.</p>
+<h2>NPLF Arithmetic</h2>
+<p>My independent NPLF: N=3.6, P=2.0, L=3.0, F=1.8.</p>
+<p>Cross-advisor means, advisory only: including Response C’s abstention gives N=2.5, P=1.2, L=2.23, F=1.17. Excluding Response C as non-substantive gives N=3.75, P=1.8, L=3.35, F=1.75. I do not average these into my score; they only show the spread between the substantive advisors and the abstention.</p>
+<h2>Dissent</h2>
+<h2>Split Zones</h2>
+<p>1. Final verdict severity: Response A says BLOCK because the current portfolio is mathematically incapable as structured. Response B says REVISE because the strategy can be re-engineered. Response C abstains. CRITIC challenge: Response A’s hard BLOCK is weakened by its own proposed optimized portfolio rating of 8/10; Response B’s REVISE is weakened by its admission that even the revised strategy only reaches 6%-10% under exceptional execution.</p>
+<p>2. Market-cap inputs and 100x plausibility: Response A uses lower market-cap assumptions for RKLB, RGTI, QBTS, IONQ, and other speculative names, making them appear more plausible as 100x candidates. Response B cites higher current/recent market caps, which make many of those same names less mathematically attractive. CRITIC challenge: Response A’s micro-cap recommendation is weakened if Response B’s sourced market caps are correct; Response B’s skepticism is weakened only if the investor can access much earlier listings/follow-ons beyond the current book.</p>
+<p>3. SMCI, COIN, and MSTR treatment: Response A exits all three. Response B trims or holds them small. CRITIC challenge: Response A’s full-exit stance may discard tactical convex beta, but Response B’s small-retention stance risks preserving correlated dead weight in a strategy that cannot afford low-convexity capital.</p>
+<p>4. Structured product design: Response A emphasizes principal-protected uncapped custom basket notes. Response B warns principal protection is useful only if participation remains high and also proposes funded call notes and outperformance certificates. CRITIC challenge: Response A’s principal-protection preference may dilute upside too much; Response B’s non-protected funded structures may improve convexity but increase permanent impairment risk.</p>
+<h2>Advisor Positions</h2>
+<h3>A</h3>
+<ul>
+<li>Position: BLOCK</li>
+<li>Confidence: 0.95</li>
+<li>Agrees on: High risk tolerance and acceptance of extreme drawdowns are necessary prerequisites for this mandate.; Willingness to use aggressive structures and global public venture investments.; Exposure to legitimately convex themes like quantum, space, and AI biology.</li>
+<li>Disagrees or warns on: Over 50% of the current portfolio is mathematically incapable of generating a 100x return due to the law of large numbers.; Starting from an effective ~$4.38M base requires a 228x return (72% CAGR) to reach $1B, significantly harder than the 100x stated.; Severe correlation risk among AI and crypto holdings, exposing the portfolio to a catastrophic terminal failure.</li>
+</ul>
+<h3>B</h3>
+<ul>
+<li>Position: ABSTAIN</li>
+<li>Confidence: 0.0</li>
+<li>Agrees on: not specified</li>
+<li>Disagrees or warns on: not specified</li>
+</ul>
+<h3>C</h3>
+<ul>
+<li>Position: REVISE</li>
+<li>Confidence: 0.78</li>
+<li>Agrees on: The mandate correctly recognizes that a 100x public-markets target requires convexity, not Sharpe optimization.; The allowed universe is broad enough to include listed venture-style equities, IPOs, follow-ons, crypto-linked equities, and bespoke payoff structures.; The brief explicitly rejects capped autocallable/worst-of private-bank products that would destroy the required upside profile.</li>
+<li>Disagrees or warns on: The current sleeve is too exposed to already-repriced large-cap or mega-cap names whose 100x implied market caps are economically implausible.; The portfolio is factor-crowded across AI, crypto, space, and quantum momentum, so a single risk-off reset could impair multiple sleeves simultaneously.; The required return from the reconstructed current alpha value to $1B is about 228x, which is materially harder than 100x from $10M.</li>
+</ul>
+<h2>Scoring</h2>
+<ul>
+<li>Tier: SPLIT</li>
+<li>Confidence: 0.82</li>
+<li>Cost: $0.3967</li>
+<li>N: 3.60/4</li>
+<li>P: 2.00/4</li>
+<li>L: 3.00/4</li>
+<li>F: 1.80/4</li>
+</ul></section>
+</main>
+</body>
+</html>
