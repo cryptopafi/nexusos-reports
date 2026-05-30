@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split Council Report - council-20260530-0101-7j5k</title>
+<style>
+:root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --panel2:#242424; --line:#303030; --text:#e8e8e8; --muted:#a0a0a0; --green:#5bc46b; --amber:#f0a631; --red:#e5534b; --blue:#76a9ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 16% 0%, #1f2937 0, transparent 28rem), var(--bg); color:var(--text); font:14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:30px 24px 60px; }
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:26px; }
+.brand { font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+button { border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:8px; padding:8px 12px; }
+.hero { padding:28px 0 22px; border-bottom:1px solid var(--line); }
+h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter-spacing:0; }
+.subtitle { max-width:850px; color:var(--muted); font-size:17px; }
+.meta { margin-top:16px; color:var(--muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+.grid { display:grid; gap:16px; }
+.metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
+.two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
+.card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
+.metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
+.metric span { color:var(--muted); }
+h2 { margin:0 0 14px; font-size:22px; }
+h3 { margin:18px 0 8px; color:var(--blue); }
+.score { display:grid; grid-template-columns:130px minmax(120px, 1fr) 52px; align-items:center; gap:12px; margin:11px 0; }
+.score b { height:16px; background:#111; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.score i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--red), var(--amber), var(--green)); }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+table { border-collapse:collapse; width:100%; min-width:760px; background:var(--panel); }
+th,td { border-bottom:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; }
+th { background:var(--panel2); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+tr:hover td { background:rgba(255,255,255,.025); }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:#151515; font-weight:700; }
+.narrative { margin-top:16px; }
+.narrative p { margin:9px 0; }
+.narrative ul { padding-left:22px; }
+code { background:#101010; border:1px solid var(--line); border-radius:5px; padding:1px 5px; }
+pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(--line); border-radius:8px; padding:14px; }
+.muted { color:var(--muted); }
+summary { cursor:pointer; color:var(--muted); }
+a { color:var(--blue); text-decoration:none; }
+@media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
+  <header class="hero"><h1>Split Council Report - council-20260530-0101-7j5k</h1><p class="subtitle">Summary The council is a genuine three-way split: one BLOCK, one PASS, one REVISE — no 2-of-3 majority on any single verdict.</p><div class="meta">Generated 2026-05-30 01:12 UTC | Task council-20260530-0101-7j5k</div></header>
+  <section class="grid metrics">
+    <article class="card metric"><small>Outcome</small><strong>SPLIT</strong><span>Verdict</span></article>
+    <article class="card metric"><small>Certainty</small><strong>0.70</strong><span>Confidence</span></article>
+    <article class="card metric"><small>Quality</small><strong>3.05/4</strong><span>NPLF average</span></article>
+    <article class="card metric"><small>Run Spend</small><strong>$0.2723</strong><span>Cost</span></article>
+    <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
+  </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>1 BLOCK / 1 PASS / 1 REVISE</strong><span>Final reconciler tier: SPLIT</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>PASS + REVISE + BLOCK</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>SPLIT after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor A</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.85</strong></div><h3>Why this advisor voted this way</h3><p>Highly measurable and specific success criteria, particularly around concurrent execution limits and ledger race condition testing.</p><h3>Main objection or warning</h3><p>Split-brain corruption risk during concurrent activation of the hermes-research profile, depending on the chosen mitigation strategy.</p></article>
+<article class='advisor-card vote-revise'><div class='advisor-head'><span>Advisor B</span><b>REVISE</b></div><div class='confidence'><span>Confidence</span><strong>0.78</strong></div><h3>Why this advisor voted this way</h3><p>Layered fail-closed safety anchored on egress_guard.enforce() as a real runtime enforcement point for the highest-stakes property (paid egress), which holds even if the profile_router config block turns out to be advisory-only.</p><h3>Main objection or warning</h3><p>Decision point #1 is unresolved and load-bearing: if the hermes-agent runtime silently ignores unknown config keys, profile_router is advisory-only and the routing half of fail-closed (success_criterion #4 — disabled profiles never routed) rests on soft SOUL-table compliance rather than enforced behavior, creating a hidden fail-open path for routing work to disabled profiles.</p></article>
+<article class='advisor-card vote-block'><div class='advisor-head'><span>Advisor C</span><b>BLOCK</b></div><div class='confidence'><span>Confidence</span><strong>0.86</strong></div><h3>Why this advisor voted this way</h3><p>The brief targets real operational risks in hermes-main: disabled-profile routing, shared paid-work spend limits, child workspace clobbering, and concurrent research activation split-brain.</p><h3>Main objection or warning</h3><p>The enforcement point for profile_router is unresolved; if hermes-agent ignores unknown config keys, a SOUL-only routing table may be advisory rather than fail-closed runtime enforcement.</p></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:82.5%'></i></b><strong>3.30</strong></div>
+<div class='score'><span>Plan</span><b><i style='width:72.5%'></i></b><strong>2.90</strong></div>
+<div class='score'><span>Leverage</span><b><i style='width:80.0%'></i></b><strong>3.20</strong></div>
+<div class='score'><span>Fit</span><b><i style='width:70.0%'></i></b><strong>2.80</strong></div></article>
+    <article class="card"><h2>Advisor Matrix</h2><div class="table-wrap"><table><thead><tr><th>Advisor</th><th>Position</th><th>Confidence</th><th>Agrees On</th><th>Disagrees / Warns On</th></tr></thead><tbody><tr><td><strong>A</strong></td><td><span class='pill'>PASS</span></td><td>0.85</td><td>Highly measurable and specific success criteria, particularly around concurrent execution limits and ledger race condition testing.; Strong architectural constraints enforcing fail-closed safety and strict isolation of disabled or unapproved profiles.; Clear identification of stateful ledger race conditions as a primary risk vector to manage daily budget caps.</td><td>Split-brain corruption risk during concurrent activation of the hermes-research profile, depending on the chosen mitigation strategy.; Choosing JSON+fcntl for the shared ledger backend might be vulnerable to edge-case race conditions or deadlocks under high concurrency compared to SQLite WAL.; Potential discrepancy between runtime enforcement of the profile_router config and SOUL-driven advisory logic, which could lead to bypassed routing rules if the runtime ignores unknown keys.</td></tr>
+<tr><td><strong>B</strong></td><td><span class='pill'>REVISE</span></td><td>0.78</td><td>Layered fail-closed safety anchored on egress_guard.enforce() as a real runtime enforcement point for the highest-stakes property (paid egress), which holds even if the profile_router config block turns out to be advisory-only.; Concrete and objectively testable success criteria — 3 distinct non-clobbering run dirs, ledger DENY when a call would exceed the daily cap, a lock race test that loses no entries, and disabled-profile fail-closed — make v1 validation unambiguous rather than aspirational.; Disciplined blast-radius control: mandatory file backups before modification, no gateway restart without approval, an explicit do-not-touch list (hermes-pilot, hermes-vox, NexusOS, LIS, OpenClaw), and delegation depth pinned at 1 with modest concurrency caps (3 children, 2 per profile).</td><td>Decision point #1 is unresolved and load-bearing: if the hermes-agent runtime silently ignores unknown config keys, profile_router is advisory-only and the routing half of fail-closed (success_criterion #4 — disabled profiles never routed) rests on soft SOUL-table compliance rather than enforced behavior, creating a hidden fail-open path for routing work to disabled profiles.; Split-brain corruption: mutating live hermes-main config while hermes-research is concurrently being activated by Hermes risks last-writer-clobber and lost work; the mitigation choice (Component B on a copy + hand a diff vs. quiesce research) is named but not decided, so the safe sequencing is not yet locked.; Ledger durability under concurrency: the JSON+fcntl vs sqlite(WAL) backend is undecided, and fcntl-based advisory locking can fail to guarantee atomicity across crash-mid-write or non-POSIX-compliant filesystems, which would breach the daily spend cap the ledger exists to protect.</td></tr>
+<tr><td><strong>C</strong></td><td><span class='pill'>BLOCK</span></td><td>0.86</td><td>The brief targets real operational risks in hermes-main: disabled-profile routing, shared paid-work spend limits, child workspace clobbering, and concurrent research activation split-brain.; Success criteria are concrete and testable: distinct run dirs for 3 children, daily-cap denial, no lost ledger entries under concurrent writes, and fail-closed behavior for disabled profiles.; The constraints correctly bound blast radius by excluding hermes-pilot, hermes-vox, NexusOS, LIS, and OpenClaw, requiring backups, limiting delegation depth, and prohibiting gateway restart without approval.</td><td>The enforcement point for profile_router is unresolved; if hermes-agent ignores unknown config keys, a SOUL-only routing table may be advisory rather than fail-closed runtime enforcement.; The split-brain handling for concurrently activating hermes-research is undecided, so mutating live profile/config state could corrupt work or produce divergent activation state.; The ledger backend is undecided despite being safety-critical for paid work; JSON+fcntl versus sqlite WAL changes race guarantees, crash recovery, and test strategy.</td></tr></tbody></table></div></article>
+  </section>
+  <section class="card narrative"><h2>Decision Trace</h2><p># Council Report</p>
+<h2>Final Verdict</h2>
+<h2>Summary</h2>
+<p>The council is a genuine three-way split: one BLOCK, one PASS, one REVISE — no 2-of-3 majority on any single verdict. This disagreement is itself the signal. All three advisors independently surface the same three unresolved, load-bearing items (profile_router runtime enforcement, split-brain sequencing during concurrent hermes-research activation, ledger backend choice), but weight them differently. Because the same gating decisions that drive Response A&#x27;s BLOCK and Response C&#x27;s REVISE are the very items Response B passes over while still naming them as risks, the honest synthesis is REVISE: the architecture is sound but three decision points must be locked before any live mutation. I do not collapse this to PASS — the lone PASS does not carry a majority and the unresolved blockers are real.</p>
+<h2>Advisor Positions</h2>
+<p>Response A: BLOCK, confidence 0.86 — anchored on two unresolved load-bearing items: no authoritative runtime enforcement path for profile_router (advisory-only cannot satisfy fail-closed), and no chosen split-brain mitigation for concurrently activating hermes-research.</p>
+<p>Response B: PASS, confidence 0.85 — anchored on highly measurable success criteria and strong fail-closed/isolation constraints; treats the same risks as manageable rather than gating.</p>
+<p>Response C: REVISE, confidence 0.78 — anchored on egress_guard.enforce() as a real runtime enforcement point that holds even if profile_router is advisory, but flags decision point 1, split-brain sequencing, and ledger durability as unresolved.</p>
+<h2>Agreement Zones</h2>
+<p>Measurable, objective success criteria. Response A calls the criteria &#x27;concrete and testable&#x27; (3 distinct run dirs, daily-cap DENY, no lost ledger entries, disabled fail-closed); Response B calls them &#x27;highly measurable&#x27; especially on concurrency limits and ledger race testing; Response C calls them &#x27;objectively testable&#x27; making v1 validation unambiguous. All three converge here.</p>
+<p>Strong blast-radius control via constraints. Response A credits the exclusion of hermes-pilot/vox/NexusOS/LIS/OpenClaw, mandatory backups, depth-1 delegation, and no-restart-without-approval; Response C independently praises the same &#x27;disciplined blast-radius control&#x27; with caps of 3 children and 2 per profile.</p>
+<p>The profile_router enforcement question is load-bearing and unresolved. Response A flags it as a critical blocker, Response C calls it &#x27;unresolved and load-bearing&#x27; with a &#x27;hidden fail-open path&#x27;, and Response B acknowledges runtime enforcement &#x27;may diverge from SOUL advisory logic&#x27;. All three name it.</p>
+<p>Split-brain risk from concurrent hermes-research activation is real. Named by Response A (critical blocker), Response B (top risk), and Response C (last-writer-clobber, sequencing not locked).</p>
+<p>Ledger backend (JSON+fcntl vs sqlite WAL) is safety-critical and undecided. Response A, Response B, and Response C each flag the race/durability implications of the unmade choice.</p>
+<h2>Split Zones</h2>
+<p>Whether the unresolved decision points should gate execution. Response A treats the missing runtime enforcement path and missing split-brain mitigation as critical blockers — live mutation &#x27;should wait&#x27; until a mitigation is selected. Response C lands on REVISE — the same items are fixable gaps, not fatal flaws, and notes egress_guard.enforce() already provides a hard runtime enforcement point for the highest-stakes property (paid egress) even if profile_router is advisory. Response B treats all three as residual risks compatible with PASS. CRITIC challenge: Response B&#x27;s strongest claim — that fail-closed safety and isolation are already strongly enforced — is directly weakened by Response C&#x27;s observation that the routing half of fail-closed rests on soft SOUL-table compliance if the runtime ignores unknown keys, a hidden fail-open path Response B does not rebut. Conversely, Response A&#x27;s strongest claim — that advisory-only routing cannot satisfy fail-closed and is therefore a blocker — is partially weakened by Response C&#x27;s point that egress_guard.enforce() backstops paid egress regardless of profile_router, meaning the worst-case leak (paid work to a disabled profile) is contained at the egress layer even under advisory routing. Response B&#x27;s weakest claim — that runtime divergence is a tolerable top risk — goes unsupported against both A and C.</p>
+<h2>Agreement Matrix</h2>
+<p>Success criteria measurable/testable: Response A + Response B + Response C agree.</p>
+<p>Blast-radius control strong: Response A + Response C agree (Response B implicitly via fail-closed/isolation praise).</p>
+<p>profile_router enforcement is load-bearing and unresolved: Response A + Response B + Response C agree it exists; weight differs.</p>
+<p>Split-brain risk real: Response A + Response B + Response C agree.</p>
+<p>Ledger backend undecided and safety-critical: Response A + Response B + Response C agree.</p>
+<h2>Disagreement Matrix</h2>
+<p>Verdict: Response A = BLOCK, Response B = PASS, Response C = REVISE (no majority).</p>
+<p>Does profile_router being advisory-only gate execution: Response A = yes (blocker); Response C = fixable (REVISE), mitigated by egress_guard.enforce(); Response B = tolerable residual risk (PASS).</p>
+<p>Split-brain: Response A = must select mitigation before live mutation; Response C = lock safe sequencing (revise); Response B = depends on chosen strategy, not gating.</p>
+<h2>Final Synthesis Trace</h2>
+<p>Starting from three divergent public verdicts with no 2-of-3 majority, the HARD rule forbids a majority-vote PASS — and no majority exists anyway. The agreement zones show all three advisors naming the same three unresolved, load-bearing decision points; the split zone shows the disagreement is only about whether those items gate execution. Response A&#x27;s BLOCK and Response C&#x27;s REVISE both demand the decisions be resolved before live mutation, and Response C&#x27;s egress_guard.enforce() observation shows the worst-case egress leak is backstopped, which softens A&#x27;s absolute blocker into a &#x27;resolve-first&#x27; posture rather than a hard stop. Response B&#x27;s PASS does not rebut the hidden fail-open routing path or the split-brain sequencing gap. The decision-driving outcome is therefore REVISE: lock decision point 1 (runtime vs advisory enforcement, with egress_guard.enforce() as the backstop), select a split-brain mitigation (work-on-copy-with-diff or quiesce), and choose the ledger backend before any live config mutation. Confidence is held at 0.7 to reflect the unresolved A-vs-B-vs-C spread.</p>
+<h2>NPLF Arithmetic</h2>
+<p>My independent NPLF: N=3.3 (real, well-scoped operational need with concrete stakes), P=2.9 (sound architecture but three load-bearing decision points unresolved, dragging plan quality below the PASS gate), L=3.2 (strong blast-radius discipline, backups, do-not-touch list, delegation caps), F=2.8 (ledger gates real paid work but backend/race guarantees undecided, so financial-safety confidence is capped). Cross-advisor means (advisory only): N≈3.30, P≈3.17, L≈3.23, F≈2.93 — note the wide spread on L (2.7–3.8) tracks the verdict split; my scores are my own assessment, not an average.</p>
+<h2>Dissent</h2>
+<h2>Split Zones</h2>
+<p>Whether the unresolved decision points should gate execution. Response A treats the missing runtime enforcement path and missing split-brain mitigation as critical blockers — live mutation &#x27;should wait&#x27; until a mitigation is selected. Response C lands on REVISE — the same items are fixable gaps, not fatal flaws, and notes egress_guard.enforce() already provides a hard runtime enforcement point for the highest-stakes property (paid egress) even if profile_router is advisory. Response B treats all three as residual risks compatible with PASS. CRITIC challenge: Response B&#x27;s strongest claim — that fail-closed safety and isolation are already strongly enforced — is directly weakened by Response C&#x27;s observation that the routing half of fail-closed rests on soft SOUL-table compliance if the runtime ignores unknown keys, a hidden fail-open path Response B does not rebut. Conversely, Response A&#x27;s strongest claim — that advisory-only routing cannot satisfy fail-closed and is therefore a blocker — is partially weakened by Response C&#x27;s point that egress_guard.enforce() backstops paid egress regardless of profile_router, meaning the worst-case leak (paid work to a disabled profile) is contained at the egress layer even under advisory routing. Response B&#x27;s weakest claim — that runtime divergence is a tolerable top risk — goes unsupported against both A and C.</p>
+<h2>Advisor Positions</h2>
+<h3>A</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.85</li>
+<li>Agrees on: Highly measurable and specific success criteria, particularly around concurrent execution limits and ledger race condition testing.; Strong architectural constraints enforcing fail-closed safety and strict isolation of disabled or unapproved profiles.; Clear identification of stateful ledger race conditions as a primary risk vector to manage daily budget caps.</li>
+<li>Disagrees or warns on: Split-brain corruption risk during concurrent activation of the hermes-research profile, depending on the chosen mitigation strategy.; Choosing JSON+fcntl for the shared ledger backend might be vulnerable to edge-case race conditions or deadlocks under high concurrency compared to SQLite WAL.; Potential discrepancy between runtime enforcement of the profile_router config and SOUL-driven advisory logic, which could lead to bypassed routing rules if the runtime ignores unknown keys.</li>
+</ul>
+<h3>B</h3>
+<ul>
+<li>Position: REVISE</li>
+<li>Confidence: 0.78</li>
+<li>Agrees on: Layered fail-closed safety anchored on egress_guard.enforce() as a real runtime enforcement point for the highest-stakes property (paid egress), which holds even if the profile_router config block turns out to be advisory-only.; Concrete and objectively testable success criteria — 3 distinct non-clobbering run dirs, ledger DENY when a call would exceed the daily cap, a lock race test that loses no entries, and disabled-profile fail-closed — make v1 validation unambiguous rather than aspirational.; Disciplined blast-radius control: mandatory file backups before modification, no gateway restart without approval, an explicit do-not-touch list (hermes-pilot, hermes-vox, NexusOS, LIS, OpenClaw), and delegation depth pinned at 1 with modest concurrency caps (3 children, 2 per profile).</li>
+<li>Disagrees or warns on: Decision point #1 is unresolved and load-bearing: if the hermes-agent runtime silently ignores unknown config keys, profile_router is advisory-only and the routing half of fail-closed (success_criterion #4 — disabled profiles never routed) rests on soft SOUL-table compliance rather than enforced behavior, creating a hidden fail-open path for routing work to disabled profiles.; Split-brain corruption: mutating live hermes-main config while hermes-research is concurrently being activated by Hermes risks last-writer-clobber and lost work; the mitigation choice (Component B on a copy + hand a diff vs. quiesce research) is named but not decided, so the safe sequencing is not yet locked.; Ledger durability under concurrency: the JSON+fcntl vs sqlite(WAL) backend is undecided, and fcntl-based advisory locking can fail to guarantee atomicity across crash-mid-write or non-POSIX-compliant filesystems, which would breach the daily spend cap the ledger exists to protect.</li>
+</ul>
+<h3>C</h3>
+<ul>
+<li>Position: BLOCK</li>
+<li>Confidence: 0.86</li>
+<li>Agrees on: The brief targets real operational risks in hermes-main: disabled-profile routing, shared paid-work spend limits, child workspace clobbering, and concurrent research activation split-brain.; Success criteria are concrete and testable: distinct run dirs for 3 children, daily-cap denial, no lost ledger entries under concurrent writes, and fail-closed behavior for disabled profiles.; The constraints correctly bound blast radius by excluding hermes-pilot, hermes-vox, NexusOS, LIS, and OpenClaw, requiring backups, limiting delegation depth, and prohibiting gateway restart without approval.</li>
+<li>Disagrees or warns on: The enforcement point for profile_router is unresolved; if hermes-agent ignores unknown config keys, a SOUL-only routing table may be advisory rather than fail-closed runtime enforcement.; The split-brain handling for concurrently activating hermes-research is undecided, so mutating live profile/config state could corrupt work or produce divergent activation state.; The ledger backend is undecided despite being safety-critical for paid work; JSON+fcntl versus sqlite WAL changes race guarantees, crash recovery, and test strategy.</li>
+</ul>
+<h2>Scoring</h2>
+<ul>
+<li>Tier: SPLIT</li>
+<li>Confidence: 0.7</li>
+<li>Cost: $0.2723</li>
+<li>N: 3.30/4</li>
+<li>P: 2.90/4</li>
+<li>L: 3.20/4</li>
+<li>F: 2.80/4</li>
+</ul></section>
+</main>
+</body>
+</html>
