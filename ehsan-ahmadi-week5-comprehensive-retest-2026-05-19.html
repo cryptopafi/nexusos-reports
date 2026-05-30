@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ehsan Ahmadi — Week-5 Comprehensive Re-Test Plan (2026-05-19)</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 32px 28px;
+    line-height: 1.6;
+    color: #1f2933;
+    background: #fdfdfd;
+  }
+  h1 { font-size: 1.85em; border-bottom: 2px solid #1f2933; padding-bottom: 8px; margin-bottom: 8px; }
+  h2 { font-size: 1.35em; border-top: 1px solid #d6d6d6; padding-top: 18px; margin-top: 32px; color: #1f2933; }
+  h3 { font-size: 1.1em; color: #1b5e6e; margin-top: 22px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 22px 0; font-size: 0.9em; }
+  th { background: #2c3e50; color: #fff; text-align: left; padding: 8px 10px; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #e6e6e6; vertical-align: top; }
+  tbody tr:nth-child(odd) { background: #f7f9fb; }
+  tbody tr:nth-child(even) { background: #ffffff; }
+  code { background: #eef2f5; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  strong { color: #11202e; }
+  .header-block { background: #f0f5f8; border-left: 4px solid #1b5e6e; padding: 14px 18px; margin: 14px 0 26px 0; border-radius: 4px; }
+  .header-block p { margin: 4px 0; }
+  .redline { background: #fdecea; border: 2px solid #b1241a; color: #7a1610; padding: 14px 18px; margin: 12px 0 22px 0; border-radius: 4px; font-weight: 600; }
+  .principle { background: #eef2f7; border-left: 4px solid #2c3e50; padding: 12px 18px; margin: 12px 0 22px 0; border-radius: 4px; }
+  .summary-box { background: #eef7f1; border-left: 4px solid #2a7a47; padding: 14px 18px; margin: 14px 0 22px 0; border-radius: 4px; }
+  .decisions-box { background: #fff4d6; border-left: 4px solid #d4a017; padding: 14px 18px; margin: 14px 0 22px 0; border-radius: 4px; }
+  .critical { color: #b1241a; font-weight: 600; }
+  .ok { color: #2a7a47; }
+  .footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid #d6d6d6; font-size: 0.85em; color: #6b7785; text-align: center; }
+  hr { border: none; border-top: 1px solid #d6d6d6; margin: 22px 0; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+  @media print {
+    body { max-width: none; padding: 12mm; font-size: 10pt; }
+    h2 { page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Ehsan Week-5 Comprehensive Re-Test Plan</h1>
+
+<div class="header-block">
+  <p><strong>Patient:</strong> Ehsan Ahmadi (42M, Dubai) &middot; <strong>Owner:</strong> Pafi</p>
+  <p><strong>Report date:</strong> 2026-05-19</p>
+  <p><strong>RUNNING &ge;5 wk (since ~2026-04-14):</strong> Retatrutide, MOTS-c, 5-Amino-1MQ, BPC-157, TB-500, GHK-Cu, DSIP</p>
+  <p><strong>Starting TODAY (Day 1):</strong> Tesamorelin, KPV, NAD+</p>
+  <p><strong>Held / not started:</strong> Enclomiphene (Wk-8 gate), Kisspeptin-10, Semax/Selank, Methylene Blue</p>
+  <p><strong>Excluded:</strong> Ipamorelin (no Tesa+Ipa stack), Statin (Bachmeyer override)</p>
+  <p><strong>Baseline of record:</strong> Intel-Lab Dubai 2026-04-13 (single collection, late-returns through 2026-05-01)</p>
+  <p><strong>Sources:</strong> Bachmeyer Primary NLM <code>cb9cf1fd</code> &middot; Bachmeyer Extended NLM <code>1eef6220</code> &middot; Patient Card 2026-05-19</p>
+</div>
+
+<div class="redline">
+  STANDING RED-LINE (Bachmeyer Primary, absolute &mdash; clinical, not a lab): hives, periorbital swelling, throat itching, or any systemic allergic reaction &rarr; STOP all peptides immediately. Bachmeyer attributes this to bacteriostatic-water benzyl alcohol, not the peptides. EpiPen on premises, every injection, every peptide, until protocol end.
+</div>
+
+<div class="principle">
+  <strong>Bachmeyer governing principle (verified both notebooks):</strong> the protocol is <strong>function- and symptom-based</strong>. Bachmeyer specifies <em>directions of change</em>, not numeric discontinuation thresholds or ceilings. Every numeric trigger below is therefore <strong>Pafi-set / operational</strong> unless explicitly attributed to Bachmeyer.
+</div>
+
+<h2>Section 1 &mdash; Protocol Efficacy Baseline ("is it working?")</h2>
+<p>Marker &rarr; peptide map with expected direction vs the 2026-04-13 baseline. Shared markers de-duplicated (each listed once, all driving peptides named).</p>
+
+<table>
+<thead><tr><th>Marker</th><th>Driving peptide(s)</th><th>Baseline 2026-04-13</th><th>Working = direction</th><th>Bachmeyer basis</th></tr></thead>
+<tbody>
+<tr><td>Fasting insulin + HOMA-IR</td><td>Retatrutide, MOTS-c, 5-Amino-1MQ, Tesamorelin (watch)</td><td class="critical">NEVER MEASURED</td><td>&darr; (insulin sensitivity restored)</td><td>Bachmeyer gold-standard metabolic readout (Ext)</td></tr>
+<tr><td>HbA1c</td><td>Retatrutide</td><td class="critical">NEVER MEASURED</td><td>&darr; toward &lt;5.7%</td><td>Bachmeyer efficacy marker (Primary)</td></tr>
+<tr><td>Fasting glucose</td><td>Retatrutide, 5-Amino-1MQ</td><td class="critical">NEVER MEASURED</td><td>&darr; / normalize</td><td>adjunct to insulin</td></tr>
+<tr><td>Triglycerides</td><td>Retatrutide, 5-Amino-1MQ</td><td>MISSING &mdash; needs lookup</td><td>&darr;</td><td>Bachmeyer: TG drop + HDL rise = Reta working</td></tr>
+<tr><td>HDL-C</td><td>Retatrutide</td><td>MISSING &mdash; needs lookup</td><td>&uarr;</td><td>Bachmeyer (Primary)</td></tr>
+<tr><td>ALT (visceral/hepatic fat clearance)</td><td>Retatrutide, MOTS-c</td><td class="critical">NEVER MEASURED</td><td>&darr; to normal "silent" levels</td><td>Bachmeyer: ALT normalization = fatty-liver reversal</td></tr>
+<tr><td>hs-CRP</td><td>BPC-157, TB-500, KPV, GHK-Cu, NAD+</td><td>1.39 mg/L</td><td>&darr; toward zero</td><td>Bachmeyer anti-inflammatory (function)</td></tr>
+<tr><td>IL-6</td><td>BPC-157, TB-500, KPV, MOTS-c</td><td>3.2 pg/mL</td><td>&darr;</td><td>vascular-inflammation triad (Ext)</td></tr>
+<tr><td>TNF-&alpha;</td><td>BPC-157, TB-500, KPV</td><td>7.3 pg/mL</td><td>&darr;</td><td>triad (Ext)</td></tr>
+<tr><td>IGF-1</td><td><strong>Tesamorelin</strong></td><td>75.10 ng/mL LOW</td><td>&uarr; (Bachmeyer target 2&ndash;3&times; normal; warns vs over-push &rarr; IR)</td><td>Bachmeyer Tesa efficacy marker</td></tr>
+<tr><td>Weight / waist (functional)</td><td>Retatrutide, 5-Amino-1MQ, Tesamorelin (VAT)</td><td>tracked clinically</td><td>&darr;</td><td>function-based</td></tr>
+<tr><td>Sleep PRO (functional, not lab)</td><td>DSIP</td><td>n/a</td><td>improved architecture, AM cortisol peak restored</td><td>Bachmeyer: DSIP normalizes cortisol rhythm</td></tr>
+<tr><td>Recovery / wound / skin (functional)</td><td>GHK-Cu, BPC-157, TB-500</td><td>n/a</td><td>faster healing, visible skin response</td><td>Bachmeyer function-based</td></tr>
+<tr><td>NAD+ / NAD:NADH (optional, if assay available)</td><td>NAD+, 5-Amino-1MQ, MOTS-c</td><td class="critical">NEVER MEASURED</td><td>&uarr;</td><td>Bachmeyer: NAD+ rises (assay rarely available &mdash; function default)</td></tr>
+</tbody>
+</table>
+
+<div class="principle">
+  <strong>Tesamorelin caveat (explicit):</strong> Tesa is <strong>Day 1 today</strong>. IGF-1 / IGFBP-3 delta is <strong>PREMATURE at Week 5</strong> &mdash; IGF-1 needs &ge;4 wk on-board to reflect new pulse amplitude. IGF-1 listed above is a function-reference only; the true efficacy delta is <strong>deferred to Week 8&ndash;12</strong>. Re-drawing IGF-1 at Wk 5 = noise, so it is excluded from the Master Order Sheet.
+</div>
+
+<h2>Section 2 &mdash; Safety / Tolerability ("is it hurting him?")</h2>
+<p>Red-line safety markers for the <strong>active</strong> stack. Bachmeyer is function/symptom-based; every numeric is <strong>Pafi-set</strong> and flagged.</p>
+
+<table>
+<thead><tr><th>Marker / signal</th><th>Guards</th><th>Discontinuation / alert trigger</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td><strong>Allergic-reaction screen</strong> (clinical)</td><td>ALL peptides</td><td class="critical">ANY hives / periorbital swelling / throat itching &rarr; STOP all, EpiPen, hospital</td><td><strong>Bachmeyer absolute (Primary)</strong></td></tr>
+<tr><td>Retatrutide GI tolerance (clinical)</td><td>Retatrutide</td><td>Vomiting &gt;2&times;/day OR severe upper-abdominal pain &rarr; STOP, draw lipase</td><td>Bachmeyer: vomiting = functional pancreatitis red-line</td></tr>
+<tr><td>Lipase</td><td>Retatrutide (GLP-1 class, cumulative Ozempic+Mounjaro)</td><td>Pafi-set: &gt;3&times; ULN or symptomatic</td><td>Pafi-set (Bachmeyer relies on symptoms)</td></tr>
+<tr><td>Amylase</td><td>Retatrutide</td><td>Pafi-set: &gt;3&times; ULN</td><td>Pafi-set</td></tr>
+<tr><td>ALT / AST</td><td>Retatrutide, Tesamorelin, NAD+, KPV</td><td>Pafi-set: &gt;2&times; ULN or &gt;2&times; baseline</td><td>Pafi-set (Bachmeyer tracks for improvement, no cutoff)</td></tr>
+<tr><td>GGT</td><td>Retatrutide, NAD+</td><td>Pafi-set: &gt;2&times; ULN</td><td>Pafi-set</td></tr>
+<tr><td>eGFR + Creatinine</td><td>Retatrutide, MOTS-c, NAD+</td><td>Pafi-set: eGFR &lt;60 = pause; Cr &gt;1.3</td><td>Pafi-set (Bachmeyer expects eGFR to improve)</td></tr>
+<tr><td>Fasting insulin + HOMA-IR (Tesa IR watch)</td><td><strong>Tesamorelin</strong></td><td>Pafi-set: HOMA-IR &gt;2.0 or rising on Tesa = dose re-eval</td><td>Pafi-set (Bachmeyer warns Tesa/IGF-1 over-push &rarr; IR)</td></tr>
+<tr><td>IGF-1 ceiling (Tesa IR watch)</td><td><strong>Tesamorelin</strong></td><td>Pafi-set: &lt;250 ng/mL operational ceiling</td><td>Pafi-set, Bachmeyer-direction (2&ndash;3&times; normal, no exact #)</td></tr>
+<tr><td>Uric acid</td><td>NAD+</td><td>Pafi-set: rising trend</td><td>Pafi-set</td></tr>
+<tr><td><strong>Calcitonin</strong></td><td>Retatrutide (GLP-1 class, cumulative exposure)</td><td>Pafi-set: precautionary baseline only. <span class="critical">Bachmeyer explicitly dismisses C-cell risk as rat-only</span></td><td>Pafi-set (against Bachmeyer, precautionary)</td></tr>
+<tr><td>Thyroid C-cell symptoms (clinical)</td><td>Retatrutide</td><td>Neck mass / hoarseness / dysphagia &rarr; ENT + calcitonin</td><td>Pafi-set precautionary</td></tr>
+<tr><td>Resting HR / BP (clinical)</td><td>Retatrutide (GLP-1 &uarr;HR)</td><td>Pafi-set: HR &gt;85 sustained or +&gt;10 bpm; BP &gt;135/85</td><td>Pafi-set</td></tr>
+</tbody>
+</table>
+
+<h2>Section 3 &mdash; Re-Test of Abnormal Baselines ("did the out-of-range values improve?")</h2>
+<p>Re-draw ONLY the 2026-04-13 markers that were out of range, to measure delta. Bachmeyer direction cited; improving vs worsening interpretation given.</p>
+
+<table>
+<thead><tr><th>Marker</th><th>Baseline 2026-04-13</th><th>Expected direction</th><th>Improving means</th><th>Worsening means</th></tr></thead>
+<tbody>
+<tr><td>IGF-1</td><td>75.10 ng/mL LOW</td><td>&uarr; (Tesa)</td><td>rising = GH axis recovering</td><td><strong>Defer true delta to Wk 8&ndash;12 (Tesa Day 1);</strong> flat at Wk5 expected, not failure</td></tr>
+<tr><td>IGFBP-3</td><td>3.26 &micro;g/mL LOW</td><td>&uarr;</td><td>&ge;3.3 unlocks Layer-2 (CJC+Ipa) gate</td><td>&lt;3.3 persisting &rarr; pituitary-MRI consideration. <strong>Bachmeyer does NOT monitor IGFBP-3 &mdash; &ge;3.3 gate is Pafi-set.</strong> Defer delta to Wk 12</td></tr>
+<tr><td>Estradiol (LC-MS)</td><td>46.95 pg/mL HIGH (immunoassay)</td><td>&darr; / normalize</td><td>Reta fat-loss &darr; aromatase = E2 falling</td><td>LC-MS &gt;40 &rarr; bring Enclomiphene forward (Pafi #8). Bachmeyer: no numeric ceiling</td></tr>
+<tr><td>Total + Free Testosterone</td><td>Free T 13 pg/mL (floor)</td><td>&uarr;</td><td>secondary hypogonadism resolving with fat loss</td><td>unchanged/falling by Wk8 = endocrinology referral</td></tr>
+<tr><td>SHBG</td><td>baseline for free-T calc</td><td>&uarr; modestly</td><td>contextualizes free-T trajectory</td><td>low SHBG sustains E2 conversion</td></tr>
+<tr><td>DHEA-S</td><td>88 &micro;g/dL LOW</td><td>&uarr; natively (DSIP+MOTS-c HPA repair)</td><td>rising = HPA axis recovering</td><td>flat/falling &rarr; ACTH-stim workup (Pafi #3). Bachmeyer: no numeric target</td></tr>
+<tr><td>AM Cortisol</td><td>5.76 &micro;g/dL (floor)</td><td>restore rhythm (sharp AM peak)</td><td>AM peak returning = DSIP working</td><td>still floored &rarr; HPA depletion, ACTH-stim</td></tr>
+<tr><td>LDL-C + full lipids</td><td>139 mg/dL</td><td>per Bachmeyer: <strong>not a target to lower</strong></td><td>Reta-driven TG&darr;/HDL&uarr; = metabolic win</td><td><strong>Bachmeyer dismisses high LDL; warns TC &lt;160&ndash;180 is harmful. Statin stays deferred.</strong> Track for Pafi #2 only</td></tr>
+<tr><td>Homocysteine</td><td>15.01 &micro;mol/L</td><td>&darr;</td><td>toward &lt;10 = methylation supported</td><td>still &gt;12 &rarr; methylated B-complex (Pafi-set)</td></tr>
+<tr><td>hs-CRP</td><td>1.39 mg/L</td><td>&darr; toward zero</td><td>anti-inflammatory stack working</td><td>rising = inflammation not resolving (also Section 1)</td></tr>
+</tbody>
+</table>
+
+<h2>Section 4 &mdash; Future-Start Gating Panels</h2>
+<p>Measure NOW only if also useful for Sections 1&ndash;3; otherwise "draw at start, not now."</p>
+
+<h3>4a. Enclomiphene + Kisspeptin-10 (HPG axis)</h3>
+<table>
+<thead><tr><th>Marker</th><th>Role</th><th>Draw now?</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>LH</td><td>Enclomiphene response denominator</td><td class="ok">Draw now</td><td>also frames secondary-hypogonadism picture (S3)</td></tr>
+<tr><td>FSH</td><td>HPG baseline</td><td class="ok">Draw now</td><td>cheap add to hormone panel</td></tr>
+<tr><td>Estradiol (LC-MS)</td><td>Enclomiphene decision tree (E2 &gt;40 trigger)</td><td class="ok">Draw now</td><td>shared with S3</td></tr>
+<tr><td>Total + Free Testosterone</td><td>Enclomiphene/Kisspeptin target</td><td class="ok">Draw now</td><td>shared with S3</td></tr>
+<tr><td>SHBG</td><td>free-T calc</td><td class="ok">Draw now</td><td>shared with S3</td></tr>
+<tr><td>Prolactin</td><td>rule out prolactinoma before HPG manipulation</td><td>future-gate, optional now</td><td><strong>Bachmeyer does NOT require prolactin</strong> &mdash; Pafi-set; normal 6.14 Jul-2025, low priority</td></tr>
+<tr><td>Serum DHT</td><td>5-yr LUTS workup + Kisspeptin/AI context</td><td>future-gate, optional now</td><td><strong>Bachmeyer does NOT require DHT</strong> &mdash; Pafi-set; useful as never-measured LUTS gap</td></tr>
+</tbody>
+</table>
+<div class="principle"><strong>Bachmeyer HPG baseline (Ext, verified):</strong> LH, FSH, E2, Total T, Free T, SHBG. DHT and prolactin are <strong>not</strong> in his baseline &rarr; tagged future-gate-optional.</div>
+
+<h3>4b. Brain / longevity peptides under consideration (FUTURE)</h3>
+<table>
+<thead><tr><th>Candidate</th><th>Relevant baseline marker(s)</th><th>Draw now?</th><th>Bachmeyer basis</th></tr></thead>
+<tbody>
+<tr><td>Thymosin Alpha-1 (T&alpha;1)</td><td>CBC + lymphocyte subsets (immune competence) + hs-CRP</td><td>hs-CRP yes (S1/S3 shared); <strong>CBC/lymphocyte subsets: draw at start, not now</strong></td><td><strong>Bachmeyer: function-based, no mandated labs.</strong> Immune markers are literature/Pafi-set</td></tr>
+<tr><td>Epitalon</td><td>IGF-1 (function-based)</td><td>covered by deferred IGF-1; <strong>no separate draw now</strong></td><td><strong>Bachmeyer: no numeric baseline</strong> &mdash; function/circadian-based</td></tr>
+<tr><td>Cerebrolysin</td><td>none &mdash; cognitive PRO only</td><td><strong>no lab now</strong></td><td><strong>Bachmeyer: function/cognitive-based, no specific lab</strong></td></tr>
+</tbody>
+</table>
+
+<h2>Master Order Sheet &mdash; single de-duplicated ordered list</h2>
+<p>One fasted AM Intel-Lab Dubai draw, assay continuity with 2026-04-13.</p>
+<table>
+<thead><tr><th>#</th><th>Test</th><th>Section tag(s)</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Fasting glucose</td><td>S1, S2</td></tr>
+<tr><td>2</td><td>Fasting insulin</td><td>S1, S2</td></tr>
+<tr><td>3</td><td>HOMA-IR (derived from #1+#2)</td><td>S1, S2</td></tr>
+<tr><td>4</td><td>HbA1c</td><td>S1</td></tr>
+<tr><td>5</td><td>ALT</td><td>S1, S2</td></tr>
+<tr><td>6</td><td>AST</td><td>S2</td></tr>
+<tr><td>7</td><td>GGT</td><td>S2</td></tr>
+<tr><td>8</td><td>Lipase</td><td>S2</td></tr>
+<tr><td>9</td><td>Amylase</td><td>S2</td></tr>
+<tr><td>10</td><td>Creatinine</td><td>S2</td></tr>
+<tr><td>11</td><td>eGFR (derived)</td><td>S2</td></tr>
+<tr><td>12</td><td>Uric acid</td><td>S2</td></tr>
+<tr><td>13</td><td>Calcitonin (precautionary, Pafi-set)</td><td>S2</td></tr>
+<tr><td>14</td><td>LDL-C</td><td>S3</td></tr>
+<tr><td>15</td><td>HDL-C</td><td>S1</td></tr>
+<tr><td>16</td><td>Triglycerides</td><td>S1</td></tr>
+<tr><td>17</td><td>Total cholesterol</td><td>S3</td></tr>
+<tr><td>18</td><td>hs-CRP</td><td>S1, S2, S3</td></tr>
+<tr><td>19</td><td>IL-6</td><td>S1</td></tr>
+<tr><td>20</td><td>TNF-&alpha;</td><td>S1</td></tr>
+<tr><td>21</td><td>Homocysteine</td><td>S3</td></tr>
+<tr><td>22</td><td>Estradiol (LC-MS)</td><td>S2, S3, S4a</td></tr>
+<tr><td>23</td><td>Total Testosterone</td><td>S3, S4a</td></tr>
+<tr><td>24</td><td>Free Testosterone</td><td>S2, S3, S4a</td></tr>
+<tr><td>25</td><td>SHBG</td><td>S3, S4a</td></tr>
+<tr><td>26</td><td>DHEA-S</td><td>S3</td></tr>
+<tr><td>27</td><td>AM Cortisol</td><td>S3</td></tr>
+<tr><td>28</td><td>LH</td><td>S4a</td></tr>
+<tr><td>29</td><td>FSH</td><td>S4a</td></tr>
+<tr><td>30</td><td>TSH (HPT re-baseline, stale)</td><td>S2</td></tr>
+</tbody>
+</table>
+
+<p><strong>Optional / decision-gated add-ons (NOT in the 30):</strong> Serum DHT (S4a future-gate-optional), Prolactin (S4a future-gate-optional), NAD:NADH ratio (S1, if assay available). CBC + lymphocyte subsets = draw at T&alpha;1 start, not now.</p>
+
+<p><strong>Count: 30 blood markers &middot; 0 urine &middot; functional/clinical streams tracked separately by patient</strong> (allergic screen, GI tolerance, sleep, weight, waist, HR/BP, recovery, skin). One fasted AM phlebotomy, Intel-Lab Dubai.</p>
+
+<div class="redline" style="font-weight:600;">
+  IGF-1 / IGFBP-3 deliberately EXCLUDED from this draw &mdash; delta is premature at Tesamorelin Day 1; deferred to Week 8&ndash;12.
+</div>
+
+<h2>Recommendation summary</h2>
+<div class="summary-box">
+Dr Hyder &mdash; Ehsan completes Week 5 today (Retatrutide, MOTS-c, 5-Amino-1MQ, BPC-157, TB-500, GHK-Cu, DSIP) and starts Tesamorelin, KPV, NAD+ tonight. One fasted AM Intel-Lab draw, 30 analytes (same site as 2026-04-13): metabolic core (glucose, insulin&rarr;HOMA-IR, HbA1c, ALT/AST/GGT, lipase, amylase, creatinine&rarr;eGFR, uric acid, calcitonin), full lipids (LDL/HDL/TG/TC), inflammation triad (hs-CRP, IL-6, TNF-&alpha;), homocysteine, full HPG panel (LC-MS estradiol, total/free T, SHBG, DHEA-S, AM cortisol, LH, FSH) and TSH. <strong>Do NOT re-draw IGF-1/IGFBP-3</strong> &mdash; Tesa Day 1, delta is noise until Week 8&ndash;12. No imaging this week. Results gate Week-8 Enclomiphene decision and statin reconsideration.
+</div>
+
+<h2>Decision required from Pafi (true forks only)</h2>
+<div class="decisions-box">
+<ol>
+<li><strong>Serum DHT + Prolactin</strong> &mdash; add to this draw (closes LUTS gap + HPG completeness, ~2 analytes), or hold to Enclomiphene/Kisspeptin start? Bachmeyer requires neither.</li>
+<li><strong>Calcitonin</strong> &mdash; keep as precautionary baseline (Pafi-set, against Bachmeyer who dismisses C-cell risk), or drop given cumulative-GLP-1 exposure is the only rationale?</li>
+<li><strong>Operational IGF-1 ceiling</strong> &mdash; lock &lt;250 ng/mL for the Week-8/12 Tesa delta gate (Bachmeyer gives only "2&ndash;3&times; normal, no over-push")?</li>
+<li><strong>Operational ALT red-line</strong> &mdash; lock "&gt;2&times; ULN or &gt;2&times; baseline"?</li>
+<li><strong>HPA workup timing (Card #3)</strong> &mdash; ACTH-stim + 4-point salivary cortisol concurrent with this draw, or sequential after results?</li>
+<li><strong>E2 trigger (Card #8)</strong> &mdash; if LC-MS E2 still &gt;40 at Wk5, bring Enclomiphene forward to Wk5 or hold to Wk8?</li>
+</ol>
+</div>
+
+<div class="footer">
+NexusOS &middot; Bachmeyer-aligned &middot; Ehsan Ahmadi Week-5 Comprehensive Re-Test Plan (efficacy + safety + delta + future-gating) &middot; 2026-05-19
+</div>
+
+</body>
+</html>
