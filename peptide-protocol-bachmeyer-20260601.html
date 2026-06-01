@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Peptide Protocol Recommendation v1 (Bachmeyer Framework)</title>
+<title>Peptide Protocol v1 (Bachmeyer Framework)</title>
 <style>
   :root{
     --bg:#0e1116;--card:#161b22;--card2:#1c2230;--line:#2b3340;--tx:#e6edf3;--mut:#9aa7b5;
-    --accent:#5db0ff;--good:#3fb950;--warn:#d29922;--bad:#f85149;--purple:#bc8cff;
+    --accent:#5db0ff;--good:#3fb950;--warn:#d29922;--bad:#f85149;--purple:#bc8cff;--teal:#39c5cf;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-  .wrap{max-width:980px;margin:0 auto;padding:32px 22px 80px}
+  .wrap{max-width:1000px;margin:0 auto;padding:32px 22px 80px}
   h1{font-size:27px;margin:0 0 4px;letter-spacing:-.4px}
-  h2{font-size:21px;margin:42px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
-  h3{font-size:17px;margin:26px 0 8px;color:var(--accent)}
+  h2{font-size:21px;margin:44px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  h3{font-size:17px;margin:24px 0 8px;color:var(--accent)}
+  h4{font-size:15px;margin:14px 0 4px;color:var(--teal)}
   .sub{color:var(--mut);font-size:14px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
@@ -32,6 +33,7 @@
   .disc{background:rgba(210,153,34,.08);border:1px solid var(--warn);border-radius:10px;padding:14px 16px;font-size:13.5px;color:#e8d9b5}
   .step{border-left:4px solid var(--purple);padding-left:16px;margin:20px 0}
   .step.s1{border-color:var(--accent)}
+  .pillar{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px;padding:14px 18px;margin:14px 0}
   ul{margin:6px 0 6px 0;padding-left:20px}
   li{margin:4px 0}
   code{background:#0a0d12;padding:1px 6px;border-radius:5px;font-size:13px;color:#ffd9a0}
@@ -39,6 +41,7 @@
   .tag{font-size:11px;color:var(--mut)}
   .foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px}
   a{color:var(--accent)}
+  .dose{color:#ffd9a0;font-weight:600}
 </style>
 </head>
 <body>
@@ -49,33 +52,33 @@
   Prepared 2026-06-01 · Framework: <b>Dr. Trevor Bachmeyer NLM (NotebookLM) corpus</b> · advisory analysis</div>
 
   <div class="disc" style="margin-top:18px">
-    <b>⚠️ Not medical advice — advisory only.</b> This is an evidence-mapped, Bachmeyer-grounded analysis for discussion with the attending physician. No peptide here is a prescription. Peptides for the indications below are largely <b>off-label / not regulator-approved</b>; they require physician supervision, a vetted compounding source, and baseline labs. Where Bachmeyer gives no numeric threshold, the value is <i>function/symptom-based and the attending physician sets it.</i> Clinical thresholds cited are Bachmeyer or the lab's own reference range — never invented.
+    <b>⚠️ Not medical advice — advisory only.</b> This is an evidence-mapped, Bachmeyer-grounded analysis for discussion with the attending physician. No peptide here is a prescription. Most peptides below are <b>off-label / not regulator-approved</b> and require physician supervision, a vetted compounding source, and baseline labs. Where Bachmeyer gives no numeric threshold, the value is <i>function/symptom-based and the attending physician sets it.</i> Clinical thresholds cited are Bachmeyer or the lab's own reference range — never invented.
   </div>
 
   <h2>1 · Headline read</h2>
   <div class="card">
-    <p style="margin-top:0"><b>This is a strong panel.</b> Metabolic health is excellent (insulin sensitivity, lipids, liver, homocysteine all optimal). The genuinely actionable findings are few and mostly <b>not</b> peptide problems — they are a <b>vitamin D deficiency</b>, a <b>physiological menopause transition</b> at 47, and a handful of borderline values. The honest Bachmeyer-style conclusion: <b>correct vitamin D, fill the missing-lab gaps, and treat peptides as optimization/longevity rather than rescue.</b></p>
+    <p style="margin-top:0"><b>This is a strong panel.</b> Metabolic health is excellent (insulin sensitivity, lipids, liver, homocysteine all optimal). The genuinely actionable findings are few and mostly <b>not</b> peptide problems — a <b>vitamin D deficiency</b>, a <b>physiological menopause transition</b> at 47, and a handful of borderline values. So this report is split into two intents: <b>Step 1</b> fixes what the labs flag; <b>Step 2</b> is a complete, structured longevity build for a healthy 47-year-old who wants to optimize healthspan.</p>
     <div class="grid">
       <div class="kv"><b>Out of range</b>Vit D, DHEA-S, Folate, HOMA-B, RDW, Neutrophils</div>
-      <div class="kv"><b>Endocrine</b>Post-menopausal pattern (FSH 59.7)</div>
+      <div class="kv"><b>Endocrine</b>Post-menopausal (FSH 59.7)</div>
       <div class="kv"><b>Metabolic</b>Optimal — HOMA-IR 0.6</div>
-      <div class="kv"><b>Risk posture</b>Low; longevity-optimization candidate</div>
+      <div class="kv"><b>Risk posture</b>Low; strong longevity candidate</div>
     </div>
   </div>
 
   <h2>2 · Lab audit</h2>
-  <p class="muted">CBC = Complete Blood Count · HOMA = Homeostatic Model Assessment · FSH = Follicle-Stimulating Hormone · DHEA-S = Dehydroepiandrosterone Sulfate · GGT = Gamma-Glutamyl Transferase · LDL/HDL = Low-/High-Density Lipoprotein.</p>
+  <p class="muted">CBC = Complete Blood Count · HOMA = Homeostatic Model Assessment · FSH/LH = Follicle-Stimulating / Luteinizing Hormone · DHEA-S = Dehydroepiandrosterone Sulfate · GGT = Gamma-Glutamyl Transferase · LDL/HDL = Low-/High-Density Lipoprotein · IGF-1 = Insulin-like Growth Factor 1.</p>
 
   <h3>Flagged (out of range or notable)</h3>
   <table>
     <tr><th>Marker</th><th>Result</th><th>Ref range</th><th>Status</th><th>Interpretation</th></tr>
-    <tr><td><b>25-OH Vitamin D</b></td><td>25.3 ng/mL</td><td>30–50</td><td><span class="pill p-bad">LOW</span></td><td>Deficient/suboptimal (lab band 20–30 = suboptimal). <b>Primary actionable finding.</b> Relevant to bone in post-menopause, immunity, mood, insulin signalling.</td></tr>
-    <tr><td><b>DHEA-S</b></td><td>268 µg/dL</td><td>35.4–256</td><td><span class="pill p-warn">HIGH</span></td><td>Mildly elevated (+12). Often benign/adrenal-androgen vigor; can track with stress or supplementation. Bachmeyer reads DHEA by function, not chasing a number. Pair with morning cortisol to interpret.</td></tr>
-    <tr><td><b>Folate (serum)</b></td><td>33.6 ng/mL</td><td>3.89–26.8</td><td><span class="pill p-warn">HIGH</span></td><td>Over-supplementation likely (was 2.86 in 2024). B12 normal (476). Not harmful per se; consider easing folic-acid dose, prefer methyl-folate. Check it isn't masking anything.</td></tr>
-    <tr><td><b>HOMA-B</b></td><td>64 %</td><td>80–120</td><td><span class="pill p-warn">LOW</span></td><td><b>Context-benign.</b> Reflects low fasting insulin (2.9) with great glucose (79) and HOMA-IR 0.6 — i.e. she simply doesn't over-secrete insulin. Not beta-cell failure. Watch only if glucose drifts up.</td></tr>
-    <tr><td>RDW-CV</td><td>11.3 %</td><td>11.6–14.8</td><td><span class="pill p-info">LOW</span></td><td>Marginal; clinically insignificant (uniform red-cell size).</td></tr>
-    <tr><td>Neutrophils (abs)</td><td>2.03 ×10³/µL</td><td>2.1–8.89</td><td><span class="pill p-info">LOW·border</span></td><td>Borderline; WBC low-normal (4.53). Likely constitutional. Recheck CBC; no action if isolated.</td></tr>
-    <tr><td>PT / INR</td><td>13.4 s / 1.16</td><td>9.5–13.8 / 0.81–1.2</td><td><span class="pill p-info">high-normal</span></td><td>In range, upper edge. No anticoagulant indicated; just note for any peptide affecting clotting.</td></tr>
+    <tr><td><b>25-OH Vitamin D</b></td><td>25.3 ng/mL</td><td>30–50</td><td><span class="pill p-bad">LOW</span></td><td>Deficient/suboptimal (lab band 20–30 = suboptimal). <b>Primary actionable finding.</b> Bone (post-menopause), immunity, mood, insulin signalling.</td></tr>
+    <tr><td><b>DHEA-S</b></td><td>268 µg/dL</td><td>35.4–256</td><td><span class="pill p-warn">HIGH</span></td><td>Mildly elevated (+12). Often benign adrenal-androgen vigor. Bachmeyer reads DHEA by function, not by chasing a number. Pair with morning cortisol.</td></tr>
+    <tr><td><b>Folate (serum)</b></td><td>33.6 ng/mL</td><td>3.89–26.8</td><td><span class="pill p-warn">HIGH</span></td><td>Over-supplementation likely (was 2.86 in 2024). B12 normal. Ease folic-acid dose; prefer methyl-folate.</td></tr>
+    <tr><td><b>HOMA-B</b></td><td>64 %</td><td>80–120</td><td><span class="pill p-warn">LOW</span></td><td><b>Context-benign.</b> Reflects low fasting insulin (2.9) with glucose 79 and HOMA-IR 0.6 — she doesn't over-secrete insulin. Not beta-cell failure.</td></tr>
+    <tr><td>RDW-CV</td><td>11.3 %</td><td>11.6–14.8</td><td><span class="pill p-info">LOW</span></td><td>Marginal; clinically insignificant.</td></tr>
+    <tr><td>Neutrophils (abs)</td><td>2.03 ×10³/µL</td><td>2.1–8.89</td><td><span class="pill p-info">LOW·border</span></td><td>Borderline; WBC low-normal (4.53). Likely constitutional. Recheck CBC.</td></tr>
+    <tr><td>PT / INR</td><td>13.4 s / 1.16</td><td>9.5–13.8 / 0.81–1.2</td><td><span class="pill p-info">high-normal</span></td><td>In range, upper edge. Note for any peptide affecting clotting.</td></tr>
   </table>
 
   <h3>Endocrine / menopause picture</h3>
@@ -85,101 +88,131 @@
     <tr><td>Estradiol</td><td>58.1 pg/mL</td><td>Within menopause (&lt;138); declining trend 177→58 over 2 yrs</td></tr>
     <tr><td>Progesterone</td><td>0.361 ng/mL</td><td>Low / anovulatory</td></tr>
     <tr><td>Testosterone</td><td>1.41 nmol/L</td><td>Normal (&lt;1.67) but <b>rising</b> 0.8→1.41 — watch</td></tr>
-    <tr><td>SHBG</td><td>70.7 nmol/L</td><td>Normal (binds sex hormones)</td></tr>
+    <tr><td>SHBG</td><td>70.7 nmol/L</td><td>Normal</td></tr>
     <tr><td>TSH</td><td>1.44 µUI/mL</td><td>Optimal — but FT4/FT3/antibodies not done (gap)</td></tr>
   </table>
 
   <h3>Optimal — no action</h3>
-  <p class="muted">Total cholesterol 185 · HDL 76.3 · LDL 96.9 · triglycerides 61.9 · ALT 14.9 · AST 22.5 · GGT 17 · glucose 79.4 · insulin 2.9 · HOMA-IR 0.6 · homocysteine 7.1 · B12 476 · iron 140 · zinc 17 · hemoglobin 12.8 · platelets 287. <b>Bachmeyer note:</b> he explicitly does <i>not</i> chase LDL down in an otherwise clean, insulin-sensitive metabolic picture — LDL 97 here is a non-issue.</p>
+  <p class="muted">TC 185 · HDL 76.3 · LDL 96.9 · TG 61.9 · ALT 14.9 · AST 22.5 · GGT 17 · glucose 79.4 · insulin 2.9 · HOMA-IR 0.6 · homocysteine 7.1 · B12 476 · iron 140 · zinc 17 · Hb 12.8 · PLT 287. <b>Bachmeyer note:</b> he does <i>not</i> chase LDL down in an otherwise clean, insulin-sensitive picture — LDL 97 is a non-issue here.</p>
 
   <h2>3 · STEP 1 — Corrective protocol (tied to actual findings)</h2>
-  <p class="muted">Each item maps to a flagged result. Lead with the non-peptide fix that the labs actually demand.</p>
+  <p class="muted">Each item maps to a flagged result. Lead with the non-peptide fix the labs actually demand.</p>
 
   <div class="step s1">
-    <h3>1.1 — Vitamin D repletion <span class="tag">(supplement, not a peptide — but it's the #1 thing the labs require)</span></h3>
+    <h3>1.1 — Vitamin D repletion <span class="tag">(supplement, not a peptide — but the #1 thing the labs require)</span></h3>
     <ul>
-      <li><b>D3 (cholecalciferol) ~5,000 IU/day + K2 (MK-7) 100–200 µg/day</b>, taken with fat, for 8–12 weeks → re-measure 25-OH-D; maintenance ~2,000–4,000 IU/day to hold 40–60 ng/mL.</li>
-      <li><b>Why K2:</b> Bachmeyer pairs D3 with K2 to direct calcium to bone (post-menopausal relevance) and away from arteries.</li>
-      <li><b>Safety gate:</b> draw <b>PTH + ionized calcium</b> before high-dose repletion (missing-lab list). Exact dose = function-based; attending physician sets.</li>
-      <li><span class="muted">Adjunct: magnesium (cofactor for vit-D activation) — RBC magnesium not measured; consider 300–400 mg/day.</span></li>
+      <li><span class="dose">D3 (cholecalciferol) ~5,000 IU/day + K2 (MK-7) 100–200 µg/day</span>, with fat, 8–12 weeks → re-measure 25-OH-D; maintenance ~2,000–4,000 IU/day to hold 40–60 ng/mL.</li>
+      <li><b>Why K2:</b> directs calcium to bone (post-menopause) and away from arteries.</li>
+      <li><b>Safety gate:</b> draw <b>PTH + ionized calcium</b> before high-dose repletion. Exact dose function-based; attending physician sets.</li>
     </ul>
   </div>
 
   <div class="step s1">
     <h3>1.2 — CJC-1295 (no-DAC) + Ipamorelin <span class="tag">— growth-hormone (GH) secretagogue pair</span></h3>
-    <p>The one genuinely indicated <i>peptide</i> optimization for a 47-yo post-menopausal woman: addresses the age-related GH/IGF-1 decline that drives the menopausal shift in body composition, sleep depth, recovery, skin and <b>bone density</b>. Bachmeyer's core "four-peptide longevity" backbone.</p>
+    <p>The one genuinely indicated <i>peptide</i> for a 47-yo post-menopausal woman: addresses age-related GH/IGF-1 decline driving the menopausal shift in body composition, sleep depth, recovery, skin and <b>bone density</b>.</p>
     <ul>
-      <li><b>CJC-1295 without DAC ~100 µg + Ipamorelin ~100–200 µg</b>, subcutaneous, nightly pre-sleep on an empty stomach (≥2 h after food). DAC = Drug Affinity Complex (the no-DAC form gives a clean GH pulse mimicking natural rhythm).</li>
+      <li><span class="dose">CJC-1295 without DAC ~100 µg + Ipamorelin ~100–200 µg</span>, subcutaneous, nightly pre-sleep, empty stomach (≥2 h after food). DAC = Drug Affinity Complex; no-DAC gives a clean natural-rhythm GH pulse.</li>
       <li>Bachmeyer prefers GH <b>secretagogues</b> over exogenous HGH (human growth hormone), which he says damages the pituitary in ~99.9 % of users.</li>
-      <li><b>Mandatory baseline + monitor: IGF-1 (Insulin-like Growth Factor 1)</b> — currently missing; do <b>not</b> start until drawn. Re-check IGF-1 at ~8–12 weeks (1-week IGF-1 is meaningless per Bachmeyer).</li>
+      <li><b>Mandatory baseline + monitor: IGF-1</b> — currently missing; do <b>not</b> start until drawn. Re-check at ~8–12 weeks (1-week IGF-1 is meaningless per Bachmeyer).</li>
     </ul>
   </div>
 
   <div class="step s1">
     <h3>1.3 — MOTS-c <span class="tag">— mitochondrial / metabolic</span></h3>
-    <p>Supports the menopausal metabolic transition and mitochondrial efficiency; Bachmeyer frames menopause partly as <i>metabolic</i> dysfunction. Her metabolism is already excellent, so this is optimization, not rescue.</p>
-    <ul>
-      <li>Cycled (Bachmeyer also calls it a "forever peptide" for continuous low-dose use). <b>Take with carbohydrates to avoid hypoglycemia.</b></li>
-      <li>Monitor: fasting insulin + HOMA-IR (already optimal — confirm they stay there).</li>
-    </ul>
+    <p>Supports the menopausal metabolic transition; Bachmeyer frames menopause partly as <i>metabolic</i> dysfunction. Her metabolism is already excellent — optimization, not rescue. (Carries into the longevity stack, §4 Pillar B.)</p>
+    <ul><li><span class="dose">~0.25–0.5 mg/day SC, cycled (e.g. 5 days on / 2 off)</span>; <b>take with carbohydrates to avoid hypoglycemia.</b> Monitor fasting insulin + HOMA-IR.</li></ul>
   </div>
 
   <div class="step s1">
-    <h3>1.4 — Thymosin Alpha-1 <span class="tag">— immune (optional, low priority)</span></h3>
-    <p>For the borderline-low neutrophils / low-normal WBC and general immune resilience. Bachmeyer: "a powerhouse for life." Discretionary — only if a repeat CBC confirms persistently low neutrophils or she has recurrent infections.</p>
-    <ul><li>Monitor: CBC; symptom-led.</li></ul>
+    <h3>1.4 — Thymosin Alpha-1 <span class="tag">— immune (conditional)</span></h3>
+    <p>For the borderline-low neutrophils / low-normal WBC. <b>Only</b> if a repeat CBC confirms persistent low neutrophils or recurrent infections. Monitor: CBC, symptom-led.</p>
   </div>
 
   <div class="card" style="border-color:var(--accent)">
     <b>What we deliberately do NOT do for Step 1:</b>
     <ul style="margin-bottom:0">
-      <li>No hormone replacement therapy (HRT) push — Bachmeyer's "menopause doesn't need HRT" stance treats it as a metabolic/lifestyle problem first; estradiol is still relatively preserved here. HRT is a physician decision if symptoms warrant.</li>
-      <li>No statin / LDL intervention — lipids are clean and she's insulin-sensitive.</li>
-      <li>No aggressive DHEA manipulation — it's only marginally high; interpret with cortisol, don't chase it.</li>
-      <li>Kisspeptin (sex-hormone-axis stimulation) is <b>held</b> — discretionary/advanced, and not justified without LH + a clear goal.</li>
+      <li>No HRT (hormone replacement therapy) push — Bachmeyer treats menopause as metabolic/lifestyle first; estradiol still relatively preserved. HRT is a physician call if symptoms warrant.</li>
+      <li>No statin / LDL intervention — lipids clean, insulin-sensitive.</li>
+      <li>No aggressive DHEA manipulation — only marginally high; interpret with cortisol.</li>
     </ul>
   </div>
 
-  <h2>4 · STEP 2 — Longevity protocol (not tied to a specific abnormality)</h2>
+  <h2>4 · STEP 2 — Full longevity protocol</h2>
+  <p>A complete healthspan stack organized by the biological systems that age. Bachmeyer's thesis: most age-related decline traces to <b>three core failures — systemic inflammation, insulin resistance, and mitochondrial ATP (adenosine triphosphate) shortage</b> — plus telomere attrition, GH-axis decline and immune senescence. Each pillar below targets one. <b>This is a menu, not an "all-at-once" prescription</b> — see the phased rollout at the end. Epitalon (your example) is Pillar A.</p>
 
-  <div class="step">
-    <h3>2.1 — Epitalon (Epithalon) <span class="tag">— Bachmeyer's #1 longevity peptide</span></h3>
-    <p>Synthetic pineal tetrapeptide; positioned by Bachmeyer as the single most important anti-aging tool — activates <b>telomerase</b> to slow telomere attrition (the root "clock" of cellular senescence).</p>
+  <div class="pillar">
+    <h3>Pillar A — Telomere / cellular senescence · <span style="color:var(--purple)">Epitalon (Epithalon)</span></h3>
+    <p>Synthetic pineal tetrapeptide; Bachmeyer's flagship longevity tool. Activates <b>telomerase</b> to slow telomere attrition — the root "clock" of cellular senescence.</p>
     <ul>
-      <li><b>Dose (Russian / Khavinson protocol, Bachmeyer-endorsed): ~5–10 mg/day subcutaneous, 10–20 consecutive days, cycled every 3–6 months.</b></li>
-      <li>Optional baseline: telomere-length test (e.g. Life Length) if she wants a tracked biomarker — otherwise symptom/age-based.</li>
-      <li>Evidence honesty: human data is limited (mostly small Russian studies); mechanism is plausible, claims of disease reversal are <b>not</b> substantiated. Frame as experimental longevity, physician-supervised.</li>
+      <li><span class="dose">~5–10 mg/day subcutaneous, 10–20 consecutive days, cycled every 3–6 months</span> (Russian / Khavinson protocol, Bachmeyer-endorsed).</li>
+      <li>Optional baseline: telomere-length test (e.g. Life Length) for a tracked biomarker.</li>
+      <li><b>Evidence honesty:</b> human data limited (small Russian studies); mechanism plausible, disease-reversal claims unsubstantiated. Experimental longevity, physician-supervised.</li>
     </ul>
   </div>
 
-  <div class="step">
-    <h3>2.2 — GHK-Cu (copper tripeptide) <span class="tag">— skin, gene-regulation, tissue</span></h3>
+  <div class="pillar">
+    <h3>Pillar B — Mitochondrial energy (the engine)</h3>
+    <h4>B1 · MOTS-c — metabolic reset</h4>
+    <p><span class="dose">~0.25–0.5 mg/day SC, cycled, with carbs.</span> Insulin sensitization + AMPK activation. Bachmeyer's rule: <b>MOTS-c first as the metabolic reset, SS-31 second.</b> Also "forever-peptide" eligible at low dose.</p>
+    <h4>B2 · SS-31 (Elamipretide) — inner-membrane repair</h4>
+    <p>Tetrapeptide that binds <b>cardiolipin</b> in the inner mitochondrial membrane, stabilizing electron-transport-chain complexes, maximizing ATP and cutting reactive-oxygen-species leakage. Run <b>after</b> the MOTS-c reset.</p>
+    <ul><li><span class="dose">~5 mg/day SC, cycled (e.g. 4–8 week blocks)</span> — exact dose function-based; physician sets. Symptom-led (energy, recovery).</li></ul>
+    <h4>B3 · NAD+ axis — 5-Amino-1MQ and/or NAD+</h4>
+    <p>5-Amino-1MQ inhibits <b>NNMT (nicotinamide N-methyltransferase)</b> → raises intracellular NAD+, activates sirtuins (SIRT3) / PGC-1α / AMPK. <span class="dose">~50–150 mg/day oral.</span> Optional direct <span class="dose">NAD+ ~50–100 mg SC</span> if low energy persists. Monitor: NAD+ level (Bachmeyer tracks this directly).</p>
+  </div>
+
+  <div class="pillar">
+    <h3>Pillar C — Growth-hormone axis (decline reversal) · <span style="color:var(--purple)">pick ONE strategy</span></h3>
+    <p>Reverses the age-related GH/IGF-1 fall (body comp, bone, sleep, skin, cognition). Bachmeyer rejects exogenous HGH (pituitary shutdown, insulin resistance, carpal tunnel).</p>
     <ul>
-      <li>~1–2 mg/day subcutaneous (start lower, ~250–300 µg, when stacking). Drives broad "youthful" gene-expression reset, collagen/skin, wound and tissue repair.</li>
-      <li>Note: transient injection-site redness for 2–4 days is common/benign. Oral route is ineffective (peptidase degradation) — injectable only.</li>
+      <li><b>Option 1 (default, carries from §1.2): CJC-1295 no-DAC + Ipamorelin</b> — <span class="dose">100 µg + 100–200 µg nightly SC.</span> Clean pulsatile GH.</li>
+      <li><b>Option 2: Tesamorelin</b> — <span class="dose">~1–2 mg/day SC</span> — stronger on <b>visceral fat + cognition</b>; consider if abdominal fat or brain-fog dominate.</li>
+      <li><b>GATE: draw IGF-1 first</b>, re-check at 8–12 weeks. Do not stack two GH strategies.</li>
     </ul>
   </div>
 
-  <div class="step">
-    <h3>2.3 — BPC-157 <span class="tag">— systemic repair / gut / anti-inflammatory</span></h3>
+  <div class="pillar">
+    <h3>Pillar D — Systemic repair &amp; anti-inflammatory</h3>
+    <h4>D1 · BPC-157 — the daily base</h4>
+    <p><span class="dose">~250–500 µg/day SC</span> (Bachmeyer personal ~1 mg/day; don't run 2 mg daily long-term). Gut lining, tendon/joint, vascular, broad anti-inflammatory. Subcutaneous only (oral ineffective). Monitor: hs-CRP (high-sensitivity C-Reactive Protein).</p>
+    <h4>D2 · TB-500 — cyclical tissue/systemic</h4>
+    <p><span class="dose">~2.5–5 mg every ~5 days, cycled on/off.</span> Pairs with BPC-157 for connective-tissue and cardiac/vascular repair. Inject separately (do not mix in one syringe without pH knowledge).</p>
+  </div>
+
+  <div class="pillar">
+    <h3>Pillar E — Immune resilience (immunosenescence) · <span style="color:var(--purple)">Thymosin Alpha-1</span></h3>
+    <p>Bachmeyer: "a powerhouse for life." Rebuilds T-cell-mediated immunity that declines with age — doubly relevant given her borderline-low neutrophils. <span class="dose">~1.5 mg SC ~2×/week, cycled.</span> Monitor: CBC + infection frequency.</p>
+  </div>
+
+  <div class="pillar">
+    <h3>Pillar F — Skin / gene-expression reset · <span style="color:var(--purple)">GHK-Cu</span></h3>
+    <p>Copper tripeptide; drives a broad "youthful" gene-expression reset, collagen/skin quality, wound and tissue repair (high value in post-menopausal skin). <span class="dose">~1–2 mg/day SC</span> (start ~250–300 µg when stacking). Transient injection-site redness 2–4 days is benign. Injectable only.</p>
+  </div>
+
+  <div class="pillar">
+    <h3>Pillar G — Sleep / HPA recalibration · <span style="color:var(--purple)">DSIP</span> (conditional)</h3>
+    <p>DSIP = Delta Sleep-Inducing Peptide. Recalibrates the HPA (hypothalamic-pituitary-adrenal) axis and restores deep sleep — sleep being the foundation every other longevity lever depends on, and frequently disrupted in menopause. <b>Add only if sleep is poor.</b> <span class="dose">~100–250 µg SC pre-sleep, symptom-led.</span> Bachmeyer judges success by deep-sleep return + clear morning energy.</p>
+  </div>
+
+  <div class="pillar" style="border-left-color:var(--good)">
+    <h3>Foundation — non-peptide supplements (the bedrock)</h3>
     <ul>
-      <li>~250–500 µg/day subcutaneous as a maintenance "forever" peptide (Bachmeyer's personal protocol ~1 mg/day; do not run 2 mg daily long-term).</li>
-      <li>Gut-lining, tendon/joint, vascular and anti-inflammatory support. Subcutaneous only (oral ineffective).</li>
-      <li>Monitor: hs-CRP (high-sensitivity C-Reactive Protein) — currently missing; draw it as the inflammation baseline.</li>
+      <li><b>Vitamin D3 + K2</b> — corrective + permanent (see §1.1).</li>
+      <li><b>Magnesium</b> ~300–400 mg/day — vit-D cofactor, sleep, glucose (RBC-Mg not measured).</li>
+      <li><b>Omega-3 (EPA/DHA)</b> ~2–3 g/day — anti-inflammatory, cardiovascular, cognitive.</li>
+      <li><b>Creatine monohydrate</b> ~3–5 g/day — strong evidence for muscle, bone, and cognition in post-menopausal women.</li>
+      <li><b>Folate:</b> reduce/stop folic-acid supplement (she's high at 33.6); switch to low-dose methyl-folate only if needed.</li>
     </ul>
-  </div>
-
-  <div class="step">
-    <h3>2.4 — MOTS-c &amp; (optional) NAD+ optimization <span class="tag">— mitochondrial longevity</span></h3>
-    <p>MOTS-c carries over from Step 1.3 as a longevity "forever peptide." NAD+ (nicotinamide adenine dinucleotide) support is the mitochondrial-energy adjunct Bachmeyer monitors directly (NAD+ level). Sequence MOTS-c as the metabolic reset before any SS-31 (Elamipretide) consideration later.</p>
   </div>
 
   <div class="card">
-    <b>Suggested longevity sequencing (physician-gated):</b>
+    <b>Recommended phased rollout (physician-gated — don't start everything at once):</b>
     <ol style="margin-bottom:0">
-      <li><b>Foundation (weeks 0–8):</b> Vitamin D3+K2 repletion + draw all missing labs. BPC-157 + GHK-Cu daily (well-tolerated, no hormonal axis effect).</li>
-      <li><b>Add GH axis (week 4–8, after IGF-1 baseline):</b> CJC-1295 no-DAC + Ipamorelin nightly. MOTS-c cycled.</li>
-      <li><b>Epitalon block (any time, standalone):</b> 5–10 mg/day × 10–20 days, then off; repeat every 3–6 months.</li>
+      <li><b>Phase 0 — Foundation (weeks 0–4):</b> D3+K2, magnesium, omega-3, creatine. <b>Draw all missing labs</b> (IGF-1, hs-CRP, PTH/iCa, thyroid, iron studies, etc.).</li>
+      <li><b>Phase 1 — Well-tolerated daily base (week 2+):</b> BPC-157 + GHK-Cu daily. Start an <b>Epitalon</b> block (10–20 days) anytime.</li>
+      <li><b>Phase 2 — Mitochondrial (week 4–6):</b> MOTS-c reset → then SS-31; add 5-Amino-1MQ/NAD+ if energy lags.</li>
+      <li><b>Phase 3 — GH axis (after IGF-1 baseline):</b> CJC-1295 no-DAC + Ipamorelin (or Tesamorelin).</li>
+      <li><b>Phase 4 — As-needed:</b> Thymosin Alpha-1 (if CBC confirms low neutrophils), TB-500 (recovery blocks), DSIP (if sleep poor).</li>
     </ol>
   </div>
 
@@ -187,43 +220,48 @@
   <p class="muted">These materially change the protocol; several are <b>gates</b> (must-have before specific peptides).</p>
   <table>
     <tr><th>Test</th><th>Why it matters</th><th>Gates</th></tr>
-    <tr><td><b>IGF-1</b></td><td>Baseline + efficacy/safety for GH secretagogues</td><td><span class="pill p-bad">GATE — CJC/Ipamorelin</span></td></tr>
-    <tr><td><b>hs-CRP</b></td><td>Inflammation baseline for whole longevity stack</td><td><span class="pill p-warn">BPC-157 / longevity</span></td></tr>
+    <tr><td><b>IGF-1</b></td><td>Baseline + efficacy/safety for GH secretagogues</td><td><span class="pill p-bad">GATE — CJC/Ipa/Tesa</span></td></tr>
+    <tr><td><b>hs-CRP</b></td><td>Inflammation baseline for the whole longevity stack</td><td><span class="pill p-warn">BPC-157 / longevity</span></td></tr>
     <tr><td><b>PTH + ionized calcium</b></td><td>Safety for high-dose vitamin D repletion</td><td><span class="pill p-bad">GATE — Vit D</span></td></tr>
     <tr><td>Ferritin + transferrin saturation + TIBC</td><td>Iron 140 is uninterpretable alone (the lab itself says so)</td><td><span class="pill p-info">iron status</span></td></tr>
-    <tr><td>FT4, FT3, TPO &amp; anti-thyroglobulin antibodies</td><td>TSH alone misses subclinical/autoimmune thyroid — common in peri/post-menopause</td><td><span class="pill p-info">thyroid</span></td></tr>
-    <tr><td>HbA1c</td><td>3-month glucose; complements the (already good) HOMA picture</td><td><span class="pill p-info">metabolic</span></td></tr>
+    <tr><td>FT4, FT3, TPO &amp; anti-thyroglobulin antibodies</td><td>TSH alone misses subclinical/autoimmune thyroid — common in menopause</td><td><span class="pill p-info">thyroid</span></td></tr>
+    <tr><td>HbA1c</td><td>3-month glucose; complements the (good) HOMA picture</td><td><span class="pill p-info">metabolic</span></td></tr>
     <tr><td>LH</td><td>Pairs with FSH to confirm the menopause axis</td><td><span class="pill p-info">endocrine</span></td></tr>
-    <tr><td>Morning cortisol</td><td>Interprets the mildly-high DHEA-S; HPA-axis (hypothalamic-pituitary-adrenal) baseline</td><td><span class="pill p-info">adrenal</span></td></tr>
-    <tr><td>ApoB + Lp(a)</td><td>True cardiovascular risk beyond LDL (one-time Lp(a))</td><td><span class="pill p-info">cardiovascular</span></td></tr>
+    <tr><td>Morning cortisol</td><td>Interprets the mildly-high DHEA-S; HPA-axis baseline</td><td><span class="pill p-info">adrenal</span></td></tr>
+    <tr><td>ApoB + Lp(a)</td><td>True cardiovascular risk beyond LDL (Lp(a) one-time)</td><td><span class="pill p-info">cardiovascular</span></td></tr>
+    <tr><td>NAD+ level</td><td>Baseline if running 5-Amino-1MQ / NAD+ (Bachmeyer tracks directly)</td><td><span class="pill p-info">mitochondrial</span></td></tr>
     <tr><td><b>Already pending at lab</b></td><td>Copper, Selenium, Pregnenolone sulfate, Glutathione peroxidase (GSPO)</td><td><span class="pill p-good">chase results</span></td></tr>
   </table>
 
   <h2>6 · Bachmeyer monitoring &amp; safety matrix</h2>
   <table>
     <tr><th>Peptide</th><th>Monitor by</th><th>Cadence</th></tr>
-    <tr><td>CJC-1295 + Ipamorelin</td><td>IGF-1 + symptoms (sleep, recovery, body comp)</td><td>Baseline, then ~12 wks (not 1 wk)</td></tr>
+    <tr><td>CJC-1295 + Ipamorelin / Tesamorelin</td><td>IGF-1 + symptoms (sleep, recovery, body comp)</td><td>Baseline, then ~12 wks (not 1 wk)</td></tr>
     <tr><td>MOTS-c</td><td>Fasting insulin + HOMA-IR</td><td>Baseline, ~12 wks</td></tr>
-    <tr><td>BPC-157 / GHK-Cu</td><td>hs-CRP + symptoms (GHK-Cu symptom-only)</td><td>Wk 12 &amp; Wk 24</td></tr>
-    <tr><td>Thymosin Alpha-1</td><td>CBC + infection frequency (symptom-led)</td><td>Wk 12</td></tr>
+    <tr><td>SS-31</td><td>Symptoms (energy, recovery) — no specific blood marker</td><td>Per cycle</td></tr>
+    <tr><td>5-Amino-1MQ / NAD+</td><td>NAD+ level + symptoms</td><td>Baseline, ~12 wks</td></tr>
+    <tr><td>BPC-157 / TB-500</td><td>hs-CRP + symptoms (TB-500 echocardiogram + symptoms only)</td><td>Wk 12 &amp; Wk 24</td></tr>
+    <tr><td>GHK-Cu</td><td>Symptoms only (skin, recovery)</td><td>Per cycle</td></tr>
+    <tr><td>Thymosin Alpha-1</td><td>CBC + infection frequency</td><td>Wk 12</td></tr>
+    <tr><td>DSIP</td><td>Sleep quality + morning energy (symptom-led)</td><td>2–4 wks</td></tr>
     <tr><td>Epitalon</td><td>Symptom/age-based (± telomere length)</td><td>Per 3–6 mo cycle</td></tr>
     <tr><td>Vitamin D3+K2</td><td>25-OH-D, PTH, ionized Ca</td><td>8–12 wks post-start</td></tr>
   </table>
-  <p class="muted"><b>Bachmeyer general rules baked in:</b> 6 weeks is too early for routine re-draws; hormones/lipids every 6 months; inflammatory markers at weeks 12 &amp; 24; cortisol read as a single morning serum (not the 4-point salivary curve) alongside DHEA, judged by circadian feel; protocols are <b>function/symptom-based</b> — no invented numeric targets.</p>
+  <p class="muted"><b>Bachmeyer general rules baked in:</b> 6 weeks is too early for routine re-draws; hormones/lipids every 6 months; inflammatory markers at weeks 12 &amp; 24; cortisol read as a single morning serum (not the 4-point salivary curve) alongside DHEA, judged by circadian feel; all protocols <b>function/symptom-based</b> — no invented numeric targets; inject peptides separately (don't co-mix without pH/precipitation knowledge); subcutaneous only — oral and transdermal-patch routes are ineffective.</p>
 
   <h2>7 · Bottom line</h2>
   <div class="card">
     <ol style="margin:0">
-      <li><b>Do first (no peptide needed):</b> start D3+K2, order the missing-lab panel, chase the 4 pending lab tests.</li>
-      <li><b>Step 1 peptide that's genuinely worth it:</b> CJC-1295 no-DAC + Ipamorelin (after IGF-1 baseline) for the menopausal GH-axis decline; MOTS-c as metabolic optimization. Thymosin Alpha-1 only if CBC confirms low neutrophils.</li>
-      <li><b>Step 2 longevity:</b> Epitalon (telomerase, cycled) + GHK-Cu + BPC-157 as the well-tolerated daily base.</li>
-      <li><b>Re-evaluate</b> the whole stack once the missing labs land — especially IGF-1, hs-CRP, full thyroid and iron studies, which could re-prioritize everything.</li>
+      <li><b>Do first (no peptide):</b> start D3+K2 + foundation supplements, order the missing-lab panel, chase the 4 pending lab tests.</li>
+      <li><b>Step 1 corrective:</b> CJC-1295 no-DAC + Ipamorelin (after IGF-1) for the menopausal GH-axis decline; MOTS-c metabolic support; Thymosin Alpha-1 only if CBC confirms low neutrophils.</li>
+      <li><b>Step 2 longevity (full 7-pillar stack):</b> Epitalon (telomere) · MOTS-c → SS-31 + NAD/5-Amino-1MQ (mitochondria) · GH axis · BPC-157 + TB-500 (repair) · Thymosin Alpha-1 (immune) · GHK-Cu (skin) · DSIP (sleep) — rolled out in Phases 0→4.</li>
+      <li><b>Re-evaluate</b> the whole stack once the missing labs land — IGF-1, hs-CRP, full thyroid and iron studies could re-prioritize everything.</li>
     </ol>
   </div>
 
   <div class="foot">
-    Sources: Patient labs (2026-05-20, de-identified) · Dr. Trevor Bachmeyer NLM corpus (Health &amp; Longevity + Peptides notebooks; consolidated Cortex Bachmeyer monitoring matrix &amp; Epitalon "Russian Protocol") · NexusOS peptide knowledge base.<br>
-    Thresholds: Bachmeyer-cited or the lab's own reference ranges only. No numeric target was invented. Patient logistics (lab/timing) ≠ clinical authority.<br>
+    Sources: Patient labs (2026-05-20, de-identified) · Dr. Trevor Bachmeyer NLM corpus (Health &amp; Longevity + Peptides notebooks; consolidated Cortex Bachmeyer monitoring matrix, Epitalon "Russian Protocol", SS-31 protocol) · NexusOS peptide knowledge base.<br>
+    Thresholds: Bachmeyer-cited or the lab's own reference ranges only. No numeric target invented. Dosing ranges are typical Bachmeyer-corpus values; exact doses are function-based and set by the attending physician. Patient logistics (lab/timing) ≠ clinical authority.<br>
     <b>Advisory only — not a prescription. Review with attending physician before any intervention.</b> · Generated 2026-06-01 · v1
   </div>
 
