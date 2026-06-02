@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pass Council Report - council-20260602-1355-0yza</title>
+<style>
+:root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --panel2:#242424; --line:#303030; --text:#e8e8e8; --muted:#a0a0a0; --green:#5bc46b; --amber:#f0a631; --red:#e5534b; --blue:#76a9ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 16% 0%, #1f2937 0, transparent 28rem), var(--bg); color:var(--text); font:14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:30px 24px 60px; }
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:26px; }
+.brand { font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+button { border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:8px; padding:8px 12px; }
+.hero { padding:28px 0 22px; border-bottom:1px solid var(--line); }
+h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter-spacing:0; }
+.subtitle { max-width:850px; color:var(--muted); font-size:17px; }
+.meta { margin-top:16px; color:var(--muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+.grid { display:grid; gap:16px; }
+.metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
+.two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
+.card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
+.metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
+.metric span { color:var(--muted); }
+h2 { margin:0 0 14px; font-size:22px; }
+h3 { margin:18px 0 8px; color:var(--blue); }
+.score { display:grid; grid-template-columns:130px minmax(120px, 1fr) 52px; align-items:center; gap:12px; margin:11px 0; }
+.score b { height:16px; background:#111; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.score i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--red), var(--amber), var(--green)); }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+table { border-collapse:collapse; width:100%; min-width:760px; background:var(--panel); }
+th,td { border-bottom:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; }
+th { background:var(--panel2); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+tr:hover td { background:rgba(255,255,255,.025); }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:#151515; font-weight:700; }
+.narrative { margin-top:16px; }
+.narrative p { margin:9px 0; }
+.narrative ul { padding-left:22px; }
+code { background:#101010; border:1px solid var(--line); border-radius:5px; padding:1px 5px; }
+pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(--line); border-radius:8px; padding:14px; }
+.muted { color:var(--muted); }
+summary { cursor:pointer; color:var(--muted); }
+a { color:var(--blue); text-decoration:none; }
+@media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
+  <header class="hero"><h1>Pass Council Report - council-20260602-1355-0yza</h1><p class="subtitle">Summary Two of three advisors approve (Response A, Response C); Response B dissents with REVISE.</p><div class="meta">Generated 2026-06-02 14:06 UTC | Task council-20260602-1355-0yza</div></header>
+  <section class="grid metrics">
+    <article class="card metric"><small>Outcome</small><strong>PASS</strong><span>Verdict</span></article>
+    <article class="card metric"><small>Certainty</small><strong>0.70</strong><span>Confidence</span></article>
+    <article class="card metric"><small>Quality</small><strong>3.52/4</strong><span>NPLF average</span></article>
+    <article class="card metric"><small>Run Spend</small><strong>$0.2629</strong><span>Cost</span></article>
+    <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
+  </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>2 PASS / 1 REVISE</strong><span>Final reconciler tier: PASS</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>PASS + REVISE + PASS</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>PASS after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor A</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.95</strong></div><h3>Why this advisor voted this way</h3><p>Highly measurable and specific success criteria directly tied to system state, such as validator PASS and explicit PERMIT/DENY checks.</p><h3>Main objection or warning</h3><p>Egress allowance misconfiguration could accidentally bridge to metered providers if the allowlist is not strictly strictly scoped.</p></article>
+<article class='advisor-card vote-revise'><div class='advisor-head'><span>Advisor B</span><b>REVISE</b></div><div class='confidence'><span>Confidence</span><strong>0.78</strong></div><h3>Why this advisor voted this way</h3><p>The owned-zero-cost route pattern is not speculative — it was already implemented, reviewed, and hardened on the research profile this same session (reserve-flag idempotency, zero-cost public-route allowance, actual-spend reconciliation), so the coding profile is reusing a proven shape rather than inventing a new bypass under a security-critical gate.</p><h3>Main objection or warning</h3><p>The spend boundary depends entirely on the permit-at-$0 path keying on allowlist membership (owned_zero_cost_providers) rather than on daily_budget_usd==0. If the Gate 6 implementation instead relaxes the fails-close on budget==0, every metered provider (perplexity, openrouter) becomes permitted at $0 — the exact uncontrolled-paid-spend failure the brief names as the primary stake.</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor C</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.82</strong></div><h3>Why this advisor voted this way</h3><p>The proposal resolves a concrete contradiction: the coding profile is marked active but cannot make provider calls because daily_budget_usd is pinned to 0 and Gate 6 fails closed.</p><h3>Main objection or warning</h3><p>A malformed owned_zero_cost_providers allowlist could accidentally include genuinely metered providers and bypass ledger reservation.</p></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:87.5%'></i></b><strong>3.50</strong></div>
+<div class='score'><span>Plan</span><b><i style='width:85.0%'></i></b><strong>3.40</strong></div>
+<div class='score'><span>Leverage</span><b><i style='width:92.5%'></i></b><strong>3.70</strong></div>
+<div class='score'><span>Fit</span><b><i style='width:87.5%'></i></b><strong>3.50</strong></div></article>
+    <article class="card"><h2>Advisor Matrix</h2><div class="table-wrap"><table><thead><tr><th>Advisor</th><th>Position</th><th>Confidence</th><th>Agrees On</th><th>Disagrees / Warns On</th></tr></thead><tbody><tr><td><strong>A</strong></td><td><span class='pill'>PASS</span></td><td>0.95</td><td>Highly measurable and specific success criteria directly tied to system state, such as validator PASS and explicit PERMIT/DENY checks.; Strong reliance on proven prior art by securely adapting the existing owned/zero-cost route pattern from the research profile.; Clear scoping and bounded blast radius with an explicit rollback mechanism preventing persistent data loss.</td><td>Egress allowance misconfiguration could accidentally bridge to metered providers if the allowlist is not strictly strictly scoped.; Potential for autonomous jobs to trigger inadvertently if supervised-local mode boundaries are weakened.; Using personal Google OAuth scopes instead of a service account could expand the attack surface if the token is compromised.</td></tr>
+<tr><td><strong>B</strong></td><td><span class='pill'>REVISE</span></td><td>0.78</td><td>The owned-zero-cost route pattern is not speculative — it was already implemented, reviewed, and hardened on the research profile this same session (reserve-flag idempotency, zero-cost public-route allowance, actual-spend reconciliation), so the coding profile is reusing a proven shape rather than inventing a new bypass under a security-critical gate.; The change is genuinely additive and bounded: rollback is a restore of 3 files from an out-of-tree backup plus daemon-reload/restart and an optional DISABLED touch, which caps blast radius even though the edit touches the egress gate and billing boundary.; Success criteria are concrete and directly test the core invariant — the suite asserts an owned provider (openai-codex) is PERMITTED at $0 WHILE a metered route (perplexity_*) is still DENIED at $0, plus a codex re-audit for 0 HIGH/0 CRIT, so the spend-boundary contract is verifiable rather than asserted.</td><td>The spend boundary depends entirely on the permit-at-$0 path keying on allowlist membership (owned_zero_cost_providers) rather than on daily_budget_usd==0. If the Gate 6 implementation instead relaxes the fails-close on budget==0, every metered provider (perplexity, openrouter) becomes permitted at $0 — the exact uncontrolled-paid-spend failure the brief names as the primary stake.; Decision point R4 frames the validator strengthening that asserts owned_zero_cost_providers is a scoped allowlist EXCLUDING metered providers as OPTIONAL. The control that prevents allowlist creep/abuse is precisely the thing that should be mandatory and validator-pinned; leaving it optional means a future edit can silently add a metered provider to the allowlist with no validation tripwire.; R2 (Codex egress under supervised-local mode inadvertently enabling autonomous jobs) intersects the constraints forbidding pilot/cron/gateway activation. Permitting provider calls while gateway_state:disabled and cron:deny remain pinned is coherent only if the egress path cannot be reached by any non-supervised caller; the brief asserts this but does not show the enforcement seam.</td></tr>
+<tr><td><strong>C</strong></td><td><span class='pill'>PASS</span></td><td>0.82</td><td>The proposal resolves a concrete contradiction: the coding profile is marked active but cannot make provider calls because daily_budget_usd is pinned to 0 and Gate 6 fails closed.; The scope is tightly constrained: validator pins remain intact, metered providers remain denied at $0, cron/gateway/live jobs stay disabled, and only the coding CODE role is activated.; The success criteria include both positive and negative egress tests, specifically permitting openai-codex at $0 while denying perplexity_* at $0.</td><td>A malformed owned_zero_cost_providers allowlist could accidentally include genuinely metered providers and bypass ledger reservation.; Permitting Codex egress under supervised-local mode could be misread by adjacent automation as permission to run autonomous jobs unless job, cron, gateway, and shell gates remain independently enforced.; Personal-account Google OAuth may be operationally acceptable but creates lifecycle and auditability risks compared with a service account.</td></tr></tbody></table></div></article>
+  </section>
+  <section class="card narrative"><h2>Decision Trace</h2><p># Council Report</p>
+<h2>Final Verdict</h2>
+<h2>Summary</h2>
+<p>Two of three advisors approve (Response A, Response C); Response B dissents with REVISE. The majority verdict is PASS, but the dissent is decision-relevant and preserved here: all three advisors independently flag that the spend boundary now hinges on the owned_zero_cost_providers allowlist, and Response B argues that leaving its enforcement optional (rather than mandatory and validator-pinned) is the one defect that should gate the change. Final verdict is PASS conditioned on closing that specific gap.</p>
+<h2>Advisor Positions</h2>
+<p>Response A: PASS, confidence 0.95. Primary support: highly measurable success criteria (validator PASS, explicit PERMIT/DENY checks) reusing the proven research-profile owned-zero-cost pattern with bounded rollback. Primary concern: allowlist misconfiguration could bridge to metered providers if not strictly scoped.</p>
+<p>Response B: REVISE, confidence 0.78. Primary support: the pattern is already reviewed/hardened on research and the change is additive with 3-file rollback. Primary concern: permit-at-$0 keys on allowlist membership not on daily_budget_usd==0, and marking allowlist enforcement optional leaves no validation tripwire if a future edit adds a metered provider.</p>
+<p>Response C: PASS, confidence 0.82. Primary support: tightly constrained scope (pins intact, metered denied at $0, only CODE role activated) with positive+negative egress tests. Primary concern: a malformed allowlist could include metered providers and bypass ledger reservation.</p>
+<h2>Agreement Zones</h2>
+<p>The core defect diagnosis is shared: Response C states the coding profile is active-but-inert because daily_budget_usd is 0 and Gate 6 fails closed, and Response A and Response B both endorse the owned-zero-cost route pattern as the proven remedy.</p>
+<p>The spend-boundary risk is unanimous: Response A warns the allowance could bridge to metered providers if the allowlist is not strictly scoped, Response B identifies the permit path keying on allowlist membership rather than daily_budget_usd==0, and Response C warns a malformed allowlist could include metered providers and bypass ledger reservation. All three converge on allowlist scoping as the load-bearing control.</p>
+<p>Blast radius is bounded and reversible: Response A cites the explicit rollback mechanism, Response B details the 3-file restore plus daemon-reload/restart and optional DISABLED touch, and Response C&#x27;s tight-scope framing corroborates this.</p>
+<p>The Codex-egress-vs-autonomous-jobs concern is shared: Response A, Response B, and Response C all raise that supervised-local Codex egress must not be misread as autonomous-job permission.</p>
+<h2>Split Zones</h2>
+<p>Sufficiency of optional allowlist enforcement (decision point R4): Response B holds that leaving allowlist enforcement optional is a defect requiring REVISE — a future edit could silently add a metered provider with no validation tripwire, so enforcement should be mandatory and validator-pinned. Response A and Response C treat the same allowlist scoping as a manageable risk rather than a blocker and return PASS. This is a genuine normative split on risk tolerance, not noise.</p>
+<p>CRITIC challenge: Response A&#x27;s strongest claim — that success criteria are highly measurable and the pattern is proven — is weakened by Response B&#x27;s observation that the brief asserts but does not show the enforcement seam keying on allowlist membership; a measurable test of the happy path does not prove the negative (that a future metered addition trips validation). Conversely, Response B&#x27;s REVISE is tempered by Response A&#x27;s and Response C&#x27;s point that the explicit perplexity-denied-at-$0 negative test already exercises the boundary at the current state. Response C&#x27;s confidence (0.82) sits between the two, and its own listed risk about a malformed allowlist materially overlaps Response B&#x27;s blocker — narrowing the real distance between the PASS and REVISE camps to whether the fix should be mandatory now or managed.</p>
+<h2>Agreement Matrix</h2>
+<p>Core defect (active-but-inert, Gate 6 fails closed at $0): Response A + Response B + Response C agree.</p>
+<p>Owned-zero-cost pattern is the right remedy: Response A + Response B + Response C agree.</p>
+<p>Allowlist scoping is the load-bearing spend control: Response A + Response B + Response C agree.</p>
+<p>Bounded, reversible blast radius: Response A + Response B + Response C agree.</p>
+<p>Codex egress must not become autonomous-job permission: Response A + Response B + Response C agree.</p>
+<h2>Disagreement Matrix</h2>
+<p>Is optional allowlist enforcement acceptable (R4): Response B says no — must be mandatory and validator-pinned (REVISE); Response A and Response C say yes — manageable risk (PASS).</p>
+<p>Net verdict severity: Response B = REVISE; Response A and Response C = PASS. The disagreement is one of remediation timing/strength, not of which risk exists.</p>
+<h2>Final Synthesis Trace</h2>
+<p>There is a clear 2-of-3 majority on PASS (Response A, Response C), so this is not a no-majority SPLIT and PASS is the legitimate tier. However, the disagreement is treated as signal: all three advisors name the allowlist as the single control on which the entire spend boundary rests, and Response B&#x27;s dissent converts that shared risk into a concrete, cheap, pre-merge fix — make owned_zero_cost_providers enforcement mandatory and validator-pinned to exclude metered providers, rather than optional. Because Response A and Response C do not rebut the substance of Response B&#x27;s tripwire argument (they list the same risk but rate it tolerable), the final verdict is PASS conditioned on adopting Response B&#x27;s mandatory-allowlist strengthening before activation. No CRIT/HIGH blocker is asserted by any advisor, the success criteria include the decisive negative test (perplexity denied at $0), and rollback is bounded — these keep the verdict at PASS rather than REVISE/BLOCK, while the preserved dissent records the one condition that must not be deferred.</p>
+<h2>NPLF Arithmetic</h2>
+<p>My independent NPLF: N=3.5 (well-characterized, real provider-billing boundary as the headwind), P=3.4 (sound additive plan, but the optional-vs-mandatory allowlist gap flagged by Response B holds the plan score below the strengths), L=3.7 (strong reuse of a reviewed pattern and clear operator approval), F=3.5 (owned/zero-cost providers and reversible change keep financial exposure low, contingent on the metered-deny invariant holding). Cross-advisor means (advisory only): N≈3.5, P≈3.67, L≈3.63, F≈3.33; my P and F sit slightly below the means to reflect the unresolved mandatory-enforcement condition.</p>
+<h2>Dissent</h2>
+<h2>Split Zones</h2>
+<p>Sufficiency of optional allowlist enforcement (decision point R4): Response B holds that leaving allowlist enforcement optional is a defect requiring REVISE — a future edit could silently add a metered provider with no validation tripwire, so enforcement should be mandatory and validator-pinned. Response A and Response C treat the same allowlist scoping as a manageable risk rather than a blocker and return PASS. This is a genuine normative split on risk tolerance, not noise.</p>
+<p>CRITIC challenge: Response A&#x27;s strongest claim — that success criteria are highly measurable and the pattern is proven — is weakened by Response B&#x27;s observation that the brief asserts but does not show the enforcement seam keying on allowlist membership; a measurable test of the happy path does not prove the negative (that a future metered addition trips validation). Conversely, Response B&#x27;s REVISE is tempered by Response A&#x27;s and Response C&#x27;s point that the explicit perplexity-denied-at-$0 negative test already exercises the boundary at the current state. Response C&#x27;s confidence (0.82) sits between the two, and its own listed risk about a malformed allowlist materially overlaps Response B&#x27;s blocker — narrowing the real distance between the PASS and REVISE camps to whether the fix should be mandatory now or managed.</p>
+<h2>Advisor Positions</h2>
+<h3>A</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.95</li>
+<li>Agrees on: Highly measurable and specific success criteria directly tied to system state, such as validator PASS and explicit PERMIT/DENY checks.; Strong reliance on proven prior art by securely adapting the existing owned/zero-cost route pattern from the research profile.; Clear scoping and bounded blast radius with an explicit rollback mechanism preventing persistent data loss.</li>
+<li>Disagrees or warns on: Egress allowance misconfiguration could accidentally bridge to metered providers if the allowlist is not strictly strictly scoped.; Potential for autonomous jobs to trigger inadvertently if supervised-local mode boundaries are weakened.; Using personal Google OAuth scopes instead of a service account could expand the attack surface if the token is compromised.</li>
+</ul>
+<h3>B</h3>
+<ul>
+<li>Position: REVISE</li>
+<li>Confidence: 0.78</li>
+<li>Agrees on: The owned-zero-cost route pattern is not speculative — it was already implemented, reviewed, and hardened on the research profile this same session (reserve-flag idempotency, zero-cost public-route allowance, actual-spend reconciliation), so the coding profile is reusing a proven shape rather than inventing a new bypass under a security-critical gate.; The change is genuinely additive and bounded: rollback is a restore of 3 files from an out-of-tree backup plus daemon-reload/restart and an optional DISABLED touch, which caps blast radius even though the edit touches the egress gate and billing boundary.; Success criteria are concrete and directly test the core invariant — the suite asserts an owned provider (openai-codex) is PERMITTED at $0 WHILE a metered route (perplexity_*) is still DENIED at $0, plus a codex re-audit for 0 HIGH/0 CRIT, so the spend-boundary contract is verifiable rather than asserted.</li>
+<li>Disagrees or warns on: The spend boundary depends entirely on the permit-at-$0 path keying on allowlist membership (owned_zero_cost_providers) rather than on daily_budget_usd==0. If the Gate 6 implementation instead relaxes the fails-close on budget==0, every metered provider (perplexity, openrouter) becomes permitted at $0 — the exact uncontrolled-paid-spend failure the brief names as the primary stake.; Decision point R4 frames the validator strengthening that asserts owned_zero_cost_providers is a scoped allowlist EXCLUDING metered providers as OPTIONAL. The control that prevents allowlist creep/abuse is precisely the thing that should be mandatory and validator-pinned; leaving it optional means a future edit can silently add a metered provider to the allowlist with no validation tripwire.; R2 (Codex egress under supervised-local mode inadvertently enabling autonomous jobs) intersects the constraints forbidding pilot/cron/gateway activation. Permitting provider calls while gateway_state:disabled and cron:deny remain pinned is coherent only if the egress path cannot be reached by any non-supervised caller; the brief asserts this but does not show the enforcement seam.</li>
+</ul>
+<h3>C</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.82</li>
+<li>Agrees on: The proposal resolves a concrete contradiction: the coding profile is marked active but cannot make provider calls because daily_budget_usd is pinned to 0 and Gate 6 fails closed.; The scope is tightly constrained: validator pins remain intact, metered providers remain denied at $0, cron/gateway/live jobs stay disabled, and only the coding CODE role is activated.; The success criteria include both positive and negative egress tests, specifically permitting openai-codex at $0 while denying perplexity_* at $0.</li>
+<li>Disagrees or warns on: A malformed owned_zero_cost_providers allowlist could accidentally include genuinely metered providers and bypass ledger reservation.; Permitting Codex egress under supervised-local mode could be misread by adjacent automation as permission to run autonomous jobs unless job, cron, gateway, and shell gates remain independently enforced.; Personal-account Google OAuth may be operationally acceptable but creates lifecycle and auditability risks compared with a service account.</li>
+</ul>
+<h2>Scoring</h2>
+<ul>
+<li>Tier: PASS</li>
+<li>Confidence: 0.7</li>
+<li>Cost: $0.2629</li>
+<li>N: 3.50/4</li>
+<li>P: 3.40/4</li>
+<li>L: 3.70/4</li>
+<li>F: 3.50/4</li>
+</ul></section>
+</main>
+</body>
+</html>
