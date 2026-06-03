@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Live Voice — Feasibility & Architecture · 2026-06-03</title>
+<style>
+:root{--bg:#0a0e1a;--bg2:#0f1626;--card:rgba(255,255,255,.04);--cardb:rgba(255,255,255,.09);--txt:#e7ecf5;--mut:#9aa7bd;--teal:#1A9BA5;--tealg:#2dd4bf;--cream:#C8BFB0;--crit:#ff5d6c;--warn:#ffd24a;--good:#41d6a3;--blue:#5aa9ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(160deg,var(--bg),var(--bg2));color:var(--txt);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:40px 20px;max-width:1000px;margin:0 auto}
+h1{font-size:29px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px}
+h2{font-size:20px;font-weight:700;margin:34px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--cardb);color:var(--tealg)}
+h3{font-size:15px;font-weight:700;margin:16px 0 6px;color:var(--cream)}
+.sub{color:var(--mut);font-size:14px}
+.pill{display:inline-block;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700;margin:2px 4px 2px 0}
+.p-teal{background:rgba(26,155,165,.18);color:var(--tealg);border:1px solid rgba(45,212,191,.35)}
+.p-good{background:rgba(65,214,163,.15);color:var(--good);border:1px solid rgba(65,214,163,.4)}
+.card{background:var(--card);border:1px solid var(--cardb);border-radius:14px;padding:18px 20px;margin:14px 0;backdrop-filter:blur(10px)}
+.hero{background:linear-gradient(135deg,rgba(26,155,165,.16),rgba(45,212,191,.05));border:1px solid rgba(45,212,191,.25)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.8px}
+th{text-align:left;color:var(--tealg);font-weight:700;padding:8px 9px;border-bottom:2px solid var(--cardb);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+td{padding:8px 9px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}
+tr:hover td{background:rgba(255,255,255,.02)}
+.goodbox{background:rgba(65,214,163,.08);border-left:3px solid var(--good);padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0}
+.warnbox{background:rgba(255,210,74,.08);border-left:3px solid var(--warn);padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0}
+.critbox{background:rgba(255,93,108,.08);border-left:3px solid var(--crit);padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0}
+pre{background:rgba(0,0,0,.35);border:1px solid var(--cardb);border-radius:10px;padding:14px;overflow-x:auto;font-size:12px;color:#cfe3ff;line-height:1.45}
+ul,ol{margin:6px 0 6px 20px}li{margin:3px 0}
+code{background:rgba(255,255,255,.07);padding:1px 6px;border-radius:5px;font-size:12.5px}
+a{color:var(--blue)}
+.foot{color:var(--mut);font-size:12px;margin-top:36px;text-align:center;border-top:1px solid var(--cardb);padding-top:16px}
+.big{font-size:30px;font-weight:800;color:var(--tealg)}
+</style></head><body>
+
+<h1>Hermes Live Voice — Feasibility &amp; Architecture</h1>
+<div class="sub">Can Hermes do real-time, interruptible voice conversation (like a phone call) instead of async Telegram audio messages? · D2 research · 2026-06-03</div>
+<div style="margin-top:10px">
+<span class="pill p-good">Verdict: FEASIBLE</span>
+<span class="pill p-teal">BYO-LLM (Hermes brain preserved)</span>
+<span class="pill p-teal">~$35/mo @ 30 min/day</span>
+<span class="pill p-teal">MVP ≈ 1 weekend</span>
+</div>
+
+<div class="card hero">
+<h3 style="margin-top:0;color:var(--tealg)">TL;DR</h3>
+<p>Yes — fully feasible today. Use <b>LiveKit Agents</b> (open-source orchestration) as a thin voice layer: <b>Deepgram Nova-3</b> for speech→text, <b>Hermes's own LLM</b> (Opus 4.8) reached via a <b>LiteLLM OpenAI-compatible proxy</b> as the brain, and <b>Cartesia Sonic 3</b> for text→speech, with a <b>phone number via LiveKit SIP</b> so you just dial Hermes from any phone. The Hermes gateway, its 90+ tools, memory and persona router stay 100% intact — the voice layer only does STT + TTS + turn-taking.</p>
+<div class="critbox" style="margin-bottom:0"><b>Hard reality:</b> Telegram is a dead end for live voice. Bots only get voice notes as async files; Telegram's live-call layer (MTProto VoIP) is not accessible to bots. The new voice channel must be a phone call or a web/PWA app — not Telegram.</div>
+</div>
+
+<h2>1 · Options compared</h2>
+<div class="card">
+<table>
+<tr><th>Option</th><th>Hermes brain?</th><th>Latency p50</th><th>Barge-in</th><th>Transport</th><th>$/min</th><th>Effort</th></tr>
+<tr><td><b>LiveKit Agents + BYO stack</b> ⭐</td><td><b>Yes</b> (Anthropic plugin / OpenAI-compat)</td><td>~450ms target*</td><td>Yes</td><td>WebRTC or SIP phone</td><td>~$0.08–0.18</td><td>M</td></tr>
+<tr><td>ElevenLabs Conversational AI</td><td>Yes (needs stateful proxy)</td><td>~500–800ms</td><td>Yes</td><td>WebRTC / Twilio</td><td>$0.10–0.12</td><td>S–M</td></tr>
+<tr><td>Vapi (BYO-LLM)</td><td>Yes (LLM at-cost)</td><td>~300–500ms</td><td>Yes</td><td>Phone / WebRTC</td><td>~$0.12–0.20</td><td>M</td></tr>
+<tr><td>Retell AI (BYO-LLM)</td><td>Yes</td><td>~600ms</td><td>Yes</td><td>Phone / WebRTC</td><td>~$0.12–0.18</td><td>M</td></tr>
+<tr><td>OpenAI Realtime API</td><td><b>No</b> — brain = GPT-4o</td><td>~500ms</td><td>Yes</td><td>WebRTC/WS</td><td>$0.11–0.25</td><td>S ✗ breaks constraint</td></tr>
+<tr><td>Google Gemini Live</td><td><b>No</b> — brain = Gemini</td><td>n/a EU</td><td>Yes</td><td>WebSocket</td><td>~$0.023 audio</td><td>S ✗ breaks constraint</td></tr>
+<tr><td>Pipecat + self-hosted STT/TTS</td><td>Yes</td><td>~0.8–1.4s</td><td>Yes</td><td>WebRTC</td><td>lowest (API fees only)</td><td>L</td></tr>
+</table>
+<p class="sub">* 450ms is the streaming best case; realistic Helsinki→US-API median is <b>800–1,400ms</b> (see risks). The speech-to-speech vendors (OpenAI/Gemini) are fastest but replace Hermes's brain — disqualified by the BYO-LLM constraint.</p>
+</div>
+
+<h2>2 · Recommended architecture</h2>
+<div class="card">
+<table>
+<tr><th>Layer</th><th>Choice</th><th>Why</th></tr>
+<tr><td>Orchestration</td><td><b>LiveKit Agents v1.5.x</b> (Apache-2.0, Python)</td><td>Open source; native Anthropic + OpenAI-compat LLM; MCP tools; SIP phone GA; barge-in built-in; self-host or cloud</td></tr>
+<tr><td>STT</td><td><b>Deepgram Nova-3</b> streaming</td><td>~300ms, $0.0077/min, EU PoP</td></tr>
+<tr><td>LLM bridge</td><td><b>LiteLLM proxy</b> (localhost) → Hermes/Opus 4.8</td><td>Hermes gateway stays unchanged; LiveKit calls the proxy via OpenAI-compat base_url</td></tr>
+<tr><td>TTS</td><td><b>Cartesia Sonic 3</b></td><td>90ms time-to-first-audio, $0.0225/min, EU PoP (beats ElevenLabs from Helsinki)</td></tr>
+<tr><td>Turn-taking</td><td>LiveKit Semantic VAD + Silero</td><td>Best-in-class endpointing + interruption</td></tr>
+<tr><td>Transport</td><td><b>LiveKit Phone Number (SIP)</b></td><td>Zero-friction — dial from any phone, no app</td></tr>
+</table>
+<pre>Pafi's phone (PSTN)
+   │  regular call
+   ▼
+LiveKit SIP  ─►  LiveKit Agent worker (VPS-2)
+                 1. audio → Deepgram Nova-3 STT  ──► transcript (~300ms)
+                 2. text  → LiteLLM proxy ──► Hermes gateway :8643
+                            (Opus 4.8 · 90+ tools · memory · Leo/Rove/Olivia)
+                 3. streamed tokens → Cartesia Sonic 3 TTS (~90ms TTFA)
+                 4. audio → LiveKit SIP ──► back to Pafi's phone
+Barge-in: VAD interrupt cancels TTS+LLM, restarts the turn.</pre>
+</div>
+
+<h2>3 · Cost — single heavy user (~30 min/day, ~660 min/mo)</h2>
+<div class="card">
+<table>
+<tr><th>Component</th><th>Rate</th><th>Monthly</th></tr>
+<tr><td>Deepgram Nova-3 STT</td><td>$0.0077/min</td><td>$5.08</td></tr>
+<tr><td>Opus 4.8 (via Hermes)</td><td>existing plan</td><td>$0 incremental</td></tr>
+<tr><td>Cartesia Sonic 3 TTS</td><td>$0.0225/min</td><td>$14.85</td></tr>
+<tr><td>LiveKit agent session</td><td>$0.010/min</td><td>$6.60</td></tr>
+<tr><td>SIP inbound + number</td><td>~$0.010/min + ~$2</td><td>~$8.60</td></tr>
+<tr><td colspan="2"><b>Total</b></td><td><b>~$35/mo</b> (≈$68 at 60 min/day)</td></tr>
+</table>
+<p class="sub">LiveKit Cloud free tier = 1,000 session-min/mo, so low usage is near-free. ElevenLabs Conversational AI equivalent ≈ $66/mo.</p>
+</div>
+
+<h2>4 · Path to ship</h2>
+<div class="card">
+<h3>MVP — this week (~4–8 h, browser, no phone yet)</h3>
+<ol>
+<li>Check if Hermes already exposes OpenAI-compat: <code>curl -s http://localhost:8643/v1/models</code>. If yes, skip the proxy.</li>
+<li>Else install <code>litellm[proxy]</code> on VPS-2 → OpenAI-compat endpoint → <code>anthropic/claude-opus-4-8</code>.</li>
+<li>LiveKit Cloud free account; write ~60-line <code>agent.py</code> with <code>livekit-agents[openai,deepgram,cartesia]</code>, LLM <code>base_url</code> → the proxy.</li>
+<li>Test in LiveKit browser playground — confirm Hermes responds, tools fire, persona router works.</li>
+</ol>
+<h3>Production — +1–2 weeks</h3>
+<ol>
+<li>Buy LiveKit Phone Number (or Telnyx/Twilio DID → LiveKit SIP). Dial from any phone.</li>
+<li>Add telephony noise-cancellation; deploy <code>agent.py</code> as a systemd service beside <code>hermes-gateway.service</code>.</li>
+<li>Ensure turn-by-turn context passes correctly (thin stateful session layer if needed).</li>
+<li>Per DEV-ROUTING: <code>~/.nexus/workspace/active/voice-bridge/</code> + PROGRESS.md.</li>
+</ol>
+</div>
+
+<h2>5 · Risks &amp; caveats</h2>
+<div class="card">
+<div class="warnbox"><b>Latency realism:</b> VPS-2 is in Helsinki; Anthropic API defaults to US-East, adding ~100–200ms per hop. Expect <b>800–1,400ms median</b> — conversational but noticeable. Mitigate: Haiku for short turns + Opus for complex (persona-route at voice layer); keep STT/TTS on EU PoPs (Cartesia/Deepgram have them, ElevenLabs TTS is US-only → why Cartesia wins here).</div>
+<div class="warnbox"><b>Tool calls double LLM latency:</b> any turn that fires one of Hermes's 90+ tools needs a second LLM round-trip before speech. Add a filler phrase ("Let me check…") the moment a tool call is detected.</div>
+<div class="critbox"><b>Telegram dead-end (confirmed):</b> bots cannot access live call audio — voice notes are async files only. New transport must be phone or web.</div>
+<div class="goodbox"><b>Integration low-risk:</b> if <code>hermes-gateway.service</code> already speaks OpenAI-compat on :8643, LiveKit points straight at it and the proxy is unnecessary. Verify first.</div>
+</div>
+
+<h2>6 · Sources</h2>
+<div class="card" style="font-size:12.5px">
+<ol>
+<li><a href="https://docs.livekit.io/agents/models/llm">LiveKit LLM models (Anthropic + OpenAI-compat base_url)</a></li>
+<li><a href="https://livekit.com/products/livekit-phone-numbers">LiveKit Phone Numbers / SIP (GA 2025)</a> · <a href="https://livekit.com/pricing">LiveKit pricing</a></li>
+<li><a href="https://www.forasoft.com/blog/article/livekit-ai-agents-guide">LiveKit production latency data 2026</a></li>
+<li><a href="https://deepgram.com/learn/introducing-nova-3-speech-to-text-api">Deepgram Nova-3 (~300ms, $0.0077/min)</a></li>
+<li><a href="https://www.eesel.ai/blog/cartesia-sonic-3-api">Cartesia Sonic 3 (90ms TTFA, $0.0225/min)</a></li>
+<li><a href="https://elevenlabs.io/docs/eleven-agents/customization/llm/custom-llm">ElevenLabs custom LLM (BYO)</a> · <a href="https://pxlpeak.com/blog/ai-tools/elevenlabs-pricing-guide">ElevenLabs pricing</a></li>
+<li><a href="https://vapi.ai/pricing">Vapi pricing (BYO-LLM)</a> · <a href="https://zeeg.me/en/blog/post/retell-ai-pricing-guide">Retell AI pricing</a></li>
+<li><a href="https://www.latent.space/p/realtime-api">OpenAI Realtime cost</a> · <a href="https://blog.laozhang.ai/en/posts/gemini-3-1-flash-live-api">Gemini Live pricing</a></li>
+<li><a href="https://community.latenode.com/t/can-a-python-telegram-bot-initiate-voice-calls/15628">Telegram bot VoIP limitation</a></li>
+<li><a href="https://www.daily.co/blog/advice-on-building-voice-ai-in-june-2025">Voice AI latency (tool calls double LLM latency)</a> · <a href="https://docs.litellm.ai/docs/providers/anthropic">LiteLLM Anthropic proxy</a></li>
+</ol>
+</div>
+
+<div class="foot">NexusOS · D2 research · 2026-06-03 · Hermes live-voice feasibility<br>BYO-LLM constraint preserved · recommended: LiveKit Agents + Deepgram + Cartesia + LiteLLM→Opus 4.8 + SIP phone</div>
+</body></html>
