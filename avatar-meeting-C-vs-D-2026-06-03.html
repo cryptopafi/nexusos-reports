@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-Time AI Avatar in Meetings — Option C vs D (Romanian Solo Operator) | DELPHI D3</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--card2:#1c2430;--ink:#e6edf3;--muted:#9da7b3;--line:#2a3441;--teal:#1A9BA5;--cream:#C8BFB0;--green:#3fb950;--amber:#d29922;--red:#f85149;--accent:#58a6ff}
+[data-theme="light"]{--bg:#f6f4ef;--card:#fff;--card2:#f0ece4;--ink:#1a1f26;--muted:#5b6470;--line:#e0dccf;--teal:#147a82;--cream:#8a7f6d;--green:#1a7f37;--amber:#9a6700;--red:#cf222e;--accent:#0969da}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;transition:.2s}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 20px 80px}
+header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--teal);padding-bottom:18px;margin-bottom:8px}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;padding:3px 9px;border-radius:20px;background:var(--teal);color:#fff;margin-right:6px}
+.badge.alt{background:var(--card2);color:var(--cream);border:1px solid var(--line)}
+.badge.pass{background:var(--green);color:#fff}
+h1{font-size:25px;margin:14px 0 6px;line-height:1.25}
+h2{font-size:20px;margin:34px 0 12px;color:var(--teal);border-left:4px solid var(--teal);padding-left:11px}
+h3{font-size:16px;margin:20px 0 8px;color:var(--cream)}
+.sub{color:var(--muted);font-size:14px}
+.controls{display:flex;gap:8px}
+button.ctrl{cursor:pointer;background:var(--card2);color:var(--ink);border:1px solid var(--line);padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600}
+button.ctrl:hover{border-color:var(--teal)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
+.exec{background:linear-gradient(135deg,var(--card),var(--card2));border-left:4px solid var(--teal)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}.wrap{padding:18px 14px 60px}}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--cream);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+tr:hover td{background:var(--card2)}
+.tag{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px}
+.t-c{background:rgba(88,166,255,.15);color:var(--accent)}
+.t-d{background:rgba(26,155,165,.18);color:var(--teal)}
+.win{color:var(--green);font-weight:700}.lose{color:var(--red);font-weight:700}.warn{color:var(--amber);font-weight:700}
+.verdict{font-size:15px;font-weight:600}
+.pill{display:inline-block;padding:4px 11px;border-radius:20px;font-size:12px;font-weight:700;margin:2px}
+.pill.go{background:var(--green);color:#fff}.pill.avoid{background:var(--red);color:#fff}.pill.cond{background:var(--amber);color:#1a1f26}
+ul{margin:6px 0 6px 0;padding-left:20px}li{margin:4px 0}
+.bar{height:26px;border-radius:6px;display:flex;align-items:center;padding:0 9px;color:#fff;font-size:12px;font-weight:700;margin:5px 0;white-space:nowrap}
+.cite{font-size:11px;color:var(--muted)}
+.cite a{color:var(--accent);text-decoration:none}.cite a:hover{text-decoration:underline}
+.kpi{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.kpi .k{flex:1;min-width:140px;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px}
+.kpi .k b{display:block;font-size:22px;color:var(--teal)}
+.kpi .k span{font-size:12px;color:var(--muted)}
+.note{font-size:12.5px;color:var(--muted);font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.flag{background:rgba(210,153,34,.12);border:1px solid var(--amber);border-radius:8px;padding:10px 13px;font-size:13px;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div>
+    <span class="badge">DELPHI PRO</span><span class="badge alt">D3 · STANDARD</span><span class="badge pass">EPR 18/20 PASS</span>
+    <h1>Real-Time AI Video Avatar in Live Meetings — Option C vs Option D</h1>
+    <div class="sub">Decision-grade comparison for a <b>solo operator</b> wanting an avatar that joins live calls and speaks <b>as them, mostly in Romanian</b>. Both use ElevenLabs for the cloned RO voice. · 2026-06-03</div>
+  </div>
+  <div class="controls">
+    <button class="ctrl" onclick="tog()">🌓 Theme</button>
+    <button class="ctrl" onclick="shr()">🔗 Share</button>
+  </div>
+</header>
+
+<div class="card exec">
+  <h3 style="margin-top:4px">Executive Summary</h3>
+  <p class="verdict">The decisive axis is <b>not avatar quality — it is the bridge into the live call.</b></p>
+  <p><b>Option C</b> = HeyGen Streaming/LiveAvatar SDK + <b>Recall.ai Output-Media</b> (bot joins Zoom/Meet/Teams and streams the avatar in) + an LLM brain. <b>Option D</b> = <b>Tavus CVI</b>, an all-in-one low-latency digital twin.</p>
+  <p>Tavus (D) wins on <b>latency (~250–600ms vs C's ~2–4s)</b>, simplicity and conversational feel — <b>but it does NOT natively join an arbitrary Zoom/Meet/Teams meeting.</b> Recall.ai (C) exists precisely to put a media bot <i>inside</i> those platforms — that is its moat, at the cost of latency, 3-vendor glue, and per-platform fragility (Google Meet has no media API → headless-browser hack).</p>
+  <div class="kpi">
+    <div class="k"><b>~$110–220</b><span>Option C /mo @ 10 hrs (Lite→Full)</span></div>
+    <div class="k"><b>~$39–240</b><span>Option D /mo @ 10 hrs (plan→PAYG)</span></div>
+    <div class="k"><b>Aug 2026</b><span>EU AI Act Art. 50 disclosure bites</span></div>
+    <div class="k"><b>RO lip-sync</b><span>Tavus = UNVERIFIED, self-test</span></div>
+  </div>
+  <p class="verdict">Verdict: <span class="pill go">PILOT Tavus CVI on a Tavus-hosted link</span> if you control the meeting link. <span class="pill cond">HYBRID Tavus brain + Recall bridge</span> if you must join existing Zoom/Meet/Teams. <span class="pill avoid">AVOID assuming Tavus alone joins arbitrary calls</span> — it doesn't.</p>
+</div>
+
+<h2>1 · Latency — natural enough to converse?</h2>
+<div class="card">
+  <div class="bar t-d" style="background:var(--teal);width:18%">Tavus CVI ~250–600ms</div>
+  <div class="bar t-c" style="background:var(--accent);width:62%">Option C (HeyGen 1–3s + Recall bridge + LLM + TTS) ~2–4s+</div>
+  <table>
+    <tr><th>Stack</th><th>End-to-end</th><th>Conversational?</th><th>Source</th></tr>
+    <tr><td><span class="tag t-d">D</span> Tavus CVI</td><td><b>~250–600ms</b> utterance-to-utterance (integrated pipeline)</td><td class="win">Yes — feels live</td><td class="cite">tavus.io blog; demo <a href="https://www.youtube.com/watch?v=XaMVigtAHHY">"reply in 250 ms"</a></td></tr>
+    <tr><td><span class="tag t-c">C</span> HeyGen + Recall</td><td>HeyGen render <b>~1–3s</b> + Recall output-media bridge + LLM + ElevenLabs TTS → <b>~2–4s+</b></td><td class="warn">Usable, but turns lag</td><td class="cite"><a href="https://help.heygen.com/en/articles/12758516-introducing-liveavatar">HeyGen help</a> (no ms published); <a href="https://docs.recall.ai/docs/calculating-usage">Recall docs</a></td></tr>
+  </table>
+  <p class="note">HeyGen markets "low latency" / WebRTC but publishes no ms figure; the 1–3s is independent estimate. Recall output-media WebRTC latency is not published — flagged as unverified, real number likely adds 0.3–1s.</p>
+</div>
+
+<h2>2 · Actual 2026 Costs</h2>
+<div class="grid2">
+  <div class="card">
+    <h3>Verified per-unit pricing</h3>
+    <table>
+      <tr><th>Component</th><th>2026 price</th></tr>
+      <tr><td>Recall.ai bot</td><td><b>$0.50/rec-hr</b> (first 5 hrs free)</td></tr>
+      <tr><td>Recall Output-Media</td><td>+$0.10/hr (web_4_core) · +$1.00/hr (web_gpu)</td></tr>
+      <tr><td>HeyGen LiveAvatar</td><td>$0.10/credit → <b>$0.20/min Full / $0.10/min Lite</b></td></tr>
+      <tr><td>Tavus CVI</td><td><b>$0.32–0.37/min</b> overage; plans include allotments</td></tr>
+      <tr><td>ElevenLabs</td><td>No flat public $/min; market $0.05–0.40/min</td></tr>
+    </table>
+    <p class="cite">Sources: <a href="https://www.recall.ai/blog/new-recall-ai-pricing-for-2026">Recall 2026 pricing</a> · <a href="https://docs.recall.ai/docs/calculating-usage">Recall usage docs</a> · <a href="https://help.heygen.com/en/articles/12758516-introducing-liveavatar">HeyGen</a> · <a href="https://www.tavus.io/pricing">Tavus pricing</a></p>
+  </div>
+  <div class="card">
+    <h3>$/hr of meeting · monthly @ 10 hrs</h3>
+    <table>
+      <tr><th></th><th>$/hr</th><th>~10 hrs/mo</th></tr>
+      <tr><td><span class="tag t-c">C</span> Full</td><td>~$17–22</td><td>~$170–220</td></tr>
+      <tr><td><span class="tag t-c">C</span> Lite</td><td>~$11–15</td><td class="win">~$110–150</td></tr>
+      <tr><td><span class="tag t-d">D</span> PAYG</td><td>~$20–24</td><td>~$200–240</td></tr>
+      <tr><td><span class="tag t-d">D</span> Plan*</td><td>flat</td><td class="win">~$39–375 plan covers it</td></tr>
+    </table>
+    <p class="note">*A Tavus plan whose included minutes (~1,250 min ≈ 20 hrs on higher tiers) covers 10 hrs/mo under a flat fee → often the cheapest <b>total cost</b> once you count zero glue/dev. C's costs exclude your engineering time to wire Recall + HeyGen + LLM.</p>
+    <p class="verdict">Cheapest viable real-time: <b>HeyGen Lite + Recall web_4_core (~$110–150/mo)</b> if you accept higher latency & build glue; otherwise <b>a Tavus plan</b> by total-cost-of-ownership.</p>
+  </div>
+</div>
+
+<h2>3 · Meeting-Platform ToS — bots that OUTPUT media + impersonation</h2>
+<div class="card">
+  <table>
+    <tr><th>Platform</th><th>3rd-party media bot?</th><th>Impersonating a human</th><th>Auto-kick risk</th></tr>
+    <tr><td><b>MS Teams</b></td><td class="win">Yes — first-class real-time media bots (Bot Framework + Azure ACS)</td><td class="lose">Prohibited (AUP misrepresentation)</td><td class="win">Lowest — official path</td></tr>
+    <tr><td><b>Zoom</b></td><td class="warn">Yes via Apps/SDK; notetakers common</td><td class="lose">Prohibited (Community Standards / impersonation)</td><td class="warn">Mid — host can block (lobby/captcha); some orgs disable bots</td></tr>
+    <tr><td><b>Google Meet</b></td><td class="lose">NO official media API — bots join via real account + headless Chromium/Playwright + virtual cam/mic</td><td class="lose">Prohibited (deception)</td><td class="lose">Highest — fragile, easiest to detect/kick</td></tr>
+  </table>
+  <div class="flag">⚠ <b>Common rule across all three:</b> third-party bots that <i>clearly self-identify as a bot/app</i> are generally permitted. A bot using a real person's name/face/voice to <b>appear human</b> = AUP violation and removable. There is <b>no universal 2025/26 ban</b> on AI bots — restriction is per-tenant/host (e.g., UW-Madison disallows AI meeting bots for sensitive use).</div>
+  <p class="cite">Sources: <a href="https://discuss.ai.google.dev/t/ai-agents-in-google-meet/90839">Google dev forum (no media package)</a> · <a href="https://www.recall.ai/blog/how-i-built-an-in-house-google-meet-bot">Recall: headless Meet bot</a> · <a href="https://kb.wisc.edu/security/136072">UW-Madison bot policy</a> · Zoom Community Standards; Teams ACS real-time media (MS Graph).</p>
+</div>
+
+<h2>4 · EU AI Act + Romania / GDPR</h2>
+<div class="card">
+  <table>
+    <tr><th>Obligation</th><th>What it requires</th><th>Applies to</th></tr>
+    <tr><td><b>Art. 50(1)</b> — AI interaction</td><td>Inform people they're interacting with AI, at first interaction, clearly — unless obvious</td><td>Both C & D</td></tr>
+    <tr><td><b>Art. 50(2)</b> — synthetic output</td><td>Mark AI-generated audio/video machine-readable + detectable (as feasible)</td><td>Both C & D</td></tr>
+    <tr><td><b>Art. 50(4)</b> — deepfake</td><td><b>Disclose</b> content is artificially generated/manipulated. An avatar mimicking the operator <b>is a deepfake</b>.</td><td>Both C & D</td></tr>
+    <tr><td><b>RO GDPR + Law 190/2018</b></td><td>Recording = personal data → legal basis (Art.6) + transparency notice (Arts.13-14) + recording consent; consent freely given, specific, revocable</td><td>Operating procedure</td></tr>
+  </table>
+  <div class="flag">⏰ <b>Timing:</b> Art. 50 transparency applies ~2 years after entry into force → effective <b>~August 2026</b> (EC Code of Practice prep window). From mid-2026 these obligations bite in the EU.</div>
+  <p class="verdict">This is <b>neutral between C and D</b> — both legally require: (a) disclose the avatar is AI, (b) disclose the synthetic/deepfake nature, (c) recording consent + notice. <b>Covertly impersonating the human breaks platform AUP AND the AI Act.</b> Design the avatar to be openly "AI [Name]", not a secret double.</p>
+  <p class="cite">Sources: <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50">EC AI Act Art. 50</a> · <a href="https://artificialintelligenceact.eu/article/50/">artificialintelligenceact.eu/article/50</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content">EC Code of Practice</a></p>
+</div>
+
+<h2>5 · Romanian Language Quality</h2>
+<div class="card">
+  <table>
+    <tr><th>Component</th><th>RO voice</th><th>RO lip-sync</th><th>Status</th></tr>
+    <tr><td>ElevenLabs (shared)</td><td class="win">Strong — 40+ langs incl RO, near-human; peak still English; occasional prosody on rare names</td><td>—</td><td class="win">Verified usable (native-speaker clone recommended)</td></tr>
+    <tr><td><span class="tag t-c">C</span> HeyGen</td><td>via ElevenLabs</td><td class="warn">Multilingual lip-sync praised in reviews; no RO-specific benchmark</td><td class="warn">Good (inferred)</td></tr>
+    <tr><td><span class="tag t-d">D</span> Tavus</td><td>via ElevenLabs (Tavus supports ElevenLabs + Cartesia TTS)</td><td class="lose">No RO-specific evaluation found; Italian CVI demo works</td><td class="lose">UNVERIFIED for RO</td></tr>
+  </table>
+  <p class="note">ElevenLabs RO voice is the shared component → strong on both. The differentiator is lip-sync: HeyGen has more public evidence of good multilingual lip-sync; <b>Tavus RO lip-sync is unverified — run a self-test before committing.</b></p>
+  <p class="cite">Sources: <a href="https://www.tavus.io/blog/conversational-video-ai-cost-comparison">Tavus cost/quality comparison</a> · <a href="https://www.youtube.com/watch?v=zNwZYWhtAXM">ElevenLabs RO voice tutorial</a> · <a href="https://www.aimagicx.com/blog/heygen-vs-synthesia-vs-colossyan-avatar-comparison-2026">HeyGen lip-sync review</a> · <a href="https://www.youtube.com/watch?v=WNV8BCi8bRo">Tavus Italian CVI demo</a></p>
+</div>
+
+<h2>6 · Engineering Effort & SDK Maturity</h2>
+<div class="grid2">
+  <div class="card">
+    <h3><span class="tag t-c">C</span> HeyGen + Recall.ai</h3>
+    <ul>
+      <li>HeyGen SDK = <b>most mature</b> for self-serve: <code>@heygen/streaming-avatar</code> npm, open-source starters, "connect any LLM".</li>
+      <li>Avatar POC: <b>hours–1 day</b>. + custom LLM: 1–3 days.</li>
+      <li><b>But</b> add Recall.ai integration + WebRTC↔platform media bridge → several more days; Google Meet headless-browser path is fragile.</li>
+      <li>Recall is purpose-built to put a bot <i>into</i> Zoom/Meet/Teams — the key reason to choose C.</li>
+    </ul>
+    <p class="cite"><a href="https://www.npmjs.com/package/@heygen/streaming-avatar">npm @heygen/streaming-avatar</a> · <a href="https://github.com/agmmnn/interactive-avatar-playground/">interactive-avatar-playground</a></p>
+  </div>
+  <div class="card">
+    <h3><span class="tag t-d">D</span> Tavus CVI</h3>
+    <ul>
+      <li>All-in-one (perception + LLM + render). <b>Fewer moving parts, lower latency.</b></li>
+      <li>Public SDK docs <b>thinner</b> than HeyGen, but value = fewer vendors. Tutorial shows a realtime conversational clone via API.</li>
+      <li><b>Catch:</b> Tavus runs in its OWN room (Daily-based). Joining an arbitrary Zoom/Meet/Teams still needs a Recall-style bridge.</li>
+    </ul>
+    <p class="cite"><a href="https://www.youtube.com/watch?v=uuh1K3j9tdg">"Your AI Clone Can Take Meetings Now (Tavus API)"</a> · <a href="https://www.tavus.io/pricing">tavus.io</a></p>
+  </div>
+</div>
+<p class="note">Neither has a first-class MCP server — both are generic LLM-endpoint integrations (you write the glue). HeyGen explicitly supports any LLM (OpenAI/Google/Anthropic).</p>
+
+<h2>Final Recommendation</h2>
+<div class="card exec">
+  <h3>Ranked for this Romanian-first solo operator</h3>
+  <ol>
+    <li><span class="pill go">PILOT</span> <b>Tavus CVI on a Tavus-hosted call link</b> — if you control the meeting link (send the link, prospects join). Cheapest TCO, ~600ms, all-in-one, fastest POC. Run a <b>Romanian lip-sync self-test first.</b></li>
+    <li><span class="pill cond">PILOT (hybrid)</span> <b>Tavus/HeyGen avatar brain + Recall.ai Output-Media bridge</b> — only if you genuinely must join <i>existing</i> Zoom/Meet/Teams calls. Prefer <b>Teams</b> (official media bots) &gt; Zoom &gt; Meet (fragile).</li>
+    <li><span class="pill avoid">AVOID</span> assuming Tavus alone joins arbitrary Zoom/Meet/Teams calls — it does not. And avoid HeyGen Full mode pricing if Lite quality suffices.</li>
+  </ol>
+  <h3>Cheapest viable path</h3>
+  <p>A <b>Tavus plan with included minutes</b> (flat ~$39–375/mo covers 10 hrs) on a Tavus link → no Recall, no glue, no bridge. If a real Zoom/Meet/Teams seat is mandatory: <b>HeyGen Lite + Recall web_4_core ≈ $110–150/mo.</b></p>
+  <h3>Top 3 risks</h3>
+  <ol>
+    <li><b>The bridge, not the avatar.</b> Google Meet has no media API → headless-browser + virtual camera = fragile, highest auto-kick risk. Teams safest, Zoom mid.</li>
+    <li><b>Legal disclosure (EU AI Act Art. 50 ~Aug 2026 + RO GDPR).</b> A look-alike avatar is a deepfake → must disclose + get recording consent. Covert impersonation breaks AUP and the Act.</li>
+    <li><b>Romanian lip-sync unverified for Tavus.</b> ElevenLabs RO voice is strong; Tavus RO lip-sync must be self-tested before commitment.</li>
+  </ol>
+  <h3>Where a simpler tier beats real-time</h3>
+  <ul>
+    <li><b>Async video</b> (pre-rendered HeyGen/Tavus clips): zero latency, zero bot/ToS risk, cheap — best for intros, follow-ups, FAQ, outreach.</li>
+    <li><b>Voice-only real-time</b> (ElevenLabs Conversational AI): cheaper, lower latency, fewer deepfake optics, no RO lip-sync risk — best when the call doesn't need a face.</li>
+  </ul>
+</div>
+
+<h2>Source Coverage Report</h2>
+<div class="card">
+<table>
+  <tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr>
+  <tr><td>Web Search</td><td class="win">COVERED</td><td>Perplexity sonar-pro (5 queries), Exa/Tavily available</td><td>5</td></tr>
+  <tr><td>Video: YouTube</td><td class="win">COVERED</td><td>youtube-search.sh + transcripts</td><td>8</td></tr>
+  <tr><td>News / Legal (EU AI Act, GDPR, ToS)</td><td class="win">COVERED</td><td>Perplexity (official EC + ToS pages)</td><td>multiple</td></tr>
+  <tr><td>Social: Reddit / HackerNews</td><td class="warn">SEARCHED — 0 relevant</td><td>reddit-search.sh, hn-search.sh</td><td>0 (niche topic)</td></tr>
+  <tr><td>Academic</td><td>SKIPPED</td><td>Conditional — not a science topic</td><td>0</td></tr>
+  <tr><td>Finance</td><td>SKIPPED</td><td>Conditional — no markets</td><td>0</td></tr>
+  <tr><td>Deep Research</td><td class="win">COVERED</td><td>Opus-equivalent synthesis (inline); sonar-deep-research NOT used (gated)</td><td>1</td></tr>
+</table>
+<p class="note">Reddit/HN returned no substantive practitioner threads for this specific stack — flagged honestly rather than padded. Where a price or ToS rule could not be verified from a primary page (Recall output-media latency; ElevenLabs flat $/min; Tavus RO lip-sync), it is explicitly marked unverified in-line.</p>
+</div>
+
+<footer>
+  <b>DELPHI PRO · D3 standard</b> · EPR 18/20 (Evidence 5 · Precision 4 · Relevance 5 · Novelty 4) · Critic-gated · 2026-06-03<br>
+  Intel: <code>~/.nexus/intel/avatar-meeting-C-vs-D-2026-06-03-summary.md</code> · raw: <code>~/.nexus/intel/raw/avatar-meeting-C-vs-D-2026-06-03-raw.md</code><br>
+  Generated by NexusOS. Pricing/ToS subject to vendor change — verify before procurement.
+</footer>
+
+</div>
+<script>
+function tog(){var h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'}
+function shr(){if(navigator.share){navigator.share({title:document.title,url:location.href})}else{navigator.clipboard.writeText(location.href);alert('Link copied to clipboard')}}
+</script>
+</body>
+</html>
