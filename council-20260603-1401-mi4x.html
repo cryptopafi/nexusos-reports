@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split: Patch Hermes-Main So Source-Backed Research Requests Route Real Isolated Hermes-Research Profile Runtime Council Audit — council-20260603-1401-mi4x</title>
+<style>
+:root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --panel2:#242424; --line:#303030; --text:#e8e8e8; --muted:#a0a0a0; --green:#5bc46b; --amber:#f0a631; --red:#e5534b; --blue:#76a9ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 16% 0%, #1f2937 0, transparent 28rem), var(--bg); color:var(--text); font:14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:30px 24px 60px; }
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:26px; }
+.brand { font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+button { border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:8px; padding:8px 12px; }
+.hero { padding:28px 0 22px; border-bottom:1px solid var(--line); }
+h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter-spacing:0; }
+.subtitle { max-width:850px; color:var(--muted); font-size:17px; }
+.meta { margin-top:16px; color:var(--muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+.grid { display:grid; gap:16px; }
+.metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
+.two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
+.card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
+.metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
+.metric span { color:var(--muted); }
+h2 { margin:0 0 14px; font-size:22px; }
+h3 { margin:18px 0 8px; color:var(--blue); }
+.score { display:grid; grid-template-columns:130px minmax(120px, 1fr) 52px; align-items:center; gap:12px; margin:11px 0; }
+.score b { height:16px; background:#111; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.score i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--red), var(--amber), var(--green)); }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+table { border-collapse:collapse; width:100%; min-width:760px; background:var(--panel); }
+th,td { border-bottom:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; }
+th { background:var(--panel2); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+tr:hover td { background:rgba(255,255,255,.025); }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:#151515; font-weight:700; }
+.narrative { margin-top:16px; }
+.narrative p { margin:9px 0; }
+.narrative ul { padding-left:22px; }
+code { background:#101010; border:1px solid var(--line); border-radius:5px; padding:1px 5px; }
+pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(--line); border-radius:8px; padding:14px; }
+.muted { color:var(--muted); }
+summary { cursor:pointer; color:var(--muted); }
+a { color:var(--blue); text-decoration:none; }
+@media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
+  <header class="hero"><h1>Split: Patch Hermes-Main So Source-Backed Research Requests Route Real Isolated Hermes-Research Profile Runtime Council Audit — council-20260603-1401-mi4x</h1><p class="subtitle">Final Council Tier Computed Council tier: SPLIT.</p><div class="meta">Generated 2026-06-03 14:10 UTC | Task council-20260603-1401-mi4x</div></header>
+  <section class="grid metrics">
+    <article class="card metric"><small>Outcome</small><strong>SPLIT</strong><span>Verdict</span></article>
+    <article class="card metric"><small>Certainty</small><strong>0.88</strong><span>Confidence</span></article>
+    <article class="card metric"><small>Quality</small><strong>3.45/4</strong><span>NPLF average</span></article>
+    <article class="card metric"><small>Run Spend</small><strong>$0.3638</strong><span>Cost</span></article>
+    <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
+  </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>2 PASS / 1 REVISE</strong><span>Final reconciler tier: SPLIT</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>PASS + REVISE + PASS</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>SPLIT after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor A</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.95</strong></div><h3>Why this advisor voted this way</h3><p>Safely isolates the research runtime using subprocess execution while preserving the hub&#x27;s robust delivery and PDF auto-attach pathways (Option C).</p><h3>Main objection or warning</h3><p>Adding a subprocess CLI call in the gateway hot path introduces latency; the 900s timeout could tie up resources if the async implementation is flawed.</p></article>
+<article class='advisor-card vote-revise'><div class='advisor-head'><span>Advisor B</span><b>REVISE</b></div><div class='confidence'><span>Confidence</span><strong>0.82</strong></div><h3>Why this advisor voted this way</h3><p>Option C correctly separates skill auto-loading from isolated profile-runtime invocation and routes through the existing hub delivery path, preserving Telegram transcript, citation handling, and long-response PDF auto-attach without bypassing them (directly satisfies the duplicate-send and PDF success criteria).</p><h3>Main objection or warning</h3><p>No concurrency cap on spawned child profiles: each research-like Telegram turn forks a hermes-research subprocess with a 900s ceiling, so a burst of research requests can exhaust CPU/memory/model-spend on the host and starve the hub gateway — there is no max-inflight or queue control specified.</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor C</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.86</strong></div><h3>Why this advisor voted this way</h3><p>Option C satisfies the actual runtime-routing requirement while preserving the existing hub delivery, transcript, Telegram, and PDF handling path.</p><h3>Main objection or warning</h3><p>Latency and model spend can increase materially because each routed research request may invoke an additional child profile runtime before hub delivery.</p></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:90.0%'></i></b><strong>3.60</strong></div>
+<div class='score'><span>Plan</span><b><i style='width:85.0%'></i></b><strong>3.40</strong></div>
+<div class='score'><span>Leverage</span><b><i style='width:95.0%'></i></b><strong>3.80</strong></div>
+<div class='score'><span>Fit</span><b><i style='width:75.0%'></i></b><strong>3.00</strong></div></article>
+    <article class="card"><h2>Advisor Matrix</h2><div class="table-wrap"><table><thead><tr><th>Advisor</th><th>Position</th><th>Confidence</th><th>Agrees On</th><th>Disagrees / Warns On</th></tr></thead><tbody><tr><td><strong>Advisor A</strong></td><td><span class='pill'>PASS</span></td><td>0.95</td><td>Safely isolates the research runtime using subprocess execution while preserving the hub&#x27;s robust delivery and PDF auto-attach pathways (Option C).; Explicitly addresses runtime failure modes with strict timeouts, output truncation, and an honest fallback to skill injection.; Comprehensive constraints and rollback plan ensure Pilot and profile secrets remain untouched, limiting blast radius.</td><td>Adding a subprocess CLI call in the gateway hot path introduces latency; the 900s timeout could tie up resources if the async implementation is flawed.; Hard output truncation at 60,000 characters could abruptly slice markdown structure or JSON formatting, leading to parsing errors in the hub delivery wrapper.; Context management: The child CLI invocation only receives `&lt;child_prompt&gt;`, which might omit necessary conversation history present in the hub session.</td></tr>
+<tr><td><strong>Advisor B</strong></td><td><span class='pill'>REVISE</span></td><td>0.82</td><td>Option C correctly separates skill auto-loading from isolated profile-runtime invocation and routes through the existing hub delivery path, preserving Telegram transcript, citation handling, and long-response PDF auto-attach without bypassing them (directly satisfies the duplicate-send and PDF success criteria).; Strong safety envelope: config-gated runtime_invocation (enabled flags at both router and route level), honest labeled fallback to skill_injection on child failure, timestamped backups of only two artifacts (run.py + config.yaml), and a verification plan with pre/post smoke tests and py_compile.; Root cause is empirically grounded — the PROFILE_RUNTIME_OK smoke with --provider openai-codex -m gpt-5.5 proves the disabled-provider override path works before any gateway code is touched, de-risking the core mechanism.</td><td>No concurrency cap on spawned child profiles: each research-like Telegram turn forks a hermes-research subprocess with a 900s ceiling, so a burst of research requests can exhaust CPU/memory/model-spend on the host and starve the hub gateway — there is no max-inflight or queue control specified.; --accept-hooks on a child profile whose prompt is built from untrusted Telegram user text is a privilege/security concern: user-controlled content flows into a runtime that auto-accepts hooks, widening the injection surface; the brief never analyzes what hooks the hermes-research profile can trigger.; User-experience and spend exposure from a 900s timeout with no progress signal and a hardcoded provider/model (openai-codex/gpt-5.5) baked in config: if the model id drifts/deprecates the route silently fails to fallback every time, and a routed turn can hang up to 15 minutes with no interim feedback to the Telegram user.</td></tr>
+<tr><td><strong>Advisor C</strong></td><td><span class='pill'>PASS</span></td><td>0.86</td><td>Option C satisfies the actual runtime-routing requirement while preserving the existing hub delivery, transcript, Telegram, and PDF handling path.; The plan keeps hermes-research isolated by using explicit child profile invocation with provider/model runtime overrides instead of modifying profile secrets or enabling profile surfaces.; Failure handling is explicit: child runtime failures fall back to existing skill injection with honest fallback labeling rather than silently misrepresenting routing.</td><td>Latency and model spend can increase materially because each routed research request may invoke an additional child profile runtime before hub delivery.; Duplicate Telegram sends remain a real implementation risk if the child response accidentally enters a direct delivery path instead of being treated only as hub input.; The proposed CLI command and config defaults need careful subprocess timeout, stderr capture, truncation, and log hygiene to avoid service regressions or noisy failures.</td></tr></tbody></table></div></article>
+  </section>
+  <section class="card narrative"><h2>Decision Trace</h2><p># Council Report</p>
+<h2>Final Verdict</h2>
+<h2>Final Council Tier</h2>
+<p>Computed Council tier: SPLIT. Reconciler raw verdict field: REVISE. The computed tier controls when quorum, blocker, confidence, and NPLF gates override narrative wording.</p>
+<h2>Advisor Vote Ledger</h2>
+<p>This ledger is generated from structured advisor records and is authoritative if any model-written narrative sentence labels an advisor differently.</p>
+<ul>
+<li>Response A: PASS, confidence 0.95; support: Subprocess execution safely isolates the research runtime while preserving robust hub delivery and PDF auto attach pathways Option C; warning: A subprocess CLI call in the gateway hot path adds latency and a flawed async implementation could tie up resources.</li>
+<li>Response B: PASS, confidence 0.86; support: Option C satisfies runtime routing requirements while preserving existing hub delivery transcript Telegram and PDF handling; warning: Latency and model spend may increase because routed research requests can invoke an additional child profile runtime before hub delivery.</li>
+<li>Response C: REVISE, confidence 0.82; support: Option C separates skill auto-loading from profile-runtime invocation while preserving Telegram transcripts citations and PDF auto-attach; warning: Research Telegram turns can spawn unlimited hermes-research subprocesses risking host resource exhaustion and gateway starvation without max-inflight or queue control.</li>
+</ul>
+<h2>Summary</h2>
+<p>Two advisors approve the plan as written, while one advisor approves Option C only after concrete safety amendments. The final verdict is REVISE: Option C is the right architecture, but the implementation brief should add concurrency control, resolve the <code>--accept-hooks</code> security question, improve provider/model failure labeling, and define long-run user feedback before patching Hermes-main.</p>
+<h2>Substantive Answer</h2>
+<p>Accept Option C as the preferred routing architecture, but do not ship it exactly as written. The council converges that Option C is the only candidate that both invokes the real isolated <code>hermes-research</code> profile runtime and preserves the existing hub delivery path for Telegram, transcript handling, fallback behavior, and long-response PDF auto-attach.</p>
+<p>Decision-point synthesis:</p>
+<p>| Decision Point | Final Recommendation |</p>
+<p>|---|---|</p>
+<p>| Accept Option C? | Yes. Response A, Response B, and Response C all identify Option C as the correct architecture. |</p>
+<p>| Runtime invocation gate | Use <code>profile_router.runtime_invocation.enabled</code> plus per-route <code>enabled</code>; add <code>max_concurrent_runtime_invocations</code> as a must-have gate. |</p>
+<p>| Hub wraps child output? | Yes. The child profile should produce research output only; the hub should deliver it through the existing path. |</p>
+<p>| Child failure behavior | Fall back to labeled skill injection, with specific labels for timeout, model/provider unavailable, subprocess failure, and concurrency-cap fallback. |</p>
+<p>| Defaults | <code>timeout_seconds=900</code>, <code>max_output_chars=60000</code>, <code>max_turns=20</code>, <code>provider=openai-codex</code>, and <code>model=gpt-5.5</code> are acceptable as guarded initial ceilings, but 900s needs UX handling and concurrency limits. |</p>
+<p>Required revisions before implementation:</p>
+<p>1. Add <code>max_concurrent_runtime_invocations</code>, suggested default 1 or 2, and fall back to labeled skill injection when the cap is reached.</p>
+<p>2. Remove <code>--accept-hooks</code> unless it is proven necessary. If retained, document the exact hook allowlist and why it cannot enable Telegram/profile surfaces, write secrets, or touch Pilot.</p>
+<p>3. Treat provider/model failure as a distinct runtime-unavailable class and surface that explicitly in logs and fallback banners.</p>
+<p>4. Emit a lightweight start acknowledgement for long-running routed research turns without creating a second final Telegram send.</p>
+<p>5. Add negative verification: bad model/provider fallback, concurrency-cap behavior, and argv-list subprocess construction.</p>
+<h2>Where Models Agree</h2>
+<p>All three responses agree that Option C is the preferred architecture. Response A says it safely isolates the research runtime while preserving hub delivery and PDF auto-attach. Response B says it is the only candidate satisfying runtime routing while preserving Telegram, transcript, and PDF handling. Response C says Option C is correct because it performs real isolated child-profile invocation while reusing hub delivery.</p>
+<p>All three responses agree that fallback must be honest. Response A endorses explicit fallback to <code>skill_injection_labeled</code>; Response B recommends a clear fallback banner; Response C asks for more specific runtime-unavailable labels.</p>
+<p>All three responses agree that explicit timeout and output controls are necessary. Response A highlights timeout and truncation controls, Response B requires timeout/stderr/truncation handling, and Response C accepts the ceilings while warning that 900s creates resource and UX risk.</p>
+<h2>Where Models Disagree</h2>
+<p>The main disagreement is whether the plan is shippable as written. Response A gives PASS at 0.95 confidence and treats the listed risks as implementation advisories. Response B gives PASS at 0.86 confidence and accepts the defaults as guarded production settings. Response C gives REVISE at 0.82 confidence because it sees four concrete gaps as must-fix items before patching.</p>
+<p>The sharpest split is around resource exhaustion and security. Response C claims routed Telegram turns can spawn unbounded 900-second subprocesses and that <code>--accept-hooks</code> with untrusted Telegram text widens the injection surface. Response A and Response B mention latency, subprocess hygiene, and duplicate-send risks, but neither directly provides a concurrency cap or hook allowlist.</p>
+<h2>Unique Discoveries</h2>
+<p>Response C uniquely identifies <code>max_concurrent_runtime_invocations</code> as a required control rather than a general latency concern.</p>
+<p>Response C uniquely challenges <code>--accept-hooks</code> as a security exposure with untrusted Telegram input and asks either to remove it or document a hook allowlist.</p>
+<p>Response A uniquely warns that hard truncation at 60,000 characters could break markdown structures or JSON-like formatting before hub synthesis.</p>
+<p>Response B uniquely provides concrete routing and fallback banner text that can be adopted directly.</p>
+<h2>Advisor Positions</h2>
+<p>Response A: PASS, confidence 0.95. Primary support: Option C safely isolates child runtime while preserving hub delivery and PDF handling. Primary concern: async subprocess latency/resource handling, truncation safety, and child prompt context completeness.</p>
+<p>Response B: PASS, confidence 0.86. Primary support: Option C satisfies runtime routing without bypassing existing Telegram, transcript, and PDF paths. Primary concern: latency/spend, duplicate-send implementation risk, and subprocess/log hygiene.</p>
+<p>Response C: REVISE, confidence 0.82. Primary support: Option C is the correct architecture. Primary concern: missing concurrency cap, unresolved <code>--accept-hooks</code> risk, provider/model drift handling, and 900-second UX/resource behavior.</p>
+<h2>Agreement Zones</h2>
+<p>Option C is the correct architecture. Response A endorses child profile runtime plus hub delivery, Response B says it is the only option satisfying isolated runtime routing while preserving delivery behavior, and Response C explicitly says to adopt C.</p>
+<p>The hub delivery path should be preserved. Response A cites PDF auto-attach preservation, Response B cites Telegram/transcript/PDF continuity, and Response C says hub wrapping protects transcript, citation, PDF, and single-send behavior.</p>
+<p>Fallback must be explicit and honest. Response A supports strict timeout/truncation with fallback to skill injection, Response B requires a fallback warning banner, and Response C requires specific runtime-unavailable wording.</p>
+<p>Runtime provider/model overrides should be used instead of changing profile config. Response A says runtime overrides avoid permanently altering the disabled provider config, Response B says they avoid secret/profile-tree changes, and Response C agrees the profile provider should remain disabled.</p>
+<h2>Split Zones</h2>
+<p>Shippability as written: Response A and Response B say PASS with implementation discipline. Response C says REVISE because concurrency, hooks, fallback specificity, and long-run UX must be fixed first. CRITIC challenge: Response C&#x27;s concrete concurrency and hook risks weaken Response A&#x27;s and Response B&#x27;s PASS because their public answers do not directly close those controls.</p>
+<p>Concurrency/resource control: Response C requires <code>max_concurrent_runtime_invocations</code> and fallback on cap breach. Response A only flags async resource risk generally, while Response B only flags latency/spend generally. CRITIC challenge: Response A&#x27;s confidence in timeout controls is incomplete if many 900-second subprocesses can run concurrently.</p>
+<p><code>--accept-hooks</code> security: Response C says auto-accepting hooks with untrusted Telegram text is a must-fix unless an allowlist is proven safe. Response A and Response B do not object to the proposed command shape and focus on isolation through subprocess/profile boundaries. CRITIC challenge: Response B&#x27;s claim that runtime overrides avoid profile secret changes does not itself prove hooks cannot write, send, or touch forbidden surfaces.</p>
+<p>Output truncation: Response A uniquely warns that 60,000-character truncation can break markdown/code fences. Response B and Response C accept output bounds but do not address structural truncation. CRITIC challenge: Response A&#x27;s truncation warning should be added as an implementation detail even though it does not change the architecture verdict.</p>
+<h2>Agreement Matrix</h2>
+<p>| Claim | Response A | Response B | Response C |</p>
+<p>|---|---:|---:|---:|</p>
+<p>| Option C is preferred | Agree | Agree | Agree |</p>
+<p>| Hub should wrap child output | Agree | Agree | Agree |</p>
+<p>| Skill injection fallback must remain | Agree | Agree | Agree |</p>
+<p>| Fallback must be honestly labeled | Agree | Agree | Agree, with stronger specificity |</p>
+<p>| Explicit provider/model runtime overrides are acceptable | Agree | Agree | Agree |</p>
+<p>| Timeout/output controls are required | Agree | Agree | Agree |</p>
+<p>| Defaults are acceptable as initial guarded values | Mostly agree | Agree | Conditional agree |</p>
+<h2>Disagreement Matrix</h2>
+<p>| Topic | Response A | Response B | Response C | Synthesis |</p>
+<p>|---|---|---|---|---|</p>
+<p>| Final verdict | PASS | PASS | REVISE | REVISE because C&#x27;s unrebutted safety gaps are concrete and cheap to address before deployment. |</p>
+<p>| Concurrency cap | General async/resource caution | General latency/spend caution | Must-fix cap | Add cap before patch. |</p>
+<p>| <code>--accept-hooks</code> | Not raised as blocker | Not raised as blocker | Must justify or remove | Treat as security revision. |</p>
+<p>| Long-run UX | Not emphasized | Notes latency/spend | Requires interim signal | Add non-final acknowledgement. |</p>
+<p>| Truncation safety | Specific markdown/JSON structure warning | General truncation requirement | General output-bound acceptance | Add structure-aware truncation marker. |</p>
+<h2>Final Synthesis Trace</h2>
+<p>The visible advisor positions produce a 2-of-3 PASS majority, but the dissent is substantive rather than stylistic. Response A and Response B establish that Option C is architecturally correct and that hub delivery should remain the final delivery path. Response C does not reject Option C; it strengthens it with concrete pre-flight controls around concurrency, hooks, provider/model failure, and UX.</p>
+<p>Because the change touches Telegram delivery, subprocess execution, profile isolation, and model spend, the unresolved safety controls are decision-driving. They are also bounded amendments, not a reason to block the architecture. The final verdict is therefore REVISE: approve Option C, require the amendments, then proceed with the Hermes-main-only patch and verification plan.</p>
+<h2>NPLF Arithmetic</h2>
+<p>My independent NPLF: N=3.6, P=3.4, L=3.8, F=3.0. Necessity is high because the current skill-injection path does not satisfy isolated runtime routing. Plan quality is good but needs concurrency and hook controls. Legibility is strong because constraints, rollback, and verification are clear. Fault tolerance is the limiting score due to unbounded subprocess risk, hook ambiguity, long timeout UX, and provider/model drift.</p>
+<p>Cross-advisor means, advisory only: N=3.50, P=3.47, L=3.80, F=3.33. The lower final F score reflects independent weighting of Response C&#x27;s implementation-risk objections.</p>
+<h2>Dissent</h2>
+<h2>Split Zones</h2>
+<p>Shippability as written: Response A and Response B say PASS with implementation discipline. Response C says REVISE because concurrency, hooks, fallback specificity, and long-run UX must be fixed first. CRITIC challenge: Response C&#x27;s concrete concurrency and hook risks weaken Response A&#x27;s and Response B&#x27;s PASS because their public answers do not directly close those controls.</p>
+<p>Concurrency/resource control: Response C requires <code>max_concurrent_runtime_invocations</code> and fallback on cap breach. Response A only flags async resource risk generally, while Response B only flags latency/spend generally. CRITIC challenge: Response A&#x27;s confidence in timeout controls is incomplete if many 900-second subprocesses can run concurrently.</p>
+<p><code>--accept-hooks</code> security: Response C says auto-accepting hooks with untrusted Telegram text is a must-fix unless an allowlist is proven safe. Response A and Response B do not object to the proposed command shape and focus on isolation through subprocess/profile boundaries. CRITIC challenge: Response B&#x27;s claim that runtime overrides avoid profile secret changes does not itself prove hooks cannot write, send, or touch forbidden surfaces.</p>
+<p>Output truncation: Response A uniquely warns that 60,000-character truncation can break markdown/code fences. Response B and Response C accept output bounds but do not address structural truncation. CRITIC challenge: Response A&#x27;s truncation warning should be added as an implementation detail even though it does not change the architecture verdict.</p>
+<h2>Advisor Positions</h2>
+<h3>Advisor A</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.95</li>
+<li>Agrees on: Safely isolates the research runtime using subprocess execution while preserving the hub&#x27;s robust delivery and PDF auto-attach pathways (Option C).; Explicitly addresses runtime failure modes with strict timeouts, output truncation, and an honest fallback to skill injection.; Comprehensive constraints and rollback plan ensure Pilot and profile secrets remain untouched, limiting blast radius.</li>
+<li>Disagrees or warns on: Adding a subprocess CLI call in the gateway hot path introduces latency; the 900s timeout could tie up resources if the async implementation is flawed.; Hard output truncation at 60,000 characters could abruptly slice markdown structure or JSON formatting, leading to parsing errors in the hub delivery wrapper.; Context management: The child CLI invocation only receives <code>&lt;child_prompt&gt;</code>, which might omit necessary conversation history present in the hub session.</li>
+</ul>
+<h3>Advisor B</h3>
+<ul>
+<li>Position: REVISE</li>
+<li>Confidence: 0.82</li>
+<li>Agrees on: Option C correctly separates skill auto-loading from isolated profile-runtime invocation and routes through the existing hub delivery path, preserving Telegram transcript, citation handling, and long-response PDF auto-attach without bypassing them (directly satisfies the duplicate-send and PDF success criteria).; Strong safety envelope: config-gated runtime_invocation (enabled flags at both router and route level), honest labeled fallback to skill_injection on child failure, timestamped backups of only two artifacts (run.py + config.yaml), and a verification plan with pre/post smoke tests and py_compile.; Root cause is empirically grounded — the PROFILE_RUNTIME_OK smoke with --provider openai-codex -m gpt-5.5 proves the disabled-provider override path works before any gateway code is touched, de-risking the core mechanism.</li>
+<li>Disagrees or warns on: No concurrency cap on spawned child profiles: each research-like Telegram turn forks a hermes-research subprocess with a 900s ceiling, so a burst of research requests can exhaust CPU/memory/model-spend on the host and starve the hub gateway — there is no max-inflight or queue control specified.; --accept-hooks on a child profile whose prompt is built from untrusted Telegram user text is a privilege/security concern: user-controlled content flows into a runtime that auto-accepts hooks, widening the injection surface; the brief never analyzes what hooks the hermes-research profile can trigger.; User-experience and spend exposure from a 900s timeout with no progress signal and a hardcoded provider/model (openai-codex/gpt-5.5) baked in config: if the model id drifts/deprecates the route silently fails to fallback every time, and a routed turn can hang up to 15 minutes with no interim feedback to the Telegram user.</li>
+</ul>
+<h3>Advisor C</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.86</li>
+<li>Agrees on: Option C satisfies the actual runtime-routing requirement while preserving the existing hub delivery, transcript, Telegram, and PDF handling path.; The plan keeps hermes-research isolated by using explicit child profile invocation with provider/model runtime overrides instead of modifying profile secrets or enabling profile surfaces.; Failure handling is explicit: child runtime failures fall back to existing skill injection with honest fallback labeling rather than silently misrepresenting routing.</li>
+<li>Disagrees or warns on: Latency and model spend can increase materially because each routed research request may invoke an additional child profile runtime before hub delivery.; Duplicate Telegram sends remain a real implementation risk if the child response accidentally enters a direct delivery path instead of being treated only as hub input.; The proposed CLI command and config defaults need careful subprocess timeout, stderr capture, truncation, and log hygiene to avoid service regressions or noisy failures.</li>
+</ul>
+<h2>Scoring</h2>
+<ul>
+<li>Tier: SPLIT</li>
+<li>Confidence: 0.88</li>
+<li>Cost: $0.3638</li>
+<li>N: 3.60/4</li>
+<li>P: 3.40/4</li>
+<li>L: 3.80/4</li>
+<li>F: 3.00/4</li>
+</ul></section>
+</main>
+</body>
+</html>
