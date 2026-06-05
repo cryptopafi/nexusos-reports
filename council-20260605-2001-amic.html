@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split: Decide Whether Codex Should Execute Hermes-Main Low-Latency Voice Route V2 Plan Now. — council-20260605-2001-amic</title>
+<style>
+:root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --panel2:#242424; --line:#303030; --text:#e8e8e8; --muted:#a0a0a0; --green:#5bc46b; --amber:#f0a631; --red:#e5534b; --blue:#76a9ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 16% 0%, #1f2937 0, transparent 28rem), var(--bg); color:var(--text); font:14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:30px 24px 60px; }
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:26px; }
+.brand { font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+button { border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:8px; padding:8px 12px; }
+.hero { padding:28px 0 22px; border-bottom:1px solid var(--line); }
+h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter-spacing:0; }
+.subtitle { max-width:850px; color:var(--muted); font-size:17px; }
+.meta { margin-top:16px; color:var(--muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+.grid { display:grid; gap:16px; }
+.metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
+.two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
+.card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
+.metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
+.metric span { color:var(--muted); }
+h2 { margin:0 0 14px; font-size:22px; }
+h3 { margin:18px 0 8px; color:var(--blue); }
+.score { display:grid; grid-template-columns:130px minmax(120px, 1fr) 52px; align-items:center; gap:12px; margin:11px 0; }
+.score b { height:16px; background:#111; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.score i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--red), var(--amber), var(--green)); }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+table { border-collapse:collapse; width:100%; min-width:760px; background:var(--panel); }
+th,td { border-bottom:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; }
+th { background:var(--panel2); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+tr:hover td { background:rgba(255,255,255,.025); }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:#151515; font-weight:700; }
+.narrative { margin-top:16px; }
+.narrative p { margin:9px 0; }
+.narrative ul { padding-left:22px; }
+code { background:#101010; border:1px solid var(--line); border-radius:5px; padding:1px 5px; }
+pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(--line); border-radius:8px; padding:14px; }
+.muted { color:var(--muted); }
+summary { cursor:pointer; color:var(--muted); }
+a { color:var(--blue); text-decoration:none; }
+@media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
+  <header class="hero"><h1>Split: Decide Whether Codex Should Execute Hermes-Main Low-Latency Voice Route V2 Plan Now. — council-20260605-2001-amic</h1><p class="subtitle">Final Council Tier Computed Council tier: SPLIT.</p><div class="meta">Generated 2026-06-05 20:13 UTC | Task council-20260605-2001-amic</div></header>
+  <section class="grid metrics">
+    <article class="card metric"><small>Outcome</small><strong>SPLIT</strong><span>Verdict</span></article>
+    <article class="card metric"><small>Certainty</small><strong>0.86</strong><span>Confidence</span></article>
+    <article class="card metric"><small>Quality</small><strong>3.45/4</strong><span>NPLF average</span></article>
+    <article class="card metric"><small>Run Spend</small><strong>$0.4006</strong><span>Cost</span></article>
+    <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
+  </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>2 PASS / 1 REVISE</strong><span>Final reconciler tier: SPLIT</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>PASS + REVISE + PASS</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>SPLIT after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor A</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.95</strong></div><h3>Why this advisor voted this way</h3><p>Strict physical isolation architecture (separate home, port, and service) prevents configuration drift and backend overlap with the daily Hermes route.</p><h3>Main objection or warning</h3><p>Underlying Hermes CLI behavior with `--replace` or hardcoded locks might cross home-directory boundaries and inadvertently signal the daily service.</p></article>
+<article class='advisor-card vote-revise'><div class='advisor-head'><span>Advisor B</span><b>REVISE</b></div><div class='confidence'><span>Confidence</span><strong>0.82</strong></div><h3>Why this advisor voted this way</h3><p>Correct isolation architecture: Option B separates home, service, port, and config, so the cosmetic model-id and ignored reasoning_effort facts are properly handled by a dedicated voice home rather than a second model id on 8642</p><h3>Main objection or warning</h3><p>Shared lock/pidfile scope is unproven: if Hermes keys its singleton lock or pidfile on a global path rather than the home, a voice process using --replace could restart or kill the daily gateway</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor C</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.86</strong></div><h3>Why this advisor voted this way</h3><p>Option B isolates the voice route by home, service, port, and config, which directly addresses the stated daily Hermes blast radius.</p><h3>Main objection or warning</h3><p>The gateway lock or --replace behavior could still interfere with daily 8642 unless empirically proven on the target host before any production unit is created.</p></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:85.0%'></i></b><strong>3.40</strong></div>
+<div class='score'><span>Plan</span><b><i style='width:87.5%'></i></b><strong>3.50</strong></div>
+<div class='score'><span>Leverage</span><b><i style='width:95.0%'></i></b><strong>3.80</strong></div>
+<div class='score'><span>Fit</span><b><i style='width:77.5%'></i></b><strong>3.10</strong></div></article>
+    <article class="card"><h2>Advisor Matrix</h2><div class="table-wrap"><table><thead><tr><th>Advisor</th><th>Position</th><th>Confidence</th><th>Agrees On</th><th>Disagrees / Warns On</th></tr></thead><tbody><tr><td><strong>Advisor A</strong></td><td><span class='pill'>PASS</span></td><td>0.95</td><td>Strict physical isolation architecture (separate home, port, and service) prevents configuration drift and backend overlap with the daily Hermes route.; Explicit, measurable latency target (p95 true-TTFW &lt; 1.2s) mapped to mandated phase-testing before production wiring.; Comprehensive risk awareness regarding service collisions, specifically identifying lock/pidfile behavior and the `--replace` flag as critical test boundaries.</td><td>Underlying Hermes CLI behavior with `--replace` or hardcoded locks might cross home-directory boundaries and inadvertently signal the daily service.; Provider-side latency variability might prevent `claude-haiku` or `gemini-3-flash-preview` from consistently achieving the aggressive &lt; 1.2s TTFW threshold.; Resource contention on the shared VPS during concurrent voice and daily main usage could introduce latency spikes.</td></tr>
+<tr><td><strong>Advisor B</strong></td><td><span class='pill'>REVISE</span></td><td>0.82</td><td>Correct isolation architecture: Option B separates home, service, port, and config, so the cosmetic model-id and ignored reasoning_effort facts are properly handled by a dedicated voice home rather than a second model id on 8642; Crisp, measurable acceptance: exact paths/ports, p95 true-TTFW &lt; 1.2s measured to first non-empty delta.content over N&gt;=10, and sha256/MainPID/NRestarts non-degradation checks on the daily route; Fail-forward boundary with a throwaway probe (8647) gating any persistent service creation, which keeps the primary blast radius (daily 8642) out of the dangerous-path test</td><td>Shared lock/pidfile scope is unproven: if Hermes keys its singleton lock or pidfile on a global path rather than the home, a voice process using --replace could restart or kill the daily gateway; The voice/probe startup command&#x27;s use of --replace is unspecified; inheriting the daily &#x27;gateway run --replace&#x27; command into the voice home is the single most likely way to degrade daily Hermes; p95 &lt; 1.2s to first non-empty delta from a Helsinki VPS to Anthropic is tight; a single slow tail call in N=10 can fail the gate, and fallback gemini-3-flash-preview latency is unvalidated</td></tr>
+<tr><td><strong>Advisor C</strong></td><td><span class='pill'>PASS</span></td><td>0.86</td><td>Option B isolates the voice route by home, service, port, and config, which directly addresses the stated daily Hermes blast radius.; The plan correctly treats inbound model ids and per-request reasoning_effort as non-load-bearing, so it avoids unsupported same-gateway routing assumptions.; The gate sequence is ordered correctly: prove independent process and lock behavior, then prove latency, then wire production only if both pass.</td><td>The gateway lock or --replace behavior could still interfere with daily 8642 unless empirically proven on the target host before any production unit is created.; The p95 true-TTFW target below 1.2s may fail on both allowed models, making production wiring unjustified even if isolation works.; Credential reuse and service-unit authoring could accidentally create secret-file drift or touch daily drop-ins unless Codex treats read-only credential references as a hard invariant.</td></tr></tbody></table></div></article>
+  </section>
+  <section class="card narrative"><h2>Decision Trace</h2><p># Council Report</p>
+<h2>Final Verdict</h2>
+<h2>Final Council Tier</h2>
+<p>Computed Council tier: SPLIT. Reconciler raw verdict field: REVISE. The computed tier controls when quorum, blocker, confidence, and NPLF gates override narrative wording.</p>
+<h2>Advisor Vote Ledger</h2>
+<p>This ledger is generated from structured advisor records and is authoritative if any model-written narrative sentence labels an advisor differently.</p>
+<ul>
+<li>Response A: PASS, confidence 0.86; support: Option B isolates the voice route through home service port and config to reduce daily Hermes blast radius; warning: The gateway lock or --replace behavior could still interfere with daily 8642 without target host proof before production unit creation.</li>
+<li>Response B: PASS, confidence 0.95; support: Strict physical isolation with separate home port and service prevents configuration drift and backend overlap with the daily Hermes route; warning: Hermes CLI --replace behavior or hardcoded locks might cross home-directory boundaries and inadvertently signal the daily service.</li>
+<li>Response C: REVISE, confidence 0.82; support: Option B separates home service port and config and handles cosmetic model-id and ignored reasoning_effort via dedicated voice home; warning: Shared Hermes lock scope is unproven and a global pidfile could let voice --replace restart or kill the daily gateway.</li>
+</ul>
+<h2>Summary</h2>
+<p>Execute only the gated Phase-1 proof now. All three advisors support Option B as the correct architecture, and all three agree production wiring must be blocked by any daily-service interference or failure to hit p95 true-TTFW &lt; 1.2s. The material split is whether Codex may continue straight into persistent 8646 wiring after passing gates. Response A and Response B allow continuous gated execution; Response C requires a hard stop after Phase 1. Because the blast radius is daily Hermes-main, the final verdict is REVISE: run the throwaway 8647 proof now, harden the plan, and do not create or start hermes-voice-gateway.service until the Phase-1 report is clean.</p>
+<h2>Substantive Answer</h2>
+<p>Proceed recommendation: proceed now with Phase 1 only. Codex should snapshot daily Hermes, prove throwaway independence on /home/pafi/.hermes-voice-probe and 127.0.0.1:8647, test lock/pidfile and --replace behavior, measure true TTFW to first non-empty streaming delta.content, and produce a gate report. Persistent production wiring on 127.0.0.1:8646 should wait until those results are clean.</p>
+<p>Must-fix amendments to the v2 plan:</p>
+<p>1. Capture daily baselines before any probe: sha256 of /home/pafi/.hermes/config.yaml and /home/pafi/hermes-agent/AGENTS.md, MainPID, NRestarts, /health, active listeners, and a daily identity/latency probe. This combines Response A&#x27;s baseline requirement and Response C&#x27;s before/after fingerprinting requirement.</p>
+<p>2. Do not use --replace for normal probe or voice startup. Use plain gateway run by default, then run one controlled --replace isolation test only inside the throwaway 8647 home to prove it cannot affect daily 8642. This preserves Response C&#x27;s strongest safety amendment while retaining Response A and Response B&#x27;s focus on testing --replace behavior.</p>
+<p>3. Explicitly set HERMES_HOME for probe and voice paths. Do not rely on inferred profile paths. Response A calls this out directly, and Response C&#x27;s lock-scope concern depends on it.</p>
+<p>4. Verify PID, lock, and socket files are scoped to /home/pafi/.hermes-voice-probe or /home/pafi/.hermes-voice and are not shared via /tmp, the daily home, or a global path. This is central to Response B and Response C.</p>
+<p>5. Preflight ports before binding: 8642 must remain the daily listener, 8647 must be free before the probe, and 8646 must be free before any later production wiring.</p>
+<p>6. Validate exact accepted model identifiers locally. Keep OpenRouter and kimi-k2.6 excluded. If claude-haiku is an alias, record the resolved allowed Anthropic identifier. Test gemini-3-flash-preview rather than assuming fallback viability.</p>
+<p>7. Measure true-TTFW over N&gt;=10 sequential streaming calls, fresh connection per call where feasible, skipping role-only chunks and timing the first non-empty delta.content. Report p50, p95, max, and failures.</p>
+<p>8. No new secret files, no copied secret drop-ins, and no edits to daily credential material. Voice may only reference existing credential sources read-only.</p>
+<p>9. Emit a blocked report immediately on any failed hard gate, including measured values, daily baseline comparison, teardown status, and exact next action.</p>
+<p>Explicit blocking conditions:</p>
+<ul>
+<li>Daily 8642 MainPID changes, NRestarts increments, /health fails, identity probe fails, or latency materially regresses during any probe or lock test.</li>
+<li>Daily /home/pafi/.hermes/config.yaml or /home/pafi/hermes-agent/AGENTS.md sha256 changes.</li>
+<li>Any step requires editing /home/pafi/.hermes/config.yaml, /home/pafi/hermes-agent/AGENTS.md, or hermes-gateway.service.</li>
+<li>Throwaway /home/pafi/.hermes-voice-probe cannot bind 127.0.0.1:8647 as an independent process.</li>
+<li>Lock, pidfile, socket, or --replace behavior is global or can affect daily Hermes.</li>
+<li>Neither allowed fast model achieves p95 true-TTFW &lt; 1.2s across N&gt;=10 measured to first non-empty delta.content.</li>
+<li>The route requires OpenRouter, kimi-k2.6, a new secret file, or copied credential material.</li>
+<li>127.0.0.1:8646 is occupied before later production wiring.</li>
+<li>Voice identity, /health, /v1/models, streaming TTFW, or draft-only refusal behavior cannot be verified.</li>
+</ul>
+<p>Short implementation directive for Codex: run Phase 1 now on pafi@100.71.118.85. Snapshot daily 8642, preflight ports, start the throwaway 8647 route with explicit HERMES_HOME and no default --replace, run the controlled --replace isolation test, measure allowed-model TTFW, tear down the probe, re-check daily fingerprints, and report. Do not create or start hermes-voice-gateway.service in this run.</p>
+<h2>Where Models Agree</h2>
+<p>All three agree Option B is the right architecture. Response A says separate home/service/port reduces daily Hermes blast radius, Response B says physical isolation prevents configuration drift and backend overlap, and Response C says the dedicated home handles cosmetic model IDs and ignored reasoning_effort.</p>
+<p>All three agree the daily route must remain untouched. Response A lists no edits to daily config, AGENTS, service, or port as hard blockers; Response B centers service collisions and lock/pidfile behavior as the key risk; Response C requires sha256, MainPID, NRestarts, health, and identity checks before and after gates.</p>
+<p>All three agree latency proof is mandatory. Response A blocks production if neither allowed fast model reaches p95 true-TTFW &lt; 1.2s, Response B identifies that target as the measurable production gate, and Response C adds measurement rigor around first non-empty delta.content, p50/p95/max, and fallback validation.</p>
+<h2>Where Models Disagree</h2>
+<p>The main disagreement is execution boundary. Response A recommends gated execution through production wiring if the gates pass. Response B also supports continuous execution without manual intervention if automated gates pass. Response C recommends Phase 1 only and a hard stop before persistent 8646 service creation.</p>
+<p>There is also a difference in how strongly --replace is treated. Response A forbids production --replace while allowing probe proof, Response B says omit --replace if testing reveals global behavior, and Response C says no --replace by default and one controlled dangerous-path test only in the throwaway home.</p>
+<h2>Unique Discoveries</h2>
+<p>Response A uniquely adds exact model-id validation for claude-haiku aliases and requires blocked reports to include measured values, daily comparison, and teardown status.</p>
+<p>Response B uniquely emphasizes concurrent voice and daily main usage on the shared VPS as a possible latency-spike source.</p>
+<p>Response C uniquely requires a hard stop after Phase 1, fresh connections for latency calls where feasible, and explicit p50/p95/max reporting for both claude-haiku and gemini-3-flash-preview.</p>
+<h2>Advisor Positions</h2>
+<p>Response A: PASS, confidence 0.86. Primary support: Option B isolates home, service, port, and config while avoiding unsupported same-gateway model routing. Primary concern: lock or --replace behavior could still interfere with daily 8642 unless proven on the target host.</p>
+<p>Response B: PASS, confidence 0.95. Primary support: strict physical isolation plus measurable latency gates make the plan execution-ready. Primary concern: --replace or hardcoded locks could cross home boundaries, and provider latency may miss the 1.2s p95 target.</p>
+<p>Response C: REVISE, confidence 0.82. Primary support: Option B is sound and the probe-first gate protects daily 8642. Primary concern: lock/pidfile scope and inherited --replace behavior are under-specified, so Codex should stop after Phase 1 before creating persistent 8646.</p>
+<h2>Agreement Zones</h2>
+<p>Option B is the correct architecture. Response A&#x27;s claim is that separate home/service/port/config reduces daily Hermes blast radius. Response B&#x27;s claim is that physical isolation prevents configuration drift and backend overlap. Response C&#x27;s claim is that separate home/service/port is necessary because inbound model ID is cosmetic and reasoning_effort is ignored.</p>
+<p>Daily Hermes non-degradation is the controlling acceptance criterion. Response A requires baseline hashes, MainPID, NRestarts, health, listeners, and identity/latency probes. Response B identifies service collisions, lock/pidfile behavior, and --replace as the key test boundaries. Response C requires before/after daily snapshots around every gate.</p>
+<p>Production wiring must be blocked if independence, safety, or latency gates fail. Response A lists independence, daily-safety, latency, credential, port, and model restrictions as blockers. Response B names daily PID/restart/drop and p95 TTFW failure as blockers. Response C adds global lock/pidfile behavior and identity/refusal verification as blockers.</p>
+<p>OpenRouter and kimi-k2.6 must remain excluded. Response A blocks any winning config requiring OpenRouter or kimi-k2.6, Response C requires config pinning to allowed backends, and Response B frames the latency test around allowed claude-haiku or gemini-3-flash-preview.</p>
+<h2>Split Zones</h2>
+<p>Execution boundary: Response A supports executing the gated additive build now and proceeding to hermes-voice-gateway.service only after gates pass. Response B supports the same continuous gated execution without manual intervention if automated gates pass. Response C supports Phase 1 now but requires a hard stop before persistent 8646 wiring. CRITIC challenge: Response C&#x27;s hard-stop position weakens Response A and Response B&#x27;s continuous-run approval because neither PASS response fully eliminates the risk that a clean automated gate still misses an operational lock or startup edge case before service creation.</p>
+<p>Treatment of --replace: Response C says no --replace by default and only a controlled throwaway dangerous-path test should use it. Response A says production --replace should be forbidden even if probe behavior appears home-scoped. Response B says omit --replace if testing reveals global broadcast behavior. CRITIC challenge: Response B&#x27;s conditional omission is weaker than Response A and Response C because waiting until global behavior is observed could already place daily Hermes in the blast radius unless the test is tightly isolated.</p>
+<p>Latency confidence: Response B is most confident that the measurable gates are sufficient, while Response A and Response C both warn the p95 &lt; 1.2s target may fail on allowed models. CRITIC challenge: Response B&#x27;s strong confidence is weakened by Response C&#x27;s point that Helsinki-to-provider tail latency and N=10 sampling are tight, and by Response A&#x27;s concern that production wiring is unjustified if both allowed models fail.</p>
+<h2>Agreement Matrix</h2>
+<p>Option B architecture: Response A + Response B + Response C agree.</p>
+<p>Separate voice home / service / port: Response A + Response B + Response C agree.</p>
+<p>Daily route must remain untouched: Response A + Response B + Response C agree.</p>
+<p>Throwaway probe before production wiring: Response A + Response B + Response C agree.</p>
+<p>Lock, pidfile, and --replace behavior must be tested: Response A + Response B + Response C agree.</p>
+<p>p95 true-TTFW &lt; 1.2s over N&gt;=10 is mandatory: Response A + Response B + Response C agree.</p>
+<p>OpenRouter and kimi-k2.6 excluded: Response A + Response C explicitly agree; Response B implicitly tests only allowed claude-haiku or gemini-3-flash-preview.</p>
+<p>No new secret files: Response A + Response C explicitly agree; Response B does not materially dispute.</p>
+<h2>Disagreement Matrix</h2>
+<p>Proceed beyond Phase 1: Response A and Response B say yes if gates pass; Response C says no, stop after Phase 1 and require explicit go before persistent 8646.</p>
+<p>--replace policy: Response C says no default --replace and one controlled throwaway test; Response A says production --replace is forbidden; Response B says omit it if global behavior appears. The disagreement is about strictness, not about whether the risk matters.</p>
+<p>Gate sufficiency: Response B says current gates are sufficient; Response A says mostly sufficient with amendments; Response C says almost sufficient but under-specified around lock/pidfile and startup command.</p>
+<p>Fallback validation: Response C explicitly requires testing gemini-3-flash-preview as fallback; Response A says validate exact locally accepted model ID and allowed winners; Response B focuses on claude-haiku or gemini-3-flash-preview exceeding or clearing the threshold.</p>
+<h2>Final Synthesis Trace</h2>
+<p>The final verdict is REVISE rather than PASS because the advisors agree on architecture and Phase-1 execution, but they materially split on whether production wiring should happen in the same uninterrupted run. The strongest shared claim is that Option B is the only architecture matching the constraints. The strongest risk claim is Response C&#x27;s warning that --replace and lock/pidfile scope remain under-specified and can directly affect daily 8642. Response A and Response B acknowledge the same risk, but they still allow continuous gated execution. Given daily Hermes-main degradation is the primary blast radius, the synthesis preserves the dissent and adopts the stricter execution boundary: run Phase 1 now, then stop before persistent 8646 wiring unless the gate report is clean.</p>
+<p>The result is not a majority-vote PASS. The 2-of-3 PASS majority supports proceeding with gated proof, but Response C&#x27;s REVISE changes the build boundary. Therefore Codex should execute the safe proof steps now and block production wiring on any independence, lock, latency, credential, port, identity, or daily-fingerprint failure.</p>
+<h2>NPLF Arithmetic</h2>
+<p>My independent NPLF: N=3.4, because the need for a low-latency isolated voice route is real but latency target risk remains material. P=3.5, because the plan is strong after amendments but should hard-stop before production wiring. L=3.8, because the constraints, prior ralplan, and acceptance criteria are unusually clear. F=3.1, because operational cost and provider tail latency remain uncertain until Phase-1 data exists.</p>
+<p>Cross-advisor means, advisory only: N=3.50, P=3.57, L=3.83, F=3.40. My scores are not an average; they weight the unresolved daily-service blast radius and Phase-1 stop condition more heavily.</p>
+<h2>Dissent</h2>
+<h2>Split Zones</h2>
+<p>Execution boundary: Response A supports executing the gated additive build now and proceeding to hermes-voice-gateway.service only after gates pass. Response B supports the same continuous gated execution without manual intervention if automated gates pass. Response C supports Phase 1 now but requires a hard stop before persistent 8646 wiring. CRITIC challenge: Response C&#x27;s hard-stop position weakens Response A and Response B&#x27;s continuous-run approval because neither PASS response fully eliminates the risk that a clean automated gate still misses an operational lock or startup edge case before service creation.</p>
+<p>Treatment of --replace: Response C says no --replace by default and only a controlled throwaway dangerous-path test should use it. Response A says production --replace should be forbidden even if probe behavior appears home-scoped. Response B says omit --replace if testing reveals global broadcast behavior. CRITIC challenge: Response B&#x27;s conditional omission is weaker than Response A and Response C because waiting until global behavior is observed could already place daily Hermes in the blast radius unless the test is tightly isolated.</p>
+<p>Latency confidence: Response B is most confident that the measurable gates are sufficient, while Response A and Response C both warn the p95 &lt; 1.2s target may fail on allowed models. CRITIC challenge: Response B&#x27;s strong confidence is weakened by Response C&#x27;s point that Helsinki-to-provider tail latency and N=10 sampling are tight, and by Response A&#x27;s concern that production wiring is unjustified if both allowed models fail.</p>
+<h2>Advisor Positions</h2>
+<h3>Advisor A</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.95</li>
+<li>Agrees on: Strict physical isolation architecture (separate home, port, and service) prevents configuration drift and backend overlap with the daily Hermes route.; Explicit, measurable latency target (p95 true-TTFW &lt; 1.2s) mapped to mandated phase-testing before production wiring.; Comprehensive risk awareness regarding service collisions, specifically identifying lock/pidfile behavior and the <code>--replace</code> flag as critical test boundaries.</li>
+<li>Disagrees or warns on: Underlying Hermes CLI behavior with <code>--replace</code> or hardcoded locks might cross home-directory boundaries and inadvertently signal the daily service.; Provider-side latency variability might prevent <code>claude-haiku</code> or <code>gemini-3-flash-preview</code> from consistently achieving the aggressive &lt; 1.2s TTFW threshold.; Resource contention on the shared VPS during concurrent voice and daily main usage could introduce latency spikes.</li>
+</ul>
+<h3>Advisor B</h3>
+<ul>
+<li>Position: REVISE</li>
+<li>Confidence: 0.82</li>
+<li>Agrees on: Correct isolation architecture: Option B separates home, service, port, and config, so the cosmetic model-id and ignored reasoning_effort facts are properly handled by a dedicated voice home rather than a second model id on 8642; Crisp, measurable acceptance: exact paths/ports, p95 true-TTFW &lt; 1.2s measured to first non-empty delta.content over N&gt;=10, and sha256/MainPID/NRestarts non-degradation checks on the daily route; Fail-forward boundary with a throwaway probe (8647) gating any persistent service creation, which keeps the primary blast radius (daily 8642) out of the dangerous-path test</li>
+<li>Disagrees or warns on: Shared lock/pidfile scope is unproven: if Hermes keys its singleton lock or pidfile on a global path rather than the home, a voice process using --replace could restart or kill the daily gateway; The voice/probe startup command&#x27;s use of --replace is unspecified; inheriting the daily &#x27;gateway run --replace&#x27; command into the voice home is the single most likely way to degrade daily Hermes; p95 &lt; 1.2s to first non-empty delta from a Helsinki VPS to Anthropic is tight; a single slow tail call in N=10 can fail the gate, and fallback gemini-3-flash-preview latency is unvalidated</li>
+</ul>
+<h3>Advisor C</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.86</li>
+<li>Agrees on: Option B isolates the voice route by home, service, port, and config, which directly addresses the stated daily Hermes blast radius.; The plan correctly treats inbound model ids and per-request reasoning_effort as non-load-bearing, so it avoids unsupported same-gateway routing assumptions.; The gate sequence is ordered correctly: prove independent process and lock behavior, then prove latency, then wire production only if both pass.</li>
+<li>Disagrees or warns on: The gateway lock or --replace behavior could still interfere with daily 8642 unless empirically proven on the target host before any production unit is created.; The p95 true-TTFW target below 1.2s may fail on both allowed models, making production wiring unjustified even if isolation works.; Credential reuse and service-unit authoring could accidentally create secret-file drift or touch daily drop-ins unless Codex treats read-only credential references as a hard invariant.</li>
+</ul>
+<h2>Scoring</h2>
+<ul>
+<li>Tier: SPLIT</li>
+<li>Confidence: 0.86</li>
+<li>Cost: $0.4006</li>
+<li>N: 3.40/4</li>
+<li>P: 3.50/4</li>
+<li>L: 3.80/4</li>
+<li>F: 3.10/4</li>
+</ul></section>
+</main>
+</body>
+</html>
