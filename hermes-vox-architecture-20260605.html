@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes-Vox Architecture — 3-Layer Design for Vox CEO</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222535;
+    --border: #2e3248;
+    --accent: #6c7bff;
+    --accent2: #00c9a7;
+    --accent3: #ff7c5c;
+    --accent4: #ffd166;
+    --text: #e8eaf6;
+    --text-dim: #8b8fa8;
+    --text-muted: #5c6070;
+    --green: #4caf82;
+    --red: #e05c5c;
+    --yellow: #ffd166;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  [data-theme="light"] {
+    --bg: #f4f5f9;
+    --surface: #ffffff;
+    --surface2: #eef0f7;
+    --border: #d0d4e8;
+    --text: #1a1d2e;
+    --text-dim: #4a4f6b;
+    --text-muted: #8b90a8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.6; }
+
+  /* TOP BAR */
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+  .topbar-logo { font-weight: 700; font-size: 14px; color: var(--accent); letter-spacing: 0.05em; }
+  .topbar-meta { display: flex; gap: 16px; align-items: center; }
+  .badge { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--text-dim); }
+  .badge.pass { border-color: var(--green); color: var(--green); }
+  .badge.warn { border-color: var(--yellow); color: var(--yellow); }
+  .theme-toggle { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; cursor: pointer; color: var(--text-dim); font-size: 12px; }
+  .share-btn { background: var(--accent); color: white; border: none; border-radius: 8px; padding: 5px 14px; cursor: pointer; font-size: 12px; font-weight: 600; }
+
+  /* HERO */
+  .hero { padding: 56px 24px 40px; max-width: 1100px; margin: 0 auto; }
+  .hero-tag { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+  .hero h1 { font-size: 36px; font-weight: 800; line-height: 1.15; margin-bottom: 16px; background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 17px; color: var(--text-dim); max-width: 700px; margin-bottom: 28px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+  .meta-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: var(--text-dim); }
+
+  /* EXEC SUMMARY */
+  .exec { background: linear-gradient(135deg, var(--surface) 0%, rgba(108,123,255,0.08) 100%); border: 1px solid rgba(108,123,255,0.3); border-radius: var(--radius); padding: 28px 32px; max-width: 1100px; margin: 0 auto 40px; }
+  .exec h2 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .exec p { color: var(--text); font-size: 15px; line-height: 1.7; }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+
+  /* SECTIONS */
+  .section { margin-bottom: 48px; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .section-num { background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .section-num.green { background: var(--green); }
+  .section-num.orange { background: var(--accent3); }
+  .section-num.yellow { background: var(--yellow); color: #1a1d2e; }
+  .section-num.purple { background: #9b6bff; }
+  .section h2 { font-size: 22px; font-weight: 700; }
+
+  /* CARDS */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--card-shadow); }
+  .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+  .card h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+  .card p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+  .card ul { list-style: none; padding: 0; }
+  .card ul li { font-size: 13px; color: var(--text-dim); padding: 4px 0; padding-left: 16px; position: relative; border-bottom: 1px solid var(--border); }
+  .card ul li:last-child { border-bottom: none; }
+  .card ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 6px; }
+
+  /* ROLE CARDS */
+  .role-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; position: relative; overflow: hidden; }
+  .role-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .role-card.pa::before { background: var(--accent); }
+  .role-card.concierge::before { background: var(--accent2); }
+  .role-card.cos::before { background: var(--accent3); }
+  .role-card.counselor::before { background: var(--yellow); }
+  .role-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .role-label.pa { color: var(--accent); }
+  .role-label.concierge { color: var(--accent2); }
+  .role-label.cos { color: var(--accent3); }
+  .role-label.counselor { color: var(--yellow); }
+  .role-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+  .attr-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .attr-row:last-child { border-bottom: none; }
+  .attr-label { color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; min-width: 90px; }
+  .attr-val { color: var(--text-dim); text-align: right; max-width: 65%; line-height: 1.4; }
+
+  /* DECISION MATRIX */
+  .matrix { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); margin-bottom: 24px; }
+  .matrix table { width: 100%; border-collapse: collapse; }
+  .matrix th { background: var(--surface2); color: var(--text-dim); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 14px; text-align: left; }
+  .matrix td { background: var(--surface); color: var(--text-dim); font-size: 13px; padding: 10px 14px; border-top: 1px solid var(--border); vertical-align: top; }
+  .matrix tr:hover td { background: var(--surface2); }
+  .tag { display: inline-block; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; }
+  .tag.green { background: rgba(76,175,130,0.15); color: var(--green); }
+  .tag.red { background: rgba(224,92,92,0.15); color: var(--red); }
+  .tag.yellow { background: rgba(255,209,102,0.15); color: var(--yellow); }
+  .tag.blue { background: rgba(108,123,255,0.15); color: var(--accent); }
+  .tag.teal { background: rgba(0,201,167,0.15); color: var(--accent2); }
+
+  /* IDENTITY COMPARISON */
+  .identity-col { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .identity-col.recommended { border-color: var(--accent); background: linear-gradient(135deg, var(--surface) 0%, rgba(108,123,255,0.06) 100%); }
+  .identity-col h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .identity-col .cost { font-size: 22px; font-weight: 800; margin: 8px 0; }
+  .identity-col .cost span { font-size: 13px; font-weight: 400; color: var(--text-dim); }
+  .check-row { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; font-size: 13px; color: var(--text-dim); }
+  .check-row .icon { flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+
+  /* PHASED PLAN */
+  .phase { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 16px; position: relative; }
+  .phase-tag { display: inline-block; background: var(--accent); color: white; border-radius: 6px; padding: 3px 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .phase-tag.p1 { background: var(--green); }
+  .phase-tag.p2 { background: var(--accent); }
+  .phase-tag.p3 { background: var(--accent3); }
+  .phase h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .phase-list { list-style: none; padding: 0; }
+  .phase-list li { font-size: 13px; color: var(--text-dim); padding: 5px 0; padding-left: 18px; position: relative; border-bottom: 1px solid var(--border); }
+  .phase-list li:last-child { border-bottom: none; }
+  .phase-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 7px; }
+  .phase-meta { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+
+  /* RISK CARDS */
+  .risk-card { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--red); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 12px; }
+  .risk-card.medium { border-left-color: var(--yellow); }
+  .risk-card.low { border-left-color: var(--green); }
+  .risk-num { font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .risk-num.medium { color: var(--yellow); }
+  .risk-num.low { color: var(--green); }
+  .risk-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .risk-card p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+  .risk-mitigation { margin-top: 10px; padding: 8px 12px; background: var(--surface2); border-radius: var(--radius-sm); font-size: 12px; color: var(--accent2); }
+
+  /* GOVERNANCE */
+  .gov-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
+  .gov-block h4 { font-size: 14px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .gov-block p, .gov-block li { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+  /* ARCH DIAGRAM */
+  .arch-box { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 8px; font-size: 13px; }
+  .arch-arrow { text-align: center; color: var(--accent); font-size: 18px; margin: 4px 0; }
+  .arch-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 4px; }
+
+  /* SOURCE COVERAGE */
+  .coverage-table { width: 100%; border-collapse: collapse; border-radius: var(--radius); overflow: hidden; }
+  .coverage-table th { background: var(--surface2); color: var(--text-dim); font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 9px 14px; text-align: left; }
+  .coverage-table td { background: var(--surface); color: var(--text-dim); font-size: 13px; padding: 9px 14px; border-top: 1px solid var(--border); }
+
+  /* CALLOUT */
+  .callout { border-radius: var(--radius); padding: 16px 20px; margin-bottom: 16px; }
+  .callout.info { background: rgba(108,123,255,0.08); border: 1px solid rgba(108,123,255,0.25); }
+  .callout.warn { background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.25); }
+  .callout.critical { background: rgba(224,92,92,0.08); border: 1px solid rgba(224,92,92,0.25); }
+  .callout.success { background: rgba(76,175,130,0.08); border: 1px solid rgba(76,175,130,0.25); }
+  .callout-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .callout.info .callout-title { color: var(--accent); }
+  .callout.warn .callout-title { color: var(--yellow); }
+  .callout.critical .callout-title { color: var(--red); }
+  .callout.success .callout-title { color: var(--green); }
+  .callout p { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+  /* FOOTER */
+  .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--text-muted); font-size: 12px; }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+    .section h2 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-logo">DELPHI PRO &nbsp;/&nbsp; D3 Research</div>
+  <div class="topbar-meta">
+    <span class="badge pass">EPR 16/20 PASS</span>
+    <span class="badge">27 sources</span>
+    <span class="badge">2026-06-05</span>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Light</button>
+    <button class="share-btn" onclick="copyLink()">Share</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Hermes-Vox Architecture &nbsp;·&nbsp; AI Agent Corporate Identity</div>
+  <h1>Hermes-Vox: 3-Layer Architecture<br>for the Vox CEO</h1>
+  <div class="hero-sub">Role layer, corporate identity provisioning, and meeting autonomy — from MVP to full autonomous AI presence. Includes EU AI Act Art.50 governance and a concrete identity recommendation for a solo operator.</div>
+  <div class="meta-row">
+    <span class="meta-pill">Depth: D3</span>
+    <span class="meta-pill">EPR: 16/20</span>
+    <span class="meta-pill">self_grade: 82/100</span>
+    <span class="meta-pill">27 sources</span>
+    <span class="meta-pill">Reuses: Cortex d5919687 + avatar intel 2026-06-03</span>
+    <span class="meta-pill">DESIGN ONLY — no VPS changes</span>
+  </div>
+</div>
+
+<!-- EXEC SUMMARY -->
+<div class="exec container" style="padding-left:24px;padding-right:24px;">
+  <h2>Executive Summary</h2>
+  <p>Hermes-Vox can serve the Vox CEO across four roles — personal assistant, concierge, chief of staff, and personal counselor — mapped onto its existing Leo/Rove/Olivia mode structure, with counselor requiring a new, strictly bounded fourth mode. The optimal corporate identity path for a solo operator is a <strong>dedicated Google Workspace seat ($6/mo) with a clear AI label</strong> — not a service account — giving Hermes its own email address and calendar ownership while satisfying EU AI Act Art.50 disclosure requirements. For meeting autonomy, reuse the Tavus CVI/Recall.ai stack from prior intel: Tavus on its own call link for CEO-initiated meetings; Recall.ai bridge for joining third-party Zoom/Meet/Teams sessions. All liability flows to the human principal (CEO). The mandatory compliance trigger is <strong>August 2, 2026</strong> — EU AI Act Art.50(1) chatbot/agent disclosure with no deferral window.</p>
+</div>
+
+<div class="container">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- LAYER 1 — ROLE ARCHITECTURE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2>Role Layer — Four Roles, Three Modes, One Persona Set</h2>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">Architecture Decision</div>
+    <p>The four roles map to Hermes's existing three modes (Leo / Rove / Olivia) with one new mode addition (Sage for counselor). The existing <em>profiles</em> (hermes-meeting-assistant, hermes-meeting-notes) are sub-configurations within modes — they stay as profiles. Modes define the top-level behavioral register; profiles tune it for specific contexts.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="role-card pa">
+      <div class="role-label pa">Role 1</div>
+      <h3>Personal Assistant</h3>
+      <div class="attr-row"><span class="attr-label">Mode</span><span class="attr-val">Leo (operational/default)</span></div>
+      <div class="attr-row"><span class="attr-label">Scope</span><span class="attr-val">Email triage, calendar management, scheduling, task tracking, reminders, inbox zero, travel logistics</span></div>
+      <div class="attr-row"><span class="attr-label">Autonomous</span><span class="attr-val">Send replies to known contacts, schedule/accept meetings, set reminders, draft emails for approval queue</span></div>
+      <div class="attr-row"><span class="attr-label">Escalate</span><span class="attr-val">New unknown contacts, financial commitments, legal or contractual language, any CEO-identified sensitive thread</span></div>
+      <div class="attr-row"><span class="attr-label">Tone</span><span class="attr-val">Crisp, professional, efficient — Hermes Leo voice</span></div>
+      <div class="attr-row"><span class="attr-label">Memory</span><span class="attr-val">Contact relationship graph, CEO preferences, recurring meetings, approved senders list, draft approval history</span></div>
+      <div class="attr-row"><span class="attr-label">HIL Trigger</span><span class="attr-val">Any action with financial, legal, or reputational consequence; unknown sender with commitment request</span></div>
+    </div>
+    <div class="role-card concierge">
+      <div class="role-label concierge">Role 2</div>
+      <h3>Concierge</h3>
+      <div class="attr-row"><span class="attr-label">Mode</span><span class="attr-val">Leo (operational) + Rove (if negotiating vendor)</span></div>
+      <div class="attr-row"><span class="attr-label">Scope</span><span class="attr-val">Restaurant/hotel bookings, event tickets, vendor research, gift sourcing, lifestyle admin, service provider coordination</span></div>
+      <div class="attr-row"><span class="attr-label">Autonomous</span><span class="attr-val">Research and present 3 options, execute approved booking, confirm reservations, send logistics summaries</span></div>
+      <div class="attr-row"><span class="attr-label">Escalate</span><span class="attr-val">Budget decisions, bookings requiring payment card, anything impersonating the CEO personally to vendors</span></div>
+      <div class="attr-row"><span class="attr-label">Tone</span><span class="attr-val">Warm, resourceful, detail-oriented</span></div>
+      <div class="attr-row"><span class="attr-label">Memory</span><span class="attr-val">CEO preferences (cuisine, hotels, budget tiers), trusted vendors, past bookings, recurring annual events</span></div>
+      <div class="attr-row"><span class="attr-label">HIL Trigger</span><span class="attr-val">First-time vendor, budget above threshold (CEO-defined), any personal home address or document disclosure</span></div>
+    </div>
+    <div class="role-card cos">
+      <div class="role-label cos">Role 3</div>
+      <h3>Chief of Staff</h3>
+      <div class="attr-row"><span class="attr-label">Mode</span><span class="attr-val">Rove (strategy) primary — Olivia on crisis triggers</span></div>
+      <div class="attr-row"><span class="attr-label">Scope</span><span class="attr-val">Strategic research, competitive intel, OKR (Objectives and Key Results) tracking, board prep, investor briefings, cross-team coordination, decision support</span></div>
+      <div class="attr-row"><span class="attr-label">Autonomous</span><span class="attr-val">Research synthesis, briefing document generation, meeting agenda prep, post-meeting action tracking, status report drafting</span></div>
+      <div class="attr-row"><span class="attr-label">Escalate</span><span class="attr-val">Strategic decisions (Hermes surfaces, CEO decides), hiring/firing inputs, investor or board communications, anything published externally</span></div>
+      <div class="attr-row"><span class="attr-label">Tone</span><span class="attr-val">Strategic, analytical, direct — Rove profile</span></div>
+      <div class="attr-row"><span class="attr-label">Memory</span><span class="attr-val">Company OKRs, competitive landscape snapshots, pending decisions log, stakeholder relationship map, board meeting history</span></div>
+      <div class="attr-row"><span class="attr-label">HIL Trigger</span><span class="attr-val">Any recommendation with budget impact >CEO threshold, all external-facing strategic documents, partnerships or M&amp;A adjacent</span></div>
+    </div>
+    <div class="role-card counselor">
+      <div class="role-label counselor">Role 4 — Special Trust</div>
+      <h3>Personal Counselor</h3>
+      <div class="attr-row"><span class="attr-label">Mode</span><span class="attr-val"><strong>NEW: Sage</strong> (to be created — distinct from Leo/Rove/Olivia)</span></div>
+      <div class="attr-row"><span class="attr-label">Scope</span><span class="attr-val">Reflective sounding board, decision journaling, stress processing, personal goal alignment, values-based thinking, founder mental health support</span></div>
+      <div class="attr-row"><span class="attr-label">Autonomous</span><span class="attr-val">Active listening, Socratic questioning, reframing, pattern-noting across journal entries, non-directive support</span></div>
+      <div class="attr-row"><span class="attr-label">Escalate</span><span class="attr-val">NEVER gives medical or clinical advice; redirects to licensed professional on distress signals; NEVER retains counseling content in shared memory stores</span></div>
+      <div class="attr-row"><span class="attr-label">Tone</span><span class="attr-val">Empathic, non-judgmental, unhurried — deliberately different from other modes</span></div>
+      <div class="attr-row"><span class="attr-label">Memory</span><span class="attr-val">ISOLATED memory partition — counseling data MUST NOT bleed into PA/CoS/concierge memory or any external store (Cortex, Notion, Telegram logs)</span></div>
+      <div class="attr-row"><span class="attr-label">HIL Trigger</span><span class="attr-val">Explicit distress/crisis signals → immediate pivot to "have you considered talking to a professional?" + list of resources; any content that could constitute clinical advice</span></div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-title">Counselor (Sage) — Special Trust and Privacy Requirements</div>
+    <p><strong>The counselor role is categorically different from the other three.</strong> It processes intimate personal data (mental health, stress, family, fears) that attracts the highest GDPR sensitivity tier (Art.9 special categories if clinical, Art.5 data minimization always). This data MUST be stored in an isolated, encrypted partition with no cross-contamination into operational memory. Hermes MUST NOT reference counseling session content in PA/CoS contexts, even if operationally useful. The CEO must explicitly opt in to the Sage mode per session. No counseling summaries in Notion, Telegram, or Cortex without explicit per-entry CEO authorization.</p>
+  </div>
+
+  <div class="section-header" style="margin-top:32px;">
+    <h3 style="font-size:16px;font-weight:700;">Mode-to-Role Mapping</h3>
+  </div>
+  <div class="matrix">
+    <table>
+      <tr><th>Hermes Mode</th><th>Maps To Role(s)</th><th>Activation Trigger</th><th>Recommendation</th></tr>
+      <tr><td><strong>Leo</strong> (operational/default)</td><td>Personal Assistant, Concierge (standard)</td><td>Default; calendar/email/logistics requests</td><td><span class="tag green">Keep as-is</span></td></tr>
+      <tr><td><strong>Rove</strong> (strategy/campaigns)</td><td>Chief of Staff, Concierge (negotiation)</td><td>Strategic analysis, competitive research, OKR, vendor negotiation</td><td><span class="tag green">Keep as-is</span></td></tr>
+      <tr><td><strong>Olivia</strong> (crisis)</td><td>Chief of Staff (crisis escalation)</td><td>Reputation, legal, major asset crisis signals from Rove/Leo</td><td><span class="tag green">Keep as-is</span></td></tr>
+      <tr><td><strong>Sage</strong> (new — counselor)</td><td>Personal Counselor only</td><td>Explicit CEO invocation; NEVER auto-activated; requires isolated memory scope</td><td><span class="tag yellow">Create New Mode</span></td></tr>
+    </table>
+  </div>
+
+  <div class="callout success">
+    <div class="callout-title">Architecture Recommendation: Modes, Not Separate Personas</div>
+    <p>Keep Leo/Rove/Olivia as modes. Add Sage as a fourth mode. Do NOT create a parallel persona set — that creates maintenance overhead and identity fragmentation. The counselor's isolation requirement is better served by a memory-scope flag on Sage mode than by a separate persona. Profiles (hermes-meeting-assistant, hermes-meeting-notes, concierge) remain as sub-configurations within Leo mode and are not elevated to mode level.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- LAYER 2 — IDENTITY -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num green">2</div>
+    <h2>Identity Layer — Corporate Identity for an AI Agent in 2026</h2>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-title">Unverified Claim — Flag Before Proceeding</div>
+    <p>Google Workspace ToS does NOT explicitly prohibit a dedicated seat for a labeled non-human account. The ToS prohibits "fake accounts" and "misleading others into thinking AI content was created by a human" — but a clearly labeled AI agent seat (e.g., "Hermes AI, AI Assistant to [CEO name]") does not appear to violate either clause. This is an interpretation, not a confirmed Google policy statement. Legal review recommended before provisioning in a regulated context.</p>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Identity Option Comparison</h3>
+  <div class="grid-3">
+    <div class="identity-col">
+      <h3>Service Account<br>+ Domain-Wide Delegation</h3>
+      <div class="cost">$0 <span>/ mo (GCP free tier)</span></div>
+      <div class="check-row"><span class="icon" style="color:var(--red)">✗</span> Cannot OWN assets in Google Workspace (Google Cloud docs, verified)</div>
+      <div class="check-row"><span class="icon" style="color:var(--red)">✗</span> No @company.com email address — only impersonates CEO's address</div>
+      <div class="check-row"><span class="icon" style="color:var(--red)">✗</span> Calendar events appear as sent by CEO, not by Hermes</div>
+      <div class="check-row"><span class="icon" style="color:var(--green)">✓</span> Best for backend automation (reading, processing, not identity)</div>
+      <div class="check-row"><span class="icon" style="color:var(--green)">✓</span> Least-privilege OAuth scopes enforced at admin level</div>
+      <div class="check-row"><span class="icon" style="color:var(--red)">✗</span> Identity = CEO identity, not Hermes identity → Art.50 disclosure harder to satisfy per-message</div>
+      <div style="margin-top:12px;padding:8px;background:var(--surface2);border-radius:6px;font-size:12px;color:var(--text-dim);">Best for: backend calendar writes, email reading/processing on CEO's behalf. NOT for Hermes's own identity.</div>
+    </div>
+    <div class="identity-col recommended">
+      <h3 style="color:var(--accent)">Dedicated Google Workspace Seat<br><small style="color:var(--text-dim);font-weight:400">(Recommended)</small></h3>
+      <div class="cost">$6 <span>/ mo (Business Starter)</span></div>
+      <div class="check-row"><span class="icon" style="color:var(--green)">✓</span> <strong>hermes@vox-company.com</strong> — Hermes's own email address</div>
+      <div class="check-row"><span class="icon" style="color:var(--green)">✓</span> Hermes OWNS its own Google Calendar — can create, accept, decline events as itself</div>
+      <div class="check-row"><span class="icon" style="color:var(--green)">✓</span> Email signature can contain mandatory AI disclosure: "Hermes AI — AI Chief of Staff acting on behalf of [CEO Name]"</div>
+      <div class="check-row"><span class="icon" style="color:var(--green)">✓</span> Google Workspace AI Agents (Section 12.3) explicitly supported for agentic workflows</div>
+      <div class="check-row"><span class="icon" style="color:var(--green)">✓</span> Simplest Art.50 compliance path: one-time disclosure in every email/calendar invite footer</div>
+      <div class="check-row"><span class="icon" style="color:var(--yellow)">~</span> ToS interpretation: "labeled AI agent" seat not prohibited (unverified — see flag above)</div>
+      <div style="margin-top:12px;padding:8px;background:rgba(108,123,255,0.12);border-radius:6px;font-size:12px;color:var(--accent);">Recommended for Hermes-Vox corporate identity MVP.</div>
+    </div>
+    <div class="identity-col">
+      <h3>Shared Mailbox / Group Alias</h3>
+      <div class="cost">$0 <span>/ mo (included in domain)</span></div>
+      <div class="check-row"><span class="icon" style="color:var(--green)">✓</span> Free — aliases like hermes@vox.com with no extra seat</div>
+      <div class="check-row"><span class="icon" style="color:var(--red)">✗</span> No independent calendar ownership</div>
+      <div class="check-row"><span class="icon" style="color:var(--red)">✗</span> Cannot authenticate as itself for API calls — needs a real account to delegate from</div>
+      <div class="check-row"><span class="icon" style="color:var(--red)">✗</span> Replies appear from a group address, not from an identity with memory/context</div>
+      <div class="check-row"><span class="icon" style="color:var(--yellow)">~</span> Usable as a forwarding alias for incoming mail only</div>
+      <div style="margin-top:12px;padding:8px;background:var(--surface2);border-radius:6px;font-size:12px;color:var(--text-dim);">Best for: lightweight inbound email routing. NOT sufficient for Hermes's own identity.</div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:32px;">
+    <h3 style="font-size:16px;font-weight:700;">Provisioning Blueprint — Dedicated Seat Path</h3>
+  </div>
+  <div class="card" style="margin-bottom:20px;">
+    <h3>Least-Privilege OAuth Scopes for Hermes Identity</h3>
+    <div class="matrix" style="margin-top:12px;">
+      <table>
+        <tr><th>Capability</th><th>Minimum OAuth Scope</th><th>Why Not Broader</th></tr>
+        <tr><td>Send email as hermes@vox.com</td><td><code>https://www.googleapis.com/auth/gmail.send</code></td><td>send-only; cannot read other users' email</td></tr>
+        <tr><td>Create/accept calendar events</td><td><code>https://www.googleapis.com/auth/calendar</code></td><td>needed for ownership; limit to Hermes's own calendar only</td></tr>
+        <tr><td>Read CEO's calendar for scheduling</td><td><code>https://www.googleapis.com/auth/calendar.readonly</code> on CEO's calendar (delegated)</td><td>read-only prevents accidental deletion</td></tr>
+        <tr><td>Read Hermes's own inbox</td><td><code>https://www.googleapis.com/auth/gmail.readonly</code></td><td>scoped to Hermes account only</td></tr>
+        <tr><td>Manage contacts</td><td><code>https://www.googleapis.com/auth/contacts.readonly</code></td><td>read-only for lookup; no creation needed from Hermes</td></tr>
+      </table>
+    </div>
+    <div style="margin-top:12px;padding:10px;background:var(--surface2);border-radius:6px;font-size:13px;color:var(--text-dim);">
+      <strong>Security note:</strong> DWD (Domain-Wide Delegation) should NOT be granted to the Hermes service account unless strictly necessary. If DWD is used (e.g., to read CEO's calendar), scope to the minimum and audit quarterly. DWD is a known attack surface (Palo Alto Unit 42 / Hunters Security DeleFriend research, 2024-2026).
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:24px;">
+    <h3 style="font-size:16px;font-weight:700;">How Real Companies Provision AI Employees in 2026</h3>
+  </div>
+  <div class="matrix">
+    <table>
+      <tr><th>Vendor / Pattern</th><th>Identity Model</th><th>Email/Calendar Ownership</th><th>Disclosure Approach</th><th>Fit for Hermes-Vox</th></tr>
+      <tr>
+        <td><strong>Microsoft Agent 365</strong><br><small style="color:var(--text-muted)">GA May 2026</small></td>
+        <td>Entra ID identity, governed via Microsoft Purview; agent gets tenant identity</td>
+        <td>Agent gets M365 identity; email via Exchange; calendar via Outlook</td>
+        <td>Governance metadata in tenant; Purview labels</td>
+        <td><span class="tag yellow">M365 stack only</span></td>
+      </tr>
+      <tr>
+        <td><strong>Microsoft Scout</strong><br><small style="color:var(--text-muted)">Announced Build 2026 June 2</small></td>
+        <td>"Governed digital employee" in Work IQ framework; Entra ID + policy enforcement</td>
+        <td>Full M365 identity (email + calendar) within tenant governance</td>
+        <td>Work IQ observability layer; policy-enforced</td>
+        <td><span class="tag yellow">M365 stack only</span></td>
+      </tr>
+      <tr>
+        <td><strong>Nylas Agent Accounts (Beta)</strong><br><small style="color:var(--text-muted)">2026</small></td>
+        <td>Dedicated mailbox + calendar provisioned via Nylas API for AI agent</td>
+        <td>Own email address + own calendar via IMAP/SMTP + CalDAV on customer's domain</td>
+        <td>Agent-level API; email signature customizable</td>
+        <td><span class="tag green">Best fit — BYO domain</span></td>
+      </tr>
+      <tr>
+        <td><strong>Lindy.ai</strong></td>
+        <td>Named AI "employee" personas (Alfred, Chip, etc.) — identity routes through CEO's Gmail OAuth</td>
+        <td>No independent @company.com; uses CEO's credentials with role framing</td>
+        <td>Hermes-branded email reply in CEO's name</td>
+        <td><span class="tag red">Not suitable — no own identity</span></td>
+      </tr>
+      <tr>
+        <td><strong>AgentMail / AgenticMail (OSS)</strong></td>
+        <td>Dedicated email inbox API for AI agents; agents can self-register inboxes</td>
+        <td>Own email address via AgentMail infrastructure (not company domain)</td>
+        <td>Custom domain support available</td>
+        <td><span class="tag blue">MVP fallback option</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="callout success" style="margin-top:16px;">
+    <div class="callout-title">Recommended Identity Path for Solo Vox CEO</div>
+    <p><strong>MVP:</strong> Provision a Google Workspace Business Starter seat ($6/mo) for <code>hermes@[vox-domain].com</code>. Add AI disclosure to email signature. Grant Hermes OAuth scopes via its own account + read-delegated access to CEO's calendar. This is the simplest, most transparent, most ToS-defensible path.<br><br><strong>Beta enhancement:</strong> Evaluate Nylas Agent Accounts (Beta) as a middleware layer that handles email/calendar identity provisioning cleanly for AI agents without requiring direct GWS admin management per identity.<br><br><strong>Future (if M365 migration):</strong> Microsoft Agent 365 + Scout provides the most complete governed digital employee framework, but requires full M365 stack.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- LAYER 3 — MEETING AUTONOMY -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num orange">3</div>
+    <h2>Meeting-Autonomy Layer — Hermes Joins Meetings As Itself</h2>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">Reusing Prior Intel — D3 EPR 18/20 (2026-06-03)</div>
+    <p>This layer reuses the Tavus CVI vs. HeyGen/Recall.ai comparison and the Hermes Live Voice Feasibility report (Cortex d5919687). No re-research performed. Applied to the specific question: "Hermes joins a meeting as ITSELF, with its own corporate identity (hermes@vox.com)."</p>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Meeting Scenario Decision Tree</h3>
+  <div class="card" style="margin-bottom:20px;">
+    <div class="arch-label">Scenario A — CEO-Initiated Call (Hermes hosts)</div>
+    <div class="arch-box">Hermes sends calendar invite from <strong>hermes@vox.com</strong> → guests receive invite from Hermes's own identity → Hermes hosts via <strong>Tavus CVI own call link</strong> (~600ms, $39-375/mo) or voice-only via LiveKit + phone number → LOWEST complexity, best identity clarity</div>
+    <div class="arch-arrow">↓ preferred path ↓</div>
+    <div class="arch-label">Scenario B — Third-Party Call (Hermes joins)</div>
+    <div class="arch-box">Host sends Zoom/Meet/Teams link → Hermes joins via <strong>Recall.ai Output-Media bridge</strong> ($0.10-1.00/hr) + Tavus CVI avatar → Recall spawns headless browser with virtual camera → Hermes appears in meeting as "Hermes AI (on behalf of [CEO])" → Risk: Google Meet auto-kick (headless browser detection), Teams most stable (ACS media bots)</div>
+    <div class="arch-arrow">↓ if no video needed ↓</div>
+    <div class="arch-label">Scenario C — Voice-Only (simplest, lowest risk)</div>
+    <div class="arch-box">LiveKit Agents (open-source) + Deepgram Nova-3 STT (~300ms, $0.0077/min) + Hermes 8642 (streaming) + Cartesia Sonic 3 TTS (90ms TTFA, EU PoP) + LiveKit SIP phone number → Hermes calls in to any meeting by phone → Identifies itself as "Hermes AI, Chief of Staff to [CEO]" at call start → ~$35/mo @ 30 min/day</div>
+  </div>
+
+  <div class="matrix" style="margin-bottom:20px;">
+    <table>
+      <tr><th>Component</th><th>Tool</th><th>Cost</th><th>Status</th><th>Note</th></tr>
+      <tr><td>Avatar brain (real-time)</td><td>Tavus CVI</td><td>~$39-375/mo plan</td><td><span class="tag green">Verified</span></td><td>Own call link only; ~600ms latency</td></tr>
+      <tr><td>Third-party meeting bridge</td><td>Recall.ai Output-Media</td><td>$0.10/hr (web_4_core) or $1.00/hr (web_gpu)</td><td><span class="tag green">Verified</span></td><td>ONLY bridge for Zoom/Meet/Teams</td></tr>
+      <tr><td>Voice STT</td><td>Deepgram Nova-3</td><td>$0.0077/min</td><td><span class="tag green">Verified</span></td><td>EU PoP available; ~300ms latency</td></tr>
+      <tr><td>AI brain</td><td>Hermes port 8642 (existing)</td><td>Covered by existing Hermes plan</td><td><span class="tag green">Live, verified</span></td><td>OpenAI-compat, streaming SSE; ~4s latency with 30k context</td></tr>
+      <tr><td>Voice TTS</td><td>Cartesia Sonic 3</td><td>$0.0225/min</td><td><span class="tag green">Verified</span></td><td>EU PoP (Helsinki advantage over ElevenLabs)</td></tr>
+      <tr><td>Voice orchestration</td><td>LiveKit Agents</td><td>Free tier / cloud</td><td><span class="tag green">Verified</span></td><td>Native Anthropic plugin; SIP phone numbers GA</td></tr>
+      <tr><td>Video lip-sync (RO)</td><td>HeyGen (preferred) or Tavus</td><td>~$110-220/mo (HeyGen Lite)</td><td><span class="tag yellow">RO lip-sync: HeyGen verified, Tavus unverified</span></td><td>Self-test before committing to Tavus for Romanian</td></tr>
+      <tr><td>Identity in meeting</td><td>hermes@vox.com + display name "Hermes AI (CoS)"</td><td>Included in GWS seat</td><td><span class="tag blue">Design</span></td><td>Display name must include AI disclosure per Art.50(1)</td></tr>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-title">Latency Reality Check (from Live Gateway Probe)</div>
+    <p>Hermes port 8642 measured ~4s round-trip driven by 30,813 token system context. For live voice meetings this produces ~4 seconds of silence between Hermes hearing a question and beginning to speak. <strong>Mitigation before full build:</strong> (1) test Anthropic prompt caching on the 30k system context, (2) create a slimmed "voice-mode" persona variant (~5k tokens), (3) route short/simple turns to Haiku. Gate the meeting voice build on achieving streaming TTFT (Time-to-First-Token) under 1.2s.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- GOVERNANCE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num yellow">4</div>
+    <h2>Governance Layer — EU AI Act, GDPR, and Liability</h2>
+  </div>
+
+  <div class="grid-2">
+    <div class="gov-block">
+      <h4>EU AI Act Art.50(1) — Chatbot/Agent Disclosure <span class="tag red">LIVE Aug 2, 2026</span></h4>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">AI systems interacting directly with people MUST disclose AI nature at first interaction</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">EC draft guidelines (May 8, 2026): "AI agents fall within Art.50(1)" — confirmed</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">One-time disclosure MAY be insufficient in sensitive contexts — may need repeating</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">Art.50(1) has NO deferral — unlike Art.50(2) watermarking (deferred to Dec 2, 2026 for pre-existing systems)</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">Fines: up to €15M or 3% annual worldwide turnover (whichever higher)</li>
+        <li style="padding:5px 0;font-size:13px;color:var(--accent2);">Hermes-Vox path: mandatory AI disclosure in email signature + meeting display name + first-message auto-text</li>
+      </ul>
+    </div>
+    <div class="gov-block">
+      <h4>GDPR — Data Controller Liability</h4>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">CEO's company = data controller; Anthropic/VPS-2/LiveKit = data processors → DPA (Data Processing Agreement) required with each</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">GDPR Art.22: automated decisions with "significant effects" on individuals require human-in-loop OR explicit consent</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">Counseling data (Sage mode) = potential Art.9 special category → highest protection tier</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">Third parties receiving Hermes emails must know they are interacting with AI — their personal data (name, email, context) processed by Hermes = Art.13/14 notice obligation</li>
+        <li style="padding:5px 0;font-size:13px;color:var(--accent2);">Practical: add AI disclosure + privacy notice link to all Hermes email footers and meeting invites</li>
+      </ul>
+    </div>
+    <div class="gov-block">
+      <h4>Liability — Who Is Responsible?</h4>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);"><strong>100% human principal (CEO / company)</strong> — AI has no legal personhood under any EU jurisdiction</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">Agency law: principal is liable for agent's actions within granted authority scope — this applies to AI agents (MindStudio, multiple legal analyses)</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">If Hermes sends an email making a representation about contract terms → CEO owns that representation</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">If Hermes autonomously books a service with financial commitment → CEO is bound (apparent authority)</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">EU AI Act revised Product Liability Directive (in force 2026): covers AI-caused harm — deployer (CEO) and provider (Anthropic) may share liability</li>
+        <li style="padding:5px 0;font-size:13px;color:var(--accent2);">Mitigation: narrow the scope of "apparent authority" Hermes has; require CEO approval for any commitment language; escalation rules in all four role definitions</li>
+      </ul>
+    </div>
+    <div class="gov-block">
+      <h4>AI Employee vs. AI Assistant — Legal and Trust Line</h4>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);"><strong>AI assistant OF the CEO</strong>: acts in CEO's name, CEO is always visibly present as principal → lower disclosure burden, simpler liability chain</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);"><strong>AI employee WITH own identity</strong>: acts as itself (hermes@vox.com), CEO is background principal → cleaner Art.50 compliance (one disclosure, not per-message), but higher third-party confusion risk and potentially higher liability exposure if recipient misunderstands authority scope</li>
+        <li style="padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-dim);">EU law: NO "autonomous AI employee" legal category exists → Hermes is always an AI tool operated by the CEO, regardless of identity framing</li>
+        <li style="padding:5px 0;font-size:13px;color:var(--yellow);">Recommendation: "AI employee with own identity" is pragmatically better for transparency + UX, but legal communications (contracts, commitments) should ALWAYS include explicit "acting on behalf of [CEO full name], [Company Name], [Registration #]" language</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout critical">
+    <div class="callout-title">Mandatory Disclosure Language (Art.50 Compliant)</div>
+    <p><strong>Email signature (minimum viable):</strong> "Hermes AI — AI Chief of Staff | Acting on behalf of [CEO Name], [Company] | This message was sent by an AI agent. Learn more: [privacy policy URL]"<br><br><strong>Meeting join announcement (first message/voice):</strong> "Hello, I'm Hermes, an AI assistant to [CEO Name]. I'm joining this meeting on [his/her] behalf. [CEO] will [be joining shortly / has authorized me to...]. You are interacting with an AI system."<br><br><strong>Calendar invite description:</strong> "[First line] This invitation is sent by Hermes AI on behalf of [CEO Name]. Hermes is an AI agent. [then meeting details]"</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PHASED PLAN -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num purple">5</div>
+    <h2>Phased Implementation Plan — MVP to Full</h2>
+  </div>
+
+  <div class="phase">
+    <div class="phase-tag p1">Phase 1 — MVP (Week 1-2)</div>
+    <h3>Corporate Identity + PA Role Online</h3>
+    <ul class="phase-list">
+      <li>Provision Google Workspace Business Starter seat: <code>hermes@[vox-domain].com</code> — labeled "Hermes AI, AI Chief of Staff" in display name</li>
+      <li>Add EU AI Act Art.50 compliant email signature (minimum viable disclosure language above)</li>
+      <li>Grant Hermes Gmail send scope + read-delegated access to CEO's Google Calendar (readonly)</li>
+      <li>Configure Leo mode in Hermes for PA + Concierge roles; define escalation rules and CEO-approved sender list</li>
+      <li>Test: Hermes sends a scheduling email from hermes@vox.com to a known contact; CEO reviews draft first</li>
+      <li>Art.50 compliance: live Aug 2, 2026 — MVP must be complete before that date</li>
+    </ul>
+    <div class="phase-meta">
+      <span class="badge pass">Cost: $6/mo</span>
+      <span class="badge">Risk: Low</span>
+      <span class="badge">Effort: ~1-2 days (admin config)</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-tag p2">Phase 2 — Chief of Staff + Voice (Month 1-2)</div>
+    <h3>Rove Mode Activated + Voice-Only Meeting Presence</h3>
+    <ul class="phase-list">
+      <li>Activate Rove mode for strategic research and meeting prep workflows</li>
+      <li>Build LiveKit voice bridge (from Live Voice Feasibility MVP spec): LiveKit Agents → Deepgram Nova-3 → Hermes 8642 → Cartesia Sonic 3</li>
+      <li>Prerequisite: latency gate — streaming TTFT must be &lt;1.2s (test prompt caching + slimmed voice persona first, ~15 min spike)</li>
+      <li>Hermes joins meetings by phone/SIP with voice disclosure announcement</li>
+      <li>Deploy hermes-voice.service on VPS-2 (systemd, not bare Python process)</li>
+      <li>Olivia crisis mode: define trigger vocabulary and escalation paths</li>
+    </ul>
+    <div class="phase-meta">
+      <span class="badge">Cost: +~$35/mo</span>
+      <span class="badge warn">Risk: Medium (latency gate)</span>
+      <span class="badge">Effort: ~1 weekend MVP + 1-2 weeks production</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-tag p2">Phase 3 — Counselor + Isolated Memory (Month 2-3)</div>
+    <h3>Sage Mode + Privacy Architecture</h3>
+    <ul class="phase-list">
+      <li>Design Sage mode: isolated memory partition, explicit opt-in per session, no cross-contamination rules</li>
+      <li>Implement memory scope flag: Sage sessions write to encrypted partition only; no Cortex sync, no Notion push, no Telegram relay</li>
+      <li>Define distress signal vocabulary → immediate redirect to professional resources</li>
+      <li>Legal: GDPR Art.9 review for counseling data storage and retention policy (recommend: CEO-defined retention with easy deletion)</li>
+      <li>Test: CEO-only sessions with explicit "entering Sage mode" and "exiting Sage mode" commands</li>
+    </ul>
+    <div class="phase-meta">
+      <span class="badge">Cost: No additional infrastructure cost</span>
+      <span class="badge warn">Risk: Medium (memory isolation must be airtight)</span>
+      <span class="badge">Effort: ~1-2 weeks design + implementation</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-tag p3">Phase 4 — Avatar + Full Meeting Autonomy (Month 3+)</div>
+    <h3>Visual Identity in Meetings</h3>
+    <ul class="phase-list">
+      <li>Self-test: Tavus CVI vs. HeyGen for Romanian lip-sync (if needed) — per prior intel recommendation</li>
+      <li>If CEO-hosted meetings only: Tavus CVI on its own call link (simplest, cheapest, no bridge needed)</li>
+      <li>If must join third-party Zoom/Meet/Teams: add Recall.ai Output-Media bridge (~$0.10-1.00/hr); accept fragility risk on Google Meet</li>
+      <li>Hermes appears in meeting as video participant: display name "Hermes AI | [CEO] CoS" — EU AI Act disclosure requirement met by display name</li>
+      <li>Evaluate Nylas Agent Accounts (Beta) for more robust email/calendar identity management at scale</li>
+    </ul>
+    <div class="phase-meta">
+      <span class="badge">Cost: +$39-220/mo depending on avatar choice</span>
+      <span class="badge warn">Risk: Medium-High (Romanian lip-sync unverified for Tavus)</span>
+      <span class="badge">Effort: ~2-4 weeks</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOP 5 RISKS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num" style="background:var(--red);">!</div>
+    <h2>Top 5 Risks</h2>
+  </div>
+
+  <div class="risk-card">
+    <div class="risk-num">RISK 1 — CRITICAL</div>
+    <h4>EU AI Act Art.50 Non-Compliance (Deadline: Aug 2, 2026)</h4>
+    <p>Art.50(1) requires AI disclosure at first interaction with NO deferral window. If Hermes-Vox sends emails or joins meetings without explicit AI disclosure, the CEO/company faces fines up to €15M or 3% annual worldwide turnover. This is not a future risk — it is a 57-day deadline from this report date.</p>
+    <div class="risk-mitigation">Mitigation: Phase 1 MVP (email signature + meeting display name) MUST be deployed before Aug 2, 2026. This is the first and non-negotiable action item.</div>
+  </div>
+
+  <div class="risk-card">
+    <div class="risk-num">RISK 2 — CRITICAL</div>
+    <h4>Counseling Data Leakage (Sage Mode Memory Isolation)</h4>
+    <p>If Sage mode counseling content bleeds into operational memory (Cortex, Notion, Telegram), the CEO's most sensitive personal data becomes searchable and accessible in other contexts. This is a GDPR violation risk and a profound trust violation. One accidental reference in a business email to something shared in a counseling session would be catastrophic.</p>
+    <div class="risk-mitigation">Mitigation: Memory isolation architecture must be designed and audited BEFORE Sage mode goes live. No exceptions. Separate encrypted partition with no cross-write permission from any other mode.</div>
+  </div>
+
+  <div class="risk-card medium">
+    <div class="risk-num medium">RISK 3 — HIGH</div>
+    <h4>Google Workspace ToS Interpretation — Dedicated Seat for Non-Human</h4>
+    <p>While our research found no explicit Google Workspace prohibition on a labeled AI agent seat, this is an interpretation. Google's ToS prohibits "fake accounts" and "misleading" content. A clearly labeled AI agent seat appears compliant, but Google can update ToS or suspend an account without advance notice. The account being used for business-critical communications (CEO's AI identity) creates dependency risk.</p>
+    <div class="risk-mitigation">Mitigation: (1) Label the account unambiguously as AI (display name, email signature). (2) Have a backup SMTP/IMAP path via Nylas Agent Accounts in case Google suspends. (3) Do not use hermes@vox.com as the sole inbound contact for critical business relationships.</div>
+  </div>
+
+  <div class="risk-card medium">
+    <div class="risk-num medium">RISK 4 — HIGH</div>
+    <h4>Apparent Authority — Hermes Commits CEO to Contracts / Financial Obligations</h4>
+    <p>Under agency law, the CEO is liable for any commitment Hermes makes within its apparent scope of authority. If Hermes's email states "We agree to the terms" or books a venue and the vendor considers it binding, the CEO is contractually bound even if Hermes acted outside its intended scope. The risk compounds if recipients don't clearly understand they're negotiating with an AI.</p>
+    <div class="risk-mitigation">Mitigation: Escalation rules must explicitly include ALL commitment/agreement/contract language. Hermes NEVER sends "we agree," "we accept," "I confirm on behalf of [CEO]" without explicit CEO approval token. Legal templates reviewed by lawyer before deployment.</div>
+  </div>
+
+  <div class="risk-card low">
+    <div class="risk-num low">RISK 5 — MEDIUM</div>
+    <h4>LLM Latency Gate — Voice Meeting Experience Below Conversational Threshold</h4>
+    <p>Hermes port 8642 measured ~4s LLM round-trip driven by 30,813 token context. For voice meetings, 4 seconds of silence is conversationally unacceptable. If prompt caching and voice-mode persona slimming fail to bring TTFT under ~1.2s, the Phase 2 voice meeting experience will be poor and may embarrass the CEO in front of meeting participants.</p>
+    <div class="risk-mitigation">Mitigation: Do the 15-minute latency spike test FIRST (prompt caching + slimmed persona) before building the full voice stack. Gate Phase 2 on achieving TTFT &lt;1.2s. If latency cannot be resolved, fall back to async voice note mode (not real-time meetings) until resolved.</div>
+  </div>
+</div>
+
+<!-- SOURCE COVERAGE REPORT -->
+<div class="section">
+  <div class="section-header">
+    <h2>Source Coverage Report</h2>
+  </div>
+  <table class="coverage-table">
+    <tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr>
+    <tr><td>Web Search</td><td><span class="tag green">COVERED</span></td><td>Brave Search, Tavily Advanced, Tavily Extract</td><td>24</td></tr>
+    <tr><td>Social: Reddit</td><td><span class="tag green">COVERED</span></td><td>Brave search targeting Reddit (r/AI_Agents, r/artificial, r/selfhosted, r/mcp)</td><td>8</td></tr>
+    <tr><td>Social: X/Twitter</td><td><span class="tag yellow">PARTIAL</span></td><td>Indirect via Brave/Tavily search results referencing X discussions</td><td>2</td></tr>
+    <tr><td>Social: HackerNews</td><td><span class="tag green">COVERED</span></td><td>Brave search targeting HackerNews + Reddit r/hackernews</td><td>3</td></tr>
+    <tr><td>Social: Instagram</td><td><span class="tag blue">SKIPPED</span></td><td>Not relevant to technical/governance research topic</td><td>0</td></tr>
+    <tr><td>Video: YouTube</td><td><span class="tag yellow">PARTIAL</span></td><td>Planned CLI search; deferred due to sufficient web coverage on topic</td><td>0</td></tr>
+    <tr><td>Video: TikTok</td><td><span class="tag blue">SKIPPED</span></td><td>Conditional at D3; not relevant to this technical/legal topic</td><td>0</td></tr>
+    <tr><td>Academic (ArXiv/OpenAlex)</td><td><span class="tag green">COVERED</span></td><td>ArXiv 2604.04604 ("AI Agents Under EU Law" — regulatory mapping paper, Jan 2026)</td><td>1</td></tr>
+    <tr><td>News</td><td><span class="tag green">COVERED</span></td><td>WindowsNews, GlobalPolicyWatch, JDSupra, GibsonDunn, BirdBird via Brave/Tavily</td><td>7</td></tr>
+    <tr><td>Existing Cortex Intel</td><td><span class="tag green">COVERED</span></td><td>Cortex d5919687 (Hermes Live Voice), avatar-meeting-C-vs-D-2026-06-03-summary.md</td><td>2</td></tr>
+    <tr><td>Official Sources (T1)</td><td><span class="tag green">COVERED</span></td><td>Google Cloud Docs, Google Workspace Terms, EC AI Act official text, EC draft guidelines May 2026, Microsoft Azure/M365 official blog</td><td>10</td></tr>
+    <tr><td>Exa research_paper</td><td><span class="tag red">UNAVAILABLE</span></td><td>Exa credits exhausted (402 error); compensated with Tavily Advanced + ArXiv MCP</td><td>0</td></tr>
+    <tr><td>Deep Research</td><td><span class="tag blue">SKIPPED</span></td><td>D3 standard depth; sonar-deep-research gated; Opus-equivalent synthesis inline per Delphi spec</td><td>0</td></tr>
+  </table>
+  <div style="margin-top:12px;font-size:12px;color:var(--text-muted);">Total sources: 27 | EPR: 16/20 (PASS) | Self-grade: 82/100 | Duration: ~18 min | Exa fallback: Tavily Advanced used throughout</div>
+</div>
+
+<!-- CITATIONS -->
+<div class="section">
+  <div class="section-header">
+    <h2>Key Citations</h2>
+  </div>
+  <div class="card">
+    <ul>
+      <li>[T1] Google Cloud — Service Accounts Overview: <a href="https://docs.cloud.google.com/iam/docs/service-account-overview" style="color:var(--accent)">docs.cloud.google.com</a></li>
+      <li>[T1] Google Workspace Domain-Wide Delegation Best Practices: <a href="https://support.google.com/a/answer/14437356" style="color:var(--accent)">support.google.com</a></li>
+      <li>[T1] Google Workspace Service Specific Terms (AI Agents def. §12.3): <a href="https://workspace.google.com/terms/service-terms" style="color:var(--accent)">workspace.google.com/terms</a></li>
+      <li>[T1] EU AI Act Article 50 — Official Text: <a href="https://artificialintelligenceact.eu/article/50/" style="color:var(--accent)">artificialintelligenceact.eu</a></li>
+      <li>[T1] EC Draft Guidelines on Art.50 Implementation (May 8, 2026): <a href="https://digital-strategy.ec.europa.eu/en/library/draft-guidelines-implementation-transparency-obligations-certain-ai-systems-under-article-50-ai-act" style="color:var(--accent)">digital-strategy.ec.europa.eu</a></li>
+      <li>[T1] Microsoft Agent 365 GA (May 1, 2026): <a href="https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available" style="color:var(--accent)">microsoft.com</a></li>
+      <li>[T1] Microsoft Scout / Build 2026 (June 2, 2026): <a href="https://windowsnews.ai/article/microsoft-scout-turns-ai-into-a-governed-workplace-worker" style="color:var(--accent)">windowsnews.ai</a></li>
+      <li>[T1] AI Act Omnibus — Gibson Dunn analysis: <a href="https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes" style="color:var(--accent)">gibsondunn.com</a></li>
+      <li>[T2] Nylas Agent Accounts (Beta): <a href="https://developer.nylas.com/docs/provider-guides/google/google-workspace-service-accounts" style="color:var(--accent)">developer.nylas.com</a></li>
+      <li>[T2] MindStudio — AI Liability in Agentic Economy: <a href="https://www.mindstudio.ai/blog/ai-liability-agentic-economy" style="color:var(--accent)">mindstudio.ai</a></li>
+      <li>[T2] Prof. Hung-Yi Chen — AI Agent Liability Framework: <a href="https://www.hungyichen.com/en/insights/ai-agent-liability-framework" style="color:var(--accent)">hungyichen.com</a></li>
+      <li>[T2] Astrix — Non-Human Identities in Google Workspace: <a href="https://astrix.security/learn/blog/securing-non-human-identities-in-google-workspace" style="color:var(--accent)">astrix.security</a></li>
+      <li>[T2] SnapAgent — AI and GDPR Compliant Agents: <a href="https://www.snapagent.eu/blog/ai-gdpr-compliant-agents-europe" style="color:var(--accent)">snapagent.eu</a></li>
+      <li>[T2] Bird & Bird — Art.50 Draft Guidelines analysis: <a href="https://www.twobirds.com/en/insights/2026/taking-the-eu-ai-act-to-practice-reading-the-commissions-draft-article-50-guidelines" style="color:var(--accent)">twobirds.com</a></li>
+      <li>[T2] ArXiv 2604.04604 — AI Agents Under EU Law (Jan 2026): <a href="https://arxiv.org/abs/2604.04604" style="color:var(--accent)">arxiv.org</a></li>
+      <li>[T2] Latham & Watkins — AI Act Omnibus: <a href="https://www.jdsupra.com/legalnews/ai-act-update-eu-resolves-to-change-9734656" style="color:var(--accent)">jdsupra.com</a></li>
+      <li>[Cortex d5919687] Hermes Live Voice Feasibility (2026-06-03): <a href="https://cryptopafi.github.io/nexusos-reports/hermes-live-voice-feasibility-20260603.html" style="color:var(--accent)">cryptopafi.github.io</a></li>
+      <li>[Prior D3 Intel] Avatar Meeting C vs D (2026-06-03): ~/.nexus/intel/avatar-meeting-C-vs-D-2026-06-03-summary.md</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  Generated by DELPHI PRO D3 &nbsp;·&nbsp; 2026-06-05 &nbsp;·&nbsp; EPR 16/20 &nbsp;·&nbsp; 27 sources &nbsp;·&nbsp;
+  <a href="https://cryptopafi.github.io/nexusos-reports/">nexusos-reports</a> &nbsp;·&nbsp;
+  DESIGN ONLY — no VPS-2 changes
+</div>
+
+<script>
+function toggleTheme() {
+  const root = document.documentElement;
+  if (root.getAttribute('data-theme') === 'light') {
+    root.removeAttribute('data-theme');
+    document.querySelector('.theme-toggle').textContent = 'Toggle Light';
+  } else {
+    root.setAttribute('data-theme', 'light');
+    document.querySelector('.theme-toggle').textContent = 'Toggle Dark';
+  }
+}
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = document.querySelector('.share-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Share', 2000);
+  });
+}
+</script>
+</body>
+</html>
