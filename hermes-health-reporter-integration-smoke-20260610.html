@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Hermes Health Reporter Integration Smoke">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="Hermes Shared Reporter health report">
+  <title>Hermes Health Reporter Integration Smoke</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root { --bg:#0A0A0F; --panel:#111118; --panel2:#171722; --ink:#f5f7fb; --muted:#a7b0c0; --line:rgba(255,255,255,.12); --accent:#22c55e; }
+    [data-theme="light"] { --bg:#fafafa; --panel:#ffffff; --panel2:#f3f4f6; --ink:#101118; --muted:#596273; --line:rgba(0,0,0,.12); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.6 Inter, system-ui, sans-serif; letter-spacing:0; }
+    a { color:var(--accent); text-decoration:none; }
+    .layout { display:grid; grid-template-columns:240px minmax(0,1fr) 300px; gap:22px; max-width:1480px; margin:0 auto; padding:28px; }
+    aside { position:sticky; top:18px; align-self:start; background:color-mix(in srgb, var(--panel) 86%, transparent); border:1px solid var(--line); border-radius:8px; padding:16px; backdrop-filter:blur(18px); }
+    main { min-width:0; }
+    .hero { border:1px solid var(--line); border-radius:8px; padding:28px; background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, var(--panel)), var(--panel)); }
+    .kicker { color:var(--accent); font:700 12px/1 JetBrains Mono, monospace; text-transform:uppercase; }
+    h1 { margin:10px 0 8px; font-size:clamp(30px, 4vw, 56px); line-height:1.02; letter-spacing:0; }
+    h2 { margin:34px 0 12px; font-size:24px; letter-spacing:0; }
+    h3 { margin:24px 0 10px; font-size:18px; letter-spacing:0; }
+    h4 { margin:20px 0 8px; font-size:16px; letter-spacing:0; }
+    .muted, .meta-row span { color:var(--muted); }
+    .content { margin-top:18px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:26px; }
+    .content p { margin:0 0 14px; }
+    .content ul { padding-left:22px; }
+    .content li { margin:7px 0; }
+    table { width:100%; border-collapse:collapse; margin:14px 0 22px; background:var(--panel2); border-radius:8px; overflow:hidden; }
+    th, td { text-align:left; border-bottom:1px solid var(--line); padding:10px; vertical-align:top; }
+    th { color:var(--muted); font-weight:700; }
+    .toc a { display:block; padding:7px 0; color:var(--muted); }
+    .toc a:hover { color:var(--accent); }
+    .toc-l3 { padding-left:12px !important; font-size:13px; }
+    .meta-row { display:grid; grid-template-columns:1fr; gap:2px; padding:9px 0; border-bottom:1px solid var(--line); }
+    .meta-row strong { overflow-wrap:anywhere; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+    button { border:1px solid var(--line); background:var(--panel2); color:var(--ink); border-radius:8px; padding:9px 11px; cursor:pointer; }
+    button:hover { border-color:var(--accent); }
+    .chart { margin-top:14px; min-height:180px; }
+    @media (max-width:1080px) { .layout { grid-template-columns:1fr; padding:16px; } aside { position:static; } }
+    @media print { body { background:#fff; color:#111; } aside, .actions, script { display:none !important; } .layout { display:block; padding:0; } .hero, .content { border:0; } table, .content { page-break-inside:avoid; } }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="kicker">Contents</div>
+      <nav class="toc"><a class="toc-l1" href="#summary">Summary</a>
+<a class="toc-l2" href="#clinical-boundary">Clinical Boundary</a></nav>
+    </aside>
+    <main>
+      <section class="hero">
+        <div class="kicker">Hermes · Shared Reporter Tier 2</div>
+        <h1>Hermes Health Reporter Integration Smoke</h1>
+        <p class="muted">Health report by health · 2026-06-10 · generated 20260610T171301Z</p>
+        <div class="actions">
+          <button id="themeToggle" type="button">Toggle Theme</button>
+          <button id="shareButton" type="button">Share</button>
+        </div>
+      </section>
+      <article class="content"><h1 id="summary">Summary</h1>
+<p>Reporter integration smoke test for Hermes Health on VPS.</p>
+<h2 id="clinical-boundary">Clinical Boundary</h2>
+<p>Informational only. No diagnosis or prescription.</p></article>
+    </main>
+    <aside>
+      <div class="kicker">Metadata</div>
+      <div class="meta-row"><span>Biomarkers Flagged</span><strong>1</strong></div>
+<div class="meta-row"><span>Biomarkers Total</span><strong>2</strong></div>
+<div class="meta-row"><span>Source</span><strong>codex deployment smoke</strong></div>
+      <div class="chart"><canvas id="reportChart" aria-label="Health biomarker distribution"></canvas></div>
+    </aside>
+  </div>
+  <script>
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('sharedReporterTheme');
+    if (savedTheme) root.setAttribute('data-theme', savedTheme);
+    document.getElementById('themeToggle')?.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('sharedReporterTheme', next);
+    });
+    document.getElementById('shareButton')?.addEventListener('click', async () => {
+      const payload = { title: document.title, url: location.href };
+      if (navigator.share) await navigator.share(payload);
+      else await navigator.clipboard.writeText(location.href);
+    });
+  </script>
+  
+<script>
+const ctx = document.getElementById('reportChart');
+if (ctx) {
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Flagged', 'In range / other'],
+      datasets: [{ data: [1, 1], backgroundColor: ['#ff7b7b', '#22c55e'] }]
+    },
+    options: { plugins: { legend: { labels: { color: getComputedStyle(document.body).getPropertyValue('--ink') } } } }
+  });
+}
+</script>
+</body>
+</html>
