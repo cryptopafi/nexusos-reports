@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Borzea Ion — Hermes Health Lab Report</title>
+<meta property="og:title" content="Borzea Ion — Hermes Health Lab Report" />
+<meta property="og:description" content="Hermes Health lab marker extraction and Bachmeyer/Bachmeier evidence review, published via shared-reporter Tier 2." />
+<meta property="og:type" content="article" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root { --bg:#0A0A0F; --card:#111118; --glass:rgba(17,17,24,.74); --border:rgba(255,255,255,.09); --text:#e6edf3; --dim:#8b949e; --accent:#22c55e; --accent2:#58a6ff; --warn:#f59e0b; --danger:#ef4444; }
+html.light { --bg:#fafafa; --card:#ffffff; --glass:rgba(255,255,255,.82); --border:rgba(15,23,42,.10); --text:#0f172a; --dim:#475569; --accent:#16a34a; --accent2:#2563eb; }
+* { box-sizing:border-box; }
+html,body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.65; scroll-behavior:smooth; }
+body:before { content:""; position:fixed; inset:-20%; background:radial-gradient(circle at 15% 10%, rgba(34,197,94,.14), transparent 32%), radial-gradient(circle at 80% 0%, rgba(88,166,255,.10), transparent 30%); pointer-events:none; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.layout { position:relative; display:grid; grid-template-columns:260px minmax(0,1fr) 292px; gap:2rem; max-width:1440px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+.toc,.sidebar { position:sticky; top:1.5rem; align-self:start; max-height:calc(100vh - 3rem); overflow:auto; }
+.toc-title,.side-title { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); font-weight:800; margin-bottom:.75rem; }
+.toc a { display:block; color:var(--dim); border-left:2px solid transparent; padding:.28rem .55rem; font-size:.84rem; } .toc a:hover { color:var(--accent); border-left-color:var(--accent); text-decoration:none; }
+.card { background:var(--glass); border:1px solid var(--border); border-radius:16px; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:0 18px 60px rgba(0,0,0,.18); }
+.hero { padding:2rem; margin-bottom:1.25rem; }
+.kicker { display:inline-flex; gap:.45rem; align-items:center; color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.13em; font-size:.72rem; }
+h1 { margin:.5rem 0 .75rem; font-size:clamp(2rem,4vw,4.2rem); line-height:1.02; letter-spacing:0; }
+h2 { font-size:1.55rem; margin:0 0 1rem; letter-spacing:0; }
+h3 { font-size:1.05rem; margin:1rem 0 .55rem; letter-spacing:0; }
+.lead { color:var(--dim); font-size:1.05rem; max-width:850px; }
+.section { padding:1.5rem; margin:1rem 0; }
+.grid { display:grid; gap:1rem; } .metrics { grid-template-columns:repeat(4,minmax(0,1fr)); margin:1.25rem 0; }
+.metric { padding:1rem; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,.035); } .metric b { display:block; font-size:1.9rem; line-height:1.1; } .metric span { color:var(--dim); font-size:.84rem; }
+table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border:1px solid var(--border); border-radius:14px; } th,td { padding:.82rem; border-bottom:1px solid var(--border); text-align:left; vertical-align:top; } th { color:var(--dim); font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; } tr:last-child td { border-bottom:0; }
+.status { display:inline-flex; padding:.18rem .62rem; border-radius:999px; font-size:.8rem; font-weight:700; } .status.in { background:rgba(34,197,94,.16); color:#22c55e; } .status.high { background:rgba(239,68,68,.16); color:#ef4444; } .status.unknown { background:rgba(245,158,11,.16); color:#f59e0b; }
+.callout { border-left:4px solid var(--accent); padding:1rem 1rem 1rem 1.1rem; background:rgba(34,197,94,.09); border-radius:12px; }
+.warning { border-left-color:var(--warn); background:rgba(245,158,11,.10); }
+.sources li { margin:.8rem 0; } .sources p { margin:.2rem 0 0; color:var(--dim); }
+.meta-card { padding:1rem; margin-bottom:1rem; } .meta-row { display:flex; justify-content:space-between; gap:1rem; border-bottom:1px solid var(--border); padding:.55rem 0; font-size:.88rem; } .meta-row:last-child { border-bottom:0; } .meta-row span:first-child { color:var(--dim); }
+.actions { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem; } button,.button { border:1px solid var(--border); color:var(--text); background:rgba(255,255,255,.05); border-radius:10px; padding:.55rem .8rem; cursor:pointer; font-weight:700; } button:hover,.button:hover { border-color:var(--accent); text-decoration:none; }
+canvas { max-height:260px; }
+.fade { opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease; } .fade.show { opacity:1; transform:none; }
+@media (max-width:1100px) { .layout { grid-template-columns:1fr; } .toc,.sidebar { position:static; max-height:none; } .metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:680px) { .layout { padding:1rem; } .hero,.section { padding:1rem; } table { font-size:.84rem; } th,td { padding:.55rem; } }
+@media print { html { background:#fff; } body { color:#111; background:#fff; } body:before,.toc,.sidebar,.actions { display:none!important; } .layout { display:block; max-width:none; padding:0; } .card { box-shadow:none; border:1px solid #ddd; break-inside:avoid; } a { color:#111; } }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="toc card p-4" aria-label="Table of contents">
+    <div class="toc-title">Contents</div>
+    <a href="#summary">Executive Summary</a>
+    <a href="#markers">Biomarkers</a>
+    <a href="#protocol">Bachmeyer Review</a>
+    <a href="#boundaries">Clinical Boundaries</a>
+    <a href="#monitoring">Monitoring</a>
+    <a href="#sources">Sources</a>
+  </nav>
+
+  <main>
+    <header class="hero card fade" id="summary">
+      <div class="kicker">Hermes Health · Shared Reporter Tier 2</div>
+      <h1>Borzea Ion Lab Report</h1>
+      <p class="lead">Profile-local lab marker extraction and Bachmeyer/Bachmeier corpus cross-reference, formatted through the NexusOS shared reporter and published for easy link sharing.</p>
+      <div class="actions">
+        <button id="themeToggle" type="button">Toggle theme</button>
+        <button id="shareButton" type="button">Share link</button>
+        <a class="button" href="https://cryptopafi.github.io/nexusos-reports/health-borzea-ion-lab-report-2026-06-10.html">Open public URL</a>
+      </div>
+    </header>
+
+    <section class="grid metrics fade" aria-label="Report metrics">
+      <div class="metric"><span>Total parsed markers</span><b>8</b></div>
+      <div class="metric"><span>High flags</span><b>1</b></div>
+      <div class="metric"><span>Low flags</span><b>0</b></div>
+      <div class="metric"><span>Unknown/unit review</span><b>5</b></div>
+    </section>
+
+    <section class="section card fade">
+      <h2>Executive Summary</h2>
+      <p>The uploaded Bioclinica lab PDF was processed by the standalone Hermes Health pipeline. Hermes extracted supported markers, generated a profile-local evidence trail, and identified one screening-range flag: <strong>LDL-C 117.8 mg/dL</strong>.</p>
+      <p>Several values require manual unit/reference review because the PDF extraction did not capture a unit reliably. Those rows are intentionally marked <strong>Unit not captured</strong>, not interpreted as normal or abnormal.</p>
+      <div class="callout warning"><strong>Protocol boundary:</strong> no required peptide protocol, dose, cycle, or stack is generated from this lab panel. The Bachmeyer/Bachmeier section is a source-context review for clinician/operator review, not a prescription.</div>
+    </section>
+
+    <section class="section card fade" id="markers">
+      <h2>Biomarker Table</h2>
+      <table>
+        <thead><tr><th>Marker</th><th>Extracted value</th><th>Screening reference used</th><th>Status</th></tr></thead>
+        <tbody>
+      <tr>
+        <td>Hemoglobin</td>
+        <td>14.8 g/dL</td>
+        <td>13.0 - 17.5 g/dL</td>
+        <td><span class="status in">In range</span></td>
+      </tr>
+      <tr>
+        <td>Hematocrit</td>
+        <td>44.1 %</td>
+        <td>38.0 - 52.0 %</td>
+        <td><span class="status in">In range</span></td>
+      </tr>
+      <tr>
+        <td>HbA1c</td>
+        <td>5.5</td>
+        <td>4.0 - 5.7 %</td>
+        <td><span class="status unknown">Unit not captured</span></td>
+      </tr>
+      <tr>
+        <td>HDL-C</td>
+        <td>54.0</td>
+        <td>&gt;= 40 mg/dL screening floor</td>
+        <td><span class="status unknown">Unit not captured</span></td>
+      </tr>
+      <tr>
+        <td>LDL-C</td>
+        <td>117.8 mg/dL</td>
+        <td>0.0 - 100.0 mg/dL screening target</td>
+        <td><span class="status high">High</span></td>
+      </tr>
+      <tr>
+        <td>Fasting insulin</td>
+        <td>56.6</td>
+        <td>2.0 - 10.0 uIU/mL</td>
+        <td><span class="status unknown">Unit not captured</span></td>
+      </tr>
+      <tr>
+        <td>Fasting insulin</td>
+        <td>2.0</td>
+        <td>2.0 - 10.0 uIU/mL</td>
+        <td><span class="status unknown">Unit not captured</span></td>
+      </tr>
+      <tr>
+        <td>Fasting insulin</td>
+        <td>5.0</td>
+        <td>2.0 - 10.0 uIU/mL</td>
+        <td><span class="status unknown">Unit not captured</span></td>
+      </tr>
+        </tbody>
+      </table>
+      <p class="lead mt-4">Reference intervals are Hermes Health screening defaults. Lab-specific intervals, patient age/sex, medications, fasting status, and physician context override this screening view.</p>
+    </section>
+
+    <section class="section card fade">
+      <h2>Marker Distribution</h2>
+      <canvas id="markerChart" aria-label="Marker status distribution"></canvas>
+    </section>
+
+    <section class="section card fade" id="protocol">
+      <h2>Bachmeyer/Bachmeier Evidence Review</h2>
+      <p>The Health profile queried the local Bachmeyer/Bachmeier and health knowledge corpus around lab markers, metabolic context, and peptide protocol relevance. Relevant retained sources are listed below; unrelated source hits were removed from this published report.</p>
+      <h3>Protocol decision</h3>
+      <p><strong>No peptide protocol is recommended or required from this panel alone.</strong> The current evidence supports a clinician-review conversation around cardiometabolic risk context, especially LDL-C, fasting/insulin context, HbA1c/glucose context, medications, and current peptide/supplement exposure.</p>
+      <h3>What would be needed before protocol work</h3>
+      <ul>
+        <li>Original lab reference ranges and confirmation of units for HbA1c, HDL-C, and insulin rows.</li>
+        <li>Full lipid context: ApoB, Lp(a), triglycerides, non-HDL-C, blood pressure, waist/weight trend, family history.</li>
+        <li>Current medications, supplements, peptide use, TRT status, GLP-1 history, fasting status, and symptoms.</li>
+        <li>Clinician review before any medication, peptide, supplement, injection, dose, cycle, or stack change.</li>
+      </ul>
+    </section>
+
+    <section class="section card fade" id="boundaries">
+      <h2>Clinical Boundaries</h2>
+      <div class="callout"><strong>Informational only:</strong> Hermes Health is a decision-support profile. It does not diagnose, prescribe, or replace a licensed clinician.</div>
+      <p>The report is safe to use as a planning and discussion artifact. It should not be used as a standalone medical decision or peptide-protocol instruction.</p>
+    </section>
+
+    <section class="section card fade" id="monitoring">
+      <h2>Monitoring & Next-Step Checklist</h2>
+      <ul>
+        <li>Confirm all ambiguous units against the original Bioclinica PDF and lab reference ranges.</li>
+        <li>Review LDL-C and broader lipid-risk context with a clinician.</li>
+        <li>If peptide strategy is still desired, run a source-backed protocol review after missing context is provided.</li>
+        <li>Keep future reports routed through shared-reporter and GitHub Pages for stable links.</li>
+      </ul>
+    </section>
+
+    <section class="section card fade" id="sources">
+      <h2>Relevant Source Index</h2>
+      <ul class="sources"><li><strong>Retatrutide and Tesamorelin: The Combined Playbook</strong><p>Bachmeyer source in local health wiki; relevant for metabolic peptide context, insulin/cortisol/sleep prerequisites, and why protocol decisions require surrounding biology rather than labs alone.</p></li><li><strong>Tirzepatide to Retatrutide: The Mistake Everyone Makes</strong><p>Bachmeyer source in local health wiki; relevant to GLP-1/GIP/glucagon transition logic and the warning that response depends on metabolic context.</p></li><li><strong>BPC157 Does Everything - Dr Trevor Bachmeyer</strong><p>Bachmeyer corpus source; retained as peptide corpus evidence but not used to prescribe an intervention from this panel.</p></li><li><strong>The FDA War Against Peptides and The Facts - Dr Trevor Bachmeyer</strong><p>Bachmeyer corpus source; relevant to peptide safety/regulatory framing, not a dosing authority.</p></li><li><strong>Local TRT protocol memories</strong><p>Internal Cortex health memories used only as report-structure/protocol-check context; patient-specific older data was not copied into this public report.</p></li></ul>
+    </section>
+  </main>
+
+  <aside class="sidebar">
+    <div class="meta-card card">
+      <div class="side-title">Report Metadata</div>
+      <div class="meta-row"><span>Agent</span><strong>Hermes Health</strong></div>
+      <div class="meta-row"><span>Report type</span><strong>Health</strong></div>
+      <div class="meta-row"><span>Date</span><strong>2026-06-10</strong></div>
+      <div class="meta-row"><span>Subject</span><strong>Borzea Ion</strong></div>
+      <div class="meta-row"><span>Source</span><strong>Bioclinica PDF</strong></div>
+      <div class="meta-row"><span>Markers</span><strong>8</strong></div>
+      <div class="meta-row"><span>Flags</span><strong>1 high</strong></div>
+      <div class="meta-row"><span>Publisher</span><strong>GitHub Pages</strong></div>
+    </div>
+    <div class="meta-card card">
+      <div class="side-title">Safety Scope</div>
+      <p class="text-sm" style="color:var(--dim);margin:0;">No diagnosis, prescription, dosing, injection protocol, peptide stack, or treatment change is included.</p>
+    </div>
+  </aside>
+</div>
+
+<script>
+const root = document.documentElement;
+const saved = localStorage.getItem('report-theme');
+if (saved === 'light') root.classList.add('light');
+if (saved === 'dark') root.classList.remove('light');
+document.getElementById('themeToggle').addEventListener('click', () => {
+  root.classList.toggle('light');
+  localStorage.setItem('report-theme', root.classList.contains('light') ? 'light' : 'dark');
+});
+document.getElementById('shareButton').addEventListener('click', async () => {
+  const url = window.location.href;
+  if (navigator.share) { await navigator.share({ title: document.title, url }); return; }
+  await navigator.clipboard.writeText(url);
+  const btn = document.getElementById('shareButton');
+  const old = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => btn.textContent = old, 1400);
+});
+const observer = new IntersectionObserver((entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }), { threshold:.08 });
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+const ctx = document.getElementById('markerChart');
+new Chart(ctx, { type:'doughnut', data:{ labels:['In range','High','Unknown / unit review'], datasets:[{ data:[2,1,5], backgroundColor:['#22c55e','#ef4444','#f59e0b'], borderWidth:0 }] }, options:{ plugins:{ legend:{ labels:{ color:getComputedStyle(document.documentElement).getPropertyValue('--text') } } }, cutout:'68%' } });
+</script>
+</body>
+</html>
