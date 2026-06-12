@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ion (M, 59y) — Bloodwork + Bachmeyer Protocol (v2)</title>
+<meta name="description" content="Bloodwork analysis + Dr. Trevor Bachmeyer peptide/supplement protocol (v2). Informational decision-support — not a diagnosis.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ion (M, 59y) — Bloodwork + Bachmeyer Protocol (v2)">
+<meta property="og:description" content="Bloodwork analysis + Bachmeyer peptide/supplement protocol (v2). 4 convergent flags — metabolic-first sequencing.">
+<meta property="og:site_name" content="NexusOS Health">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } } };
+</script>
+<style>
+  :root { --accent:#22c55e; --accent-soft:rgba(34,197,94,.14); }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; background:#0A0A0F; color:#e7e7ee; }
+  html:not(.dark) body { background:#fafafa; color:#1a1a22; }
+  .glass { background:rgba(17,17,24,.7); backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.07); }
+  html:not(.dark) .glass { background:rgba(255,255,255,.78); border:1px solid rgba(0,0,0,.07); }
+  .card { background:#111118; border:1px solid rgba(255,255,255,.06); }
+  html:not(.dark) .card { background:#ffffff; border:1px solid rgba(0,0,0,.07); }
+  .accent { color:var(--accent); }
+  .accent-bg { background:var(--accent); }
+  .glow { box-shadow:0 0 0 1px rgba(34,197,94,.18), 0 14px 50px -12px rgba(34,197,94,.28); }
+  .fade { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .fade.in { opacity:1; transform:none; }
+  .plain { background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:.55rem; }
+  table { border-collapse:collapse; width:100%; font-size:.85rem; }
+  th, td { padding:.5rem .7rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.07); }
+  html:not(.dark) th, html:not(.dark) td { border-bottom:1px solid rgba(0,0,0,.08); }
+  th { font-weight:600; color:var(--accent); font-size:.7rem; letter-spacing:.04em; text-transform:uppercase; }
+  td.mono { font-family:'JetBrains Mono',monospace; }
+  .pill { display:inline-block; padding:.12rem .5rem; border-radius:999px; font-size:.68rem; font-weight:600; }
+  .pill-red { background:rgba(239,68,68,.16); color:#f87171; }
+  .pill-amber { background:rgba(245,158,11,.16); color:#fbbf24; }
+  .pill-green { background:rgba(34,197,94,.16); color:#4ade80; }
+  .toc a { display:block; padding:.3rem .55rem; border-radius:.45rem; font-size:.8rem; color:inherit; opacity:.72; text-decoration:none; border-left:2px solid transparent; }
+  .toc a:hover { opacity:1; background:var(--accent-soft); border-left-color:var(--accent); }
+  h2.sec { scroll-margin-top:90px; }
+  @media print {
+    html { } html.dark { }
+    body { background:#fff !important; color:#000 !important; }
+    .glass, .card { background:#fff !important; border:1px solid #ccc !important; box-shadow:none !important; }
+    .no-print { display:none !important; }
+    .grid-main { display:block !important; }
+    section { page-break-inside:avoid; }
+    a { color:#000 !important; text-decoration:none; }
+    .plain { background:#f4f4f4 !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- top bar -->
+<header class="no-print sticky top-0 z-40 glass">
+  <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="w-2.5 h-2.5 rounded-full accent-bg"></span>
+      <span class="font-semibold text-sm tracking-tight">NexusOS Health</span>
+      <span class="text-xs opacity-50">· Bachmeyer-primary · IL-8 patient-isolated</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="shareBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:glow transition">Share</button>
+      <button id="themeBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:glow transition">◐ Theme</button>
+    </div>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="max-w-6xl mx-auto px-5 pt-10 pb-6">
+  <div class="card glow rounded-2xl p-7 md:p-9 fade">
+    <div class="text-xs accent font-semibold tracking-widest uppercase mb-3">Bloodwork Analysis · Bachmeyer Protocol v2</div>
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight">Ion (M, 59y) — Bloodwork + Bachmeyer Protocol (v2)</h1>
+    <div class="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm opacity-80">
+      <span><strong>Patient:</strong> Ion · M · 59y</span>
+      <span><strong>Lab:</strong> Family Medical Clinic — Voluntari (Anima Speciality Medical Services)</span>
+    </div>
+    <div class="mt-1 text-xs opacity-60">(lab bulletin, ref withheld) · collected <strong>09.06.2026 13:32</strong> · emitted <strong>12.06.2026</strong> (complete, batch 3)</div>
+    <div class="mt-1 text-xs opacity-60">Framework: Dr. Trevor Bachmeyer NLM corpus (Primary <code>cb9cf1fd</code> + Extended <code>1eef6220</code>) · v2 supersedes v1 (closes Free-T + IGF-1 gaps)</div>
+
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">16.21</div>
+        <div class="text-xs opacity-65 mt-0.5">HOMA-IR (ref &lt;2)</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">356</div>
+        <div class="text-xs opacity-65 mt-0.5">GGT U/L (6.5×)</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">4</div>
+        <div class="text-xs opacity-65 mt-0.5">Convergent flags</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">5.5%</div>
+        <div class="text-xs opacity-65 mt-0.5">HbA1c (masked)</div>
+      </div>
+    </div>
+
+    <div class="mt-6 plain p-4 text-sm">
+      ⚠️ <strong>Clinical boundary.</strong> Informational decision-support, not a diagnosis or prescription. It does not instruct starting/changing any peptide, medication, supplement, dose, or cycle. Every threshold is a standard lab reference range or a Bachmeyer-cited value — never an invented cutoff. All decisions belong to the attending physician.
+    </div>
+  </div>
+</section>
+
+<!-- main grid -->
+<div class="grid-main max-w-6xl mx-auto px-5 pb-20 grid lg:grid-cols-[210px_1fr] gap-8">
+
+  <!-- TOC sidebar -->
+  <aside class="no-print hidden lg:block">
+    <div class="sticky top-20 glass rounded-xl p-3 toc">
+      <div class="text-xs uppercase tracking-widest opacity-50 px-2 pb-2">Contents</div>
+      <a href="#summary">Executive Summary</a>
+      <a href="#labs">Full Lab Table</a>
+      <a href="#charts">Visual Snapshot</a>
+      <a href="#plain">Plain-Words Layer</a>
+      <a href="#priority">Priority Map</a>
+      <a href="#peptides">Bachmeyer Peptides</a>
+      <a href="#supps">Supplement Stack</a>
+      <a href="#workup">Pre-Peptide Workup</a>
+      <a href="#monitor">Monitoring Plan</a>
+    </div>
+  </aside>
+
+  <main class="min-w-0 space-y-12">
+
+    <!-- summary -->
+    <section id="summary" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Executive Summary — 4 convergent flags</h2>
+      <div class="card rounded-xl p-1 overflow-x-auto">
+        <table>
+          <thead><tr><th>#</th><th>Flag</th><th>The numbers</th><th>Severity</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">1</td><td><strong>Severe insulin resistance</strong></td><td>HOMA-IR <strong>16.21</strong> (ref &lt;2), insulin <strong>56.6</strong> µUI/mL (ref 2.6–24.9), glucose <strong>116</strong> (ref 74–100)</td><td><span class="pill pill-red">🔴 Headline</span></td></tr>
+            <tr><td class="mono">2</td><td><strong>Very high GGT → fatty-liver suspect</strong></td><td>GGT <strong>356 U/L</strong> (ref &lt;55 → 6.5×), AST/ALT normal</td><td><span class="pill pill-red">🔴 Major</span></td></tr>
+            <tr><td class="mono">3</td><td><strong>Eosinophilia</strong></td><td>Eozinofile <strong>10.8%</strong> / <strong>0.81</strong> ×10³ (ref 0–4% / 0–0.4)</td><td><span class="pill pill-amber">🟠 Workup gate</span></td></tr>
+            <tr><td class="mono">4</td><td><strong>Low free testosterone + low estradiol</strong></td><td>Free T <strong>14 pg/mL</strong> (ref 15–50), Estradiol <strong>&lt;10</strong> (ref 11–44); total T low-normal, SHBG high-normal</td><td><span class="pill pill-amber">🟠 Secondary/metabolic</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+        <div class="card rounded-xl p-4"><strong class="accent">IGF-1 129 ng/mL</strong> (ref 51–187) = mid-normal → growth-hormone secretagogues are <strong>NOT</strong> indicated.</div>
+        <div class="card rounded-xl p-4"><strong class="accent">HbA1c 5.5%</strong> looks "fine" but is <em>masked</em> — the pancreas works overtime (HOMA-B 384%) to force glucose down. Calm before the storm: pre-diabetes hidden behind a normal HbA1c.</div>
+      </div>
+    </section>
+
+    <!-- labs -->
+    <section id="labs" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Full Lab Marker Table</h2>
+
+      <h3 class="text-sm font-semibold mb-2 opacity-80">🔴 Flagged — out of range</h3>
+      <div class="card rounded-xl p-1 overflow-x-auto mb-6">
+        <table>
+          <thead><tr><th>Marker</th><th>Value</th><th>Unit</th><th>Ref</th><th>Flag</th></tr></thead>
+          <tbody>
+            <tr><td>Glucoză serică (a jeun)</td><td class="mono">116</td><td>mg/dL</td><td class="mono">74–100</td><td><span class="pill pill-red">High</span></td></tr>
+            <tr><td>Insulină a jeun</td><td class="mono">56.6</td><td>µUI/mL</td><td class="mono">2.6–24.9</td><td><span class="pill pill-red">High</span></td></tr>
+            <tr><td>Indice HOMA1-IR</td><td class="mono">16.21</td><td>—</td><td class="mono">&lt;2</td><td><span class="pill pill-red">High</span></td></tr>
+            <tr><td>Gama GT</td><td class="mono">356</td><td>U/L</td><td class="mono">&lt;55</td><td><span class="pill pill-red">High (6.5×)</span></td></tr>
+            <tr><td>% Eozinofile</td><td class="mono">10.8</td><td>%</td><td class="mono">0–4</td><td><span class="pill pill-red">High</span></td></tr>
+            <tr><td>Nr. eozinofile</td><td class="mono">0.81</td><td>×10³/µL</td><td class="mono">0–0.4</td><td><span class="pill pill-red">High</span></td></tr>
+            <tr><td>Estradiol</td><td class="mono">&lt;10</td><td>pg/mL</td><td class="mono">11–44</td><td><span class="pill pill-red">Low</span></td></tr>
+            <tr><td><strong>Testosteron liber</strong></td><td class="mono"><strong>14</strong></td><td>pg/mL</td><td class="mono">15–50</td><td><span class="pill pill-red">Low (batch 3)</span></td></tr>
+            <tr><td>VEM (MCV)</td><td class="mono">98</td><td>fL</td><td class="mono">80–97</td><td><span class="pill pill-amber">Borderline high</span></td></tr>
+            <tr><td>eRFG (CKD-EPI)</td><td class="mono">86</td><td>mL/min</td><td class="mono">&gt;90</td><td><span class="pill pill-amber">G2 mild</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-sm font-semibold mb-2 opacity-80">🟢 In range (key)</h3>
+      <div class="card rounded-xl p-1 overflow-x-auto">
+        <table>
+          <thead><tr><th>Marker</th><th>Value</th><th>Unit</th><th>Ref</th></tr></thead>
+          <tbody>
+            <tr><td>Hemoglobină</td><td class="mono">14.8</td><td>g/dL</td><td class="mono">13.5–17</td></tr>
+            <tr><td>HbA1c</td><td class="mono">5.5</td><td>%</td><td class="mono">≤5.6 (non-diabetic)</td></tr>
+            <tr><td>Colesterol total</td><td class="mono">191</td><td>mg/dL</td><td class="mono">&lt;200</td></tr>
+            <tr><td>HDL</td><td class="mono">54</td><td>mg/dL</td><td class="mono">≥60 optimal</td></tr>
+            <tr><td>LDL</td><td class="mono">117.8</td><td>mg/dL</td><td class="mono">&lt;100 opt / 100–129 low-risk</td></tr>
+            <tr><td>Trigliceride</td><td class="mono">96</td><td>mg/dL</td><td class="mono">&lt;150</td></tr>
+            <tr><td>TGO/AST</td><td class="mono">20</td><td>U/L</td><td class="mono">11–34</td></tr>
+            <tr><td>TGP/ALT</td><td class="mono">36</td><td>U/L</td><td class="mono">&lt;45</td></tr>
+            <tr><td>CRP hs</td><td class="mono">2.12</td><td>mg/L</td><td class="mono">&lt;1 low / 1–3 moderate</td></tr>
+            <tr><td>Testosteron total</td><td class="mono">15.87</td><td>nmol/L (~458 ng/dL)</td><td class="mono">4.41–35.38</td></tr>
+            <tr><td>SHBG</td><td class="mono">51.7</td><td>nmol/L</td><td class="mono">13.5–71.4</td></tr>
+            <tr><td>FSH / LH / Prolactina</td><td class="mono">6.8 / 1.77 / 15.53</td><td>—</td><td class="mono">normal</td></tr>
+            <tr><td>DHEAS</td><td class="mono">109.1</td><td>µg/dL</td><td class="mono">48.6–361.8</td></tr>
+            <tr><td><strong>IGF-1</strong></td><td class="mono"><strong>129</strong></td><td>ng/mL</td><td class="mono">51–187 (mid-normal)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- charts -->
+    <section id="charts" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Visual Snapshot</h2>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div class="card rounded-xl p-5">
+          <div class="text-sm font-semibold mb-3">Insulin axis — value vs upper reference</div>
+          <canvas id="chartIR" height="200"></canvas>
+        </div>
+        <div class="card rounded-xl p-5">
+          <div class="text-sm font-semibold mb-3">Flag severity mix</div>
+          <canvas id="chartSev" height="200"></canvas>
+        </div>
+      </div>
+      <p class="text-xs opacity-55 mt-3">Bars show how far each insulin-axis marker sits above its upper reference limit (100% = at the limit).</p>
+    </section>
+
+    <!-- plain -->
+    <section id="plain" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Plain-Words Layer — what the red items mean</h2>
+      <div class="space-y-3">
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">🔴 Insulin resistance (HOMA-IR 16, insulin 56.6, glucose 116)</div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> Your body still keeps blood sugar near-normal, but only because the pancreas pumps out <strong>~6× more insulin than it should</strong> to get there. Like flooring the gas pedal just to drive at normal speed — the engine is straining and will eventually tire out. This is the single most important thing to fix, and the good news is it's very reversible with diet, movement, weight loss, and the metabolic peptides below.</div>
+        </div>
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">🔴 Gamma-GT 356 (6.5× the upper limit), with normal AST/ALT</div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> GGT is a liver "stress" enzyme. It's very high while the other two liver enzymes are normal — a pattern that usually points to <strong>fatty liver and/or alcohol/oxidative load</strong>, not active liver damage yet. Needs a liver ultrasound and 90 days off alcohol. It typically falls fast once insulin resistance and visceral fat come down.</div>
+        </div>
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">🔴 Eosinophils 10.8% (high)</div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> These are immune cells that rise with <strong>allergies or a parasite</strong>. Before starting any immune-affecting peptide, a simple stool test + an IgE blood test should rule out a parasite — cheap, important, and easy.</div>
+        </div>
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">🔴 Low free testosterone (14) + low estradiol (&lt;10)</div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> The "active" form of testosterone your tissues can actually use is slightly low, and so is estrogen. Your total testosterone is okay, so this is mostly <strong>downstream of the insulin/metabolic problem</strong>, not a primary testicle failure. As metabolic health improves, these usually recover on their own — so we fix the root first rather than jumping to testosterone injections.</div>
+        </div>
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">🟡 MCV 98 (just over) &amp; kidney filtration 86 (mildly under 90)</div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> Both are only a hair outside the line and not alarming on their own. Worth a recheck and a look at B12/folate (for the slightly large red cells) and hydration/kidney over time.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- priority -->
+    <section id="priority" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Priority Map</h2>
+      <ol class="space-y-2 text-sm">
+        <li class="card rounded-xl p-3"><span class="accent font-bold">1.</span> <strong>Metabolic root</strong> — insulin resistance + glucose (drives flags 1, 2, and 4).</li>
+        <li class="card rounded-xl p-3"><span class="accent font-bold">2.</span> <strong>Liver</strong> — GGT 356 → imaging + alcohol abstinence.</li>
+        <li class="card rounded-xl p-3"><span class="accent font-bold">3.</span> <strong>Safety gate</strong> — eosinophilia workup <em>before</em> immune-modulating peptides.</li>
+        <li class="card rounded-xl p-3"><span class="accent font-bold">4.</span> <strong>Hormones</strong> — free T / estradiol: correct via the metabolic fix first, hormone peptides second.</li>
+      </ol>
+    </section>
+
+    <!-- peptides -->
+    <section id="peptides" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Bachmeyer Protocol — Peptides <span class="text-xs font-normal opacity-60">(informational)</span></h2>
+      <div class="plain p-3 text-sm mb-5">Sequencing follows Bachmeyer's metabolic-first logic. <strong>Nothing starts before the pre-peptide workup clears (see gating below).</strong></div>
+
+      <h3 class="text-sm font-semibold accent mb-3">Tier 1 — Metabolic core</h3>
+      <div class="space-y-3 mb-6">
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">Retatrutide <span class="opacity-60 font-normal">(triple GLP-1/GIP/glucagon agonist)</span></div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> Bachmeyer's top pick here. It attacks fat (especially the dangerous liver/belly fat), lowers blood sugar and insulin, and helps the liver clear fat — exactly the three problems on this panel at once. Slow monthly dose steps to avoid nausea/dehydration. He explicitly prefers it over semaglutide/tirzepatide for this insulin-resistant profile (those work on fewer pathways and ~70% of weight returns after stopping).</div>
+        </div>
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">MOTS-c <span class="opacity-60 font-normal">(mitochondrial peptide)</span></div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> Think of it as a tune-up for the cell's "batteries" so muscles burn sugar better — it directly improves insulin sensitivity and pairs naturally with exercise.</div>
+        </div>
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">BPC-157 <span class="opacity-60 font-normal">(repair/anti-inflammatory)</span></div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> A gut- and tissue-healing peptide that calms inflammation. Used here mainly to support the gut–liver axis. Cycle it (e.g. 5 days on / 2 off) rather than running it open-ended.</div>
+        </div>
+      </div>
+
+      <h3 class="text-sm font-semibold accent mb-3">Tier 2 — Adjuncts <span class="opacity-60 font-normal">(after Tier 1 is tolerated)</span></h3>
+      <div class="space-y-3 mb-6">
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">Cardarine / GW-501516 <span class="opacity-60 font-normal">(PPAR-δ agonist — not a peptide)</span></div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> Helps the body prefer fat for fuel and nudges cholesterol/endurance in a good direction. Use in defined cycles, not continuously.</div>
+        </div>
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">KPV <span class="opacity-60 font-normal">(anti-inflammatory tripeptide)</span></div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> A gentle inflammation-calmer (a fragment of a natural hormone). Helpful for the elevated CRP — but <strong>only after</strong> the eosinophil/parasite workup is clean, since it touches the immune system.</div>
+        </div>
+      </div>
+
+      <h3 class="text-sm font-semibold accent mb-3">Tier 3 — Growth-hormone secretagogues → <span class="pill pill-amber">DEFERRED</span></h3>
+      <div class="card rounded-xl p-4 mb-6">
+        <div class="plain p-3 text-sm">💬 <em>In plain words:</em> Peptides like CJC-1295/Ipamorelin/Tesamorelin raise IGF-1. <strong>Ion's IGF-1 is already mid-normal (129), so these are not needed</strong> and could even worsen insulin resistance if over-pushed. Skip for now.</div>
+      </div>
+
+      <h3 class="text-sm font-semibold accent mb-3">Hormone restoration — natural-first</h3>
+      <div class="space-y-3">
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">Kisspeptin <span class="opacity-60 font-normal">(preferred)</span></div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> The "ignition key" that tells the brain to restart the body's own testosterone production — it preserves natural function instead of replacing it. Bachmeyer's first choice over TRT.</div>
+        </div>
+        <div class="card rounded-xl p-4">
+          <div class="font-semibold text-sm mb-1">Enclomiphene <span class="opacity-60 font-normal">(alternative)</span></div>
+          <div class="plain p-3 text-sm">💬 <em>In plain words:</em> A pill that nudges the pituitary to make more of its own testosterone signal. Good fit for "secondary" low-T like this. Reserve if free T stays low after the metabolic fix.</div>
+        </div>
+      </div>
+      <div class="plain p-3 text-sm mt-4">🚫 <strong>No first-line TRT</strong> (testosterone injections shut down your own production) and 🚫 <strong>no aromatase inhibitors</strong> (estradiol is already <em>low</em> — blocking it further would backfire). Both are Bachmeyer positions.</div>
+    </section>
+
+    <!-- supplements -->
+    <section id="supps" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Supplement Stack <span class="text-xs font-normal opacity-60">(independent clinical, complements Bachmeyer)</span></h2>
+      <div class="card rounded-xl p-1 overflow-x-auto">
+        <table>
+          <thead><tr><th>Supplement</th><th>Dose (typical)</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Berberine</td><td class="mono">500 mg ×2/day</td><td>Insulin sensitizer — direct fit for the IR/glucose flag</td></tr>
+            <tr><td>Myo-inositol</td><td class="mono">2–4 g/day</td><td>Improves insulin signaling</td></tr>
+            <tr><td>Omega-3 (EPA-dominant)</td><td class="mono">3–4 g/day</td><td>Triglycerides + anti-inflammatory (EPA beats mixed EPA/DHA)</td></tr>
+            <tr><td>NAC</td><td class="mono">600–1200 mg/day</td><td>Liver/glutathione support for high GGT</td></tr>
+            <tr><td>Methyl-folate + B12 + P-5-P (B6)</td><td class="mono">clinical-grade</td><td>Methylation; supports slightly large red cells</td></tr>
+            <tr><td>TMG (trimethylglycine)</td><td class="mono">1–3 g/day</td><td>Methyl donor, liver/homocysteine support</td></tr>
+            <tr><td>Vitamin D3 + K2-MK7</td><td class="mono">3000 IU + 200 µg</td><td>Baseline (confirm with a level)</td></tr>
+            <tr><td>Magnesium (glycinate/citrate)</td><td class="mono">300–400 mg/day</td><td>Insulin sensitivity + sleep</td></tr>
+            <tr><td>Zinc</td><td class="mono">25–30 mg/day</td><td>Hormone support</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="plain p-3 text-sm mt-4">💬 <em>In plain words:</em> This stack is the "foundation" — cheap, low-risk, and aimed at the same insulin/liver problems the peptides target, so they work together. <strong>Plus: 90 days no alcohol</strong> is probably the single highest-impact free intervention for the GGT.</div>
+    </section>
+
+    <!-- workup -->
+    <section id="workup" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Pre-Peptide Workup <span class="text-xs font-normal opacity-60">(gating — do these first)</span></h2>
+      <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+        <li class="card rounded-xl p-3"><strong>Hepatic ultrasound ± FibroScan</strong> — confirm fatty liver / fibrosis stage</li>
+        <li class="card rounded-xl p-3"><strong>Coproparasitology + total IgE</strong> — clear the eosinophilia before immune-modulators</li>
+        <li class="card rounded-xl p-3"><strong>TSH / FT4 / FT3</strong> — thyroid contribution to metabolism</li>
+        <li class="card rounded-xl p-3"><strong>ApoB + Lp(a)</strong> — true cardiovascular risk beyond LDL</li>
+        <li class="card rounded-xl p-3"><strong>Homocysteine, B12, folate, vitamin D</strong> — methylation + deficiencies</li>
+        <li class="card rounded-xl p-3"><strong>90-day alcohol abstinence</strong>, then re-draw GGT</li>
+      </ul>
+    </section>
+
+    <!-- monitoring -->
+    <section id="monitor" class="fade">
+      <h2 class="sec text-xl font-bold mb-4">Monitoring Plan <span class="text-xs font-normal opacity-60">(Bachmeyer cadence)</span></h2>
+      <div class="card rounded-xl p-1 overflow-x-auto">
+        <table>
+          <thead><tr><th>Marker</th><th>Watch for</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td>Fasting insulin + HOMA-IR</td><td>↓ (the key efficacy readout)</td><td>every ~3 months</td></tr>
+            <tr><td>Fasting glucose / HbA1c</td><td>↓ toward &lt;5.7%</td><td>every 3 months</td></tr>
+            <tr><td>GGT, AST, ALT</td><td>↓ / normalize</td><td>week 12, then 6-monthly</td></tr>
+            <tr><td>Triglycerides / HDL</td><td>TG ↓, HDL ↑</td><td>6-monthly</td></tr>
+            <tr><td>Free testosterone / estradiol</td><td>recover as IR reverses</td><td>6-monthly</td></tr>
+            <tr><td>hs-CRP</td><td>↓ toward &lt;1</td><td>week 12, week 24</td></tr>
+            <tr><td>Lipase/amylase</td><td>red-line if Retatrutide + vomiting &gt;2×/day → STOP</td><td>symptom-led</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="plain p-3 text-sm mt-4"><strong>Discontinuation red-lines (standard ranges):</strong> GGT/ALT/AST rising &gt;2× baseline on therapy; eGFR &lt;60 or creatinine &gt;1.3; any allergic reaction (hives/swelling/throat) → STOP all + emergency care.</div>
+    </section>
+
+    <footer class="text-xs opacity-50 pt-6 border-t border-white/10">
+      Built under NexusOS Health (Bachmeyer-primary). Patient-isolated (IL-8). v2 — closes the free-T + IGF-1 gaps left pending in v1. · Report date 2026-06-12
+    </footer>
+
+  </main>
+</div>
+
+<script>
+// theme toggle
+const root = document.documentElement;
+const saved = localStorage.getItem('nx-theme');
+if (saved === 'light') root.classList.remove('dark');
+document.getElementById('themeBtn').addEventListener('click', () => {
+  root.classList.toggle('dark');
+  localStorage.setItem('nx-theme', root.classList.contains('dark') ? 'dark' : 'light');
+  renderCharts();
+});
+
+// share
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const url = window.location.href;
+  const data = { title: document.title, url };
+  try {
+    if (navigator.share) await navigator.share(data);
+    else { await navigator.clipboard.writeText(url); const b=document.getElementById('shareBtn'); const t=b.textContent; b.textContent='Copied ✓'; setTimeout(()=>b.textContent=t,1500); }
+  } catch(e) {}
+});
+
+// scroll fade-in
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold:.08 });
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+// charts
+let cIR, cSev;
+function axisColor(){ return root.classList.contains('dark') ? 'rgba(231,231,238,.65)' : 'rgba(26,26,34,.7)'; }
+function gridColor(){ return root.classList.contains('dark') ? 'rgba(255,255,255,.07)' : 'rgba(0,0,0,.08)'; }
+function renderCharts(){
+  if (typeof Chart === 'undefined') return;
+  const ac = axisColor(), gc = gridColor();
+  if (cIR) cIR.destroy();
+  if (cSev) cSev.destroy();
+  cIR = new Chart(document.getElementById('chartIR'), {
+    type:'bar',
+    data:{ labels:['HOMA-IR','Insulin','Glucose'],
+      datasets:[{ label:'% of upper reference', data:[810,227,116],
+        backgroundColor:['#22c55e','#4ade80','#86efac'], borderRadius:6 }] },
+    options:{ plugins:{ legend:{display:false} },
+      scales:{ y:{ beginAtZero:true, ticks:{color:ac, callback:v=>v+'%'}, grid:{color:gc} },
+        x:{ ticks:{color:ac}, grid:{display:false} } } }
+  });
+  cSev = new Chart(document.getElementById('chartSev'), {
+    type:'doughnut',
+    data:{ labels:['Headline (🔴)','Major (🔴)','Workup gate (🟠)','Secondary (🟠)'],
+      datasets:[{ data:[1,1,1,1], backgroundColor:['#ef4444','#f87171','#f59e0b','#fbbf24'], borderWidth:0 }] },
+    options:{ plugins:{ legend:{ position:'bottom', labels:{color:ac, boxWidth:12, font:{size:11}} } } }
+  });
+}
+renderCharts();
+</script>
+</body>
+</html>
