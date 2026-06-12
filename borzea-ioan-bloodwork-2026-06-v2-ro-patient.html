@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Analizele tale de sânge — Borzea Ioan — versiune pentru pacient</title>
+<meta name="description" content="Anima Panel 09.06.2026 — explicat pe înțelesul tău" />
+<meta property="og:title" content="Analizele tale de sânge — Borzea Ioan — versiune pentru pacient" />
+<meta property="og:description" content="Anima Panel 09.06.2026 — explicat pe înțelesul tău" />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root { --accent: #22c55e; }
+* { scroll-behavior: smooth; }
+body { font-family:'Inter',system-ui,sans-serif; margin:0; line-height:1.65; transition:background .3s,color .3s; }
+code,pre { font-family:'JetBrains Mono',monospace; }
+
+/* DARK (default) */
+body { background:#0A0A0F; color:#dde2ea; }
+.card { background:rgba(17,17,24,0.7); border:1px solid rgba(255,255,255,0.07); backdrop-filter:blur(14px); }
+h1,h2,h3,h4 { color:#f4f6fb; }
+.sidebar { background:rgba(17,17,24,0.7); border:1px solid rgba(255,255,255,0.07); backdrop-filter:blur(14px); }
+table { background:rgba(255,255,255,0.02); }
+th { background:rgba(34,197,94,0.10); color:#bdf0cf; }
+td,th { border-color:rgba(255,255,255,0.08); }
+tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
+blockquote { background:rgba(34,197,94,0.06); border-left:3px solid var(--accent); color:#cad2dc; }
+.meta-k { color:#8b94a3; }
+.toc-link { color:#9aa3b2; }
+
+/* LIGHT */
+body.light { background:#fafafa; color:#26303a; }
+body.light .card { background:#ffffff; border:1px solid #e5e7eb; backdrop-filter:none; }
+body.light h1,body.light h2,body.light h3,body.light h4 { color:#0f5132; }
+body.light .sidebar { background:#ffffff; border:1px solid #e5e7eb; backdrop-filter:none; }
+body.light table { background:#fff; }
+body.light th { background:#e6f6ec; color:#0f5132; }
+body.light td,body.light th { border-color:#dfe3e8; }
+body.light tr:nth-child(even) td { background:#f5f8f6; }
+body.light blockquote { background:#eefcf2; color:#3b4a40; }
+body.light .meta-k { color:#6b7280; }
+body.light .toc-link { color:#52606d; }
+
+.accent { color:var(--accent); }
+.glow { box-shadow:0 0 40px rgba(34,197,94,0.12); }
+
+/* content */
+.content h2 { margin-top:2.2rem; padding-bottom:.3rem; border-bottom:1px solid rgba(34,197,94,0.25); font-size:1.5rem; font-weight:700; }
+.content h3 { margin-top:1.6rem; font-size:1.18rem; font-weight:600; color:var(--accent); }
+.content h4 { margin-top:1.2rem; font-size:1.02rem; font-weight:600; }
+.content p { margin:.7rem 0; }
+.content ul,.content ol { margin:.6rem 0 .6rem 1.4rem; }
+.content li { margin:.3rem 0; }
+.content table { border-collapse:collapse; width:100%; margin:1rem 0; font-size:.88rem; display:block; overflow-x:auto; }
+.content th,.content td { border:1px solid; padding:.5rem .65rem; text-align:left; vertical-align:top; }
+.content blockquote { padding:.7rem 1rem; margin:1rem 0; border-radius:.4rem; }
+.content code { background:rgba(34,197,94,0.12); padding:.1em .35em; border-radius:.25em; font-size:.82em; }
+.content hr { border:none; border-top:1px solid rgba(255,255,255,0.08); margin:2rem 0; }
+.content a { color:var(--accent); }
+
+/* hero chips */
+.chip { border-radius:.6rem; padding:.7rem .9rem; border:1px solid rgba(255,255,255,0.08); }
+.chip-crit { background:rgba(239,68,68,0.10); border-color:rgba(239,68,68,0.35); }
+.chip-warn { background:rgba(234,179,8,0.10); border-color:rgba(234,179,8,0.30); }
+.chip-name { font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; opacity:.7; }
+.chip-val { font-size:1.4rem; font-weight:800; line-height:1.1; }
+.chip-ref { font-size:.72rem; opacity:.65; font-family:'JetBrains Mono',monospace; }
+
+.toc-link { display:block; padding:.18rem 0; font-size:.82rem; text-decoration:none; border-left:2px solid transparent; padding-left:.6rem; }
+.toc-link:hover { color:var(--accent); border-left-color:var(--accent); }
+
+.meta-row { display:flex; justify-content:space-between; gap:.6rem; padding:.35rem 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:.82rem; }
+.meta-v { text-align:right; font-weight:600; }
+
+.fade { opacity:0; transform:translateY(14px); transition:opacity .6s ease,transform .6s ease; }
+.fade.in { opacity:1; transform:none; }
+
+@media print {
+  body { background:#fff !important; color:#111 !important; }
+  .no-print { display:none !important; }
+  .sidebar { display:none !important; }
+  .content table { display:table; }
+  .card { box-shadow:none !important; border:1px solid #ccc !important; background:#fff !important; }
+  h1,h2,h3,h4 { color:#0f5132 !important; }
+  .grid-main { display:block !important; }
+  section,tr,blockquote { page-break-inside:avoid; }
+  @page { size:A4; margin:1.4cm; }
+}
+</style>
+</head>
+<body>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+
+  <div class="no-print flex items-center justify-between mb-6">
+    <div class="text-sm accent font-semibold tracking-wide">NEXUSOS · RAPORT DE SĂNĂTATE · VERSIUNE PACIENT</div>
+    <div class="flex gap-2">
+      <button id="shareBtn" class="text-xs px-3 py-1.5 rounded-md border border-white/10 hover:border-[var(--accent)]">Distribuie</button>
+      <button id="themeBtn" class="text-xs px-3 py-1.5 rounded-md border border-white/10 hover:border-[var(--accent)]">Luminos / Întunecat</button>
+    </div>
+  </div>
+
+  <header class="card glow rounded-2xl p-6 sm:p-9 mb-8">
+    <div class="text-xs uppercase tracking-widest accent mb-2">Pentru pacient — citește cu soția</div>
+    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2">Analizele tale de sânge, explicate pe înțelesul tău</h1>
+    <p class="opacity-70 text-sm sm:text-base mb-6">Borzea Ioan · Recoltare Anima 09.06.2026 · Versiune în română pentru pacient</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div class="chip chip-crit"><div class="chip-name">HOMA-IR</div><div class="chip-val">16.21</div><div class="chip-ref">normal sub 2 · 8×</div></div>
+      <div class="chip chip-crit"><div class="chip-name">GGT (ficat)</div><div class="chip-val">356 U/L</div><div class="chip-ref">normal sub 55 · 6.5×</div></div>
+      <div class="chip chip-crit"><div class="chip-name">Insulină</div><div class="chip-val">56.6</div><div class="chip-ref">normal sub 24.9 · 2.3×</div></div>
+      <div class="chip chip-warn"><div class="chip-name">hs-CRP</div><div class="chip-val">2.12</div><div class="chip-ref">inflamație moderată</div></div>
+      <div class="chip chip-warn"><div class="chip-name">Eozinofile</div><div class="chip-val">10.8%</div><div class="chip-ref">posibil parazit</div></div>
+      <div class="chip chip-warn"><div class="chip-name">Estradiol</div><div class="chip-val">&lt;10</div><div class="chip-ref">normal 11–44 · MIC</div></div>
+    </div>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8 grid-main">
+    <main class="content card rounded-2xl p-6 sm:p-9 min-w-0">
+<h1 id="analizele-tale-de-sânge-explicate-pe-înțelesul-tău">Analizele
+tale de sânge, explicate pe înțelesul tău</h1>
+<p><strong>Pentru:</strong> Domnul Borzea Ioan (59 ani, 4 luni)
+<strong>Recoltare:</strong> 09.06.2026, dimineața pe nemâncate, la Anima
+/ Family Medical Clinic Voluntari <strong>Rezultate primite:</strong>
+11.06.2026 <strong>Cine a scris asta:</strong> echipa de sănătate Pafi,
+după ce a citit toate valorile tale și a verificat literatura medicală
+2024–2026.</p>
+<hr />
+<h2 id="rezumat-în-5-rânduri-citește-măcar-atât">1. Rezumat în 5 rânduri
+(citește măcar atât)</h2>
+<ol type="1">
+<li><strong>Nu ești în pericol acut</strong> — nu trebuie să mergi la
+urgență, dormi liniștit la noapte.</li>
+<li><strong>Dar ai trei probleme serioase care merg împreună:</strong>
+pancreasul tău muncește epuizant ca să țină glicemia normală, ficatul
+tău are grăsime pe el, și ai niște celule albe (eozinofile) crescute
+care pot însemna un parazit intestinal.</li>
+<li><strong>Cifra cea mai îngrijorătoare</strong> se cheamă HOMA-IR și e
+de 8 ori peste limita normală. Tradus: corpul tău e pe cale să facă
+diabet, chiar dacă glicemia ta arată „aproape ok” pe hârtie.</li>
+<li><strong>Trebuie să mergi la doi specialiști</strong> în următoarele
+1–2 săptămâni: un endocrinolog (pentru zahăr/insulină) și un hepatolog
+(pentru ficat). Plus o ecografie abdominală.</li>
+<li><strong>Vestea bună:</strong> toate astea sunt încă reversibile dacă
+acționezi acum. Scăderea în greutate de 5–10% în 6 luni + zero alcool 90
+zile + mișcare = poți schimba complet tabloul.</li>
+</ol>
+<hr />
+<h2 id="ce-am-găsit-important-cele-3-steaguri-roșii">2. Ce am găsit
+important (cele 3 steaguri roșii)</h2>
+<h3 id="steagul-1-pancreasul-tău-muncește-la-limită">Steagul 1 🚩 —
+Pancreasul tău muncește la limită</h3>
+<p>Ai o valoare numită <strong>HOMA-IR de 16.21</strong>. Normalul e sub
+2. Al tău e de <strong>8 ori peste</strong>.</p>
+<p><strong>Ce înseamnă pe românește:</strong> insulina e hormonul care
+„deschide ușa” celulelor ca să intre zahărul din sânge înăuntru. La
+tine, celulele au „pus telefonul pe silent” — nu mai răspund când
+insulina sună la ușă. Atunci pancreasul țipă mai tare: produce de 2–3
+ori mai multă insulină ca să forțeze ușa. Asta se cheamă
+<strong>rezistență la insulină</strong>.</p>
+<p>Pancreasul tău reușește încă să țină glicemia aproape normală, dar
+lucrează ore suplimentare — la 384% din capacitate. <strong>Asta nu
+poate dura la nesfârșit.</strong> Dacă nu intervii, în câțiva ani
+pancreasul cedează și apare diabetul.</p>
+<blockquote>
+<p>⚠️ <strong>Capcana cu hemoglobina glicată (HbA1c) 5.5%:</strong>
+medicul de familie s-ar putea să te liniștească pentru că HbA1c arată
+„bine”. Nu e bine. HbA1c arată media glicemiei pe 3 luni, dar nu vede
+cât de tare se chinuie pancreasul ca să țină acea medie. La tine,
+pancreasul plătește prețul.</p>
+</blockquote>
+<h3
+id="steagul-2-ficatul-tău-are-grăsime-pe-el-steatoză-ficat-gras">Steagul
+2 🚩 — Ficatul tău are grăsime pe el (steatoză / „ficat gras”)</h3>
+<p>Ai o enzimă din ficat care se cheamă <strong>GGT</strong> de
+<strong>6.5 ori peste limita normală</strong> (356 față de maxim
+55).</p>
+<p><strong>Ce înseamnă:</strong> ficatul tău e plin de grăsime — exact
+ca o bucată de slănină într-o tigaie. Asta se numește <strong>ficat gras
+non-alcoolic</strong> (medicii îi spun MASLD sau NAFLD). Celelalte
+enzime hepatice (AST, ALT) sunt încă normale, ceea ce e o veste bună —
+înseamnă că ficatul nu e încă inflamat sau cicatrizat. Avem timp să-l
+curățăm.</p>
+<p><strong>De unde vine asta?</strong> Din rezistența la insulină de mai
+sus. Când celulele nu mai răspund la insulină, corpul depozitează
+grăsimea în locurile greșite: ficat, pancreas, în jurul organelor.
+<strong>Tratezi insulina → ficatul se curăță singur.</strong></p>
+<h3 id="steagul-3-niște-celule-albe-crescute-eozinofile-10.8">Steagul 3
+🟡 — Niște celule albe crescute (eozinofile 10.8%)</h3>
+<p>Eozinofilele sunt <strong>celule albe care vânează paraziți</strong>
+și răspund la alergii. La tine sunt cam de 3 ori peste normal.
+<strong>Nu e urgență</strong>, dar trebuie să afli de ce.</p>
+<p><strong>Cele 3 cauze probabile, în ordinea probabilității în
+România:</strong> 1. <strong>Parazit intestinal</strong> (Strongyloides,
+Giardia, Ascarid) — cel mai probabil. Soluția: 3 probe de scaun +
+analize de sânge specifice. 2. <strong>Alergie</strong> (alimentară,
+polen, praf). 3. <strong>Reacție la un medicament</strong> pe care îl
+iei.</p>
+<blockquote>
+<p>🚨 <strong>Important:</strong> dacă ai paraziți, trebuie tratați
+<strong>înainte</strong> de a începe orice altă suplimentare sau
+peptidă. Altfel, ascunzi diagnosticul.</p>
+</blockquote>
+<hr />
+<h2 id="cum-stai-pe-scurt">3. Cum stai pe scurt</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sistemul</th>
+<th>Cum stă</th>
+<th>Ce să faci</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inima (colesterol, trigliceride)</td>
+<td>🟡 Aproape ok</td>
+<td>Va merge mai bine când scapi de grăsimea de pe ficat</td>
+</tr>
+<tr class="even">
+<td>Pancreasul / zahărul</td>
+<td>🚩 În pericol</td>
+<td>Endocrinolog <strong>≤1 săptămână</strong></td>
+</tr>
+<tr class="odd">
+<td>Ficatul</td>
+<td>🚩 Are grăsime</td>
+<td>Hepatolog <strong>≤2 săptămâni</strong> + ecografie + FibroScan</td>
+</tr>
+<tr class="even">
+<td>Rinichii</td>
+<td>✅ Bine</td>
+<td>Filtrarea e ușor scăzută dar normală pentru vârsta ta</td>
+</tr>
+<tr class="odd">
+<td>Sângele (hemoglobină, plachete)</td>
+<td>✅ Bine</td>
+<td>Globulele roșii sunt puțin mari (MCV 98) — întrebare despre
+alcool</td>
+</tr>
+<tr class="even">
+<td>Inflamație generală (hs-CRP 2.12)</td>
+<td>🟡 Moderată</td>
+<td>Scade când tratezi metabolismul</td>
+</tr>
+<tr class="odd">
+<td>Hormonii bărbătești</td>
+<td>🟡 Mediu, cu o problemă</td>
+<td>Estradiolul tău e MIC, nu mare — vezi secțiunea de tratamente</td>
+</tr>
+<tr class="even">
+<td>Eozinofile (paraziți?)</td>
+<td>🟡 De investigat</td>
+<td>Probe de scaun + test de sânge</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analizele-tale-pe-rând-cu-cifrele-explicația-alături">4.
+Analizele tale, pe rând (cu cifrele + explicația alături)</h2>
+<h3 id="hemograma-sângele-tău">4.1 Hemograma (sângele tău)</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce</th>
+<th style="text-align: right;">Valoarea ta</th>
+<th>Normal</th>
+<th>Comentariu pe românește</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hemoglobina</td>
+<td style="text-align: right;">14.8</td>
+<td>13.5–17.0</td>
+<td>✅ Bine — n-ai anemie</td>
+</tr>
+<tr class="even">
+<td>Globule roșii</td>
+<td style="text-align: right;">4.5</td>
+<td>4.5–6.0</td>
+<td>🟡 La limita de jos, dar în normal</td>
+</tr>
+<tr class="odd">
+<td><strong>Mărimea globulelor (MCV)</strong></td>
+<td style="text-align: right;"><strong>98</strong></td>
+<td>80–97</td>
+<td>🚩 Globulele tale sunt puțin <strong>mai mari</strong> decât normal.
+Asta poate veni de la: (1) alcool prea mult, (2) lipsă de B12 sau acid
+folic, (3) tiroidă leneșă. Trebuie verificate toate trei.</td>
+</tr>
+<tr class="even">
+<td>Leucocite totale</td>
+<td style="text-align: right;">7.47</td>
+<td>3.5–10</td>
+<td>✅ Bine</td>
+</tr>
+<tr class="odd">
+<td><strong>Eozinofile</strong></td>
+<td style="text-align: right;"><strong>10.8% / 0.81</strong></td>
+<td>0–4% / 0–0.4</td>
+<td>🚩 Crescute. Vezi steagul 3 — posibil parazit.</td>
+</tr>
+<tr class="even">
+<td>Plachete</td>
+<td style="text-align: right;">269</td>
+<td>150–450</td>
+<td>✅ Bine</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zahărul-și-insulina-cea-mai-importantă-secțiune">4.2 Zahărul și
+insulina (cea mai importantă secțiune)</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce</th>
+<th style="text-align: right;">Valoarea ta</th>
+<th>Normal</th>
+<th>Comentariu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Glicemie pe nemâncate</strong></td>
+<td style="text-align: right;"><strong>116</strong></td>
+<td>74–100</td>
+<td>🚩 Pre-diabet. Nu e încă diabet, dar e pe drum.</td>
+</tr>
+<tr class="even">
+<td><strong>Insulină pe nemâncate</strong></td>
+<td style="text-align: right;"><strong>56.6</strong></td>
+<td>2.6–24.9</td>
+<td>🚩 De <strong>2.3 ori peste</strong> maxim. Pancreasul tău
+strigă.</td>
+</tr>
+<tr class="odd">
+<td><strong>HOMA-IR</strong> (cât de epuizat e pancreasul)</td>
+<td style="text-align: right;"><strong>16.21</strong></td>
+<td>sub 2</td>
+<td>🚩 De <strong>8 ori peste</strong> maxim. Asta e cifra cheie.</td>
+</tr>
+<tr class="even">
+<td>HOMA-B (cât de tare lucrează pancreasul)</td>
+<td style="text-align: right;">384%</td>
+<td>peste 49%</td>
+<td>🚩 La 384% — ore suplimentare extreme.</td>
+</tr>
+<tr class="odd">
+<td>Hemoglobina glicată (HbA1c)</td>
+<td style="text-align: right;">5.5%</td>
+<td>sub 5.6%</td>
+<td>🟡 „Pare bine” dar te înșeală — pancreasul plătește prețul.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="colesterolul">4.3 Colesterolul</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce</th>
+<th style="text-align: right;">Valoarea ta</th>
+<th>Normal</th>
+<th>Comentariu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Colesterol total</td>
+<td style="text-align: right;">191</td>
+<td>sub 200</td>
+<td>✅ Bine după ghidurile clasice</td>
+</tr>
+<tr class="even">
+<td>LDL („colesterolul rău”)</td>
+<td style="text-align: right;">117.8</td>
+<td>sub 100</td>
+<td>🟡 Puțin peste — nu e dramatic</td>
+</tr>
+<tr class="odd">
+<td>HDL („colesterolul bun”)</td>
+<td style="text-align: right;">54</td>
+<td>peste 60</td>
+<td>🟡 Sub țintă, dar nu departe</td>
+</tr>
+<tr class="even">
+<td>Trigliceride</td>
+<td style="text-align: right;">96</td>
+<td>sub 150</td>
+<td>🟡 Bine în cifre, dar raportul TG/HDL = 1.78 confirmă rezistența la
+insulină</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>De adăugat la următoarele analize:</strong> ApoB și Lp(a) —
+sunt indicatori mai exacți pentru riscul cardiovascular, mai buni decât
+LDL.</p>
+</blockquote>
+<h3 id="ficatul">4.4 Ficatul</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce</th>
+<th style="text-align: right;">Valoarea ta</th>
+<th>Normal</th>
+<th>Comentariu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GGT</strong> (enzimă sensibilă la grăsime/alcool)</td>
+<td style="text-align: right;"><strong>356</strong></td>
+<td>sub 55</td>
+<td>🚩 De <strong>6.5 ori peste</strong>. Confirmă ficat gras.</td>
+</tr>
+<tr class="even">
+<td>AST (TGO)</td>
+<td style="text-align: right;">20</td>
+<td>11–34</td>
+<td>✅ Bine — ficatul nu e încă rănit grav</td>
+</tr>
+<tr class="odd">
+<td>ALT (TGP)</td>
+<td style="text-align: right;">36</td>
+<td>sub 45</td>
+<td>🟡 La limita de sus, dar normal</td>
+</tr>
+<tr class="even">
+<td>Raport AST/ALT</td>
+<td style="text-align: right;">0.56</td>
+<td>—</td>
+<td>🟡 Tipar clasic de ficat gras</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rinichii">4.5 Rinichii</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce</th>
+<th style="text-align: right;">Valoarea ta</th>
+<th>Normal</th>
+<th>Comentariu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Creatinină</td>
+<td style="text-align: right;">1.0</td>
+<td>0.6–1.3</td>
+<td>✅ Bine</td>
+</tr>
+<tr class="even">
+<td>eGFR (filtrare)</td>
+<td style="text-align: right;">86</td>
+<td>peste 90</td>
+<td>🟡 Ușor sub țintă (stadiul G2), normal la 60 de ani</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inflamație-generală">4.6 Inflamație generală</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce</th>
+<th style="text-align: right;">Valoarea ta</th>
+<th>Normal</th>
+<th>Comentariu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>hs-CRP</strong> (inflamație)</td>
+<td style="text-align: right;"><strong>2.12</strong></td>
+<td>sub 1.0 ideal</td>
+<td>🟡 Risc cardiovascular moderat. Scade când rezolvi
+metabolismul.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hormonii-tiroida-nu-e-încă-măsurată-trebuie-făcută">4.7 Hormonii
+(tiroida nu e încă măsurată — trebuie făcută!)</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ce</th>
+<th style="text-align: right;">Valoarea ta</th>
+<th>Normal</th>
+<th>Comentariu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Estradiol</strong> (estrogen)</td>
+<td style="text-align: right;"><strong>&lt;10</strong></td>
+<td>11–44</td>
+<td>🚩 <strong>MIC, nu mare.</strong> Important: vezi secțiunea
+„Tratamente discutate” — un supliment numit DIM e
+<strong>CONTRAINDICAT</strong> la tine.</td>
+</tr>
+<tr class="even">
+<td>Testosteron total</td>
+<td style="text-align: right;">15.87 nmol/L</td>
+<td>4.41–35.38</td>
+<td>🟡 La mijloc — nu e mic, dar nici robust</td>
+</tr>
+<tr class="odd">
+<td>SHBG</td>
+<td style="text-align: right;">51.7</td>
+<td>13.5–71.4</td>
+<td>🟡 Spre max — înseamnă că testosteronul liber e probabil mai
+mic</td>
+</tr>
+<tr class="even">
+<td>FSH</td>
+<td style="text-align: right;">6.8</td>
+<td>0.95–11.95</td>
+<td>✅ Normal</td>
+</tr>
+<tr class="odd">
+<td>LH</td>
+<td style="text-align: right;">1.77</td>
+<td>0.57–12.07</td>
+<td>🟡 În limită, dar funcțional cam scăzut</td>
+</tr>
+<tr class="even">
+<td>Prolactina</td>
+<td style="text-align: right;">15.53</td>
+<td>3.46–19.40</td>
+<td>🟡 Aproape de maxim — de monitorizat</td>
+</tr>
+<tr class="odd">
+<td>DHEAS</td>
+<td style="text-align: right;">109.1</td>
+<td>48.6–361.8</td>
+<td>🟡 La limita de jos</td>
+</tr>
+<tr class="even">
+<td>Testosteron liber</td>
+<td style="text-align: right;">nu măsurat</td>
+<td>—</td>
+<td><strong>De cerut la următoarea recoltare</strong></td>
+</tr>
+<tr class="odd">
+<td>IGF-1</td>
+<td style="text-align: right;">nu măsurat</td>
+<td>—</td>
+<td><strong>De cerut la următoarea recoltare</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cum-se-leagă-toate-lucrurile-povestea-ta-în-4-paragrafe">5. Cum
+se leagă toate lucrurile (povestea ta în 4 paragrafe)</h2>
+<p><strong>Paragraf 1 — Tot pornește de la insulină.</strong>
+Imaginează-ți insulina ca un curier care livrează zahărul la celule.
+Celulele tale au pus o mulțime de „nu suna” pe ușă. Curierul
+(pancreasul) face mai multe ture (insulină 2.3× mai mult). Reușește
+pentru moment, dar oboseala se vede în HOMA-IR de 8 ori peste normal.
+Asta e <strong>cauza principală a tuturor problemelor tale.</strong></p>
+<p><strong>Paragraf 2 — Ficatul plătește factura.</strong> Când există
+rezistență la insulină, corpul nu mai știe ce să facă cu zahărul și-l
+transformă în grăsime, pe care o depozitează unde nu trebuie — pe ficat.
+De aceea ai GGT 6.5× peste normal: ficatul ține atâta grăsime încât
+celulele lui suferă. Vestea bună: AST și ALT sunt încă normale, deci
+ficatul <strong>nu e încă cicatrizat</strong> (asta se cheamă fibroză).
+Avem timp.</p>
+<p><strong>Paragraf 3 — Inflamația și inima.</strong> Hs-CRP 2.12 arată
+o inflamație de „fond” în tot corpul — aceeași grăsime + insulină
+crescută inflamează vasele de sânge. De asta riscul cardiovascular pe
+termen lung e moderat ridicat, nu pentru că ai colesterolul mare (e ok),
+ci pentru că ai un teren inflamator.</p>
+<p><strong>Paragraf 4 — Eozinofilele sunt o întrebare deschisă.</strong>
+Nu se leagă neapărat de restul. Poate ai un parazit intestinal pe care
+l-ai luat cândva (foarte comun în România, mai ales dacă ai mâncat carne
+incorect gătită sau ai lucrat cu pământ). Trebuie investigat
+<strong>separat</strong>, înainte de orice altă intervenție.</p>
+<hr />
+<h2
+id="tratamente-discutate-toate-se-decid-cu-medicul-nu-începi-singur">6.
+Tratamente discutate (TOATE se decid cu medicul, NU începi singur)</h2>
+<blockquote>
+<p>⚠️ <strong>CITEȘTE ASTA:</strong> Tot ce urmează nu e o rețetă. Sunt
+opțiuni pe care le <strong>discuți cu endocrinologul și cu
+hepatologul.</strong> Unele medicamente de aici nu sunt încă aprobate
+oficial — sunt în studii clinice. Nu le iei de pe internet, nu le iei de
+la prieteni, nu le iei singur.</p>
+</blockquote>
+<h3
+id="înainte-de-orice-tratament-analize-și-investigații-obligatorii">Înainte
+de orice tratament — analize și investigații obligatorii</h3>
+<ol type="1">
+<li><strong>Ecografie abdominală + FibroScan</strong> (măsoară duritatea
+ficatului — vede dacă e cicatrizat).</li>
+<li><strong>3 probe de scaun + test de sânge pentru paraziți</strong>
+(Strongyloides, IgE total).</li>
+<li><strong>Tiroida</strong> (TSH, FT4, FT3) + <strong>B12 + acid
+folic</strong> (explică globulele mari).</li>
+<li><strong>Conversație onestă cu medicul despre alcool</strong> — dacă
+bei zilnic, 90 de zile fără alcool sunt obligatorii înainte.</li>
+<li><strong>Testosteron liber + IGF-1</strong> la următoarea
+recoltare.</li>
+</ol>
+<h3 id="linia-1-pentru-insulină-metabolism">Linia 1 — Pentru insulină /
+metabolism</h3>
+<p><strong>Retatrutide</strong> — un medicament nou, injectabil o dată
+pe săptămână, care: - îți reduce pofta de mâncare puternic - ajută
+celulele să răspundă din nou la insulină - în studii a redus rezistența
+la insulină cu până la <strong>68% în 6 luni</strong> și grăsimea de pe
+ficat cu <strong>86% în 1 an</strong> - ⚠️ NU e încă aprobat oficial în
+Europa. Accesul e doar prin studii clinice sau farmacii speciale.
+<strong>Doza exactă o stabilește medicul.</strong></p>
+<p><strong>Alternativa aprobată oficial (Romania-disponibilă):
+Tirzepatide (Mounjaro/Zepbound)</strong> — aceeași familie de
+medicamente, efect puțin mai slab dar <strong>legal și
+disponibil</strong>. Endocrinologul tău probabil va recomanda asta dacă
+retatrutide nu e accesibil.</p>
+<p><strong>5-Amino-1MQ</strong> — supliment care îmbunătățește răspunsul
+mitocondrial (cum produc celulele energia). În studii a redus HOMA-IR cu
+34% în 8 săptămâni. Status experimental.</p>
+<p><strong>BPC-157 + KPV</strong> — peptide pentru intestin și
+inflamație. <strong>Se încep DOAR după ce s-a rezolvat problema cu
+paraziții</strong> (altfel ascund diagnosticul).</p>
+<h3 id="linia-2-pentru-mitocondrii-hormon-de-creștere">Linia 2 — Pentru
+mitocondrii / hormon de creștere</h3>
+<p><strong>CJC-1295 + Ipamorelin</strong> — peptide care stimulează
+blând hormonul tău natural de creștere. Pot îmbunătăți HOMA-IR cu
+~40%.</p>
+<ul>
+<li>Doză din protocol: CJC-1295 cu DAC <strong>2 mg săptămânal</strong>,
+Ipamorelin <strong>300 mcg de 2 ori pe zi, 5 zile da / 2 zile
+pauză</strong>, seara pe stomacul gol cu 30–60 min înainte de
+culcare.</li>
+<li>⚠️ NU se folosesc dacă există un cancer activ.</li>
+</ul>
+<p><strong>De evitat (importante):</strong> - GHRP-6 / GHRP-2 —
+sabotează tratamentul, dau foame nocturnă extremă, cresc cortizolul. -
+NU combini CJC-1295 cu Tesamorelin în același timp.</p>
+<h3 id="linia-3-hormoni-estradiol-testosteron-amânat">Linia 3 — Hormoni
+(estradiol, testosteron) — AMÂNAT</h3>
+<p><strong>Atenție mare:</strong> ai estradiol MIC (&lt;10). Există un
+supliment popular care se cheamă <strong>DIM</strong> care
+<strong>scade</strong> estrogenul. <strong>Tu NU ai voie să iei
+DIM</strong> — ar fi exact invers de ce ai nevoie.</p>
+<p>Hormonii se reevaluează la 16 săptămâni, după ce metabolismul se
+așază.</p>
+<hr />
+<h2 id="suplimentele-recomandate">7. Suplimentele recomandate</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Supliment</th>
+<th>Doză</th>
+<th>De ce</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>NAC (N-acetilcisteină)</strong></td>
+<td>600–1.200 mg de 2 ori pe zi</td>
+<td>Materie primă pentru glutation (antioxidantul propriu al ficatului).
+Direct util pentru GGT 356.</td>
+</tr>
+<tr class="even">
+<td><strong>DIM</strong></td>
+<td>⚠️ <strong>CONTRAINDICAT pentru tine</strong> (estradiol mic)</td>
+<td>Nu lua DIM.</td>
+</tr>
+<tr class="odd">
+<td><strong>Glutation subcutanat (injectabil)</strong></td>
+<td>Doza o stabilește medicul</td>
+<td>Forma orală e „țeapă” — nu se absoarbe. Forma injectabilă
+funcționează.</td>
+</tr>
+<tr class="even">
+<td><strong>Omega-3 (cu EPA mult)</strong></td>
+<td>2–3 g/zi</td>
+<td>Scade inflamația (hs-CRP) și ajută ficatul</td>
+</tr>
+<tr class="odd">
+<td><strong>Vitamina D3 + K2</strong></td>
+<td>4.000 UI D3 + 100 mcg K2</td>
+<td>De măsurat nivelul mai întâi</td>
+</tr>
+<tr class="even">
+<td><strong>Magneziu glicinat</strong></td>
+<td>400 mg seara</td>
+<td>Ajută somnul, sensibilitatea la insulină</td>
+</tr>
+<tr class="odd">
+<td><strong>Berberină</strong></td>
+<td>500 mg × 3/zi</td>
+<td>Acționează ca un „metformin natural” pe glicemie</td>
+</tr>
+<tr class="even">
+<td><strong>Alfa-lipoic acid (ALA)</strong></td>
+<td>600 mg/zi</td>
+<td>Antioxidant + sensibilizant la insulină</td>
+</tr>
+<tr class="odd">
+<td><strong>CoQ10</strong></td>
+<td>100–200 mg/zi</td>
+<td>Funcția mitocondrială</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Lista de bază (NAC, omega-3, vitamina D, magneziu) e ferm susținută
+de cercetare. Celelalte sunt suportive — discută cu medicul ce intri pe
+rând.</p>
+</blockquote>
+<hr />
+<h2 id="dieta-și-stilul-de-viață-partea-cu-cea-mai-mare-putere">8. Dieta
+și stilul de viață (PARTEA CU CEA MAI MARE PUTERE)</h2>
+<p><strong>Astea sunt non-negociabile — au efect mai mare decât orice
+peptidă:</strong></p>
+<ul>
+<li><strong>ZERO alcool minimum 90 zile.</strong> GGT 356 + globule
+roșii ușor mari = corpul îți spune că ficatul are nevoie de pauză.
+Indiferent dacă bei mult sau puțin acum, 90 de zile pauză totală.</li>
+<li><strong>Stil mediteranean cu puține carbohidrați rafinați.</strong>
+Asta înseamnă: legume multe, pește, ulei de măsline, nuci, leguminoase.
+<strong>Nu</strong> pâine albă, <strong>nu</strong> dulciuri,
+<strong>nu</strong> sucuri, <strong>nu</strong> mezeluri
+industriale.</li>
+<li><strong>Proteină ~1.6 g per kg de greutate</strong> (la 80 kg, ~130
+g/zi).</li>
+<li><strong>Pauză de mâncare 14–16 ore peste noapte</strong> (ex: ultima
+masă la 19:00, prima a doua zi la 09:00).</li>
+<li><strong>Mișcare:</strong> combinație de mers/cardio + ridicare de
+greutăți. Minimum 150 min/săptămână.</li>
+<li><strong>Greutate țintă: −5% până la −10% în 6 luni.</strong> Asta
+SINGUR are cea mai mare șansă să-ți rezolve ficatul gras.</li>
+<li><strong>Somn 7+ ore/noapte.</strong></li>
+<li><strong>Stres:</strong> stresul cronic crește direct rezistența la
+insulină. Plimbări, respirație profundă, timp cu familia.</li>
+</ul>
+<hr />
+<h2 id="programul-de-control-calendar-simplu">9. Programul de control
+(calendar simplu)</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Când</th>
+<th>Ce faci</th>
+<th>La cine mergi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Săptămâna asta (până 19 iunie)</strong></td>
+<td>Programare endocrinolog</td>
+<td>Endocrinolog (sau diabetolog)</td>
+</tr>
+<tr class="even">
+<td><strong>Săptămâna asta</strong></td>
+<td>Programare hepatolog + ecografie abdominală</td>
+<td>Hepatolog/gastroenterolog</td>
+</tr>
+<tr class="odd">
+<td><strong>Săptămâna asta</strong></td>
+<td>Probe scaun ×3 + test paraziți de sânge</td>
+<td>Laborator</td>
+</tr>
+<tr class="even">
+<td><strong>Săptămânile 1–2</strong></td>
+<td>Analize adiționale: TSH/FT4/FT3, B12, folat, vit D, homocisteină,
+ApoB, Lp(a), feritină, testosteron liber, IGF-1</td>
+<td>Laborator</td>
+</tr>
+<tr class="odd">
+<td><strong>Săptămânile 1–2</strong></td>
+<td>FibroScan (după ecografie)</td>
+<td>Hepatolog</td>
+</tr>
+<tr class="even">
+<td><strong>Săptămâna 8 (~7 august)</strong></td>
+<td>Recontrol: HbA1c, glicemie, insulină, HOMA-IR, GGT, AST/ALT, hs-CRP,
+lipide, eozinofile + cântar și talie</td>
+<td>Medic de familie / laborator</td>
+</tr>
+<tr class="odd">
+<td><strong>Săptămâna 16 (~2 octombrie)</strong></td>
+<td>Reanaliză completă + IGF-1, testosteron, SHBG, estradiol, DHEAS,
+tiroidă, ApoB, Lp(a)</td>
+<td>Endocrinolog</td>
+</tr>
+<tr class="even">
+<td><strong>Săptămâna 16</strong></td>
+<td>FibroScan de control</td>
+<td>Hepatolog</td>
+</tr>
+<tr class="odd">
+<td><strong>Săptămâna 24 (~27 noiembrie)</strong></td>
+<td>Recontrol complet</td>
+<td>Medic de familie</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pragurile-pe-care-le-urmărim">Pragurile pe care le urmărim:</h3>
+<ul>
+<li>HOMA-IR scade ≥30% la 8 săptămâni → ești pe drum bun.</li>
+<li>HOMA-IR scade &lt;30% la 8 săptămâni → medicul ajustează
+tratamentul.</li>
+<li>GGT scade ≥30% la 8 săptămâni → ficatul se vindecă.</li>
+<li>HbA1c trece de 6.5% în orice moment → diagnostic de diabet, mergi la
+diabetolog.</li>
+</ul>
+<hr />
+<h2 id="ce-să-i-întrebi-pe-doctorii-tăi-listă-gata-de-citit">10. Ce să-i
+întrebi pe doctorii tăi (listă gata de citit)</h2>
+<h3 id="la-endocrinolog">La endocrinolog:</h3>
+<ol type="1">
+<li>„Având HOMA-IR 16.21 și insulina pe nemâncate 56.6, mă încadrez în
+pre-diabet sau în diabet de tip 2 timpuriu?”</li>
+<li>„Putem începe cu metformin sau direct cu tirzepatide/semaglutide?
+Care e logica?”</li>
+<li>„Retatrutide e disponibil prin vreun studiu clinic în România?”</li>
+<li>„Ce țintă realistă punem pentru HbA1c, glicemie pe nemâncate și
+HOMA-IR în 3 luni?”</li>
+<li>„Cer la următoarea recoltare: testosteron liber, IGF-1, ApoB, Lp(a),
+homocisteină. Ești de acord?”</li>
+<li>„Estradiolul meu e &lt;10 — ce înseamnă la un bărbat de 60 de ani?
+Vreți să verificați și prolactina mai în detaliu?”</li>
+</ol>
+<h3 id="la-hepatolog">La hepatolog:</h3>
+<ol start="7" type="1">
+<li>„GGT 356 cu AST/ALT normale — confirmați că e ficat gras (MASLD) și
+nu altceva?”</li>
+<li>„Ce ne arată ecografia și FibroScan-ul despre cicatrizare
+(fibroză)?”</li>
+<li>„Calculați-mi FIB-4 — ce stadiu sunt?”</li>
+<li>„Există indicație pentru resmetirom (Rezdiffra) în cazul meu? E
+aprobat în EU?”</li>
+<li>„90 de zile fără alcool ar trebui să scadă GGT cât de mult,
+realist?”</li>
+</ol>
+<h3 id="întrebări-generale">Întrebări generale:</h3>
+<ol start="12" type="1">
+<li>„Există un program structurat de slăbire de 5–10% în 6 luni la care
+mă puteți trimite?”</li>
+</ol>
+<hr />
+<h2 id="ce-poți-face-de-mâine-pași-concreți-fără-predici">11. Ce poți
+face de mâine (pași concreți, fără predici)</h2>
+<p><strong>Mâine dimineață:</strong> - Suni la endocrinolog și hepatolog
+ca să programezi. - Suni la laborator pentru probele de scaun (cere ca
+soția să te ajute cu logistica). - Cumperi NAC 600 mg de la farmacie (se
+găsește fără rețetă) — îl iei dimineața și seara cu mâncare.</p>
+<p><strong>În următoarele 7 zile:</strong> - Faci o listă cinstită: câte
+pahare de băutură ai săptămânal? Spune-i medicului cifra reală, nu cea
+„decentă”. - Scoți din casă dulciurile, pâinea albă, sucurile.
+Înlocuiești cu ouă, brânză, măsline, nuci, pește. - Începi cu 30 minute
+de mers pe jos zilnic. Dacă deja faci, urcă la 45.</p>
+<p><strong>În următoarea lună:</strong> - Toate analizele suplimentare
+făcute. - Toate consultațiile făcute. - Greutate la cântar la fiecare 7
+zile, dimineața pe nemâncate.</p>
+<hr />
+<h2 id="mesaj-final-de-la-cei-care-au-scris-asta">12. Mesaj final, de la
+cei care au scris asta</h2>
+<p>Domnule Borzea, valorile tale arată că ești la o răscruce. Vestea
+proastă e clară: dacă nu schimbi nimic, în câțiva ani ai diabet de tip 2
+și posibil probleme hepatice serioase. Vestea <strong>mult mai
+bună</strong> e că ești încă în zona reversibilă — pancreasul tău încă
+compensează, ficatul tău încă nu e cicatrizat. Cu 6 luni de muncă
+serioasă (medic + dietă + mișcare + zero alcool), poți schimba complet
+tabloul.</p>
+<p>Soția ta e parteneră în asta — gătitul, programările, cântarul
+săptămânal. E mult mai ușor împreună.</p>
+<p>Mult succes. Te ținem informat la fiecare set de analize.</p>
+<hr />
+<h2 id="surse-pentru-curiozitate-sau-pentru-medic">Surse (pentru
+curiozitate sau pentru medic)</h2>
+<ul>
+<li>Cadrul de interpretare: Dr. Trevor Bachmeyer (longevity-medicine
+framework, notebook personal).</li>
+<li>Ghidurile clasice 2024–2026: ADA Standards of Care 2024–2026
+(diabet/pre-diabet); EASL-EASD-EASO 2024 (ficat gras / MASLD); AASLD
+2024; FDA Rezdiffra approval Martie 2024; NHS NENC Hepatology 2024; CDC
+Yellow Book 2024 (eozinofilie); Sanyal et al., <em>Nature Medicine</em>
+2024 (retatrutide pentru MASLD); JCTH 2024 (tirzepatide pentru ficat);
+WHO/ICC 2024 (clasificare eozinofilice).</li>
+<li>Versiunea clinică detaliată pentru medic:
+<code>borzea-ioan-bloodwork-2026-06-v2.md</code> (engleză).</li>
+</ul>
+<p><strong>Avertisment:</strong> Acest document e o sinteză informativă,
+<strong>NU o rețetă medicală.</strong> Orice peptidă, medicament sau
+supliment se decide cu un medic specialist. Investigațiile suplimentare
+(ecografie, FibroScan, paraziți, tiroidă) sunt obligatorii înainte de
+orice tratament. DIM e <strong>contraindicat</strong> la tine (estradiol
+mic, nu mare).</p>
+
+    </main>
+
+    <aside class="sidebar rounded-2xl p-5 h-fit lg:sticky lg:top-6 no-print">
+      <div class="text-xs uppercase tracking-widest accent mb-3">Cuprins</div>
+      <nav class="mb-6">
+        <a class="toc-link" href="#rezumat-în-5-rânduri-citește-măcar-atât">1. Rezumat în 5 rânduri</a>
+        <a class="toc-link" href="#ce-am-găsit-important-cele-3-steaguri-roșii">2. Ce am găsit important</a>
+        <a class="toc-link" href="#cum-stai-pe-scurt">3. Cum stai pe scurt</a>
+        <a class="toc-link" href="#analizele-tale-pe-rând-cu-cifrele-explicația-alături">4. Analizele tale, pe rând</a>
+        <a class="toc-link" href="#cum-se-leagă-toate-lucrurile-povestea-ta-în-4-paragrafe">5. Cum se leagă toate</a>
+        <a class="toc-link" href="#tratamente-discutate-toate-se-decid-cu-medicul-nu-începi-singur">6. Tratamente discutate</a>
+        <a class="toc-link" href="#suplimentele-recomandate">7. Suplimentele</a>
+        <a class="toc-link" href="#dieta-și-stilul-de-viață-partea-cu-cea-mai-mare-putere">8. Dieta + stil de viață</a>
+        <a class="toc-link" href="#programul-de-control-calendar-simplu">9. Programul de control</a>
+        <a class="toc-link" href="#ce-să-i-întrebi-pe-doctorii-tăi-listă-gata-de-citit">10. Întrebări pentru medic</a>
+        <a class="toc-link" href="#ce-poți-face-de-mâine-pași-concreți-fără-predici">11. De mâine</a>
+        <a class="toc-link" href="#mesaj-final-de-la-cei-care-au-scris-asta">12. Mesaj final</a>
+        <a class="toc-link" href="#surse-pentru-curiozitate-sau-pentru-medic">Surse</a>
+      </nav>
+
+      <div class="text-xs uppercase tracking-widest accent mb-3">Date</div>
+      <div class="meta-row"><span class="meta-k">Pacient</span><span class="meta-v">Borzea Ioan</span></div>
+      <div class="meta-row"><span class="meta-k">Vârstă</span><span class="meta-v">59 ani</span></div>
+      <div class="meta-row"><span class="meta-k">Recoltare</span><span class="meta-v">09.06.2026</span></div>
+      <div class="meta-row"><span class="meta-k">Laborator</span><span class="meta-v">Anima / Family Med.</span></div>
+      <div class="meta-row"><span class="meta-k">Audiență</span><span class="meta-v">Pacient + soție</span></div>
+      <div class="meta-row"><span class="meta-k">Generat</span><span class="meta-v">12.06.2026</span></div>
+
+      <div class="text-xs uppercase tracking-widest accent mt-6 mb-3">Următorii pași</div>
+      <div class="meta-row"><span class="meta-k">Endocrinolog</span><span class="meta-v">≤1 săptămână</span></div>
+      <div class="meta-row"><span class="meta-k">Hepatolog</span><span class="meta-v">≤2 săptămâni</span></div>
+      <div class="meta-row"><span class="meta-k">Recontrol</span><span class="meta-v">~07.08.2026</span></div>
+    </aside>
+  </div>
+
+  <footer class="text-center text-xs opacity-50 mt-10 mb-4 no-print">
+    NexusOS Health · raport pentru pacient · informativ, nu rețetă medicală
+  </footer>
+</div>
+
+<script>
+  // theme toggle
+  const themeBtn = document.getElementById('themeBtn');
+  const saved = localStorage.getItem('borzea-ro-theme');
+  if (saved === 'light') document.body.classList.add('light');
+  themeBtn?.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    localStorage.setItem('borzea-ro-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  });
+
+  // share
+  document.getElementById('shareBtn')?.addEventListener('click', async () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      try { await navigator.share({title: document.title, url}); return; } catch {}
+    }
+    try { await navigator.clipboard.writeText(url); alert('Link copiat!'); } catch { prompt('Copiază linkul:', url); }
+  });
+
+  // scroll fade-in
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), {threshold: 0.1});
+  document.querySelectorAll('.content > *').forEach(el => { el.classList.add('fade'); io.observe(el); });
+</script>
+</body>
+</html>
