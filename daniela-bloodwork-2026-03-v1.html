@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniela (F, 36y) — Bloodwork + Bachmeyer Protocol (v1)</title>
+<meta name="description" content="Bloodwork analysis + Dr. Trevor Bachmeyer peptide/supplement protocol (v1) — full dosing. Informational decision-support, not a diagnosis.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Daniela (F, 36y) — Bloodwork + Bachmeyer Protocol (v1)">
+<meta property="og:description" content="Bloodwork + Bachmeyer full-dosing protocol (v1). 3 convergent flags — autoimmune-thyroid + hormone restoration.">
+<meta property="og:site_name" content="NexusOS Health">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } } };
+</script>
+<style>
+  :root { --accent:#22c55e; --accent-soft:rgba(34,197,94,.14); }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; background:#0A0A0F; color:#e7e7ee; }
+  html:not(.dark) body { background:#fafafa; color:#1a1a22; }
+  .glass { background:rgba(17,17,24,.7); backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.07); }
+  html:not(.dark) .glass { background:rgba(255,255,255,.78); border:1px solid rgba(0,0,0,.07); }
+  .card { background:#111118; border:1px solid rgba(255,255,255,.06); }
+  html:not(.dark) .card { background:#ffffff; border:1px solid rgba(0,0,0,.07); }
+  .accent { color:var(--accent); }
+  .accent-bg { background:var(--accent); }
+  .glow { box-shadow:0 0 0 1px rgba(34,197,94,.18), 0 14px 50px -12px rgba(34,197,94,.28); }
+  .fade { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .fade.in { opacity:1; transform:none; }
+  .plain { background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:.55rem; }
+  .held { background:rgba(245,158,11,.10); border-left:3px solid #f59e0b; border-radius:.55rem; }
+  .danger { background:rgba(239,68,68,.10); border-left:3px solid #ef4444; border-radius:.55rem; }
+  table { border-collapse:collapse; width:100%; font-size:.85rem; }
+  th, td { padding:.5rem .7rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.07); vertical-align:top; }
+  html:not(.dark) th, html:not(.dark) td { border-bottom:1px solid rgba(0,0,0,.08); }
+  th { font-weight:600; color:var(--accent); font-size:.7rem; letter-spacing:.04em; text-transform:uppercase; }
+  td.mono { font-family:'JetBrains Mono',monospace; }
+  .pill { display:inline-block; padding:.12rem .5rem; border-radius:999px; font-size:.68rem; font-weight:600; }
+  .pill-red { background:rgba(239,68,68,.16); color:#f87171; }
+  .pill-amber { background:rgba(245,158,11,.16); color:#fbbf24; }
+  .pill-yellow { background:rgba(234,179,8,.16); color:#facc15; }
+  .pill-green { background:rgba(34,197,94,.16); color:#4ade80; }
+  .toc a { display:block; padding:.3rem .55rem; border-radius:.45rem; font-size:.8rem; color:inherit; opacity:.72; text-decoration:none; border-left:2px solid transparent; }
+  .toc a:hover { opacity:1; background:var(--accent-soft); border-left-color:var(--accent); }
+  h2.sec { scroll-margin-top:90px; }
+  .dose b { color:var(--accent); font-weight:600; }
+  .pep { border:1px solid rgba(255,255,255,.07); border-radius:.7rem; padding:1rem 1.1rem; margin-bottom:.9rem; }
+  html:not(.dark) .pep { border:1px solid rgba(0,0,0,.08); }
+  .pep h4 { font-weight:700; font-size:1rem; }
+  .pep ul { margin:.5rem 0 .3rem; padding-left:1.1rem; list-style:disc; font-size:.86rem; }
+  .pep li { margin-bottom:.2rem; }
+  code { font-family:'JetBrains Mono',monospace; font-size:.82em; background:rgba(255,255,255,.06); padding:.05rem .3rem; border-radius:.3rem; }
+  html:not(.dark) code { background:rgba(0,0,0,.06); }
+  @media print {
+    body { background:#fff !important; color:#000 !important; }
+    .glass, .card, .pep { background:#fff !important; border:1px solid #ccc !important; box-shadow:none !important; }
+    .no-print { display:none !important; }
+    .grid-main { display:block !important; }
+    section { page-break-inside:avoid; }
+    .pep { page-break-inside:avoid; }
+    a { color:#000 !important; text-decoration:none; }
+    .plain, .held, .danger { background:#f4f4f4 !important; }
+    canvas { max-height:240px !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- top bar -->
+<header class="no-print sticky top-0 z-40 glass">
+  <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="w-2.5 h-2.5 rounded-full accent-bg"></span>
+      <span class="font-semibold text-sm tracking-tight">NexusOS Health</span>
+      <span class="text-xs opacity-50 hidden sm:inline">· Bachmeyer-primary · IL-8 patient-isolated</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="shareBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:glow transition">Share</button>
+      <button id="themeBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:glow transition">◐ Theme</button>
+    </div>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="max-w-6xl mx-auto px-5 pt-10 pb-6">
+  <div class="card glow rounded-2xl p-7 md:p-9 fade">
+    <div class="text-xs accent font-semibold tracking-widest uppercase mb-3">Bloodwork Analysis · Bachmeyer Protocol v1 · Full Dosing</div>
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight">Daniela (F, 36y) — Bloodwork + Bachmeyer Protocol (v1)</h1>
+    <div class="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm opacity-80">
+      <span><strong>Patient:</strong> Daniela · F · 36y</span>
+      <span><strong>Lab:</strong> MEDICTEST București (subcontracted panels via Laboratoarele Bioclinica)</span>
+    </div>
+    <div class="mt-1 text-xs opacity-60">(lab bulletin, ref withheld) · collected <strong>2026-03-30</strong></div>
+    <div class="mt-1 text-xs opacity-60">Framework: Dr. Trevor Bachmeyer NLM corpus (Primary <code>cb9cf1fd</code> + Extended <code>1eef6220</code>) · v1 — autoimmune-thyroid + hormone restoration; metabolic GLP-1 peptides intentionally excluded (clean metabolism)</div>
+
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">54.6</div>
+        <div class="text-xs opacity-65 mt-0.5">Anti-Tg IU/mL (ref &lt;30)</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">8.16</div>
+        <div class="text-xs opacity-65 mt-0.5">Estradiol pg/mL (15–122)</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">3</div>
+        <div class="text-xs opacity-65 mt-0.5">Convergent flags</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">1.48</div>
+        <div class="text-xs opacity-65 mt-0.5">HOMA (clean — ≤2)</div>
+      </div>
+    </div>
+
+    <div class="mt-6 plain p-4 text-sm">
+      ⚠️ <strong>Clinical boundary.</strong> Informational decision-support, not a diagnosis or prescription. It does not instruct starting/changing any peptide, medication, supplement, dose, or cycle. Every threshold is a standard lab reference range or a Bachmeyer-cited value — never an invented cutoff. All decisions belong to the attending physician.
+    </div>
+  </div>
+</section>
+
+<!-- main grid -->
+<div class="grid-main max-w-6xl mx-auto px-5 pb-20 grid lg:grid-cols-[210px_1fr] gap-8">
+
+  <!-- TOC sidebar -->
+  <aside class="no-print hidden lg:block">
+    <div class="sticky top-20 glass rounded-xl p-3 toc">
+      <div class="text-xs uppercase tracking-wider opacity-50 px-2 pb-2">Contents</div>
+      <a href="#summary">Executive Summary</a>
+      <a href="#charts">Visual Overview</a>
+      <a href="#labs">Full Lab Table</a>
+      <a href="#plain">Plain-Words Layer</a>
+      <a href="#priority">Priority Map</a>
+      <a href="#peptides">Peptides — Full Dosing</a>
+      <a href="#hormones">Hormone Restoration</a>
+      <a href="#supplements">Supplement Stack</a>
+      <a href="#gating">Gating / Missing Labs</a>
+      <a href="#phasing">Suggested Phasing</a>
+      <a href="#monitoring">Monitoring Plan</a>
+    </div>
+  </aside>
+
+  <main class="min-w-0">
+
+    <!-- Executive Summary -->
+    <section id="summary" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">Executive Summary</h2>
+      <p class="text-sm opacity-70 mb-4">3 convergent flags — an autoimmune-thyroid root, not a metabolic one.</p>
+      <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>#</th><th>Flag</th><th>The numbers</th><th>Severity</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">1</td><td><strong>Autoimmune thyroid signal</strong></td><td>Anti-thyroglobulin Ab <strong>54.6</strong> IU/mL (ref &lt;30); thyroid still compensated but low-functional (TSH 0.92, FT3 2.27 floor, FT4 10.0 floor)</td><td><span class="pill pill-red">🔴 Primary</span></td></tr>
+          <tr><td class="mono">2</td><td><strong>Low female sex hormones</strong></td><td>Estradiol <strong>8.16</strong> pg/mL (folicular 15–122), Testosteron <strong>0.26</strong> ng/mL (F 1–3), Progesteron 0.68 (low-normal)</td><td><span class="pill pill-amber">🟠 cycle-day unknown</span></td></tr>
+          <tr><td class="mono">3</td><td><strong>Iron-restricted + suboptimal D</strong></td><td>Ferritin <strong>29</strong> ng/mL (low-functional for a cycling female; target 70–100), Vit D <strong>31.4</strong> (just at the 30 floor)</td><td><span class="pill pill-amber">🟠 Cofactor gaps</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="mt-4 plain p-4 text-sm">
+        <strong>Metabolically clean</strong> — HOMA 1.48, insulin 6.81, glucose 88, CRP 1. Unlike the metabolic patients, <strong>no Retatrutide / Tesamorelin is indicated</strong>. This protocol is an <strong>autoimmune-thyroid + hormone-restoration</strong> plan, not a weight/insulin plan.
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section id="charts" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">Visual Overview</h2>
+      <p class="text-sm opacity-70 mb-4">Left: flagged markers vs their reference limit (100% = the limit). Right: sex hormones vs their reference band.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div><canvas id="severityChart" height="220"></canvas></div>
+        <div><canvas id="hormoneChart" height="220"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Labs -->
+    <section id="labs" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-3">Full Lab Marker Table</h2>
+      <div class="text-sm font-semibold mb-2 accent">🔴 Flagged / sub-optimal</div>
+      <div class="overflow-x-auto mb-6">
+      <table>
+        <thead><tr><th>Marker</th><th>Value</th><th>Unit</th><th>Ref</th><th>Flag</th></tr></thead>
+        <tbody>
+          <tr><td>Anticorpi anti-tiroglobulină</td><td class="mono">54.6</td><td>IU/mL</td><td class="mono">&lt;30</td><td><span class="pill pill-red">High (autoimmune)</span></td></tr>
+          <tr><td>Estradiol</td><td class="mono">8.16</td><td>pg/mL</td><td class="mono">15–122 (folicular)</td><td><span class="pill pill-red">Low</span></td></tr>
+          <tr><td>Testosteron</td><td class="mono">0.26</td><td>ng/mL</td><td class="mono">1–3 (F)</td><td><span class="pill pill-red">Low</span></td></tr>
+          <tr><td>Feritină</td><td class="mono">29</td><td>ng/mL</td><td class="mono">10–160 / <strong>70–100 functional</strong></td><td><span class="pill pill-amber">Low-functional</span></td></tr>
+          <tr><td>25-OH Vitamina D</td><td class="mono">31.4</td><td>ng/mL</td><td class="mono">30–100 suficient</td><td><span class="pill pill-amber">Floor</span></td></tr>
+          <tr><td>Free T3</td><td class="mono">2.27</td><td>pg/mL</td><td class="mono">2.0–4.2</td><td><span class="pill pill-yellow">Low-normal</span></td></tr>
+          <tr><td>Free T4</td><td class="mono">10.00</td><td>pg/mL</td><td class="mono">8.9–17.2</td><td><span class="pill pill-yellow">Low-normal</span></td></tr>
+          <tr><td>Progesteron</td><td class="mono">0.68</td><td>ng/mL</td><td class="mono">0.4–2.3 (folicular)</td><td><span class="pill pill-yellow">Low-normal</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="text-sm font-semibold mb-2 accent">🟢 In range</div>
+      <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>Marker</th><th>Value</th><th>Unit</th><th>Ref</th></tr></thead>
+        <tbody>
+          <tr><td>Glicemia</td><td class="mono">88</td><td>mg/dL</td><td class="mono">60–95</td></tr>
+          <tr><td>Indice HOMA</td><td class="mono">1.48</td><td>—</td><td class="mono">≤2.0</td></tr>
+          <tr><td>Insulina serică</td><td class="mono">6.81</td><td>µIU/mL</td><td class="mono">2.7–24.8</td></tr>
+          <tr><td>Proteina C reactivă</td><td class="mono">1</td><td>mg/L</td><td class="mono">&lt;6</td></tr>
+          <tr><td>TSH</td><td class="mono">0.92</td><td>µIU/mL</td><td class="mono">0.30–4.5</td></tr>
+          <tr><td>FSH</td><td class="mono">7.86</td><td>mIU/mL</td><td class="mono">3.2–15 (folicular)</td></tr>
+          <tr><td>LH</td><td class="mono">8.80</td><td>mIU/mL</td><td class="mono">1.2–12.5 (folicular)</td></tr>
+          <tr><td>Vitamina B12</td><td class="mono">433</td><td>pg/mL</td><td class="mono">200–1100</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- Plain words -->
+    <section id="plain" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-3">Plain-Words Layer — what the red items mean</h2>
+
+      <div class="mb-3"><div class="font-semibold text-sm mb-1">🔴 Anti-thyroglobulin antibodies 54.6 (high)</div>
+        <div class="plain p-3 text-sm">💬 Your immune system is making antibodies that attack the thyroid — an early autoimmune-thyroid signal (the Hashimoto's family). Right now your thyroid is keeping up, but the attack is the thing to calm down early, before it tires the gland out. Bachmeyer treats this as a fixable immune/inflammation problem, not a permanent thyroid disease.</div></div>
+
+      <div class="mb-3"><div class="font-semibold text-sm mb-1">🔴 Low estradiol (8.16) + low testosterone (0.26)</div>
+        <div class="plain p-3 text-sm">💬 Both of your sex hormones are low. Some of this can depend on where you are in your cycle (we don't have the cycle day), so the first step is a properly-timed re-test. If it's genuinely low, the approach is to gently restart your own hormone signaling rather than replace it.</div></div>
+
+      <div class="mb-3"><div class="font-semibold text-sm mb-1">🟠 Ferritin 29 (low for a cycling woman)</div>
+        <div class="plain p-3 text-sm">💬 Ferritin is your iron "savings account." 29 is technically "in range" but low for a menstruating woman, and low iron makes thyroid symptoms (fatigue, hair, cold) worse because iron is a cofactor the thyroid needs. Worth raising toward 70–100 with iron + vitamin C.</div></div>
+
+      <div class="mb-3"><div class="font-semibold text-sm mb-1">🟠 Vitamin D 31.4 (just at the floor)</div>
+        <div class="plain p-3 text-sm">💬 You're right at the bottom of "sufficient." Vitamin D helps calm autoimmune activity, so nudging it higher supports the thyroid plan.</div></div>
+
+      <div><div class="font-semibold text-sm mb-1">🟡 FT3 / FT4 low-normal</div>
+        <div class="plain p-3 text-sm">💬 Your active thyroid hormones are at the low end of normal — consistent with the antibodies starting to drag on output. Fixing iron, selenium, and the immune signal usually lifts these.</div></div>
+    </section>
+
+    <!-- Priority Map -->
+    <section id="priority" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-3">Priority Map</h2>
+      <ol class="list-decimal pl-5 text-sm space-y-2">
+        <li><strong>Autoimmune thyroid root</strong> — calm the antibody attack (immune + gut + inflammation).</li>
+        <li><strong>Cofactor repair</strong> — iron (ferritin 29) + selenium + vitamin D (these alone can lower thyroid antibodies).</li>
+        <li><strong>Hormones</strong> — confirm low E2/T with a cycle-timed re-test + the subcontracted SHBG / Free-T / DHEA-S, then restore naturally.</li>
+      </ol>
+    </section>
+
+    <!-- Peptides -->
+    <section id="peptides" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">Bachmeyer Protocol — Peptides: Full Dosing</h2>
+      <p class="text-sm opacity-70 mb-4">Cross-referenced against Bachmeyer NLM (<code>cb9cf1fd</code> + <code>1eef6220</code>) + LLM-Wiki. All injectables subcutaneous (SubQ); doses Bachmeyer-cited / standard-range, physician-set, <strong>start low</strong>. Nothing starts before the gating labs. The metabolic GLP-1 peptides are <strong>not</strong> used (metabolism is clean).</p>
+
+      <div class="text-sm font-semibold mb-2 accent">Tier 1 — Autoimmune triad (the core for the thyroid antibodies)</div>
+
+      <div class="pep dose">
+        <h4>1. Thymosin Alpha-1 (TA-1) <span class="text-xs opacity-60 font-normal">— immune rebalancer (the key peptide here)</span></h4>
+        <ul>
+          <li><strong>Dose:</strong> <b>1.5–1.6 mg SubQ, 2×/week</b> (or every 3rd day); cycle <b>4–12 weeks on</b> (alt: 1 month on 5 days/wk, 3 months off, 3×/year).</li>
+          <li><strong>Tracks:</strong> anti-thyroglobulin + anti-TPO antibodies (↓), symptoms.</li>
+        </ul>
+        <div class="plain p-3 text-sm mt-1">💬 This is THE peptide for autoimmune thyroid — it's adaptogenic, meaning it <em>calms</em> an over-active immune attack (restores the "referee" T-cells) instead of revving it up. It directly targets the antibody production behind flag #1.</div>
+      </div>
+
+      <div class="pep dose">
+        <h4>2. BPC-157 <span class="text-xs opacity-60 font-normal">— gut–thyroid repair</span></h4>
+        <ul>
+          <li><strong>Dose:</strong> <b>250–500 mcg/day SubQ</b> (near the navel); cycle 5-on / 2-off advisable.</li>
+          <li><strong>Tracks:</strong> symptoms + inflammation.</li>
+        </ul>
+        <div class="plain p-3 text-sm mt-1">💬 Heals the gut lining — a leaky gut is one of the main drivers of thyroid autoimmunity, so sealing it removes fuel from the fire.</div>
+      </div>
+
+      <div class="pep dose">
+        <h4>3. KPV <span class="text-xs opacity-60 font-normal">— anti-inflammatory tripeptide</span></h4>
+        <ul>
+          <li><strong>Dose:</strong> <b>500 mcg/day SubQ</b>.</li>
+          <li><strong>Tracks:</strong> hs-CRP, symptoms.</li>
+        </ul>
+        <div class="plain p-3 text-sm mt-1">💬 Shuts down a specific inflammation switch (the NLRP3 / IL-1β pathway) that links gut inflammation to the thyroid attack. Completes Bachmeyer's autoimmune trio.</div>
+      </div>
+
+      <div class="text-sm font-semibold mb-2 mt-5 accent">Tier 1.5 — Mitochondrial / energy (optional, Hashimoto's "ATP-deficit" leg)</div>
+
+      <div class="pep dose">
+        <h4>4. MOTS-c <span class="text-xs opacity-60 font-normal">— mitochondrial peptide</span></h4>
+        <ul>
+          <li><strong>Dose:</strong> <b>5–10 mg SubQ, 1–3×/week</b>, cycle 4–12 wk. <strong>Take WITH carbohydrates, never fasted</strong> (hypoglycemia risk).</li>
+        </ul>
+        <div class="plain p-3 text-sm mt-1">💬 Optional energy booster for the cells — Bachmeyer frames Hashimoto's partly as an energy (ATP) shortage, and this helps the thyroid's "referee" immune cells work. Take it with food.</div>
+      </div>
+    </section>
+
+    <!-- Hormones -->
+    <section id="hormones" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">Tier 2 — Hormone Restoration</h2>
+      <p class="text-sm opacity-70 mb-4">After a cycle-timed re-test confirms low E2/T.</p>
+
+      <div class="pep dose">
+        <h4>5. Kisspeptin-10 <span class="text-xs opacity-60 font-normal">— preferred, female HPG axis</span></h4>
+        <ul>
+          <li><strong>Dose:</strong> <b>50–100 mcg SubQ, 3×/week</b> (pulsatile).</li>
+          <li><strong>Tracks:</strong> E2, testosterone, LH/FSH, libido/energy.</li>
+        </ul>
+        <div class="plain p-3 text-sm mt-1">💬 The "master switch" that tells the brain to restart your own estrogen/testosterone cycle — Bachmeyer highlights it specifically for women (cycle regulation, PCOS, libido), and it preserves natural function instead of replacing hormones.</div>
+      </div>
+
+      <div class="pep dose">
+        <h4>6. DSIP <span class="text-xs opacity-60 font-normal">— optional, if sleep/cortisol/stress symptoms</span></h4>
+        <ul>
+          <li><strong>Dose:</strong> <b>100–250 mcg SubQ, 30 min pre-bed</b>, 2–4 wk cycles.</li>
+        </ul>
+        <div class="plain p-3 text-sm mt-1">💬 A sleep-quality peptide that also calms the stress (cortisol) axis — useful if poor sleep or "wired-but-tired" is part of the picture, which is common with thyroid issues.</div>
+      </div>
+
+      <div class="danger p-4 text-sm mt-2">
+        🚫 <strong>No HRT push / no thyroid-hormone-only fix</strong> as the <em>primary</em> plan — Bachmeyer's position is that replacing the hormone doesn't stop the autoimmune attack; fix the root (inflammation, gut, cofactors) first. 🚫 No metabolic GLP-1 peptides (metabolism is clean).
+      </div>
+    </section>
+
+    <!-- Supplements -->
+    <section id="supplements" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-3">Supplement Stack <span class="text-sm opacity-60 font-normal">— cofactor repair, high-impact, low-risk</span></h2>
+      <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>Supplement</th><th>Dose (typical)</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Selenium</strong></td><td class="mono">200 mcg/day AM</td><td>Directly lowers thyroid antibodies (Gärtner/Duntas RCTs) — top priority</td></tr>
+          <tr><td><strong>Iron bisglycinate</strong></td><td class="mono">25–30 mg alt-day AM + 500 mg Vit C</td><td>Ferritin 29 → target 70–100; thyroid cofactor</td></tr>
+          <tr><td><strong>Myo-inositol + D-chiro (40:1)</strong></td><td class="mono">2 g + 50 mg, BID</td><td>RCT-proven TSH + antibody reduction in Hashimoto's</td></tr>
+          <tr><td><strong>Vitamin D3 + K2</strong></td><td class="mono">4000–5000 IU + 100–200 mcg</td><td>Raise D off the floor; immune-modulating</td></tr>
+          <tr><td><strong>Magnesium glycinate</strong></td><td class="mono">300–400 mg PM</td><td>Thyroid + sleep + insulin</td></tr>
+          <tr><td><strong>Methylated B-complex</strong></td><td class="mono">clinical-grade</td><td>Methylation + estrogen detox</td></tr>
+          <tr><td><strong>Zinc picolinate</strong></td><td class="mono">25 mg PM</td><td>T4→T3 conversion cofactor</td></tr>
+          <tr><td><strong>Omega-3 (EPA-dominant)</strong></td><td class="mono">2–3 g/day</td><td>Anti-inflammatory</td></tr>
+          <tr><td><strong>NAC</strong></td><td class="mono">600 mg/day</td><td>Glutathione / thyroid antioxidant</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="mt-4 plain p-4 text-sm">💬 This stack is the cheap, high-impact foundation — <strong>selenium + iron + vitamin D + inositol alone can measurably lower thyroid antibodies</strong>, so they may matter as much as the peptides. <strong>Plus: strict gluten elimination for 90 days</strong> — gluten molecularly mimics thyroid tissue and is a major autoimmune trigger.</div>
+    </section>
+
+    <!-- Gating -->
+    <section id="gating" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-3">Gating / Missing Labs <span class="text-sm opacity-60 font-normal">— get these before/with the protocol</span></h2>
+      <ul class="list-disc pl-5 text-sm space-y-1.5">
+        <li><strong>SHBG, Free-Testosterone, DHEA-S</strong> — subcontracted to Bioclinica, NOT printed in this bulletin → obtain the separate report.</li>
+        <li><strong>Anti-TPO antibodies</strong> (complement to the anti-Tg) + <strong>thyroid ultrasound</strong>.</li>
+        <li><strong>Iron saturation + TIBC + transferrin</strong> (interpret ferritin 29 properly).</li>
+        <li><strong>Cycle day</strong> at draw — re-test E2 / progesterone / LH / FSH timed to the cycle.</li>
+        <li><strong>Full CBC, lipid panel, liver panel</strong> (not in this document), <strong>hs-CRP, IGF-1, AM cortisol, homocysteine</strong>.</li>
+      </ul>
+    </section>
+
+    <!-- Phasing -->
+    <section id="phasing" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-3">Suggested Phasing <span class="text-sm opacity-60 font-normal">(for the physician)</span></h2>
+      <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>Phase</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><strong>0 — Gate</strong></td><td>Get subcontracted hormones + anti-TPO + iron studies + thyroid US; start gluten-free + supplement foundation (selenium/iron/D/inositol) immediately (low-risk).</td></tr>
+          <tr><td><strong>1 — Autoimmune core</strong></td><td>TA-1 + BPC-157 + KPV; ± MOTS-c (with carbs).</td></tr>
+          <tr><td><strong>2 — Hormones</strong></td><td>After cycle-timed re-test confirms low E2/T → Kisspeptin-10; ± DSIP for sleep.</td></tr>
+          <tr><td><strong>3 — Reassess (wk 8)</strong></td><td>Re-draw anti-Tg / anti-TPO, TSH, FT3/FT4, ferritin, iron sat, hs-CRP. <strong>Decision gate:</strong> antibodies ↓ ≥30% → continue; no change → escalate TA-1 to 3×/wk ± consider LDN with physician.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- Monitoring -->
+    <section id="monitoring" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-3">Monitoring Plan</h2>
+      <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>Marker</th><th>Watch for</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td>Anti-Tg / anti-TPO antibodies</td><td>↓ (the key efficacy readout)</td><td>week 8, week 16</td></tr>
+          <tr><td>TSH, FT3, FT4</td><td>FT3/FT4 lift toward mid-range</td><td>week 8, 16</td></tr>
+          <tr><td>Ferritin + iron sat</td><td>→ 70–100</td><td>week 8</td></tr>
+          <tr><td>Estradiol / testosterone / progesterone</td><td>cycle-timed; restore</td><td>re-test timed to cycle</td></tr>
+          <tr><td>hs-CRP</td><td>low</td><td>week 8</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="danger p-4 text-sm mt-4">
+        <strong>Red-lines (standard ranges):</strong> any allergic reaction (hives/swelling/throat) → STOP all + emergency care; new palpitations / over-replacement symptoms → thyroid re-check.
+      </div>
+    </section>
+
+    <div class="text-xs opacity-50 mt-2 px-1">
+      Built under NexusOS Health (Bachmeyer-primary). Patient-isolated (IL-8). Female autoimmune-thyroid adaptation — distinct from the male-metabolic template; metabolic GLP-1 peptides intentionally excluded (clean metabolism).
+    </div>
+
+  </main>
+</div>
+
+<script>
+// theme toggle (persisted)
+(function(){
+  const root=document.documentElement, key='nexus-health-theme';
+  const saved=localStorage.getItem(key);
+  if(saved==='light') root.classList.remove('dark'); else root.classList.add('dark');
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    root.classList.toggle('dark');
+    localStorage.setItem(key, root.classList.contains('dark')?'dark':'light');
+  });
+})();
+// share
+document.getElementById('shareBtn').addEventListener('click',async function(){
+  const data={title:document.title, url:location.href};
+  try{ if(navigator.share){ await navigator.share(data); } else { await navigator.clipboard.writeText(location.href); this.textContent='Copied ✓'; setTimeout(()=>this.textContent='Share',1600);} }
+  catch(e){}
+});
+// fade-in
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+// charts
+window.addEventListener('load',function(){
+  if(typeof Chart==='undefined') return;
+  const txt=getComputedStyle(document.body).color;
+  Chart.defaults.color=txt; Chart.defaults.font.family='Inter';
+  const red='#ef4444', amber='#f59e0b', yellow='#eab308', green='#22c55e';
+  // severity: flagged markers as % of their reference limit (100% = limit)
+  // Anti-Tg 54.6 vs <30 => 182%; Ferritin 29 vs 70 functional floor => 41%;
+  // Vit D 31.4 vs 30 floor => 105%; FT3 2.27 vs 2.0 floor => 114%; FT4 10.0 vs 8.9 floor => 112%
+  new Chart(document.getElementById('severityChart'),{
+    type:'bar',
+    data:{labels:['Anti-Tg (<30)','Ferritin (70 fn)','Vit D (30)','FT3 (2.0)','FT4 (8.9)'],
+      datasets:[{label:'% of reference limit',
+        data:[182,41,105,114,112],
+        backgroundColor:[red,amber,amber,yellow,yellow]}]},
+    options:{responsive:true,plugins:{legend:{display:false},title:{display:true,text:'Markers vs reference limit (100% = limit)'}},
+      scales:{y:{beginAtZero:true,ticks:{callback:v=>v+'%'}}}}
+  });
+  // hormones vs reference band (estradiol low, testosterone low, progesterone low-normal)
+  new Chart(document.getElementById('hormoneChart'),{
+    type:'bar',
+    data:{labels:['Estradiol (15–122)','Testosterone (1–3)','Progesterone (0.4–2.3)'],
+      datasets:[
+        {label:'Value',data:[8.16,0.26,0.68],backgroundColor:[red,red,yellow]},
+        {label:'Range floor',data:[15,1,0.4],backgroundColor:'rgba(255,255,255,.12)'},
+        {label:'Range ceiling',data:[122,3,2.3],backgroundColor:'rgba(255,255,255,.05)'}
+      ]},
+    options:{responsive:true,plugins:{title:{display:true,text:'Sex hormones vs reference band'}},
+      scales:{y:{beginAtZero:true}}}
+  });
+});
+</script>
+</body>
+</html>
