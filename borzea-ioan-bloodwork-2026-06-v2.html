@@ -1,114 +1,128 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Bloodwork Analysis — Borzea Ioan — v2 (Bachmeyer, live-NLM grounded)</title>
-  <style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bloodwork Analysis — Borzea Ioan — v2</title>
+<meta name="description" content="Anima Panel 2026-06-09 · Bachmeyer longevity framework + standard-of-care" />
+<meta property="og:title" content="Bloodwork Analysis — Borzea Ioan — v2" />
+<meta property="og:description" content="Anima Panel 2026-06-09 · Bachmeyer longevity framework + standard-of-care" />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root { --accent: #22c55e; }
+* { scroll-behavior: smooth; }
+body { font-family:'Inter',system-ui,sans-serif; margin:0; line-height:1.6; transition:background .3s,color .3s; }
+code,pre { font-family:'JetBrains Mono',monospace; }
 
-ul.task-list[class]{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-font-size: inherit;
-width: 0.8em;
-margin: 0 0.8em 0.2em -1.6em;
-vertical-align: middle;
+/* DARK (default) */
+body { background:#0A0A0F; color:#d7dbe2; }
+.card { background:rgba(17,17,24,0.7); border:1px solid rgba(255,255,255,0.07); backdrop-filter:blur(14px); }
+h1,h2,h3,h4 { color:#f4f6fb; }
+.sidebar { background:rgba(17,17,24,0.7); border:1px solid rgba(255,255,255,0.07); backdrop-filter:blur(14px); }
+table { background:rgba(255,255,255,0.02); }
+th { background:rgba(34,197,94,0.10); color:#bdf0cf; }
+td,th { border-color:rgba(255,255,255,0.08); }
+tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
+blockquote { background:rgba(34,197,94,0.06); border-left:3px solid var(--accent); color:#c4ccd6; }
+.meta-k { color:#8b94a3; }
+.toc-link { color:#9aa3b2; }
+
+/* LIGHT */
+body.light { background:#fafafa; color:#26303a; }
+body.light .card { background:#ffffff; border:1px solid #e5e7eb; backdrop-filter:none; }
+body.light h1,body.light h2,body.light h3,body.light h4 { color:#0f5132; }
+body.light .sidebar { background:#ffffff; border:1px solid #e5e7eb; backdrop-filter:none; }
+body.light table { background:#fff; }
+body.light th { background:#e6f6ec; color:#0f5132; }
+body.light td,body.light th { border-color:#dfe3e8; }
+body.light tr:nth-child(even) td { background:#f5f8f6; }
+body.light blockquote { background:#eefcf2; color:#3b4a40; }
+body.light .meta-k { color:#6b7280; }
+body.light .toc-link { color:#52606d; }
+
+.accent { color:var(--accent); }
+.glow { box-shadow:0 0 40px rgba(34,197,94,0.12); }
+
+/* content */
+.content h2 { margin-top:2.2rem; padding-bottom:.3rem; border-bottom:1px solid rgba(34,197,94,0.25); font-size:1.5rem; font-weight:700; }
+.content h3 { margin-top:1.6rem; font-size:1.18rem; font-weight:600; color:var(--accent); }
+.content h4 { margin-top:1.2rem; font-size:1.02rem; font-weight:600; }
+.content p { margin:.7rem 0; }
+.content ul,.content ol { margin:.6rem 0 .6rem 1.4rem; }
+.content li { margin:.3rem 0; }
+.content table { border-collapse:collapse; width:100%; margin:1rem 0; font-size:.86rem; display:block; overflow-x:auto; }
+.content th,.content td { border:1px solid; padding:.45rem .6rem; text-align:left; vertical-align:top; }
+.content blockquote { padding:.7rem 1rem; margin:1rem 0; border-radius:.4rem; }
+.content code { background:rgba(34,197,94,0.12); padding:.1em .35em; border-radius:.25em; font-size:.82em; }
+.content hr { border:none; border-top:1px solid rgba(255,255,255,0.08); margin:2rem 0; }
+.content a { color:var(--accent); }
+
+/* hero chips */
+.chip { border-radius:.6rem; padding:.7rem .9rem; border:1px solid rgba(255,255,255,0.08); }
+.chip-crit { background:rgba(239,68,68,0.10); border-color:rgba(239,68,68,0.35); }
+.chip-warn { background:rgba(234,179,8,0.10); border-color:rgba(234,179,8,0.30); }
+.chip-name { font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; opacity:.7; }
+.chip-val { font-size:1.4rem; font-weight:800; line-height:1.1; }
+.chip-ref { font-size:.72rem; opacity:.65; font-family:'JetBrains Mono',monospace; }
+
+.toc-link { display:block; padding:.18rem 0; font-size:.82rem; text-decoration:none; border-left:2px solid transparent; padding-left:.6rem; }
+.toc-link:hover { color:var(--accent); border-left-color:var(--accent); }
+.toc-h3 { padding-left:1.3rem; font-size:.78rem; opacity:.85; }
+
+.meta-row { display:flex; justify-content:space-between; gap:.6rem; padding:.35rem 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:.82rem; }
+.meta-v { text-align:right; font-weight:600; }
+
+.fade { opacity:0; transform:translateY(14px); transition:opacity .6s ease,transform .6s ease; }
+.fade.in { opacity:1; transform:none; }
+
+@media print {
+  body { background:#fff !important; color:#111 !important; }
+  .no-print { display:none !important; }
+  .sidebar { display:none !important; }
+  .content table { display:table; }
+  .card { box-shadow:none !important; border:1px solid #ccc !important; background:#fff !important; }
+  h1,h2,h3,h4 { color:#0f5132 !important; }
+  .grid-main { display:block !important; }
+  section,tr,blockquote { page-break-inside:avoid; }
+  @page { size:A4; margin:1.4cm; }
 }
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
-</style>
-  <style type="text/css">body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;max-width:920px;margin:2em auto;padding:0 1em;line-height:1.55;color:#202830;background:#fafafa}h1,h2,h3,h4{color:#154273;line-height:1.25}h1{border-bottom:3px solid #154273;padding-bottom:.3em}h2{border-bottom:1px solid #a5b8d4;padding-bottom:.2em;margin-top:1.8em}h3{margin-top:1.4em}table{border-collapse:collapse;width:100%;margin:1em 0;background:white}th,td{border:1px solid #ccc;padding:.4em .6em;text-align:left;font-size:.95em}th{background:#e8edf5;color:#154273}tr:nth-child(even) td{background:#f4f6fa}code{background:#e8edf5;padding:.1em .3em;border-radius:.2em;font-size:.9em}blockquote{border-left:4px solid #d4a017;background:#fff8dc;padding:.5em 1em;margin:1em 0;color:#54451c}#TOC{background:white;border:1px solid #ccc;padding:1em 1.5em;border-radius:.4em;margin-bottom:2em}
 </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Bloodwork Analysis — Borzea Ioan — v2 (Bachmeyer,
-live-NLM grounded)</h1>
-</header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#bloodwork-analysis-borzea-ioan-anima-panel-2026-06-09-v2" id="toc-bloodwork-analysis-borzea-ioan-anima-panel-2026-06-09-v2">Bloodwork
-Analysis — Borzea Ioan — Anima Panel 2026-06-09 (v2)</a>
-<ul>
-<li><a href="#section-0-urgent-flags" id="toc-section-0-urgent-flags">Section 0 — Urgent flags</a></li>
-<li><a href="#section-1-patient-card-bachmeyers-organizing-frame" id="toc-section-1-patient-card-bachmeyers-organizing-frame">Section 1 —
-Patient card + Bachmeyer’s organizing frame</a></li>
-<li><a href="#section-2-lab-summary-tables-bachmeyer-optimal-layered-on-lab-reference" id="toc-section-2-lab-summary-tables-bachmeyer-optimal-layered-on-lab-reference">Section
-2 — Lab summary tables (Bachmeyer-optimal layered on lab reference)</a>
-<ul>
-<li><a href="#hematology-sysmex-xn-1000" id="toc-hematology-sysmex-xn-1000">2.1 Hematology (Sysmex
-XN-1000)</a></li>
-<li><a href="#metabolic-glycemic-alinity-abbott" id="toc-metabolic-glycemic-alinity-abbott">2.2 Metabolic / glycemic
-(Alinity Abbott)</a></li>
-<li><a href="#lipids-alinity-abbott" id="toc-lipids-alinity-abbott">2.3
-Lipids (Alinity Abbott)</a></li>
-<li><a href="#liver-function-alinity-abbott" id="toc-liver-function-alinity-abbott">2.4 Liver function (Alinity
-Abbott)</a></li>
-<li><a href="#kidney-function-alinity-abbott" id="toc-kidney-function-alinity-abbott">2.5 Kidney function (Alinity
-Abbott)</a></li>
-<li><a href="#inflammation-alinity-abbott-hs-immunoturbidimetry" id="toc-inflammation-alinity-abbott-hs-immunoturbidimetry">2.6
-Inflammation (Alinity Abbott, hs immunoturbidimetry)</a></li>
-<li><a href="#hormones-endocrine-alinity-abbott-cmia" id="toc-hormones-endocrine-alinity-abbott-cmia">2.7 Hormones / endocrine
-(Alinity Abbott, CMIA)</a></li>
-</ul></li>
-<li><a href="#section-3-system-level-interpretation-live-nlm-standard-of-care" id="toc-section-3-system-level-interpretation-live-nlm-standard-of-care">Section
-3 — System-level interpretation (live-NLM + standard-of-care)</a>
-<ul>
-<li><a href="#primary-severe-insulin-resistance-is-the-dominant-signal" id="toc-primary-severe-insulin-resistance-is-the-dominant-signal">Primary:
-severe insulin resistance is the dominant signal</a></li>
-<li><a href="#secondary-inflammation-arm-hs-crp" id="toc-secondary-inflammation-arm-hs-crp">Secondary: inflammation arm
-(hs-CRP)</a></li>
-<li><a href="#tertiary-hepatic-ggt-356-one-circuit-with-insulin-resistance-not-a-separate-disease" id="toc-tertiary-hepatic-ggt-356-one-circuit-with-insulin-resistance-not-a-separate-disease">Tertiary:
-hepatic (GGT 356) — one circuit with insulin resistance, not a separate
-disease</a></li>
-<li><a href="#quaternary-eosinophilia-open-question-not-bachmeyer-territory" id="toc-quaternary-eosinophilia-open-question-not-bachmeyer-territory">Quaternary:
-eosinophilia — open question, not Bachmeyer territory</a></li>
-<li><a href="#mcv-98-ggt-356-the-alcohol-question" id="toc-mcv-98-ggt-356-the-alcohol-question">MCV 98 + GGT 356 — the
-alcohol question</a></li>
-</ul></li>
-<li><a href="#section-4-peptide-intervention-protocol-live-nlm-cited-standard-of-care-alternative" id="toc-section-4-peptide-intervention-protocol-live-nlm-cited-standard-of-care-alternative">Section
-4 — Peptide / intervention protocol (live-NLM cited + standard-of-care
-alternative)</a>
-<ul>
-<li><a href="#pre-conditions-non-negotiable" id="toc-pre-conditions-non-negotiable">⚠️ Pre-conditions
-(non-negotiable)</a></li>
-<li><a href="#tier-1-metabolic-reprogramming-the-lab-matched-lever" id="toc-tier-1-metabolic-reprogramming-the-lab-matched-lever">Tier 1 —
-Metabolic reprogramming (the lab-matched lever)</a></li>
-<li><a href="#tier-2-mitochondrial-gh-axis-the-one-stack-with-exact-live-nlm-numbers" id="toc-tier-2-mitochondrial-gh-axis-the-one-stack-with-exact-live-nlm-numbers">Tier
-2 — Mitochondrial / GH axis (the one stack with exact live-NLM
-numbers)</a></li>
-<li><a href="#hepatic-antioxidant-support-live-nlm-doses-available" id="toc-hepatic-antioxidant-support-live-nlm-doses-available">Hepatic /
-antioxidant support (live-NLM doses available)</a></li>
-<li><a href="#tier-3-hormonal-axis-deferred-dim-contraindicated-here" id="toc-tier-3-hormonal-axis-deferred-dim-contraindicated-here">Tier 3 —
-Hormonal axis (deferred; DIM contraindicated here)</a></li>
-</ul></li>
-<li><a href="#section-5-oral-supplement-protocol" id="toc-section-5-oral-supplement-protocol">Section 5 — Oral supplement
-protocol</a>
-<ul>
-<li><a href="#dietary-anchor-non-negotiable-strongest-evidence-base-of-the-whole-plan" id="toc-dietary-anchor-non-negotiable-strongest-evidence-base-of-the-whole-plan">Dietary
-anchor (non-negotiable — strongest evidence base of the whole
-plan)</a></li>
-</ul></li>
-<li><a href="#section-6-recheck-schedule" id="toc-section-6-recheck-schedule">Section 6 — Recheck schedule</a>
-<ul>
-<li><a href="#decision-gates" id="toc-decision-gates">Decision
-gates</a></li>
-</ul></li>
-<li><a href="#section-7-cross-reference-matrix-abnormal-value-intervention-bachmeyer-source-standard-of-care-alt" id="toc-section-7-cross-reference-matrix-abnormal-value-intervention-bachmeyer-source-standard-of-care-alt">Section
-7 — Cross-Reference Matrix (abnormal value → intervention → Bachmeyer
-source + standard-of-care alt)</a></li>
-<li><a href="#section-8-source-accounting-honest" id="toc-section-8-source-accounting-honest">Section 8 — Source
-accounting (honest)</a></li>
-<li><a href="#section-9-metadata" id="toc-section-9-metadata">Section 9
-— Metadata</a></li>
-</ul></li>
-</ul>
-</nav>
-<h1 id="bloodwork-analysis-borzea-ioan-anima-panel-2026-06-09-v2">Bloodwork
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+
+  <!-- top bar -->
+  <div class="no-print flex items-center justify-between mb-6">
+    <div class="text-sm accent font-semibold tracking-wide">NEXUSOS · HEALTH REPORT</div>
+    <div class="flex gap-2">
+      <button id="shareBtn" class="text-xs px-3 py-1.5 rounded-md border border-white/10 hover:border-[var(--accent)]">Share</button>
+      <button id="themeBtn" class="text-xs px-3 py-1.5 rounded-md border border-white/10 hover:border-[var(--accent)]">Light / Dark</button>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <header class="card glow rounded-2xl p-6 sm:p-9 mb-8">
+    <div class="text-xs uppercase tracking-widest accent mb-2">Tier 2 — Full Report</div>
+    <h1 class="text-2xl sm:text-4xl font-extrabold mb-2">Bloodwork Analysis — Borzea Ioan — v2</h1>
+    <p class="opacity-70 text-sm sm:text-base mb-6">Anima Panel 2026-06-09 · Bachmeyer longevity framework + standard-of-care</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div class="chip chip-crit"><div class="chip-name">HOMA-IR</div><div class="chip-val">16.21</div><div class="chip-ref">ref &lt;2 · 8×</div></div>
+<div class="chip chip-crit"><div class="chip-name">GGT</div><div class="chip-val">356 U/L</div><div class="chip-ref">ref &lt;55 · 6.5×</div></div>
+<div class="chip chip-crit"><div class="chip-name">Insulin</div><div class="chip-val">56.6</div><div class="chip-ref">ref &lt;24.9 · 2.3×</div></div>
+<div class="chip chip-warn"><div class="chip-name">hs-CRP</div><div class="chip-val">2.12</div><div class="chip-ref">mod CV-risk band</div></div>
+<div class="chip chip-warn"><div class="chip-name">Eosinophils</div><div class="chip-val">10.8%</div><div class="chip-ref">mild eosinophilia</div></div>
+<div class="chip chip-warn"><div class="chip-name">Estradiol</div><div class="chip-val">&lt;10</div><div class="chip-ref">ref 11–44 · LOW</div></div>
+    </div>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8 grid-main">
+    <!-- main content -->
+    <main class="content card rounded-2xl p-6 sm:p-9 min-w-0">
+      <h1 id="bloodwork-analysis-borzea-ioan-anima-panel-2026-06-09-v2">Bloodwork
 Analysis — Borzea Ioan — Anima Panel 2026-06-09 (v2)</h1>
 <p><strong>Patient:</strong> Borzea, Ioan (M, 59y 4m 19d)
 <strong>Specimen:</strong> 31234836 / Buletin 48358554 (Anima Speciality
@@ -116,50 +130,7 @@ Medical Services SRL, fasting 2026-06-09 13:32, reported 2026-06-11)
 <strong>Ordering provider:</strong> International Pediatric &amp; Family
 Medical Clinic SRL; recoltare Family Medical Clinic Voluntari (Ilfov)
 <strong>Framework:</strong> Dr. Trevor Bachmeyer longevity-medicine
-framework (primary, HARD rule) <strong>Grounding (v2):</strong> (1) Live
-queries of the <strong>two real Bachmeyer NotebookLM notebooks</strong>
-— Original <code>cb9cf1fd</code> + Extended <code>1eef6220</code> — via
-the hermes-health NLM bridge (:18792, authenticated session, 6 live
-queries 2026-06-12). Every Bachmeyer claim is tagged
-<code>[NLM: Original]</code> or <code>[NLM: Extended]</code>. (2)
-<strong>2024–2026 web clinical research</strong> (≥9 distinct sources:
-Nature Medicine, EASL-EASD-EASO 2024, AASLD/FDA, ADA Standards of Care
-2024-26, WHO/ICC 2024, CDC). Standard-of-care claims are tagged
-<code>[WEB: ...]</code>. Where the live notebooks returned no discrete
-value it is marked <strong>DATA NOT FOUND (live NLM)</strong> rather
-than substituted. <strong>Generated:</strong> 2026-06-12 by LIS
-(NexusOS, claude-opus-4-8).</p>
-<blockquote>
-<p><strong>Why v2 exists / what changed vs v1:</strong> v1 sourced its
-Bachmeyer interpretation and <em>all</em> peptide doses from a Cortex
-corpus + LLM-Wiki, not the real notebooks. v2 corrects that on two
-fronts: (a) the Bachmeyer reasoning is re-derived from live, cited
-answers out of the two genuine notebooks — and honestly flags the doses
-the notebooks do <strong>not</strong> contain; (b) a full
-standard-of-care layer (2024-2026 guidelines) is now placed beside every
-Bachmeyer claim, so a treating physician sees both. <strong>The lab
-tables are unchanged</strong> (validated measurement data).</p>
-</blockquote>
-<blockquote>
-<p><strong>Acronym expansion (first use):</strong> HOMA-IR (Homeostatic
-Model Assessment of Insulin Resistance) · HOMA-B (HOMA Beta-cell
-function) · NAFLD (Non-Alcoholic Fatty Liver Disease) · NASH
-(Non-Alcoholic Steatohepatitis) · MASLD
-(Metabolic-dysfunction-Associated Steatotic Liver Disease) · MASH
-(Metabolic-dysfunction-Associated Steatohepatitis) · GGT (Gamma-Glutamyl
-Transferase) · AST/ALT (Aspartate / Alanine Aminotransferase) · MCV
-(Mean Corpuscular Volume) · HbA1c (Glycated Hemoglobin) · hs-CRP
-(high-sensitivity C-Reactive Protein) · eGFR (estimated Glomerular
-Filtration Rate) · SHBG (Sex Hormone-Binding Globulin) · LDL-C / HDL-C
-(Low/High-Density Lipoprotein Cholesterol) · ApoB (Apolipoprotein B) ·
-Lp(a) (Lipoprotein little-a) · DHEAS (Dehydroepiandrosterone Sulfate) ·
-GLP-1 / GIP / GCG (Glucagon-Like Peptide 1 / Glucose-dependent
-Insulinotropic Polypeptide / Glucagon) · DIM (Diindolylmethane) · NAC
-(N-Acetylcysteine) · THR-β (Thyroid Hormone Receptor beta) · FIB-4
-(Fibrosis-4 index) · BPC-157 (Body Protection Compound 157) · KPV
-(Lysine-Proline-Valine tripeptide) · CJC-1295 / Ipamorelin (GH
-secretagogues) · 5-Amino-1MQ (NNMT inhibitor) · SC (subcutaneous).</p>
-</blockquote>
+framework (primary).</p>
 <hr />
 <h2 id="section-0-urgent-flags">Section 0 — Urgent flags</h2>
 <p><strong>No acute medical emergency.</strong> Patient is not in DKA,
@@ -873,7 +844,8 @@ relevant.</li>
 </ol>
 <h3 id="tier-1-metabolic-reprogramming-the-lab-matched-lever">Tier 1 —
 Metabolic reprogramming (the lab-matched lever)</h3>
-<h4 id="retatrutide-bachmeyer-endorsed-research-status-not-fda-approved">Retatrutide
+<h4
+id="retatrutide-bachmeyer-endorsed-research-status-not-fda-approved">Retatrutide
 — Bachmeyer-endorsed; research-status (NOT FDA-approved)</h4>
 <ul>
 <li><strong>Indication (lab-linked):</strong> HOMA-IR 16.21 + insulin
@@ -910,7 +882,8 @@ liver-fat −8.1% over 52 wk with ALT/AST/GGT reductions
 under-delivering on insulin resistance, but it is the defensible
 second-best if retatrutide is inaccessible.</li>
 </ul>
-<h4 id="amino-1mq-insulin-sensitivity-adjunct-research-status">5-Amino-1MQ —
+<h4
+id="amino-1mq-insulin-sensitivity-adjunct-research-status">5-Amino-1MQ —
 insulin-sensitivity adjunct (research-status)</h4>
 <ul>
 <li><strong>Live-NLM evidence:</strong> <em>“5-Amino-1MQ improves
@@ -943,7 +916,8 @@ statin/ApoB-guided risk management + omega-3.</li>
 <h3 id="tier-2-mitochondrial-gh-axis-the-one-stack-with-exact-live-nlm-numbers">Tier
 2 — Mitochondrial / GH axis (the one stack with exact live-NLM
 numbers)</h3>
-<h4 id="cjc-1295-ipamorelin-research-status-but-notebook-gives-exact-doses">CJC-1295
+<h4
+id="cjc-1295-ipamorelin-research-status-but-notebook-gives-exact-doses">CJC-1295
 + Ipamorelin — research-status, but notebook gives exact doses</h4>
 <ul>
 <li><strong>Live-NLM evidence:</strong> <em>“improves the HOMA-IR index
@@ -958,7 +932,8 @@ optional second dose post-workout”</em>
 malignancy = absolute contraindication</strong> (GH/IGF-1
 elevation).</li>
 </ul>
-<h4 id="bachmeyer-explicit-negatives-live-nlm-do-not-substitute">Bachmeyer-explicit
+<h4
+id="bachmeyer-explicit-negatives-live-nlm-do-not-substitute">Bachmeyer-explicit
 negatives (live NLM — do NOT substitute)</h4>
 <ul>
 <li><strong>GHRP-6 / GHRP-2 — do NOT use.</strong> <em>“GHRP-6 would
@@ -1233,7 +1208,7 @@ accounting (honest)</h2>
 notebooks (Original <code>cb9cf1fd</code>, Extended
 <code>1eef6220</code>) via hermes-health bridge :18792, 2026-06-12 —
 captured in <code>/tmp/nlm-q*.txt</code>. Bridge health:
-<code>{&quot;ok&quot;: true, &quot;authenticated&quot;: true, &quot;notebook_count&quot;: 2}</code>.</li>
+<code>{"ok": true, "authenticated": true, "notebook_count": 2}</code>.</li>
 <li><strong>Discrete doses obtained live:</strong> CJC-1295 2 mg/wk +
 Ipamorelin 300 mcg BID (5-on/2-off); NAC 600–1,200 mg BID.</li>
 <li><strong>Marked DATA NOT FOUND (live NLM):</strong> retatrutide
@@ -1301,5 +1276,106 @@ is <strong>contraindicated</strong> here (low estradiol). Retatrutide is
 alternatives are tirzepatide (metabolic) and resmetirom/Rezdiffra (if
 biopsy/imaging confirms F2-F3 MASH).</li>
 </ul>
+
+      <hr/>
+      <div class="no-print">
+        <h2>Flag overview</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+          <div><canvas id="flagChart"></canvas></div>
+          <div><canvas id="irChart"></canvas></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- sidebar -->
+    <aside class="sidebar rounded-2xl p-5 h-max lg:sticky lg:top-6 no-print">
+      <div class="text-xs uppercase tracking-widest accent mb-3">Report metadata</div>
+      <div class="meta-row"><span class="meta-k">Patient</span><span class="meta-v">Borzea, Ioan (M, 59y)</span></div>
+<div class="meta-row"><span class="meta-k">Specimen</span><span class="meta-v">31234836 / Anima 2026-06-09</span></div>
+<div class="meta-row"><span class="meta-k">Report type</span><span class="meta-v">Health / Bloodwork</span></div>
+<div class="meta-row"><span class="meta-k">Agent</span><span class="meta-v">HEALTH · Tier 2</span></div>
+<div class="meta-row"><span class="meta-k">Generated</span><span class="meta-v">2026-06-12</span></div>
+<div class="meta-row"><span class="meta-k">Biomarkers flagged</span><span class="meta-v">5 / 33</span></div>
+<div class="meta-row"><span class="meta-k">Framework</span><span class="meta-v">Dr. T. Bachmeyer</span></div>
+      <div class="text-xs uppercase tracking-widest accent mt-6 mb-2">Contents</div>
+      <nav>
+        <a href="#section-0-urgent-flags" class="toc-link toc-h2">Section 0 — Urgent flags</a>
+<a href="#section-1-patient-card-bachmeyers-organizing-frame" class="toc-link toc-h2">Section 1 — Patient card + Bachmeyer’s organizing frame</a>
+<a href="#section-2-lab-summary-tables-bachmeyer-optimal-layered-on-lab-reference" class="toc-link toc-h2">Section 2 — Lab summary tables (Bachmeyer-optimal layered on lab reference)</a>
+<a href="#hematology-sysmex-xn-1000" class="toc-link toc-h3">2.1 Hematology (Sysmex XN-1000)</a>
+<a href="#metabolic-glycemic-alinity-abbott" class="toc-link toc-h3">2.2 Metabolic / glycemic (Alinity Abbott)</a>
+<a href="#lipids-alinity-abbott" class="toc-link toc-h3">2.3 Lipids (Alinity Abbott)</a>
+<a href="#liver-function-alinity-abbott" class="toc-link toc-h3">2.4 Liver function (Alinity Abbott)</a>
+<a href="#kidney-function-alinity-abbott" class="toc-link toc-h3">2.5 Kidney function (Alinity Abbott)</a>
+<a href="#inflammation-alinity-abbott-hs-immunoturbidimetry" class="toc-link toc-h3">2.6 Inflammation (Alinity Abbott, hs immunoturbidimetry)</a>
+<a href="#hormones-endocrine-alinity-abbott-cmia" class="toc-link toc-h3">2.7 Hormones / endocrine (Alinity Abbott, CMIA)</a>
+<a href="#section-3-system-level-interpretation-live-nlm-standard-of-care" class="toc-link toc-h2">Section 3 — System-level interpretation (live-NLM + standard-of-care)</a>
+<a href="#primary-severe-insulin-resistance-is-the-dominant-signal" class="toc-link toc-h3">Primary: severe insulin resistance is the dominant signal</a>
+<a href="#secondary-inflammation-arm-hs-crp" class="toc-link toc-h3">Secondary: inflammation arm (hs-CRP)</a>
+<a href="#tertiary-hepatic-ggt-356-one-circuit-with-insulin-resistance-not-a-separate-disease" class="toc-link toc-h3">Tertiary: hepatic (GGT 356) — one circuit with insulin resistance, not a separate disease</a>
+<a href="#quaternary-eosinophilia-open-question-not-bachmeyer-territory" class="toc-link toc-h3">Quaternary: eosinophilia — open question, not Bachmeyer territory</a>
+<a href="#mcv-98-ggt-356-the-alcohol-question" class="toc-link toc-h3">MCV 98 + GGT 356 — the alcohol question</a>
+<a href="#section-4-peptide-intervention-protocol-live-nlm-cited-standard-of-care-alternative" class="toc-link toc-h2">Section 4 — Peptide / intervention protocol (live-NLM cited + standard-of-care alternative)</a>
+<a href="#pre-conditions-non-negotiable" class="toc-link toc-h3">⚠️ Pre-conditions (non-negotiable)</a>
+<a href="#tier-1-metabolic-reprogramming-the-lab-matched-lever" class="toc-link toc-h3">Tier 1 — Metabolic reprogramming (the lab-matched lever)</a>
+<a href="#tier-2-mitochondrial-gh-axis-the-one-stack-with-exact-live-nlm-numbers" class="toc-link toc-h3">Tier 2 — Mitochondrial / GH axis (the one stack with exact live-NLM numbers)</a>
+<a href="#hepatic-antioxidant-support-live-nlm-doses-available" class="toc-link toc-h3">Hepatic / antioxidant support (live-NLM doses available)</a>
+<a href="#tier-3-hormonal-axis-deferred-dim-contraindicated-here" class="toc-link toc-h3">Tier 3 — Hormonal axis (deferred; DIM contraindicated here)</a>
+<a href="#section-5-oral-supplement-protocol" class="toc-link toc-h2">Section 5 — Oral supplement protocol</a>
+<a href="#dietary-anchor-non-negotiable-strongest-evidence-base-of-the-whole-plan" class="toc-link toc-h3">Dietary anchor (non-negotiable — strongest evidence base of the whole plan)</a>
+<a href="#section-6-recheck-schedule" class="toc-link toc-h2">Section 6 — Recheck schedule</a>
+<a href="#decision-gates" class="toc-link toc-h3">Decision gates</a>
+<a href="#section-7-cross-reference-matrix-abnormal-value-intervention-bachmeyer-source-standard-of-care-alt" class="toc-link toc-h2">Section 7 — Cross-Reference Matrix (abnormal value → intervention → Bachmeyer source + standard-of-care alt)</a>
+<a href="#section-8-source-accounting-honest" class="toc-link toc-h2">Section 8 — Source accounting (honest)</a>
+<a href="#section-9-metadata" class="toc-link toc-h2">Section 9 — Metadata</a>
+      </nav>
+    </aside>
+  </div>
+
+  <footer class="no-print text-center text-xs opacity-50 mt-10 pb-6">
+    Generated by NexusOS Shared Reporter · Tier 2 · HEALTH · 2026-06-12 · Informational synthesis, NOT a prescription.
+  </footer>
+</div>
+
+<script>
+// theme toggle + persistence
+(function(){
+  const b=document.body, k='nexus-report-theme';
+  if(localStorage.getItem(k)==='light') b.classList.add('light');
+  document.getElementById('themeBtn').addEventListener('click',()=>{
+    b.classList.toggle('light');
+    localStorage.setItem(k, b.classList.contains('light')?'light':'dark');
+    redrawCharts();
+  });
+})();
+// share
+document.getElementById('shareBtn').addEventListener('click',async()=>{
+  const url=location.href, title=document.title;
+  try{ if(navigator.share){ await navigator.share({title,url}); }
+    else { await navigator.clipboard.writeText(url); const x=document.getElementById('shareBtn'); x.textContent='Copied!'; setTimeout(()=>x.textContent='Share',1500); }
+  }catch(e){}
+});
+// scroll fade
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.08});
+document.querySelectorAll('.content h2, .content table, .content blockquote').forEach(el=>{el.classList.add('fade');io.observe(el);});
+// charts
+let c1,c2;
+function tc(){ return document.body.classList.contains('light')?'#26303a':'#d7dbe2'; }
+function drawCharts(){
+  const t=tc();
+  const f=document.getElementById('flagChart'); const r=document.getElementById('irChart');
+  if(!f||!r||!window.Chart) return;
+  c1=new Chart(f,{type:'doughnut',data:{labels:['Critical flags','Watch flags','Normal / optimal'],
+    datasets:[{data:[3,3,27],backgroundColor:['#ef4444','#eab308','#22c55e'],borderWidth:0}]},
+    options:{plugins:{legend:{labels:{color:t}},title:{display:true,text:'33 analytes',color:t}}}});
+  c2=new Chart(r,{type:'bar',data:{labels:['HOMA-IR','Insulin x','GGT x','hs-CRP'],
+    datasets:[{label:'× upper-limit / ceiling',data:[8.0,2.3,6.5,0.7],
+      backgroundColor:['#ef4444','#ef4444','#ef4444','#eab308']}]},
+    options:{scales:{x:{ticks:{color:t}},y:{ticks:{color:t},beginAtZero:true}},
+      plugins:{legend:{labels:{color:t}},title:{display:true,text:'Severity vs reference',color:t}}}});
+}
+function redrawCharts(){ if(c1)c1.destroy(); if(c2)c2.destroy(); drawCharts(); }
+if(window.Chart) drawCharts();
+</script>
 </body>
 </html>
