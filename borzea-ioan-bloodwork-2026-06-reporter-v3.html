@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Borzea Ioan — Bloodwork Analysis &amp; Peptide Protocol (Bachmeyer)</title>
+  <meta name="description" content="Bloodwork Analysis — Borzea Ioan — Anima Panel 2026-06-09. Tier 2 Full Report with biomarker analysis, peptide protocol, and Bachmeyer longevity-medicine framework." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Borzea Ioan — Bloodwork Analysis &amp; Peptide Protocol (Bachmeyer)" />
+  <meta property="og:description" content="Bloodwork Analysis — Borzea Ioan — Anima Panel 2026-06-09 (v2). NexusOS HEALTH agent report." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://cryptopafi.github.io/nexusos-reports/borzea-ioan-bloodwork-2026-06-reporter-v3.html" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            accent: '#22c55e',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --accent: #22c55e;
+      --accent-dim: rgba(34,197,94,0.15);
+      --accent-glow: rgba(34,197,94,0.35);
+    }
+
+    /* ---- DARK THEME ---- */
+    html.dark body {
+      background-color: #0A0A0F;
+      color: #e2e8f0;
+    }
+    html.dark .card {
+      background: rgba(17,17,24,0.85);
+      border-color: rgba(255,255,255,0.07);
+    }
+    html.dark .sidebar {
+      background: rgba(17,17,24,0.95);
+      border-color: rgba(255,255,255,0.07);
+    }
+    html.dark .toc-sidebar {
+      background: rgba(17,17,24,0.95);
+      border-color: rgba(255,255,255,0.07);
+    }
+    html.dark .prose-content h2 { color: #f1f5f9; }
+    html.dark .prose-content h3 { color: #cbd5e1; }
+    html.dark .prose-content p { color: #94a3b8; }
+    html.dark .prose-content li { color: #94a3b8; }
+    html.dark .prose-content td { color: #94a3b8; }
+    html.dark .prose-content th { color: #f1f5f9; background: rgba(34,197,94,0.08); }
+    html.dark .prose-content table { border-color: rgba(255,255,255,0.08); }
+    html.dark .prose-content tr { border-color: rgba(255,255,255,0.05); }
+    html.dark .prose-content blockquote { border-color: var(--accent); background: rgba(34,197,94,0.05); color: #94a3b8; }
+    html.dark .prose-content code { background: rgba(255,255,255,0.05); color: #86efac; }
+    html.dark .toggle-btn { background: rgba(255,255,255,0.06); color: #94a3b8; }
+    html.dark .toc-link { color: #64748b; }
+    html.dark .toc-link:hover, html.dark .toc-link.active { color: var(--accent); }
+    html.dark .nav-bar { background: rgba(10,10,15,0.9); border-color: rgba(255,255,255,0.06); }
+    html.dark .flag-red { background: rgba(239,68,68,0.12); color: #f87171; border-color: rgba(239,68,68,0.25); }
+    html.dark .flag-yellow { background: rgba(234,179,8,0.12); color: #fbbf24; border-color: rgba(234,179,8,0.25); }
+    html.dark .flag-green { background: rgba(34,197,94,0.12); color: #4ade80; border-color: rgba(34,197,94,0.25); }
+    html.dark .meta-label { color: #64748b; }
+    html.dark .meta-value { color: #e2e8f0; }
+    html.dark .section-divider { border-color: rgba(255,255,255,0.06); }
+
+    /* ---- LIGHT THEME ---- */
+    html.light body {
+      background-color: #fafafa;
+      color: #1e293b;
+    }
+    html.light .card {
+      background: #ffffff;
+      border-color: #e2e8f0;
+    }
+    html.light .sidebar {
+      background: #ffffff;
+      border-color: #e2e8f0;
+    }
+    html.light .toc-sidebar {
+      background: #ffffff;
+      border-color: #e2e8f0;
+    }
+    html.light .prose-content h2 { color: #0f172a; }
+    html.light .prose-content h3 { color: #1e293b; }
+    html.light .prose-content p { color: #475569; }
+    html.light .prose-content li { color: #475569; }
+    html.light .prose-content td { color: #475569; }
+    html.light .prose-content th { color: #0f172a; background: rgba(34,197,94,0.08); }
+    html.light .prose-content table { border-color: #e2e8f0; }
+    html.light .prose-content tr { border-color: #f1f5f9; }
+    html.light .prose-content blockquote { border-color: var(--accent); background: rgba(34,197,94,0.05); color: #475569; }
+    html.light .prose-content code { background: #f1f5f9; color: #16a34a; }
+    html.light .toggle-btn { background: #f1f5f9; color: #475569; }
+    html.light .toc-link { color: #94a3b8; }
+    html.light .toc-link:hover, html.light .toc-link.active { color: #16a34a; }
+    html.light .nav-bar { background: rgba(250,250,250,0.95); border-color: #e2e8f0; }
+    html.light .flag-red { background: rgba(239,68,68,0.08); color: #dc2626; border-color: rgba(239,68,68,0.2); }
+    html.light .flag-yellow { background: rgba(234,179,8,0.08); color: #b45309; border-color: rgba(234,179,8,0.2); }
+    html.light .flag-green { background: rgba(34,197,94,0.08); color: #16a34a; border-color: rgba(34,197,94,0.2); }
+    html.light .meta-label { color: #94a3b8; }
+    html.light .meta-value { color: #1e293b; }
+    html.light .section-divider { border-color: #e2e8f0; }
+
+    /* ---- SHARED ---- */
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      transition: background 0.25s, color 0.25s;
+    }
+    .card {
+      border-radius: 12px;
+      border: 1px solid;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .accent-glow {
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+    .accent-border { border-left: 3px solid var(--accent); }
+    .accent-text { color: var(--accent); }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* NAV */
+    .nav-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      border-bottom: 1px solid;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    /* LAYOUT */
+    .page-wrapper {
+      padding-top: 56px;
+      display: flex;
+      min-height: 100vh;
+    }
+    .toc-sidebar {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      width: 240px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+      border-right: 1px solid;
+      padding: 24px 16px;
+      scrollbar-width: thin;
+    }
+    .main-content {
+      margin-left: 240px;
+      flex: 1;
+      padding: 32px 24px 80px 40px;
+      max-width: 900px;
+    }
+    .right-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      padding: 32px 20px 32px 4px;
+    }
+    @media (max-width: 1200px) {
+      .right-sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .toc-sidebar { display: none; }
+      .main-content { margin-left: 0; padding: 20px 16px 60px; }
+    }
+
+    /* TOC */
+    .toc-link {
+      display: block;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+      line-height: 1.4;
+    }
+    .toc-link:hover { background: var(--accent-dim); }
+    .toc-link.active { background: var(--accent-dim); font-weight: 600; }
+    .toc-link.sub { padding-left: 20px; font-size: 11px; }
+
+    /* PROSE */
+    .prose-content h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--accent);
+      margin: 0 0 8px;
+    }
+    .prose-content h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 48px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid;
+      border-color: inherit;
+    }
+    .prose-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 28px 0 12px;
+    }
+    .prose-content p {
+      font-size: 0.925rem;
+      line-height: 1.75;
+      margin: 0 0 14px;
+    }
+    .prose-content ul, .prose-content ol {
+      margin: 0 0 14px;
+      padding-left: 22px;
+    }
+    .prose-content li {
+      font-size: 0.925rem;
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+    .prose-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 0.8rem;
+      border: 1px solid;
+    }
+    .prose-content th {
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .prose-content td {
+      padding: 7px 10px;
+      border-top: 1px solid;
+      vertical-align: top;
+    }
+    .prose-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 12px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.875rem;
+      font-style: italic;
+    }
+    .prose-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .prose-content strong { color: inherit; font-weight: 600; }
+    .prose-content hr { border: none; border-top: 1px solid; margin: 32px 0; }
+    .prose-content .section-anchor { scroll-margin-top: 72px; }
+
+    /* FLAGS */
+    .flag-pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 99px;
+      border: 1px solid;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    /* FADE IN */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* META SIDEBAR ITEMS */
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid;
+      font-size: 0.8rem;
+    }
+    html.dark .meta-item { border-color: rgba(255,255,255,0.06); }
+    html.light .meta-item { border-color: #f1f5f9; }
+
+    /* TOGGLE BTN */
+    .toggle-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+    .toggle-btn:hover { opacity: 0.8; }
+
+    /* SHARE BTN */
+    .share-btn {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.15s;
+    }
+    .share-btn:hover { opacity: 0.85; }
+
+    /* CHART CONTAINER */
+    .chart-container {
+      position: relative;
+      height: 220px;
+      margin: 16px 0;
+    }
+
+    /* WARNING BOXES */
+    .warning-box {
+      border: 1px solid;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    html.dark .warning-box.critical { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.25); color: #fca5a5; }
+    html.dark .warning-box.caution { background: rgba(234,179,8,0.08); border-color: rgba(234,179,8,0.25); color: #fde68a; }
+    html.dark .warning-box.info { background: rgba(34,197,94,0.07); border-color: rgba(34,197,94,0.2); color: #86efac; }
+    html.light .warning-box.critical { background: rgba(239,68,68,0.05); border-color: rgba(239,68,68,0.2); color: #991b1b; }
+    html.light .warning-box.caution { background: rgba(234,179,8,0.05); border-color: rgba(234,179,8,0.2); color: #92400e; }
+    html.light .warning-box.info { background: rgba(34,197,94,0.05); border-color: rgba(34,197,94,0.15); color: #166534; }
+
+    /* PRINT STYLES */
+    @media print {
+      html { color-scheme: light; }
+      html.dark body {
+        background: #fff !important;
+        color: #000 !important;
+      }
+      .nav-bar, .toc-sidebar, .right-sidebar, .toggle-btn, .share-btn, #toast { display: none !important; }
+      .main-content { margin: 0 !important; padding: 16px !important; max-width: 100% !important; }
+      .page-wrapper { padding-top: 0 !important; }
+      .card { border: 1px solid #e2e8f0 !important; background: #fff !important; }
+      .prose-content h2, .prose-content h3 { color: #000 !important; }
+      .prose-content p, .prose-content li, .prose-content td { color: #333 !important; }
+      .prose-content th { background: #f1f5f9 !important; color: #000 !important; }
+      .prose-content table { border-color: #e2e8f0 !important; }
+      .prose-content tr { border-color: #f1f5f9 !important; }
+      .prose-content blockquote { background: #f8f9fa !important; border-color: #22c55e !important; color: #333 !important; }
+      .prose-content code { background: #f1f5f9 !important; color: #16a34a !important; }
+      .prose-content hr { border-color: #e2e8f0 !important; }
+      .warning-box.critical { background: #fff5f5 !important; border-color: #fca5a5 !important; color: #7f1d1d !important; }
+      .warning-box.caution { background: #fffbeb !important; border-color: #fde68a !important; color: #78350f !important; }
+      .warning-box.info { background: #f0fdf4 !important; border-color: #86efac !important; color: #14532d !important; }
+      .fade-in { opacity: 1 !important; transform: none !important; }
+      .chart-container { page-break-inside: avoid; }
+      section { page-break-inside: avoid; }
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 6px; }
+    html.dark ::-webkit-scrollbar-track { background: #0A0A0F; }
+    html.dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+    html.light ::-webkit-scrollbar-track { background: #fafafa; }
+    html.light ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+    /* TOAST */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--accent);
+      color: #000;
+      padding: 8px 20px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+      z-index: 999;
+      pointer-events: none;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="toast">Link copied!</div>
+
+<!-- NAV BAR -->
+<nav class="nav-bar">
+  <div style="display:flex;align-items:center;gap:10px;flex:1;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+    </svg>
+    <span style="font-size:0.85rem;font-weight:600;color:var(--accent);">NexusOS</span>
+    <span id="nav-label" style="font-size:0.75rem;opacity:0.5;margin-left:4px;">HEALTH</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="toggle-btn" onclick="toggleTheme()" id="theme-btn">
+      <span id="theme-icon">☀️</span>
+      <span id="theme-label">Light</span>
+    </button>
+    <button class="share-btn" onclick="shareReport()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE WRAPPER -->
+<div class="page-wrapper">
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc-sidebar">
+    <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin:0 0 12px 8px;">Contents</p>
+    <nav id="toc">
+      <a class="toc-link" href="#sec-urgent">0 — Urgent Flags</a>
+      <a class="toc-link" href="#sec-patient">1 — Patient &amp; Framework</a>
+      <a class="toc-link" href="#sec-labs">2 — Lab Summary Tables</a>
+      <a class="toc-link sub" href="#sec-hematology">2.1 Hematology</a>
+      <a class="toc-link sub" href="#sec-metabolic">2.2 Metabolic / Glycemic</a>
+      <a class="toc-link sub" href="#sec-lipids">2.3 Lipids</a>
+      <a class="toc-link sub" href="#sec-liver">2.4 Liver Function</a>
+      <a class="toc-link sub" href="#sec-kidney">2.5 Kidney Function</a>
+      <a class="toc-link sub" href="#sec-inflammation">2.6 Inflammation</a>
+      <a class="toc-link sub" href="#sec-hormones">2.7 Hormones</a>
+      <a class="toc-link" href="#sec-interpretation">3 — System Interpretation</a>
+      <a class="toc-link" href="#sec-protocol">4 — Peptide Protocol</a>
+      <a class="toc-link sub" href="#sec-tier1">Tier 1 — Metabolic</a>
+      <a class="toc-link sub" href="#sec-tier2">Tier 2 — GH Axis</a>
+      <a class="toc-link sub" href="#sec-hepatic">Hepatic Support</a>
+      <a class="toc-link sub" href="#sec-tier3">Tier 3 — Hormonal</a>
+      <a class="toc-link" href="#sec-supplements">5 — Supplements</a>
+      <a class="toc-link" href="#sec-recheck">6 — Recheck Schedule</a>
+      <a class="toc-link" href="#sec-matrix">7 — Cross-Reference Matrix</a>
+      <a class="toc-link" href="#sec-sources">8 — Source Accounting</a>
+      <a class="toc-link" href="#sec-metadata">9 — Metadata</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="prose-content">
+
+      <!-- HERO -->
+      <div class="fade-in" style="margin-bottom:32px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="flag-pill flag-green">HEALTH</span>
+          <span class="flag-pill flag-yellow">v2 LIVE-NLM</span>
+          <span style="font-size:0.7rem;opacity:0.45;font-family:'JetBrains Mono',monospace;">2026-06-12</span>
+        </div>
+        <h1>Borzea Ioan — Bloodwork Analysis &amp; Peptide Protocol (Bachmeyer)</h1>
+        <p style="font-size:1rem;margin-bottom:0;opacity:0.65;">Anima Panel 2026-06-09 &middot; v2 (live-NLM + web-research grounded) &middot; Dr. Trevor Bachmeyer longevity-medicine framework</p>
+      </div>
+
+      <!-- BIOMARKER CHART -->
+      <div class="card fade-in" style="padding:20px;margin-bottom:32px;">
+        <h3 style="margin:0 0 4px;font-size:0.9rem;font-weight:600;color:var(--accent);">Biomarker Overview</h3>
+        <p style="font-size:0.75rem;margin:0 0 12px;opacity:0.55;">30 total biomarkers measured &mdash; flag distribution</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;">
+          <div class="chart-container" style="height:200px;">
+            <canvas id="flagChart"></canvas>
+          </div>
+          <div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:12px;height:12px;border-radius:50%;background:#ef4444;flex-shrink:0;"></div>
+                <span style="font-size:0.8rem;">Red flags (🚩) — 8</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:12px;height:12px;border-radius:50%;background:#eab308;flex-shrink:0;"></div>
+                <span style="font-size:0.8rem;">Yellow flags (🟡) — 15</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:12px;height:12px;border-radius:50%;background:#22c55e;flex-shrink:0;"></div>
+                <span style="font-size:0.8rem;">Optimal / normal — 7</span>
+              </div>
+            </div>
+            <div style="margin-top:16px;padding:10px 12px;border-radius:8px;background:var(--accent-dim);font-size:0.75rem;font-weight:600;">
+              <span style="color:var(--accent);">23 / 30</span>
+              <span style="opacity:0.7;margin-left:4px;">biomarkers flagged</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY METRICS CHART -->
+      <div class="card fade-in" style="padding:20px;margin-bottom:32px;">
+        <h3 style="margin:0 0 4px;font-size:0.9rem;font-weight:600;color:var(--accent);">Key Biomarker Values vs. Reference Upper Limit</h3>
+        <p style="font-size:0.75rem;margin:0 0 12px;opacity:0.55;">Values normalized as multiples of the upper reference limit (ULN). Bar = 1.0 = upper normal limit.</p>
+        <div class="chart-container" style="height:240px;">
+          <canvas id="biomarkerBar"></canvas>
+        </div>
+      </div>
+
+      <!-- SECTION 0 -->
+      <section id="sec-urgent" class="section-anchor fade-in">
+        <h2>Section 0 — Urgent Flags</h2>
+
+        <div class="warning-box info">
+          <strong>No acute medical emergency.</strong> Patient is not in DKA, not in hepatic failure; hemoglobin/electrolytes normal, kidney function preserved, no cardiac red flag in this panel.
+        </div>
+
+        <p><strong>Three convergent chronic flags drive the entire clinical picture:</strong></p>
+
+        <div class="warning-box critical">
+          <strong>1. 🚩 HOMA-IR 16.21</strong> (ref &lt;2) + insulin 56.6 + fasting glucose 116 + HOMA-B 384% &rarr; <strong>severe insulin resistance with full pancreatic compensation</strong>. Bachmeyer holds HOMA-IR as the single most important metabolic marker — <em>"the ultimate clinical gold standard for tracking metabolic failure, explicitly far superior to HbA1c, which can be artificially manipulated by drugs"</em> <code>[NLM: Extended]</code>. So Borzea's reassuring HbA1c 5.5% is exactly the trap: the pancreas holds A1c normal at 384% overdrive. Bachmeyer frames hyperinsulinemia itself as dangerous — <em>"a massive growth signal for cancer cells that drives systemic inflammation"</em> <code>[NLM: Extended]</code>. <strong>Standard-of-care agrees on the danger:</strong> ADA Standards of Care 2024-2026 classifies glucose 116 as impaired fasting glucose (prediabetes) and recommends intensive lifestyle ± pharmacotherapy <code>[WEB: ADA SoC 2024-2026]</code>.
+        </div>
+
+        <div class="warning-box critical">
+          <strong>2. 🚩 GGT 356 U/L</strong> (ref &lt;55, <strong>6.5&times; upper limit</strong>) with normal AST/ALT &rarr; suspected <strong>NAFLD / MASLD</strong>. Bachmeyer reads elevated liver enzymes directionally — when GGT is high, <em>"there is ectopic fat strangling the liver"</em> <code>[NLM: Original]</code>; but he gives <strong>no numeric GGT threshold (DATA NOT FOUND, live NLM)</strong>. The NAFLD/MASLD interpretation rests on mainstream hepatology: isolated GGT is <em>"the most common liver enzyme abnormality in… metabolic dysfunction associated steatotic liver disease"</em> <code>[WEB: NHS NENC Hepatology 2024]</code>.
+        </div>
+
+        <div class="warning-box caution">
+          <strong>3. 🟡 Eosinophilia 10.8% / 0.81 absolute</strong> (mild, 500–1,499 cells/µL band) &rarr; not urgent, unexplained. Bachmeyer places <em>"almost no value on these CBC markers unless hunting for a parasitic infection or gut dysbiosis"</em> <code>[NLM: Original]</code> (<strong>no threshold — DATA NOT FOUND, live NLM</strong>). Mainstream workup: repeat CBC + stool ova/parasites + Strongyloides serology + total IgE; parasitic infection is the most common cause worldwide, medications the most common in developed settings <code>[WEB: Kuang 2020 / CDC Yellow Book 2024]</code>.
+        </div>
+
+        <div class="warning-box caution">
+          <strong>Action timeline:</strong> endocrinologist &le;1 week, hepatologist &le;2 weeks, imaging in parallel. <strong>Full workup before any peptide is initiated.</strong>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 1 -->
+      <section id="sec-patient" class="section-anchor fade-in">
+        <h2>Section 1 — Patient Card &amp; Bachmeyer's Organizing Frame</h2>
+
+        <p>Patient card: <code>/home/pafi/.nexus/projects/health/patients/borzea-ioan-PROJECT-CARD.md</code> (created 2026-06-11).</p>
+
+        <p>Bachmeyer categorizes all chronic disease into <strong>"Three Biological Failures": Systemic Inflammation, Insulin Resistance, and ATP Shortage (Mitochondrial Dysfunction)</strong> <code>[NLM: Extended &times;2]</code>, and evaluates every lab strictly by how it reflects these three. Borzea's panel maps cleanly onto all three:</p>
+
+        <ul>
+          <li><strong>Insulin Resistance</strong> &rarr; HOMA-IR 16.21, insulin 56.6, glucose 116</li>
+          <li><strong>Systemic Inflammation</strong> &rarr; hs-CRP 2.12; GGT 356 (downstream hepatic)</li>
+          <li><strong>ATP Shortage / mitochondrial</strong> &rarr; inferred upstream driver of the above</li>
+        </ul>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 2 -->
+      <section id="sec-labs" class="section-anchor fade-in">
+        <h2>Section 2 — Lab Summary Tables (Bachmeyer-Optimal Layered on Lab Reference)</h2>
+
+        <p><strong>Legend:</strong> <strong>N</strong> = within lab reference range &middot; <strong>L</strong> = below lab ref &middot; <strong>H</strong> = above lab ref &middot; 🟡 = in lab range but <em>suboptimal</em> &middot; 🚩 = clinically significant out-of-range &middot; ✅ = optimal</p>
+
+        <h3 id="sec-hematology" class="section-anchor">2.1 Hematology (Sysmex XN-1000)</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab ref</th><th>Lab flag</th><th>Bachmeyer view</th><th>Functional flag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Erythrocytes</td><td>4.5</td><td>10⁶/µL</td><td>4.5–6.0</td><td>N</td><td>—</td><td>🟡 low-end</td></tr>
+              <tr><td>Hemoglobin</td><td>14.8</td><td>g/dL</td><td>13.5–17.0</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td>Hematocrit</td><td>44.1</td><td>%</td><td>41–55</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td><strong>MCV</strong></td><td><strong>98</strong></td><td>fL</td><td>80–97</td><td><strong>H</strong></td><td>no threshold — DATA NOT FOUND (live NLM)</td><td>🚩 borderline macrocytosis</td></tr>
+              <tr><td>MCH</td><td>32.9</td><td>pg</td><td>26.5–33.5</td><td>N</td><td>—</td><td>🟡</td></tr>
+              <tr><td>MCHC</td><td>33.6</td><td>g/dL</td><td>31.5–37</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td>RDW-CV</td><td>13</td><td>%</td><td>10–15</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td>Leukocytes</td><td>7.47</td><td>10³/µL</td><td>3.5–10</td><td>N</td><td>—</td><td>🟡</td></tr>
+              <tr><td>Neutrophils</td><td>50% / 3.73</td><td>%/10³/µL</td><td>35–75%</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td><strong>Eosinophils</strong></td><td><strong>10.8% / 0.81</strong></td><td>%/10³/µL</td><td>0–4% / 0–0.4</td><td><strong>H</strong></td><td>"no value unless parasitic/dysbiosis" <code>[NLM: Original]</code> — no threshold</td><td>🚩 eosinophilia</td></tr>
+              <tr><td>Basophils</td><td>0.9% / 0.07</td><td>%/10³/µL</td><td>0–2%</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td>Lymphocytes</td><td>31.5% / 2.35</td><td>%/10³/µL</td><td>17–48%</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td>Monocytes</td><td>6.8% / 0.51</td><td>%/10³/µL</td><td>2–10%</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td>Platelets</td><td>269</td><td>10³/µL</td><td>150–450</td><td>N</td><td>—</td><td>✅</td></tr>
+              <tr><td>MPV</td><td>10</td><td>fL</td><td>6–11</td><td>N</td><td>—</td><td>✅</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <blockquote>
+          <strong>MCV 98 + GGT 356</strong> is a recognized pattern (alcohol vs B12/folate vs hypothyroid). Standard hematology — Bachmeyer carries <strong>no MCV threshold (DATA NOT FOUND, live NLM)</strong>.
+        </blockquote>
+
+        <h3 id="sec-metabolic" class="section-anchor">2.2 Metabolic / Glycemic (Alinity Abbott)</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab ref</th><th>Lab flag</th><th>Bachmeyer view (live NLM)</th><th>Functional flag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Glucose (fasting)</strong></td><td><strong>116</strong></td><td>mg/dL</td><td>74–100</td><td><strong>H</strong></td><td>secondary to insulin resistance</td><td>🚩 prediabetic</td></tr>
+              <tr><td><strong>Insulin (fasting)</strong></td><td><strong>56.6</strong></td><td>µIU/mL</td><td>2.6–24.9</td><td><strong>H</strong> (2.3&times;)</td><td><em>"must drop — hyperinsulinemia = cancer growth signal"</em> <code>[NLM: Extended]</code></td><td>🚩 hyperinsulinemia</td></tr>
+              <tr><td><strong>HOMA1-IR</strong></td><td><strong>16.21</strong></td><td>—</td><td>&lt;2</td><td><strong>H (8&times;)</strong></td><td><em>"ultimate gold standard, far superior to HbA1c"</em> <code>[NLM: Extended]</code></td><td>🚩 <strong>severe insulin resistance</strong></td></tr>
+              <tr><td>HOMA1-B</td><td>384.5%</td><td>%</td><td>&gt;48.9%</td><td>N</td><td>compensatory overdrive</td><td>🚩</td></tr>
+              <tr><td>HbA1c</td><td>5.5</td><td>%</td><td>≤5.6</td><td>N</td><td><em>"can be artificially manipulated by drugs"</em> — distrusted <code>[NLM: Extended]</code></td><td>🟡 masked</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="sec-lipids" class="section-anchor">2.3 Lipids (Alinity Abbott)</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab ref</th><th>Lab flag</th><th>Bachmeyer view (live NLM)</th><th>Functional flag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Total Cholesterol</td><td>191</td><td>mg/dL</td><td>&lt;200</td><td>N</td><td>contrarian: <em>"an anabolic human should have total cholesterol 250–300 mg/dL to protect the brain; statins are mitochondrial poison"</em> <code>[NLM: Original]</code></td><td>✅ by lab</td></tr>
+              <tr><td>LDL-C (calc)</td><td>117.8</td><td>mg/dL</td><td>&lt;100</td><td>borderline</td><td><em>"ignored — true danger is oxidized cholesterol in an inflamed endothelium, not the number"</em> <code>[NLM: Extended/Original]</code></td><td>🟡</td></tr>
+              <tr><td>HDL-C</td><td>54</td><td>mg/dL</td><td>≥60</td><td>borderline</td><td>—</td><td>🟡</td></tr>
+              <tr><td>Triglycerides</td><td>96</td><td>mg/dL</td><td>&lt;150</td><td>N</td><td>—</td><td>🟡 (TG/HDL 1.78 = IR marker)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <blockquote>
+          <strong>Honest caveat:</strong> Bachmeyer's "optimal 250–300 mg/dL total cholesterol" and his statin position are <strong>non-standard, contrarian</strong> views the live notebooks state plainly. They are reported here as <em>his</em> view, <strong>not</strong> a clinical recommendation. Borzea's 191 is reassuring by every standard guideline; ApoB and Lp(a) (not measured) are the metrics standard-of-care would add given the insulin resistance.
+        </blockquote>
+
+        <h3 id="sec-liver" class="section-anchor">2.4 Liver Function (Alinity Abbott)</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab ref</th><th>Lab flag</th><th>Functional flag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Gamma-GT (GGT)</strong></td><td><strong>356</strong></td><td>U/L</td><td>&lt;55</td><td><strong>H (6.5&times;)</strong></td><td>🚩 NAFLD/MASLD suspect</td></tr>
+              <tr><td>AST (TGO)</td><td>20</td><td>U/L</td><td>11–34</td><td>N</td><td>✅</td></tr>
+              <tr><td>ALT (TGP)</td><td>36</td><td>U/L</td><td>&lt;45</td><td>N</td><td>🟡</td></tr>
+              <tr><td>AST/ALT ratio</td><td>0.56</td><td>—</td><td>—</td><td>N</td><td>🟡 isolated-GGT steatosis pattern</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <blockquote>
+          Isolated GGT with normal AST/ALT is the canonical biochemical signature of MASLD in insulin resistance <code>[WEB: NHS NENC 2024; EASL-EASD-EASO 2024]</code>. Bachmeyer: high GGT = <em>"ectopic fat strangling the liver"</em> <code>[NLM: Original]</code> (directional, <strong>no numeric threshold — DATA NOT FOUND, live NLM</strong>). <strong>Next step (standard-of-care):</strong> calculate FIB-4 [(age &times; AST) / (platelets &times; &radic;ALT)] and obtain abdominal ultrasound + FibroScan; FIB-4 &lt;1.3 reliably excludes advanced fibrosis, &ge;1.3 &rarr; fibroscan/liver clinic <code>[WEB: EACS/NHS 2024]</code>.
+        </blockquote>
+
+        <h3 id="sec-kidney" class="section-anchor">2.5 Kidney Function (Alinity Abbott)</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab ref</th><th>Lab flag</th><th>Functional flag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Creatinine</td><td>1.0</td><td>mg/dL</td><td>0.6–1.3</td><td>N</td><td>✅</td></tr>
+              <tr><td>eGFR (CKD-EPI)</td><td>86</td><td>mL/min</td><td>&gt;90</td><td><strong>G2 mild</strong></td><td>🟡</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <blockquote>
+          Bachmeyer treats eGFR as inflammation-dependent: <em>"glomerular filtration naturally improves when systemic inflammation drops"</em> and uses <em>"tissue-repairing peptides to protect nephrons and reduce intraglomerular pressure"</em> <code>[NLM: Extended/Original]</code> (no CKD-EPI threshold — <strong>DATA NOT FOUND, live NLM</strong>). G2 86 mL/min is clinically benign on its own; standard management is metabolic risk-factor control.
+        </blockquote>
+
+        <h3 id="sec-inflammation" class="section-anchor">2.6 Inflammation (Alinity Abbott, hs immunoturbidimetry)</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Bachmeyer view (live NLM)</th><th>Flag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>hs-CRP</strong></td><td><strong>2.12</strong></td><td>mg/L</td><td><em>"the ultimate predictor of cardiovascular disease and systemic inflammation — vastly superior to cholesterol tracking"</em> <code>[NLM: Extended]</code></td><td>🟡 moderate CV risk (1–3 band)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="sec-hormones" class="section-anchor">2.7 Hormones / Endocrine (Alinity Abbott, CMIA)</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Analyte</th><th>Value</th><th>Unit</th><th>Lab ref</th><th>Lab flag</th><th>Functional flag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Estradiol</strong></td><td><strong>&lt;10</strong></td><td>pg/mL</td><td>11–44</td><td><strong>L</strong></td><td>🚩 low</td></tr>
+              <tr><td>FSH</td><td>6.8</td><td>mIU/mL</td><td>0.95–11.95</td><td>N</td><td>✅</td></tr>
+              <tr><td>LH</td><td>1.77</td><td>mIU/mL</td><td>0.57–12.07</td><td>N</td><td>🟡 low-functional</td></tr>
+              <tr><td>Prolactin</td><td>15.53</td><td>ng/mL</td><td>3.46–19.40</td><td>N</td><td>🟡 upper-functional</td></tr>
+              <tr><td><strong>Testosterone (total)</strong></td><td><strong>15.87</strong></td><td>nmol/L</td><td>4.41–35.38</td><td>N</td><td>🟡 mid-range</td></tr>
+              <tr><td>SHBG</td><td>51.7</td><td>nmol/L</td><td>13.5–71.4</td><td>N</td><td>🟡 upper &rarr; free-T likely reduced</td></tr>
+              <tr><td>DHEAS</td><td>109.1</td><td>µg/dL</td><td>48.6–361.8</td><td>N</td><td>🟡 low-functional</td></tr>
+              <tr><td>Free testosterone</td><td>pending</td><td>—</td><td>—</td><td>—</td><td>request lab</td></tr>
+              <tr><td>IGF-1</td><td>pending</td><td>—</td><td>—</td><td>—</td><td>request lab</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning-box critical">
+          <strong>CRITICAL Bachmeyer-vs-patient mismatch (live NLM):</strong> Bachmeyer's estradiol protocol is entirely about <em>elevated</em> E2 — he insists men need a baseline estrogen for cardiovascular/brain/joint health and <em>"strongly opposes artificially crashing it"</em> <code>[NLM: Original]</code>; his DIM/aromatase tool (300 mg/day) is reserved for high-E2/BPH cases <code>[NLM: Extended]</code>. <strong>Borzea's estradiol is the OPPOSITE — LOW (&lt;10).</strong> So the DIM/aromatase-reduction protocol <strong>does NOT apply</strong> and DIM would be <strong>contraindicated</strong> here. His pattern (low E2 + low-functional LH + high SHBG) points to subclinical late-onset hypogonadism, addressed <em>after</em> the metabolic axis — see Section 4 Tier 3.
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 3 -->
+      <section id="sec-interpretation" class="section-anchor fade-in">
+        <h2>Section 3 — System-Level Interpretation (live-NLM + standard-of-care)</h2>
+
+        <h3>Primary: Severe Insulin Resistance is the Dominant Signal</h3>
+        <p>Per the live Extended notebook, HOMA-IR is <em>"the ultimate clinical gold standard for tracking metabolic failure"</em> and fasting insulin <em>"must drop, as hyperinsulinemia acts as a massive growth signal for cancer and drives systemic inflammation"</em> <code>[NLM: Extended]</code>. Borzea's HOMA-IR 16.21 (8&times; the &lt;2 ceiling) at insulin 56.6 with HOMA-B 384% is compensated severe IR — the window of reversibility before beta-cell exhaustion. <strong>Standard-of-care concordance:</strong> the ADA Standards of Care 2024-2026 treat this as prediabetes warranting intensive lifestyle change first, with metformin and (where weight/metabolic indications exist) a GLP-1 RA or dual GIP/GLP-1 (tirzepatide) as preferred pharmacotherapy <code>[WEB: ADA SoC 2024-2026]</code>.</p>
+
+        <h3>Secondary: Inflammation Arm (hs-CRP)</h3>
+        <p>Bachmeyer ranks hs-CRP above cholesterol as <em>"the ultimate predictor of cardiovascular disease and systemic inflammation"</em> <code>[NLM: Extended]</code>. Borzea's 2.12 mg/L places him in the moderate-CV-risk band and feeds the same insulin-resistance loop.</p>
+
+        <h3>Tertiary: Hepatic (GGT 356) — One Circuit with Insulin Resistance, Not a Separate Disease</h3>
+        <p>The isolated-GGT NAFLD interpretation is mainstream hepatology <code>[WEB: NHS 2024; EASL 2024]</code>. Bachmeyer adds the directional read (high enzymes = ectopic liver fat) but no threshold. Mechanistically, MASLD here is best understood as the hepatic manifestation of chronic hyperinsulinemia: correcting the metabolic axis is expected to lower GGT indirectly by removing the driver of hepatic fat — a relationship now strongly supported by trial data showing retatrutide-driven liver-fat reduction tracks insulin-sensitivity improvement <code>[WEB: Nature Medicine 2024]</code>.</p>
+
+        <h3>Quaternary: Eosinophilia — Open Question, Not Bachmeyer Territory</h3>
+        <p>Eosinophils 10.8% / 0.81 (mild band) — investigate before any immune-modulating peptide. Romania/Eastern-Europe pretest probability favors intestinal parasitosis (Strongyloides, Giardia, Ascaris) &gt; atopy &gt; drug reaction. Workup: repeat CBC, stool ova/parasites &times;3, Strongyloides serology, total IgE <code>[WEB: CDC Yellow Book 2024; Kuang 2020]</code>. <strong>DATA NOT FOUND (live NLM).</strong></p>
+
+        <h3>MCV 98 + GGT 356 — The Alcohol Question</h3>
+        <p>The combination warrants an honest alcohol-intake conversation; if alcohol is a driver, 90-day cessation is a precondition because peptides cannot overcome ongoing hepatotoxicity. B12/folate and thyroid must also be ruled in/out.</p>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 4 -->
+      <section id="sec-protocol" class="section-anchor fade-in">
+        <h2>Section 4 — Peptide / Intervention Protocol (live-NLM cited + standard-of-care alternative)</h2>
+
+        <blockquote>
+          Every dose below is <strong>verbatim from the live notebooks</strong> or explicitly marked <strong>DATA NOT FOUND (live NLM)</strong> where the notebook gave no discrete number. All peptides require physician prescription + 503A compounding-pharmacy supply. <strong>Nothing starts before the hepatic + eosinophilia workup is complete.</strong> Evidence is tiered honestly: FDA-approved vs off-label vs research-status.
+        </blockquote>
+
+        <div class="warning-box caution">
+          <strong>⚠️ Pre-conditions (non-negotiable):</strong><br/>
+          1. Abdominal ultrasound + FibroScan complete (rule in NAFLD/MASLD, exclude cirrhosis); FIB-4 calculated.<br/>
+          2. Eosinophilia worked up (stool O&amp;P + Strongyloides serology + IgE) — treat parasitosis first if present.<br/>
+          3. TSH/FT4/FT3, B12, folate measured (rule out contributors to MCV).<br/>
+          4. Alcohol intake quantified honestly; ≥90-day cessation if relevant.<br/>
+          5. IGF-1 and free testosterone results available.
+        </div>
+
+        <h3 id="sec-tier1" class="section-anchor">Tier 1 — Metabolic Reprogramming (the lab-matched lever)</h3>
+
+        <h4 style="font-size:1rem;font-weight:600;color:var(--accent);margin:20px 0 8px;">Retatrutide — Bachmeyer-endorsed; research-status (NOT FDA-approved)</h4>
+        <ul>
+          <li><strong>Indication (lab-linked):</strong> HOMA-IR 16.21 + insulin 56.6 + suspected MASLD.</li>
+          <li><strong>Live-NLM evidence:</strong> <em>"Retatrutide monotherapy improves HOMA-IR by up to 68% over 6 months"</em> and <em>"reduces systemic inflammatory markers including CRP, IL-6 and TNF-α by 47% in 12 weeks"</em> <code>[NLM: Extended]</code>.</li>
+          <li><strong>Independent web confirmation (2024):</strong> In the phase-2 MASLD substudy (Nature Medicine 2024, NCT04881760), retatrutide cut <strong>HOMA2-IR by up to ~69%</strong> and <strong>fasting insulin by up to 70.9%</strong> at 48 wk; <strong>liver fat fell up to 86%</strong> at 12 mg, with <strong>liver fat &lt;5% achieved in 89–93% at the 8–12 mg doses</strong>; no hepatotoxicity signal through 48 wk <code>[WEB: Sanyal et al., Nat Med 2024; PatientCareOnline 2024]</code>. This is among the largest liver-fat treatment effects yet reported.</li>
+          <li><strong>Discrete dose / titration:</strong> <strong>DATA NOT FOUND (live NLM)</strong> — the notebooks cite outcomes but no mg/week starting dose, escalation step, or ceiling. Trial-derived dose range (informational, not a prescription): 1–12 mg SC weekly with slow escalation; benefits dose-dependent. <strong>Final dose must be set by the prescribing physician.</strong></li>
+          <li><strong>Evidence tier:</strong> ⚠️ <strong>Research-status / not FDA-approved</strong> (phase-3 TRIUMPH + SYNERGY-Outcomes ongoing, NCT07165028). Romanian access only via trial enrollment or gray-zone compounding (acknowledged quality/legal risk).</li>
+          <li><strong>Standard-of-care alternative (FDA-approved, Romania-accessible):</strong> <strong>Tirzepatide (Mounjaro/Zepbound)</strong> — dual GIP/GLP-1, ADA-preferred for diabetes+obesity with weight-loss efficacy; SURPASS-3 substudy showed liver-fat −8.1% over 52 wk with ALT/AST/GGT reductions <code>[WEB: ADA SoC 2026; JCTH 2024]</code>. Bachmeyer regards it as under-delivering on insulin resistance, but it is the defensible second-best if retatrutide is inaccessible.</li>
+        </ul>
+
+        <h4 style="font-size:1rem;font-weight:600;color:var(--accent);margin:20px 0 8px;">5-Amino-1MQ — Insulin-Sensitivity Adjunct (research-status)</h4>
+        <ul>
+          <li><strong>Live-NLM evidence:</strong> <em>"5-Amino-1MQ improves HOMA-IR by 34% in 8 weeks by restoring mitochondrial oxidative capacity"</em> <code>[NLM: Extended]</code>.</li>
+          <li><strong>Discrete dose:</strong> <strong>DATA NOT FOUND (live NLM).</strong></li>
+          <li><strong>Evidence tier:</strong> ⚠️ research-grade NNMT inhibitor; no regulatory approval. No standard-of-care equivalent.</li>
+        </ul>
+
+        <h4 style="font-size:1rem;font-weight:600;color:var(--accent);margin:20px 0 8px;">BPC-157 + KPV — Gut/Inflammation Arm (research-status)</h4>
+        <ul>
+          <li><strong>Live-NLM context:</strong> Bachmeyer <em>"actively stacks NAC alongside NAD+ and peptides (BPC-157, TB-500, KPV) as a protective measure for the liver and blood during heavy repair protocols"</em> <code>[NLM: Original]</code>; BPC-157/TB-500 + GH secretagogues are named among agents that <em>"stabilize"</em> kidney filtration as inflammation drops <code>[NLM: Extended]</code>.</li>
+          <li><strong>Discrete mcg doses:</strong> <strong>DATA NOT FOUND (live NLM)</strong> — notebooks confirm the stack but give no per-day mcg for BPC-157 or KPV.</li>
+          <li><strong>Sequencing caveat:</strong> start only <strong>after eosinophilia is worked up</strong> (immune-modulation could confound parasite diagnosis).</li>
+          <li><strong>Evidence tier:</strong> ⚠️ research-status; no FDA approval; standard-of-care alternative for the inflammation/CV-risk arm is statin/ApoB-guided risk management + omega-3.</li>
+        </ul>
+
+        <h3 id="sec-tier2" class="section-anchor">Tier 2 — Mitochondrial / GH Axis (the one stack with exact live-NLM numbers)</h3>
+
+        <h4 style="font-size:1rem;font-weight:600;color:var(--accent);margin:20px 0 8px;">CJC-1295 + Ipamorelin — research-status, but notebook gives exact doses</h4>
+        <ul>
+          <li><strong>Live-NLM evidence:</strong> <em>"improves the HOMA-IR index by 40%"</em> <code>[NLM: Extended]</code>.</li>
+          <li><strong>Exact dose (verbatim, live NLM):</strong> <em>"CJC-1295 with DAC at <strong>2 mg injected once per week</strong>, alongside Ipamorelin at <strong>300 mcg injected twice daily, cycled 5 days on and 2 days off</strong> … on an empty stomach 30–60 minutes before bed, optional second dose post-workout"</em> <code>[NLM: Original]</code>.</li>
+          <li><strong>Conditional:</strong> awaiting IGF-1; <strong>active malignancy = absolute contraindication</strong> (GH/IGF-1 elevation).</li>
+        </ul>
+
+        <div class="warning-box critical">
+          <strong>Bachmeyer-explicit negatives (live NLM — do NOT substitute):</strong><br/>
+          &bull; <strong>GHRP-6 / GHRP-2 — do NOT use.</strong> <em>"GHRP-6 would completely sabotage a Retatrutide weight-loss protocol … Bachmeyer considers older GHRPs 'junk' because they trigger extreme midnight hunger binges, spike cortisol and prolactin, and increase inflammatory belly fat"</em> <code>[NLM: Original]</code>.<br/>
+          &bull; <strong>Do not combine CJC-1295 with Tesamorelin</strong> — <em>"both are GHRH analogs; pick only one to pair with Ipamorelin to avoid receptor burnout"</em> <code>[NLM: Original]</code>.
+        </div>
+
+        <h3 id="sec-hepatic" class="section-anchor">Hepatic / Antioxidant Support (live-NLM doses available)</h3>
+
+        <h4 style="font-size:1rem;font-weight:600;color:var(--accent);margin:20px 0 8px;">NAC — Exact dose from the notebook</h4>
+        <ul>
+          <li><strong>Live-NLM dose (verbatim):</strong> <em>"He doses NAC at <strong>600 to 1,200 mg twice a day</strong>"</em> <code>[NLM: Original]</code>; cysteine is the rate-limiting bottleneck for native glutathione. Relevant given GGT 356.</li>
+          <li><strong>Evidence tier:</strong> widely available supplement; generally well tolerated; stacks safely with NAD+ and repair peptides <code>[NLM: Original]</code>.</li>
+        </ul>
+
+        <h4 style="font-size:1rem;font-weight:600;color:var(--accent);margin:20px 0 8px;">SubQ Glutathione</h4>
+        <ul>
+          <li><strong>Live-NLM:</strong> oral glutathione is <em>"a scam with nearly zero bioavailability"</em>; must be <strong>subcutaneous</strong> as the <em>"gold standard"</em> <code>[NLM: Original]</code>.</li>
+          <li><strong>Discrete dose / frequency / cycle:</strong> <strong>DATA NOT FOUND (live NLM)</strong> — <em>"He does not provide a specific dose, frequency, or cycling protocol"</em> <code>[NLM: Original]</code>.</li>
+        </ul>
+
+        <h3 id="sec-tier3" class="section-anchor">Tier 3 — Hormonal Axis (deferred; DIM contraindicated here)</h3>
+        <p>Borzea's E2 is <strong>low</strong>, so Bachmeyer's elevated-E2/DIM protocol does <strong>not</strong> apply — <strong>DIM 300 mg/day is contraindicated</strong>. Address the metabolic axis first; recheck hormones at week 16. If free-T returns low and metabolic optimization fails, standard-of-care endocrine evaluation for late-onset hypogonadism (and physician-supervised TRT) is the conventional path.</p>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 5 -->
+      <section id="sec-supplements" class="section-anchor fade-in">
+        <h2>Section 5 — Oral Supplement Protocol</h2>
+
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Supplement</th><th>Live-NLM dose / status</th><th>Lab link / standard-of-care note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>NAC</strong></td><td><strong>600–1,200 mg twice daily</strong> <code>[NLM: Original]</code></td><td>GGT 356; glutathione precursor; hepatoprotective adjunct</td></tr>
+              <tr><td><strong>DIM</strong></td><td>300 mg/day — <strong>for elevated E2 ONLY</strong> <code>[NLM: Extended]</code></td><td><strong>N/A — contraindicated for Borzea (E2 low)</strong></td></tr>
+              <tr><td>SubQ glutathione</td><td>SubQ mandatory; <strong>dose DATA NOT FOUND (live NLM)</strong></td><td>oxidative stress</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <blockquote>
+          Broader cofactor stack (berberine, omega-3 high-EPA, vitamin D3+K2, magnesium glycinate, myo/D-chiro-inositol, alpha-lipoic acid, CoQ10) is <strong>standard functional-medicine adjunct</strong> and is <strong>not</strong> claimed as Bachmeyer-sourced — only NAC and DIM returned discrete live-NLM numbers. Omega-3 and vitamin D have the strongest mainstream evidence for the hs-CRP / metabolic arm.
+        </blockquote>
+
+        <h3>Dietary Anchor (non-negotiable — strongest evidence base of the whole plan)</h3>
+        <ul>
+          <li><strong>Zero alcohol ≥90 days</strong> (GGT 356 + MCV 98).</li>
+          <li>Low-refined-carb Mediterranean pattern; protein ~1.6 g/kg/day; 14–16 h overnight fast.</li>
+          <li>Aerobic + resistance training; <strong>weight target −5% to −10% in 6 months</strong> — a ≥10% weight loss is the single intervention most likely to biochemically reverse MASLD <code>[WEB: EASL-EASD-EASO 2024]</code>. Bachmeyer's parallel lever: <em>"drop body fat below 15%"</em> <code>[NLM: Extended]</code>.</li>
+          <li>7+ h sleep; cortisol/stress management (directly impacts insulin resistance).</li>
+        </ul>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 6 -->
+      <section id="sec-recheck" class="section-anchor fade-in">
+        <h2>Section 6 — Recheck Schedule</h2>
+
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Timepoint</th><th>Labs</th><th>Imaging / Other</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Pre-protocol (&le;2 wk)</td><td>TSH/FT4/FT3 &middot; B12 &middot; folate &middot; vit D 25-OH &middot; homocysteine &middot; ApoB &middot; Lp(a) &middot; uric acid &middot; ferritin &middot; stool O&amp;P &times;3 &middot; Strongyloides serology &middot; IgE &middot; free-T &middot; IGF-1</td><td>Abdominal ultrasound + FibroScan; FIB-4 calc</td></tr>
+              <tr><td>Week 8 (~2026-08-07)</td><td>HbA1c &middot; glucose &middot; fasting insulin &middot; HOMA-IR &middot; GGT &middot; AST/ALT &middot; hs-CRP &middot; lipids &middot; eosinophils</td><td>Weight + waist</td></tr>
+              <tr><td>Week 16 (~2026-10-02)</td><td>Full + IGF-1 &middot; free/total-T &middot; SHBG &middot; E2 &middot; DHEAS &middot; TSH/FT4/FT3 &middot; ApoB &middot; Lp(a)</td><td>FibroScan repeat</td></tr>
+              <tr><td>Week 24 (~2026-11-27)</td><td>Full repeat</td><td>optional</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Decision Gates</h3>
+        <ul>
+          <li>HOMA-IR &darr;&ge;30% at wk8 &rarr; continue. &darr;&lt;30% &rarr; physician escalates retatrutide/tirzepatide + tighten diet.</li>
+          <li>GGT &darr;&ge;30% at wk8 &rarr; on track. Unchanged/rising &rarr; revisit alcohol; hepatology re-eval; recompute FIB-4.</li>
+          <li>Eosinophilia persistent at wk8 &rarr; escalate workup (allergy panel / hematology if AEC &ge;1,500).</li>
+          <li>HbA1c &ge;6.5% at any point &rarr; standard diabetes-diagnosis path with diabetologist.</li>
+        </ul>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 7 -->
+      <section id="sec-matrix" class="section-anchor fade-in">
+        <h2>Section 7 — Cross-Reference Matrix</h2>
+        <p style="font-size:0.8rem;opacity:0.6;">(Abnormal value &rarr; intervention &rarr; Bachmeyer source + standard-of-care alt)</p>
+
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Lab finding</th><th>Bachmeyer intervention (live-NLM)</th><th>Source notebook</th><th>Discrete dose?</th><th>Standard-of-care alternative</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>HOMA-IR 16.21</strong> (severe IR)</td><td>Retatrutide &darr;68%/6mo; 5-Amino-1MQ &darr;34%/8wk; CJC+Ipa &darr;40%</td><td>Extended</td><td>only CJC+Ipa (2 mg/wk + 300 mcg BID, 5on/2off)</td><td>Intensive lifestyle + metformin + tirzepatide/GLP-1 (ADA SoC 2024-26)</td></tr>
+              <tr><td><strong>Insulin 56.6</strong> (hyperinsulinemia)</td><td>"must drop — cancer growth signal"</td><td>Extended</td><td>n/a</td><td>Same; weight loss is primary lever</td></tr>
+              <tr><td><strong>Glucose 116</strong> (prediabetic)</td><td>metabolic reprogramming (reta)</td><td>Extended</td><td>DATA NOT FOUND (reta dose)</td><td>Lifestyle ± metformin (ADA SoC)</td></tr>
+              <tr><td><strong>HbA1c 5.5%</strong></td><td>distrusted — "gameable by drugs"</td><td>Extended</td><td>n/a</td><td>Still used + OGTT/fasting insulin context</td></tr>
+              <tr><td><strong>hs-CRP 2.12</strong> (mod CV risk)</td><td>"ultimate CVD predictor &gt; cholesterol"; Reta &darr;CRP/IL-6/TNF 47%/12wk</td><td>Extended</td><td>DATA NOT FOUND (reta dose)</td><td>ApoB/Lp(a)-guided CV risk mgmt; omega-3; statin if indicated</td></tr>
+              <tr><td><strong>GGT 356</strong> (NAFLD/MASLD)</td><td>"ectopic fat strangling liver"; metabolic correction lowers it; NAC 600–1,200 mg BID</td><td>Original</td><td>NAC yes</td><td>US + FibroScan + FIB-4; resmetirom (Rezdiffra) FDA-approved Mar 2024 for F2-F3 MASH; tirzepatide; weight loss ≥10% (EASL 2024)</td></tr>
+              <tr><td><strong>MCV 98 + GGT 356</strong> (alcohol Q)</td><td>≥90-day alcohol abstinence</td><td>Original (frame)</td><td>—</td><td>Alcohol counseling + B12/folate/TSH; repeat</td></tr>
+              <tr><td><strong>eGFR 86</strong> (G2)</td><td>"improves as inflammation drops"; tissue-repair peptides</td><td>Extended/Original</td><td>DATA NOT FOUND</td><td>Metabolic risk-factor control (benign)</td></tr>
+              <tr><td><strong>Estradiol &lt;10</strong> (LOW)</td><td>elevated-E2/DIM protocol N/A — patient is LOW</td><td>Extended/Original</td><td><strong>DIM contraindicated</strong></td><td>Endocrine eval; treat metabolic axis first; TRT only if it fails</td></tr>
+              <tr><td><strong>Eosinophils 10.8%</strong></td><td>"no value unless parasitic/dysbiosis"</td><td>Original</td><td>—</td><td>Stool O&amp;P + Strongyloides serology + IgE (CDC/Kuang)</td></tr>
+              <tr><td><strong>Total chol 191</strong></td><td>"optimal 250–300" (contrarian, <em>his</em> view)</td><td>Original</td><td>n/a</td><td>191 reassuring by every guideline; add ApoB/Lp(a)</td></tr>
+              <tr><td>Oxidative/hepatic support</td><td>NAC 600–1,200 mg BID; SubQ glutathione mandatory</td><td>Original</td><td>NAC yes; glutathione DATA NOT FOUND</td><td>NAC OTC; lifestyle</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 8 -->
+      <section id="sec-sources" class="section-anchor fade-in">
+        <h2>Section 8 — Source Accounting (honest)</h2>
+
+        <ul>
+          <li><strong>Live NLM queries this report:</strong> 6 queries across both notebooks (Original <code>cb9cf1fd</code>, Extended <code>1eef6220</code>) via hermes-health bridge :18792, 2026-06-12 — captured in <code>/tmp/nlm-q*.txt</code>. Bridge health: <code>{"ok": true, "authenticated": true, "notebook_count": 2}</code>.</li>
+          <li><strong>Discrete doses obtained live:</strong> CJC-1295 2 mg/wk + Ipamorelin 300 mcg BID (5-on/2-off); NAC 600–1,200 mg BID.</li>
+          <li><strong>Marked DATA NOT FOUND (live NLM):</strong> retatrutide titration mg/week &middot; 5-Amino-1MQ dose &middot; BPC-157 mcg &middot; KPV mcg &middot; SubQ glutathione dose &middot; GGT/MCV/eosinophil/CKD-EPI thresholds.</li>
+        </ul>
+
+        <h3>Web Clinical Sources (2024-2026), &ge;9 distinct</h3>
+        <ol>
+          <li>Sanyal et al., <em>Nat Med</em> 2024 — retatrutide MASLD substudy (HOMA2-IR &darr;~69%, liver fat &darr;86%).</li>
+          <li>EASL-EASD-EASO 2024 MASLD Clinical Practice Guidelines (<em>J Hepatol</em> 81:492-542).</li>
+          <li>AASLD Practice Guidance + resmetirom (Rezdiffra) FDA accelerated approval Mar 2024 (NEJM 390:497-509, MAESTRO-NASH).</li>
+          <li>FDA Rezdiffra prescribing information (THR-β agonist, F2-F3 MASH).</li>
+          <li>ADA Standards of Care in Diabetes 2024 / 2025 / 2026 (prediabetes + GLP-1/tirzepatide).</li>
+          <li>NHS NENC Hepatology abnormal-LFT guidance 2024 (isolated GGT &rarr; MASLD/alcohol; FIB-4 triage).</li>
+          <li>EACS MASLD guidance 2025 (FIB-4 / FibroScan flow).</li>
+          <li>WHO/ICC 2024 eosinophilic-disorders classification (PubMed 38551368).</li>
+          <li>CDC Yellow Book 2024 + Kuang 2020 (eosinophilia workup; Strongyloides).</li>
+          <li>JCTH 2024 MAFLD pipeline review (tirzepatide SURPASS-3 liver fat/GGT).</li>
+        </ol>
+
+        <blockquote>
+          <strong>What changed vs v1:</strong> v1's doses for retatrutide/MOTS-c/BPC-157/KPV/Cardarine came from a Cortex corpus, <strong>not</strong> the real notebooks; v2 honestly reports the live notebooks lack those discrete numbers, adds a 2024-2026 standard-of-care layer beside every Bachmeyer claim, and flags DIM as contraindicated (patient's E2 is LOW, not high).
+        </blockquote>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- SECTION 9 -->
+      <section id="sec-metadata" class="section-anchor fade-in">
+        <h2>Section 9 — Metadata</h2>
+
+        <ul>
+          <li><strong>Report file (v2):</strong> <code>/home/pafi/.nexus/projects/health/patients/borzea-ioan-bloodwork-2026-06-v2.md</code></li>
+          <li><strong>Supersedes:</strong> <code>borzea-ioan-bloodwork-2026-06.md</code> (v1, marked SUPERSEDED)</li>
+          <li><strong>HTML:</strong> published via Reporter flow &rarr; <code>https://cryptopafi.github.io/nexusos-reports/borzea-ioan-bloodwork-2026-06-reporter-v3.html</code></li>
+          <li><strong>Grounding:</strong> live NotebookLM (2 real Bachmeyer notebooks) via hermes-health bridge + 2024-2026 web clinical research</li>
+          <li><strong>Cortex storage:</strong> <code>research</code> collection, tags <code>patient:borzea-ioan</code>, <code>bachmeyer-v2</code></li>
+          <li><strong>Generated by:</strong> LIS (claude-opus-4-8), 2026-06-12</li>
+        </ul>
+
+        <div class="warning-box caution">
+          <strong>DISCLAIMER:</strong> Informational synthesis of Dr. Trevor Bachmeyer's framework grounded on his own notebooks, with standard-of-care 2024-2026 guidelines placed alongside. <strong>NOT a prescription.</strong> Every peptide, dose, and off-label/research-status compound (retatrutide, 5-Amino-1MQ, BPC-157, KPV, CJC-1295, Ipamorelin, glutathione) requires a qualified medical specialist. The flagged labs mandate <strong>endocrinologist (&le;1 wk) + hepatologist (&le;2 wk)</strong> consultation before any intervention. DIM is <strong>contraindicated</strong> here (low estradiol). Retatrutide is <strong>not FDA-approved</strong>; the FDA-approved standard-of-care alternatives are tirzepatide (metabolic) and resmetirom/Rezdiffra (if biopsy/imaging confirms F2-F3 MASH).
+        </div>
+      </section>
+
+    </div><!-- /prose-content -->
+  </main>
+
+  <!-- RIGHT METADATA SIDEBAR -->
+  <aside class="right-sidebar">
+    <div class="sidebar card" style="padding:20px;position:sticky;top:72px;border-radius:12px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent-glow);"></div>
+        <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Report Metadata</span>
+      </div>
+
+      <div class="meta-item">
+        <span class="meta-label">Agent</span>
+        <span class="meta-value font-mono" style="font-size:0.75rem;">HEALTH</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Date</span>
+        <span class="meta-value font-mono" style="font-size:0.75rem;">2026-06-12</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Tier</span>
+        <span class="meta-value">2 — Full Report</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Patient</span>
+        <span class="meta-value">Borzea Ioan, M 59y</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Specimen</span>
+        <span class="meta-value font-mono" style="font-size:0.7rem;">31234836</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Framework</span>
+        <span class="meta-value" style="font-size:0.75rem;text-align:right;">Bachmeyer longevity</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Version</span>
+        <span class="meta-value font-mono" style="font-size:0.75rem;">v2 live-NLM</span>
+      </div>
+
+      <div style="margin-top:16px;margin-bottom:6px;">
+        <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Biomarker Status</span>
+      </div>
+
+      <div class="meta-item">
+        <span class="meta-label">Total measured</span>
+        <span class="meta-value font-mono" style="font-size:0.85rem;">30</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Flagged (🚩+🟡)</span>
+        <span style="font-size:0.85rem;font-weight:700;color:#ef4444;font-family:'JetBrains Mono',monospace;">23</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Red flags 🚩</span>
+        <span style="font-size:0.85rem;font-weight:700;color:#ef4444;font-family:'JetBrains Mono',monospace;">8</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Yellow flags 🟡</span>
+        <span style="font-size:0.85rem;font-weight:700;color:#eab308;font-family:'JetBrains Mono',monospace;">15</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Optimal ✅</span>
+        <span style="font-size:0.85rem;font-weight:700;color:#22c55e;font-family:'JetBrains Mono',monospace;">7</span>
+      </div>
+
+      <div style="margin-top:16px;margin-bottom:6px;">
+        <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Key Flags</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div class="flag-pill flag-red" style="justify-content:space-between;padding:4px 10px;border-radius:6px;">
+          <span>HOMA-IR</span><span style="font-family:'JetBrains Mono',monospace;">16.21 (8×)</span>
+        </div>
+        <div class="flag-pill flag-red" style="justify-content:space-between;padding:4px 10px;border-radius:6px;">
+          <span>GGT</span><span style="font-family:'JetBrains Mono',monospace;">356 U/L (6.5×)</span>
+        </div>
+        <div class="flag-pill flag-red" style="justify-content:space-between;padding:4px 10px;border-radius:6px;">
+          <span>Insulin</span><span style="font-family:'JetBrains Mono',monospace;">56.6 µIU/mL</span>
+        </div>
+        <div class="flag-pill flag-red" style="justify-content:space-between;padding:4px 10px;border-radius:6px;">
+          <span>Glucose</span><span style="font-family:'JetBrains Mono',monospace;">116 mg/dL</span>
+        </div>
+        <div class="flag-pill flag-yellow" style="justify-content:space-between;padding:4px 10px;border-radius:6px;">
+          <span>hs-CRP</span><span style="font-family:'JetBrains Mono',monospace;">2.12 mg/L</span>
+        </div>
+        <div class="flag-pill flag-yellow" style="justify-content:space-between;padding:4px 10px;border-radius:6px;">
+          <span>eGFR</span><span style="font-family:'JetBrains Mono',monospace;">86 mL/min</span>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid;font-size:0.7rem;opacity:0.4;line-height:1.5;" class="section-divider">
+        NexusOS HEALTH Agent<br/>Reporter v3 &middot; Tier 2<br/>shared-reporter skill
+      </div>
+    </div>
+  </aside>
+
+</div><!-- /page-wrapper -->
+
+<script>
+// ---- THEME TOGGLE ----
+function getTheme() {
+  return localStorage.getItem('nexus-theme') || 'dark';
+}
+function applyTheme(t) {
+  document.documentElement.classList.remove('dark','light');
+  document.documentElement.classList.add(t);
+  const btn = document.getElementById('theme-btn');
+  const icon = document.getElementById('theme-icon');
+  const label = document.getElementById('theme-label');
+  if (t === 'dark') {
+    icon.textContent = '☀️';
+    label.textContent = 'Light';
+  } else {
+    icon.textContent = '🌙';
+    label.textContent = 'Dark';
+  }
+  localStorage.setItem('nexus-theme', t);
+  // re-render charts for color update
+  if (window._chartsReady) updateChartColors(t);
+}
+function toggleTheme() {
+  applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+}
+applyTheme(getTheme());
+
+// ---- SHARE ----
+function shareReport() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'Borzea Ioan — Bloodwork Analysis (Bachmeyer)', url: url }).catch(() => fallbackCopy(url));
+  } else {
+    fallbackCopy(url);
+  }
+}
+function fallbackCopy(url) {
+  navigator.clipboard.writeText(url).then(() => showToast()).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast();
+  });
+}
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ---- INTERSECTION OBSERVER (FADE IN) ----
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.06 });
+fadeEls.forEach(el => observer.observe(el));
+
+// ---- TOC ACTIVE LINK ----
+const sections = document.querySelectorAll('.section-anchor');
+const tocLinks = document.querySelectorAll('#toc .toc-link');
+function updateToc() {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY + 80 >= s.offsetTop) current = s.id;
+  });
+  tocLinks.forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', updateToc, { passive: true });
+updateToc();
+
+// ---- CHART.JS ----
+window._chartsReady = false;
+const isDark = () => document.documentElement.classList.contains('dark');
+
+function chartColors() {
+  return isDark()
+    ? { text: '#94a3b8', grid: 'rgba(255,255,255,0.06)', bg: 'rgba(17,17,24,0.85)' }
+    : { text: '#475569', grid: 'rgba(0,0,0,0.06)', bg: '#ffffff' };
+}
+
+let flagChartInst, biomarkerBarInst;
+
+function initCharts() {
+  const cc = chartColors();
+
+  // PIE CHART — flag distribution
+  const flagCtx = document.getElementById('flagChart');
+  if (flagCtx) {
+    flagChartInst = new Chart(flagCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Red flags 🚩 (8)', 'Yellow flags 🟡 (15)', 'Optimal ✅ (7)'],
+        datasets: [{
+          data: [8, 15, 7],
+          backgroundColor: ['#ef4444', '#eab308', '#22c55e'],
+          borderColor: isDark() ? '#111118' : '#ffffff',
+          borderWidth: 3,
+          hoverOffset: 6,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '60%',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ` ${ctx.label}: ${ctx.raw} biomarkers`
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // BAR CHART — key biomarker values vs ULN
+  const barCtx = document.getElementById('biomarkerBar');
+  if (barCtx) {
+    // Values as multiples of upper reference limit
+    // HOMA-IR: 16.21 / 2 = 8.1; Insulin: 56.6/24.9 = 2.27; Glucose: 116/100 = 1.16; GGT: 356/55 = 6.47; MCV: 98/97 = 1.01; Eosinophils%: 10.8/4 = 2.7; hs-CRP in 1-3 band = 2.12/3 = 0.71 (as fraction of upper moderate risk band); LDL: 117.8/100 = 1.18
+    const labels = ['HOMA-IR', 'GGT', 'Eosinoph.%', 'Insulin', 'LDL-C', 'Glucose', 'MCV', 'hs-CRP'];
+    const values = [8.1, 6.47, 2.7, 2.27, 1.18, 1.16, 1.01, 0.71];
+    const bgColors = values.map(v => {
+      if (v > 2) return 'rgba(239,68,68,0.75)';
+      if (v > 1) return 'rgba(234,179,8,0.75)';
+      return 'rgba(34,197,94,0.75)';
+    });
+    const borderColors = values.map(v => {
+      if (v > 2) return '#ef4444';
+      if (v > 1) return '#eab308';
+      return '#22c55e';
+    });
+
+    biomarkerBarInst = new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Value / ULN',
+          data: values,
+          backgroundColor: bgColors,
+          borderColor: borderColors,
+          borderWidth: 1.5,
+          borderRadius: 5,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ` ${ctx.raw.toFixed(2)}× upper limit`
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: cc.text, font: { size: 11 } },
+            grid: { color: cc.grid },
+          },
+          y: {
+            beginAtZero: true,
+            ticks: { color: cc.text, font: { size: 11 } },
+            grid: { color: cc.grid },
+            title: {
+              display: true,
+              text: 'Multiples of ULN',
+              color: cc.text,
+              font: { size: 11 },
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // Reference line at y=1
+  const refLinePlugin = {
+    id: 'refLine',
+    afterDraw(chart) {
+      const { ctx, scales: { y } } = chart;
+      if (!y) return;
+      const y1 = y.getPixelForValue(1);
+      ctx.save();
+      ctx.strokeStyle = isDark() ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.2)';
+      ctx.setLineDash([4, 4]);
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(chart.chartArea.left, y1);
+      ctx.lineTo(chart.chartArea.right, y1);
+      ctx.stroke();
+      ctx.restore();
+    }
+  };
+  if (biomarkerBarInst) {
+    Chart.register(refLinePlugin);
+    biomarkerBarInst.update();
+  }
+
+  window._chartsReady = true;
+}
+
+function updateChartColors(theme) {
+  const cc = chartColors();
+  [flagChartInst, biomarkerBarInst].forEach(ch => {
+    if (!ch) return;
+    if (ch.config.type === 'doughnut') {
+      ch.data.datasets[0].borderColor = theme === 'dark' ? '#111118' : '#ffffff';
+    }
+    if (ch.config.type === 'bar') {
+      if (ch.options.scales.x) {
+        ch.options.scales.x.ticks.color = cc.text;
+        ch.options.scales.x.grid.color = cc.grid;
+        ch.options.scales.y.ticks.color = cc.text;
+        ch.options.scales.y.grid.color = cc.grid;
+        ch.options.scales.y.title.color = cc.text;
+      }
+    }
+    ch.update('none');
+  });
+}
+
+// Init charts when Chart.js is ready
+if (typeof Chart !== 'undefined') {
+  initCharts();
+} else {
+  window.addEventListener('load', initCharts);
+}
+</script>
+</body>
+</html>
