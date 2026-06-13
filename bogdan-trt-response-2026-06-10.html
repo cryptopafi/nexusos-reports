@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bogdan (M, 51y) — TRT-Response Bloodwork + Trend</title>
+<meta property="og:title" content="Bogdan (M, 51y) — TRT-Response Bloodwork + Trend">
+<meta property="og:description" content="TRT week-5 response panel with longitudinal trend across 3 draws (Dec-2025 / Mar-2026 / Jun-2026) and actionable intel. NexusOS Health · Bachmeyer-primary.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+  tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } } }
+</script>
+<style>
+  :root { --accent: #22c55e; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  .glass { background: rgba(17,17,24,0.7); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.07); }
+  html:not(.dark) .glass { background: rgba(255,255,255,0.75); border: 1px solid rgba(0,0,0,0.06); }
+  .accent-glow { box-shadow: 0 0 40px rgba(34,197,94,0.12); }
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .accent-text { color: var(--accent); }
+  .accent-bg { background: var(--accent); }
+  .accent-border { border-color: var(--accent); }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(34,197,94,0.3); border-radius: 5px; }
+  .toc-link.active { color: var(--accent); border-left-color: var(--accent); }
+  table { border-collapse: collapse; }
+  @media print {
+    html { background: #fff !important; }
+    html.dark { color-scheme: light; }
+    body { background: #fff !important; color: #111 !important; }
+    .no-print { display: none !important; }
+    .glass { background: #fff !important; border: 1px solid #ddd !important; backdrop-filter: none !important; box-shadow: none !important; }
+    .accent-glow { box-shadow: none !important; }
+    section, .card, table, tr, .chart-wrap { page-break-inside: avoid; }
+    @page { size: A4; margin: 1.4cm; }
+    .print-full { grid-template-columns: 1fr !important; }
+    a { color: #111 !important; text-decoration: none; }
+  }
+</style>
+</head>
+<body class="bg-[#0A0A0F] text-gray-200 dark:bg-[#0A0A0F] dark:text-gray-200 transition-colors duration-300">
+
+<!-- Top bar -->
+<header class="no-print sticky top-0 z-40 glass">
+  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-3 min-w-0">
+      <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg accent-bg text-black font-bold text-sm shrink-0">Rx</span>
+      <div class="truncate">
+        <div class="text-sm font-semibold truncate">Bogdan (M, 51y) — TRT-Response Bloodwork + Trend</div>
+        <div class="text-[11px] text-gray-400 font-mono">NexusOS Health · 2026-06-10 · v1</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 shrink-0">
+      <button id="shareBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:accent-text transition">Share</button>
+      <button id="themeBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:accent-text transition" aria-label="Toggle theme">☾ / ☀</button>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-7xl mx-auto px-5 py-8 grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 print-full">
+
+  <!-- Sidebar -->
+  <aside class="no-print hidden lg:block">
+    <div class="sticky top-24 space-y-6">
+      <nav class="glass rounded-xl p-4">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 mb-3 font-semibold">Contents</div>
+        <ul class="space-y-1 text-sm" id="toc">
+          <li><a href="#summary" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">Executive Summary</a></li>
+          <li><a href="#trend" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">Longitudinal Trend</a></li>
+          <li><a href="#charts" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">Trend Charts</a></li>
+          <li><a href="#flagged" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">New Panel — Flagged</a></li>
+          <li><a href="#inrange" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">New Panel — In Range</a></li>
+          <li><a href="#intel" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">Actionable Intel</a></li>
+          <li><a href="#plain" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">Plain Words</a></li>
+          <li><a href="#protocol" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">Protocol Update</a></li>
+          <li><a href="#gating" class="toc-link block pl-3 py-1 border-l-2 border-transparent hover:accent-text transition">Recheck Gating</a></li>
+        </ul>
+      </nav>
+
+      <div class="glass rounded-xl p-4 space-y-3">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Patient</div>
+        <div class="text-sm"><span class="text-gray-400">Name</span><br><span class="font-semibold">Bogdan</span></div>
+        <div class="text-sm grid grid-cols-2 gap-2">
+          <div><span class="text-gray-400">Sex</span><br>M</div>
+          <div><span class="text-gray-400">Age</span><br>51y</div>
+        </div>
+        <div class="text-sm"><span class="text-gray-400">Lab</span><br>Synevo</div>
+        <div class="text-sm"><span class="text-gray-400">Collected</span><br>10/06/2026</div>
+        <div class="text-sm"><span class="text-gray-400">Reference</span><br><span class="text-xs text-gray-400">(lab bulletin, ref withheld)</span></div>
+      </div>
+
+      <div class="glass rounded-xl p-4 space-y-3">
+        <div class="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Snapshot</div>
+        <div class="flex items-center justify-between text-sm"><span class="text-gray-400">Flagged</span><span class="font-semibold text-red-400">9</span></div>
+        <div class="flex items-center justify-between text-sm"><span class="text-gray-400">Draws compared</span><span class="font-semibold">3</span></div>
+        <div class="flex items-center justify-between text-sm"><span class="text-gray-400">TRT week</span><span class="font-semibold">~5</span></div>
+        <div class="flex items-center justify-between text-sm"><span class="text-gray-400">Framework</span><span class="font-semibold accent-text">Bachmeyer</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="min-w-0 space-y-10">
+
+    <!-- Hero -->
+    <section class="fade-in">
+      <div class="glass accent-glow rounded-2xl p-7 md:p-9">
+        <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-wider accent-text font-semibold mb-3">
+          <span class="w-2 h-2 rounded-full accent-bg"></span> Health Report · TRT Response Panel
+        </div>
+        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Bogdan (M, 51y) — TRT-Response Bloodwork + Longitudinal Trend</h1>
+        <p class="mt-3 text-gray-400 max-w-3xl">M, 51y · Synevo · collected 10/06/2026 · ~Week 5 of TRT (Testosterone Cypionate 150 mg/wk) + new Dubai peptide stack. Framework: Dr. Trevor Bachmeyer NLM.</p>
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="rounded-xl bg-black/20 dark:bg-black/20 p-4 border border-white/5">
+            <div class="text-[11px] text-gray-400 uppercase tracking-wide">Total T</div>
+            <div class="text-2xl font-bold accent-text">~7.7 <span class="text-sm font-normal text-gray-400">ng/mL</span></div>
+            <div class="text-[11px] text-red-400">▲ slightly over range</div>
+          </div>
+          <div class="rounded-xl bg-black/20 p-4 border border-white/5">
+            <div class="text-[11px] text-gray-400 uppercase tracking-wide">Estradiol</div>
+            <div class="text-2xl font-bold accent-text">27.1 <span class="text-sm font-normal text-gray-400">pg/mL</span></div>
+            <div class="text-[11px] text-green-400">✓ recovered naturally</div>
+          </div>
+          <div class="rounded-xl bg-black/20 p-4 border border-white/5">
+            <div class="text-[11px] text-gray-400 uppercase tracking-wide">IGF-1</div>
+            <div class="text-2xl font-bold text-red-400">240 <span class="text-sm font-normal text-gray-400">ng/mL</span></div>
+            <div class="text-[11px] text-red-400">▲ over range (76.7–203)</div>
+          </div>
+          <div class="rounded-xl bg-black/20 p-4 border border-white/5">
+            <div class="text-[11px] text-gray-400 uppercase tracking-wide">Glucose</div>
+            <div class="text-2xl font-bold text-red-400">110 <span class="text-sm font-normal text-gray-400">mg/dL</span></div>
+            <div class="text-[11px] text-red-400">▲ impaired fasting</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="fade-in glass rounded-xl p-4 text-[13px] text-amber-200/90 border border-amber-400/20 flex gap-3">
+      <span class="text-lg leading-none">⚠️</span>
+      <p><strong>Clinical boundary.</strong> Informational decision-support, not a diagnosis or prescription. Thresholds are standard lab ranges or Bachmeyer-cited. The attending physician / prescriber decides all dosing.</p>
+    </div>
+
+    <!-- Executive Summary -->
+    <section id="summary" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>Executive Summary — the story this panel tells</h2>
+      <div class="glass rounded-xl p-6 text-[15px] leading-relaxed text-gray-300 space-y-3">
+        <p>TRT is <strong class="accent-text">working and then some</strong>: testosterone has gone from a near-floor crash (2.64 ng/mL in March) to <strong>slightly over the top of range now</strong>, and — importantly — <strong>estradiol fully recovered on its own</strong> (1.0 → 27 pg/mL), proving the earlier <em>no-aromatase-inhibitor</em> decision was correct.</p>
+        <p>The new watch-items are all <strong>dose-driven and connected</strong>: free-T is supraphysiologic, <strong>IGF-1 jumped over range</strong> (the new growth-hormone peptides), and <strong>fasting glucose + HOMA are creeping up</strong> — Bachmeyer's exact warning about pushing the GH/IGF-1 axis too hard. Hematocrit is climbing but still in range. The methylation problem from March is <strong class="accent-text">fixed</strong>.</p>
+      </div>
+    </section>
+
+    <!-- Longitudinal Trend table -->
+    <section id="trend" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>📈 Longitudinal Trend — across 3 draws</h2>
+      <div class="glass rounded-xl p-2 md:p-4 overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left text-gray-400 border-b border-white/10">
+              <th class="py-3 px-3 font-semibold">Marker</th>
+              <th class="py-3 px-3 font-semibold">2025-12-31<br><span class="text-[11px] font-normal">baseline</span></th>
+              <th class="py-3 px-3 font-semibold">2026-03-25<br><span class="text-[11px] font-normal">post-detox crash</span></th>
+              <th class="py-3 px-3 font-semibold accent-text">2026-06-10<br><span class="text-[11px] font-normal">TRT wk5</span></th>
+              <th class="py-3 px-3 font-semibold">What it means</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr><td class="py-3 px-3 font-semibold">Total T</td><td class="px-3">4.71 ng/mL</td><td class="px-3">2.64 (floor)</td><td class="px-3 font-bold accent-text">~7.7 ng/mL</td><td class="px-3 text-gray-400">TRT restored it — now <em>slightly over</em></td></tr>
+            <tr><td class="py-3 px-3 font-semibold">Free T</td><td class="px-3">19.3 pg/mL</td><td class="px-3">6.54 (crash)</td><td class="px-3 font-bold text-red-400">21.04</td><td class="px-3 text-gray-400">Supraphysiologic — above range</td></tr>
+            <tr><td class="py-3 px-3 font-semibold">Estradiol</td><td class="px-3">27 pg/mL</td><td class="px-3 text-red-400">1.0 (critical low)</td><td class="px-3 font-bold accent-text">27.1</td><td class="px-3 text-gray-400">✓ Recovered naturally on TRT — <strong>AI correctly avoided</strong></td></tr>
+            <tr><td class="py-3 px-3 font-semibold">IGF-1</td><td class="px-3">140</td><td class="px-3">140</td><td class="px-3 font-bold text-red-400">240 (HIGH)</td><td class="px-3 text-gray-400">⚠️ New GH-secretagogue (CJC/Ipamorelin) effect</td></tr>
+            <tr><td class="py-3 px-3 font-semibold">Glucose</td><td class="px-3">101</td><td class="px-3">—</td><td class="px-3 font-bold text-red-400">110</td><td class="px-3 text-gray-400">⚠️ Rising → impaired fasting glucose</td></tr>
+            <tr><td class="py-3 px-3 font-semibold">HOMA</td><td class="px-3">0.42</td><td class="px-3">insulin 11.5</td><td class="px-3 font-bold text-amber-400">2.0</td><td class="px-3 text-gray-400">⚠️ Emerging insulin resistance</td></tr>
+            <tr><td class="py-3 px-3 font-semibold">Hematocrit</td><td class="px-3">47.7</td><td class="px-3">45.6</td><td class="px-3 font-bold text-amber-400">47.2</td><td class="px-3 text-gray-400">⚠️ Climbing on TRT (polycythemia watch)</td></tr>
+            <tr><td class="py-3 px-3 font-semibold">Homocysteine</td><td class="px-3">—</td><td class="px-3 text-red-400">14.68 (HIGH)</td><td class="px-3 font-bold accent-text">7.92</td><td class="px-3 text-gray-400">✓ Methylation FIXED</td></tr>
+            <tr><td class="py-3 px-3 font-semibold">B12</td><td class="px-3">220 (near-def.)</td><td class="px-3">220</td><td class="px-3 font-bold text-amber-400">935</td><td class="px-3 text-gray-400">✓ Corrected — now over (ease dose)</td></tr>
+            <tr><td class="py-3 px-3 font-semibold">hs-CRP</td><td class="px-3">—</td><td class="px-3">0.66</td><td class="px-3 font-bold text-amber-400">1.57</td><td class="px-3 text-gray-400">⚠️ Mild inflammatory uptick</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section id="charts" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>Trend Charts — 3 draws visualized</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="glass rounded-xl p-5 chart-wrap"><div class="text-sm font-semibold mb-2 text-gray-300">Hormones — Total T / Free T / Estradiol</div><div style="height:260px"><canvas id="chartHormones"></canvas></div></div>
+        <div class="glass rounded-xl p-5 chart-wrap"><div class="text-sm font-semibold mb-2 text-gray-300">Metabolic — IGF-1 / Glucose / Hematocrit</div><div style="height:260px"><canvas id="chartMetabolic"></canvas></div></div>
+        <div class="glass rounded-xl p-5 chart-wrap md:col-span-2"><div class="text-sm font-semibold mb-2 text-gray-300">Jun-2026 markers vs reference ceiling (normalized %)</div><div style="height:300px"><canvas id="chartBars"></canvas></div></div>
+      </div>
+    </section>
+
+    <!-- Flagged -->
+    <section id="flagged" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>New Panel — Flagged</h2>
+      <div class="glass rounded-xl p-2 md:p-4 overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead><tr class="text-left text-gray-400 border-b border-white/10"><th class="py-3 px-3">Marker</th><th class="py-3 px-3">Value</th><th class="py-3 px-3">Unit</th><th class="py-3 px-3">Ref</th><th class="py-3 px-3">Flag</th></tr></thead>
+          <tbody class="divide-y divide-white/5">
+            <tr><td class="py-2.5 px-3 font-semibold">Total Testosterone</td><td class="px-3">26.7 (~770 ng/dL)</td><td class="px-3">nmol/L</td><td class="px-3">≥50y: 6.69–25.7</td><td class="px-3 text-red-400">🔴 High (just over)</td></tr>
+            <tr><td class="py-2.5 px-3 font-semibold">Free Testosterone</td><td class="px-3">21.04</td><td class="px-3">pg/mL</td><td class="px-3">50–59y: 7.2–13.9</td><td class="px-3 text-red-400">🔴 High</td></tr>
+            <tr><td class="py-2.5 px-3 font-semibold">IGF-1 (somatomedin C)</td><td class="px-3">240</td><td class="px-3">ng/mL</td><td class="px-3">76.7–203</td><td class="px-3 text-red-400">🔴 High</td></tr>
+            <tr><td class="py-2.5 px-3 font-semibold">Glucose (fasting)</td><td class="px-3">110</td><td class="px-3">mg/dL</td><td class="px-3">60–99</td><td class="px-3 text-red-400">🔴 High (impaired)</td></tr>
+            <tr><td class="py-2.5 px-3 font-semibold">HOMA index</td><td class="px-3">2.0</td><td class="px-3">—</td><td class="px-3">&lt;2</td><td class="px-3 text-amber-400">🟠 Borderline IR</td></tr>
+            <tr><td class="py-2.5 px-3 font-semibold">Vitamin B12</td><td class="px-3">935</td><td class="px-3">pg/mL</td><td class="px-3">197–771</td><td class="px-3 text-amber-400">🟠 High (over-supp)</td></tr>
+            <tr><td class="py-2.5 px-3 font-semibold">hs-CRP</td><td class="px-3">1.57</td><td class="px-3">mg/L</td><td class="px-3">&lt;1</td><td class="px-3 text-yellow-300">🟡 Moderate (1–3)</td></tr>
+            <tr><td class="py-2.5 px-3 font-semibold">Hematocrit</td><td class="px-3">47.2</td><td class="px-3">%</td><td class="px-3">39–50</td><td class="px-3 text-yellow-300">🟡 In-range, climbing</td></tr>
+            <tr><td class="py-2.5 px-3 font-semibold">Eosinophils (abs)</td><td class="px-3">0</td><td class="px-3">×10³/µL</td><td class="px-3">0.05–0.7</td><td class="px-3 text-yellow-300">🟡 Low</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- In range -->
+    <section id="inrange" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>New Panel — In Range (key)</h2>
+      <div class="glass rounded-xl p-6 text-[14px] leading-relaxed text-gray-300">
+        Estradiol 99.6 pmol/L (~27.1 pg/mL, men 41.4–159) ✅ · Cortisol AM 411 nmol/L ✅ · Homocysteine 7.92 (≤12) ✅ · SHBG 27.2 ✅ · Folate 8.6 ✅ · Insulin 7.3 ✅ · Hgb 15.4 ✅ · RBC 5.57 (near top) · WBC 8.25 · Platelets 314 · Neutrophils 59.6%.
+      </div>
+    </section>
+
+    <!-- Actionable Intel -->
+    <section id="intel" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>🎯 Actionable Intel</h2>
+      <div class="space-y-3">
+        <div class="glass rounded-xl p-5 border-l-4 accent-border"><div class="font-semibold mb-1">1 · TRT now slightly supraphysiologic</div><p class="text-sm text-gray-300">Total-T ~770 ng/dL, Free-T 21 over range. This card's titration rule says <em>trough &gt;700 → reduce 10–20 mg/wk</em>. <strong>Before any change, confirm the draw was a trough</strong> (just before the weekly shot) vs a peak — a peak reading runs high naturally. If trough → small <strong>dose reduction</strong> is reasonable. Either way: <strong>do NOT escalate</strong> (200–250 mg/wk stays off the table).</p></div>
+        <div class="glass rounded-xl p-5 border-l-4 border-red-400/70"><div class="font-semibold mb-1">2 · IGF-1 240 ↑ + glucose 110 ↑ + HOMA 2.0 ↑ are one connected signal</div><p class="text-sm text-gray-300">Starting CJC-1295/Ipamorelin pushed IGF-1 over range; Bachmeyer warns over-pushing the GH/IGF-1 axis <strong>worsens insulin resistance</strong> — exactly the glucose/HOMA drift. <strong>Action:</strong> moderate the GH-secretagogue dose (or shorten the run), and <strong>confirm the Retatrutide micro-dose + MOTS-c are running</strong> — they directly counter this. Recheck IGF-1 + fasting glucose in 4–6 weeks.</p></div>
+        <div class="glass rounded-xl p-5 border-l-4 border-amber-400/70"><div class="font-semibold mb-1">3 · Hematocrit 47.2 and climbing</div><p class="text-sm text-gray-300">The #1 TRT danger (polycythemia → clot/stroke). Still in range, but trend + supraphysiologic dosing argue <strong>hold or reduce, hydrate, recheck; consider blood donation if it reaches ~50–52%.</strong></p></div>
+        <div class="glass rounded-xl p-5 border-l-4 accent-border"><div class="font-semibold mb-1">4 · Estradiol recovered (1.0 → 27)</div><p class="text-sm text-gray-300">Banks the earlier no-AI decision as correct; keep no aromatase inhibitor.</p></div>
+        <div class="glass rounded-xl p-5 border-l-4 accent-border"><div class="font-semibold mb-1">5 · Methylation fixed</div><p class="text-sm text-gray-300">Homocysteine 14.68 → 7.92; B12 220 → 935. B12 is now <em>over</em> range — <strong>ease the B12 dose</strong>.</p></div>
+        <div class="glass rounded-xl p-5 border-l-4 border-amber-400/70"><div class="font-semibold mb-1">6 · hs-CRP 0.66 → 1.57</div><p class="text-sm text-gray-300">Mild inflammation; BPC-157/KPV/TB-500 in the new stack should bring it down; recheck.</p></div>
+      </div>
+    </section>
+
+    <!-- Plain words -->
+    <section id="plain" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>💬 Plain-Words Layer — what the red items mean</h2>
+      <div class="space-y-3">
+        <div class="glass rounded-xl p-5"><div class="font-semibold text-red-400 mb-1">🔴 Testosterone &amp; Free-T slightly over range</div><p class="text-sm text-gray-300"><em>In plain words:</em> The TRT did its job — maybe a touch too well. Your levels are now a little above the top of normal. That's not an emergency, but the fix is to nudge the dose <strong>down</strong> a little (once we confirm the blood was drawn right before your weekly shot), not up.</p></div>
+        <div class="glass rounded-xl p-5"><div class="font-semibold text-red-400 mb-1">🔴 IGF-1 high (240)</div><p class="text-sm text-gray-300"><em>In plain words:</em> This is the growth-hormone peptides you just started doing their thing — but it's now above the healthy ceiling. Pushing it higher tends to raise blood sugar, so the move is to ease that dose back rather than chase a bigger number.</p></div>
+        <div class="glass rounded-xl p-5"><div class="font-semibold text-red-400 mb-1">🔴 Fasting glucose 110 + 🟠 HOMA 2.0</div><p class="text-sm text-gray-300"><em>In plain words:</em> Your blood sugar and insulin are starting to creep up — early "pre-insulin-resistance." It's linked to the growth-hormone push above. The good news: the Retatrutide and MOTS-c already in your stack are made to fix exactly this — make sure they're running.</p></div>
+        <div class="glass rounded-xl p-5"><div class="font-semibold text-yellow-300 mb-1">🟡 Hematocrit 47.2 (climbing)</div><p class="text-sm text-gray-300"><em>In plain words:</em> Testosterone thickens the blood. You're still in the safe zone but trending up, so we watch it closely, keep you hydrated, and absolutely don't raise the TRT dose. If it climbs near the top, a blood donation fixes it instantly.</p></div>
+        <div class="glass rounded-xl p-5"><div class="font-semibold text-amber-400 mb-1">🟠 B12 over range (935)</div><p class="text-sm text-gray-300"><em>In plain words:</em> Your March B12 was nearly deficient; now it's overcorrected to above-normal. Harmless, but you can cut back the B12 supplement.</p></div>
+      </div>
+    </section>
+
+    <!-- Protocol -->
+    <section id="protocol" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>Protocol Update <span class="text-sm font-normal text-gray-400">(informational, Bachmeyer-framed)</span></h2>
+      <div class="glass rounded-xl p-6 text-sm text-gray-300 space-y-3">
+        <p><strong>TRT base:</strong> hold <strong>150 mg/wk</strong>, lean toward a <strong>small reduction</strong> if the over-range values are a trough; never escalate. Keep no AI. Consider split 2×/wk / IM per the prior route note.</p>
+        <p><strong>GH-secretagogues</strong> (CJC-1295/Ipamorelin, + Tesamorelin later): IGF-1 already at 240 (over) → <strong>moderate dose / shorten run</strong>; re-check IGF-1 before adding Tesamorelin in wk 7–10.</p>
+        <p><strong>Metabolic guard (active):</strong> Retatrutide micro-dose 0.1 mg/wk + <strong>MOTS-c 5–10 mg SubQ 2–3×/wk (with carbs)</strong> — confirm running; they directly address the glucose/HOMA drift.</p>
+        <p><strong>Repair / anti-inflammatory (active in Dubai stack):</strong> BPC-157 1000 mcg/day, TB-500 2 mg/wk, KPV 500 mcg, GHK-Cu 2 mg/day (own syringe) — supports the hs-CRP uptick.</p>
+        <p><strong>Kisspeptin-10</strong> (wk 13–15, 250 mcg/day): per card, <strong>mood/libido only</strong> (axis-independent) — not testosterone restoration.</p>
+        <p><strong>Supplements:</strong> ease B12; continue methyl-folate; D3/K2; the metabolic drift argues for berberine/inositol support.</p>
+      </div>
+    </section>
+
+    <!-- Gating -->
+    <section id="gating" class="fade-in scroll-mt-24">
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-3"><span class="w-1.5 h-7 accent-bg rounded-full"></span>Gating / Recheck (6–8 weeks)</h2>
+      <div class="glass rounded-xl p-6 text-sm text-gray-300">
+        Trough TT + Free-T (timed to injection), <strong>IGF-1</strong>, fasting glucose + HbA1c + HOMA, <strong>hematocrit</strong>, hs-CRP, lipid panel (prior TC 268/LDL 192 — not in this panel, re-draw), E2. Confirm draw timing on every hormone going forward.
+      </div>
+    </section>
+
+    <footer class="fade-in pt-6 pb-12 text-center text-xs text-gray-500 border-t border-white/5">
+      Built under NexusOS Health (Bachmeyer-primary). Patient-isolated (IL-8). Longitudinal cross-reference across 3 draws (Dec-2025 / Mar-2026 / Jun-2026).<br>
+      Bogdan (M, 51y) · v1 (TRT response panel) · 2026-06-10
+    </footer>
+  </main>
+</div>
+
+<div id="toast" class="no-print fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg accent-bg text-black text-sm font-semibold opacity-0 pointer-events-none transition-opacity duration-300">Link copied</div>
+
+<script>
+// Theme toggle with persistence
+(function(){
+  const root = document.documentElement;
+  const saved = localStorage.getItem('nx-theme');
+  if (saved === 'light') root.classList.remove('dark');
+  document.getElementById('themeBtn').addEventListener('click', ()=>{
+    root.classList.toggle('dark');
+    localStorage.setItem('nx-theme', root.classList.contains('dark') ? 'dark' : 'light');
+    applyChartTheme();
+  });
+})();
+
+// Light/dark body classes
+function syncBody(){
+  const light = !document.documentElement.classList.contains('dark');
+  document.body.classList.toggle('bg-[#fafafa]', light);
+  document.body.classList.toggle('text-gray-800', light);
+}
+new MutationObserver(syncBody).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+syncBody();
+
+// Share
+document.getElementById('shareBtn').addEventListener('click', async ()=>{
+  const url = window.location.href;
+  const data = { title: document.title, url };
+  try {
+    if (navigator.share) { await navigator.share(data); }
+    else { await navigator.clipboard.writeText(url); toast(); }
+  } catch(e) { try { await navigator.clipboard.writeText(url); toast(); } catch(_){} }
+});
+function toast(){ const t=document.getElementById('toast'); t.style.opacity='1'; setTimeout(()=>t.style.opacity='0',1800); }
+
+// Fade-in observer
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+
+// TOC active state
+const tocLinks = [...document.querySelectorAll('.toc-link')];
+const secs = tocLinks.map(l=>document.querySelector(l.getAttribute('href'))).filter(Boolean);
+const tio = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ const id='#'+e.target.id; tocLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')===id)); }});
+},{rootMargin:'-30% 0px -60% 0px'});
+secs.forEach(s=>tio.observe(s));
+
+// ---- Charts ----
+const ACCENT='#22c55e';
+let charts=[];
+function gridColor(){ return document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'; }
+function tickColor(){ return document.documentElement.classList.contains('dark') ? '#9ca3af' : '#4b5563'; }
+const labels3 = ['Dec-2025','Mar-2026','Jun-2026'];
+
+function mkLine(id, datasets){
+  const ctx = document.getElementById(id);
+  const c = new Chart(ctx, {
+    type:'line',
+    data:{ labels: labels3, datasets },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ labels:{ color: tickColor(), font:{family:'Inter'} } } },
+      scales:{
+        x:{ grid:{ color: gridColor() }, ticks:{ color: tickColor() } },
+        y:{ grid:{ color: gridColor() }, ticks:{ color: tickColor() } }
+      }
+    }
+  });
+  charts.push(c); return c;
+}
+
+mkLine('chartHormones', [
+  { label:'Total T (ng/mL)', data:[4.71,2.64,7.7], borderColor:ACCENT, backgroundColor:'rgba(34,197,94,0.15)', tension:0.3, fill:true },
+  { label:'Free T (pg/mL)', data:[19.3,6.54,21.04], borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,0.1)', tension:0.3 },
+  { label:'Estradiol (pg/mL)', data:[27,1.0,27.1], borderColor:'#a855f7', backgroundColor:'rgba(168,85,247,0.1)', tension:0.3 }
+]);
+
+mkLine('chartMetabolic', [
+  { label:'IGF-1 (ng/mL)', data:[140,140,240], borderColor:'#ef4444', backgroundColor:'rgba(239,68,68,0.12)', tension:0.3, fill:true },
+  { label:'Glucose (mg/dL)', data:[101,null,110], borderColor:'#f59e0b', backgroundColor:'rgba(245,158,11,0.1)', tension:0.3, spanGaps:true },
+  { label:'Hematocrit (%)', data:[47.7,45.6,47.2], borderColor:'#06b6d4', backgroundColor:'rgba(6,182,212,0.1)', tension:0.3 }
+]);
+
+// Bars: Jun-2026 value as % of reference ceiling
+(function(){
+  const ctx=document.getElementById('chartBars');
+  const labels=['Total T','Free T','IGF-1','Glucose','Hematocrit','B12','hs-CRP'];
+  const pct=[ (26.7/25.7*100), (21.04/13.9*100), (240/203*100), (110/99*100), (47.2/50*100), (935/771*100), (1.57/1*100) ];
+  const colors=pct.map(v=> v>100 ? 'rgba(239,68,68,0.75)' : 'rgba(34,197,94,0.75)');
+  const c=new Chart(ctx,{ type:'bar',
+    data:{ labels, datasets:[{ label:'% of reference ceiling (100% = top of range)', data:pct.map(v=>Math.round(v)), backgroundColor:colors, borderRadius:6 }] },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ labels:{ color: tickColor() } },
+        tooltip:{ callbacks:{ label:(c)=> c.parsed.y+'% of ceiling' } } },
+      scales:{ x:{ grid:{display:false}, ticks:{ color: tickColor() } },
+        y:{ grid:{ color: gridColor() }, ticks:{ color: tickColor(), callback:v=>v+'%' },
+          suggestedMax:140 } } }
+  });
+  charts.push(c);
+})();
+
+function applyChartTheme(){
+  charts.forEach(c=>{
+    if(c.options.scales){ for(const ax of Object.values(c.options.scales)){ if(ax.grid)ax.grid.color=gridColor(); if(ax.ticks)ax.ticks.color=tickColor(); } }
+    if(c.options.plugins&&c.options.plugins.legend&&c.options.plugins.legend.labels) c.options.plugins.legend.labels.color=tickColor();
+    c.update();
+  });
+}
+</script>
+</body>
+</html>
