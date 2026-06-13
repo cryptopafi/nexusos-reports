@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bogdan Rosu — Longitudinal Patient Health Report</title>
+<meta name="description" content="Local-only patient-facing longitudinal lab report for Bogdan Rosu.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bogdan Rosu — Longitudinal Patient Health Report">
+<meta property="og:description" content="Local-only patient-facing longitudinal lab report for Bogdan Rosu.">
+<meta property="og:site_name" content="Hermes Health">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] } } } };
+</script>
+<style>
+  :root { --accent:#22c55e; --accent-soft:rgba(34,197,94,.14); }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; background:#0A0A0F; color:#e7e7ee; }
+  html:not(.dark) body { background:#fafafa; color:#1a1a22; }
+  .glass { background:rgba(17,17,24,.7); backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.07); }
+  html:not(.dark) .glass { background:rgba(255,255,255,.78); border:1px solid rgba(0,0,0,.07); }
+  .card { background:#111118; border:1px solid rgba(255,255,255,.06); }
+  html:not(.dark) .card { background:#ffffff; border:1px solid rgba(0,0,0,.07); }
+  .accent { color:var(--accent); } .accent-bg { background:var(--accent); }
+  .glow { box-shadow:0 0 0 1px rgba(34,197,94,.18), 0 14px 50px -12px rgba(34,197,94,.28); }
+  .fade { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; } .fade.in { opacity:1; transform:none; }
+  .plain { background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:.55rem; }
+  .held { background:rgba(245,158,11,.10); border-left:3px solid #f59e0b; border-radius:.55rem; }
+  .danger { background:rgba(239,68,68,.10); border-left:3px solid #ef4444; border-radius:.55rem; }
+  table { border-collapse:collapse; width:100%; font-size:.85rem; }
+  th, td { padding:.5rem .7rem; text-align:left; border-bottom:1px solid rgba(255,255,255,.07); vertical-align:top; }
+  html:not(.dark) th, html:not(.dark) td { border-bottom:1px solid rgba(0,0,0,.08); }
+  th { font-weight:600; color:var(--accent); font-size:.7rem; letter-spacing:.04em; text-transform:uppercase; }
+  td.mono { font-family:'JetBrains Mono',monospace; }
+  .pill { display:inline-block; padding:.12rem .5rem; border-radius:999px; font-size:.68rem; font-weight:600; }
+  .pill-red { background:rgba(239,68,68,.16); color:#f87171; } .pill-amber { background:rgba(245,158,11,.16); color:#fbbf24; } .pill-green { background:rgba(34,197,94,.16); color:#4ade80; }
+  .toc a { display:block; padding:.3rem .55rem; border-radius:.45rem; font-size:.8rem; color:inherit; opacity:.72; text-decoration:none; border-left:2px solid transparent; }
+  .toc a:hover { opacity:1; background:var(--accent-soft); border-left-color:var(--accent); }
+  h2.sec { scroll-margin-top:90px; } .dose b { color:var(--accent); font-weight:600; }
+  .pep { border:1px solid rgba(255,255,255,.07); border-radius:.7rem; padding:1rem 1.1rem; margin-bottom:.9rem; } html:not(.dark) .pep { border:1px solid rgba(0,0,0,.08); }
+  .pep h4 { font-weight:700; font-size:1rem; } .pep ul { margin:.5rem 0 .3rem; padding-left:1.1rem; list-style:disc; font-size:.86rem; } .pep li { margin-bottom:.2rem; }
+  code { font-family:'JetBrains Mono',monospace; font-size:.82em; background:rgba(255,255,255,.06); padding:.05rem .3rem; border-radius:.3rem; } html:not(.dark) code { background:rgba(0,0,0,.06); }
+  @media print { body { background:#fff !important; color:#000 !important; } .glass, .card, .pep { background:#fff !important; border:1px solid #ccc !important; box-shadow:none !important; } .no-print { display:none !important; } .grid-main { display:block !important; } section { page-break-inside:avoid; } .pep { page-break-inside:avoid; } a { color:#000 !important; text-decoration:none; } .plain, .held, .danger { background:#f4f4f4 !important; } canvas { max-height:240px !important; } }
+</style>
+</head>
+<body>
+<header class="no-print sticky top-0 z-40 glass">
+  <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5"><span class="w-2.5 h-2.5 rounded-full accent-bg"></span><span class="font-semibold text-sm tracking-tight">Hermes Health</span><span class="text-xs opacity-50 hidden sm:inline">· local-only · no publish</span></div>
+    <div class="flex items-center gap-2"><button id="shareBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:glow transition">Share</button><button id="themeBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:glow transition">◐ Theme</button></div>
+  </div>
+</header>
+<section class="max-w-6xl mx-auto px-5 pt-10 pb-6">
+  <div class="card glow rounded-2xl p-7 md:p-9 fade">
+    <div class="text-xs accent font-semibold tracking-widest uppercase mb-3">Bloodwork Analysis · Longitudinal TRT / Methylation / Metabolic Watch</div>
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight">Bogdan Rosu — Longitudinal Patient Health Report</h1>
+    <div class="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm opacity-80"><span><strong>Patient:</strong> Bogdan Rosu · M · 51y</span><span><strong>Lab:</strong> Current bloodwork panel</span></div>
+    <div class="mt-1 text-xs opacity-60">Existing-patient longitudinal rerun; current Synevo draw plus older local health records · collected <strong>2026-06-10 08:30</strong> · emitted <strong>2026-06-11 14:26</strong></div>
+    <div class="mt-1 text-xs opacity-60">Framework: Patient-facing decision-support with source-backed prior protocol context; no diagnosis or prescription.</div>
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">37/37</div>
+        <div class="text-xs opacity-65 mt-0.5">Parser coverage</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">33</div>
+        <div class="text-xs opacity-65 mt-0.5">Mapped markers</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">6</div>
+        <div class="text-xs opacity-65 mt-0.5">High/watch current</div>
+      </div>
+      <div class="glass rounded-xl p-3">
+        <div class="text-2xl font-bold accent">4</div>
+        <div class="text-xs opacity-65 mt-0.5">Prior draws compared</div>
+      </div>
+    </div>
+    <div class="mt-6 plain p-4 text-sm">⚠️ <strong>Clinical boundary.</strong> Informational decision-support, not a diagnosis or prescription. It does not instruct starting/changing any peptide, medication, supplement, dose, or cycle. All decisions belong to the attending physician.</div>
+  </div>
+</section>
+<div class="grid-main max-w-6xl mx-auto px-5 pb-20 grid lg:grid-cols-[210px_1fr] gap-8">
+  <aside class="no-print hidden lg:block"><div class="sticky top-20 glass rounded-xl p-3 toc"><div class="text-xs uppercase tracking-wider opacity-50 px-2 pb-2">Contents</div>
+      <a href="#summary">0 · Key Findings — In Plain Words</a>
+      <a href="#longitudinal">1 · Older vs Newer Labs — What Changed</a>
+      <a href="#charts">2 · Trend Charts</a>
+      <a href="#labs">3 · Current Lab Extraction — Validated Rows</a>
+      <a href="#plain">4 · Plain-Words Marker Explanations</a>
+      <a href="#priority">5 · Priority Action Intel</a>
+      <a href="#peptides">6 · Theoretical Peptide Protocol Cross-Check</a>
+      <a href="#supplements">7 · Supplement Stack Cross-Check</a>
+      <a href="#workup">8 · Blood Tests to Re-Run / Add</a>
+      <a href="#monitoring">9 · Monitoring Schedule</a>
+  </div></aside>
+  <main class="min-w-0">
+    <section id="summary" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">0 · Key Findings — In Plain Words</h2>
+      
+<div class='grid md:grid-cols-2 gap-4 text-sm'>
+  <div class='plain p-4'><b>Big win:</b> methylation rescue worked. B12 rose from 220 to 935 pg/mL and homocysteine fell from 14.68 to 7.92 µmol/L.</div>
+  <div class='plain p-4'><b>TRT response:</b> total testosterone is ~770.0 ng/dL and free testosterone is 21.04 pg/mL. This is a strong response, but draw timing must be confirmed as trough.</div>
+  <div class='danger p-4'><b>New watch:</b> IGF-1 is high at 240 ng/mL and glucose is 110 mg/dL. Do not escalate GH/metabolic peptides until the prescriber reviews trend and timing.</div>
+  <div class='held p-4'><b>Persistent watch:</b> hematocrit rose to 47.2% and hs-CRP rose to 1.57 mg/L; both need repeat monitoring, not panic.</div>
+</div>
+
+    </section>
+
+    <section id="longitudinal" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">1 · Older vs Newer Labs — What Changed</h2>
+      
+<p class='mb-4 text-sm opacity-80'>Existing-patient comparison across Sept 2025, Dec 2025, Mar 2026 and the newer 10 Jun 2026 Synevo draw. The key question is no longer “did TRT/B12 work?” — both moved — but whether the new testosterone/GH/metabolic balance is overshooting.</p>
+<div class="overflow-x-auto"><table><thead><tr><th>Marker</th><th>Older / prior</th><th>Newer current</th><th>Delta</th><th>Direction</th><th>Actionable read</th></tr></thead><tbody><tr><td>Vitamin B12</td><td>220 pg/mL (Mar 2026)</td><td>935 pg/mL (Jun 2026)</td><td>+715 pg/mL / +325%</td><td>resolved/overshot</td><td>B12 rescue worked; check whether dose can step down to maintenance with physician because lab now flags high.</td></tr><tr><td>Homocysteine</td><td>14.68 µmol/L (Mar 2026)</td><td>7.92 µmol/L (Jun 2026)</td><td>-6.76 / -46%</td><td>improved/resolved</td><td>The B12/folate/methylation problem moved from high-risk to controlled.</td></tr><tr><td>Estradiol</td><td>1.00 pg/mL (Mar 2026)</td><td>99.6 pmol/L ≈27.1 pg/mL (Jun 2026)</td><td>normalized</td><td>resolved</td><td>E2 recovered into male reference range after TRT; no evidence here for estrogen suppression.</td></tr><tr><td>Total testosterone</td><td>2.64 ng/mL ≈264 ng/dL (Mar 2026)</td><td>26.7 nmol/L ≈770 ng/dL (Jun 2026)</td><td>+~506 ng/dL</td><td>improved / slightly high vs Synevo age band</td><td>TRT response is strong at this draw; interpret only if it was true trough before injection.</td></tr><tr><td>Free testosterone</td><td>6.54 pg/mL (Mar 2026)</td><td>21.04 pg/mL (Jun 2026)</td><td>+14.50 / +222%</td><td>improved/high</td><td>Active testosterone is now high by Synevo age range; watch symptoms, hematocrit, estradiol, sleep apnea.</td></tr><tr><td>SHBG</td><td>28.9 nmol/L (Dec 2025)</td><td>27.2 nmol/L (Jun 2026)</td><td>-1.7</td><td>stable</td><td>Low-normal SHBG means more testosterone remains free/active.</td></tr><tr><td>IGF-1</td><td>140 ng/mL (Mar 2026)</td><td>240 ng/mL (Jun 2026)</td><td>+100 / +71%</td><td>worsened/high</td><td>Growth-hormone secretagogue effect may be overshooting; do not escalate CJC/Ipamorelin without prescriber review.</td></tr><tr><td>hs-CRP</td><td>0.66 mg/L (Mar 2026)</td><td>1.57 mg/L (Jun 2026)</td><td>+0.91 / +138%</td><td>worsened/watch</td><td>Inflammation moved from excellent to moderate-risk band; repeat to confirm and search for dental/infectious/training/visceral-fat triggers.</td></tr><tr><td>Glucose</td><td>97 Sep / 101 Dec / not drawn Mar</td><td>110 mg/dL (Jun 2026)</td><td>+9 vs Dec</td><td>worsened/newly abnormal</td><td>Fasting glucose now meets impaired fasting glucose band; pair with HbA1c/CGM.</td></tr><tr><td>Insulin</td><td>3.1 Dec / 11.5 Mar</td><td>7.3 µU/mL (Jun 2026)</td><td>-4.2 vs Mar / -37%</td><td>improved but not optimal</td><td>Insulin improved, but glucose and HOMA say metabolism still needs tracking.</td></tr><tr><td>HOMA-IR</td><td>0.42 Dec / not drawn Mar</td><td>2.0 (Jun 2026)</td><td>worse vs Dec</td><td>borderline</td><td>At the “possible insulin resistance” threshold; act early with nutrition/training/sleep review.</td></tr><tr><td>Hematocrit</td><td>45.6% (Mar 2026)</td><td>47.2% (Jun 2026)</td><td>+1.6 points</td><td>worsened/watch</td><td>TRT blood-thickness watch is active, though still under Synevo upper range.</td></tr><tr><td>Hemoglobin</td><td>14.9 g/dL (Mar 2026)</td><td>15.4 g/dL (Jun 2026)</td><td>+0.5</td><td>stable/high-normal</td><td>Tracks expected TRT red-cell effect but not alarming alone.</td></tr><tr><td>RDW</td><td>14.0% (Mar 2026)</td><td>13.9% (Jun 2026)</td><td>-0.1</td><td>resolved/in range</td><td>Red-cell size variability no longer supports active B12-deficiency pattern.</td></tr><tr><td>Neutrophils %</td><td>64.6% (Mar 2026)</td><td>59.6% (Jun 2026)</td><td>-5.0 points</td><td>improved</td><td>Prior immune shift normalized.</td></tr></tbody></table></div>
+<div class='grid md:grid-cols-3 gap-4 mt-4 text-sm'>
+ <div class='plain p-4'><b>What is working:</b> B12/homocysteine, estradiol recovery, testosterone rescue, RDW/neutrophil normalization.</div>
+ <div class='danger p-4'><b>What may be overshooting:</b> IGF-1 above range, free testosterone above age-band, hematocrit rising, glucose impaired.</div>
+ <div class='held p-4'><b>Timing caveat:</b> testosterone interpretation depends on whether blood was drawn before the weekly injection. If not a trough, repeat at trough before changing dose.</div>
+</div>
+
+    </section>
+
+    <section id="charts" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">2 · Trend Charts</h2>
+      <div class="grid md:grid-cols-2 gap-5"><div><canvas id="severityChart"></canvas></div><div><canvas id="hormoneChart"></canvas></div></div>
+    </section>
+
+    <section id="labs" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">3 · Current Lab Extraction — Validated Rows</h2>
+      <div class="overflow-x-auto"><table><thead><tr><th>Marker</th><th>Current result</th><th>Reference / decision band</th><th>Read</th><th>Plain words</th></tr></thead><tbody><tr><td>Cortisol AM</td><td>411 nmol/L</td><td>133–537 (6–10 a.m.)</td><td>in range</td><td>~14.9 µg/dL; adequate morning cortisol window.</td></tr><tr><td>Estradiol</td><td>99.6 pmol/L</td><td>41.4–159 pmol/L male</td><td>in range</td><td>≈27.1 pg/mL; recovered from prior crash.</td></tr><tr><td>Vitamin B12</td><td>935 pg/mL</td><td>197–771</td><td>high vs lab</td><td>Repleted strongly after prior low-normal B12.</td></tr><tr><td>Serum folate</td><td>8.6 ng/mL</td><td>4.6–34.8</td><td>in range</td><td>Enough to pair with B12; not excessive.</td></tr><tr><td>IGF-1</td><td>240 ng/mL</td><td>76.7–203</td><td>high</td><td>Now above the lab upper range; important given GH-secretagogue protocol context.</td></tr><tr><td>SHBG</td><td>27.2 nmol/L</td><td>20.6–76.7 (&gt;50 male)</td><td>in range</td><td>Stable/low-normal binding capacity; supports high free fraction.</td></tr><tr><td>Total testosterone</td><td>26.7 nmol/L</td><td>6.69–25.7 (≥50 male)</td><td>slightly high</td><td>≈770 ng/dL; just above Synevo age band, below prior Bachmeyer target range cited in old protocol.</td></tr><tr><td>Homocysteine</td><td>7.92 µmol/L</td><td>≤12</td><td>resolved</td><td>Down into safer range from 14.68.</td></tr><tr><td>hs-CRP</td><td>1.57 mg/L</td><td><1 low CV risk; 1–3 moderate</td><td>watch</td><td>Worse than prior 0.66; moderate cardiovascular inflammatory band.</td></tr><tr><td>WBC</td><td>8.25 mii/µL</td><td>4–10</td><td>in range</td><td>Higher than March but still normal.</td></tr><tr><td>RBC</td><td>5.57 mil/µL</td><td>4.2–5.6</td><td>high-normal</td><td>Near upper end; TRT hematocrit watch remains active.</td></tr><tr><td>Hemoglobin</td><td>15.4 g/dL</td><td>13.1–17.2</td><td>in range</td><td>Stable and safe.</td></tr><tr><td>Hematocrit</td><td>47.2 %</td><td>39–50</td><td>watch</td><td>Up vs March but below 50%; monitor before dose changes.</td></tr><tr><td>RDW-CV</td><td>13.9 %</td><td>11.6–14.8</td><td>improved/in range</td><td>B12-deficiency pattern likely improved.</td></tr><tr><td>Platelets</td><td>314 mii/µL</td><td>150–450</td><td>in range</td><td>Stable normal clotting cell count.</td></tr><tr><td>Neutrophils %</td><td>59.6 %</td><td>45–80</td><td>in range</td><td>Normalized from March borderline high.</td></tr><tr><td>Lymphocytes %</td><td>30.8 %</td><td>20–55</td><td>in range</td><td>Healthy relative balance.</td></tr><tr><td>Eosinophils %</td><td>0 %</td><td>≤7</td><td>low/usually not concerning</td><td>Suppressed to zero; correlate with symptoms/meds/allergy state.</td></tr><tr><td>Free testosterone</td><td>21.04 pg/mL</td><td>7.2–13.9 (50–59 male)</td><td>high</td><td>Above Synevo age band; in the older protocol target discussion range.</td></tr><tr><td>Glucose</td><td>110 mg/dL</td><td>60–99 normal; 100–125 impaired fasting</td><td>high</td><td>Impaired fasting glucose; worse despite lower insulin.</td></tr><tr><td>Insulin</td><td>7.3 µU/mL</td><td>2.6–24.9</td><td>in range</td><td>Improved from March 11.5 but not optimal if fasting glucose is high.</td></tr><tr><td>HOMA-IR</td><td>2.0</td><td><2 normal; >2 possible IR</td><td>borderline</td><td>Right at the threshold; trend with fasting glucose.</td></tr></tbody></table></div><p class='mt-3 text-xs opacity-65'>Parser coverage validated separately: 37 candidate rows, 37 ingested rows, 33 mapped rows, 4 unmapped label artifacts retained for review.</p>
+    </section>
+
+    <section id="plain" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">4 · Plain-Words Marker Explanations</h2>
+      
+<div class='grid md:grid-cols-2 gap-4 text-sm'>
+ <div class='plain p-4'>💬 <b>B12/Homocysteine:</b> the vitamin-rescue plan appears to have fixed the “methylation” bottleneck that was raising cardiovascular risk.</div>
+ <div class='plain p-4'>💬 <b>Testosterone/Estradiol:</b> the hormone system is no longer crashed; the new job is keeping it in a safe, steady zone.</div>
+ <div class='plain p-4'>💬 <b>IGF-1:</b> this growth/recovery signal is now above the lab ceiling. More is not automatically better; review the GH-peptide part of the stack.</div>
+ <div class='plain p-4'>💬 <b>Glucose/HOMA:</b> blood sugar control is drifting even though insulin improved. This is an early-warning signal, not diabetes.</div>
+</div>
+
+    </section>
+
+    <section id="priority" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">5 · Priority Action Intel</h2>
+      
+<ol class='list-decimal pl-5 space-y-3 text-sm'>
+ <li><b>Confirm draw timing.</b> If this was not a true pre-injection trough, repeat total T, free T, SHBG, estradiol, CBC in the correct trough window before any TRT dose decision.</li>
+ <li><b>IGF-1 guardrail.</b> Ask the prescriber whether CJC-1295/Ipamorelin should be held, reduced, or cycled until IGF-1 returns inside target. Current report does not provide a direct dose-change order.</li>
+ <li><b>Metabolic follow-up in 2–4 weeks.</b> Repeat fasting glucose, fasting insulin, HOMA-IR and add HbA1c; consider CGM or a structured 50 g carbohydrate response test if available.</li>
+ <li><b>TRT blood-thickness watch.</b> Repeat CBC/hematocrit at the next trough panel; if hematocrit continues upward, physician should review testosterone dose/frequency and sleep-apnea control.</li>
+ <li><b>Inflammation search.</b> Repeat hs-CRP when rested and without acute illness/heavy training; if still >1, review dental, infection, gut, visceral-fat, sleep and training-load drivers.</li>
+</ol>
+
+    </section>
+
+    <section id="peptides" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">6 · Theoretical Peptide Protocol Cross-Check</h2>
+      <p class="text-sm opacity-70 mb-4">Discussion topics only; physician validates any continuation, hold, dose, timing or cycle change. DATA NOT FOUND is used where live/source-backed detail was not found in this run.</p>
+      
+<div class='pep dose'><h4>GH secretagogues: CJC-1295 w/DAC + Ipamorelin</h4><ul><li><b>Prior source-backed protocol:</b> CJC-1295 w/DAC 2 mg weekly SC; Ipamorelin 100–300 µg nightly fasted, 5-on/2-off.</li><li><b>Current lab read:</b> IGF-1 is 240 ng/mL, above the Synevo upper range of 203.</li><li><b>Action:</b> physician review before continuing escalation; current report does not issue a start/stop/dose-change order.</li><li><b>Plain words:</b> the recovery/growth signal looks strong enough that pushing harder could be counterproductive.</li></ul></div>
+<div class='pep dose'><h4>Metabolic peptides: Retatrutide / MOTS-c / 5-Amino-1MQ</h4><ul><li><b>Prior source-backed protocol:</b> Retatrutide 0.1 mg weekly SC; MOTS-c 5 mg Mon/Wed/Fri AM fasted SC. 5-Amino-1MQ dose/timing in live evidence: DATA NOT FOUND in this run.</li><li><b>Current lab read:</b> glucose 110 and HOMA-IR 2.0 need follow-up despite insulin improvement.</li><li><b>Action:</b> discuss whether the metabolic plan is adequate only after HbA1c/CGM or repeat fasting labs.</li><li><b>Plain words:</b> the sugar system is not yet fully controlled.</li></ul></div>
+<div class='pep dose'><h4>Repair / inflammation peptides: BPC-157, TB-500, KPV, GHK-Cu, Epitalon</h4><ul><li><b>Prior source-backed protocol:</b> BPC-157 500 µg–1 mg daily SC; TB-500 5 mg every 5 days SC; KPV 250–500 µg daily SC; GHK-Cu 2–3 mg daily AM separate syringe; Epitalon 10 mg nightly, 20-day course ×3/year.</li><li><b>Current lab read:</b> hs-CRP rose to 1.57 mg/L; CBC is otherwise calm.</li><li><b>Action:</b> do not add new compounds just from one hs-CRP rise; repeat and search for causes first.</li><li><b>Plain words:</b> inflammation is mildly back on the radar, but the blood count does not scream infection.</li></ul></div>
+
+    </section>
+
+    <section id="supplements" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">7 · Supplement Stack Cross-Check</h2>
+      
+<div class='overflow-x-auto'><table><thead><tr><th>Stack area</th><th>Prior dose basis</th><th>Current adjustment question</th></tr></thead><tbody>
+<tr><td>B12 / methylfolate / B6 / TMG</td><td>Methyl-B12 2000–5000 µg/day SL; methylfolate 800–1000 µg/day; P-5-P 50 mg + TMG 500–1000 mg.</td><td>B12 is now high and homocysteine resolved; ask physician whether to step down from rescue to maintenance.</td></tr>
+<tr><td>LDL / glucose support</td><td>Berberine 500 mg 2×/day with meals; omega-3 EPA/DHA 3–4 g/day; CoQ10 200–300 mg/day; red yeast rice 1200 mg/day.</td><td>Lipids were not rechecked in this panel; add ApoB/LDL-C/TG/HDL before judging stack success.</td></tr>
+<tr><td>Minerals / detox support</td><td>Zinc picolinate 30–50 mg/day PM; NAC 600 mg 2×/day.</td><td>Zinc/copper/metals were not rechecked here; do not infer detox success from this panel.</td></tr>
+</tbody></table></div>
+
+    </section>
+
+    <section id="workup" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">8 · Blood Tests to Re-Run / Add</h2>
+      
+<ul class='list-disc pl-5 space-y-2 text-sm'>
+ <li><b>Next fasting trough panel:</b> CBC, total/free testosterone, SHBG, estradiol sensitive/LC-MS if possible, LH/FSH only if physician wants axis context, PSA.</li>
+ <li><b>Metabolic add-ons:</b> HbA1c, fasting glucose, fasting insulin, HOMA-IR, ApoB, full lipid panel, ALT/AST/GGT.</li>
+ <li><b>GH-peptide safety:</b> IGF-1 repeat, fasting glucose/insulin, symptom review for edema, carpal-tunnel-like symptoms, sleep apnea worsening.</li>
+ <li><b>Prior unresolved panels:</b> lead/mercury, zinc/copper, vitamin D were not included in this Synevo draw and remain pending for the bigger longitudinal story.</li>
+</ul>
+
+    </section>
+
+    <section id="monitoring" class="card rounded-2xl p-6 md:p-7 mb-6 fade">
+      <h2 class="sec text-xl font-bold mb-1">9 · Monitoring Schedule</h2>
+      
+<div class='overflow-x-auto'><table><thead><tr><th>When</th><th>What</th><th>Why</th></tr></thead><tbody>
+<tr><td>Now / prescriber review</td><td>Confirm trough timing; review IGF-1/high free T/glucose pattern.</td><td>Prevents over-correcting from a mistimed draw.</td></tr>
+<tr><td>2–4 weeks</td><td>Repeat glucose, insulin, HOMA, HbA1c or CGM snapshot; repeat hs-CRP when rested.</td><td>Confirms whether metabolic/inflammation drift is real.</td></tr>
+<tr><td>4–8 weeks</td><td>CBC, hematocrit, testosterone, estradiol, IGF-1, lipids/ApoB.</td><td>Tracks TRT/GH/metabolic safety together.</td></tr>
+</tbody></table></div>
+
+    </section>
+    <footer class="text-xs opacity-50 px-1 pt-2">Generated by Hermes Health Pipeline · Patient-facing physician-validation report · Not a substitute for physician judgment.</footer>
+  </main>
+</div>
+<script>
+(function(){const root=document.documentElement,key='nexus-health-theme';const saved=localStorage.getItem(key);if(saved==='light')root.classList.remove('dark');else root.classList.add('dark');document.getElementById('themeBtn').addEventListener('click',function(){root.classList.toggle('dark');localStorage.setItem(key,root.classList.contains('dark')?'dark':'light');});})();
+document.getElementById('shareBtn').addEventListener('click',async function(){const data={title:document.title,url:location.href};try{if(navigator.share){await navigator.share(data);}else{await navigator.clipboard.writeText(location.href);this.textContent='Copied ✓';setTimeout(()=>this.textContent='Share',1600);}}catch(e){}});
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+window.addEventListener('load',function(){
+  if(typeof Chart==='undefined') return;
+  const txt=getComputedStyle(document.body).color;
+  Chart.defaults.color=txt; Chart.defaults.font.family='Inter';
+  const red='#ef4444', amber='#f59e0b', green='#22c55e';
+  new Chart(document.getElementById('severityChart'),{
+    type:'bar',
+    data:{labels:["IGF-1", "Glucose", "Hct", "hs-CRP", "B12"],
+      datasets:[{label:"% of upper ref limit",
+        data:[118, 110, 94, 157, 121],
+        backgroundColor:["#ef4444", "#ef4444", "#f59e0b", "#f59e0b", "#f59e0b"]}]},
+    options:{responsive:true,plugins:{legend:{display:false},title:{display:true,text:"Current watch severity (100% = decision threshold)"}},
+      scales:{y:{beginAtZero:true,ticks:{callback:v=>v+'%'}}}}
+  });
+  new Chart(document.getElementById('hormoneChart'),{
+    type:'bar',
+    data:{labels:["Total T ng/dL", "Free T pg/mL", "E2 pg/mL", "IGF-1"],
+      datasets:[{label:"Mar/prior",data:[264, 7, 1, 140],backgroundColor:"rgba(148,163,184,.45)"},{label:"Jun current",data:[770, 21, 27, 240],backgroundColor:"rgba(34,197,94,.65)"}]},
+    options:{responsive:true,plugins:{title:{display:true,text:"Hormone movement vs prior"}},
+      scales:{y:{beginAtZero:true}}}
+  });
+});
+</script>
+</body>
+</html>
