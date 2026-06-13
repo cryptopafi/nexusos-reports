@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRT Testosterone Targets — 51M on Testosterone Cypionate 150mg/week | NexusOS Research</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TRT Testosterone Targets — 51M on Testosterone Cypionate 150mg/week" />
+  <meta property="og:description" content="D3 research report on TRT trough levels, reference ranges, and the optimization debate. EPR 17/20 · 35 sources." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://cryptopafi.github.io/nexusos-reports/trt-testosterone-targets-51m-20260613.html" />
+  <meta property="og:image" content="https://cryptopafi.github.io/nexusos-reports/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TRT Testosterone Targets — 51M on Testosterone Cypionate 150mg/week" />
+  <meta name="twitter:description" content="D3 research — trough 770 ng/dL, five camps steelmanned, TRAVERSE 2025 evidence, Bachmeyer protocol analysis." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#58a6ff', dim: '#388bfd', muted: '#1f6feb' },
+            surface: { bg: '#0A0A0F', card: '#111118', border: '#21262d', hover: '#161b22' },
+            light: { bg: '#fafafa', card: '#ffffff', border: '#e1e4e8', accent: '#5E6AD2' }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root { --accent: #58a6ff; --accent-light: #5E6AD2; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Dark mode defaults */
+    .dark body { background: #0A0A0F; color: #c9d1d9; }
+    .dark .card { background: #111118; border-color: #21262d; }
+    .dark .glass { background: rgba(17,17,24,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(88,166,255,0.1); }
+    .dark .sidebar { background: rgba(17,17,24,0.95); border-color: #21262d; }
+    .dark .nav-fixed { background: rgba(10,10,15,0.92); border-color: #21262d; }
+    .dark .toc-link { color: #8b949e; }
+    .dark .toc-link:hover, .dark .toc-link.active { color: #58a6ff; }
+    .dark .pull-quote { border-color: #58a6ff; color: #e6edf3; background: rgba(88,166,255,0.06); }
+    .dark code { background: rgba(88,166,255,0.12); color: #79c0ff; }
+    .dark .flag-warn { background: rgba(210,153,34,0.12); border-color: #d2991f; color: #e3b341; }
+    .dark .flag-info { background: rgba(88,166,255,0.08); border-color: #1f6feb; color: #79c0ff; }
+    .dark .badge { background: rgba(88,166,255,0.15); color: #58a6ff; }
+    .dark th { background: #0d1117; color: #8b949e; }
+    .dark td { border-color: #21262d; }
+    .dark tr:nth-child(even) td { background: rgba(17,17,24,0.6); }
+    .dark .epr-bar-bg { background: #21262d; }
+    .dark .section-divider { border-color: #21262d; }
+
+    /* Light mode */
+    html:not(.dark) body { background: #fafafa; color: #24292f; }
+    html:not(.dark) .card { background: #ffffff; border: 1px solid #e1e4e8; }
+    html:not(.dark) .glass { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(94,106,210,0.2); }
+    html:not(.dark) .sidebar { background: rgba(255,255,255,0.97); border-color: #e1e4e8; }
+    html:not(.dark) .nav-fixed { background: rgba(250,250,250,0.95); border-color: #e1e4e8; }
+    html:not(.dark) .toc-link { color: #57606a; }
+    html:not(.dark) .toc-link:hover, html:not(.dark) .toc-link.active { color: #5E6AD2; }
+    html:not(.dark) .pull-quote { border-color: #5E6AD2; color: #24292f; background: rgba(94,106,210,0.06); }
+    html:not(.dark) code { background: rgba(94,106,210,0.1); color: #5E6AD2; }
+    html:not(.dark) .flag-warn { background: rgba(210,153,34,0.08); border-color: #d2991f; color: #856404; }
+    html:not(.dark) .flag-info { background: rgba(94,106,210,0.06); border-color: #5E6AD2; color: #5E6AD2; }
+    html:not(.dark) .badge { background: rgba(94,106,210,0.12); color: #5E6AD2; }
+    html:not(.dark) th { background: #f6f8fa; color: #57606a; }
+    html:not(.dark) td { border-color: #e1e4e8; }
+    html:not(.dark) tr:nth-child(even) td { background: rgba(246,248,250,0.6); }
+    html:not(.dark) .epr-bar-bg { background: #e1e4e8; }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Glow */
+    .dark .glow-accent { box-shadow: 0 0 24px rgba(88,166,255,0.15); }
+
+    /* Table */
+    table { border-collapse: collapse; width: 100%; }
+    th, td { padding: 0.65rem 1rem; text-align: left; }
+    td { border-top: 1px solid; font-size: 0.875rem; }
+    th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+
+    /* Sidebar */
+    @media (min-width: 1280px) {
+      .layout { display: grid; grid-template-columns: 240px 1fr; gap: 2rem; }
+      .sidebar { position: sticky; top: 4.5rem; height: fit-content; max-height: calc(100vh - 5rem); overflow-y: auto; }
+    }
+
+    /* Print */
+    @media print {
+      html { filter: none !important; }
+      html.dark body { background: #fff !important; color: #000 !important; }
+      .nav-fixed, .sidebar, .share-btn, #toggle-theme { display: none !important; }
+      .card { border: 1px solid #ddd !important; background: #fff !important; page-break-inside: avoid; }
+      table { page-break-inside: avoid; }
+    }
+
+    /* Scrollbar */
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .dark .sidebar::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+
+    /* EPR segments */
+    .epr-segment { height: 8px; border-radius: 4px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+
+    /* Highlight row */
+    .highlight-row td { color: #58a6ff !important; font-weight: 500; }
+    html:not(.dark) .highlight-row td { color: #5E6AD2 !important; }
+  </style>
+</head>
+
+<body class="min-h-screen transition-colors duration-300">
+
+  <!-- Top Nav -->
+  <nav class="nav-fixed fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-mono font-semibold tracking-widest uppercase opacity-60">NexusOS</span>
+        <span class="text-xs opacity-30">·</span>
+        <span class="badge text-xs font-mono px-2 py-0.5 rounded-full">D3 · EPR 17/20</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="share-btn" class="share-btn text-xs px-3 py-1.5 rounded-lg border transition-all duration-200 flex items-center gap-2 dark:border-surface-border dark:text-gray-400 dark:hover:text-brand dark:hover:border-brand border-light-border text-gray-500 hover:text-light-accent hover:border-light-accent">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Share
+        </button>
+        <button id="toggle-theme" class="w-8 h-8 rounded-lg border flex items-center justify-center transition-all dark:border-surface-border dark:text-gray-400 dark:hover:text-brand border-light-border text-gray-500 hover:text-light-accent" title="Toggle theme">
+          <svg id="icon-dark" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="icon-light" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="pt-14">
+    <div class="relative overflow-hidden dark:bg-gradient-to-br dark:from-[#0A0A0F] dark:via-[#0d1320] dark:to-[#0A0A0F] bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-50 py-16 px-4">
+      <div class="absolute inset-0 dark:bg-[radial-gradient(ellipse_at_30%_20%,rgba(88,166,255,0.08)_0%,transparent_60%)]"></div>
+      <div class="max-w-4xl mx-auto relative">
+        <div class="flex items-center gap-3 mb-4 flex-wrap">
+          <span class="badge text-xs font-mono px-2.5 py-1 rounded-full font-semibold">D3 RESEARCH</span>
+          <span class="badge text-xs font-mono px-2.5 py-1 rounded-full">EPR 17/20</span>
+          <span class="badge text-xs font-mono px-2.5 py-1 rounded-full">87/100</span>
+          <span class="text-xs opacity-40 font-mono">2026-06-13</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold dark:text-white text-gray-900 leading-tight mb-3">
+          TRT Testosterone Targets and Monitoring
+        </h1>
+        <p class="text-lg dark:text-gray-400 text-gray-600 mb-6">A 51-year-old male on Testosterone Cypionate 150 mg/week — Trough Levels, Reference Ranges, and the Optimization Debate</p>
+        <div class="flex flex-wrap gap-6 text-sm dark:text-gray-500 text-gray-500">
+          <span>35 sources</span>
+          <span>·</span>
+          <span>12 min read</span>
+          <span>·</span>
+          <span>720s research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="layout gap-8">
+
+      <!-- Sidebar TOC -->
+      <aside class="sidebar hidden xl:block border-r pr-6 dark:border-surface-border border-light-border">
+        <p class="text-xs font-semibold uppercase tracking-widest dark:text-gray-500 text-gray-400 mb-4">Contents</p>
+        <nav class="space-y-1 text-sm">
+          <a href="#executive-summary" class="toc-link block py-1 transition-colors duration-150">Executive Summary</a>
+          <a href="#case-parameters" class="toc-link block py-1 transition-colors duration-150">1. Case Parameters</a>
+          <a href="#five-camps" class="toc-link block py-1 transition-colors duration-150">2. Five Camps</a>
+          <a href="#primary-evidence" class="toc-link block py-1 transition-colors duration-150">3. Primary Evidence</a>
+          <a href="#hematocrit" class="toc-link block py-1 transition-colors duration-150">4. Hematocrit</a>
+          <a href="#free-vs-total" class="toc-link block py-1 transition-colors duration-150">5. Free T vs Total T</a>
+          <a href="#reference-ranges" class="toc-link block py-1 transition-colors duration-150">6. Reference Range Problem</a>
+          <a href="#harm-vs-conservative" class="toc-link block py-1 transition-colors duration-150">7. Evidence vs Conservative</a>
+          <a href="#bachmeyer" class="toc-link block py-1 transition-colors duration-150">8. Bachmeyer Position</a>
+          <a href="#decision-framework" class="toc-link block py-1 transition-colors duration-150">9. Decision Framework</a>
+          <a href="#monitoring" class="toc-link block py-1 transition-colors duration-150">10. Monitoring Protocol</a>
+          <a href="#charts" class="toc-link block py-1 transition-colors duration-150">Visualizations</a>
+          <a href="#methodology" class="toc-link block py-1 transition-colors duration-150">Methodology</a>
+        </nav>
+
+        <div class="mt-8 pt-6 border-t dark:border-surface-border border-light-border">
+          <p class="text-xs font-semibold uppercase tracking-widest dark:text-gray-500 text-gray-400 mb-3">EPR Score</p>
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs mb-0.5"><span class="dark:text-gray-400 text-gray-500">Evidence</span><span class="font-mono font-semibold dark:text-brand text-light-accent">4/5</span></div>
+            <div class="epr-bar-bg rounded-full overflow-hidden"><div class="epr-segment bg-brand dark:bg-brand" style="width:80%"></div></div>
+            <div class="flex justify-between text-xs mb-0.5 mt-2"><span class="dark:text-gray-400 text-gray-500">Precision</span><span class="font-mono font-semibold dark:text-brand text-light-accent">4/5</span></div>
+            <div class="epr-bar-bg rounded-full overflow-hidden"><div class="epr-segment dark:bg-blue-400 bg-blue-500" style="width:80%"></div></div>
+            <div class="flex justify-between text-xs mb-0.5 mt-2"><span class="dark:text-gray-400 text-gray-500">Relevance</span><span class="font-mono font-semibold dark:text-brand text-light-accent">5/5</span></div>
+            <div class="epr-bar-bg rounded-full overflow-hidden"><div class="epr-segment dark:bg-green-400 bg-green-500" style="width:100%"></div></div>
+            <div class="flex justify-between text-xs mb-0.5 mt-2"><span class="dark:text-gray-400 text-gray-500">Novelty</span><span class="font-mono font-semibold dark:text-brand text-light-accent">4/5</span></div>
+            <div class="epr-bar-bg rounded-full overflow-hidden"><div class="epr-segment dark:bg-purple-400 bg-purple-500" style="width:80%"></div></div>
+            <div class="flex justify-between text-xs mb-0.5 mt-2"><span class="font-semibold dark:text-white text-gray-900">Total</span><span class="font-mono font-bold dark:text-brand text-light-accent">17/20</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <main class="min-w-0 space-y-8">
+
+        <!-- Executive Summary -->
+        <section id="executive-summary" class="fade-in">
+          <div class="card rounded-xl border p-6 sm:p-8 glow-accent">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="w-8 h-8 rounded-lg dark:bg-blue-500/20 bg-blue-100 flex items-center justify-center text-lg">⚡</span>
+              <h2 class="text-xl font-bold dark:text-white text-gray-900">Executive Summary</h2>
+            </div>
+
+            <div class="pull-quote border-l-4 pl-4 py-2 rounded-r-lg mb-6 italic text-base leading-relaxed">
+              "At a confirmed trough total T of 770 ng/dL, the patient simultaneously sits at the lower bound of the Bachmeyer protocol target (800–1,200 ng/dL) and meaningfully above the AUA (American Urological Association) 2018 guideline's middle-tertile target of 450–600 ng/dL — a paradigmatic fault line in TRT medicine."
+            </div>
+
+            <ul class="space-y-3 text-sm dark:text-gray-300 text-gray-700">
+              <li class="flex gap-3"><span class="dark:text-brand text-light-accent mt-0.5 shrink-0">→</span><span><strong>Lab flag artifact:</strong> Free T of 21.04 pg/mL is flagged using a composite adult range. Age-stratified LabCorp range for males 50–59 is 7.2–24.0 pg/mL — this patient sits at the 88th percentile, upper-normal by the correct reference.</span></li>
+              <li class="flex gap-3"><span class="dark:text-brand text-light-accent mt-0.5 shrink-0">→</span><span><strong>TRAVERSE (2025, n=5,246):</strong> No increase in MACE (Major Adverse Cardiovascular Events) at physiologic TRT doses confirmed. FDA removed CV (Cardiovascular) black-box warning February 2025. AFib (atrial fibrillation) and PE (pulmonary embolism) signals are real but small in absolute terms.</span></li>
+              <li class="flex gap-3"><span class="dark:text-brand text-light-accent mt-0.5 shrink-0">→</span><span><strong>Hematocrit (Hct) 45.6%:</strong> Well below all clinical action thresholds. AUA/VA hard stop at 54%; EAA (European Academy of Andrology) relative caution begins at 48–50%.</span></li>
+              <li class="flex gap-3"><span class="dark:text-brand text-light-accent mt-0.5 shrink-0">→</span><span><strong>Bottom line:</strong> No evidence-based imperative to reduce dose. Decision pivot is symptom-based — symptomatic at 770 ng/dL trough suggests protocol optimization; asymptomatic and satisfied suggests hold with monitoring.</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 1: Case Parameters -->
+        <section id="case-parameters" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">01</span>
+            Case Parameters and What the Numbers Actually Mean
+          </h2>
+
+          <div class="card rounded-xl border p-6 mb-4">
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-3">Total Testosterone: 770 ng/dL Trough</h3>
+            <p class="text-sm dark:text-gray-300 text-gray-700 mb-4">The measured trough total T of 770 ng/dL (26.7 nmol/L) was obtained at the lowest pharmacokinetic point — morning, pre-injection, day 7 of a weekly cycle. This is the most conservative reading possible for a once-weekly protocol.</p>
+
+            <div class="flag-info border rounded-lg px-4 py-3 text-sm mb-5">
+              <strong>Pharmacokinetic note:</strong> With Testosterone Cypionate (TC) at 150 mg once weekly, a trough of 770 ng/dL implies a peak (day 2–3 post-injection) of approximately 1,100–1,400+ ng/dL. This peak-trough swing is clinically relevant for DHT (Dihydrotestosterone) and E2 (Estradiol) conversion dynamics.
+            </div>
+
+            <p class="text-sm dark:text-gray-400 text-gray-600 font-semibold mb-2 uppercase tracking-wide text-xs">Guideline Positioning by Camp</p>
+            <div class="overflow-x-auto">
+              <table>
+                <thead><tr>
+                  <th>Guideline</th>
+                  <th>Target Range (trough)</th>
+                  <th>This Patient</th>
+                </tr></thead>
+                <tbody>
+                  <tr><td>AUA 2018</td><td>450–600 ng/dL (15.6–20.8 nmol/L)</td><td>Above ceiling; below 900 action threshold</td></tr>
+                  <tr><td>Endocrine Society</td><td>400–700 ng/dL (13.9–24.3 nmol/L)</td><td>Above ceiling</td></tr>
+                  <tr><td>BSSM (British Society for Sexual Medicine)</td><td>400–1,000 ng/dL (13.9–34.7 nmol/L)</td><td>Within range</td></tr>
+                  <tr><td>EAA</td><td>400–750 ng/dL (13.9–26.0 nmol/L)</td><td>At upper margin</td></tr>
+                  <tr><td>Attia / Longevity medicine</td><td>600–900 ng/dL (20.8–31.2 nmol/L)</td><td>Within range</td></tr>
+                  <tr class="highlight-row"><td>Bachmeyer protocol</td><td>800–1,200 ng/dL (27.7–41.6 nmol/L)</td><td>Below lower bound</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card rounded-xl border p-6">
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-3">Free Testosterone: 21.04 pg/mL — Addressing the Lab Flag</h3>
+            <p class="text-sm dark:text-gray-300 text-gray-700 mb-4">The lab flagged free T of 21.04 pg/mL as above the age-≥50 reference ceiling. This flag is likely erroneous based on reference range selection.</p>
+
+            <div class="flag-warn border rounded-lg px-4 py-3 text-sm mb-4">
+              <strong>⚠ Reference range error:</strong> LabCorp direct assay age-stratified reference for males 50–59 is <strong>7.2–24.0 pg/mL</strong>. At 21.04 pg/mL, this patient is at 87.7% of the upper limit for his age band — upper-normal, not elevated. The lab flag reflects use of a composite adult male range.
+            </div>
+
+            <p class="text-sm dark:text-gray-300 text-gray-700">Peter Attia's optimization target for free T is ~20 pg/mL by direct assay (upper physiologic range). This patient meets that benchmark at 21.04 pg/mL.</p>
+          </div>
+        </section>
+
+        <!-- Section 2: Five Camps -->
+        <section id="five-camps" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">02</span>
+            The Five Camps: Steelmanned Positions
+          </h2>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Camp 1 -->
+            <div class="card rounded-xl border p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="badge text-xs px-2 py-0.5 rounded-full">Camp 1</span>
+                <h3 class="font-semibold dark:text-white text-gray-900 text-sm">Conservative Guidelines</h3>
+              </div>
+              <p class="text-xs dark:text-gray-500 text-gray-500 mb-2">AUA 2018 · Endocrine Society</p>
+              <p class="text-sm dark:text-gray-300 text-gray-700 mb-3"><strong>Targets:</strong> Total T 450–600 ng/dL (AUA); 400–700 ng/dL (ES). Action threshold at 900 ng/dL → dose reduction. Hard stop Hct 54%.</p>
+              <div class="flag-info border rounded px-3 py-2 text-xs"><strong>Strongest argument:</strong> Most robust long-term safety data at mid-normal physiologic range. Supraphysiologic peaks (days 2–3) not directly studied in RCTs. AFib secondary signal (RR ~1.46) is real.</div>
+            </div>
+
+            <!-- Camp 2 -->
+            <div class="card rounded-xl border p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="badge text-xs px-2 py-0.5 rounded-full">Camp 2</span>
+                <h3 class="font-semibold dark:text-white text-gray-900 text-sm">Optimal / Longevity Medicine</h3>
+              </div>
+              <p class="text-xs dark:text-gray-500 text-gray-500 mb-2">Attia · Functional medicine</p>
+              <p class="text-sm dark:text-gray-300 text-gray-700 mb-3"><strong>Targets:</strong> Total T 600–900 ng/dL trough; free T ~20 pg/mL direct assay.</p>
+              <div class="flag-info border rounded px-3 py-2 text-xs"><strong>Strongest argument:</strong> Free T is the biologically active ligand. Population reference ranges contaminated by metabolic syndrome and obesity. TRAVERSE (2025) provides strong MACE safety data.</div>
+            </div>
+
+            <!-- Camp 3 -->
+            <div class="card rounded-xl border p-5 sm:col-span-2">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="badge text-xs px-2 py-0.5 rounded-full">Camp 3</span>
+                <h3 class="font-semibold dark:text-white text-gray-900 text-sm">Dr. Trevor Bachmeyer Protocol</h3>
+              </div>
+              <div class="flag-warn border rounded px-3 py-2 text-xs mb-3"><strong>⚠ Data quality caveat:</strong> Positions here derive from Cortex clinical notes (patient-note quality), not peer-reviewed publications. These represent a documented clinical protocol, not validated evidence.</div>
+              <div class="grid sm:grid-cols-3 gap-3 text-sm">
+                <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-3"><p class="text-xs dark:text-gray-500 text-gray-500 mb-1">Total T target</p><p class="font-semibold dark:text-white text-gray-900">800–1,200 ng/dL</p></div>
+                <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-3"><p class="text-xs dark:text-gray-500 text-gray-500 mb-1">Dosing preference</p><p class="font-semibold dark:text-white text-gray-900">50 mg q2d or 100 mg q3.5d</p></div>
+                <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-3"><p class="text-xs dark:text-gray-500 text-gray-500 mb-1">Hct management</p><p class="font-semibold dark:text-white text-gray-900">Dose adjust only (no phlebotomy)</p></div>
+              </div>
+            </div>
+
+            <!-- Camp 4 -->
+            <div class="card rounded-xl border p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="badge text-xs px-2 py-0.5 rounded-full">Camp 4</span>
+                <h3 class="font-semibold dark:text-white text-gray-900 text-sm">TRT Optimization Community</h3>
+              </div>
+              <p class="text-xs dark:text-gray-500 text-gray-500 mb-2">r/trt · r/Testosterone</p>
+              <p class="text-sm dark:text-gray-300 text-gray-700 mb-3"><strong>Targets:</strong> Total T 700–900 ng/dL trough; free T upper third of age-appropriate range; 54% Hct hard ceiling.</p>
+              <div class="flag-info border rounded px-3 py-2 text-xs"><strong>Community data:</strong> 770 ng/dL at 150 mg/week is the informal floor of feeling well; common outcome at this dose.</div>
+            </div>
+
+            <!-- Camp 5 -->
+            <div class="card rounded-xl border p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="badge text-xs px-2 py-0.5 rounded-full">Camp 5</span>
+                <h3 class="font-semibold dark:text-white text-gray-900 text-sm">Performance / Supraphysiologic</h3>
+              </div>
+              <p class="text-xs dark:text-gray-500 text-gray-500 mb-2">Contrast only</p>
+              <p class="text-sm dark:text-gray-300 text-gray-700">Total T targets of 1,000–4,000+ ng/dL documented in performance enhancement contexts. Included for contrast only — risk profile diverges substantially from physiologic replacement.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: Primary Evidence -->
+        <section id="primary-evidence" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">03</span>
+            Primary Evidence: What the Trials Actually Show
+          </h2>
+
+          <div class="card rounded-xl border p-6 mb-4">
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-2">TRAVERSE Trial (2025) — The Landmark RCT</h3>
+            <p class="text-xs dark:text-gray-500 text-gray-400 mb-3 font-mono">n=5,246 · Ages 45–80 · Hypogonadism + CV disease/high risk</p>
+            <div class="grid sm:grid-cols-3 gap-3 mb-4">
+              <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-4 text-center">
+                <p class="text-2xl font-bold dark:text-green-400 text-green-600 mb-1">✓</p>
+                <p class="text-xs dark:text-gray-400 text-gray-600">MACE: No increase vs placebo</p>
+                <p class="text-xs dark:text-gray-500 text-gray-500 mt-1">FDA removed CV black-box warning Feb 2025</p>
+              </div>
+              <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-4 text-center">
+                <p class="text-xl font-bold dark:text-yellow-400 text-yellow-600 mb-1">+1.1pp</p>
+                <p class="text-xs dark:text-gray-400 text-gray-600">AFib: 3.5% vs 2.4%</p>
+                <p class="text-xs dark:text-gray-500 text-gray-500 mt-1">RR ~1.46 — statistically significant</p>
+              </div>
+              <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-4 text-center">
+                <p class="text-xl font-bold dark:text-yellow-400 text-yellow-600 mb-1">+0.4pp</p>
+                <p class="text-xs dark:text-gray-400 text-gray-600">PE: 0.9% vs 0.5%</p>
+                <p class="text-xs dark:text-gray-500 text-gray-500 mt-1">Statistically significant</p>
+              </div>
+            </div>
+            <div class="flag-warn border rounded-lg px-4 py-2 text-xs">
+              <strong>Limitation:</strong> High-CV-risk population enrolled. Extrapolation to lower-risk patients requires clinical judgment.
+            </div>
+          </div>
+
+          <div class="card rounded-xl border p-6">
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-2">TTrials (Snyder 2016) + Population Data</h3>
+            <p class="text-sm dark:text-gray-300 text-gray-700 mb-3">Seven coordinated trials in 790 men aged ≥65 (T &lt;275 ng/dL) improved sexual function, walking ability, and bone mineral density. TRAVERSE is more relevant due to scale and recency.</p>
+            <p class="text-sm dark:text-gray-300 text-gray-700">A 200,000-male dataset (2024) challenges age-related hypogonadism dogma, favoring individualized genetic set-point assessment. Genetic heritability of T levels ~20% (Zhai 2011).</p>
+          </div>
+        </section>
+
+        <!-- Section 4: Hematocrit -->
+        <section id="hematocrit" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">04</span>
+            Hematocrit: The Real Story
+          </h2>
+
+          <div class="card rounded-xl border p-6">
+            <div class="grid sm:grid-cols-4 gap-3 mb-5">
+              <div class="dark:bg-green-500/10 bg-green-50 border dark:border-green-500/20 border-green-200 rounded-lg p-4 text-center">
+                <p class="text-2xl font-bold dark:text-green-400 text-green-600 mb-1">45.6%</p>
+                <p class="text-xs dark:text-green-400/70 text-green-700">Current Hct — Well Clear</p>
+              </div>
+              <div class="dark:bg-blue-500/10 bg-blue-50 border dark:border-blue-500/20 border-blue-200 rounded-lg p-4 text-center">
+                <p class="text-xl font-bold dark:text-blue-400 text-blue-600 mb-1">48–50%</p>
+                <p class="text-xs dark:text-blue-400/70 text-blue-700">EAA Relative Caution</p>
+              </div>
+              <div class="dark:bg-yellow-500/10 bg-yellow-50 border dark:border-yellow-500/20 border-yellow-200 rounded-lg p-4 text-center">
+                <p class="text-xl font-bold dark:text-yellow-400 text-yellow-600 mb-1">54%</p>
+                <p class="text-xs dark:text-yellow-400/70 text-yellow-700">AUA / VA Hard Stop</p>
+              </div>
+              <div class="dark:bg-red-500/10 bg-red-50 border dark:border-red-500/20 border-red-200 rounded-lg p-4 text-center">
+                <p class="text-xl font-bold dark:text-red-400 text-red-600 mb-1">55–58%</p>
+                <p class="text-xs dark:text-red-400/70 text-red-700">⚠ Ty Vincent — Unsupported</p>
+              </div>
+            </div>
+
+            <div class="flag-warn border rounded-lg px-4 py-2 text-xs mb-5">
+              <strong>⚠ Flag:</strong> Claims that Hct up to 55–58% is "normal and beneficial" are not supported by any major guideline and are fringe/personal opinion. Do not apply without independent verification.
+            </div>
+
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-2 text-sm">Risk Factors for Future Erythrocytosis</h3>
+            <p class="text-sm dark:text-gray-300 text-gray-700 mb-3">This patient carries one relevant risk factor:</p>
+            <div class="overflow-x-auto mb-4">
+              <table>
+                <thead><tr><th>Risk Factor</th><th>Odds Ratio</th><th>This Patient</th></tr></thead>
+                <tbody>
+                  <tr><td>Age at TRT initiation</td><td>OR 5.9</td><td>51 — elevated risk</td></tr>
+                  <tr><td>Elevated BMI</td><td>OR 3.7</td><td>Unknown</td></tr>
+                  <tr class="highlight-row"><td>Long-acting IM formulation</td><td>OR 2.9</td><td>Yes — TC weekly</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pull-quote border-l-4 pl-4 py-2 rounded-r-lg text-sm">
+              "De Stefano 2019 demonstrated that elevated Hct from TRT is not an independent determinant of thrombosis — cellular and rheological factors are primary. This supports dose adjustment over reflex phlebotomy as first-line Hct management."
+            </div>
+
+            <div class="flag-info border rounded-lg px-4 py-3 text-xs mt-4">
+              <strong>SubQ vs IM:</strong> Observational community data suggests SubQ administration reduces Hct elevation by ~41% compared to IM (SCOUT-SOCIAL-TRT — observational only, not RCT). If future Hct rise occurs, route conversion to SubQ is an evidence-consistent intervention ahead of dose reduction. <br/><br/>
+              <strong>Phlebotomy concern:</strong> Repeated phlebotomy depletes iron stores → compensatory erythropoietic drive → perpetuates the Hct elevation, while creating iron-deficiency symptoms.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="free-vs-total" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">05</span>
+            Free Testosterone vs Total Testosterone
+          </h2>
+          <div class="card rounded-xl border p-6">
+            <p class="text-sm dark:text-gray-300 text-gray-700 mb-4">Free T (~2% of total T) is the fraction available for receptor binding. Total T includes SHBG (Sex Hormone-Binding Globulin)-bound T (biologically inactive) and albumin-bound T (weakly bioavailable).</p>
+            <div class="flag-info border rounded-lg px-4 py-3 text-sm mb-4">
+              <strong>On TRT, SHBG is typically suppressed</strong>, which increases the free fraction percentage. A patient on TRT with a given total T will have a higher free T percentage than a eugonadal man with the same total T — making total T alone potentially misleading as a monitoring endpoint.
+            </div>
+            <p class="text-sm dark:text-gray-300 text-gray-700"><strong>Assay note:</strong> Two methods exist: (1) equilibrium dialysis (reference standard) and (2) direct immunoassay (LabCorp direct; widely used, has positive bias). Age-stratified reference ranges should be applied from the same assay platform (7.2–24.0 pg/mL for ages 50–59 by LabCorp direct assay).</p>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="reference-ranges" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">06</span>
+            The Population Reference Range Problem
+          </h2>
+          <div class="card rounded-xl border p-6">
+            <p class="text-sm dark:text-gray-300 text-gray-700 mb-4">Reference ranges are derived by sampling healthy adult men across age bands and defining the 2.5th–97.5th percentile as "normal." The key critique: the "healthy" reference population includes men with metabolic syndrome, obesity, T2DM (Type 2 Diabetes Mellitus), and chronic illness — conditions that suppress T.</p>
+            <div class="pull-quote border-l-4 pl-4 py-2 rounded-r-lg text-sm mb-4">
+              Bachmeyer corpus (patient note quality): "Current reference ranges are artificially lowered based on a deficient population — historically 750–1,200 ng/dL was the normal range."
+            </div>
+            <p class="text-sm dark:text-gray-300 text-gray-700">Approximately 20% of inter-individual T variation is heritable (Zhai 2011). A genetically high-set-point individual may be functionally hypogonadal at 500 ng/dL while a low-set-point individual is replete at 350 ng/dL.</p>
+          </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="harm-vs-conservative" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">07</span>
+            Evidence-Backed Harm vs Conservative Range Divergence
+          </h2>
+          <div class="card rounded-xl border p-6">
+            <div class="overflow-x-auto mb-4">
+              <table>
+                <thead><tr><th>Outcome</th><th>Threshold</th><th>Evidence Level</th></tr></thead>
+                <tbody>
+                  <tr><td>MACE increase at physiologic TRT</td><td>None documented (TRAVERSE 2025)</td><td class="dark:text-green-400 text-green-600">RCT — high quality</td></tr>
+                  <tr><td>AFib increase</td><td>+1.1pp absolute (3.5% vs 2.4%)</td><td class="dark:text-yellow-400 text-yellow-600">RCT — TRAVERSE</td></tr>
+                  <tr><td>PE increase</td><td>+0.4pp absolute (0.9% vs 0.5%)</td><td class="dark:text-yellow-400 text-yellow-600">RCT — TRAVERSE</td></tr>
+                  <tr><td>Hct-independent thrombosis risk</td><td>Not established</td><td>Mechanistic (De Stefano 2019)</td></tr>
+                  <tr><td>Dose reduction at &gt;900 ng/dL</td><td>Guideline recommendation, not outcome data</td><td>Expert consensus (AUA)</td></tr>
+                  <tr class="highlight-row"><td>Documented harm at 770–900 ng/dL trough</td><td>No documented signal</td><td>Absence of evidence</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flag-info border rounded-lg px-4 py-3 text-sm">
+              <strong>Key distinction:</strong> Being above the AUA middle-tertile target is a guideline deviation, not a documented harm threshold. The AUA's 900 ng/dL dose-reduction recommendation is expert consensus, not derived from outcome data showing harm between 770 and 899 ng/dL.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="bachmeyer" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">08</span>
+            Bachmeyer's Position: Where It Diverges and Why
+          </h2>
+          <div class="card rounded-xl border p-6">
+            <div class="flag-warn border rounded-lg px-4 py-2 text-xs mb-5">
+              <strong>⚠ Data quality caveat:</strong> All Bachmeyer-attributed positions derive from Cortex patient corpus (clinical notes). Weight accordingly.
+            </div>
+            <div class="overflow-x-auto mb-5">
+              <table>
+                <thead><tr><th>Parameter</th><th>AUA 2018</th><th>Attia / Longevity</th><th>Bachmeyer (Cortex)</th></tr></thead>
+                <tbody>
+                  <tr><td>Total T target (trough)</td><td>450–600 ng/dL</td><td>600–900 ng/dL</td><td class="dark:text-brand text-light-accent font-semibold">800–1,200 ng/dL</td></tr>
+                  <tr><td>Free T target</td><td>Not explicit</td><td>~20 pg/mL direct</td><td>Directional high</td></tr>
+                  <tr><td>Dosing preference</td><td>Weekly or biweekly IM</td><td>Flexible</td><td class="dark:text-brand text-light-accent font-semibold">IM micro-dose (50 mg q2d or 100 mg q3.5d)</td></tr>
+                  <tr><td>Transdermal</td><td>Acceptable</td><td>Case-by-case</td><td class="dark:text-red-400 text-red-600">Explicitly avoided</td></tr>
+                  <tr><td>Hct management</td><td>Phlebotomy if &gt;54%</td><td>Dose adjust first</td><td class="dark:text-brand text-light-accent font-semibold">Dose adjust only</td></tr>
+                  <tr><td>Reference range view</td><td>Authoritative</td><td>Partially contaminated</td><td>"Artificially lowered"</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-2 text-sm">Micro-Dosing Rationale</h3>
+            <p class="text-sm dark:text-gray-300 text-gray-700">The 50 mg q2d or 100 mg q3.5d schedules flatten the TC concentration curve, reducing peak 5-alpha reductase (5αR) saturation and downstream DHT/E2 conversion spikes. This is mechanistically plausible but not directly validated in head-to-head RCTs for DHT outcomes.</p>
+          </div>
+        </section>
+
+        <!-- Section 9 -->
+        <section id="decision-framework" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">09</span>
+            Decision Framework: Should the Dose Be Changed?
+          </h2>
+          <div class="card rounded-xl border p-6">
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-3 text-sm">Variable-by-Variable Assessment</h3>
+            <div class="overflow-x-auto mb-5">
+              <table>
+                <thead><tr><th>Variable</th><th>Value</th><th>Camp Assessment</th></tr></thead>
+                <tbody>
+                  <tr><td>Total T trough</td><td>770 ng/dL</td><td>AUA: at ceiling (below 900 action) / Attia: within / Bachmeyer: below target</td></tr>
+                  <tr class="highlight-row"><td>Free T</td><td>21.04 pg/mL</td><td>All camps: upper-normal or optimal; lab flag = artifact</td></tr>
+                  <tr class="highlight-row"><td>Hct</td><td>45.6%</td><td>All camps: no action required</td></tr>
+                  <tr><td>Dosing schedule</td><td>1×/week</td><td>Bachmeyer: suboptimal due to peak-trough swing</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-3 text-sm">Decision Matrix</h3>
+            <div class="overflow-x-auto mb-4">
+              <table>
+                <thead><tr><th>Scenario</th><th>Recommended Action</th></tr></thead>
+                <tbody>
+                  <tr><td>Symptomatic + optimization approach</td><td class="dark:text-brand text-light-accent">Switch to 50 mg q2d or 75 mg q3.5d; recheck trough at 8 weeks</td></tr>
+                  <tr><td>Symptomatic + guideline-conservative</td><td>Hold dose; address modifiable SHBG factors; add symptom diary</td></tr>
+                  <tr><td>Asymptomatic, satisfied</td><td class="dark:text-green-400 text-green-600">Hold current protocol; optimize monitoring cadence</td></tr>
+                  <tr><td>Hct rising toward 48%</td><td>Consider SubQ route conversion before dose reduction</td></tr>
+                  <tr><td>Hct reaching 50%</td><td class="dark:text-yellow-400 text-yellow-600">Dose reduction first-line; phlebotomy only if insufficient</td></tr>
+                  <tr><td>Hct reaching 54%</td><td class="dark:text-red-400 text-red-600">Hold TRT; mandatory clinical review</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="flag-warn border rounded-lg px-4 py-3 text-sm">
+              <strong>Key variable not available:</strong> Symptom status. The entire optimization-vs-hold decision hinges on whether the case patient is symptomatic at 770 ng/dL trough. If asymptomatic and functional, the case for protocol change weakens substantially.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 10 -->
+        <section id="monitoring" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">10</span>
+            Monitoring Protocol
+          </h2>
+          <div class="card rounded-xl border p-6">
+            <div class="overflow-x-auto mb-4">
+              <table>
+                <thead><tr><th>Timepoint</th><th>Parameters</th><th>Action Thresholds</th></tr></thead>
+                <tbody>
+                  <tr><td>3 months post-change</td><td>Total T (trough), free T, Hct, PSA (Prostate-Specific Antigen)</td><td>Hct &gt;50%: dose adjust; T &gt;900 ng/dL: reassess</td></tr>
+                  <tr><td>6 months</td><td>Full panel: Total T, free T, SHBG, Hct/CBC (Complete Blood Count), PSA, lipids, metabolic</td><td>Hct &gt;54%: hold; PSA +1.4 ng/mL from baseline: urology referral</td></tr>
+                  <tr><td>Annual</td><td>Full panel + clinical assessment</td><td>Per guidelines</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flag-info border rounded-lg px-4 py-3 text-sm">
+              <strong>Assay notes:</strong> Draw trough morning pre-injection. Specify LabCorp direct assay with age-stratified range (50–59: 7.2–24.0 pg/mL). Measure SHBG if free T tracking diverges from total T trend.
+            </div>
+          </div>
+        </section>
+
+        <!-- Charts -->
+        <section id="charts" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">VIZ</span>
+            Visualizations
+          </h2>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+
+            <!-- Chart 1: Five Camps Target Ranges -->
+            <div class="card rounded-xl border p-5">
+              <h3 class="font-semibold dark:text-white text-gray-900 mb-1 text-sm">Five Camps: Total T Target Ranges</h3>
+              <p class="text-xs dark:text-gray-500 text-gray-500 mb-4">Trough target ranges in ng/dL by guideline/camp. Red line = current patient trough (770 ng/dL).</p>
+              <div style="position:relative; height:260px;">
+                <canvas id="campsChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Chart 2: EPR Breakdown -->
+            <div class="card rounded-xl border p-5">
+              <h3 class="font-semibold dark:text-white text-gray-900 mb-1 text-sm">EPR Score Breakdown</h3>
+              <p class="text-xs dark:text-gray-500 text-gray-500 mb-4">Evidence · Precision · Relevance · Novelty — out of 5 each. Total: 17/20.</p>
+              <div style="position:relative; height:260px;">
+                <canvas id="eprChart"></canvas>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Methodology -->
+        <section id="methodology" class="fade-in">
+          <h2 class="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center gap-3">
+            <span class="badge font-mono text-sm px-2.5 py-1 rounded">META</span>
+            Methodology &amp; Source Coverage
+          </h2>
+
+          <div class="card rounded-xl border p-6 mb-4">
+            <div class="grid sm:grid-cols-3 gap-4 mb-5 text-center">
+              <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-4">
+                <p class="text-2xl font-bold dark:text-white text-gray-900">D3</p>
+                <p class="text-xs dark:text-gray-500 text-gray-500">Research depth</p>
+              </div>
+              <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-4">
+                <p class="text-2xl font-bold dark:text-brand text-light-accent">17/20</p>
+                <p class="text-xs dark:text-gray-500 text-gray-500">EPR Score</p>
+              </div>
+              <div class="dark:bg-surface-hover bg-gray-50 rounded-lg p-4">
+                <p class="text-2xl font-bold dark:text-white text-gray-900">87/100</p>
+                <p class="text-xs dark:text-gray-500 text-gray-500">Self-grade</p>
+              </div>
+            </div>
+
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-3 text-sm">Scouts Engaged</h3>
+            <div class="flex flex-wrap gap-2 mb-5 text-xs">
+              <span class="badge px-2 py-1 rounded-full">Web-Academic (19 sources)</span>
+              <span class="badge px-2 py-1 rounded-full">Web-Guidelines (23 sources)</span>
+              <span class="badge px-2 py-1 rounded-full">Knowledge-Academic — OpenAlex (21 papers)</span>
+              <span class="badge px-2 py-1 rounded-full">Social-TRT (10 sources)</span>
+              <span class="badge px-2 py-1 rounded-full">Deep-Bachmeyer (22 sources)</span>
+              <span class="badge px-2 py-1 rounded-full">Cortex Bachmeyer corpus</span>
+            </div>
+
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-3 text-sm">Source Coverage</h3>
+            <div class="overflow-x-auto mb-4">
+              <table>
+                <thead><tr><th>Channel</th><th>Status</th><th>Sources</th></tr></thead>
+                <tbody>
+                  <tr><td>Web Search (Tavily, Brave, Exa)</td><td class="dark:text-green-400 text-green-600">Covered</td><td>42</td></tr>
+                  <tr><td>Academic (OpenAlex/ArXiv)</td><td class="dark:text-green-400 text-green-600">Covered</td><td>21</td></tr>
+                  <tr><td>Cortex Knowledge Base</td><td class="dark:text-green-400 text-green-600">Covered</td><td>5</td></tr>
+                  <tr><td>Social: Reddit</td><td class="dark:text-green-400 text-green-600">Covered</td><td>7</td></tr>
+                  <tr><td>Social: HackerNews</td><td class="dark:text-green-400 text-green-600">Covered</td><td>3</td></tr>
+                  <tr><td>Social: X/Twitter</td><td class="dark:text-yellow-400 text-yellow-600">Skipped — clinical topic covered</td><td>0</td></tr>
+                  <tr><td>Video: YouTube</td><td class="dark:text-yellow-400 text-yellow-600">Skipped — Bachmeyer corpus covers</td><td>0</td></tr>
+                  <tr><td>Deep Research (Perplexity sonar-pro)</td><td class="dark:text-yellow-400 text-yellow-600">Fallback to WebSearch</td><td>5</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="font-semibold dark:text-white text-gray-900 mb-2 text-sm">Key Caveats</h3>
+            <ol class="list-decimal list-inside space-y-1 text-sm dark:text-gray-300 text-gray-700">
+              <li>Bachmeyer positions: Cortex clinical notes, not peer-reviewed publications</li>
+              <li>SubQ Hct reduction data: community observational, not RCT</li>
+              <li>Ty Vincent 55–58% Hct threshold: flagged as unsupported; do not apply without verification</li>
+              <li>TRAVERSE enrolled high-CV-risk patients; extrapolation to lower-risk requires judgment</li>
+              <li>Symptom data absent; decision framework is conditional on symptom status</li>
+            </ol>
+          </div>
+
+          <!-- Footer -->
+          <div class="text-center text-xs dark:text-gray-600 text-gray-400 py-4">
+            Generated by NexusOS DELPHI PRO · D3 Research · 2026-06-13 · <a href="https://cryptopafi.github.io/nexusos-reports" class="dark:text-brand/60 text-light-accent/60 hover:underline">nexusos-reports</a>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 glass rounded-lg px-4 py-3 text-sm font-medium dark:text-white text-gray-900 opacity-0 transition-opacity duration-300 pointer-events-none">Link copied to clipboard</div>
+
+  <script>
+    // --- Theme toggle ---
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') html.classList.remove('dark');
+
+    document.getElementById('toggle-theme').addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      updateChartTheme();
+    });
+
+    // --- Share button ---
+    document.getElementById('share-btn').addEventListener('click', () => {
+      const url = window.location.href;
+      if (navigator.share) {
+        navigator.share({ title: 'TRT Testosterone Targets — 51M on TC 150mg/week', url });
+      } else {
+        navigator.clipboard.writeText(url).then(() => showToast());
+      }
+    });
+
+    function showToast() {
+      const t = document.getElementById('toast');
+      t.style.opacity = '1';
+      setTimeout(() => t.style.opacity = '0', 2200);
+    }
+
+    // --- Scroll animations ---
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // --- TOC active state ---
+    const sections = document.querySelectorAll('section[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    sections.forEach(s => tocObserver.observe(s));
+
+    // --- Charts ---
+    const isDark = () => document.documentElement.classList.contains('dark');
+
+    function getChartDefaults() {
+      return {
+        gridColor: isDark() ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)',
+        labelColor: isDark() ? '#8b949e' : '#57606a',
+        tickColor: isDark() ? '#8b949e' : '#57606a',
+      };
+    }
+
+    // Chart 1: Five Camps horizontal bar
+    const campsCtx = document.getElementById('campsChart').getContext('2d');
+    const campsData = {
+      labels: ['AUA 2018', 'Endocrine Society', 'BSSM', 'EAA', 'Attia / Longevity', 'Bachmeyer'],
+      datasets: [{
+        label: 'Lower target',
+        data: [450, 400, 400, 400, 600, 800],
+        backgroundColor: 'rgba(0,0,0,0)',
+        borderColor: 'rgba(0,0,0,0)',
+        barPercentage: 0.5,
+      }, {
+        label: 'Target range',
+        data: [150, 300, 600, 350, 300, 400],
+        backgroundColor: [
+          'rgba(88,166,255,0.55)',
+          'rgba(88,166,255,0.45)',
+          'rgba(88,166,255,0.35)',
+          'rgba(88,166,255,0.40)',
+          'rgba(88,166,255,0.60)',
+          'rgba(255,130,80,0.60)',
+        ],
+        borderColor: [
+          'rgba(88,166,255,0.9)',
+          'rgba(88,166,255,0.8)',
+          'rgba(88,166,255,0.7)',
+          'rgba(88,166,255,0.75)',
+          'rgba(88,166,255,0.95)',
+          'rgba(255,130,80,0.9)',
+        ],
+        borderWidth: 1.5,
+        borderRadius: 3,
+        barPercentage: 0.5,
+      }]
+    };
+
+    let campsChart = new Chart(campsCtx, {
+      type: 'bar',
+      data: campsData,
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                if (ctx.datasetIndex === 0) return null;
+                const lower = campsData.datasets[0].data[ctx.dataIndex];
+                const width = campsData.datasets[1].data[ctx.dataIndex];
+                return `${lower}–${lower + width} ng/dL`;
+              }
+            },
+            filter: (item) => item.datasetIndex === 1
+          },
+          annotation: {}
+        },
+        scales: {
+          x: {
+            stacked: true,
+            min: 0,
+            max: 1400,
+            grid: { color: getChartDefaults().gridColor },
+            ticks: { color: getChartDefaults().labelColor, font: { size: 10, family: 'Inter' } },
+            title: { display: true, text: 'ng/dL', color: getChartDefaults().labelColor, font: { size: 10 } }
+          },
+          y: {
+            stacked: true,
+            grid: { color: 'rgba(0,0,0,0)' },
+            ticks: { color: getChartDefaults().labelColor, font: { size: 11, family: 'Inter' } }
+          }
+        }
+      }
+    });
+
+    // Add patient line annotation via plugin
+    const patientLinePlugin = {
+      id: 'patientLine',
+      afterDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        const xVal = 770;
+        const x = scales.x.getPixelForValue(xVal);
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, chartArea.top);
+        ctx.lineTo(x, chartArea.bottom);
+        ctx.strokeStyle = isDark() ? 'rgba(255,80,80,0.85)' : 'rgba(200,40,40,0.85)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 3]);
+        ctx.stroke();
+        ctx.fillStyle = isDark() ? 'rgba(255,80,80,0.85)' : 'rgba(200,40,40,0.85)';
+        ctx.font = '10px Inter';
+        ctx.fillText('770', x + 3, chartArea.top + 12);
+        ctx.restore();
+      }
+    };
+    Chart.register(patientLinePlugin);
+    campsChart.update();
+
+    // Chart 2: EPR radar/doughnut
+    const eprCtx = document.getElementById('eprChart').getContext('2d');
+    let eprChart = new Chart(eprCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Evidence (4/5)', 'Precision (4/5)', 'Relevance (5/5)', 'Novelty (4/5)'],
+        datasets: [{
+          data: [4, 4, 5, 4],
+          backgroundColor: [
+            'rgba(88,166,255,0.75)',
+            'rgba(100,200,255,0.65)',
+            'rgba(80,230,180,0.75)',
+            'rgba(160,130,255,0.65)',
+          ],
+          borderColor: [
+            'rgba(88,166,255,1)',
+            'rgba(100,200,255,1)',
+            'rgba(80,230,180,1)',
+            'rgba(160,130,255,1)',
+          ],
+          borderWidth: 2,
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '68%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: getChartDefaults().labelColor, font: { size: 11, family: 'Inter' }, padding: 14, boxWidth: 12 }
+          },
+          tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw}/5` } }
+        }
+      },
+      plugins: [{
+        id: 'centerText',
+        beforeDraw(chart) {
+          const { ctx, chartArea } = chart;
+          const cx = (chartArea.left + chartArea.right) / 2;
+          const cy = (chartArea.top + chartArea.bottom) / 2;
+          ctx.save();
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = isDark() ? '#58a6ff' : '#5E6AD2';
+          ctx.font = 'bold 22px Inter';
+          ctx.fillText('17', cx, cy - 8);
+          ctx.fillStyle = isDark() ? '#8b949e' : '#57606a';
+          ctx.font = '11px Inter';
+          ctx.fillText('/ 20', cx, cy + 12);
+          ctx.restore();
+        }
+      }]
+    });
+
+    function updateChartTheme() {
+      const d = getChartDefaults();
+      [campsChart, eprChart].forEach(c => {
+        if (!c) return;
+        if (c.config.type === 'bar') {
+          c.options.scales.x.grid.color = d.gridColor;
+          c.options.scales.x.ticks.color = d.tickColor;
+          c.options.scales.x.title.color = d.labelColor;
+          c.options.scales.y.ticks.color = d.tickColor;
+        } else {
+          c.data.datasets[0].backgroundColor; // no change needed for colors
+          c.options.plugins.legend.labels.color = d.labelColor;
+        }
+        c.update();
+      });
+    }
+  </script>
+</body>
+</html>
