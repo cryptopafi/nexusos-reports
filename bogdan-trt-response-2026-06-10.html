@@ -1,272 +1,276 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Bogdan (M, 51y) — TRT-Response Bloodwork + Trend</title>
-<meta property="og:title" content="Bogdan (M, 51y) — TRT-Response Bloodwork + Trend">
-<meta property="og:description" content="TRT week-5 response panel + 3-draw longitudinal trend + Bachmeyer protocol update.">
+<title>Bogdan (M, 51y) — TRT-Response Bloodwork + Trend (v2)</title>
+<meta property="og:title" content="Bogdan (M, 51y) — TRT-Response Bloodwork + Trend (v2)">
+<meta property="og:description" content="TRT week-5 trough response, 3-draw longitudinal trend, and protocol decisions (v2).">
 <meta property="og:type" content="article">
 <script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:'class'}</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--accent:#22c55e;--accent-dim:rgba(34,197,94,0.15);}
-*{font-family:'Inter',sans-serif;}
-code,.mono{font-family:'JetBrains Mono',monospace;}
-html{scroll-behavior:smooth;}
-body{background:#0A0A0F;color:#e6e6ea;transition:background .3s,color .3s;}
-html.light body{background:#fafafa;color:#1a1a22;}
-.glass{background:rgba(17,17,24,0.7);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.07);}
-html.light .glass{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.07);}
-.card{background:#111118;border:1px solid rgba(255,255,255,0.06);}
-html.light .card{background:#ffffff;border:1px solid rgba(0,0,0,0.06);}
-.accent{color:var(--accent);}
-.accent-bg{background:var(--accent);}
-.glow{box-shadow:0 0 40px -8px var(--accent-dim);}
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-a.toclink{color:#9aa0aa;transition:color .2s;}
-a.toclink:hover{color:var(--accent);}
-html.light a.toclink{color:#5a6068;}
-.flag-red{color:#ef4444;}.flag-orange{color:#f97316;}.flag-yellow{color:#eab308;}.flag-green{color:#22c55e;}
-table{border-collapse:collapse;width:100%;}
-th,td{padding:8px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.07);font-size:14px;}
-html.light th,html.light td{border-bottom:1px solid rgba(0,0,0,0.08);}
-th{color:var(--accent);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em;}
-.plain{border-left:3px solid var(--accent);background:var(--accent-dim);}
-@media print{
-  html{--accent:#16a34a;}
-  body,html.light body{background:#fff;color:#000;}
-  .glass,.card{background:#fff!important;border:1px solid #ccc!important;box-shadow:none!important;}
-  nav,.no-print,#toggleBtn,#shareBtn{display:none!important;}
-  .fade-in{opacity:1!important;transform:none!important;}
-  section{page-break-inside:avoid;}
-  @page{size:A4;margin:1.4cm;}
-}
+  :root{
+    --bg:#0A0A0F; --card:#111118; --accent:#22c55e; --text:#e6e6ec; --muted:#9aa0aa;
+    --glass:rgba(17,17,24,0.7); --border:rgba(255,255,255,0.08);
+    --good:#22c55e; --warn:#eab308; --bad:#ef4444; --watch:#f59e0b;
+  }
+  html[data-theme="light"]{
+    --bg:#fafafa; --card:#ffffff; --accent:#16a34a; --text:#1a1a1f; --muted:#5b626c;
+    --glass:rgba(255,255,255,0.7); --border:rgba(0,0,0,0.08);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;margin:0;line-height:1.6;transition:background .3s,color .3s}
+  code,.mono{font-family:'JetBrains Mono',monospace}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  .glass{background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:16px}
+  a{color:var(--accent)}
+  .accent{color:var(--accent)}
+  .hero{padding:64px 0 28px;border-bottom:1px solid var(--border)}
+  .badge{display:inline-block;font-size:12px;font-weight:600;padding:4px 11px;border-radius:999px;background:rgba(34,197,94,.12);color:var(--accent);border:1px solid rgba(34,197,94,.3)}
+  h1{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px}
+  h2{font-size:23px;font-weight:700;letter-spacing:-.01em;margin:0 0 14px}
+  h3{font-size:16px;font-weight:700;margin:18px 0 8px}
+  .sub{color:var(--muted);font-size:15px}
+  .layout{display:grid;grid-template-columns:240px 1fr;gap:30px;padding:34px 0 80px}
+  @media(max-width:900px){.layout{grid-template-columns:1fr}.toc{position:static!important;display:none}}
+  .toc{position:sticky;top:24px;align-self:start;font-size:14px}
+  .toc a{display:block;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px;border-left:2px solid transparent}
+  .toc a:hover{color:var(--text);background:rgba(34,197,94,.06);border-left-color:var(--accent)}
+  section{margin-bottom:30px;padding:24px}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--border)}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+  tr:hover td{background:rgba(34,197,94,.04)}
+  .pill{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .p-good{background:rgba(34,197,94,.14);color:var(--good)}
+  .p-warn{background:rgba(234,179,8,.14);color:var(--warn)}
+  .p-bad{background:rgba(239,68,68,.14);color:var(--bad)}
+  .p-watch{background:rgba(245,158,11,.14);color:var(--watch)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  .chartbox{padding:14px 10px 6px;height:280px}
+  .chartbox canvas{max-height:240px}
+  .plain{background:rgba(34,197,94,.07);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;margin:10px 0;font-size:14.5px}
+  .plain b{color:var(--accent)}
+  .callout{border-radius:12px;padding:16px 18px;margin:14px 0}
+  .c-bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3)}
+  .c-good{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3)}
+  .c-note{background:rgba(234,179,8,.07);border:1px solid rgba(234,179,8,.25)}
+  ol li,ul li{margin:8px 0}
+  .toolbar{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:50}
+  .btn{cursor:pointer;font-size:13px;font-weight:600;padding:7px 13px;border-radius:10px;border:1px solid var(--border);background:var(--glass);color:var(--text);backdrop-filter:blur(8px)}
+  .btn:hover{border-color:var(--accent)}
+  .metarow{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .metacard{flex:1;min-width:130px;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--border)}
+  .metacard .k{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .metacard .v{font-size:18px;font-weight:700;margin-top:3px}
+  .boundary{font-size:13.5px;color:var(--muted);border:1px dashed var(--border);border-radius:10px;padding:12px 16px;margin-top:16px}
+  @media print{
+    .toolbar,.toc{display:none!important}
+    body{background:#fff;color:#000}
+    .layout{grid-template-columns:1fr;padding:0}
+    section,.glass{break-inside:avoid;border:1px solid #ddd;background:#fff}
+    .chartbox{break-inside:avoid}
+  }
 </style>
 </head>
 <body>
-<nav class="glass sticky top-0 z-50 px-4 sm:px-8 py-3 flex items-center justify-between">
-  <div class="flex items-center gap-2">
-    <span class="w-2.5 h-2.5 rounded-full accent-bg inline-block"></span>
-    <span class="font-semibold text-sm sm:text-base">NexusOS Health</span>
-    <span class="text-xs text-gray-500 hidden sm:inline">· Bachmeyer-primary</span>
+<div class="toolbar">
+  <button class="btn" id="themeBtn">☀︎ / ☾</button>
+  <button class="btn" id="shareBtn">Share</button>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="badge">NexusOS Health · Tier 2 · v2 corrected</span>
+    <h1>Bogdan (M, 51y) — TRT-Response Bloodwork <span class="accent">+ Longitudinal Trend</span></h1>
+    <p class="sub">Patient: <b>Bogdan</b>, M, 51y · Lab bulletin (ref withheld) · collected at AM trough (pre-weekly-injection)</p>
+    <p class="sub">Context: ~Week 5 of TRT (Testosterone Cypionate 150 mg/wk) + Tesamorelin 2 mg 5-on/2-off. Framework: Dr. Trevor Bachmeyer NLM (<code>cb9cf1fd</code> + <code>1eef6220</code>) + Delphi D3 cross-check (EPR 17/20, <code>6ec5ef99</code>).</p>
+    <div class="metarow">
+      <div class="metacard"><div class="k">Total T (trough)</div><div class="v accent">770 ng/dL</div></div>
+      <div class="metacard"><div class="k">Free T (trough)</div><div class="v accent">21.04 pg/mL</div></div>
+      <div class="metacard"><div class="k">Estradiol</div><div class="v">27.1 pg/mL</div></div>
+      <div class="metacard"><div class="k">IGF-1</div><div class="v" style="color:var(--bad)">240 ng/mL</div></div>
+      <div class="metacard"><div class="k">TRT decision</div><div class="v accent">HOLD</div></div>
+    </div>
+    <div class="boundary">⚠️ <b>Clinical boundary.</b> Informational decision-support, not a diagnosis or prescription. Thresholds are standard lab ranges or Bachmeyer-cited. The attending physician/prescriber decides all dosing. <b>v2 — corrected 2026-06-13</b> after Delphi D3 testosterone research + patient discussion (supersedes the v1 "reduce TRT" reading).</div>
   </div>
-  <div class="flex items-center gap-2">
-    <button id="shareBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:opacity-80">Share</button>
-    <button id="toggleBtn" class="text-xs px-3 py-1.5 rounded-lg glass hover:opacity-80">🌙 / ☀️</button>
-  </div>
-</nav>
+</div>
 
-<div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-8">
-  <main class="min-w-0">
+<div class="wrap">
+<div class="layout">
+  <nav class="toc glass" style="padding:14px 10px">
+    <a href="#summary">Executive Summary</a>
+    <a href="#testosterone">Testosterone — all units</a>
+    <a href="#panel">New Panel — flag vs read</a>
+    <a href="#trend">Longitudinal Trend</a>
+    <a href="#charts">Trend Charts</a>
+    <a href="#decisions">Decisions & Intel</a>
+    <a href="#lipids">Biggest Gap — Lipids</a>
+    <a href="#safety">Safety Items Closed</a>
+    <a href="#recheck">Recheck Plan</a>
+  </nav>
 
-    <header class="mb-10 fade-in">
-      <div class="text-xs accent font-mono mb-2 uppercase tracking-wider">TRT Response Panel · v1</div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-3">Bogdan (M, 51y) — TRT-Response Bloodwork + Trend</h1>
-      <p class="text-gray-400 text-sm mb-5">M, 51y · lab bulletin, ref withheld · collected <span class="mono">10/06/2026 08:30</span> · ~Week 5 TRT</p>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div class="card rounded-xl p-4 glow">
-          <div class="text-2xl font-bold flag-red">~770</div>
-          <div class="text-xs text-gray-400 mt-1">Total-T ng/dL (trough, over)</div>
-        </div>
-        <div class="card rounded-xl p-4">
-          <div class="text-2xl font-bold flag-green">27.1</div>
-          <div class="text-xs text-gray-400 mt-1">Estradiol pg/mL (recovered)</div>
-        </div>
-        <div class="card rounded-xl p-4">
-          <div class="text-2xl font-bold flag-red">240</div>
-          <div class="text-xs text-gray-400 mt-1">IGF-1 ng/mL (over range)</div>
-        </div>
-        <div class="card rounded-xl p-4">
-          <div class="text-2xl font-bold flag-red">110</div>
-          <div class="text-xs text-gray-400 mt-1">Glucose mg/dL (impaired)</div>
-        </div>
-      </div>
-      <div class="mt-5 plain rounded-r-lg p-4 text-sm">
-        ⚠️ <strong>Clinical boundary.</strong> Informational decision-support, not a diagnosis or prescription. Thresholds are standard lab ranges or Bachmeyer-cited. The attending physician/prescriber decides all dosing.
-      </div>
-    </header>
+  <main>
+    <section id="summary" class="glass">
+      <h2>Executive Summary — the story this panel tells</h2>
+      <p>TRT is <b>working well</b>: testosterone went from a near-floor crash (264 ng/dL in March) to a <b class="accent">healthy 770 ng/dL at trough</b>, and — importantly — <b>estradiol recovered on its own</b> (1.0 → 27 pg/mL), proving the earlier <i>no-aromatase-inhibitor</i> call was right. The lab flagged T and free-T as "high," but a multi-framework review shows that's a <b>conservative population-ceiling artifact, not a real over-treatment</b> — <b class="accent">no dose reduction is warranted.</b> The one genuine watch-item is the <b>GH axis</b>: Tesamorelin drove <b>IGF-1 over range (240)</b>, and that (plus draw-timing) explains the mild glucose/HOMA drift — so <b>Tesamorelin is being stopped</b> and the GH axis paused for a clean re-read. Methylation is fixed. The biggest <i>untracked</i> risk — <b>lipids</b> — wasn't on this panel and needs to be.</p>
+    </section>
 
-    <section id="summary" class="mb-10 fade-in">
-      <h2 class="text-2xl font-bold mb-3">Executive Summary — the story this panel tells</h2>
-      <div class="card rounded-xl p-5 text-[15px] leading-relaxed text-gray-300">
-        TRT is <strong>working and then some</strong>: testosterone has gone from a near-floor crash (2.64 ng/mL in March) to <strong>slightly over the top of range now</strong>, and — importantly — <strong>estradiol fully recovered on its own</strong> (1.0 → 27 pg/mL), proving the earlier <em>no-aromatase-inhibitor</em> decision was correct. The new watch-items are all <strong>dose-driven and connected</strong>: free-T is supraphysiologic, <strong>IGF-1 jumped over range</strong> (the new growth-hormone peptides), and <strong>fasting glucose + HOMA are creeping up</strong> — Bachmeyer's exact warning about pushing the GH/IGF-1 axis too hard. Hematocrit is climbing but still in range. The methylation problem from March is <strong>fixed</strong>.
+    <section id="testosterone" class="glass">
+      <h2>Testosterone — all units <span class="sub">(the contested numbers)</span></h2>
+      <div class="grid2">
+        <div>
+          <h3>Total testosterone</h3>
+          <table>
+            <tr><th>Draw</th><th>nmol/L</th><th>ng/dL</th><th>ng/mL</th></tr>
+            <tr><td>2025-12-31</td><td>16.34</td><td>471</td><td>4.71</td></tr>
+            <tr><td>2026-03-25 (crash)</td><td>9.15</td><td>264</td><td>2.64</td></tr>
+            <tr><td><b>2026-06-10 (trough)</b></td><td><b>26.7</b></td><td><b>770</b></td><td><b>7.70</b></td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>Free testosterone</h3>
+          <table>
+            <tr><th>Draw</th><th>pg/mL</th><th>ng/dL</th><th>pmol/L</th></tr>
+            <tr><td>2025-12-31</td><td>19.3</td><td>1.93</td><td>66.9</td></tr>
+            <tr><td>2026-03-25 (crash)</td><td>6.54</td><td>0.65</td><td>22.7</td></tr>
+            <tr><td><b>2026-06-10 (trough)</b></td><td><b>21.04</b></td><td><b>2.10</b></td><td><b>72.9</b></td></tr>
+          </table>
+        </div>
       </div>
     </section>
 
-    <section class="mb-10 fade-in">
-      <div class="rounded-xl p-5 glow" style="background:var(--accent-dim);border:1px solid var(--accent);">
-        <div class="text-xs accent font-mono uppercase tracking-wider mb-1">Trough confirmed · titration rule</div>
-        <p class="text-[15px] leading-relaxed">
-          The draw was a true <strong>trough</strong> (morning, before the weekly injection — the week's lowest point), yet Total-T ~770 ng/dL and Free-T 21 are already above range. Per the titration rule (<span class="mono">trough &gt;700 → −10–20 mg/wk</span>), a <strong>dose reduction to ~130 mg/wk is now indicated</strong>, reinforced by the climbing hematocrit. <strong>Do NOT escalate.</strong>
-        </p>
+    <section id="panel" class="glass">
+      <h2>New Panel — flag vs. real-world read</h2>
+      <table>
+        <tr><th>Marker</th><th>Value</th><th>Lab flag</th><th>Real-world read</th></tr>
+        <tr><td>Total T (trough)</td><td>770 ng/dL (26.7 nmol/L)</td><td><span class="pill p-warn">High (age ≥50)</span></td><td><b>Not over by harm standards</b> — below AUA's 900 reduction trigger; within Attia/BSSM/TRT-clinic ranges; <b>below Bachmeyer's 800–1,200 floor</b></td></tr>
+        <tr><td>Free T (trough)</td><td>21.04 pg/mL</td><td><span class="pill p-warn">High</span></td><td><b>88th pct of the correct age-50–59 band (7.2–24.0)</b> — upper-normal, not high (lab used a composite range)</td></tr>
+        <tr><td>IGF-1</td><td>240 ng/mL</td><td><span class="pill p-bad">High (76.7–203)</span></td><td>🔴 <b>Real</b> — Tesamorelin effect; over range</td></tr>
+        <tr><td>Glucose (fasting)</td><td>110 mg/dL (6.1 mmol/L)</td><td><span class="pill p-warn">High (IFG)</span></td><td>⚠️ Partly a Tesamorelin/draw-timing artifact</td></tr>
+        <tr><td>HOMA</td><td>2.0</td><td><span class="pill p-warn">Borderline</span></td><td>⚠️ Driven by the glucose; insulin (7.3) is fine</td></tr>
+        <tr><td>Hematocrit</td><td>47.2 %</td><td><span class="pill p-good">In-range</span></td><td>🟡 Below all action thresholds (caution 48–50, hard-stop 54)</td></tr>
+        <tr><td>B12</td><td>935 pg/mL</td><td><span class="pill p-warn">High (over-supp)</span></td><td>Harmless (no toxicity ceiling) → ease to maintenance</td></tr>
+        <tr><td>hs-CRP</td><td>1.57 mg/L</td><td><span class="pill p-warn">Moderate</span></td><td>🟡 Mild uptick; cardio-relevant w/ lipids</td></tr>
+        <tr><td>Eosinophils (abs)</td><td>0</td><td><span class="pill p-watch">Low</span></td><td>Minor (was 11% in 2025 — big swing)</td></tr>
+      </table>
+      <p class="sub"><b>In range:</b> Estradiol 99.6 pmol/L (~27.1 pg/mL) ✅ · Cortisol AM 411 ✅ · Homocysteine 7.92 ✅ · SHBG 27.2 ✅ · Folate 8.6 ✅ · Insulin 7.3 ✅ · Hgb 15.4 · RBC 5.57 · WBC 8.25 · Platelets 314.</p>
+    </section>
+
+    <section id="trend" class="glass">
+      <h2>📈 Longitudinal Trend — cross-referenced across 3 draws</h2>
+      <table>
+        <tr><th>Marker</th><th>2025-12-31</th><th>2026-03-25 (crash)</th><th>2026-06-10 (wk5)</th><th>Read</th></tr>
+        <tr><td><b>Total T</b></td><td>471 ng/dL</td><td>264 (floor)</td><td><b>770 ng/dL</b></td><td>✅ TRT restored to a healthy level</td></tr>
+        <tr><td><b>Free T</b></td><td>19.3 pg/mL</td><td>6.54 (crash)</td><td><b>21.04</b></td><td>✅ Upper-normal (age-band), not "high"</td></tr>
+        <tr><td><b>Estradiol</b></td><td>27 pg/mL</td><td><b>1.0 (critical)</b></td><td><b>27.1</b></td><td>✅ Recovered naturally — AI correctly avoided</td></tr>
+        <tr><td><b>IGF-1</b></td><td>140</td><td>140</td><td><b>240 (HIGH)</b></td><td>⚠️ Tesamorelin effect</td></tr>
+        <tr><td><b>Glucose</b></td><td>101</td><td>—</td><td><b>110</b></td><td>⚠️ Partly Tesa/timing artifact</td></tr>
+        <tr><td><b>HOMA</b></td><td>0.42</td><td>(ins 11.5)</td><td><b>2.0</b></td><td>⚠️ Glucose-driven</td></tr>
+        <tr><td><b>Hematocrit</b></td><td>47.7</td><td>45.6</td><td><b>47.2</b></td><td>🟡 Watch, below thresholds</td></tr>
+        <tr><td><b>Homocysteine</b></td><td>—</td><td><b>14.68 (H)</b></td><td><b>7.92</b></td><td>✅ Methylation FIXED</td></tr>
+        <tr><td><b>B12</b></td><td>220 (low)</td><td>220</td><td><b>935</b></td><td>✅ Corrected (ease dose)</td></tr>
+        <tr><td><b>hs-CRP</b></td><td>—</td><td>0.66</td><td><b>1.57</b></td><td>⚠️ Mild uptick</td></tr>
+      </table>
+    </section>
+
+    <section id="charts" class="glass">
+      <h2>Trend Charts <span class="sub">— Dec-25 / Mar-26 / Jun-26</span></h2>
+      <div class="grid2">
+        <div class="chartbox glass"><canvas id="chTotalT"></canvas></div>
+        <div class="chartbox glass"><canvas id="chFreeT"></canvas></div>
+        <div class="chartbox glass"><canvas id="chE2"></canvas></div>
+        <div class="chartbox glass"><canvas id="chIGF"></canvas></div>
+        <div class="chartbox glass"><canvas id="chGlu"></canvas></div>
+        <div class="chartbox glass"><canvas id="chHct"></canvas></div>
       </div>
     </section>
 
-    <section id="flagged" class="mb-10 fade-in">
-      <h2 class="text-2xl font-bold mb-3">New Panel — Flagged</h2>
-      <div class="card rounded-xl overflow-x-auto">
-        <table>
-          <thead><tr><th>Marker</th><th>Value</th><th>Unit</th><th>Ref</th><th>Flag</th></tr></thead>
-          <tbody>
-            <tr><td>Total Testosterone</td><td>26.7 (~770 ng/dL)</td><td>nmol/L</td><td>≥50y: 6.69–25.7</td><td class="flag-red">🔴 High (just over)</td></tr>
-            <tr><td>Free Testosterone</td><td>21.04</td><td>pg/mL</td><td>50–59y: 7.2–13.9</td><td class="flag-red">🔴 High</td></tr>
-            <tr><td>IGF-1 (somatomedin C)</td><td>240</td><td>ng/mL</td><td>76.7–203</td><td class="flag-red">🔴 High</td></tr>
-            <tr><td>Glucose (fasting)</td><td>110</td><td>mg/dL</td><td>60–99</td><td class="flag-red">🔴 High (impaired)</td></tr>
-            <tr><td>HOMA index</td><td>2.0</td><td>—</td><td>&lt;2</td><td class="flag-orange">🟠 Borderline IR</td></tr>
-            <tr><td>Vitamin B12</td><td>935</td><td>pg/mL</td><td>197–771</td><td class="flag-orange">🟠 High (over-supp)</td></tr>
-            <tr><td>hs-CRP</td><td>1.57</td><td>mg/L</td><td>&lt;1</td><td class="flag-yellow">🟡 Moderate (1–3)</td></tr>
-            <tr><td>Hematocrit</td><td>47.2</td><td>%</td><td>39–50</td><td class="flag-yellow">🟡 In-range, climbing</td></tr>
-            <tr><td>Eosinophils (abs)</td><td>0</td><td>×10³/µL</td><td>0.05–0.7</td><td class="flag-yellow">🟡 Low</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-4 card rounded-xl p-4 text-sm text-gray-300">
-        <strong class="accent">In range (key):</strong> Estradiol 99.6 pmol/L (~27.1 pg/mL, men 41.4–159) ✅ · Cortisol AM 411 nmol/L ✅ · Homocysteine 7.92 (≤12) ✅ · SHBG 27.2 ✅ · Folate 8.6 ✅ · Insulin 7.3 ✅ · Hgb 15.4 ✅ · RBC 5.57 (near top) · WBC 8.25 · Platelets 314 · Neutrophils 59.6%.
-      </div>
-    </section>
-
-    <section id="trend" class="mb-10 fade-in">
-      <h2 class="text-2xl font-bold mb-1">📈 Longitudinal Trend</h2>
-      <p class="text-gray-400 text-sm mb-5">Cross-referenced across 3 draws — Dec-2025 / Mar-2026 / Jun-2026 (the part beyond a single-panel report).</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div class="card rounded-xl p-4"><canvas id="cTesto"></canvas></div>
-        <div class="card rounded-xl p-4"><canvas id="cEstradiol"></canvas></div>
-        <div class="card rounded-xl p-4"><canvas id="cIgf"></canvas></div>
-        <div class="card rounded-xl p-4"><canvas id="cGlucose"></canvas></div>
-        <div class="card rounded-xl p-4 md:col-span-2"><canvas id="cHct"></canvas></div>
-      </div>
-      <div class="card rounded-xl overflow-x-auto">
-        <table>
-          <thead><tr><th>Marker</th><th>2025-12-31</th><th>2026-03-25</th><th>2026-06-10 (wk5)</th><th>Meaning</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Total T</strong></td><td>4.71 ng/mL</td><td>2.64 (floor)</td><td class="accent">~7.7 ng/mL</td><td>TRT restored it — now slightly over</td></tr>
-            <tr><td><strong>Free T</strong></td><td>19.3 pg/mL</td><td>6.54 (crash)</td><td class="accent">21.04</td><td>Supraphysiologic — above range</td></tr>
-            <tr><td><strong>Estradiol</strong></td><td>27 pg/mL</td><td>1.0 (crit low)</td><td class="accent">27.1</td><td>✅ Recovered naturally — AI correctly avoided</td></tr>
-            <tr><td><strong>IGF-1</strong></td><td>140</td><td>140</td><td class="flag-red">240 (HIGH)</td><td>⚠️ New GH-secretagogue (CJC/Ipamorelin)</td></tr>
-            <tr><td><strong>Glucose</strong></td><td>101</td><td>—</td><td class="flag-red">110</td><td>⚠️ Rising → impaired fasting glucose</td></tr>
-            <tr><td><strong>HOMA</strong></td><td>0.42</td><td>(insulin 11.5)</td><td class="flag-orange">2.0</td><td>⚠️ Emerging insulin resistance</td></tr>
-            <tr><td><strong>Hematocrit</strong></td><td>47.7</td><td>45.6</td><td class="flag-yellow">47.2</td><td>⚠️ Climbing on TRT (polycythemia watch)</td></tr>
-            <tr><td><strong>Homocysteine</strong></td><td>—</td><td>14.68 (HIGH)</td><td class="accent">7.92</td><td>✅ Methylation FIXED</td></tr>
-            <tr><td><strong>B12</strong></td><td>220</td><td>220</td><td class="flag-orange">935</td><td>✅ Corrected — now over (ease dose)</td></tr>
-            <tr><td><strong>hs-CRP</strong></td><td>—</td><td>0.66</td><td class="flag-yellow">1.57</td><td>⚠️ Mild inflammatory uptick</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="actions" class="mb-10 fade-in">
-      <h2 class="text-2xl font-bold mb-3">🎯 Actionable Intel</h2>
-      <ol class="space-y-3 text-[15px] leading-relaxed text-gray-300 list-decimal pl-5">
-        <li><strong>TRT is supraphysiologic at TROUGH — confirmed.</strong> The draw was taken in the morning <em>before</em> the weekly injection = a true trough (the week's lowest point), yet Total-T ~770 ng/dL and Free-T 21 are already above range — so the peak is higher still. Per the titration rule (<span class="mono">trough &gt;700 → −10–20 mg/wk</span>), a <strong>dose reduction to ~130 mg/wk is now indicated</strong>, reinforced by the climbing hematocrit. Recheck trough TT/Free-T + Hct in ~6 weeks. <strong>Do NOT escalate</strong> (200–250 mg/wk stays off the table). E2 is fine (27) → no aromatase inhibitor.</li>
-        <li><strong>IGF-1 240 ↑ + glucose 110 ↑ + HOMA 2.0 ↑ are one connected signal.</strong> Starting CJC-1295/Ipamorelin pushed IGF-1 over range, and Bachmeyer specifically warns that over-pushing the GH/IGF-1 axis <strong>worsens insulin resistance</strong> — which is exactly what the glucose/HOMA drift shows. <strong>Action:</strong> moderate the GH-secretagogue dose (or shorten the run), and <strong>make sure the Retatrutide micro-dose + MOTS-c are actually running</strong> — they directly counter this. Recheck IGF-1 + fasting glucose in 4–6 weeks.</li>
-        <li><strong>Hematocrit 47.2 and climbing</strong> is the #1 TRT danger (polycythemia → clot/stroke). Still in range, but the trend + the supraphysiologic dosing both argue <strong>hold or reduce, hydrate, recheck; consider blood donation if it reaches ~50–52%.</strong></li>
-        <li><strong>Estradiol recovered (1.0 → 27)</strong> — banks the earlier no-AI decision as correct; keep no aromatase inhibitor.</li>
-        <li><strong>Methylation fixed</strong> (homocysteine 14.68 → 7.92; B12 220 → 935). B12 is now <em>over</em> range — <strong>ease the B12 dose</strong>.</li>
-        <li><strong>hs-CRP 0.66 → 1.57</strong> — mild inflammation; BPC-157/KPV/TB-500 in the new stack should bring it down; recheck.</li>
+    <section id="decisions" class="glass">
+      <h2>🎯 Decisions & Actionable Intel (2026-06-13)</h2>
+      <ol>
+        <li><b>TRT — HOLD, do NOT reduce.</b> <i>(Delphi D3, EPR 17/20.)</i> The "high" flag is the lab's conservative age-≥50 population ceiling, <b>not a harm threshold</b>. Trough 770 ng/dL is <b>below AUA's 900 reduction trigger</b>, within optimization ranges, and <b>below Bachmeyer's 800–1,200 target</b> (arguably under-treated by his lens). Free-T 21 is upper-normal for age. Hct fine. TRAVERSE (n=5,246) showed no MACE increase. <b>No reduce, no escalate.</b> <i>Optional, symptom-driven only:</i> micro-dose (50 mg q2d or 75 mg q3.5d) to lift trough toward 800–900 and flatten the day-2–3 peak (~1,100–1,400). Decisive variable = <b>how you feel</b> (energy/libido/mood).
+          <div class="plain">💬 <b>In plain words:</b> Your level is good. It only looks "high" against a cautious chart for 50-year-olds — every serious framework says it's fine, and Bachmeyer would call it slightly low. We hold the dose. The only optional tweak is splitting the weekly shot into smaller, more frequent doses for steadier levels — and only if you'd want that for how you feel.</div>
+        </li>
+        <li><b>Tesamorelin — STOPPED (2026-06-13) + GH axis paused.</b> IGF-1 240 + the glucose/HOMA drift trace to Tesamorelin (2 mg, 5-on/2-off — correct cadence; the <b>2 mg dose</b> is what over-drove IGF-1; you're a brisk responder). GH is diabetogenic, and the AM fasting glucose is inflated if the draw followed an "on" night. <b>Decision: stop Tesamorelin now; pause the whole GH axis (no CJC/Ipamorelin) 4–6 weeks; keep TRT + Retatrutide + MOTS-c running.</b> Restart lever = <b>drop to 1 mg, keep 5-on/2-off</b> — only if IGF-1 back in range + glucose &lt;100.
+          <div class="plain">💬 <b>In plain words:</b> The growth-hormone peptide pushed your IGF-1 above the healthy ceiling, which nudges blood sugar up. You did the schedule right — the dose was just strong for you. Stop it, rest the growth-hormone side for ~a month, retest clean, and if you restart, do half the dose.</div>
+        </li>
+        <li><b>Metabolic drift = mostly the peptide.</b> Glucose 110 / HOMA 2.0 are inflated by Tesamorelin + morning draw timing; insulin (7.3) is normal. <b>The off-Tesamorelin recheck gives your true baseline.</b> Keep Retatrutide + MOTS-c (anti-insulin-resistance) running; MOTS-c with carbs.</li>
+        <li><b>Estradiol recovered (1.0 → 27)</b> — keep <b>no aromatase inhibitor</b>.</li>
+        <li><b>B12</b> → drop <b>2000 → 1000 mcg/day methyl-B12</b> (overshoot is harmless, just unneeded). <b>B6/P5P stays stopped</b> (homocysteine 7.92 is optimal). Methylation is fixed.</li>
+        <li><b>Hematocrit 47.2</b> — monitor + hydrate; below all thresholds; if it nears 50–52, prefer SubQ-route → dose adjust → phlebotomy last.</li>
+        <li><b>hs-CRP 1.57</b> — mild; BPC-157/KPV/TB-500 should pull it down; recheck.</li>
       </ol>
     </section>
 
-    <section id="plain" class="mb-10 fade-in">
-      <h2 class="text-2xl font-bold mb-3">Plain-Words Layer — what the red items mean</h2>
-      <div class="space-y-3">
-        <div class="plain rounded-r-lg p-4 text-sm"><strong class="flag-red">🔴 Testosterone &amp; Free-T slightly over range</strong><br>💬 <em>In plain words:</em> The TRT did its job — maybe a touch too well. The blood was drawn in the morning before your weekly shot (your lowest point of the week), and it's already a little above normal — so across the week you're running high. The fix is to nudge the dose <strong>down</strong> a little (to about 130 mg/week), not up.</div>
-        <div class="plain rounded-r-lg p-4 text-sm"><strong class="flag-red">🔴 IGF-1 high (240)</strong><br>💬 <em>In plain words:</em> This is the growth-hormone peptides you just started doing their thing — but it's now above the healthy ceiling. Pushing it higher tends to raise blood sugar, so the move is to ease that dose back rather than chase a bigger number.</div>
-        <div class="plain rounded-r-lg p-4 text-sm"><strong class="flag-red">🔴 Fasting glucose 110</strong> + <strong class="flag-orange">🟠 HOMA 2.0</strong><br>💬 <em>In plain words:</em> Your blood sugar and insulin are starting to creep up — early "pre-insulin-resistance." It's linked to the growth-hormone push above. The good news: the Retatrutide and MOTS-c already in your stack are made to fix exactly this — make sure they're running.</div>
-        <div class="plain rounded-r-lg p-4 text-sm"><strong class="flag-yellow">🟡 Hematocrit 47.2 (climbing)</strong><br>💬 <em>In plain words:</em> Testosterone thickens the blood. You're still in the safe zone but trending up, so we watch it closely, keep you hydrated, and absolutely don't raise the TRT dose. If it climbs near the top, a blood donation fixes it instantly.</div>
-        <div class="plain rounded-r-lg p-4 text-sm"><strong class="flag-orange">🟠 B12 over range (935)</strong><br>💬 <em>In plain words:</em> Your March B12 was nearly deficient; now it's overcorrected to above-normal. Harmless, but you can cut back the B12 supplement.</div>
+    <section id="lipids" class="glass">
+      <h2>🔴 Biggest gap — lipids were NOT on this panel</h2>
+      <div class="callout c-bad">
+        Your chronic CV risk is <b>lipids</b> (TC 268 / LDL 192 in March), and this draw didn't measure them. <b>Add a full lipid panel + ApoB to the next draw</b> — this outranks the testosterone question for long-term risk.
       </div>
     </section>
 
-    <section id="protocol" class="mb-10 fade-in">
-      <h2 class="text-2xl font-bold mb-3">Protocol Update <span class="text-sm font-normal text-gray-400">(informational, Bachmeyer-framed)</span></h2>
-      <ul class="space-y-2 text-[15px] leading-relaxed text-gray-300 list-disc pl-5">
-        <li><strong>TRT base:</strong> hold <strong>150 mg/wk</strong>, lean toward a <strong>small reduction</strong> if the over-range values are a trough; never escalate. Keep no AI. Consider split 2×/wk / IM per the prior route note.</li>
-        <li><strong>GH-secretagogues (CJC-1295/Ipamorelin, + Tesamorelin later):</strong> IGF-1 already at 240 (over) → <strong>moderate dose / shorten run</strong>; re-check IGF-1 before adding Tesamorelin in wk 7–10.</li>
-        <li><strong>Metabolic guard (active):</strong> Retatrutide micro-dose 0.1 mg/wk + <strong>MOTS-c 5–10 mg SubQ 2–3×/wk (with carbs)</strong> — confirm running; they directly address the glucose/HOMA drift.</li>
-        <li><strong>Repair/anti-inflammatory (active in Dubai stack):</strong> BPC-157 1000 mcg/day, TB-500 2 mg/wk, KPV 500 mcg, GHK-Cu 2 mg/day (own syringe) — supports the hs-CRP uptick.</li>
-        <li><strong>Kisspeptin-10</strong> (wk 13–15, 250 mcg/day): per card, <strong>mood/libido only</strong> (axis-independent) — not testosterone restoration.</li>
-        <li><strong>Supplements:</strong> ease B12; continue methyl-folate; D3/K2; the metabolic drift argues for berberine/inositol support.</li>
-      </ul>
-      <div class="mt-4 card rounded-xl p-4 text-sm text-gray-300">
-        <strong class="accent">Gating / recheck (6–8 weeks):</strong> Trough TT + Free-T (timed to injection), <strong>IGF-1</strong>, fasting glucose + HbA1c + HOMA, <strong>hematocrit</strong>, hs-CRP, lipid panel (prior TC 268/LDL 192 — not in this panel, re-draw), E2. Confirm draw timing on every hormone going forward.
+    <section id="safety" class="glass">
+      <h2>✅ Safety items closed <span class="sub">(confirmed 2026-06-13)</span></h2>
+      <div class="callout c-good">
+        <ul style="margin:0">
+          <li><b>Kisspeptin</b> → corrected to <b>MWF</b> (desensitization-safe; mood/libido lever only).</li>
+          <li><b>Melanotan-2</b> → <b>all moles documented</b> (baseline dermatology gate satisfied).</li>
+        </ul>
       </div>
     </section>
 
-    <footer class="text-xs text-gray-500 border-t border-gray-800 pt-5 mt-10 fade-in">
-      Built under NexusOS Health (Bachmeyer-primary). Patient-isolated (IL-8). Longitudinal cross-reference across 3 draws (Dec-2025 / Mar-2026 / Jun-2026). De-identified copy. Framework: Dr. Trevor Bachmeyer NLM.
-    </footer>
+    <section id="recheck" class="glass">
+      <h2>Recheck — one comprehensive draw at ~4 weeks off Tesamorelin (~2026-07-11)</h2>
+      <div class="callout c-note">
+        <b>Lipids + ApoB, HbA1c, IGF-1, fasting glucose + insulin, hs-CRP, Hematocrit, trough Total + Free T, E2, PSA, metals (Hg/Pb).</b><br>
+        Expectation off Tesamorelin: IGF-1 → ~150–170, fasting glucose likely → &lt;100.
+      </div>
+      <p class="sub" style="margin-top:18px">Built under NexusOS Health (Bachmeyer-primary). Patient-isolated (IL-8). Longitudinal cross-reference across 3 draws (Dec-2025 / Mar-2026 / Jun-2026). v2 corrects the v1 TRT-reduction reading per Delphi D3 + patient discussion. De-identified copy.</p>
+    </section>
   </main>
-
-  <aside class="hidden lg:block">
-    <div class="sticky top-20 space-y-5">
-      <div class="glass rounded-xl p-4">
-        <div class="text-xs accent font-mono uppercase tracking-wider mb-3">Panel Metadata</div>
-        <dl class="space-y-2 text-sm">
-          <div class="flex justify-between"><dt class="text-gray-400">Patient</dt><dd>Bogdan</dd></div>
-          <div class="flex justify-between"><dt class="text-gray-400">Sex / Age</dt><dd>M · 51y</dd></div>
-          <div class="flex justify-between"><dt class="text-gray-400">Collected</dt><dd class="mono">10/06/2026</dd></div>
-          <div class="flex justify-between"><dt class="text-gray-400">Context</dt><dd>TRT wk5</dd></div>
-          <div class="flex justify-between"><dt class="text-gray-400">Flagged</dt><dd>9 / 20+</dd></div>
-          <div class="flex justify-between"><dt class="text-gray-400">Draws</dt><dd>3 (longitudinal)</dd></div>
-        </dl>
-      </div>
-      <div class="glass rounded-xl p-4">
-        <div class="text-xs accent font-mono uppercase tracking-wider mb-3">Contents</div>
-        <nav class="flex flex-col gap-2 text-sm">
-          <a href="#summary" class="toclink">Executive Summary</a>
-          <a href="#flagged" class="toclink">New Panel — Flagged</a>
-          <a href="#trend" class="toclink">Longitudinal Trend</a>
-          <a href="#actions" class="toclink">Actionable Intel</a>
-          <a href="#plain" class="toclink">Plain-Words Layer</a>
-          <a href="#protocol" class="toclink">Protocol Update</a>
-        </nav>
-      </div>
-    </div>
-  </aside>
+</div>
 </div>
 
 <script>
-const root=document.documentElement;
-const saved=localStorage.getItem('nx-theme');
-if(saved==='light')root.classList.remove('dark'),root.classList.add('light');
-document.getElementById('toggleBtn').onclick=()=>{
-  if(root.classList.contains('light')){root.classList.remove('light');root.classList.add('dark');localStorage.setItem('nx-theme','dark');}
-  else{root.classList.remove('dark');root.classList.add('light');localStorage.setItem('nx-theme','light');}
-  renderCharts();
-};
+const root=document.documentElement, tbtn=document.getElementById('themeBtn');
+const saved=localStorage.getItem('bogdan-theme');
+if(saved) root.setAttribute('data-theme',saved);
+tbtn.onclick=()=>{const cur=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',cur);localStorage.setItem('bogdan-theme',cur);redraw();};
 document.getElementById('shareBtn').onclick=async()=>{
   const u=location.href;
-  if(navigator.share){try{await navigator.share({title:document.title,url:u});}catch(e){}}
-  else{try{await navigator.clipboard.writeText(u);document.getElementById('shareBtn').textContent='Copied!';setTimeout(()=>document.getElementById('shareBtn').textContent='Share',1500);}catch(e){}}
+  if(navigator.share){try{await navigator.share({title:document.title,url:u});return;}catch(e){}}
+  try{await navigator.clipboard.writeText(u);document.getElementById('shareBtn').textContent='Copied ✓';setTimeout(()=>document.getElementById('shareBtn').textContent='Share',1500);}catch(e){}
 };
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
-let charts=[];
 const labels=['Dec-25','Mar-26','Jun-26'];
-function gridColor(){return document.documentElement.classList.contains('light')?'rgba(0,0,0,0.08)':'rgba(255,255,255,0.08)';}
-function tickColor(){return document.documentElement.classList.contains('light')?'#5a6068':'#9aa0aa';}
-function mk(id,label,data,ref){
-  const ctx=document.getElementById(id);if(!ctx)return;
-  const ds=[{label:label,data:data,borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,0.12)',tension:0.3,fill:true,pointRadius:5,pointBackgroundColor:'#22c55e',spanGaps:true}];
-  if(ref!=null)ds.push({label:'ref ceiling',data:labels.map(()=>ref),borderColor:'rgba(239,68,68,0.6)',borderDash:[6,4],pointRadius:0,fill:false});
-  charts.push(new Chart(ctx,{type:'line',data:{labels,datasets:ds},options:{responsive:true,plugins:{legend:{labels:{color:tickColor(),font:{size:11}}},title:{display:true,text:label,color:tickColor(),font:{size:13,weight:'600'}}},scales:{x:{grid:{color:gridColor()},ticks:{color:tickColor()}},y:{grid:{color:gridColor()},ticks:{color:tickColor()}}}}}));
+let charts=[];
+function ax(){return getComputedStyle(root).getPropertyValue('--muted').trim();}
+function gridc(){return root.getAttribute('data-theme')==='light'?'rgba(0,0,0,.08)':'rgba(255,255,255,.08)';}
+function mk(id,label,data,color){
+  const ctx=document.getElementById(id);
+  if(!ctx)return null;
+  return new Chart(ctx,{type:'line',data:{labels,datasets:[{label,data,borderColor:color,backgroundColor:color+'33',tension:.3,pointRadius:5,pointBackgroundColor:color,fill:true,spanGaps:true}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},title:{display:true,text:label,color:ax(),font:{size:13,weight:'600'}}},
+      scales:{x:{ticks:{color:ax()},grid:{color:gridc()}},y:{ticks:{color:ax()},grid:{color:gridc()}}}}});
 }
-function renderCharts(){
-  charts.forEach(c=>c.destroy());charts=[];
-  mk('cTesto','Total-T (ng/mL)',[4.71,2.64,7.7],null);
-  mk('cEstradiol','Estradiol (pg/mL)',[27,1.0,27.1],null);
-  mk('cIgf','IGF-1 (ng/mL)',[140,140,240],203);
-  mk('cGlucose','Fasting Glucose (mg/dL)',[101,null,110],99);
-  mk('cHct','Hematocrit (%)',[47.7,45.6,47.2],50);
+function drawAll(){
+  charts.forEach(c=>c&&c.destroy());charts=[];
+  charts.push(mk('chTotalT','Total T (ng/dL)',[471,264,770],'#22c55e'));
+  charts.push(mk('chFreeT','Free T (pg/mL)',[19.3,6.54,21.04],'#16a34a'));
+  charts.push(mk('chE2','Estradiol (pg/mL)',[27,1.0,27.1],'#8b5cf6'));
+  charts.push(mk('chIGF','IGF-1 (ng/mL)',[140,140,240],'#ef4444'));
+  charts.push(mk('chGlu','Fasting glucose (mg/dL)',[101,null,110],'#eab308'));
+  charts.push(mk('chHct','Hematocrit (%)',[47.7,45.6,47.2],'#f59e0b'));
 }
-renderCharts();
+function redraw(){drawAll();}
+drawAll();
 </script>
 </body>
 </html>
