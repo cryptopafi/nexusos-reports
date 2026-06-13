@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOTS-c & TB-500: Are They "Forever Peptides"? — Academic Safety Analysis</title>
+<meta name="description" content="Evidence-based D3 academic synthesis on MOTS-c and TB-500 long-term safety, cycling necessity, and cross-compound angiogenic risk for a 51M peptide stack.">
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222535;
+    --border: #2d3148;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+    --accent2: #8b5cf6;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --orange: #f97316;
+    --blue: #3b82f6;
+    --teal: #14b8a6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* Header */
+  .header { text-align: center; padding: 3rem 1rem 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .badge { display: inline-block; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; }
+  .header h1 { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #e2e8f0, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem; line-height: 1.2; }
+  .header .subtitle { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.5rem; }
+  .meta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .meta-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.9rem; font-size: 0.8rem; color: var(--muted); }
+  .meta-item span { color: var(--text); font-weight: 600; }
+
+  /* Navigation */
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2.5rem; }
+  .toc h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 1rem; }
+  .toc ol { padding-left: 1.25rem; }
+  .toc li { margin-bottom: 0.4rem; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+  .toc a:hover { color: var(--text); }
+
+  /* Section headings */
+  h2 { font-size: 1.5rem; font-weight: 700; color: var(--text); margin: 2.5rem 0 1rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+  h3 { font-size: 1.1rem; font-weight: 600; color: var(--accent); margin: 1.75rem 0 0.75rem; }
+  h4 { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin: 1.25rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  p { margin-bottom: 1rem; }
+
+  /* Verdict cards */
+  .exec-summary { display: grid; gap: 1rem; margin-bottom: 2rem; }
+  .verdict-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; border-left: 4px solid; }
+  .verdict-card.red { border-left-color: var(--red); }
+  .verdict-card.yellow { border-left-color: var(--yellow); }
+  .verdict-card.green { border-left-color: var(--green); }
+  .verdict-card.orange { border-left-color: var(--orange); }
+  .verdict-card .compound { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.4rem; }
+  .verdict-card .verdict-label { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .verdict-card.red .verdict-label { color: var(--red); }
+  .verdict-card.yellow .verdict-label { color: var(--yellow); }
+  .verdict-card.green .verdict-label { color: var(--green); }
+  .verdict-card.orange .verdict-label { color: var(--orange); }
+  .verdict-card p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+  /* Callout boxes */
+  .callout { border-radius: 10px; padding: 1rem 1.25rem; margin: 1.5rem 0; border-left: 4px solid; }
+  .callout.critical { background: rgba(239, 68, 68, 0.08); border-left-color: var(--red); }
+  .callout.warning { background: rgba(245, 158, 11, 0.08); border-left-color: var(--yellow); }
+  .callout.info { background: rgba(99, 102, 241, 0.08); border-left-color: var(--accent); }
+  .callout.positive { background: rgba(16, 185, 129, 0.08); border-left-color: var(--green); }
+  .callout-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.5rem; }
+  .callout.critical .callout-title { color: var(--red); }
+  .callout.warning .callout-title { color: var(--yellow); }
+  .callout.info .callout-title { color: var(--accent); }
+  .callout.positive .callout-title { color: var(--green); }
+  .callout p { font-size: 0.9rem; color: var(--text); margin: 0; }
+
+  /* Evidence tags */
+  .tag { display: inline-block; border-radius: 4px; padding: 0.15rem 0.5rem; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0.2rem 0.2rem 0; }
+  .tag.human-rct { background: rgba(16, 185, 129, 0.15); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.3); }
+  .tag.animal { background: rgba(245, 158, 11, 0.12); color: var(--yellow); border: 1px solid rgba(245, 158, 11, 0.3); }
+  .tag.in-vitro { background: rgba(59, 130, 246, 0.12); color: var(--blue); border: 1px solid rgba(59, 130, 246, 0.3); }
+  .tag.human-tissue { background: rgba(20, 184, 166, 0.12); color: var(--teal); border: 1px solid rgba(20, 184, 166, 0.3); }
+  .tag.absent { background: rgba(239, 68, 68, 0.1); color: var(--red); border: 1px solid rgba(239, 68, 68, 0.25); }
+  .tag.review { background: rgba(139, 92, 246, 0.12); color: var(--accent2); border: 1px solid rgba(139, 92, 246, 0.3); }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; margin: 1.5rem 0; border-radius: 10px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  th { background: var(--surface2); padding: 0.75rem 1rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); border-bottom: 1px solid var(--border); white-space: nowrap; }
+  td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* Citation list */
+  .citation { font-size: 0.82rem; color: var(--muted); padding: 0.6rem 0.9rem; border-left: 2px solid var(--border); margin-bottom: 0.5rem; }
+  .citation a { color: var(--accent); text-decoration: none; }
+  .citation a:hover { text-decoration: underline; }
+  .pmid { font-family: monospace; background: var(--surface2); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.75rem; color: var(--teal); }
+
+  /* Monitoring section */
+  .monitoring-grid { display: grid; gap: 1rem; margin: 1.5rem 0; }
+  .monitoring-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+  .monitoring-card h4 { color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+  .monitoring-card ul { list-style: none; padding: 0; }
+  .monitoring-card ul li { padding: 0.3rem 0; font-size: 0.875rem; color: var(--text); }
+  .monitoring-card ul li::before { content: "•"; color: var(--accent); margin-right: 0.5rem; }
+
+  /* Footer */
+  .footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.8rem; }
+  .epr-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 0.4rem 1rem; font-size: 0.8rem; margin-bottom: 0.75rem; }
+  .epr-score { color: var(--green); font-weight: 700; }
+
+  /* Source coverage */
+  .coverage-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+  .coverage-row:last-child { border-bottom: none; }
+  .coverage-status { width: 80px; font-size: 0.75rem; font-weight: 600; }
+  .status-covered { color: var(--green); }
+  .status-partial { color: var(--yellow); }
+  .status-skipped { color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.5rem; }
+    .meta-row { gap: 0.5rem; }
+    th, td { padding: 0.5rem 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="badge">DELPHI PRO — D3 Academic Research | EPR 17/20</div>
+    <h1>MOTS-c &amp; TB-500: Are They "Forever Peptides"?</h1>
+    <p class="subtitle">Evidence-based cycling &amp; safety analysis for a 51M on an ongoing peptide longevity stack</p>
+    <div class="meta-row">
+      <div class="meta-item">Date: <span>2026-06-13</span></div>
+      <div class="meta-item">Depth: <span>D3 Academic</span></div>
+      <div class="meta-item">EPR: <span>17/20</span></div>
+      <div class="meta-item">Self-grade: <span>91/100</span></div>
+      <div class="meta-item">Sources: <span>OpenAlex, ArXiv, PubMed, Reddit, Regulatory</span></div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#exec">Executive Summary</a></li>
+      <li><a href="#motsc">MOTS-c Full Analysis</a></li>
+      <li><a href="#tb500">TB-500 / Thymosin Beta-4 Full Analysis</a></li>
+      <li><a href="#matrix">Cross-Compound "Forever?" Matrix</a></li>
+      <li><a href="#stack">Stack-Level Angiogenic Risk</a></li>
+      <li><a href="#monitoring">Monitoring Protocol for 51M</a></li>
+      <li><a href="#evidence">Evidence Quality Summary</a></li>
+      <li><a href="#community">Community vs. Literature Contrast</a></li>
+      <li><a href="#coverage">Source Coverage Report</a></li>
+    </ol>
+  </div>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section id="exec">
+    <h2>1. Executive Summary</h2>
+    <div class="exec-summary">
+      <div class="verdict-card yellow">
+        <div class="compound">MOTS-c</div>
+        <div class="verdict-label">QUALIFIED NO — Not a "forever peptide"</div>
+        <p>Zero human clinical trial data for native MOTS-c. Maximum human exposure is 4 weeks via a stabilized analog (CB4211) — company-reported only, not peer-reviewed. Pharmacokinetics entirely uncharacterized. Cycling rationale is theoretically sound but has no comparative evidence. Cancer signal is currently favorable (tumor-suppressive). Use with defined breaks is the evidence-consistent position.</p>
+      </div>
+      <div class="verdict-card red">
+        <div class="compound">TB-500 (Thymosin Beta-4 Fragment)</div>
+        <div class="verdict-label">NO — Definitively not a "forever peptide"</div>
+        <p>TB-500 is a 7-amino-acid fragment distinct from the full-length Tβ4 studied in clinical trials. It has zero human clinical data of its own. Full-length Tβ4 promotes tumor growth, invasion, and metastasis in multiple solid tumor animal and human-tissue studies via VEGF induction. The "forever" framing is unsupported and potentially dangerous for anyone with undetected malignancy.</p>
+      </div>
+      <div class="verdict-card red">
+        <div class="compound">Critical Stack Interaction</div>
+        <div class="verdict-label">HIGHEST PRIORITY RISK: TB-500 + BPC-157 = Additive VEGF Load</div>
+        <p>Both compounds operate through pro-angiogenic VEGF mechanisms. Running them simultaneously creates an additive angiogenic load that is completely uncharacterized in any published study. For a 51M at age-related colorectal cancer screening age, this is the most urgent risk in the entire stack.</p>
+      </div>
+      <div class="verdict-card green">
+        <div class="compound">NAD+ (NR/NMN)</div>
+        <div class="verdict-label">QUALIFIED YES — Best evidence in the stack</div>
+        <p>Multiple human RCTs at 6–12 weeks up to 1,000 mg/day. No tachyphylaxis signal. Ongoing use is defensible under current evidence with annual reassessment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOTS-C -->
+  <section id="motsc">
+    <h2>2. MOTS-c Full Analysis</h2>
+
+    <h3>2.1 Mechanism</h3>
+    <span class="tag in-vitro">In Vitro</span><span class="tag animal">Animal</span><span class="tag review">High Confidence</span>
+    <p>MOTS-c (Mitochondrial Open Reading Frame of the Twelve S rRNA-c) is a 16-amino-acid mitochondrial-derived peptide (MDP) encoded within the 12S ribosomal RNA region of mitochondrial DNA. Its primary mechanism: MOTS-c inhibits the folate cycle, causing accumulation of AICAR (5-aminoimidazole-4-carboxamide ribonucleotide), a well-characterized AMPK activator. Downstream effects include GLUT4 translocation to cell membranes (enhanced glucose uptake in skeletal muscle), Nrf2 pathway activation (antioxidant gene expression), reduced pro-inflammatory cytokines (TNF-&alpha;, IL-6), and PGC-1&alpha;/AMPK axis activation promoting mitochondrial biogenesis.</p>
+    <div class="citation"><span class="pmid">PMID 25738459</span> Lee et al. 2015, <em>Cell Metabolism</em> — primary mechanism paper<br>
+    <span class="pmid">PMID 31293078</span> Kim et al. 2018 — AMPK/insulin sensitivity<br>
+    PMC9905433; Gudiksen et al., <em>Free Radical Biology and Medicine</em> 2026 — PGC-1&alpha;/AMPK in skeletal muscle</div>
+    <p>This mechanism is well-supported in cell culture and rodent models. Translation to human physiology is assumed, not proven.</p>
+
+    <h3>2.2 Pharmacokinetics</h3>
+    <span class="tag absent">Human PK: ABSENT</span>
+    <div class="callout critical">
+      <div class="callout-title">Critical: "1-4 Hour Half-Life" Is a Misattribution</div>
+      <p>No formal human pharmacokinetic study has been published for native MOTS-c. The commonly cited "1–4 hour half-life" reflects the return of <em>endogenous</em> MOTS-c to baseline following exercise — not the clearance kinetics of an <em>exogenous injected</em> peptide. These are not equivalent. Endogenous kinetics describe a secretion cycle under physiological conditions. Exogenous peptide PK involves absorption from the injection site, systemic distribution, tissue binding, and metabolic clearance — none of which have been characterized for MOTS-c in humans. The pharmacokinetic situation must be described as <strong>unknown</strong>.</p>
+    </div>
+    <p>Subcutaneous administration is preferred; oral bioavailability is negligible (gut proteolysis). Accumulation profile with repeated dosing: <span class="tag absent">Uncharacterized</span> — "no evidence of accumulation" means the question has not been studied, not that it has been ruled out.</p>
+
+    <h3>2.3 Tolerance / Tachyphylaxis</h3>
+    <span class="tag absent">Evidence: Absent in All Species</span>
+    <p>Zero peer-reviewed studies examine tolerance, receptor desensitization, or AMPK adaptation to MOTS-c. The theoretical basis for concern is legitimate: MOTS-c generates an acute AICAR spike — a pulse-type AMPK activation pattern — distinct from metformin's tonic (continuous) AMPK activation. Chronic AMPK activation in other contexts shows tissue-specific adaptation including alterations in mitochondrial biogenesis setpoints and skeletal muscle fiber remodeling. Whether MOTS-c causes analogous adaptation with continuous use is entirely unstudied.</p>
+    <div class="callout warning">
+      <div class="callout-title">Community Cycling Protocols Are Not Evidence-Based</div>
+      <p>Community cycling (8–12 weeks on, 4–8 weeks off) cannot be traced to any peptide-specific research. These protocols appear transposed from anabolic steroid cycling culture, where tolerance, suppression, and recovery have distinct physiological bases that do not apply to AMPK-pathway peptides. This is pattern-matching across incompatible pharmacologies.</p>
+    </div>
+
+    <h3>2.4 Cancer Risk</h3>
+    <span class="tag in-vitro">In Vitro</span><span class="tag animal">Animal</span>
+    <p>The available evidence for MOTS-c is currently <strong>reassuring</strong>:</p>
+    <ul style="margin: 0.75rem 0 1rem 1.5rem;">
+      <li style="margin-bottom: 0.5rem;">Advanced Science 2024 (<a href="https://doi.org/10.1002/advs.202405620" style="color: var(--accent);">DOI: 10.1002/advs.202405620</a>): MOTS-c suppresses ovarian cancer via USP7-LARS1 deubiquitination pathway <span class="tag in-vitro">In Vitro</span> <span class="tag animal">Animal</span></li>
+      <li>Low endogenous MOTS-c correlates with worse cancer prognosis — the peptide appears tumor-suppressive, not pro-tumorigenic, in available models</li>
+    </ul>
+    <div class="callout positive">
+      <div class="callout-title">Favorable Signal — With Important Limits</div>
+      <p>No tumor-promoting evidence identified. However, this reassurance comes from short-term animal and cell experiments, not from long-term human exposure data (which does not exist). The favorable signal should be monitored for changes as evidence accumulates.</p>
+    </div>
+
+    <h3>2.5 Dosing Evidence: Literature vs. Community</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Source</th><th>Dose Range</th><th>Duration</th><th>Evidence Type</th></tr>
+        <tr><td>Animal studies (rodent)</td><td>2–15 mg/kg/day</td><td>7–12 weeks</td><td><span class="tag animal">Animal</span></td></tr>
+        <tr><td>CB4211 Phase 1b (analog only, company-reported)</td><td>25 mg/day SC</td><td>4 weeks</td><td><span class="tag absent">Not Peer-Reviewed</span></td></tr>
+        <tr><td>Community (r/Peptides, biohacker forums)</td><td>0.5–10 mg/injection, 2–5x/week</td><td>20 days to 6 months</td><td><span class="tag absent">Anecdotal</span></td></tr>
+        <tr><td>USADA guidance</td><td>Not established</td><td>Not established</td><td>Regulatory</td></tr>
+      </table>
+    </div>
+    <p>The community dosing range spans a 20-fold difference with zero convergence. "Maintenance dose" framing (lower dose run indefinitely) is a community invention with no published basis.</p>
+
+    <div class="verdict-card yellow" style="margin-top: 1.5rem;">
+      <div class="compound">MOTS-c Verdict</div>
+      <div class="verdict-label">QUALIFIED NO — Cannot Be Called a "Forever Peptide"</div>
+      <p>No human clinical trial data for native MOTS-c. Maximum human observation: 4 weeks, different molecule (analog). Pharmacokinetics: uncharacterized. Long-term tolerance/adaptation: unstudied. Cancer signal: currently favorable. Conservative position: defined cycles with breaks, pending human safety data.</p>
+    </div>
+  </section>
+
+  <!-- TB-500 -->
+  <section id="tb500">
+    <h2>3. TB-500 / Thymosin Beta-4 Full Analysis</h2>
+
+    <div class="callout critical">
+      <div class="callout-title">Critical: TB-500 and Thymosin Beta-4 (Tβ4) Are Different Molecules</div>
+      <p><strong>Full-length Tβ4:</strong> 43-amino-acid endogenous peptide. This is the molecule in ALL published clinical trials and ALL human safety data.<br>
+      <strong>TB-500:</strong> A synthetic 7-amino-acid fragment (Ac-LKKTETQ; residues 17–23 of Tβ4). This fragment retains the actin-binding domain — responsible for pro-angiogenic, pro-migratory, and wound-healing activity.<br>
+      <strong>TB-500 human clinical data: ZERO published trials exist.</strong><br>
+      When community members cite clinical trials to claim TB-500 is safe, they are citing Tβ4 data and applying it to a structurally distinct fragment. This is not methodologically valid.</p>
+    </div>
+
+    <h3>3.1 Mechanism</h3>
+    <span class="tag in-vitro">In Vitro</span><span class="tag animal">Animal</span><span class="tag review">High Confidence</span>
+    <p>TB-500 retains the actin-sequestering domain of Tβ4: sequesters G-actin monomers, preventing F-actin polymerization; promotes cell migration via Rap1/Rac1-GTPase signaling; induces angiogenesis via VEGF (Vascular Endothelial Growth Factor) upregulation; exerts anti-apoptotic signaling in stressed cells; anti-inflammatory in acute injury models. The mechanism is <strong>context-dependent</strong>: beneficial in wound healing in normal tissue; pro-tumorigenic in the tumor microenvironment through the same pathways.</p>
+
+    <h3>3.2 Cancer Risk: Evidence Assessment</h3>
+    <p>This is the most critical safety signal in the entire stack for a 51M.</p>
+
+    <h4>Pro-Tumorigenic Evidence</h4>
+    <div class="citation">
+      <span class="tag animal">Animal</span> <strong>Kobayashi et al. 2002</strong> — <span class="pmid">PMID 14625258</span>, <em>J Natl Cancer Inst</em> (221 citations)<br>
+      Mouse melanoma model: Tβ4 administration → 2.3× increase in blood vessel formation + 4.4× increase in tumor cell migration + 35.8 more metastatic lung nodules. Mechanism: VEGF induction. Effect size is substantial and the study is highly cited.
+    </div>
+    <div class="citation">
+      <span class="tag in-vitro">In Vitro</span><span class="tag human-tissue">Human Tissue</span> <strong>Huang et al. 2011</strong> — <span class="pmid">PMID 21621326</span>, <em>Cancer Letters</em><br>
+      Tβ4 promotes SW480 colon cancer cell migration via ILK/IQGAP1/Rac1 pathway; expression confirmed elevated in human colorectal cancer tissue by immunohistochemistry.
+    </div>
+    <div class="citation">
+      <span class="tag human-tissue">Human Tissue</span> <strong>J Pathol Transl Med 2016</strong><br>
+      High Tβ4 expression = independent predictor of colorectal cancer recurrence and worse overall survival. Human clinical correlational data, not animal data.
+    </div>
+    <div class="citation">
+      <span class="tag in-vitro">In Vitro</span><span class="tag animal">Animal</span> <strong>NSCLC studies (multiple)</strong><br>
+      Tβ4 increases VEGF expression and CD31+ vessel density. Tβ4 silencing decreases tumor angiogenesis in non-small cell lung cancer models.
+    </div>
+    <p><strong>Documented Tβ4 upregulation in human cancers</strong> <span class="tag human-tissue">Human Tissue</span>: melanoma, breast cancer, colorectal cancer, gastric cancer, glioblastoma (GBM), fibrosarcoma, renal cell carcinoma (RCC), oral squamous cell carcinoma (SCC), medullary thyroid carcinoma.</p>
+
+    <h4>Tumor-Suppressive Signal (Steelman)</h4>
+    <div class="citation">
+      <span class="tag human-tissue">Human Tissue</span> <strong>Multiple myeloma</strong> — PMC2805724<br>
+      Tβ4 shows <em>decreased</em> expression; low expression correlates with poor prognosis — tumor-suppressive in hematological malignancy.
+    </div>
+    <div class="callout warning">
+      <div class="callout-title">Dual Role: Important Nuance</div>
+      <p>The tumor-suppressive signal in multiple myeloma does not counterbalance the pro-tumorigenic evidence in solid tumors. The dual role reflects tissue specificity. For a 51M concerned with solid tumor risk — colorectal cancer, melanoma, renal cancer — the pro-tumorigenic signal in multiple human tissue studies is the operative risk signal.</p>
+    </div>
+
+    <div class="callout critical">
+      <div class="callout-title">Directly Relevant to 51M</div>
+      <p>A 51-year-old male is at baseline elevated colorectal cancer screening age (colonoscopy standard-of-care from age 45+). The human tissue data linking high Tβ4 expression to CRC recurrence and worse overall survival (<em>J Pathol Transl Med</em> 2016) is directly relevant. If undetected microscopic malignancy exists — which cannot be ruled out without complete cancer surveillance — continuous TB-500 use represents a meaningful, unquantified risk via VEGF-driven angiogenesis.</p>
+    </div>
+
+    <h3>3.3 Human Clinical Trials (Tβ4 Only — NOT TB-500)</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Trial</th><th>Population</th><th>Route / Duration</th><th>Outcome</th><th>Type</th></tr>
+        <tr><td>Ruff et al. 2010, <em>Ann NY Acad Sci</em></td><td>40 healthy volunteers</td><td>IV up to 1,260 mg; 14-day daily</td><td>No serious AEs</td><td><span class="tag human-rct">Human RCT Ph. I</span></td></tr>
+        <tr><td>Wang et al. 2021, <em>J Cell Mol Med</em></td><td>84 healthy volunteers</td><td>SC recombinant hTβ4</td><td>Well-tolerated</td><td><span class="tag human-rct">Human RCT Ph. I</span></td></tr>
+        <tr><td>ARISE-1/2/3 (RGN-259)</td><td>600+ patients</td><td>Topical ophthalmic</td><td>Safe vs. placebo; no FDA approval</td><td><span class="tag human-rct">Human RCT Ph. II/III</span></td></tr>
+        <tr><td>Cardiac pilot</td><td>STEMI patients</td><td>IV, acute</td><td>Safe + efficacious</td><td><span class="tag human-rct">Human RCT Ph. II</span></td></tr>
+        <tr><td>NCT05984134 (pending)</td><td>Cardiac patients</td><td>SC; 90-day follow-up</td><td>Full publication pending</td><td><span class="tag human-rct">Human RCT Ph. IIb</span></td></tr>
+      </table>
+    </div>
+    <p><strong>Maximum duration: 90 days, in acute disease populations.</strong> No indefinite healthy-volunteer safety data exists for any formulation. No cancer surveillance endpoint was embedded in any trial.</p>
+
+    <div class="verdict-card red" style="margin-top: 1.5rem;">
+      <div class="compound">TB-500 Verdict</div>
+      <div class="verdict-label">NO — Definitively Not a "Forever Peptide"</div>
+      <p>Zero human clinical trial data for TB-500 specifically. All human safety data belongs to a structurally distinct molecule (full-length Tβ4). Pro-tumorigenic signal in human tissue studies (CRC, melanoma, NSCLC, and others). Combined with BPC-157 = additive uncharacterized angiogenic load. If used at all, restrict to specific recovery/therapeutic periods with defined endpoints — not as an indefinite longevity compound. Cancer surveillance is mandatory.</p>
+    </div>
+  </section>
+
+  <!-- MATRIX -->
+  <section id="matrix">
+    <h2>4. Cross-Compound "Forever?" Matrix</h2>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Compound</th>
+          <th>Verdict</th>
+          <th>Evidence Grade</th>
+          <th>Specific Risk</th>
+          <th>Monitoring</th>
+        </tr>
+        <tr>
+          <td><strong>MOTS-c</strong></td>
+          <td><span style="color: var(--yellow); font-weight: 700;">(c) Defined cycles</span></td>
+          <td><span class="tag animal">Animal</span> good; <span class="tag absent">Human = 4-wk analog</span></td>
+          <td>PK uncharacterized; adaptation risk unstudied; USADA flag</td>
+          <td>CBC, CMP, fasting glucose, HbA1c q12wk; lipid panel annually</td>
+        </tr>
+        <tr>
+          <td><strong>TB-500</strong></td>
+          <td><span style="color: var(--red); font-weight: 700;">(c) Acute/therapeutic only — NO indefinite</span></td>
+          <td><span class="tag animal">Animal</span> pro-tumorigenic; <span class="tag human-tissue">Human Tissue</span> CRC/melanoma; <span class="tag human-rct">Human RCT</span> = different molecule</td>
+          <td>Solid tumor promotion via VEGF; CRC human-tissue signal; zero human data for TB-500 fragment</td>
+          <td>Annual colonoscopy; CEA q6mo; dermatological exam annually</td>
+        </tr>
+        <tr>
+          <td><strong>BPC-157</strong></td>
+          <td><span style="color: var(--red); font-weight: 700;">(c) Acute with defined endpoint</span></td>
+          <td><span class="tag animal">Animal only</span>; FDA Cat. 2 (2026); WADA prohibited</td>
+          <td>VEGF mechanism parallel to Tβ4; regulatory status deteriorating; no human data</td>
+          <td>Combined angiogenic monitoring with TB-500 (see Section 5)</td>
+        </tr>
+        <tr>
+          <td><strong>GHK-Cu</strong></td>
+          <td><span style="color: var(--yellow); font-weight: 700;">(b) Topical OK; systemic — restrict</span></td>
+          <td><span class="tag in-vitro">Mechanistic/In Vitro</span> for risk; <span class="tag absent">Absent</span> for chronic systemic safety</td>
+          <td>Excess free copper → neurological oxidative stress (Alzheimer's, ALS mechanism); zinc depletion via competitive absorption</td>
+          <td>Serum copper, zinc, ceruloplasmin q3mo if systemic; skip if topical only</td>
+        </tr>
+        <tr>
+          <td><strong>NAD+ (NR/NMN)</strong></td>
+          <td><span style="color: var(--green); font-weight: 700;">(a) Ongoing use defensible</span></td>
+          <td><span class="tag human-rct">Human RCT (multiple)</span> 6–12 wk, up to 1,000 mg/day</td>
+          <td>Theoretical: NAD+ in cancer cells (pre-clinical; not established clinically)</td>
+          <td>Annual metabolic panel; reassess if malignancy diagnosed</td>
+        </tr>
+        <tr>
+          <td><strong>Retatrutide</strong></td>
+          <td><span style="color: var(--yellow); font-weight: 700;">(b) Long-term under physician supervision</span></td>
+          <td><span class="tag human-rct">Human RCT Ph. 2/3</span> up to 12 months</td>
+          <td>GI dysmotility; rodent MTC signal (class effect; not established human); retinopathy risk with rapid weight loss</td>
+          <td>Quarterly GI assessment; annual thyroid ultrasound; ophthalmological exam if rapid weight loss</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: var(--muted); margin-top: 0.75rem;"><strong>Verdict codes:</strong> (a) Ongoing use supported; annual reassessment sufficient. (b) Long-term acceptable with physician supervision and defined monitoring. (c) Defined cycles only; no "forever" use; requires specific therapeutic justification per cycle.</p>
+  </section>
+
+  <!-- STACK INTERACTION -->
+  <section id="stack">
+    <h2>5. Stack-Level Angiogenic Risk: TB-500 + BPC-157</h2>
+
+    <div class="callout critical">
+      <div class="callout-title">Highest Priority Risk in the Full Stack</div>
+      <p>TB-500 and BPC-157 — commonly co-administered as the community "Wolverine Stack" — both operate through pro-angiogenic mechanisms converging on VEGF upregulation and enhanced cellular migration. Running them simultaneously creates an <strong>additive angiogenic load</strong> that is completely uncharacterized in any published study. No research has examined this combination in any model system — animal or human. The default pharmacodynamic assumption for compounds sharing a downstream pathway is additive effect.</p>
+    </div>
+
+    <p><strong>TB-500 (via Tβ4 mechanism):</strong> Directly induces VEGF; promotes endothelial cell migration and new blood vessel formation; documented tumor angiogenesis in melanoma, CRC, and NSCLC animal and human tissue models. <span class="tag animal">Animal</span> <span class="tag human-tissue">Human Tissue</span></p>
+
+    <p><strong>BPC-157:</strong> Independently promotes angiogenesis and vessel remodeling via VEGF/growth factor pathways. <span class="tag animal">Animal</span> — no human RCT. Regulatory status: FDA Category 2 (March 2026), WADA prohibited.</p>
+
+    <h4>Why This Matters Specifically for a 51M</h4>
+    <ul style="margin: 0.75rem 0 1rem 1.5rem;">
+      <li style="margin-bottom: 0.5rem;">Age 51 = meaningful age-related baseline colorectal cancer incidence; colonoscopy is standard-of-care from age 45+</li>
+      <li style="margin-bottom: 0.5rem;">The CRC human tissue data linking high Tβ4 expression to recurrence and worse overall survival (<em>J Pathol Transl Med</em> 2016) implicates the exact tumor type that peaks in the 51M demographic</li>
+      <li style="margin-bottom: 0.5rem;">Microscopic tumor populations — too small for current imaging — cannot be ruled out without complete cancer surveillance</li>
+      <li>Combined TB-500 + BPC-157 running continuously is the scenario most likely to provide permissive growth conditions for such populations via VEGF-driven angiogenesis</li>
+    </ul>
+
+    <div class="callout warning">
+      <div class="callout-title">Recommended Approach</div>
+      <p>Do not run TB-500 and BPC-157 simultaneously on an indefinite basis. If using either, consider one at a time with a defined therapeutic indication and endpoint. Complete cancer surveillance (colonoscopy, dermatological exam, CEA baseline) before initiating either compound after any extended break. Tumor marker panels (CEA, CA19-9) should be monitored at least semi-annually while on either compound.</p>
+    </div>
+  </section>
+
+  <!-- MONITORING -->
+  <section id="monitoring">
+    <h2>6. Actionable Monitoring Protocol for 51M</h2>
+
+    <div class="monitoring-grid">
+      <div class="monitoring-card">
+        <h4>Before Initiating / Re-Initiating TB-500 or BPC-157</h4>
+        <ul>
+          <li>Colonoscopy current (within 5 years for normal; within 3 years for polyp history)</li>
+          <li>Full-body dermatological skin check</li>
+          <li>CEA (Carcinoembryonic Antigen) baseline</li>
+          <li>CA19-9 baseline</li>
+          <li>CBC (complete blood count) with differential</li>
+          <li>CMP (Comprehensive Metabolic Panel)</li>
+          <li>PSA (Prostate-Specific Antigen) — not TB-500 specific; appropriate for 51M baseline</li>
+        </ul>
+      </div>
+      <div class="monitoring-card">
+        <h4>Every 12 Weeks (On-Cycle)</h4>
+        <ul>
+          <li>CBC with differential</li>
+          <li>Comprehensive metabolic panel</li>
+          <li>Fasting glucose + HbA1c (MOTS-c / AMPK effects on insulin sensitivity)</li>
+          <li>Blood pressure monitoring</li>
+        </ul>
+      </div>
+      <div class="monitoring-card">
+        <h4>Every 6 Months</h4>
+        <ul>
+          <li>CEA (particularly relevant for TB-500 + BPC-157 VEGF angiogenic load)</li>
+          <li>CA19-9</li>
+          <li>Lipid panel</li>
+          <li>If on systemic GHK-Cu: serum copper, zinc, ceruloplasmin</li>
+        </ul>
+      </div>
+      <div class="monitoring-card">
+        <h4>Annually</h4>
+        <ul>
+          <li>Repeat colonoscopy per gastroenterology guidance (not waivable on TB-500/BPC-157)</li>
+          <li>Full-body skin check (Tβ4 upregulated in melanoma; TB-500 use increases relevance)</li>
+          <li>Thyroid ultrasound (Retatrutide: rodent MTC class signal)</li>
+          <li>Ophthalmological exam (Retatrutide: retinopathy risk with rapid weight loss)</li>
+          <li>Consider LDCT chest scan if any smoking history (lung cancer screening eligibility)</li>
+        </ul>
+      </div>
+      <div class="monitoring-card" style="border-left: 4px solid var(--red);">
+        <h4 style="color: var(--red);">Discontinue and Seek Evaluation Immediately If:</h4>
+        <ul>
+          <li>Unexplained weight loss</li>
+          <li>Blood in stool or change in bowel habits persisting more than 2 weeks</li>
+          <li>New skin lesion with irregular border or rapid growth</li>
+          <li>Unexplained tachycardia persisting beyond first injection (MOTS-c community AE)</li>
+          <li>Injection-site nodule not resolving within 2 weeks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVIDENCE QUALITY -->
+  <section id="evidence">
+    <h2>7. Evidence Quality Summary</h2>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>Compound</th>
+          <th>Human RCT</th>
+          <th>Animal Data</th>
+          <th>In Vitro</th>
+          <th>Human Tissue</th>
+          <th>Critical Absence</th>
+        </tr>
+        <tr>
+          <td><strong>MOTS-c (native)</strong></td>
+          <td><span class="tag absent">Absent</span></td>
+          <td><span class="tag animal">Yes (rodent, 7–12 wk)</span></td>
+          <td><span class="tag in-vitro">Yes (mechanism)</span></td>
+          <td><span class="tag absent">Not found</span></td>
+          <td>Human PK; long-term safety; tolerance data</td>
+        </tr>
+        <tr>
+          <td><strong>CB4211 (MOTS-c analog)</strong></td>
+          <td><span class="tag absent">4-wk Phase 1b — company-reported, not peer-reviewed</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>Peer-reviewed full publication</td>
+        </tr>
+        <tr>
+          <td><strong>TB-500 (fragment)</strong></td>
+          <td><span class="tag absent">ZERO</span></td>
+          <td><span class="tag animal">Yes (healing + angiogenesis)</span></td>
+          <td><span class="tag in-vitro">Yes</span></td>
+          <td>Via Tβ4 proxy</td>
+          <td>Any human data for TB-500 fragment specifically</td>
+        </tr>
+        <tr>
+          <td><strong>Tβ4 full-length</strong></td>
+          <td><span class="tag human-rct">Yes — Ph. I (14d), Ph. II cardiac, Ph. II/III ophthalmic (600+ pts)</span></td>
+          <td><span class="tag animal">Yes</span></td>
+          <td><span class="tag in-vitro">Yes</span></td>
+          <td><span class="tag human-tissue">Yes (CRC, melanoma, others)</span></td>
+          <td>Long-term safety in healthy; cancer surveillance endpoint</td>
+        </tr>
+        <tr>
+          <td><strong>BPC-157</strong></td>
+          <td><span class="tag absent">ZERO</span></td>
+          <td><span class="tag animal">Yes (extensive)</span></td>
+          <td><span class="tag in-vitro">Yes</span></td>
+          <td><span class="tag absent">Absent</span></td>
+          <td>Any human data</td>
+        </tr>
+        <tr>
+          <td><strong>GHK-Cu (systemic)</strong></td>
+          <td><span class="tag absent">ZERO</span></td>
+          <td><span class="tag absent">Absent</span></td>
+          <td><span class="tag in-vitro">Yes</span></td>
+          <td><span class="tag absent">Absent</span></td>
+          <td>Chronic systemic safety in humans</td>
+        </tr>
+        <tr>
+          <td><strong>NAD+ (NR/NMN)</strong></td>
+          <td><span class="tag human-rct">Yes — multiple RCTs (6–12 wk, up to 1,000 mg/day)</span></td>
+          <td><span class="tag animal">Yes</span></td>
+          <td><span class="tag in-vitro">Yes</span></td>
+          <td>—</td>
+          <td>Long-term data (&gt;12 months)</td>
+        </tr>
+        <tr>
+          <td><strong>Retatrutide</strong></td>
+          <td><span class="tag human-rct">Yes — Ph. 2/3, up to 12 months</span></td>
+          <td><span class="tag animal">Yes</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>MTC human confirmation; data &gt;12 months</td>
+        </tr>
+      </table>
+    </div>
+    <div class="callout info">
+      <div class="callout-title">Interpreting "ABSENT"</div>
+      <p>Absence of evidence is not evidence of absence. For every "ABSENT" entry above, the correct framing is: "this question has not been answered by a published study" — not "this is safe because no harm has been shown." These are categorically different statements with opposite implications for risk-averse clinical decision-making.</p>
+    </div>
+  </section>
+
+  <!-- COMMUNITY VS LITERATURE -->
+  <section id="community">
+    <h2>8. Community vs. Literature Contrast</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Community Claim</th><th>Evidence Status</th><th>Verdict</th></tr>
+        <tr>
+          <td>"MOTS-c half-life is 1–4 hours"</td>
+          <td>Misattributed — measures endogenous exercise kinetics, not exogenous peptide clearance</td>
+          <td style="color: var(--yellow); font-weight: 600;">Misleading</td>
+        </tr>
+        <tr>
+          <td>"TB-500 is safe based on Thymosin Beta-4 clinical trials"</td>
+          <td>TB-500 is a structurally distinct 7-AA fragment; Tβ4 trials do not establish TB-500 safety</td>
+          <td style="color: var(--red); font-weight: 600;">False Conflation</td>
+        </tr>
+        <tr>
+          <td>"Cycling 8–12 weeks on / 4–8 off is the evidence-based protocol"</td>
+          <td>Transposed from anabolic steroid culture; no peptide-specific evidence</td>
+          <td style="color: var(--yellow); font-weight: 600;">Cargo-Culted</td>
+        </tr>
+        <tr>
+          <td>"Tβ4 is endogenous so it can't cause cancer"</td>
+          <td>Endogenous levels are orders of magnitude lower than exogenous dosing; elevated Tβ4 in tumor tissue is already pathological</td>
+          <td style="color: var(--red); font-weight: 600;">Scientifically Invalid</td>
+        </tr>
+        <tr>
+          <td>"The Wolverine Stack (BPC-157 + TB-500) is well-characterized"</td>
+          <td>Zero published studies on the combination; zero human data for either compound individually</td>
+          <td style="color: var(--red); font-weight: 600;">Not Characterized</td>
+        </tr>
+        <tr>
+          <td>"No evidence of accumulation means it's safe"</td>
+          <td>No accumulation study has been conducted; the question is unanswered, not answered negatively</td>
+          <td style="color: var(--yellow); font-weight: 600;">Requires Reframing</td>
+        </tr>
+        <tr>
+          <td>"Biohackers have been running this for years with no issues"</td>
+          <td>Survivorship bias; no systematic AE collection; cancer latency periods make short-term observation inadequate</td>
+          <td style="color: var(--yellow); font-weight: 600;">Inadequate Method</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>Honest Community Signals (Rare)</h3>
+    <p>r/NTNPerformance: <em>"Cycling and time-off periods are community conventions, NOT standardized clinical protocols."</em></p>
+    <p>USADA: <em>"Long-term safety of MOTS-c is unknown."</em></p>
+    <p>Approximately 1 in 13 Reddit posts on MOTS-c mentions that long-term effects are unknown. The dominant community narrative is not calibrated to the evidence base.</p>
+
+    <h3>The Structural Problem</h3>
+    <p>The community framework for peptide cycling emerged from anabolic steroid and growth hormone culture, where cycling has specific physiological rationale: hypothalamic-pituitary-gonadal (HPG) axis suppression, testosterone suppression, HPA axis adaptation. These mechanisms do not apply to AMPK-pathway peptides (MOTS-c) or actin-sequestering peptides (TB-500). Cycling wisdom was imported without evaluating whether the underlying pharmacology transfers. It does not.</p>
+  </section>
+
+  <!-- SOURCE COVERAGE -->
+  <section id="coverage">
+    <h2>9. Source Coverage Report</h2>
+    <p style="color: var(--muted); font-size: 0.875rem; margin-bottom: 1rem;">Per D3 Iron Law 6 — explicit source accounting for this research run.</p>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem;">
+      <div class="coverage-row">
+        <div class="coverage-status status-covered">COVERED</div>
+        <div><strong>Web Search</strong> — Brave, Tavily, Exa (academic mode) — 12+ findings</div>
+      </div>
+      <div class="coverage-row">
+        <div class="coverage-status status-covered">COVERED</div>
+        <div><strong>Academic: OpenAlex</strong> — 5 query sets, 75+ results on MOTS-c, Tβ4, BPC-157, GHK-Cu, NAD+, Retatrutide</div>
+      </div>
+      <div class="coverage-row">
+        <div class="coverage-status status-covered">COVERED</div>
+        <div><strong>Academic: ArXiv</strong> — MOTS-c and TB-500 literature scan (niche biomedical peptide; primary literature in PubMed journals)</div>
+      </div>
+      <div class="coverage-row">
+        <div class="coverage-status status-covered">COVERED</div>
+        <div><strong>Social: Reddit</strong> — 13 MOTS-c posts, 12 TB-500 posts across r/Peptides, r/USPeptides, r/PeptideGuide, r/BodyHackGuide, r/PeptideForum, r/NTNPerformance, r/steroids</div>
+      </div>
+      <div class="coverage-row">
+        <div class="coverage-status status-covered">COVERED</div>
+        <div><strong>Deep Research: Opus CLI</strong> — Multi-query synthesis on MOTS-c and Tβ4 cancer risk, PK, and clinical trial landscape</div>
+      </div>
+      <div class="coverage-row">
+        <div class="coverage-status status-covered">COVERED</div>
+        <div><strong>Regulatory: USADA, FDA, WADA</strong> — Regulatory status for all compounds in stack</div>
+      </div>
+      <div class="coverage-row">
+        <div class="coverage-status status-partial">OFFLINE</div>
+        <div><strong>Perplexity (sonar-pro)</strong> — OpenRouter credits unavailable at time of research; replaced by Tavily Research and Opus CLI deep synthesis</div>
+      </div>
+      <div class="coverage-row">
+        <div class="coverage-status status-skipped">SKIPPED</div>
+        <div><strong>YouTube / Video</strong> — Not relevant for academic evidence-graded research; community video content would not add to literature synthesis</div>
+      </div>
+      <div class="coverage-row">
+        <div class="coverage-status status-skipped">SKIPPED</div>
+        <div><strong>Instagram / TikTok</strong> — Not relevant; would add community lore not evidence</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Primary Citations</h3>
+    <div class="citation"><span class="pmid">PMID 25738459</span> Lee et al. 2015, <em>Cell Metabolism</em> — MOTS-c mechanism (AICAR/AMPK)</div>
+    <div class="citation"><span class="pmid">PMID 31293078</span> Kim et al. 2018 — MOTS-c/insulin sensitivity</div>
+    <div class="citation">PMC9905433; Gudiksen et al. <em>Free Radical Biology and Medicine</em> 2026 — MOTS-c skeletal muscle bioenergetics</div>
+    <div class="citation"><a href="https://doi.org/10.1002/advs.202405620" style="color: var(--accent);">DOI: 10.1002/advs.202405620</a> — MOTS-c ovarian cancer suppression, <em>Advanced Science</em> 2024</div>
+    <div class="citation"><span class="pmid">PMID 14625258</span> Kobayashi et al. 2002, <em>J Natl Cancer Inst</em> (221 citations) — Tβ4 tumor angiogenesis + metastasis in melanoma</div>
+    <div class="citation"><span class="pmid">PMID 21621326</span> Huang et al. 2011, <em>Cancer Letters</em> — Tβ4 colon cancer migration</div>
+    <div class="citation"><em>J Pathol Transl Med</em> 2016 — High Tβ4 expression: CRC recurrence + worse OS (human tissue)</div>
+    <div class="citation">PMC2805724 — Multiple myeloma: Tβ4 tumor-suppressive role</div>
+    <div class="citation">Ruff et al. 2010, <em>Ann NY Acad Sci</em> — Full-length Tβ4 Phase I human safety (IV, 40 subjects, 14 days)</div>
+    <div class="citation">Wang et al. 2021, <em>J Cell Mol Med</em> — Recombinant hTβ4 Phase I (84 subjects)</div>
+    <div class="citation">ARISE-1/2/3 (RGN-259) — Tβ4 ophthalmic Phase II/III (600+ patients)</div>
+    <div class="citation">NCT05984134 — Tβ4 cardiac Phase IIb (90-day; publication pending)</div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="epr-badge">
+      Research Quality: <span class="epr-score">EPR 17/20</span> | Self-grade: <span class="epr-score">91/100</span>
+    </div>
+    <p>DELPHI PRO D3 Academic Research — 2026-06-13</p>
+    <p style="margin-top: 0.4rem;">De-identified: patient referred to as "a 51M on an ongoing peptide stack." No names, DOB, or identifying information included.</p>
+    <p style="margin-top: 0.4rem;">This report synthesizes peer-reviewed literature as of 2026-06-13. It does not constitute medical advice. Review with attending physician before any protocol modification.</p>
+    <p style="margin-top: 0.4rem; color: var(--border);">Cortex ID: 48e00a02-5fab-43bd-a3de-375538dcc930 | NexusOS DELPHI PRO</p>
+  </div>
+
+</div>
+</body>
+</html>
