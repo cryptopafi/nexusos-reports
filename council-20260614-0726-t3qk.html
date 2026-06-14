@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pass: Decide Whether Hermes Concierge Should Implemented Separate Profile Merged Hermes Pa Built Council Audit — council-20260614-0726-t3qk</title>
+<style>
+:root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --panel2:#242424; --line:#303030; --text:#e8e8e8; --muted:#a0a0a0; --green:#5bc46b; --amber:#f0a631; --red:#e5534b; --blue:#76a9ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 16% 0%, #1f2937 0, transparent 28rem), var(--bg); color:var(--text); font:14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:30px 24px 60px; }
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:26px; }
+.brand { font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+button { border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:8px; padding:8px 12px; }
+.hero { padding:28px 0 22px; border-bottom:1px solid var(--line); }
+h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter-spacing:0; }
+.subtitle { max-width:850px; color:var(--muted); font-size:17px; }
+.meta { margin-top:16px; color:var(--muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+.grid { display:grid; gap:16px; }
+.metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
+.two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
+.card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
+.metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
+.metric span { color:var(--muted); }
+h2 { margin:0 0 14px; font-size:22px; }
+h3 { margin:18px 0 8px; color:var(--blue); }
+.score { display:grid; grid-template-columns:130px minmax(120px, 1fr) 52px; align-items:center; gap:12px; margin:11px 0; }
+.score b { height:16px; background:#111; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.score i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--red), var(--amber), var(--green)); }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+table { border-collapse:collapse; width:100%; min-width:760px; background:var(--panel); }
+th,td { border-bottom:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; }
+th { background:var(--panel2); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+tr:hover td { background:rgba(255,255,255,.025); }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:#151515; font-weight:700; }
+.narrative { margin-top:16px; }
+.narrative p { margin:9px 0; }
+.narrative ul { padding-left:22px; }
+code { background:#101010; border:1px solid var(--line); border-radius:5px; padding:1px 5px; }
+pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(--line); border-radius:8px; padding:14px; }
+.muted { color:var(--muted); }
+summary { cursor:pointer; color:var(--muted); }
+a { color:var(--blue); text-decoration:none; }
+@media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
+  <header class="hero"><h1>Pass: Decide Whether Hermes Concierge Should Implemented Separate Profile Merged Hermes Pa Built Council Audit — council-20260614-0726-t3qk</h1><p class="subtitle">Advisor Vote Ledger This ledger is generated from structured advisor records and is authoritative if any model-written narrative sentence labels an advisor differently.</p><div class="meta">Generated 2026-06-14 07:37 UTC | Task council-20260614-0726-t3qk</div></header>
+  <section class="grid metrics">
+    <article class="card metric"><small>Outcome</small><strong>PASS</strong><span>Verdict</span></article>
+    <article class="card metric"><small>Certainty</small><strong>0.91</strong><span>Confidence</span></article>
+    <article class="card metric"><small>Quality</small><strong>3.73/4</strong><span>NPLF average</span></article>
+    <article class="card metric"><small>Run Spend</small><strong>$0.5371</strong><span>Cost</span></article>
+    <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
+  </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>3 PASS</strong><span>Final reconciler tier: PASS</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>PASS + PASS + PASS</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>PASS after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor A</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.9</strong></div><h3>Why this advisor voted this way</h3><p>Clear existing architectural boundaries with predefined namespaces, schemas, and audit trails for both profiles.</p><h3>Main objection or warning</h3><p>User routing confusion if Pafi must manually decide whether to address PA or Concierge for ambiguous tasks.</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor B</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.82</strong></div><h3>Why this advisor voted this way</h3><p>Both profiles already exist with fully separated namespaces (profile/memory/audit) and distinct output schemas (pa_task_pack_v1 vs concierge_task_pack_v1), so a hybrid shared-core design needs almost no new isolation plumbing — only a shared safety kernel extraction.</p><h3>Main objection or warning</h3><p>Routing ambiguity: a single natural conversation can contain both PA intent (inbox, calendar) and Concierge intent (book a hotel, contact a vendor), so without an explicit deterministic router and an in-message disclosure of which surface is active, Pafi will be confused about which safety contract and memory pod is in effect.</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor C</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.88</strong></div><h3>Why this advisor voted this way</h3><p>Hybrid shared-core with separate surfaces directly resolves the tension between simple conversation for Pafi and memory/audit isolation for external coordination.</p><h3>Main objection or warning</h3><p>Routing mistakes could leak personal PA context into vendor, travel, or service workflows if the shared core is allowed to share memory too broadly.</p></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:92.5%'></i></b><strong>3.70</strong></div>
+<div class='score'><span>Plan</span><b><i style='width:97.5%'></i></b><strong>3.90</strong></div>
+<div class='score'><span>Leverage</span><b><i style='width:92.5%'></i></b><strong>3.70</strong></div>
+<div class='score'><span>Fit</span><b><i style='width:90.0%'></i></b><strong>3.60</strong></div></article>
+    <article class="card"><h2>Advisor Matrix</h2><div class="table-wrap"><table><thead><tr><th>Advisor</th><th>Position</th><th>Confidence</th><th>Agrees On</th><th>Disagrees / Warns On</th></tr></thead><tbody><tr><td><strong>Advisor A</strong></td><td><span class='pill'>PASS</span></td><td>0.9</td><td>Clear existing architectural boundaries with predefined namespaces, schemas, and audit trails for both profiles.; Explicit safety posture with manual-approval gates already mandated for all external-risk actions.; Well-defined constraints that explicitly balance the user experience against memory isolation and system bloat.</td><td>User routing confusion if Pafi must manually decide whether to address PA or Concierge for ambiguous tasks.; Context fragmentation if Concierge travel/vendor planning requires deep personal preference memory stored only in PA.; Maintenance overhead of duplicating shared tool access (e.g., email drafting, basic scheduling) across two profiles.</td></tr>
+<tr><td><strong>Advisor B</strong></td><td><span class='pill'>PASS</span></td><td>0.82</td><td>Both profiles already exist with fully separated namespaces (profile/memory/audit) and distinct output schemas (pa_task_pack_v1 vs concierge_task_pack_v1), so a hybrid shared-core design needs almost no new isolation plumbing — only a shared safety kernel extraction.; Both profiles already share an identical safety posture (draft-only, manual approvals, disabled cron, no production shell, redacted secrets), which makes a single shared safety/approval kernel the natural deduplication point and removes the main maintenance argument against keeping two surfaces.; Concierge is already disabled behind audit/operator activation gates, so the risky external-coordination surface cannot leak before review regardless of which architecture is chosen.</td><td>Routing ambiguity: a single natural conversation can contain both PA intent (inbox, calendar) and Concierge intent (book a hotel, contact a vendor), so without an explicit deterministic router and an in-message disclosure of which surface is active, Pafi will be confused about which safety contract and memory pod is in effect.; Cross-pollination of sensitive PA preference memory into vendor/travel workflow state — the highest-stakes failure (exposing private personal context to an external contact), which a shared core makes easier to leak unless memory reads are surface-scoped and the kernel forbids PA-pod reads from Concierge context.; Premature Concierge activation or scope creep turning Concierge into a full service-workflow engine, bloating the shared core and weakening the draft-only guarantee if approval boundaries are not enumerated per action class before enable.</td></tr>
+<tr><td><strong>Advisor C</strong></td><td><span class='pill'>PASS</span></td><td>0.88</td><td>Hybrid shared-core with separate surfaces directly resolves the tension between simple conversation for Pafi and memory/audit isolation for external coordination.; The brief already contains strong safety primitives: draft-only posture, manual approvals, disabled cron, no production shell, redacted secrets, and explicit external-action bans.; Existing separate namespaces and schemas for Hermes PA and Hermes Concierge make isolation implementable without inventing a new architecture.</td><td>Routing mistakes could leak personal PA context into vendor, travel, or service workflows if the shared core is allowed to share memory too broadly.; A merged PA implementation would likely bloat Hermes PA into a service workflow engine and make safety review harder.; A fully separate Concierge profile could create unnecessary user confusion if Pafi has to consciously choose profiles during normal conversation.</td></tr></tbody></table></div></article>
+  </section>
+  <section class="card narrative"><h2>Decision Trace</h2><p># Council Report</p>
+<h2>Final Verdict</h2>
+<h2>Advisor Vote Ledger</h2>
+<p>This ledger is generated from structured advisor records and is authoritative if any model-written narrative sentence labels an advisor differently.</p>
+<ul>
+<li>Response A: PASS, confidence 0.90; support: Existing architectural boundaries include predefined namespaces schemas and audit trails for both profiles; warning: Ambiguous tasks create user routing confusion if Pafi must choose between PA and Concierge.</li>
+<li>Response B: PASS, confidence 0.88; support: Hybrid shared core with separate surfaces resolves tension between simple Pafi conversation and memory audit isolation for external coordination; warning: Routing mistakes could leak personal PA context into vendor travel or service workflows if shared memory is too broad.</li>
+<li>Response C: PASS, confidence 0.82; support: Both profiles already have separated namespaces and schemas so hybrid shared core needs only shared safety kernel extraction; warning: Natural conversations can mix PA and Concierge intent so deterministic routing and active surface disclosure prevent safety and memory confusion.</li>
+</ul>
+<h2>Summary</h2>
+<p>All three advisors recommend PASS for a hybrid shared-core approach: keep Hermes PA and Hermes Concierge separate for memory, audit, schema, and workflow state, while giving Pafi one natural conversational front door and reusing common safety/approval infrastructure. The main dissent is not about the recommendation; it is about implementation strictness: Response C is more explicit that the shared core should be a narrow safety/approval/audit kernel with deterministic routing labels and parity tests, while Responses A and B emphasize a unified user experience and internal routing.</p>
+<h2>Substantive Answer</h2>
+<p>Recommendation: implement Hermes Concierge as a hybrid shared-core extension with separate surfaces.</p>
+<p>Plain-English explanation: Pafi should be able to talk naturally to Hermes without choosing a bot. Hermes PA remains the everyday private assistant for inbox, calendar, reminders, personal drafts, Google Workspace reads, Telegram PA gateway, and approval packets. Hermes Concierge remains a separate disabled profile for external coordination workflows such as travel, vendors, services, booking plans, option packets, and approval-gated external action preparation. Under the hood, PA and Concierge keep separate memory, audit, namespaces, and schemas. Shared code should cover common safety checks, redaction, approval-packet generation, audit mechanics, and draft formatting, but shared code must not mean shared memory.</p>
+<p>What belongs in Hermes PA:</p>
+<ul>
+<li>Inbox triage, reply drafts, prioritization, reminders, schedule reasoning, calendar support, and personal task tracking.</li>
+<li>Owner-facing Google Workspace reads and source-link front-door handling, with canonical intelligence delegated elsewhere when appropriate.</li>
+<li>Telegram PA gateway and simple external-contact drafts that do not require a structured vendor, travel, booking, or service workflow.</li>
+<li>Sensitive personal preference memory, isolated and approval-gated.</li>
+</ul>
+<p>What belongs in Hermes Concierge:</p>
+<ul>
+<li>Travel planning, itineraries, hotel/flight/restaurant/transport comparisons, vendor research, service planning, booking plans, cancellation plans, and option packets.</li>
+<li>Vendor/service coordination drafts and external logistics workflows.</li>
+<li>Workflow state for travel, vendors, services, and external coordination, isolated from personal PA state.</li>
+</ul>
+<p>Namespaces and schemas should be preserved:</p>
+<ul>
+<li>Hermes PA: <code>tenant/nexusos/profile/hermes-pa</code>, <code>voxsolutions/pod/personal-assistant</code>, <code>voxsolutions/audit/personal-assistant</code>, <code>pa_task_pack_v1</code>.</li>
+<li>Hermes Concierge: <code>tenant/nexusos/profile/hermes-concierge</code>, <code>voxsolutions/pod/concierge</code>, <code>voxsolutions/audit/concierge</code>, <code>concierge_task_pack_v1</code>.</li>
+</ul>
+<p>Routing model: PA should be the normal front door. Route internally to Concierge when the request involves travel, vendors, services, bookings, cancellations, multi-option external comparisons, logistics, or external coordination packets. Ambiguous requests should default to PA unless Concierge workflow signals are strong. Mixed requests should be split into PA and Concierge parts. The output should label the active surface clearly when Concierge is involved, for example <code>[Concierge draft]</code>, so Pafi gets natural conversation without hidden state confusion.</p>
+<p>Required approval boundaries: no profile may execute sensitive disclosure, external sends, public posts, broadcasts, bookings, payments, cancellations, vendor commitments, browser form submissions, identity use, credential reads, credential operations, or secret access without explicit scoped approval. Calendar holds and external scheduling actions also need their relevant approval gate. Allowed without approval: internal analysis, drafts, option comparisons, approval packets, risk labels, and asking Pafi for missing details.</p>
+<p>Activation plan:</p>
+<p>1. Keep Hermes Concierge disabled.</p>
+<p>2. Extract or confirm a shared safety/approval/audit kernel only where behavior is genuinely common.</p>
+<p>3. Run a PA parity audit to verify PA behavior does not regress.</p>
+<p>4. Audit Concierge namespaces, schema, tool permissions, memory boundaries, audit logging, cron state, shell access, credential access, external-send access, booking access, payment access, and browser-submit access.</p>
+<p>5. Add routing rules for travel, vendor, service, booking, cancellation, and option-packet workflows.</p>
+<p>6. Add tests for routing, approval blocking, memory isolation, schema output, and audit log placement.</p>
+<p>7. Run Concierge in shadow/draft mode on simulated workflows.</p>
+<p>8. Require operator activation after audit pass.</p>
+<p>9. Enable only draft/plan/read behavior first; keep all external actions approval-gated and never auto-executed.</p>
+<p>Risks and mitigations:</p>
+<ul>
+<li>PA context leaks into Concierge: default-deny memory transfer; allow only sanitized, scoped, approved facts.</li>
+<li>User confusion: keep PA as front door, label Concierge outputs, and split mixed workflows.</li>
+<li>PA bloat: keep travel/vendor/service workflow logic in Concierge.</li>
+<li>Profile sprawl: keep only one Concierge surface and deduplicate shared utilities.</li>
+<li>Shared-kernel regression: version the kernel and require PA parity plus cross-surface approval conformance tests.</li>
+<li>Premature activation: Concierge remains disabled until audit and operator gates pass.</li>
+</ul>
+<p>Kill criteria:</p>
+<ul>
+<li>Disable Concierge immediately if any external send, booking, payment, cancellation, commitment, browser submit, identity use, or credential operation occurs without a matching approval record.</li>
+<li>Disable Concierge if PA private memory appears in Concierge workflow state or in an external-facing draft without explicit approved transfer.</li>
+<li>Roll back the shared kernel if PA parity tests show behavioral regression.</li>
+<li>Merge back into PA if Concierge proves to be only a few templates with no meaningful workflow state and creates routing confusion.</li>
+<li>Strengthen separation or split fully if the shared core causes repeated cross-surface coupling bugs or the safety contracts diverge.</li>
+<li>Keep Concierge disabled if audit finds active external-send, booking, payment, browser-submit, credential, or identity-use capability without approval gates.</li>
+</ul>
+<p>Assumptions and evidence gaps: the advisors did not inspect live profile YAML or runtime router code. The router, shared-kernel extraction feasibility, and parity behavior are implementation assumptions that must be verified during audit.</p>
+<h2>Where Models Agree</h2>
+<p>All three models agree on the central recommendation: hybrid shared-core with separate PA and Concierge surfaces. Response A calls for separate architectural profiles under a unified conversational surface, Response B recommends a shared-core extension with separate namespaces, schema, audit, and workflow state, and Response C recommends two distinct surfaces with one shared safety/approval/audit kernel.</p>
+<p>All three agree that memory isolation is non-negotiable. Response A says private life must not leak into vendors or airlines, Response B says shared memory must not be broad, and Response C says Concierge must never read the PA pod.</p>
+<p>All three agree that external-risk actions require explicit approval. Response A lists sends, bookings, purchases, payments, cancellations, commitments, forms, identity, and credentials; Response B adds public posts, sensitive disclosure, and calendar holds under relevant gates; Response C groups these into nine blocked action classes enforced by a shared kernel.</p>
+<p>All three agree Concierge should remain disabled until audit and operator gates pass. Response A proposes audit/tooling/routing/operator gates, Response B says keep disabled through audit and operator activation, and Response C adds parity, isolation, conformance, dry-run, and staged capability gates.</p>
+<h2>Where Models Disagree</h2>
+<p>There is no disagreement on the final architecture. The material differences are implementation emphasis.</p>
+<p>Routing disclosure: Response A emphasizes a unified conversational surface where Pafi should not manually choose Concierge. Response B similarly says PA should be the front door and route internally. Response C agrees on natural conversation but adds mandatory active surface disclosure and splitting mixed requests instead of guessing.</p>
+<p>Shared core scope: Response B frames shared core broadly around approval packets, redaction, policy checks, source-link normalization, and draft formatting. Response C narrows the shared core to a safety/approval/audit kernel and warns against coupling bugs. Response A is less prescriptive about kernel extraction and focuses more on separate profiles plus routing.</p>
+<p>Activation strictness: Response C requires PA parity testing and approval-boundary conformance tests before activation. Response A and Response B include audit and operator gates, but Response C is more demanding about testable gates.</p>
+<h2>Unique Discoveries</h2>
+<p>Response A uniquely proposes a utilization kill metric: consider merging if Concierge remains below 10% of assistant requests after 3 months.</p>
+<p>Response B uniquely provides the clearest allowed-without-approval list: internal analysis, draft creation, option comparison, approval-packet preparation, risk labeling, and asking Pafi for missing details.</p>
+<p>Response C uniquely adds PA parity regression testing after kernel extraction, single-use scoped approvals with expiry for escalations, and explicit assumptions about the unverified router and uninspected profile configs.</p>
+<h2>Advisor Positions</h2>
+<p>Response A: PASS, confidence 0.90. Primary support: existing namespaces, schemas, audit trails, and manual approval gates already support a hybrid model. Primary concern: ambiguous tasks may create routing confusion, and Concierge may need sanitized preference context from PA.</p>
+<p>Response B: PASS, confidence 0.88. Primary support: hybrid shared core with separate surfaces resolves the tension between simple conversation and memory/audit isolation. Primary concern: routing mistakes could leak PA context, and a merged PA would bloat into a service workflow engine.</p>
+<p>Response C: PASS, confidence 0.82. Primary support: existing separate profiles make a shared safety kernel with separate surfaces feasible. Primary concern: natural conversations can mix intent, so deterministic routing, surface labels, scoped memory transfer, and activation tests are required.</p>
+<h2>Agreement Zones</h2>
+<p>Hybrid is the right architecture. Response A recommends separate profiles under the hood with a unified conversational layer, Response B recommends shared core with separate surfaces, and Response C recommends separate surfaces plus a shared safety/approval/audit kernel.</p>
+<p>Separate namespaces, schemas, memory, and audit should be preserved. Response A cites predefined namespaces and schemas, Response B provides a namespace/schema table, and Response C says distinct profiles, memory pods, audit logs, and output schemas are required.</p>
+<p>Approval gates must cover every external-risk action. Response A names external messages, bookings, purchases, payments, cancellations, commitments, browser submissions, identity, and credentials; Response B adds sensitive disclosure, posts, broadcasts, and scheduling actions; Response C formalizes nine action classes with draft-and-approval-packet defaults.</p>
+<p>Concierge must remain disabled until audit and operator activation gates pass. Response A, Response B, and Response C all explicitly preserve the disabled state until gate completion.</p>
+<h2>Split Zones</h2>
+<p>Routing disclosure and ambiguity handling: Response A and Response B prioritize a natural single front door with internal routing so Pafi does not need to choose profiles. Response C agrees with the single front door but adds mandatory surface labels and split handling for mixed PA/Concierge requests. CRITIC challenge: Response C&#x27;s concern weakens Response A&#x27;s and Response B&#x27;s smoother UX framing because hidden routing can itself become a safety and memory-boundary risk.</p>
+<p>Shared-core scope: Response B supports shared utilities such as approval packets, redaction, policy checks, source-link normalization, and draft formatting. Response C narrows this to a safety/approval/audit kernel and warns that workflow logic should stay out of the kernel. Response A does not define the kernel scope in detail. CRITIC challenge: Response C&#x27;s coupling-risk claim challenges Response B&#x27;s broader shared-core list; Response B&#x27;s maintenance argument challenges Response C if the kernel becomes too narrow to reduce duplication.</p>
+<p>Activation rigor: Response A and Response B require audit plus operator gates. Response C adds PA parity regression, approval-boundary conformance tests, router dry-run, and staged capability enablement. CRITIC challenge: Response C&#x27;s testable gates expose a weakness in Response A&#x27;s and Response B&#x27;s less formal activation plans; Response A&#x27;s faster enablement path challenges Response C on possible implementation overhead.</p>
+<p>Memory transfer mechanism: Response A allows scoped preference context injection, Response B allows explicit transfer of specific facts, and Response C allows only sanitized Pafi-approved briefs while stating Concierge never reads the PA pod. These are compatible but differ in strictness. CRITIC challenge: Response A&#x27;s context-inject idea is operationally useful, but Response C&#x27;s stricter phrasing better protects against accidental PA pod leakage.</p>
+<h2>Agreement Matrix</h2>
+<p>Hybrid recommendation: Response A + Response B + Response C agree.</p>
+<p>Keep PA and Concierge separate under the hood: Response A + Response B + Response C agree.</p>
+<p>Use one natural conversational front door: Response A + Response B agree strongly; Response C agrees with the addition of explicit surface labels.</p>
+<p>Preserve separate namespaces, memory, audit, and schemas: Response A + Response B + Response C agree.</p>
+<p>Draft-only and approval-gated external actions: Response A + Response B + Response C agree.</p>
+<p>Concierge disabled until audit/operator gates: Response A + Response B + Response C agree.</p>
+<p>Avoid PA bloat and profile sprawl: Response A + Response B + Response C agree.</p>
+<p>Use sanitized/scoped transfer rather than direct PA memory access: Response A + Response B + Response C agree, with Response C strictest.</p>
+<h2>Disagreement Matrix</h2>
+<p>Routing labels: Response A and Response B emphasize invisible internal routing for simplicity; Response C requires active labels like <code>[Concierge draft]</code> and splitting mixed requests.</p>
+<p>Shared-core breadth: Response B allows a broader shared-core utility layer; Response C limits the core to safety/approval/audit/routing-adjacent controls; Response A leaves scope less specified.</p>
+<p>Activation gate strictness: Response A and Response B require audit/operator activation; Response C adds parity, conformance tests, shadow mode, staged capability, and single-use scoped approvals.</p>
+<p>Kill metrics: Response A proposes a concrete utilization threshold below 10% after 3 months; Response C proposes 60-90 days and security-triggered hard stops; Response B provides qualitative kill criteria without numeric utilization thresholds.</p>
+<h2>Final Synthesis Trace</h2>
+<p>The final verdict is PASS because all three advisors independently converge on the same architecture: hybrid shared-core with separate PA and Concierge surfaces. The strongest shared claim is that this is the only option that simultaneously minimizes Pafi-facing complexity, preserves memory and audit isolation, avoids PA bloat, avoids unnecessary profile sprawl, and keeps all external-risk actions approval-gated.</p>
+<p>The dissent affects implementation, not the top-level decision. Response C&#x27;s stricter routing labels, kernel boundaries, parity testing, and conformance testing should be incorporated because they directly reduce the highest-stakes risks identified in the brief: sensitive context leakage, premature activation, unsafe external commitments, and hidden routing confusion. Response A&#x27;s and Response B&#x27;s user-experience concern should also be preserved: Pafi should not need to manually pick profiles during ordinary conversation.</p>
+<p>Therefore, the reconciled answer is: build the hybrid; use PA as the front door; preserve Concierge as a disabled separate surface; share only common safety/approval/audit utilities; label Concierge workflows; require scoped approvals for all external-risk actions; and activate only after audit, isolation, routing, parity, and operator gates pass.</p>
+<h2>NPLF Arithmetic</h2>
+<p>My independent NPLF: N=3.7, P=3.9, L=3.7, F=3.6. Novelty/need is high because the hybrid resolves real UX, safety, and maintenance tensions. Plan quality is very high because the advisors converge on concrete responsibilities, boundaries, gates, and kill criteria. Leverage is strong because existing namespaces and schemas already support the design. Feasibility is strong but slightly lower because live router code and profile configs were not inspected.</p>
+<p>Cross-advisor means, advisory only: N≈3.57, P≈3.83, L≈3.70, F≈3.53. My score is slightly above the means on plan and feasibility because the reconciled synthesis incorporates Response C&#x27;s stricter gates while preserving Response A&#x27;s and Response B&#x27;s simpler UX model.</p>
+<h2>Dissent</h2>
+<h2>Split Zones</h2>
+<p>Routing disclosure and ambiguity handling: Response A and Response B prioritize a natural single front door with internal routing so Pafi does not need to choose profiles. Response C agrees with the single front door but adds mandatory surface labels and split handling for mixed PA/Concierge requests. CRITIC challenge: Response C&#x27;s concern weakens Response A&#x27;s and Response B&#x27;s smoother UX framing because hidden routing can itself become a safety and memory-boundary risk.</p>
+<p>Shared-core scope: Response B supports shared utilities such as approval packets, redaction, policy checks, source-link normalization, and draft formatting. Response C narrows this to a safety/approval/audit kernel and warns that workflow logic should stay out of the kernel. Response A does not define the kernel scope in detail. CRITIC challenge: Response C&#x27;s coupling-risk claim challenges Response B&#x27;s broader shared-core list; Response B&#x27;s maintenance argument challenges Response C if the kernel becomes too narrow to reduce duplication.</p>
+<p>Activation rigor: Response A and Response B require audit plus operator gates. Response C adds PA parity regression, approval-boundary conformance tests, router dry-run, and staged capability enablement. CRITIC challenge: Response C&#x27;s testable gates expose a weakness in Response A&#x27;s and Response B&#x27;s less formal activation plans; Response A&#x27;s faster enablement path challenges Response C on possible implementation overhead.</p>
+<p>Memory transfer mechanism: Response A allows scoped preference context injection, Response B allows explicit transfer of specific facts, and Response C allows only sanitized Pafi-approved briefs while stating Concierge never reads the PA pod. These are compatible but differ in strictness. CRITIC challenge: Response A&#x27;s context-inject idea is operationally useful, but Response C&#x27;s stricter phrasing better protects against accidental PA pod leakage.</p>
+<h2>Advisor Positions</h2>
+<h3>Advisor A</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.9</li>
+<li>Agrees on: Clear existing architectural boundaries with predefined namespaces, schemas, and audit trails for both profiles.; Explicit safety posture with manual-approval gates already mandated for all external-risk actions.; Well-defined constraints that explicitly balance the user experience against memory isolation and system bloat.</li>
+<li>Disagrees or warns on: User routing confusion if Pafi must manually decide whether to address PA or Concierge for ambiguous tasks.; Context fragmentation if Concierge travel/vendor planning requires deep personal preference memory stored only in PA.; Maintenance overhead of duplicating shared tool access (e.g., email drafting, basic scheduling) across two profiles.</li>
+</ul>
+<h3>Advisor B</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.82</li>
+<li>Agrees on: Both profiles already exist with fully separated namespaces (profile/memory/audit) and distinct output schemas (pa_task_pack_v1 vs concierge_task_pack_v1), so a hybrid shared-core design needs almost no new isolation plumbing — only a shared safety kernel extraction.; Both profiles already share an identical safety posture (draft-only, manual approvals, disabled cron, no production shell, redacted secrets), which makes a single shared safety/approval kernel the natural deduplication point and removes the main maintenance argument against keeping two surfaces.; Concierge is already disabled behind audit/operator activation gates, so the risky external-coordination surface cannot leak before review regardless of which architecture is chosen.</li>
+<li>Disagrees or warns on: Routing ambiguity: a single natural conversation can contain both PA intent (inbox, calendar) and Concierge intent (book a hotel, contact a vendor), so without an explicit deterministic router and an in-message disclosure of which surface is active, Pafi will be confused about which safety contract and memory pod is in effect.; Cross-pollination of sensitive PA preference memory into vendor/travel workflow state — the highest-stakes failure (exposing private personal context to an external contact), which a shared core makes easier to leak unless memory reads are surface-scoped and the kernel forbids PA-pod reads from Concierge context.; Premature Concierge activation or scope creep turning Concierge into a full service-workflow engine, bloating the shared core and weakening the draft-only guarantee if approval boundaries are not enumerated per action class before enable.</li>
+</ul>
+<h3>Advisor C</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.88</li>
+<li>Agrees on: Hybrid shared-core with separate surfaces directly resolves the tension between simple conversation for Pafi and memory/audit isolation for external coordination.; The brief already contains strong safety primitives: draft-only posture, manual approvals, disabled cron, no production shell, redacted secrets, and explicit external-action bans.; Existing separate namespaces and schemas for Hermes PA and Hermes Concierge make isolation implementable without inventing a new architecture.</li>
+<li>Disagrees or warns on: Routing mistakes could leak personal PA context into vendor, travel, or service workflows if the shared core is allowed to share memory too broadly.; A merged PA implementation would likely bloat Hermes PA into a service workflow engine and make safety review harder.; A fully separate Concierge profile could create unnecessary user confusion if Pafi has to consciously choose profiles during normal conversation.</li>
+</ul>
+<h2>Scoring</h2>
+<ul>
+<li>Tier: PASS</li>
+<li>Confidence: 0.91</li>
+<li>Cost: $0.5371</li>
+<li>N: 3.70/4</li>
+<li>P: 3.90/4</li>
+<li>L: 3.70/4</li>
+<li>F: 3.60/4</li>
+</ul></section>
+</main>
+</body>
+</html>
