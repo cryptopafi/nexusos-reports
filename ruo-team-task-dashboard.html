@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PetraLab RUO Team Task Dashboard</title>
+  <style>
+    :root {
+      --bg: #07110f;
+      --panel: rgba(16, 29, 26, 0.86);
+      --panel-strong: rgba(22, 39, 35, 0.96);
+      --text: #eef8f5;
+      --muted: #9fb2ac;
+      --faint: #6f817b;
+      --line: rgba(178, 206, 197, 0.18);
+      --green: #42d391;
+      --yellow: #f3c85b;
+      --red: #ff6b6b;
+      --blue: #78a7ff;
+      --cyan: #6bd8ff;
+      --ink: #08100e;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      color-scheme: dark;
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f7f6;
+      --panel: rgba(255, 255, 255, 0.9);
+      --panel-strong: rgba(255, 255, 255, 0.98);
+      --text: #14221f;
+      --muted: #52635e;
+      --faint: #788983;
+      --line: rgba(25, 55, 48, 0.15);
+      --ink: #ffffff;
+      --shadow: 0 18px 50px rgba(20, 34, 31, 0.13);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(66, 211, 145, 0.16), transparent 36rem),
+        linear-gradient(135deg, var(--bg), #0d1714 58%, #14211e);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    [data-theme="light"] body,
+    [data-theme="light"] {
+      background:
+        radial-gradient(circle at 8% 0%, rgba(66, 211, 145, 0.18), transparent 34rem),
+        linear-gradient(135deg, #f7faf8, #eef4f1 58%, #e9f0ed);
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    .shell {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(30px, 5vw, 58px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      min-width: 260px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      height: 40px;
+      padding: 0 13px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      border-color: rgba(66, 211, 145, 0.55);
+    }
+
+    .status-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0 18px;
+    }
+
+    .metric, .panel, .gate, .task-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      border-radius: 8px;
+    }
+
+    .metric {
+      padding: 16px;
+      min-height: 105px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .metric .value {
+      font-size: 34px;
+      font-weight: 760;
+      margin-top: 8px;
+    }
+
+    .metric .hint {
+      color: var(--faint);
+      font-size: 12px;
+      margin-top: 7px;
+    }
+
+    .panel {
+      padding: 18px;
+      margin: 14px 0;
+    }
+
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .panel-title h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: minmax(260px, 2fr) repeat(5, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .filters input, .filters select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      color: var(--text);
+      height: 42px;
+      border-radius: 8px;
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .filters input:focus, .filters select:focus {
+      border-color: var(--green);
+    }
+
+    .gate-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(145px, 1fr));
+      gap: 10px;
+    }
+
+    .gate {
+      padding: 13px;
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gate::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gate-color);
+    }
+
+    .gate-name {
+      font-weight: 760;
+      line-height: 1.15;
+      margin-top: 4px;
+    }
+
+    .gate-owner {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .gate-summary {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .pill, .chip, .late-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      min-height: 24px;
+      padding: 3px 9px;
+      font-size: 12px;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .pill-red { color: #ffd9d9; border-color: rgba(255, 107, 107, 0.48); background: rgba(255, 107, 107, 0.14); }
+    .pill-yellow { color: #ffe9aa; border-color: rgba(243, 200, 91, 0.48); background: rgba(243, 200, 91, 0.14); }
+    .pill-green { color: #c8ffe5; border-color: rgba(66, 211, 145, 0.48); background: rgba(66, 211, 145, 0.14); }
+    .pill-blue { color: #d5e3ff; border-color: rgba(120, 167, 255, 0.46); background: rgba(120, 167, 255, 0.13); }
+    .pill-neutral { color: var(--muted); background: rgba(180, 205, 197, 0.08); }
+
+    [data-theme="light"] .pill-red { color: #8d2525; }
+    [data-theme="light"] .pill-yellow { color: #765300; }
+    [data-theme="light"] .pill-green { color: #137749; }
+    [data-theme="light"] .pill-blue { color: #254e9c; }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 170px 1fr 42px;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .bar-label {
+      color: var(--muted);
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .bar-track {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(180, 205, 197, 0.1);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .bar-fill {
+      height: 100%;
+      min-width: 2px;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+    }
+
+    .tasks-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0 10px;
+    }
+
+    .task-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .task-card {
+      display: grid;
+      grid-template-columns: 92px minmax(280px, 1fr) 170px 160px 170px;
+      gap: 14px;
+      padding: 14px;
+      align-items: start;
+    }
+
+    .task-card.is-late {
+      border-color: rgba(255, 107, 107, 0.52);
+      background: linear-gradient(90deg, rgba(255, 107, 107, 0.1), transparent 42%), var(--panel);
+    }
+
+    .task-id {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .task-title {
+      font-weight: 760;
+      margin-bottom: 7px;
+      line-height: 1.25;
+    }
+
+    .task-desc {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .field-label {
+      color: var(--faint);
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .field-main {
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .late-badge.late {
+      color: #ffd9d9;
+      border-color: rgba(255, 107, 107, 0.58);
+      background: rgba(255, 107, 107, 0.16);
+    }
+
+    .late-badge.today {
+      color: #ffe9aa;
+      border-color: rgba(243, 200, 91, 0.55);
+      background: rgba(243, 200, 91, 0.15);
+    }
+
+    .late-badge.ok {
+      color: #c8ffe5;
+      border-color: rgba(66, 211, 145, 0.48);
+      background: rgba(66, 211, 145, 0.12);
+    }
+
+    [data-theme="light"] .late-badge.late { color: #8d2525; }
+    [data-theme="light"] .late-badge.today { color: #765300; }
+    [data-theme="light"] .late-badge.ok { color: #137749; }
+
+    .empty {
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+    }
+
+    .footer {
+      color: var(--faint);
+      font-size: 12px;
+      margin: 22px 0 4px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1150px) {
+      .status-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .task-card { grid-template-columns: 80px minmax(0, 1fr); }
+      .chart-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .shell { padding: 18px; }
+      .topbar { flex-direction: column; }
+      .actions { justify-content: flex-start; min-width: 0; }
+      .status-strip, .gate-grid, .filters { grid-template-columns: 1fr; }
+      .task-card { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 110px 1fr 34px; }
+    }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      .actions, .filters, .chart-grid { display: none; }
+      .shell { max-width: none; padding: 0; }
+      .panel, .metric, .gate, .task-card { box-shadow: none; break-inside: avoid; }
+      .task-card { grid-template-columns: 70px 1fr 130px 120px 120px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div>
+        <h1>PetraLab RUO Task Dashboard</h1>
+        <div class="subtitle">
+          Team execution view for the owner-corrected RUO plan. The page polls <strong>ruo-team-task-dashboard-data.json</strong> every 15 seconds, so updating the JSON updates the shared dashboard without editing this HTML.
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="refreshBtn" type="button">Refresh</button>
+        <button class="btn" id="pauseBtn" type="button">Pause live</button>
+        <button class="btn" id="themeBtn" type="button">Light mode</button>
+        <button class="btn" id="csvBtn" type="button">Export CSV</button>
+        <button class="btn" id="printBtn" type="button">Print</button>
+      </div>
+    </section>
+
+    <section class="status-strip" id="metrics"></section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>Filters</h2>
+        <div class="small" id="syncStatus">Loading dashboard data...</div>
+      </div>
+      <div class="filters">
+        <input id="searchFilter" type="search" placeholder="Search task, acceptance, assignee, source">
+        <select id="priorityFilter"><option value="">All priorities</option></select>
+        <select id="categoryFilter"><option value="">All categories</option></select>
+        <select id="assigneeFilter"><option value="">All assignees</option></select>
+        <select id="statusFilter"><option value="">All statuses</option></select>
+        <select id="lateFilter">
+          <option value="">All due states</option>
+          <option value="late">Late only</option>
+          <option value="today">Due today</option>
+          <option value="soon">Due in 48h</option>
+          <option value="none">No due date</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>Gate Scoreboard</h2>
+        <div class="small">Red = blocked or exposed. Yellow = active cleanup. Green = ready/controlled.</div>
+      </div>
+      <div class="gate-grid" id="gates"></div>
+    </section>
+
+    <section class="chart-grid">
+      <div class="panel">
+        <div class="panel-title">
+          <h2>Open Work By Category</h2>
+          <div class="small">Excludes completed/cancelled tasks.</div>
+        </div>
+        <div id="categoryBars"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">
+          <h2>Assignee Load</h2>
+          <div class="small">Open, waiting, planned, and in-progress tasks.</div>
+        </div>
+        <div id="assigneeBars"></div>
+      </div>
+    </section>
+
+    <section class="tasks-header">
+      <div>
+        <h2 style="margin:0;font-size:20px;">Task List</h2>
+        <div class="small" id="resultCount"></div>
+      </div>
+      <div class="small">Sorted by urgency, P0/P1/P2, then due date.</div>
+    </section>
+    <section class="task-list" id="taskList"></section>
+
+    <section class="footer" id="footer"></section>
+  </main>
+
+  <script>
+    const DATA_URL = "ruo-team-task-dashboard-data.json";
+    const MS_PER_DAY = 24 * 60 * 60 * 1000;
+    let dashboardData = null;
+    let filteredTasks = [];
+    let livePaused = false;
+    let refreshHandle = null;
+
+    const els = {
+      metrics: document.getElementById("metrics"),
+      gates: document.getElementById("gates"),
+      categoryBars: document.getElementById("categoryBars"),
+      assigneeBars: document.getElementById("assigneeBars"),
+      taskList: document.getElementById("taskList"),
+      resultCount: document.getElementById("resultCount"),
+      footer: document.getElementById("footer"),
+      syncStatus: document.getElementById("syncStatus"),
+      search: document.getElementById("searchFilter"),
+      priority: document.getElementById("priorityFilter"),
+      category: document.getElementById("categoryFilter"),
+      assignee: document.getElementById("assigneeFilter"),
+      status: document.getElementById("statusFilter"),
+      late: document.getElementById("lateFilter")
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, ch => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+      })[ch]);
+    }
+
+    function todayStart() {
+      const now = new Date();
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    }
+
+    function parseLocalDate(dateString) {
+      if (!dateString) return null;
+      const parts = String(dateString).split("-").map(Number);
+      if (parts.length !== 3 || parts.some(Number.isNaN)) return null;
+      return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function isClosed(status) {
+      return ["done", "completed", "cancelled", "closed"].includes(String(status || "").toLowerCase());
+    }
+
+    function dueState(item) {
+      const due = parseLocalDate(item.dueDate);
+      if (!due) return { bucket: "none", label: "No due date", days: null, className: "pill-neutral" };
+      if (isClosed(item.status)) return { bucket: "done", label: "Closed", days: null, className: "ok" };
+      const diff = Math.round((due - todayStart()) / MS_PER_DAY);
+      if (diff < 0) return { bucket: "late", label: `Late by ${Math.abs(diff)} day${Math.abs(diff) === 1 ? "" : "s"}`, days: diff, className: "late" };
+      if (diff === 0) return { bucket: "today", label: "Due today", days: diff, className: "today" };
+      if (diff <= 2) return { bucket: "soon", label: `Due in ${diff} day${diff === 1 ? "" : "s"}`, days: diff, className: "today" };
+      return { bucket: "future", label: `Due in ${diff} days`, days: diff, className: "ok" };
+    }
+
+    function priorityRank(priority) {
+      return { "P0-0": 4, "P0": 3, "P1": 2, "P2": 1 }[priority] || 0;
+    }
+
+    function normalizeStatus(status) {
+      return String(status || "open").replace(/_/g, " ");
+    }
+
+    function gateColor(state) {
+      return { red: "var(--red)", yellow: "var(--yellow)", green: "var(--green)" }[String(state).toLowerCase()] || "var(--blue)";
+    }
+
+    function gatePill(state) {
+      const normalized = String(state || "unknown").toLowerCase();
+      if (normalized === "red") return "pill-red";
+      if (normalized === "yellow") return "pill-yellow";
+      if (normalized === "green") return "pill-green";
+      return "pill-blue";
+    }
+
+    function statusPill(status) {
+      const normalized = String(status || "").toLowerCase();
+      if (normalized.includes("overdue") || normalized === "blocked") return "pill-red";
+      if (normalized.includes("progress") || normalized === "waiting" || normalized === "owner_override") return "pill-yellow";
+      if (normalized === "done" || normalized === "completed") return "pill-green";
+      if (normalized === "planned") return "pill-blue";
+      return "pill-neutral";
+    }
+
+    async function loadData(showManualRefresh) {
+      try {
+        const response = await fetch(`${DATA_URL}?ts=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        dashboardData = await response.json();
+        els.syncStatus.textContent = `Live JSON synced ${new Date().toLocaleString()} | source generated ${new Date(dashboardData.generatedAt).toLocaleString()}`;
+        hydrateFilters();
+        render();
+        if (showManualRefresh) pulseStatus("Manual refresh complete.");
+      } catch (error) {
+        els.syncStatus.textContent = `JSON sync failed: ${error.message}. Serve this folder over HTTP or use the GitHub Pages copy for live updates.`;
+        if (!dashboardData) {
+          els.taskList.innerHTML = `<div class="empty">No task data loaded. The dashboard expects ${escapeHtml(DATA_URL)} beside this HTML file.</div>`;
+        }
+      }
+    }
+
+    function pulseStatus(message) {
+      const previous = els.syncStatus.textContent;
+      els.syncStatus.textContent = message;
+      setTimeout(() => {
+        if (dashboardData) {
+          els.syncStatus.textContent = previous;
+        }
+      }, 1600);
+    }
+
+    function hydrateSelect(selectEl, values, currentValue) {
+      const first = selectEl.options[0]?.outerHTML || "<option value=\"\">All</option>";
+      selectEl.innerHTML = first + values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join("");
+      selectEl.value = currentValue || "";
+    }
+
+    function hydrateFilters() {
+      const tasks = dashboardData?.tasks || [];
+      const current = {
+        priority: els.priority.value,
+        category: els.category.value,
+        assignee: els.assignee.value,
+        status: els.status.value
+      };
+      hydrateSelect(els.priority, [...new Set(tasks.map(t => t.priority).filter(Boolean))].sort((a, b) => priorityRank(b) - priorityRank(a)), current.priority);
+      hydrateSelect(els.category, [...new Set(tasks.map(t => t.category).filter(Boolean))].sort(), current.category);
+      hydrateSelect(els.assignee, [...new Set(tasks.flatMap(t => t.assignees || []).filter(Boolean))].sort(), current.assignee);
+      hydrateSelect(els.status, [...new Set(tasks.map(t => normalizeStatus(t.status)).filter(Boolean))].sort(), current.status);
+    }
+
+    function applyFilters() {
+      const query = els.search.value.trim().toLowerCase();
+      filteredTasks = (dashboardData?.tasks || []).filter(task => {
+        const haystack = [
+          task.id, task.title, task.category, task.priority, task.status, task.owner,
+          ...(task.assignees || []), task.description, task.acceptance, task.source
+        ].join(" ").toLowerCase();
+        const due = dueState(task);
+        return (!query || haystack.includes(query))
+          && (!els.priority.value || task.priority === els.priority.value)
+          && (!els.category.value || task.category === els.category.value)
+          && (!els.assignee.value || (task.assignees || []).includes(els.assignee.value))
+          && (!els.status.value || normalizeStatus(task.status) === els.status.value)
+          && (!els.late.value || due.bucket === els.late.value);
+      }).sort((a, b) => {
+        const urgency = (Number(b.urgencyScore || 0) - Number(a.urgencyScore || 0));
+        if (urgency) return urgency;
+        const priority = priorityRank(b.priority) - priorityRank(a.priority);
+        if (priority) return priority;
+        return String(a.dueDate || "9999-99-99").localeCompare(String(b.dueDate || "9999-99-99"));
+      });
+    }
+
+    function renderMetrics() {
+      const tasks = dashboardData?.tasks || [];
+      const openTasks = tasks.filter(task => !isClosed(task.status));
+      const overdue = openTasks.filter(task => dueState(task).bucket === "late");
+      const dueSoon = openTasks.filter(task => ["today", "soon"].includes(dueState(task).bucket));
+      const p0 = openTasks.filter(task => ["P0-0", "P0"].includes(task.priority));
+      const gates = dashboardData?.gates || [];
+      const redGates = gates.filter(gate => gate.state === "red").length;
+      const metrics = [
+        ["Total open tasks", openTasks.length, `${tasks.length} total tracked`],
+        ["Late tasks", overdue.length, overdue.length ? "Needs same-day owner action" : "No late tasks today"],
+        ["Due in 48h", dueSoon.length, "Includes due today and tomorrow/next day"],
+        ["Red gates", redGates, `${gates.length} gates tracked`],
+        ["P0/P0-0 open", p0.length, "Immediate control work"],
+        ["Owners", new Set(openTasks.flatMap(t => t.assignees || [])).size, "People or teams assigned"],
+        ["Live refresh", `${dashboardData?.refreshSeconds || 15}s`, "JSON polling interval"],
+        ["Last source update", new Date(dashboardData?.generatedAt || Date.now()).toLocaleDateString(), dashboardData?.timezone || ""]
+      ];
+      els.metrics.innerHTML = metrics.map(([label, value, hint]) => `
+        <article class="metric">
+          <div class="label">${escapeHtml(label)}</div>
+          <div class="value">${escapeHtml(value)}</div>
+          <div class="hint">${escapeHtml(hint)}</div>
+        </article>
+      `).join("");
+    }
+
+    function renderGates() {
+      const gates = dashboardData?.gates || [];
+      els.gates.innerHTML = gates.map(gate => {
+        const due = dueState(gate);
+        return `
+          <article class="gate" style="--gate-color:${gateColor(gate.state)}">
+            <div class="stack">
+              <span class="pill ${gatePill(gate.state)}">${escapeHtml(String(gate.state).toUpperCase())}</span>
+              <span class="late-badge ${due.className}">${escapeHtml(due.label)}</span>
+            </div>
+            <div class="gate-name">${escapeHtml(gate.name)}</div>
+            <div class="gate-owner">Owner: ${escapeHtml(gate.owner)}<br>Assignees: ${escapeHtml((gate.assignees || []).join(", "))}</div>
+            <div class="gate-summary">${escapeHtml(gate.summary)}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function countBy(items, getKeys) {
+      const counts = new Map();
+      items.forEach(item => {
+        const keys = Array.isArray(getKeys(item)) ? getKeys(item) : [getKeys(item)];
+        keys.filter(Boolean).forEach(key => counts.set(key, (counts.get(key) || 0) + 1));
+      });
+      return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    }
+
+    function renderBars(target, rows) {
+      const max = Math.max(1, ...rows.map(row => row[1]));
+      target.innerHTML = rows.length ? rows.map(([label, value]) => `
+        <div class="bar-row">
+          <div class="bar-label" title="${escapeHtml(label)}">${escapeHtml(label)}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, (value / max) * 100)}%"></div></div>
+          <div class="small">${value}</div>
+        </div>
+      `).join("") : `<div class="empty">No open work in this view.</div>`;
+    }
+
+    function renderCharts() {
+      const openTasks = (dashboardData?.tasks || []).filter(task => !isClosed(task.status));
+      renderBars(els.categoryBars, countBy(openTasks, task => task.category));
+      renderBars(els.assigneeBars, countBy(openTasks, task => task.assignees || []));
+    }
+
+    function renderTasks() {
+      els.resultCount.textContent = `${filteredTasks.length} tasks shown from ${(dashboardData?.tasks || []).length} tracked`;
+      if (!filteredTasks.length) {
+        els.taskList.innerHTML = `<div class="empty">No tasks match these filters.</div>`;
+        return;
+      }
+      els.taskList.innerHTML = filteredTasks.map(task => {
+        const due = dueState(task);
+        const isLate = due.bucket === "late";
+        return `
+          <article class="task-card ${isLate ? "is-late" : ""}">
+            <div>
+              <div class="task-id">${escapeHtml(task.id)}</div>
+              <div class="stack" style="margin-top:8px;">
+                <span class="pill ${task.priority === "P0-0" || task.priority === "P0" ? "pill-red" : task.priority === "P1" ? "pill-yellow" : "pill-blue"}">${escapeHtml(task.priority)}</span>
+                <span class="pill ${statusPill(task.status)}">${escapeHtml(normalizeStatus(task.status))}</span>
+              </div>
+            </div>
+            <div>
+              <div class="task-title">${escapeHtml(task.title)}</div>
+              <div class="task-desc">${escapeHtml(task.description)}</div>
+              <div class="task-desc" style="margin-top:7px;"><strong>Acceptance:</strong> ${escapeHtml(task.acceptance)}</div>
+            </div>
+            <div>
+              <div class="field-label">Assignees</div>
+              <div class="stack">${(task.assignees || []).map(name => `<span class="chip">${escapeHtml(name)}</span>`).join("")}</div>
+            </div>
+            <div>
+              <div class="field-label">Due / late</div>
+              <div class="field-main">${escapeHtml(task.dueDate || "No due date")}</div>
+              <div style="margin-top:7px;"><span class="late-badge ${due.className}">${escapeHtml(due.label)}</span></div>
+            </div>
+            <div>
+              <div class="field-label">Category / source</div>
+              <div class="field-main">${escapeHtml(task.category)}</div>
+              <div class="small" style="margin-top:7px;">${escapeHtml(task.source || "")}</div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderFooter() {
+      const overrides = dashboardData?.ownerOverrides || [];
+      els.footer.innerHTML = `
+        <strong>Owner overrides preserved:</strong> ${overrides.map(escapeHtml).join(" ")}
+        <br>Data source: <code>${escapeHtml(DATA_URL)}</code>. Update that JSON file to update this dashboard. Current browser date: ${todayStart().toLocaleDateString()}.
+      `;
+    }
+
+    function render() {
+      if (!dashboardData) return;
+      applyFilters();
+      renderMetrics();
+      renderGates();
+      renderCharts();
+      renderTasks();
+      renderFooter();
+    }
+
+    function csvEscape(value) {
+      const raw = String(value ?? "");
+      return /[",\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
+    }
+
+    function exportCsv() {
+      const rows = [["id", "priority", "category", "status", "owner", "assignees", "dueDate", "dueState", "title", "acceptance"]];
+      filteredTasks.forEach(task => rows.push([
+        task.id,
+        task.priority,
+        task.category,
+        normalizeStatus(task.status),
+        task.owner,
+        (task.assignees || []).join("; "),
+        task.dueDate || "",
+        dueState(task).label,
+        task.title,
+        task.acceptance
+      ]));
+      const csv = rows.map(row => row.map(csvEscape).join(",")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `ruo-task-dashboard-${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function setupEvents() {
+      [els.search, els.priority, els.category, els.assignee, els.status, els.late].forEach(el => {
+        el.addEventListener("input", render);
+        el.addEventListener("change", render);
+      });
+      document.getElementById("refreshBtn").addEventListener("click", () => loadData(true));
+      document.getElementById("csvBtn").addEventListener("click", exportCsv);
+      document.getElementById("printBtn").addEventListener("click", () => window.print());
+      document.getElementById("themeBtn").addEventListener("click", event => {
+        const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+        document.documentElement.dataset.theme = next;
+        event.currentTarget.textContent = next === "light" ? "Dark mode" : "Light mode";
+      });
+      document.getElementById("pauseBtn").addEventListener("click", event => {
+        livePaused = !livePaused;
+        event.currentTarget.textContent = livePaused ? "Resume live" : "Pause live";
+        pulseStatus(livePaused ? "Live polling paused." : "Live polling resumed.");
+      });
+    }
+
+    function startPolling() {
+      if (refreshHandle) clearInterval(refreshHandle);
+      refreshHandle = setInterval(() => {
+        if (!livePaused) loadData(false);
+      }, (dashboardData?.refreshSeconds || 15) * 1000);
+    }
+
+    setupEvents();
+    loadData(false).then(startPolling);
+  </script>
+</body>
+</html>
