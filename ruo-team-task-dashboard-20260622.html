@@ -196,6 +196,77 @@
       border-color: var(--green);
     }
 
+    .quick-filter-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr) minmax(0, 0.9fr);
+      gap: 14px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .quick-filter-group {
+      min-width: 0;
+    }
+
+    .quick-filter-title {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 720;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .quick-filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: rgba(180, 205, 197, 0.08);
+      color: var(--text);
+      min-height: 32px;
+      max-width: 100%;
+      padding: 5px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      line-height: 1.15;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(66, 211, 145, 0.58);
+    }
+
+    .filter-btn.active {
+      color: #c8ffe5;
+      border-color: rgba(66, 211, 145, 0.62);
+      background: rgba(66, 211, 145, 0.18);
+    }
+
+    [data-theme="light"] .filter-btn.active {
+      color: #137749;
+    }
+
+    .filter-count {
+      color: var(--faint);
+      font-size: 11px;
+    }
+
+    .active-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      min-height: 28px;
+    }
+
     .gate-grid {
       display: grid;
       grid-template-columns: repeat(7, minmax(145px, 1fr));
@@ -404,6 +475,7 @@
       .status-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .gate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .quick-filter-panel { grid-template-columns: 1fr; }
       .task-card { grid-template-columns: 80px minmax(0, 1fr); }
       .chart-grid { grid-template-columns: 1fr; }
     }
@@ -419,7 +491,7 @@
 
     @media print {
       body { background: #fff; color: #111; }
-      .actions, .filters, .chart-grid { display: none; }
+      .actions, .filters, .quick-filter-panel, .active-filters, .chart-grid { display: none; }
       .shell { max-width: none; padding: 0; }
       .panel, .metric, .gate, .task-card { box-shadow: none; break-inside: avoid; }
       .task-card { grid-template-columns: 70px 1fr 130px 120px 120px; }
@@ -432,7 +504,7 @@
       <div>
         <h1>PetraLab RUO Task Dashboard</h1>
         <div class="subtitle">
-          Team execution view for the owner-corrected RUO plan. The page polls <strong>ruo-team-task-dashboard-data.json</strong> every 15 seconds, so updating the JSON updates the shared dashboard without editing this HTML.
+          Team execution view for the owner-corrected RUO plan. The page polls the canonical GitHub task JSON every 15 seconds, so updating the data file updates the shared dashboard without editing this HTML.
         </div>
       </div>
       <div class="actions">
@@ -465,6 +537,21 @@
           <option value="none">No due date</option>
         </select>
       </div>
+      <div class="quick-filter-panel" aria-label="Quick task filters">
+        <div class="quick-filter-group">
+          <div class="quick-filter-title">By Assignee</div>
+          <div class="quick-filter-buttons" id="assigneeQuickFilters"></div>
+        </div>
+        <div class="quick-filter-group">
+          <div class="quick-filter-title">By Priority</div>
+          <div class="quick-filter-buttons" id="priorityQuickFilters"></div>
+        </div>
+        <div class="quick-filter-group">
+          <div class="quick-filter-title">By Due State</div>
+          <div class="quick-filter-buttons" id="dueQuickFilters"></div>
+        </div>
+      </div>
+      <div class="active-filters" id="activeFilters"></div>
     </section>
 
     <section class="panel">
@@ -521,6 +608,10 @@
       resultCount: document.getElementById("resultCount"),
       footer: document.getElementById("footer"),
       syncStatus: document.getElementById("syncStatus"),
+      assigneeQuickFilters: document.getElementById("assigneeQuickFilters"),
+      priorityQuickFilters: document.getElementById("priorityQuickFilters"),
+      dueQuickFilters: document.getElementById("dueQuickFilters"),
+      activeFilters: document.getElementById("activeFilters"),
       search: document.getElementById("searchFilter"),
       priority: document.getElementById("priorityFilter"),
       category: document.getElementById("categoryFilter"),
@@ -644,6 +735,76 @@
       hydrateSelect(els.category, [...new Set(tasks.map(t => t.category).filter(Boolean))].sort(), current.category);
       hydrateSelect(els.assignee, [...new Set(tasks.flatMap(t => t.assignees || []).filter(Boolean))].sort(), current.assignee);
       hydrateSelect(els.status, [...new Set(tasks.map(t => normalizeStatus(t.status)).filter(Boolean))].sort(), current.status);
+    }
+
+    function taskCountFor(field, value) {
+      return (dashboardData?.tasks || []).filter(task => {
+        if (field === "assignee") return (task.assignees || []).includes(value);
+        if (field === "priority") return task.priority === value;
+        if (field === "late") return dueState(task).bucket === value;
+        return false;
+      }).length;
+    }
+
+    function setFilter(field, value) {
+      const target = els[field];
+      if (!target) return;
+      target.value = target.value === value ? "" : value;
+      render();
+    }
+
+    function clearFilters() {
+      [els.search, els.priority, els.category, els.assignee, els.status, els.late].forEach(el => {
+        el.value = "";
+      });
+      render();
+    }
+
+    function quickFilterButton(field, value, label) {
+      const isActive = els[field]?.value === value;
+      const count = taskCountFor(field, value);
+      return `
+        <button class="filter-btn ${isActive ? "active" : ""}" type="button" data-filter-field="${escapeHtml(field)}" data-filter-value="${escapeHtml(value)}" aria-pressed="${isActive ? "true" : "false"}">
+          <span>${escapeHtml(label)}</span>
+          <span class="filter-count">${count}</span>
+        </button>
+      `;
+    }
+
+    function renderQuickFilters() {
+      const tasks = dashboardData?.tasks || [];
+      const assignees = [...new Set(tasks.flatMap(t => t.assignees || []).filter(Boolean))].sort();
+      const priorities = [...new Set(tasks.map(t => t.priority).filter(Boolean))].sort((a, b) => priorityRank(b) - priorityRank(a));
+      const dueStates = [
+        ["late", "Late"],
+        ["today", "Today"],
+        ["soon", "48h"],
+        ["none", "No due date"]
+      ];
+      els.assigneeQuickFilters.innerHTML = assignees.map(name => quickFilterButton("assignee", name, name)).join("");
+      els.priorityQuickFilters.innerHTML = priorities.map(priority => quickFilterButton("priority", priority, priority)).join("");
+      els.dueQuickFilters.innerHTML = dueStates.map(([value, label]) => quickFilterButton("late", value, label)).join("");
+    }
+
+    function activeFilterChip(field, label, value, displayValue = value) {
+      if (!value) return "";
+      return `<button class="filter-btn active" type="button" data-filter-field="${escapeHtml(field)}" data-filter-value="${escapeHtml(value)}">${escapeHtml(label)}: ${escapeHtml(displayValue)}</button>`;
+    }
+
+    function renderActiveFilters() {
+      const chips = [
+        activeFilterChip("assignee", "Assignee", els.assignee.value),
+        activeFilterChip("priority", "Priority", els.priority.value),
+        activeFilterChip("category", "Category", els.category.value),
+        activeFilterChip("status", "Status", els.status.value),
+        activeFilterChip("late", "Due", els.late.value, els.late.options[els.late.selectedIndex]?.textContent || els.late.value),
+        els.search.value ? `<button class="filter-btn active" type="button" data-filter-field="search" data-filter-value="${escapeHtml(els.search.value)}">Search: ${escapeHtml(els.search.value)}</button>` : ""
+      ].filter(Boolean);
+      if (!chips.length) {
+        els.activeFilters.innerHTML = `<span class="small">No filters active. Click a name under By Assignee to show that person's tasks.</span>`;
+        return;
+      }
+      els.activeFilters.innerHTML = chips.join("") + `<button class="filter-btn" type="button" id="clearFiltersBtn">Clear all</button>`;
     }
 
     function applyFilters() {
@@ -794,6 +955,8 @@
       if (!dashboardData) return;
       applyFilters();
       renderMetrics();
+      renderQuickFilters();
+      renderActiveFilters();
       renderGates();
       renderCharts();
       renderTasks();
@@ -848,6 +1011,18 @@
         livePaused = !livePaused;
         event.currentTarget.textContent = livePaused ? "Resume live" : "Pause live";
         pulseStatus(livePaused ? "Live polling paused." : "Live polling resumed.");
+      });
+      document.addEventListener("click", event => {
+        const button = event.target.closest("[data-filter-field]");
+        if (!button) return;
+        const field = button.dataset.filterField;
+        const value = button.dataset.filterValue || "";
+        setFilter(field, value);
+      });
+      els.activeFilters.addEventListener("click", event => {
+        if (event.target.closest("#clearFiltersBtn")) {
+          clearFilters();
+        }
       });
     }
 
