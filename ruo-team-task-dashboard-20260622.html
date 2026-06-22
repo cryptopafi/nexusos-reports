@@ -596,6 +596,7 @@
     const MS_PER_DAY = 24 * 60 * 60 * 1000;
     let dashboardData = null;
     let filteredTasks = [];
+    let filteredGates = [];
     let livePaused = false;
     let refreshHandle = null;
 
@@ -807,6 +808,29 @@
       els.activeFilters.innerHTML = chips.join("") + `<button class="filter-btn" type="button" id="clearFiltersBtn">Clear all</button>`;
     }
 
+    function hasActiveFilters() {
+      return Boolean(
+        els.search.value.trim() ||
+        els.priority.value ||
+        els.category.value ||
+        els.assignee.value ||
+        els.status.value ||
+        els.late.value
+      );
+    }
+
+    function gateMatchesFilters(gate) {
+      const query = els.search.value.trim().toLowerCase();
+      const gateText = [
+        gate.id, gate.name, gate.state, gate.owner,
+        ...(gate.assignees || []), gate.summary
+      ].join(" ").toLowerCase();
+      const due = dueState(gate);
+      return (!query || gateText.includes(query))
+        && (!els.assignee.value || gate.owner === els.assignee.value || (gate.assignees || []).includes(els.assignee.value))
+        && (!els.late.value || due.bucket === els.late.value);
+    }
+
     function applyFilters() {
       const query = els.search.value.trim().toLowerCase();
       filteredTasks = (dashboardData?.tasks || []).filter(task => {
@@ -828,21 +852,24 @@
         if (priority) return priority;
         return String(a.dueDate || "9999-99-99").localeCompare(String(b.dueDate || "9999-99-99"));
       });
+      filteredGates = (dashboardData?.gates || []).filter(gateMatchesFilters);
     }
 
     function renderMetrics() {
-      const tasks = dashboardData?.tasks || [];
+      const allTasks = dashboardData?.tasks || [];
+      const tasks = hasActiveFilters() ? filteredTasks : allTasks;
       const openTasks = tasks.filter(task => !isClosed(task.status));
       const overdue = openTasks.filter(task => dueState(task).bucket === "late");
       const dueSoon = openTasks.filter(task => ["today", "soon"].includes(dueState(task).bucket));
       const p0 = openTasks.filter(task => ["P0-0", "P0"].includes(task.priority));
-      const gates = dashboardData?.gates || [];
+      const allGates = dashboardData?.gates || [];
+      const gates = hasActiveFilters() ? filteredGates : allGates;
       const redGates = gates.filter(gate => gate.state === "red").length;
       const metrics = [
-        ["Total open tasks", openTasks.length, `${tasks.length} total tracked`],
+        ["Total open tasks", openTasks.length, hasActiveFilters() ? `${tasks.length} shown of ${allTasks.length} tracked` : `${allTasks.length} total tracked`],
         ["Late tasks", overdue.length, overdue.length ? "Needs same-day owner action" : "No late tasks today"],
         ["Due in 48h", dueSoon.length, "Includes due today and tomorrow/next day"],
-        ["Red gates", redGates, `${gates.length} gates tracked`],
+        ["Red gates", redGates, hasActiveFilters() ? `${gates.length} shown of ${allGates.length} gates` : `${allGates.length} gates tracked`],
         ["P0/P0-0 open", p0.length, "Immediate control work"],
         ["Owners", new Set(openTasks.flatMap(t => t.assignees || [])).size, "People or teams assigned"],
         ["Live refresh", `${dashboardData?.refreshSeconds || 15}s`, "JSON polling interval"],
@@ -858,7 +885,11 @@
     }
 
     function renderGates() {
-      const gates = dashboardData?.gates || [];
+      const gates = hasActiveFilters() ? filteredGates : (dashboardData?.gates || []);
+      if (!gates.length) {
+        els.gates.innerHTML = `<div class="empty">No gates match the active filters.</div>`;
+        return;
+      }
       els.gates.innerHTML = gates.map(gate => {
         const due = dueState(gate);
         return `
@@ -896,7 +927,8 @@
     }
 
     function renderCharts() {
-      const openTasks = (dashboardData?.tasks || []).filter(task => !isClosed(task.status));
+      const sourceTasks = hasActiveFilters() ? filteredTasks : (dashboardData?.tasks || []);
+      const openTasks = sourceTasks.filter(task => !isClosed(task.status));
       renderBars(els.categoryBars, countBy(openTasks, task => task.category));
       renderBars(els.assigneeBars, countBy(openTasks, task => task.assignees || []));
     }
