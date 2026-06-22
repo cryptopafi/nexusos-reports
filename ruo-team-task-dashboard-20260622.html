@@ -505,7 +505,7 @@
   </main>
 
   <script>
-    const DATA_URL = "https://raw.githubusercontent.com/cryptopafi/nexusos-reports/main/ruo-team-task-dashboard-data.json";
+    const DATA_URL = "https://api.github.com/repos/cryptopafi/nexusos-reports/contents/ruo-team-task-dashboard-data.json?ref=main";
     const MS_PER_DAY = 24 * 60 * 60 * 1000;
     let dashboardData = null;
     let filteredTasks = [];
@@ -597,9 +597,13 @@
 
     async function loadData(showManualRefresh) {
       try {
-        const response = await fetch(`${DATA_URL}?ts=${Date.now()}`, { cache: "no-store" });
+        const separator = DATA_URL.includes("?") ? "&" : "?";
+        const response = await fetch(`${DATA_URL}${separator}ts=${Date.now()}`, { cache: "no-store" });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        dashboardData = await response.json();
+        const payload = await response.json();
+        dashboardData = payload.content
+          ? JSON.parse(atob(payload.content.replace(/\s/g, "")))
+          : payload;
         els.syncStatus.textContent = `Live JSON synced ${new Date().toLocaleString()} | source generated ${new Date(dashboardData.generatedAt).toLocaleString()}`;
         hydrateFilters();
         render();
