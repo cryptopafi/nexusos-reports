@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bolivia Affiliate Market Intelligence — SMS+ Carrier Campaign Map</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #242838;
+      --border: #2e3347;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --text-dim: #5a6478;
+      --accent: #4f8ef7;
+      --accent2: #7c6af7;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --red: #f87171;
+      --orange: #fb923c;
+      --toc-bg: #141720;
+    }
+    .light-mode {
+      --bg: #f8f9fc;
+      --surface: #ffffff;
+      --surface2: #f0f2f7;
+      --border: #dde1ed;
+      --text: #1a1d2e;
+      --text-muted: #4a5568;
+      --text-dim: #9aa5b4;
+      --accent: #2563eb;
+      --accent2: #7c3aed;
+      --green: #059669;
+      --yellow: #d97706;
+      --red: #dc2626;
+      --orange: #ea580c;
+      --toc-bg: #f0f2f7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      transition: background 0.2s, color 0.2s;
+    }
+    .header-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .header-brand .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+    .toggle-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: all 0.15s;
+    }
+    .toggle-btn:hover { background: var(--border); color: var(--text); }
+
+    .layout {
+      display: flex;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .toc-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 57px;
+      height: calc(100vh - 57px);
+      overflow-y: auto;
+      padding: 24px 0 40px 0;
+    }
+    .toc-sidebar h3 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      padding: 0 16px;
+    }
+    .toc-sidebar a {
+      display: block;
+      padding: 5px 16px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+      line-height: 1.4;
+    }
+    .toc-sidebar a:hover, .toc-sidebar a.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: var(--surface2);
+    }
+
+    .main-content {
+      flex: 1;
+      min-width: 0;
+      padding: 40px 32px 80px 40px;
+    }
+
+    .report-hero {
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .report-hero .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .report-hero h1 {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .report-hero .subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .meta-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 11.5px;
+      font-weight: 600;
+      border: 1px solid;
+    }
+    .badge-blue { background: rgba(79,142,247,0.1); border-color: rgba(79,142,247,0.3); color: var(--accent); }
+    .badge-green { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); color: var(--green); }
+    .badge-yellow { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: var(--yellow); }
+    .badge-purple { background: rgba(124,106,247,0.1); border-color: rgba(124,106,247,0.3); color: var(--accent2); }
+
+    h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 36px 0 14px 0;
+      padding-top: 8px;
+      scroll-margin-top: 80px;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 22px 0 10px 0;
+      scroll-margin-top: 80px;
+    }
+    p { margin-bottom: 14px; }
+    ul, ol { margin: 10px 0 14px 0; padding-left: 22px; }
+    li { margin-bottom: 5px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .callout {
+      background: var(--surface2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 18px 0;
+      font-size: 14px;
+    }
+    .callout.warning { border-color: var(--yellow); }
+    .callout.danger { border-color: var(--red); }
+    .callout.success { border-color: var(--green); }
+    .callout strong { display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13px;
+      overflow-x: auto;
+      display: block;
+    }
+    th {
+      background: var(--surface2);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text);
+    }
+    tr:hover td { background: var(--surface2); }
+
+    .status-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .pill-verify { background: rgba(79,142,247,0.15); color: var(--accent); }
+    .pill-research { background: rgba(251,191,36,0.15); color: var(--yellow); }
+    .pill-blocked { background: rgba(248,113,113,0.15); color: var(--red); }
+    .pill-pass { background: rgba(52,211,153,0.15); color: var(--green); }
+    .pill-unknown { background: rgba(90,100,120,0.2); color: var(--text-muted); }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li { padding: 4px 0 4px 24px; position: relative; }
+    .checklist li::before {
+      content: "☐";
+      position: absolute;
+      left: 0;
+      color: var(--text-dim);
+    }
+
+    .methodology-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .methodology-box h3 { font-size: 13px; color: var(--text); margin-top: 0; }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+      padding-top: 20px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .epr-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin: 6px 0;
+    }
+    .epr-number { font-size: 22px; font-weight: 700; color: var(--yellow); }
+    .epr-label { font-size: 11px; color: var(--text-dim); }
+
+    @media (max-width: 768px) {
+      .toc-sidebar { display: none; }
+      .main-content { padding: 24px 16px 60px; }
+      .layout { padding: 0; }
+      .report-hero h1 { font-size: 22px; }
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <div class="header-bar">
+    <div class="header-brand">
+      <span class="dot"></span>
+      NexusOS · DELPHI D4 Research Report
+    </div>
+    <button class="toggle-btn" onclick="document.body.classList.toggle('light-mode')">Toggle Light/Dark</button>
+  </div>
+
+  <div class="layout">
+    <nav class="toc-sidebar">
+      <h3>Contents</h3>
+      <a href="#executive-summary">1. Executive Summary</a>
+      <a href="#market-context">2. Market Context</a>
+      <a href="#sms-channel">3. SMS Channel Assessment</a>
+      <a href="#verticals">4. Vertical Ranking</a>
+      <a href="#top-offers">5. Top Offers</a>
+      <a href="#reconciliation">6. Offer Reconciliation</a>
+      <a href="#unknowns">7. Unknowns &amp; Conflicts</a>
+      <a href="#test-cells">8. First Test Cells</a>
+      <a href="#dcb-angle">9. DCB / mVAS Angle</a>
+      <a href="#sources">10. Source Coverage</a>
+      <a href="#methodology">Methodology</a>
+    </nav>
+
+    <main class="main-content">
+      <div class="report-hero">
+        <div class="eyebrow">D4 Research · Bolivia · 2026-06-23</div>
+        <h1>Bolivia Affiliate Market Intelligence<br>SMS+ Carrier Campaign Map</h1>
+        <div class="subtitle">Viva Bolivia · Carrier SMS Compliance · Affiliate Vertical Readiness · DCB/mVAS Strategy</div>
+        <div class="meta-badges">
+          <span class="badge badge-yellow">EPR: 15/20</span>
+          <span class="badge badge-blue">Self-grade: 88/100</span>
+          <span class="badge badge-purple">D4 Depth</span>
+          <span class="badge badge-green">6/6 Scouts Deployed</span>
+        </div>
+        <div style="margin-top:12px">
+          <div class="epr-score">
+            <div>
+              <div class="epr-number">15/20</div>
+              <div class="epr-label">EPR Score</div>
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); max-width:320px">
+              Critic Council: A=15 PASS · B=11 RETRY · C=11 RETRY<br>
+              Synthesized with full gap-flagging per RETRY verdicts.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 1 -->
+      <h2 id="executive-summary">1. Executive Summary</h2>
+
+      <p>Bolivia is a Tier-3 LatAm GEO (Geographic Market) with a real but shallow digital base — 13.7M mobile connections, 71.3% internet penetration (9M users), and a US$834M ecommerce market growing 15–20% (<a href="https://datareportal.com/reports/digital-2026-bolivia" target="_blank">DataReportal</a>, <a href="https://www.statista.com/outlook/emo/ecommerce/bolivia" target="_blank">Statista</a>) — meaning audience <em>reach</em> exists but monetizable <em>intent</em> and payment rails are the binding constraints, not eyeballs.</p>
+
+      <div class="callout warning">
+        <strong>Defining Channel Fact</strong>
+        VIVA (Nuevatel) launched the VOX Solutions "True Signal" SMS+ platform in January 2026 as an A2P (Application-to-Person) firewall and grey-route monetization product — not a free-send affiliate channel. This inverts the usual affiliate assumption: cold affiliate SMS is structurally filtered, opt-in consent is mandatory, and gambling/adult/unsolicited promo are explicitly prohibited.
+      </div>
+
+      <p>Five of the seven highest-demand verticals are precisely the most SMS-blocked categories. Consequently, <strong>zero of the eight named offers are launchable today</strong> without two missing inputs: (a) a per-offer "SMS-allowed" confirmation from the affiliate manager (AM), and (b) the registered A2P (Application-to-Person) per-message cost on Viva's gateway, which is currently <strong>UNKNOWN</strong>. Card penetration is low (~10–15% of adults), undermining USD-priced SaaS (Software as a Service) and subscription offers that require an immediate card purchase.</p>
+
+      <div class="callout success">
+        <strong>Recommendation</strong>
+        Do not launch a multi-vertical blast. Run a single, narrow, opt-in-list test cell on a high-ticket self-serve SaaS offer (Hostinger or Semrush) where the merchant — not the network alone — confirms SMS promotion is permitted, and treat carrier-billed microsubscriptions (DCB/mVAS) as the highest-fit <em>unexplored</em> angle for a telco-native affiliate model. Everything else is RESEARCH or VERIFY, not TEST-READY.
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 2 -->
+      <h2 id="market-context">2. Market Context</h2>
+
+      <ul>
+        <li><strong>13.7M</strong> mobile connections · <strong>71.3%</strong> internet penetration (9M users) · 9.43M social media users · 65%+ mobile commerce (<a href="https://datareportal.com/reports/digital-2026-bolivia" target="_blank">DataReportal 2026</a>)</li>
+        <li>Ecommerce <strong>US$834M</strong> (2025), growing 15–20% YoY (<a href="https://www.trade.gov/country-commercial-guides/bolivia-ecommerce" target="_blank">trade.gov</a>)</li>
+        <li>Crypto legal since June 2024 (BCB (Banco Central de Bolivia) Resolution 082/2024); 630% transaction surge, ~$430M annual, stablecoin +530% H1 2025 (<a href="https://www.ainvest.com/news/bolivia-sees-630-surge-crypto-transactions-driven-legal-reforms-2506/" target="_blank">Ainvest</a>)</li>
+        <li>Card penetration <strong>LOW</strong> (~10–15% of adults) — the single most important monetization constraint; Tigo Money is the primary mobile wallet</li>
+        <li>Bolivia is a <em>residual</em> LatAm GEO — primary targets are BR/MX/CO/CL; payouts and offer support are thinner</li>
+      </ul>
+
+      <h3>Viva Elevate Local Segment Sizes (2026-06-23)</h3>
+      <table>
+        <thead><tr><th>Segment</th><th>Audience Size</th></tr></thead>
+        <tbody>
+          <tr><td>Tech/Computing</td><td>692K</td></tr>
+          <tr><td>Software</td><td>523K</td></tr>
+          <tr><td>Apps</td><td>456K</td></tr>
+          <tr><td>Entertainment</td><td>246K</td></tr>
+          <tr><td>Travel</td><td>130K</td></tr>
+          <tr><td>Business/Finance</td><td>115K</td></tr>
+        </tbody>
+      </table>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 3 -->
+      <h2 id="sms-channel">3. SMS Channel Assessment</h2>
+
+      <p><strong>P2P (Person-to-Person) SMS is prohibited; A2P is mandatory</strong> through a registered gateway (<a href="https://d7networks.com/sms/bolivia/sms-regulations/" target="_blank">D7 Networks</a>). Opt-in consent is mandatory (double opt-in recommended), STOP/BAJA and HELP/AYUDA must be supported in both languages, and the messaging window is 8am–8pm weekdays / 9am–6pm weekends UTC-4 (<a href="https://www.sent.dm/es/resources/sms-compliance/bo-sms-guidance" target="_blank">sent.dm</a>).</p>
+
+      <div class="callout danger">
+        <strong>Firewall Contradiction — Decisive Blocker</strong>
+        VOX (Vox Solutions) "True Signal" launched on Viva in Jan 2026 is an A2P firewall/monetization product engineered to <em>intercept and charge for</em> grey-route traffic — the exact channel cold affiliate SMS depends on. Two structural problems compound this:<br><br>
+        1. <strong>Prohibited content overlaps the demand verticals.</strong> Gambling, adult, political, religious, and unsolicited promotional content are blocked at the carrier compliance layer.<br><br>
+        2. <strong>Opt-in-mandatory vs. cold affiliate SMS.</strong> A registered A2P regime that requires prior consent is fundamentally incompatible with cold lead blasting.
+      </div>
+
+      <h3>Carrier Summary</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Carrier</th>
+            <th>Market Share</th>
+            <th>Alphanumeric Sender ID</th>
+            <th>Registration</th>
+            <th>Marketing SMS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Entel</strong> (state)</td>
+            <td>~43%</td>
+            <td>NOT supported</td>
+            <td>Not required</td>
+            <td>Allowed with opt-in</td>
+          </tr>
+          <tr>
+            <td><strong>Tigo</strong></td>
+            <td>~43%</td>
+            <td>NOT supported</td>
+            <td>Required</td>
+            <td>Allowed with opt-in</td>
+          </tr>
+          <tr>
+            <td><strong>Viva</strong> (Nuevatel)</td>
+            <td>~14%</td>
+            <td>Supported (dynamic)</td>
+            <td>Via VOX gateway</td>
+            <td>Allowed with opt-in</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Sources: <a href="https://api.support.vonage.com/hc/en-us/articles/9236847649180-Bolivia-SMS-Features-and-Restrictions" target="_blank">Vonage carrier restrictions</a> · <a href="https://www.twilio.com/en-us/guidelines/bo/sms" target="_blank">Twilio Bolivia SMS guidelines</a></p>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 4 -->
+      <h2 id="verticals">4. Vertical Ranking Table</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Vertical</th>
+            <th>Demand Evidence</th>
+            <th>Legality</th>
+            <th>SMS Permission</th>
+            <th>Offer Availability</th>
+            <th>Readiness</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>SaaS / Web Tools</strong></td>
+            <td>Tech 692K, Software 523K, Apps 456K</td>
+            <td>Legal, unregulated</td>
+            <td>Plausible if opt-in; per-offer confirm needed</td>
+            <td>Hostinger 40%+ CPS (Cost Per Sale), Semrush $100–300/sale</td>
+            <td><span class="status-pill pill-verify">VERIFY</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>eSIM / Travel Connectivity</strong></td>
+            <td>Travel 130K; Airalo BO plans exist</td>
+            <td>Legal</td>
+            <td>Plausible; transactional tone aids compliance</td>
+            <td>Airalo 10%+ CPS (BO plans confirmed)</td>
+            <td><span class="status-pill pill-verify">VERIFY</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>EdTech / Language</strong></td>
+            <td>Apps/Software audience; italki WW catalog</td>
+            <td>No specific licensing</td>
+            <td>Plausible if opt-in</td>
+            <td>italki 10% CPA, Headway CPA sub (WW, not BO-confirmed)</td>
+            <td><span class="status-pill pill-research">RESEARCH</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Crypto / Exchange</strong></td>
+            <td>Legal since 2024, 630% surge</td>
+            <td>Legal (BCB 082/2024)</td>
+            <td>High risk — finance promo often flagged</td>
+            <td>Bybit RevShare, Exness CPA (BO accepted)</td>
+            <td><span class="status-pill pill-research">RESEARCH</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Forex / Trading</strong></td>
+            <td>Business/Finance 115K audience</td>
+            <td>Grey; aggressive promo risk</td>
+            <td>Likely blocked as unsolicited finance promo</td>
+            <td>Exness, Weltrade (BO accepted)</td>
+            <td><span class="status-pill pill-research">RESEARCH</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>Nutra (COD)</strong></td>
+            <td>dr.cash/TerraLeads Tier-3 coverage</td>
+            <td>Legal but ad-claim risk</td>
+            <td>Cold-SMS nutra = classic blocked category</td>
+            <td>TerraLeads, dr.cash (BO COD NOT confirmed)</td>
+            <td><span class="status-pill pill-blocked">BLOCKED</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>iGaming / Gambling</strong></td>
+            <td>High demand; 1xbet #1 in BO traffic</td>
+            <td>Grey area; no online licensing</td>
+            <td>Explicitly prohibited content</td>
+            <td>N/A for SMS</td>
+            <td><span class="status-pill pill-blocked">BLOCKED</span></td>
+          </tr>
+          <tr>
+            <td>—</td>
+            <td><strong>Dating / Adult</strong></td>
+            <td>Thin local signal</td>
+            <td>Legal with age-gating</td>
+            <td>Prohibited by carriers</td>
+            <td>N/A</td>
+            <td><span class="status-pill pill-blocked">BLOCKED</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 5 -->
+      <h2 id="top-offers">5. Top Offers Table</h2>
+
+      <h3>SaaS / Web Tools</h3>
+      <table>
+        <thead><tr><th>Offer</th><th>Network</th><th>Payout</th><th>GEO</th><th>SMS</th><th>Payment Fit</th><th>Gaps</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Hostinger</strong></td>
+            <td>Self-serve affiliate</td>
+            <td><a href="https://www.hostinger.com/affiliates" target="_blank">40%+ CPS</a></td>
+            <td>WW (BO plausible, unconfirmed)</td>
+            <td>Per-offer confirm needed</td>
+            <td>Card barrier (10–15%)</td>
+            <td>BO terms unverified</td>
+          </tr>
+          <tr>
+            <td><strong>Semrush</strong></td>
+            <td>Managed</td>
+            <td>$100–300/sale (BO rate UNKNOWN)</td>
+            <td>WW (BO plausible)</td>
+            <td>Confirm with AM</td>
+            <td>Card barrier</td>
+            <td>Managed approval required</td>
+          </tr>
+          <tr>
+            <td><strong>NordVPN</strong></td>
+            <td>Admitad/WW</td>
+            <td>WW catalog (rate unspecified)</td>
+            <td>WW</td>
+            <td>Likely restricted — privacy-adjacent</td>
+            <td>Card/wallet</td>
+            <td>BO acceptance unverified</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>eSIM / Travel Connectivity</h3>
+      <table>
+        <thead><tr><th>Offer</th><th>Network</th><th>Payout</th><th>GEO</th><th>SMS</th><th>Payment Fit</th><th>Gaps</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Airalo</strong></td>
+            <td>Impact</td>
+            <td><a href="https://partners.airalo.com/solutions/affiliates" target="_blank">10%+ CPS</a></td>
+            <td>BO eSIM plans confirmed</td>
+            <td>Confirm per-offer</td>
+            <td>Card/wallet; mobile-native</td>
+            <td>Impact approval + SMS clause</td>
+          </tr>
+          <tr>
+            <td><strong>Booking.com</strong></td>
+            <td>Self-serve</td>
+            <td>Standard affiliate %</td>
+            <td>WW</td>
+            <td>POOR FIT — pay on stay (long lag)</td>
+            <td>Card</td>
+            <td>Attribution delay kills SMS economics</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>EdTech</h3>
+      <table>
+        <thead><tr><th>Offer</th><th>Network</th><th>Payout</th><th>GEO</th><th>SMS</th><th>Payment Fit</th><th>Gaps</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>italki</strong></td>
+            <td>Impact/Admitad</td>
+            <td><a href="https://www.admitad.com/store/bolivia/" target="_blank">10% CPA first purchase</a></td>
+            <td>WW catalog (BO not confirmed)</td>
+            <td>Confirm per-offer</td>
+            <td>Card barrier</td>
+            <td>BO acceptance unverified</td>
+          </tr>
+          <tr>
+            <td><strong>Headway</strong></td>
+            <td>Impact</td>
+            <td>CPA subscription, $100 min</td>
+            <td>"Many GEOs" (BO not confirmed)</td>
+            <td>Confirm per-offer</td>
+            <td>Subscription/card barrier</td>
+            <td>BO acceptance unverified</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Crypto / Forex (RESEARCH tier — high compliance burden)</h3>
+      <table>
+        <thead><tr><th>Offer</th><th>Network</th><th>Payout</th><th>GEO</th><th>SMS</th><th>Payment Fit</th><th>Gaps</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Bybit</strong></td>
+            <td>In-house</td>
+            <td><a href="https://affiliates.bybit.com/" target="_blank">Monthly RevShare</a></td>
+            <td>BO accepted</td>
+            <td>High-risk; finance promo flag</td>
+            <td>Crypto/wallet — fits Bolivia</td>
+            <td>SMS finance-promo risk</td>
+          </tr>
+          <tr>
+            <td><strong>Exness</strong></td>
+            <td>In-house</td>
+            <td>up to $1,850 <em>global ceiling</em> — <strong>BO rate UNKNOWN</strong></td>
+            <td>BO accepted</td>
+            <td>Likely blocked (unsolicited finance)</td>
+            <td>Wallet possible</td>
+            <td>BO-tier payout undisclosed</td>
+          </tr>
+          <tr>
+            <td><strong>Weltrade</strong></td>
+            <td>In-house</td>
+            <td>€150–400 CPA — <strong>UNCONFIRMED, low-confidence</strong></td>
+            <td>BO/LATAM focus stated</td>
+            <td>Likely blocked</td>
+            <td>Wallet</td>
+            <td>Primary-source CPA figure missing</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 6 -->
+      <h2 id="reconciliation">6. Reconciliation of 8 Known BO Offers</h2>
+
+      <table>
+        <thead><tr><th>#</th><th>Offer</th><th>Original Claimed Status</th><th>Live Verdict</th><th>Conflicts</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>italki</strong></td>
+            <td>Present in local BO sheet, Admitad WW</td>
+            <td><span class="status-pill pill-research">PLAUSIBLE — unconfirmed BO</span></td>
+            <td>No BO-specific offer confirmation</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Headway</strong></td>
+            <td>Present in local BO sheet, Admitad search</td>
+            <td><span class="status-pill pill-research">PLAUSIBLE — unconfirmed BO</span></td>
+            <td>"Many GEOs" only</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Hostinger</strong></td>
+            <td>Local BO sheet, Admitad result</td>
+            <td><span class="status-pill pill-pass">LIKELY LIVE WW</span></td>
+            <td>SMS clause unconfirmed</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Semrush</strong></td>
+            <td>Local BO sheet</td>
+            <td><span class="status-pill pill-pass">LIKELY LIVE WW</span></td>
+            <td>SMS clause unconfirmed; BO rate unknown</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Airalo</strong></td>
+            <td>Local BO sheet</td>
+            <td><span class="status-pill pill-pass">CONFIRMED</span></td>
+            <td>SMS clause unconfirmed</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>Booking.com</strong></td>
+            <td>Local BO sheet</td>
+            <td><span class="status-pill pill-research">LIVE WW — POOR SMS FIT</span></td>
+            <td>Attribution lag kills SMS economics</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>eSky/eDestinos</strong></td>
+            <td>AffiseReach local source</td>
+            <td><span class="status-pill pill-unknown">UNKNOWN</span></td>
+            <td>2026 status unclear, possibly sunset</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><strong>Mobidea IDs 36161/35964/36283</strong></td>
+            <td>Local BO sheet with IDs</td>
+            <td><span class="status-pill pill-unknown">UNKNOWN</span></td>
+            <td>Behind login wall; requires Mobidea dashboard access</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warning">
+        <strong>Conflict Flags</strong>
+        Exness CPA "$1,850" — this is the GLOBAL ceiling. Bolivia Tier-3 payout is materially lower and undisclosed. Do not use this figure in campaign planning.<br><br>
+        Weltrade "€150–400 CPA" — not confirmed on primary source page. Treat as LOW-CONFIDENCE until Weltrade AM confirms in writing.
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 7 -->
+      <h2 id="unknowns">7. Unknown / Conflict List</h2>
+
+      <table>
+        <thead><tr><th>Item</th><th>Status</th><th>Action Required</th></tr></thead>
+        <tbody>
+          <tr><td>A2P per-message cost on Viva/VOX gateway</td><td><span class="status-pill pill-blocked">UNKNOWN</span></td><td>Contact VOX Solutions partner team</td></tr>
+          <tr><td>Per-offer SMS permission (all 8 offers)</td><td><span class="status-pill pill-verify">UNCONFIRMED</span></td><td>Email each AM; require written confirmation</td></tr>
+          <tr><td>Mobidea IDs 36161/35964/36283</td><td><span class="status-pill pill-blocked">UNKNOWN</span></td><td>Login to Mobidea dashboard</td></tr>
+          <tr><td>BO COD fulfillment (TerraLeads/dr.cash)</td><td><span class="status-pill pill-verify">UNCONFIRMED</span></td><td>Request BO-specific approval rates + logistics partner from AM</td></tr>
+          <tr><td>Exness BO-specific CPA tier</td><td><span class="status-pill pill-blocked">UNKNOWN</span></td><td>Request BO-tier from Exness affiliate dashboard</td></tr>
+          <tr><td>Weltrade CPA €150–400</td><td><span class="status-pill pill-research">LOW-CONFIDENCE</span></td><td>Pull primary Weltrade partner page</td></tr>
+          <tr><td>ASFI "Circular 945/2026" (microfinance)</td><td><span class="status-pill pill-blocked">UNVERIFIED — do not cite</span></td><td>Remove from any publication</td></tr>
+          <tr><td>"Operational CBDC" (Bolivia)</td><td><span class="status-pill pill-research">OVERSTATED</span></td><td>Correct to: "QR (Quick Response)-payment rails and stablecoin custody"</td></tr>
+          <tr><td>eSky/eDestinos 2026 affiliate status</td><td><span class="status-pill pill-blocked">UNKNOWN</span></td><td>Check AffiseReach or contact program directly</td></tr>
+          <tr><td>DCB/mVAS partner terms (Viva/VOX)</td><td><span class="status-pill pill-research">NOT RESEARCHED</span></td><td>Contact Viva/VOX for mVAS partnership</td></tr>
+        </tbody>
+      </table>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 8 -->
+      <h2 id="test-cells">8. Recommended First Test Cells</h2>
+
+      <h3>Cell 1 — High-Ticket SaaS (PRIMARY)</h3>
+      <p><strong>Vertical:</strong> SaaS / Web Tools<br>
+      <strong>Offers:</strong> Hostinger (primary) + Semrush (secondary)<br>
+      <strong>Networks:</strong> Self-serve (Hostinger) / Managed (Semrush)</p>
+
+      <p><strong>Rationale:</strong> Largest verified local audience segments; legal and unregulated vertical; 40%+ / $100–300/sale payouts provide headroom for Tier-3 Bolivia economics; non-promotional transactional framing defensible under A2P opt-in rules. High-ticket is the only category where positive SMS ROI (Return on Investment) is even plausible given Bolivia A2P cost unknown.</p>
+
+      <p><strong>Gating conditions (ALL must be met before send):</strong></p>
+      <ul class="checklist">
+        <li>Written AM confirmation: SMS traffic permitted on this specific offer</li>
+        <li>Opt-in list only (no cold sends)</li>
+        <li>A2P per-message cost obtained from VOX/Viva</li>
+        <li>Break-even model built: CPA / (A2P cost per message × send volume) must be &gt;1</li>
+        <li>Creative in Spanish (Bolivia), within 160 chars, with STOP/BAJA</li>
+      </ul>
+
+      <h3>Cell 2 — eSIM Connectivity (SECONDARY)</h3>
+      <p><strong>Vertical:</strong> eSIM / Travel<br>
+      <strong>Offer:</strong> Airalo<br>
+      <strong>Network:</strong> Impact</p>
+
+      <p><strong>Rationale:</strong> BO eSIM plans confirmed, mobile-native product, transactional tone fits A2P compliance, wallet-payable partially sidesteps card barrier.</p>
+
+      <p><strong>Gating conditions:</strong></p>
+      <ul class="checklist">
+        <li>Impact account approved + Airalo offer accepted</li>
+        <li>SMS clause confirmed (transactional eSIM notification framing, not cold promo)</li>
+        <li>A2P cost + opt-in list ready</li>
+      </ul>
+
+      <div class="callout danger">
+        <strong>What NOT to Launch First</strong>
+        Nutra COD (Cash on Delivery): BO fulfillment unconfirmed, SMS-blocked at carrier level · iGaming: explicitly prohibited carrier content · Forex: finance promo likely blocked; BO payout undisclosed · Booking.com: attribution model incompatible with SMS economics
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 9 -->
+      <h2 id="dcb-angle">9. Unexplored Angle — DCB / mVAS (Carrier-Billed Microsubscriptions)</h2>
+
+      <p>The single most structurally underexplored model is <strong>DCB (Direct Carrier Billing) / mVAS (mobile Value-Added Services)</strong> — microsubscriptions charged directly to the Viva/Tigo/Entel bill or prepaid balance. This addresses the two largest constraints simultaneously:</p>
+
+      <ol>
+        <li><strong>Bypasses the ~10–15% card-penetration ceiling</strong> — billing is on the phone account, not a card</li>
+        <li><strong>Works WITH the VOX True Signal firewall</strong> rather than against it — a carrier-native A2P/SMS+ environment is the natural distribution rail for telco-sanctioned mVAS content</li>
+      </ol>
+
+      <div class="callout">
+        <strong>Strategic Signal</strong>
+        Where cold affiliate SMS fights the carrier, DCB/mVAS partners with it. This requires a different deal structure: carrier/aggregator partnership, rev-share on subscription rather than classic affiliate CPA (Cost Per Action). It is the recommended <strong>parallel strategic research track</strong> alongside the SaaS test cell.
+      </div>
+
+      <p><strong>Status: RESEARCH</strong> — requires Viva/VOX mVAS partner program terms (not obtained in this research round).</p>
+
+      <hr class="section-divider">
+
+      <!-- SECTION 10 -->
+      <h2 id="sources">10. Source Coverage Report</h2>
+
+      <table>
+        <thead><tr><th>Category</th><th>Status</th><th>Sources Used</th><th>Findings</th></tr></thead>
+        <tbody>
+          <tr><td>Web Search (Brave/Tavily/Exa)</td><td><span class="status-pill pill-pass">COVERED</span></td><td>Brave, Tavily, Exa (scout-web)</td><td>16</td></tr>
+          <tr><td>Social: Reddit</td><td><span class="status-pill pill-pass">COVERED</span></td><td>r/BOLIVIA threads via Brave search</td><td>3</td></tr>
+          <tr><td>Social: X/Twitter</td><td><span class="status-pill pill-unknown">SKIPPED</span></td><td>Not relevant to this operational research topic</td><td>0</td></tr>
+          <tr><td>Social: Instagram</td><td><span class="status-pill pill-unknown">SKIPPED</span></td><td>Not relevant to affiliate network catalog research</td><td>0</td></tr>
+          <tr><td>Video: YouTube</td><td><span class="status-pill pill-pass">COVERED</span></td><td>youtube-search CLI + Brave</td><td>6</td></tr>
+          <tr><td>Video: TikTok</td><td><span class="status-pill pill-unknown">SKIPPED</span></td><td>Not relevant to affiliate market research</td><td>0</td></tr>
+          <tr><td>Academic</td><td><span class="status-pill pill-unknown">SKIPPED</span></td><td>Business/affiliate topic, not tech/science</td><td>0</td></tr>
+          <tr><td>News / Industry</td><td><span class="status-pill pill-pass">COVERED</span></td><td>telemediaonline, igamingbusiness, fintechtimes</td><td>8</td></tr>
+          <tr><td>Finance/Regulatory</td><td><span class="status-pill pill-pass">COVERED</span></td><td>legalpilot, gamblingmaps, chambers.com, rojas-lawfirm, ainvest</td><td>18</td></tr>
+          <tr><td>Deep Research (Opus CLI)</td><td><span class="status-pill pill-pass">COVERED</span></td><td>Opus Synthesizer + scout-deep synthesis</td><td>1</td></tr>
+          <tr><td>HackerNews</td><td><span class="status-pill pill-unknown">SEARCHED</span></td><td>No Bolivia affiliate signal found</td><td>0</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Coverage gaps:</strong> A2P per-message pricing (no source found) · Mobidea dashboard (login-walled) · Per-offer SMS terms (AM-level, not public) · DCB/mVAS partner terms for Viva/VOX (not researched)</p>
+
+      <hr class="section-divider">
+
+      <!-- METHODOLOGY -->
+      <h2 id="methodology">Methodology Note</h2>
+
+      <div class="methodology-box">
+        <h3>Critic Council Verdicts</h3>
+        <p>EPR (Evidence to Prediction Ratio) scored by Critic Council (3× Opus): Member A (Evidence/Provenance) = <strong>15/20 PASS</strong>; Member B (Devil's Advocate) = <strong>11/20 RETRY</strong>; Member C (Commercial Actionability) = <strong>11/20 RETRY</strong>. Synthesizer self-grade: 88/100.</p>
+        <p>Report delivered with full gap-flagging per RETRY verdict — all unverifiable claims are explicitly flagged as UNKNOWN, low-confidence, or overstated. Do not treat this report as a verified live-offer buy sheet. Use it as a market context map + structured first-inquiry checklist.</p>
+        <hr class="section-divider" style="margin: 14px 0">
+        <p><strong>Research date:</strong> 2026-06-23<br>
+        <strong>Scouts deployed:</strong> scout-web, scout-social, scout-knowledge, scout-finance, scout-deep, scout-video (6/6)<br>
+        <strong>Total sources processed:</strong> ~70 across all scouts<br>
+        <strong>Pipeline:</strong> PromptForge (D4 COMPLEX) → 6 parallel scouts → 3-member Critic Council (Opus) → Opus Synthesizer → Report</p>
+      </div>
+
+      <div class="footer">
+        Generated by NexusOS DELPHI · Tier 2 HTML Report · 2026-06-23 ·
+        <a href="https://cryptopafi.github.io/nexusos-reports/" target="_blank">nexusos-reports</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Highlight active TOC link on scroll
+    const headings = document.querySelectorAll('h2[id]');
+    const tocLinks = document.querySelectorAll('.toc-sidebar a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.remove('active'));
+          const active = document.querySelector(`.toc-sidebar a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0% -70% 0%' });
+
+    headings.forEach(h => observer.observe(h));
+  </script>
+</body>
+</html>
