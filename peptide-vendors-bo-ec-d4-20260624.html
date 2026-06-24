@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peptide Vendor Landscape: Bolivia &amp; Ecuador — Affiliate Opportunity Map</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #1c2333;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --warn: #d29922;
+      --danger: #f85149;
+      --tag-bg: #21262d;
+      --radius: 8px;
+    }
+    [data-theme="light"] {
+      --bg: #f6f8fa;
+      --surface: #ffffff;
+      --surface2: #f0f2f5;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --muted: #57606a;
+      --accent: #0969da;
+      --accent2: #1a7f37;
+      --warn: #9a6700;
+      --danger: #cf222e;
+      --tag-bg: #eaeef2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    /* Header */
+    .report-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 2rem 1.5rem;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .badge-blue { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+    .badge-green { background: rgba(63,185,80,0.15); color: var(--accent2); border: 1px solid rgba(63,185,80,0.3); }
+    .badge-warn { background: rgba(210,153,34,0.15); color: var(--warn); border: 1px solid rgba(210,153,34,0.3); }
+    .badge-red { background: rgba(248,81,73,0.15); color: var(--danger); border: 1px solid rgba(248,81,73,0.3); }
+    .badge-muted { background: var(--tag-bg); color: var(--muted); border: 1px solid var(--border); }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 0.8rem;
+      z-index: 100;
+      transition: background 0.2s;
+    }
+    .toggle-btn:hover { background: var(--surface2); }
+    /* Layout */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    /* Sections */
+    section { margin-bottom: 3rem; }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 1.5rem 0 0.75rem;
+    }
+    p { margin-bottom: 0.85rem; }
+    ul { padding-left: 1.5rem; margin-bottom: 0.85rem; }
+    li { margin-bottom: 0.3rem; }
+    strong { color: var(--text); font-weight: 600; }
+    /* Alert box */
+    .alert {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .alert.warn { border-left-color: var(--warn); }
+    .alert.danger { border-left-color: var(--danger); }
+    .alert.success { border-left-color: var(--accent2); }
+    .alert-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    /* Tables */
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    thead th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    tbody td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:hover { background: var(--surface2); }
+    tbody tr:last-child td { border-bottom: none; }
+    .conf-high { color: var(--accent2); font-weight: 600; }
+    .conf-med { color: var(--warn); font-weight: 600; }
+    .conf-low { color: var(--danger); font-weight: 600; }
+    .chip {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .chip-green { background: rgba(63,185,80,0.15); color: var(--accent2); }
+    .chip-orange { background: rgba(210,153,34,0.15); color: var(--warn); }
+    .chip-red { background: rgba(248,81,73,0.12); color: var(--danger); }
+    .chip-blue { background: rgba(88,166,255,0.12); color: var(--accent); }
+    .chip-muted { background: var(--tag-bg); color: var(--muted); }
+    /* Priority Cards */
+    .priority-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .priority-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+    }
+    .priority-card .card-rank {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .priority-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .priority-card .card-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .priority-card .card-action {
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+      padding-top: 0.5rem;
+      margin-top: 0.6rem;
+    }
+    .priority-1 { border-left: 4px solid var(--accent2); }
+    .priority-2 { border-left: 4px solid var(--accent); }
+    .priority-3 { border-left: 4px solid var(--warn); }
+    .priority-4 { border-left: 4px solid var(--muted); }
+    .priority-5 { border-left: 4px solid var(--muted); }
+    /* Gaps section */
+    .gap-list {
+      list-style: none;
+      padding: 0;
+    }
+    .gap-list li {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .gap-list li:last-child { border-bottom: none; }
+    .gap-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 0.1rem; }
+    /* Footer */
+    .report-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    /* Coverage table highlight */
+    .cov-covered { color: var(--accent2); font-weight: 600; }
+    .cov-partial { color: var(--warn); font-weight: 600; }
+    .cov-gap { color: var(--danger); font-weight: 600; }
+
+    @media (max-width: 700px) {
+      .main { padding: 1rem; }
+      h1 { font-size: 1.3rem; }
+      .priority-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Light/Dark</button>
+
+  <header class="report-header">
+    <div class="header-inner">
+      <div class="meta-badges">
+        <span class="badge badge-blue">DELPHI PRO</span>
+        <span class="badge badge-green">D4 Depth</span>
+        <span class="badge badge-warn">EPR 17/20</span>
+        <span class="badge badge-muted">Self Grade 88/100</span>
+        <span class="badge badge-muted">nx-20260624-peptide-bo-ec</span>
+        <span class="badge badge-muted">2026-06-24</span>
+      </div>
+      <h1>Peptide Vendor Landscape: Bolivia &amp; Ecuador</h1>
+      <p class="subtitle">Affiliate Opportunity Map &mdash; Client: Elevate Marketing LLC (VOX SMS+ Affiliate Campaigns)</p>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Executive Summary -->
+    <section id="executive-summary">
+      <h2>Executive Summary</h2>
+      <div class="alert warn">
+        <div class="alert-title">Critical Finding: Structural Mismatch</div>
+        The vendors with confirmed affiliate programs (13 international shops) overwhelmingly do <strong>not</strong> confirm shipping to Bolivia or Ecuador. The vendors with confirmed BO/EC delivery (<strong>Asyllum</strong> and <strong>Biosynth</strong>) have <strong>no confirmed affiliate program</strong>. Only two vendors in the entire 27-vendor set are confirmed BO+EC shippers, and neither yet has a verified referral track.
+      </div>
+      <p><strong>Recommendation:</strong> Prioritize direct outreach to activate affiliate terms with <strong>Asyllum</strong> and <strong>Biosynth</strong>, while running parallel cold-approach to the three organized Ecuador local vendors (<strong>peptidosec / peptidosecuador / mispeptidosec</strong>) which already have national shipping and can be converted to affiliate deals.</p>
+      <p>
+        <span class="chip chip-green">Confidence: Moderate-High</span> on market structure and program terms &nbsp;|&nbsp;
+        <span class="chip chip-red">Confidence: Low</span> on which affiliate program actually pays on a BO/EC-delivered sale.
+      </p>
+    </section>
+
+    <!-- Market Overview -->
+    <section id="market-overview">
+      <h2>Market Overview</h2>
+
+      <h3>Bolivia</h3>
+      <p>Bolivia's peptide market is <strong>social-first and storefront-poor</strong>. Demand is met through a parallel/grey channel built on Facebook, Instagram, TikTok, and WhatsApp groups, plus physical informal markets — <strong>La Tablada (La Paz), Calle Tiwanaku (El Alto), and La Ramada (Santa Cruz)</strong>. Product circulating: BPC-157 injectable, TB-500, GHK-Cu injectable, MOTS-c, Epitalon, NAD+ injectable, tirzepatide/semaglutide. Vendors are ephemeral and DM-based — no durable named entities to affiliate with.</p>
+      <p>The formal tier: <strong>Farmacorp</strong> pharmacy chain distributes <strong>Tirzec</strong> (tirzepatide 10mg, branded "Lipoless") from <strong>QUIMFA (Paraguay)</strong> — officially registered in Bolivia 2026. <strong>AGEMED</strong> (Agencia Estatal de Medicamentos y Tecnologías en Salud) is tightening enforcement in 2026. Bolivia is a <strong>low-direct-conversion, high-regulatory-risk</strong> market requiring an external shipper for any affiliate play.</p>
+
+      <h3>Ecuador</h3>
+      <p>Ecuador is more organized: at least 3 live local vendor websites with national shipping — <strong>peptidosec.com</strong>, <strong>peptidosecuador.com</strong>, <strong>mispeptidosec.com</strong> — carrying BPC-157, TB-500, GHK-Cu, tirzepatide, retatrutide, semaglutide with CoA (Certificate of Analysis)-verified purity claims. <strong>Limitless Biotech (US)</strong> is named as upstream supplier. None of the Ecuador locals has a confirmed affiliate program — the closest is peptidosecuador.com's 5% customer signup discount (a discount, NOT an affiliate program).</p>
+      <div class="alert warn">
+        <div class="alert-title">Domain Cluster Risk</div>
+        The three <code>*peptidos*ec*</code> domains may share a single operator — WHOIS (domain registration ownership database) unverified. <strong>ARCSA</strong> (Agencia de Regulación y Control Sanitario) requires Notificación Sanitaria for supplements; GLP-1 biologics require prescription.
+      </div>
+    </section>
+
+    <!-- Vendor Table -->
+    <section id="vendor-table">
+      <h2>Vendor Table — All 27 Vendors</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Vendor</th>
+              <th>Type</th>
+              <th>Primary Channel</th>
+              <th>Peptides</th>
+              <th>RUO/Consumer</th>
+              <th>BO/EC Reach</th>
+              <th>Affiliate Program</th>
+              <th>Commission</th>
+              <th>Cookie</th>
+              <th>Tier</th>
+              <th>Confidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td><strong>Péptidos EC</strong></td><td>EC local</td><td>peptidosec.com</td>
+              <td>BPC-157, TB-500, GHK-Cu, tirzep, retatrutide</td><td>RUO/Consumer</td>
+              <td><span class="chip chip-green">EC national</span></td>
+              <td><span class="chip chip-red">None confirmed</span></td><td>—</td><td>—</td><td>T1</td>
+              <td class="conf-med">Med</td>
+            </tr>
+            <tr>
+              <td>2</td><td><strong>Péptidos Ecuador</strong></td><td>EC local</td><td>peptidosecuador.com + WA</td>
+              <td>BPC-157, TB-500, GHK-Cu, SARMs</td><td>Consumer</td>
+              <td><span class="chip chip-green">EC national</span></td>
+              <td><span class="chip chip-orange">5% discount only</span></td><td>—</td><td>—</td><td>T1</td>
+              <td class="conf-high">Med-High</td>
+            </tr>
+            <tr>
+              <td>3</td><td>MisPeptidosEC</td><td>EC local</td><td>mispeptidosec.com</td>
+              <td>GLP-1/weight-loss</td><td>Consumer</td>
+              <td><span class="chip chip-green">EC national</span></td>
+              <td><span class="chip chip-red">None</span></td><td>—</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr>
+              <td>4</td><td>Biohacking EC</td><td>EC IG</td><td>@biohacking.com.ec</td>
+              <td>Unconfirmed</td><td>Unknown</td>
+              <td><span class="chip chip-orange">EC (Quito)</span></td>
+              <td><span class="chip chip-muted">Unknown</span></td><td>—</td><td>—</td><td>T3</td>
+              <td class="conf-low">Low</td>
+            </tr>
+            <tr>
+              <td>5</td><td>LivFit Bolivia</td><td>BO seller</td><td>@livfitbolivia</td>
+              <td>Tirzepatide</td><td>Consumer</td>
+              <td><span class="chip chip-orange">BO Santa Cruz</span></td>
+              <td><span class="chip chip-red">None</span></td><td>—</td><td>—</td><td>T3</td>
+              <td class="conf-low">Low</td>
+            </tr>
+            <tr>
+              <td>6</td><td>Farmacorp/QUIMFA</td><td>BO pharmacy</td><td>Farmacorp retail</td>
+              <td>Tirzepatide (Rx)</td><td>Consumer</td>
+              <td><span class="chip chip-green">BO national (2026)</span></td>
+              <td><span class="chip chip-red">None</span></td><td>—</td><td>—</td><td>T1</td>
+              <td class="conf-high">High</td>
+            </tr>
+            <tr>
+              <td>7</td><td>NordPeptide</td><td>CO regional</td><td>nordpeptide.com</td>
+              <td>BPC-157, TB-500, sema, tirzep</td><td>RUO</td>
+              <td><span class="chip chip-muted">LATAM unconfirmed</span></td>
+              <td><span class="chip chip-red">None</span></td><td>—</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr>
+              <td>8</td><td>ComprarPeptidosOnline</td><td>Pan-LATAM</td><td>comprarpeptidosonline.com</td>
+              <td>Sema, tirzep, BPC-157, TB-500</td><td>RUO</td>
+              <td><span class="chip chip-muted">"todo LATAM" (BO not named)</span></td>
+              <td><span class="chip chip-red">None</span></td><td>—</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr>
+              <td>9</td><td>Singular Biotech</td><td>MX</td><td>singularbiotech.mx</td>
+              <td>BPC-157, TB-500, GHK-Cu, NAD+</td><td>RUO</td>
+              <td><span class="chip chip-muted">LATAM unconfirmed</span></td>
+              <td><span class="chip chip-orange">Reseller packs (T3)</span></td><td>—</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low</td>
+            </tr>
+            <tr>
+              <td>10</td><td>Peptide Power LATAM</td><td>LATAM</td><td>peptidepowerlatam.is</td>
+              <td>BPC-157, TB-500, GHK-Cu</td><td>RUO</td>
+              <td><span class="chip chip-muted">LATAM</span></td>
+              <td><span class="chip chip-orange">Wholesale reseller (T3)</span></td><td>—</td><td>—</td><td>T3</td>
+              <td class="conf-low">Low</td>
+            </tr>
+            <tr>
+              <td>11</td><td>Péptidos Colombia</td><td>CO</td><td>peptidosdecolombia.com</td>
+              <td>36+ incl. sema, tirzep</td><td>Consumer</td>
+              <td><span class="chip chip-muted">CO (BO/EC unconfirmed)</span></td>
+              <td><span class="chip chip-red">None</span></td><td>—</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr>
+              <td>12</td><td>KRECE</td><td>Editorial</td><td>krece.io</td>
+              <td>N/A (not vendor)</td><td>—</td>
+              <td>N/A</td>
+              <td>Editorial mention only</td><td>—</td><td>—</td><td>T1</td>
+              <td class="conf-high">High (as source)</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>13</td><td><strong>EON Peptides</strong></td><td>Intl</td><td>eonpeptides.com</td>
+              <td>RUO full catalog</td><td>RUO</td>
+              <td><span class="chip chip-orange">"Worldwide" (BO/EC unverified)</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>15–25% tiered</td><td>60d</td><td>T1</td>
+              <td class="conf-med">Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>14</td><td><strong>Apollo Peptide</strong></td><td>Intl US</td><td>apollopeptidesciences.com</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">US-primary (BO/EC unverified)</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>20% base</td><td>120d</td><td>T1</td>
+              <td class="conf-med">Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>15</td><td><strong>Purity Peptides</strong></td><td>Intl</td><td>puritypeptides.is</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>15–25% tiered</td><td>30d</td><td>T1</td>
+              <td class="conf-med">Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>16</td><td><strong>LiveWell Peptides</strong></td><td>Intl</td><td>livewellpeptides.com</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>15–22% tiered</td><td>—</td><td>T1</td>
+              <td class="conf-med">Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>17</td><td><strong>Prime Performance</strong></td><td>Intl</td><td>—</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>20% + 10% code</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>18</td><td><strong>Midwest Peptide</strong></td><td>Intl US</td><td>midwestpeptide.com</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>10%</td><td>30d</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>19</td><td><strong>Onyx Biolabs</strong></td><td>Intl</td><td>onyxbiolabs.com</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>10%</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>20</td><td><strong>Blank Peptides</strong></td><td>Intl</td><td>blankpeptides.com</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>20% + 10% lifetime</td><td>—</td><td>T1</td>
+              <td class="conf-high">Med-High</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>21</td><td><strong>IDUN Peptides</strong></td><td>Intl EU</td><td>idunpeptides.com</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>25% + 10% lifetime</td><td>90d</td><td>T1</td>
+              <td class="conf-med">Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>22</td><td><strong>Main Peptides</strong></td><td>Intl</td><td>mainpeptides.com</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>Competitive (% TBD)</td><td>180d</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>23</td><td><strong>Purple Peptides</strong></td><td>Intl</td><td>—</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>25%</td><td>365d</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>24</td><td><strong>Peptra Labs</strong></td><td>Intl EU</td><td>—</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>20–35% recurring</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.05);">
+              <td>25</td><td><strong>Integrative Peptides</strong></td><td>Intl</td><td>—</td>
+              <td>RUO</td><td>RUO</td>
+              <td><span class="chip chip-orange">BO/EC unverified</span></td>
+              <td><span class="chip chip-green">YES</span></td><td>10%</td><td>—</td><td>T2</td>
+              <td class="conf-low">Low-Med</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.08);">
+              <td>26</td><td><strong>ASYLLUM</strong></td><td>US</td><td>asyllum.com</td>
+              <td>RUO (catalog TBV)</td><td>RUO</td>
+              <td><span class="chip chip-green">BO + EC CONFIRMED</span></td>
+              <td><span class="chip chip-muted">Unverified</span></td><td>—</td><td>—</td>
+              <td>T1 (ship)</td><td class="conf-high">HIGH (ship)</td>
+            </tr>
+            <tr style="background: rgba(63,185,80,0.08);">
+              <td>27</td><td><strong>Biosynth</strong></td><td>Intl</td><td>biosynth.com</td>
+              <td>Research peptides</td><td>RUO/reagent</td>
+              <td><span class="chip chip-green">BO + EC CONFIRMED</span></td>
+              <td><span class="chip chip-muted">Unverified</span></td><td>—</td><td>—</td>
+              <td>T1 (ship)</td><td class="conf-high">HIGH (ship)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--muted);">Rows highlighted in green = confirmed affiliate program. Rows with strong green highlight = confirmed BO+EC shipping.</p>
+    </section>
+
+    <!-- Bucket A -->
+    <section id="bucket-a">
+      <h2>Bucket A: Vendors WITH Confirmed Affiliate Programs</h2>
+
+      <h3>Tier A1 — Formal Programs (International; BO/EC shipping UNVERIFIED for all)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Vendor</th>
+              <th>Commission</th>
+              <th>Cookie</th>
+              <th>Payout</th>
+              <th>LATAM Edge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Blank Peptides</strong></td>
+              <td>20% + 10% lifetime recurring</td>
+              <td>—</td>
+              <td>USDT-TRC20 crypto, monthly</td>
+              <td><span class="chip chip-green">BEST — crypto payout neutralizes LATAM banking rails</span></td>
+            </tr>
+            <tr>
+              <td><strong>IDUN Peptides</strong></td>
+              <td>25% + 10% lifetime recurring</td>
+              <td>90d</td>
+              <td>EU-based</td>
+              <td>High % + long cookie</td>
+            </tr>
+            <tr>
+              <td><strong>EON Peptides</strong></td>
+              <td>15–25% tiered</td>
+              <td>60d</td>
+              <td>24h approval</td>
+              <td>"Worldwide" claimed</td>
+            </tr>
+            <tr>
+              <td><strong>Apollo Peptide Sciences</strong></td>
+              <td>20% base</td>
+              <td>120d</td>
+              <td>AOV (Average Order Value) &gt;$150</td>
+              <td>Long cookie</td>
+            </tr>
+            <tr>
+              <td><strong>Purity Peptides</strong></td>
+              <td>15–25% tiered</td>
+              <td>30d</td>
+              <td>Auto coupon code</td>
+              <td>Good SMS+ fit (code-based attribution)</td>
+            </tr>
+            <tr>
+              <td><strong>Purple Peptides</strong></td>
+              <td>25%</td>
+              <td>365d</td>
+              <td>—</td>
+              <td>Longest cookie in set</td>
+            </tr>
+            <tr>
+              <td><strong>Main Peptides</strong></td>
+              <td>Competitive (% TBD)</td>
+              <td>180d</td>
+              <td>Weekly payouts</td>
+              <td>Best cash-flow cadence</td>
+            </tr>
+            <tr>
+              <td><strong>Peptra Labs</strong></td>
+              <td>20–35% recurring</td>
+              <td>—</td>
+              <td>€260 AOV, EU</td>
+              <td>Highest % ceiling</td>
+            </tr>
+            <tr>
+              <td>LiveWell, Prime Performance, Midwest, Onyx, Integrative</td>
+              <td>10–22%</td>
+              <td>Varies</td>
+              <td>—</td>
+              <td>Backup tier</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Tier A2 — Indirect / Reseller Signals</h3>
+      <p><strong>Singular Biotech (MX)</strong> and <strong>Peptide Power LATAM</strong> offer wholesale unbranded reseller packs — not click-affiliate, but convertible to revenue-share. LATAM-facing logistics advantage.</p>
+    </section>
+
+    <!-- Bucket B -->
+    <section id="bucket-b">
+      <h2>Bucket B: No Program / Unknown — Cold-Approach Feasibility</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Vendor</th>
+              <th>Feasibility</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Asyllum</strong></td>
+              <td><span class="chip chip-green">HIGHEST</span></td>
+              <td>Only confirmed BO+EC shipper — pitch affiliate/referral deal directly</td>
+            </tr>
+            <tr>
+              <td><strong>Biosynth</strong></td>
+              <td><span class="chip chip-green">HIGH</span></td>
+              <td>Confirmed BO+EC shipper — verify catalog scope first</td>
+            </tr>
+            <tr>
+              <td>peptidosec.com</td>
+              <td><span class="chip chip-green">HIGH</span></td>
+              <td>Organized EC vendor, delivery solved, build affiliate from zero</td>
+            </tr>
+            <tr>
+              <td>peptidosecuador.com</td>
+              <td><span class="chip chip-green">HIGH</span></td>
+              <td>Most contactable (WA +593 98 571 8191, IG, store); convert 5% discount to affiliate deal</td>
+            </tr>
+            <tr>
+              <td>mispeptidosec.com</td>
+              <td><span class="chip chip-orange">MEDIUM</span></td>
+              <td>Confirm independent of other two EC domains first</td>
+            </tr>
+            <tr>
+              <td>biohacking.com.ec</td>
+              <td><span class="chip chip-orange">MEDIUM</span></td>
+              <td>Confirm vendor status via IG visit first</td>
+            </tr>
+            <tr>
+              <td>@livfitbolivia</td>
+              <td><span class="chip chip-red">LOW</span></td>
+              <td>Single seller, single product, small scale</td>
+            </tr>
+            <tr>
+              <td>Farmacorp/QUIMFA</td>
+              <td><span class="chip chip-red">NONE</span></td>
+              <td>Regulated pharma channel</td>
+            </tr>
+            <tr>
+              <td>NordPeptide / ComprarPeptidosOnline / Péptidos Colombia</td>
+              <td><span class="chip chip-orange">MEDIUM</span></td>
+              <td>Verify BO/EC delivery first</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Top 5 Shortlist -->
+    <section id="shortlist">
+      <h2>Affiliate Opportunity Shortlist — Top 5 for BO/EC SMS+</h2>
+      <div class="priority-grid">
+
+        <div class="priority-card priority-1">
+          <div class="card-rank" style="color: var(--accent2);">Priority 1 — Top Priority</div>
+          <h4>Asyllum (asyllum.com)</h4>
+          <div class="card-meta">US vendor | BO + EC shipping CONFIRMED | Affiliate: NEEDS VERIFICATION</div>
+          <p style="font-size: 0.82rem;">Only US vendor with confirmed Bolivia AND Ecuador delivery. Affiliate program status must be directly verified.</p>
+          <div class="card-action">
+            <strong>Action:</strong> Direct outreach for referral/affiliate deal. Request custom tracking link or coupon-code arrangement.<br/>
+            <strong>Risk:</strong> <span class="chip chip-orange">MEDIUM</span> — program unknown; if refused, use coupon attribution.
+          </div>
+        </div>
+
+        <div class="priority-card priority-2">
+          <div class="card-rank" style="color: var(--accent);">Priority 2 — Best Affiliate Terms for LATAM</div>
+          <h4>Blank Peptides (blankpeptides.com)</h4>
+          <div class="card-meta">20% + 10% lifetime recurring | Instant approval | USDT-TRC20 crypto payout | Monthly</div>
+          <p style="font-size: 0.82rem;">Best affiliate terms in the entire set. USDT-TRC20 crypto payout neutralizes LATAM banking-rail friction.</p>
+          <div class="card-action">
+            <strong>Action:</strong> Sign up immediately; verify BO/EC shipping BEFORE spending impressions.<br/>
+            <strong>Risk:</strong> <span class="chip chip-orange">MEDIUM-HIGH</span> — terms excellent but BO/EC shipping unverified.
+          </div>
+        </div>
+
+        <div class="priority-card priority-3">
+          <div class="card-rank" style="color: var(--warn);">Priority 3 — Best EC Cold-Approach</div>
+          <h4>peptidosecuador.com</h4>
+          <div class="card-meta">EC national shipping confirmed | WA +593 98 571 81 91 | IG @peptidosecuador</div>
+          <p style="font-size: 0.82rem;">EC national shipping confirmed. Upstream supplier Limitless Biotech (US) signals real supply chain. Most contactable of the EC cluster.</p>
+          <div class="card-action">
+            <strong>Action:</strong> Cold pitch to convert 5% discount into tracked affiliate/coupon split.<br/>
+            <strong>Risk:</strong> <span class="chip chip-green">LOW-MEDIUM</span> — delivery solved; ARCSA compliance watch item.
+          </div>
+        </div>
+
+        <div class="priority-card priority-4">
+          <div class="card-rank" style="color: var(--muted);">Priority 4</div>
+          <h4>Biosynth (biosynth.com)</h4>
+          <div class="card-meta">Intl supplier | BO + EC shipping CONFIRMED | Affiliate: UNVERIFIED</div>
+          <p style="font-size: 0.82rem;">Confirmed BO+EC shipping. Established international supplier. Catalog scope (consumer-RUO vs. reagent-grade) must be verified before committing.</p>
+          <div class="card-action">
+            <strong>Action:</strong> Verify product catalog is consumer-RUO peptides (not reagent-grade), then pursue affiliate deal.<br/>
+            <strong>Risk:</strong> <span class="chip chip-orange">MEDIUM</span> — catalog/audience fit unverified.
+          </div>
+        </div>
+
+        <div class="priority-card priority-5">
+          <div class="card-rank" style="color: var(--muted);">Priority 5</div>
+          <h4>peptidosec.com cluster (EC)</h4>
+          <div class="card-meta">EC national shipping | Full RUO stack | Domain cluster risk</div>
+          <p style="font-size: 0.82rem;">EC national shipping confirmed. Full RUO stack (BPC-157, tirzepatide, retatrutide, GHK-Cu). First resolve WHOIS to confirm independent operator.</p>
+          <div class="card-action">
+            <strong>Action:</strong> Cold approach; confirm independent of peptidosecuador.com via WHOIS/RUC.<br/>
+            <strong>Risk:</strong> <span class="chip chip-orange">MEDIUM</span> — single-operator risk may reduce leverage.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Honest Gaps -->
+    <section id="gaps">
+      <h2>Honest Gaps</h2>
+      <div class="alert danger">
+        <div class="alert-title">Load-Bearing Gap</div>
+        <strong>The affiliate × BO/EC shipping intersection is empty.</strong> No vendor confirmed both. Every shortlist item closes only one half of the equation.
+      </div>
+      <ul class="gap-list">
+        <li>
+          <span class="gap-icon">⚠</span>
+          <span><strong>Asyllum and Biosynth affiliate programs are unconfirmed</strong> — They ship; whether they pay referrers is unknown.</span>
+        </li>
+        <li>
+          <span class="gap-icon">⚠</span>
+          <span><strong>Telegram not scanned</strong> — Confirmed dark gap. LATAM grey-market peptide distribution is heavily Telegram-based. This likely hides additional informal vendor inventory.</span>
+        </li>
+        <li>
+          <span class="gap-icon">⚠</span>
+          <span><strong>MercadoLibre BO/EC login-walled</strong> — Not confirmed; extrapolated from Peru signal only.</span>
+        </li>
+        <li>
+          <span class="gap-icon">⚠</span>
+          <span><strong>EC domain cluster WHOIS (domain registration) unverified</strong> — peptidosec / peptidosecuador / mispeptidosec may be one operator.</span>
+        </li>
+        <li>
+          <span class="gap-icon">⚠</span>
+          <span><strong>LATAM payment-rail</strong> — Only Blank Peptides (crypto USDT) confirmed LATAM-friendly payout. All other programs have unverified LATAM payout feasibility.</span>
+        </li>
+        <li>
+          <span class="gap-icon">⚠</span>
+          <span><strong>Biosynth catalog scope</strong> — May be reagent-grade lab chemicals, not consumer-RUO (Research Use Only) peptides. Audience fit unverified.</span>
+        </li>
+        <li>
+          <span class="gap-icon">⚠</span>
+          <span><strong>Peptide Sciences shutdown</strong> — Interpreted as market gap OR regulatory contagion signal; both valid; unresolved.</span>
+        </li>
+        <li>
+          <span class="gap-icon">🔴</span>
+          <span><strong>Regulatory exposure</strong> — AGEMED tightening (BO), ARCSA Notificación Sanitaria (EC), GLP-1 prescription-gated; affiliate operator carries liability for promoting controlled/restricted products.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Source Coverage -->
+    <section id="source-coverage">
+      <h2>Source Coverage Report</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Channels Used</th>
+              <th>Findings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Web Search</td>
+              <td><span class="cov-covered">COVERED</span></td>
+              <td>Brave, Tavily, Exa</td>
+              <td>27 vendors identified</td>
+            </tr>
+            <tr>
+              <td>Social: Reddit</td>
+              <td><span class="cov-covered">COVERED</span></td>
+              <td>reddit-search.sh</td>
+              <td>r/PeptideDiscussion Ecuador thread; r/PeptideMarketing affiliate programs</td>
+            </tr>
+            <tr>
+              <td>Social: Instagram</td>
+              <td><span class="cov-covered">COVERED</span></td>
+              <td>Brave site:instagram.com</td>
+              <td>@livfitbolivia, @biohacking.com.ec, @peptidoslatam, @limitless_biotech, @caregen.official</td>
+            </tr>
+            <tr>
+              <td>Social: X/Twitter</td>
+              <td><span class="cov-covered">COVERED</span></td>
+              <td>Brave site:x.com</td>
+              <td>Negligible signal</td>
+            </tr>
+            <tr>
+              <td>Video: YouTube</td>
+              <td><span class="cov-covered">COVERED</span></td>
+              <td>youtube-search.sh, Brave</td>
+              <td>Creadores Podcast (LATAM biohacking); Telemundo warning coverage</td>
+            </tr>
+            <tr>
+              <td>Video: TikTok</td>
+              <td><span class="cov-partial">SKIPPED</span></td>
+              <td>Conditional</td>
+              <td>LATAM peptide TikTok noted but not directly scraped</td>
+            </tr>
+            <tr>
+              <td>Social: HackerNews</td>
+              <td><span class="cov-covered">COVERED</span></td>
+              <td>hn-search.sh</td>
+              <td>Zero signal (expected)</td>
+            </tr>
+            <tr>
+              <td>Social: Telegram</td>
+              <td><span class="cov-gap">NOT COVERED</span></td>
+              <td>API/privacy blocker</td>
+              <td>Confirmed gap — ephemeral groups, not publicly indexed</td>
+            </tr>
+            <tr>
+              <td>Marketplace: MercadoLibre</td>
+              <td><span class="cov-gap">NOT COVERED</span></td>
+              <td>Login-walled</td>
+              <td>Peru signal extrapolated; BO/EC not confirmed</td>
+            </tr>
+            <tr>
+              <td>News/Regulatory</td>
+              <td><span class="cov-covered">COVERED</span></td>
+              <td>krece.io, Telemundo, ARCSA/AGEMED docs</td>
+              <td>Regulatory framework for BO+EC mapped</td>
+            </tr>
+            <tr>
+              <td>Academic</td>
+              <td><span class="cov-partial">SKIPPED</span></td>
+              <td>Not relevant for vendor enumeration</td>
+              <td>0 sources needed</td>
+            </tr>
+            <tr>
+              <td>Deep Research</td>
+              <td><span class="cov-covered">COVERED</span></td>
+              <td>Tavily Research, Exa Advanced</td>
+              <td>Shipping confirmation (Asyllum, Biosynth), affiliate program enumeration</td>
+            </tr>
+            <tr>
+              <td>Domain Verification</td>
+              <td><span class="cov-partial">PARTIAL</span></td>
+              <td>Site extraction</td>
+              <td>Contact verified; WHOIS/RUC not retrieved</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="report-footer">
+    <p>Research ID: <strong>nx-20260624-peptide-bo-ec</strong> &nbsp;|&nbsp; DELPHI PRO D4 &nbsp;|&nbsp; EPR 17/20 &nbsp;|&nbsp; Self Grade 88/100 &nbsp;|&nbsp; Generated 2026-06-24</p>
+    <p style="margin-top: 0.4rem;">Client: Elevate Marketing LLC (VOX SMS+ Affiliate Campaigns) &nbsp;|&nbsp; NexusOS Intelligence Platform</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.getAttribute('data-theme') === 'light') {
+        html.removeAttribute('data-theme');
+      } else {
+        html.setAttribute('data-theme', 'light');
+      }
+    }
+  </script>
+</body>
+</html>
