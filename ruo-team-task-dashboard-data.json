@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-24T10:40:00Z",
+  "generatedAt": "2026-06-24T10:55:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -16,20 +16,21 @@
     "High-revenue SKUs continue selling while public copy and buyer flow are cleaned.",
     "B2B is inbound/supporting only unless later chosen.",
     "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work.",
-    "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized."
+    "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized.",
+    "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries."
   ],
   "gates": [
     {
       "id": "gate-site",
-      "name": "Site Gate",
+      "name": "Website Compliance Gate",
       "state": "red",
       "owner": "Narcis",
       "assignees": [
         "Narcis",
         "Pafi"
       ],
-      "dueDate": "2026-06-24",
-      "summary": "Affiliate page, calculator/reconstitution flow, high-risk copy, checkout intent, AI files, schema, and Romanian parity still need cleanup."
+      "dueDate": "",
+      "summary": "Website compliance is consolidated under one Narcis task and is waiting for lawyer opinion. No new site modifications until counsel confirms allowed RUO copy, checkout, affiliate, schema, COA, and product-page boundaries."
     },
     {
       "id": "gate-counsel-broker",
@@ -108,6 +109,39 @@
   ],
   "tasks": [
     {
+      "id": "P0-001",
+      "title": "Website Compliance",
+      "category": "Website",
+      "priority": "P0",
+      "urgencyScore": 98,
+      "status": "waiting",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis",
+        "Pafi"
+      ],
+      "dueDate": "",
+      "source": "Owner override 2026-06-24; consolidated from Narcis website tasks P0-0-003, P0-001, P0-002, P0-003, P0-004, P0-009, P1-001, P1-002, P1-003",
+      "description": "Single consolidated website compliance task for PeptraLabs .com/.ro. No new website modifications should be executed until the lawyer opinion arrives and gives the allowed copy/flow boundaries. Prepare only the correction map and evidence while waiting. Corrections to prepare: affiliate/program pages must remove or pause public commission, override, sub-affiliate, influencer recruitment, passive-income, weekly crypto payout, and earnings-calculator claims unless counsel approves a compliant private policy; peptide calculator and reconstitution/dosing flows must stay gated or removed from public access; high-revenue/high-risk SKU pages continue selling only under the lawyer-approved RUO copy model and must remove treatment, healing, repair, fat-loss, human-use, injection, protocol, dosing, medical-benefit, and before/after style claims; checkout must keep intended-use acknowledgement and rejection/manual-review logic aligned with counsel; CTAs, promo strips, discount language, and support copy must avoid medical-use or aggressive commerce framing; visible page copy, meta titles/descriptions, FAQ schema, JSON-LD, llms.txt, llms-full.txt, AI snippets, and Romanian pages must all match the same approved RUO model; COA/report states must be consistent across product pages, lab-report archive, schema, support macros, and LLM files, using clear states such as verified report, supplier COA, independent COA, no public COA, failed, or not applicable; accessories must remain separated from peptide compliance language and must not imply dosing, injection, sterility, or cold-chain proof beyond evidence.",
+      "acceptance": "Blocked until lawyer opinion is received. Before that, Narcis/Pafi may prepare URL-by-URL notes only. After counsel opinion arrives, apply only lawyer-approved changes, record changed URLs and screenshots, keep P0-002 calculator/reconstitution gate and P0-004 checkout acknowledgement as completed controls, and run a post-change scan confirming no banned affiliate/calculator/high-risk medical or passive-income claims remain across .com, .ro, schema, LLM files, checkout, support text, and promo surfaces.",
+      "blockedBy": "Lawyer opinion required before execution",
+      "consolidates": [
+        "P0-0-003",
+        "P0-001",
+        "P0-002",
+        "P0-003",
+        "P0-004",
+        "P0-009",
+        "P1-001",
+        "P1-002",
+        "P1-003"
+      ],
+      "completedControlsPreserved": [
+        "P0-002 calculator/reconstitution public gating marked done by Pafi on 2026-06-24",
+        "P0-004 checkout intended-use acknowledgement marked done by Pafi on 2026-06-24"
+      ]
+    },
+    {
       "id": "P0-0-001",
       "title": "Create 48h live-state register",
       "category": "Administration",
@@ -140,23 +174,6 @@
       "source": "Council owner-corrected wrapper",
       "description": "Maintain daily gate states for Site, Counsel/Broker, Cash, Supabase/Dashboard, SKU, Accessories, and Dragos.",
       "acceptance": "Every gate has state, owner, blocker, proof needed, and next action."
-    },
-    {
-      "id": "P0-0-003",
-      "title": "Deliver Narcis site P0 packet",
-      "category": "Website",
-      "priority": "P0-0",
-      "urgencyScore": 98,
-      "status": "open",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis",
-        "Pafi"
-      ],
-      "dueDate": "2026-06-24",
-      "source": "Implementation todo",
-      "description": "Exact URL/action list for affiliate cleanup, calculator gate, high-revenue SKU copy cleanup, checkout buyer-intent gate, AI/schema/LLM parity, Romanian parity, and acceptance checks.",
-      "acceptance": "Narcis can work from URL-by-URL instructions without reconstructing the audit."
     },
     {
       "id": "P0-0-004",
@@ -229,78 +246,6 @@
       "completionNote": "Marked done by Pafi on 2026-06-24; Airtable freeze decision recorded the same day."
     },
     {
-      "id": "P0-001",
-      "title": "Rewrite or pause public affiliate pages",
-      "category": "Website",
-      "priority": "P0",
-      "urgencyScore": 99,
-      "status": "open",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis",
-        "Pafi"
-      ],
-      "dueDate": "2026-06-24",
-      "source": "Live-site audit",
-      "description": "Remove recurring 20-35%, 5% override, sub-affiliate recruitment, weekly crypto payout promises, influencer recruitment, passive-income framing, and public earnings calculator.",
-      "acceptance": "Affiliate page says paused pending compliance review or private single-tier policy; scans find no override/sub-affiliate/recruit/passive-income claims."
-    },
-    {
-      "id": "P0-002",
-      "title": "Gate peptide calculator and reconstitution flow",
-      "category": "Website",
-      "priority": "P0",
-      "urgencyScore": 98,
-      "status": "done",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis",
-        "Pafi"
-      ],
-      "dueDate": "2026-06-24",
-      "source": "Live-site audit",
-      "description": "Remove or gate the public peptide calculator/reconstitution flow.",
-      "acceptance": "Calculator is 404/noindex/login-gated or only generic lab unit conversion; no syringe units, draw volume, reconstitution, target amount per draw, or presets.",
-      "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24: peptide calculator/reconstitution public gating completed."
-    },
-    {
-      "id": "P0-003",
-      "title": "Clean high-revenue/high-risk SKU copy while continuing sales",
-      "category": "Website",
-      "priority": "P0",
-      "urgencyScore": 96,
-      "status": "owner_override",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis",
-        "Pafi"
-      ],
-      "dueDate": "2026-06-25",
-      "source": "Owner override",
-      "description": "Keep selling Retatrutide, GLP-1 adjacent, BPC-157, TB-500, Tesamorelin, Tirzepatide, Semaglutida, Melanotan 2, and use-guidance pages while removing benefit/dosing/use claims.",
-      "acceptance": "No stop-sale by default; ordering remains aligned with RUO intent."
-    },
-    {
-      "id": "P0-004",
-      "title": "Add checkout intended-use acknowledgement",
-      "category": "Website",
-      "priority": "P0",
-      "urgencyScore": 95,
-      "status": "done",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis",
-        "Pafi"
-      ],
-      "dueDate": "2026-06-25",
-      "source": "Implementation todo",
-      "description": "Store buyer type, research purpose, no personal/clinical/injection/treatment/resale-with-claims acknowledgement, source tag, and manual-review flags.",
-      "acceptance": "Invalid intent creates rejection/manual review and leaves evidence in dashboard.",
-      "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24: checkout intended-use acknowledgement completed."
-    },
-    {
       "id": "P0-005",
       "title": "Produce 6-month budget and reserve allocation",
       "category": "Financial",
@@ -369,23 +314,6 @@
       "acceptance": "Proof saved; copy only covers storage, transport, and organization unless stronger evidence exists."
     },
     {
-      "id": "P0-009",
-      "title": "Execute Narcis website modification packet",
-      "category": "Website",
-      "priority": "P0",
-      "urgencyScore": 89.5,
-      "status": "open",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis",
-        "Pafi"
-      ],
-      "dueDate": "2026-06-26",
-      "source": "https://cryptopafi.github.io/nexusos-reports/narcis-website-modification-packet-2026-06-23.md",
-      "description": "Use the Narcis website packet to execute affiliate cleanup, calculator/reconstitution gating, high-risk SKU copy cleanup while continuing sales, checkout intended-use acknowledgement, CTA/promo cleanup, AI/schema parity, COA state consistency, Romanian parity, and accessory separation.",
-      "acceptance": "Every packet item is either done with changed URLs and proof screenshots, or marked blocked with reason; post-fix scan confirms no banned affiliate/calculator/high-risk claim terms remain on public surfaces."
-    },
-    {
       "id": "P0-010",
       "title": "Freeze Airtable as read-only legacy source",
       "category": "Data / Dashboard",
@@ -403,55 +331,6 @@
       "source": "Owner decision 2026-06-24",
       "description": "Stop using Airtable for new operational writes. Keep it only as frozen/read-only historical evidence while the active operating layer moves to Supabase/dashboard. Supabase access for Codex/agents is read-only by default.",
       "acceptance": "All new payments, transactions, stock movements, SKU states, approvals, and evidence links belong in Supabase/dashboard, but Codex/agents write only with explicit Pafi approval and visible Pafi-authorized marking; Airtable is referenced only for legacy reconciliation/export."
-    },
-    {
-      "id": "P1-001",
-      "title": "Rewrite AI-readable files and schema from approved copy model",
-      "category": "Website",
-      "priority": "P1",
-      "urgencyScore": 89,
-      "status": "open",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis",
-        "Pafi"
-      ],
-      "dueDate": "2026-06-28",
-      "source": "Live-site audit",
-      "description": "Rewrite visible copy, meta, FAQ schema, JSON-LD, llms.txt, and llms-full.txt from the same approved content model.",
-      "acceptance": "Banned-claim scan passes on visible HTML and generated AI/SEO/schema files together."
-    },
-    {
-      "id": "P1-002",
-      "title": "Preserve COA absence states across all surfaces",
-      "category": "Compliance",
-      "priority": "P1",
-      "urgencyScore": 88,
-      "status": "partially_done",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis"
-      ],
-      "dueDate": "2026-06-28",
-      "source": "Live-site audit",
-      "description": "Standardize COA states across .com, .ro, schema, support macros, lab-report archive, and LLM files.",
-      "acceptance": "Every SKU/batch state is verified report, supplier COA, independent COA, no public COA, failed, or not applicable."
-    },
-    {
-      "id": "P1-003",
-      "title": "Replace risky commerce CTAs and promo strips",
-      "category": "Website",
-      "priority": "P1",
-      "urgencyScore": 87,
-      "status": "open",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis"
-      ],
-      "dueDate": "2026-06-28",
-      "source": "Live-site audit",
-      "description": "Replace high-risk commerce CTAs and promo strips with research-supply wording.",
-      "acceptance": "High-risk pages do not show ORDER NOW, COMANDA ACUM, buy, launch discount, or free-shipping promo near research/claim content."
     },
     {
       "id": "P1-004",
