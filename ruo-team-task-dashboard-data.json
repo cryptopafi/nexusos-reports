@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-24T10:30:00Z",
+  "generatedAt": "2026-06-24T10:40:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -15,7 +15,8 @@
     "Ads are not running.",
     "High-revenue SKUs continue selling while public copy and buyer flow are cleaned.",
     "B2B is inbound/supporting only unless later chosen.",
-    "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work."
+    "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work.",
+    "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized."
   ],
   "gates": [
     {
@@ -65,7 +66,7 @@
         "Pafi"
       ],
       "dueDate": "2026-06-24",
-      "summary": "Airtable is frozen/read-only as legacy evidence; payments, transactions, SKU states, approvals, evidence links, exceptions, and new ops work move to Supabase/dashboard."
+      "summary": "Airtable is frozen/read-only as legacy evidence. Supabase/dashboard is the active ops layer, but Codex/agents are read-only by default; writes require explicit Pafi approval and visible Pafi-authorized marking."
     },
     {
       "id": "gate-sku",
@@ -205,8 +206,8 @@
       ],
       "dueDate": "2026-06-24",
       "source": "Owner override",
-      "description": "Supabase/dashboard becomes the active operating system for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links. Airtable remains frozen/read-only legacy evidence.",
-      "acceptance": "No new operational writes go to Airtable; Supabase/dashboard can rebuild current operating state without note parsing or Airtable as the active layer."
+      "description": "Supabase/dashboard becomes the active operating system for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links. Airtable remains frozen/read-only legacy evidence. Codex/agents remain read-only in Supabase unless Pafi explicitly approves a write.",
+      "acceptance": "No new operational writes go to Airtable. Supabase/dashboard can rebuild current operating state. Any Supabase write by Codex/agents requires explicit Pafi approval and must be visibly marked as Pafi-authorized with timestamp/source."
     },
     {
       "id": "P0-0-007",
@@ -400,8 +401,8 @@
       "dueDate": "2026-06-24",
       "completedAt": "2026-06-24",
       "source": "Owner decision 2026-06-24",
-      "description": "Stop using Airtable for new operational writes. Keep it only as frozen/read-only historical evidence while the active operating layer moves to Supabase/dashboard.",
-      "acceptance": "All new payments, transactions, stock movements, SKU states, approvals, and evidence links are entered in Supabase/dashboard; Airtable is referenced only for legacy reconciliation/export."
+      "description": "Stop using Airtable for new operational writes. Keep it only as frozen/read-only historical evidence while the active operating layer moves to Supabase/dashboard. Supabase access for Codex/agents is read-only by default.",
+      "acceptance": "All new payments, transactions, stock movements, SKU states, approvals, and evidence links belong in Supabase/dashboard, but Codex/agents write only with explicit Pafi approval and visible Pafi-authorized marking; Airtable is referenced only for legacy reconciliation/export."
     },
     {
       "id": "P1-001",
@@ -570,8 +571,8 @@
       ],
       "dueDate": "2026-06-30",
       "source": "Implementation todo",
-      "description": "Export dashboard-critical tables daily and store checksums to detect drift.",
-      "acceptance": "Team can prove whether data changed and when."
+      "description": "Export dashboard-critical Supabase tables daily and store checksums to detect drift. Reads are allowed; writes/backfills require explicit Pafi approval and Pafi-authorized marking.",
+      "acceptance": "Team can prove whether data changed and when; any agent-created mutation is traceable to explicit Pafi approval."
     },
     {
       "id": "P1-011",
