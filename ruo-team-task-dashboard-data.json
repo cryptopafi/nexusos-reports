@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-24T10:20:08Z",
+  "generatedAt": "2026-06-24T10:30:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -15,7 +15,7 @@
     "Ads are not running.",
     "High-revenue SKUs continue selling while public copy and buyer flow are cleaned.",
     "B2B is inbound/supporting only unless later chosen.",
-    "Airtable moves into the dashboard Supabase migration tonight."
+    "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work."
   ],
   "gates": [
     {
@@ -64,8 +64,8 @@
         "Narcis",
         "Pafi"
       ],
-      "dueDate": "2026-06-23",
-      "summary": "Airtable, payments, transactions, SKU states, approvals, evidence links, and exceptions move into Supabase/dashboard."
+      "dueDate": "2026-06-24",
+      "summary": "Airtable is frozen/read-only as legacy evidence; payments, transactions, SKU states, approvals, evidence links, exceptions, and new ops work move to Supabase/dashboard."
     },
     {
       "id": "gate-sku",
@@ -193,7 +193,7 @@
     },
     {
       "id": "P0-0-006",
-      "title": "Move ledger into dashboard Supabase",
+      "title": "Move active operating ledger into Supabase/dashboard",
       "category": "Data / Dashboard",
       "priority": "P0-0",
       "urgencyScore": 95,
@@ -203,14 +203,14 @@
         "Codex/Tech",
         "Pafi"
       ],
-      "dueDate": "2026-06-23",
+      "dueDate": "2026-06-24",
       "source": "Owner override",
-      "description": "Define minimum Supabase dashboard schema for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links.",
-      "acceptance": "Dashboard can rebuild current operating state without note parsing."
+      "description": "Supabase/dashboard becomes the active operating system for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links. Airtable remains frozen/read-only legacy evidence.",
+      "acceptance": "No new operational writes go to Airtable; Supabase/dashboard can rebuild current operating state without note parsing or Airtable as the active layer."
     },
     {
       "id": "P0-0-007",
-      "title": "Sync Airtable and Supabase, update all payments and transactions",
+      "title": "Airtable/Supabase payment sync completed before Airtable freeze",
       "category": "Data / Dashboard",
       "priority": "P0-0",
       "urgencyScore": 94,
@@ -222,10 +222,10 @@
       ],
       "dueDate": "2026-06-23",
       "source": "Owner request",
-      "description": "Narcis must reconcile Airtable with Supabase/dashboard, then update every payment and transaction including proofs, IDs, expenses, balances, and exception statuses.",
-      "acceptance": "Airtable and Supabase agree; no payment or transaction remains only in chat, old notes, or stale dashboard fields.",
+      "description": "Narcis reconciled Airtable with Supabase/dashboard and updated payments/transactions before Airtable freeze.",
+      "acceptance": "Airtable is now read-only legacy evidence; Supabase/dashboard is the active place for payments, transactions, balances, proofs, and exceptions.",
       "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24: Airtable/Supabase payments and transactions sync completed."
+      "completionNote": "Marked done by Pafi on 2026-06-24; Airtable freeze decision recorded the same day."
     },
     {
       "id": "P0-001",
@@ -385,6 +385,25 @@
       "acceptance": "Every packet item is either done with changed URLs and proof screenshots, or marked blocked with reason; post-fix scan confirms no banned affiliate/calculator/high-risk claim terms remain on public surfaces."
     },
     {
+      "id": "P0-010",
+      "title": "Freeze Airtable as read-only legacy source",
+      "category": "Data / Dashboard",
+      "priority": "P0",
+      "urgencyScore": 89,
+      "status": "done",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Narcis",
+        "Codex/Tech"
+      ],
+      "dueDate": "2026-06-24",
+      "completedAt": "2026-06-24",
+      "source": "Owner decision 2026-06-24",
+      "description": "Stop using Airtable for new operational writes. Keep it only as frozen/read-only historical evidence while the active operating layer moves to Supabase/dashboard.",
+      "acceptance": "All new payments, transactions, stock movements, SKU states, approvals, and evidence links are entered in Supabase/dashboard; Airtable is referenced only for legacy reconciliation/export."
+    },
+    {
       "id": "P1-001",
       "title": "Rewrite AI-readable files and schema from approved copy model",
       "category": "Website",
@@ -452,21 +471,23 @@
     },
     {
       "id": "P1-005",
-      "title": "Clean old Airtable movement types during Supabase migration",
+      "title": "Freeze Airtable and migrate movement/status cleanup to Supabase",
       "category": "Data / Dashboard",
-      "priority": "P1",
-      "urgencyScore": 85,
-      "status": "open",
+      "priority": "P0",
+      "urgencyScore": 90.5,
+      "status": "done",
       "owner": "Codex/Tech",
       "assignees": [
         "Codex/Tech",
         "Pafi",
         "Narcis"
       ],
-      "dueDate": "2026-06-23",
-      "source": "Owner override",
-      "description": "Map loss/writeoff, sold, internal use, location, source order, and exception status cleanly into Supabase.",
-      "acceptance": "Stale Airtable statuses are not copied blindly."
+      "dueDate": "2026-06-24",
+      "source": "Owner decision 2026-06-24",
+      "description": "Airtable is frozen/read-only; old Airtable movement types and stale exception statuses must be mapped into Supabase, not cleaned in Airtable as the long-term layer.",
+      "acceptance": "Team treats Airtable as legacy evidence only; Supabase/dashboard owns movement types, exception status, payments, balances, SKU status, approvals, and evidence links going forward.",
+      "completedAt": "2026-06-24",
+      "completionNote": "Pafi decided on 2026-06-24: freeze Airtable, move to Supabase."
     },
     {
       "id": "P1-006",
