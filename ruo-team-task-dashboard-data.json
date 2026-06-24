@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-24T11:15:00Z",
+  "generatedAt": "2026-06-24T11:40:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -17,7 +17,8 @@
     "B2B is inbound/supporting only unless later chosen.",
     "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work.",
     "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized.",
-    "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries."
+    "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries.",
+    "Urgent AOD9604 correction: website and labels must show 5 mg, not 10 mg."
   ],
   "gates": [
     {
@@ -30,7 +31,7 @@
         "Pafi"
       ],
       "dueDate": "",
-      "summary": "Website compliance is consolidated under one Narcis task and is waiting for lawyer opinion. No new site modifications until counsel confirms allowed RUO copy, checkout, affiliate, schema, COA, and product-page boundaries."
+      "summary": "Website compliance remains waiting for lawyer opinion, but urgent factual AOD9604 correction must be made: website strength should be 5 mg, not 10 mg."
     },
     {
       "id": "gate-counsel-broker",
@@ -78,7 +79,7 @@
         "Narcis"
       ],
       "dueDate": "2026-06-25",
-      "summary": "High-revenue SKUs continue, but each needs copy cleanup, COA state, margin status, reorder focus, and counsel flag."
+      "summary": "SKU table still needed; urgent AOD9604 operational correction added: website and labels must show 5 mg, not 10 mg."
     },
     {
       "id": "gate-accessories",
@@ -139,6 +140,39 @@
         "P0-002 calculator/reconstitution public gating marked done by Pafi on 2026-06-24",
         "P0-004 checkout intended-use acknowledgement marked done by Pafi on 2026-06-24"
       ]
+    },
+    {
+      "id": "P0-011",
+      "title": "Correct AOD9604 website strength from 10 mg to 5 mg",
+      "category": "Website",
+      "priority": "P0",
+      "urgencyScore": 97.8,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-06-24",
+      "source": "Owner request 2026-06-24",
+      "description": "Urgent factual product correction: update AOD9604 website strength from 10 mg to 5 mg everywhere it appears. Check product title, product variant/option, product description, pricing table, cart/checkout display, related product blocks, search/category cards, .com/.ro surfaces, schema/JSON-LD, meta snippets, llms.txt/llms-full.txt, and any support/site text that repeats the strength. This is a factual strength correction, not a lawyer-gated copy rewrite.",
+      "acceptance": "AOD9604 displays 5 mg everywhere on public and generated website surfaces; no AOD9604 10 mg references remain except archived evidence; Narcis provides changed URL list and screenshots/search proof."
+    },
+    {
+      "id": "P0-012",
+      "title": "Re-order AOD9604 labels with 5 mg instead of 10 mg",
+      "category": "Logistics",
+      "priority": "P0",
+      "urgencyScore": 97.7,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis",
+        "Dragos"
+      ],
+      "dueDate": "2026-06-24",
+      "source": "Owner request 2026-06-24",
+      "description": "Narcis and Dragos coordinate the AOD9604 label correction: re-order/reprint labels that say 5 mg instead of 10 mg, update the label/design/order file, and prevent old 10 mg labels from being used on 5 mg stock. Dragos must know which labels are valid before any handoff/delivery.",
+      "acceptance": "Proof of 5 mg label reorder/reprint is saved; design/order file says AOD9604 5 mg; any old 10 mg labels are segregated, destroyed, or marked not-for-use; Dragos confirms only 5 mg labels are used going forward."
     },
     {
       "id": "P0-0-001",
