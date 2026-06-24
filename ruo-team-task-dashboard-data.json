@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-24T11:05:00Z",
+  "generatedAt": "2026-06-24T11:15:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -36,13 +36,12 @@
       "id": "gate-counsel-broker",
       "name": "Counsel/Broker Gate",
       "state": "yellow",
-      "owner": "Pafi",
+      "owner": "Vic",
       "assignees": [
-        "Pafi",
         "Vic"
       ],
       "dueDate": "2026-06-24",
-      "summary": "Counsel/customs broker packet and SKU/channel questions need a go/no-go scope."
+      "summary": "Vic owns the counsel/customs broker packet and written opinion is needed before website compliance execution or legal/import posture is treated as cleared."
     },
     {
       "id": "gate-cash",
@@ -51,15 +50,15 @@
       "owner": "Dragos",
       "assignees": [
         "Dragos",
-        "Pafi"
+        "Narcis"
       ],
       "dueDate": "2026-06-22",
-      "summary": "Actual cash, Zen, crypto, receivables, personal-stock debt, and proof records must be reconciled."
+      "summary": "Dragos provides real balances/proofs; Narcis packages the cash packet into dashboard/evidence format. Pafi is not owner of this task."
     },
     {
       "id": "gate-dashboard",
       "name": "Supabase/Dashboard Gate",
-      "state": "yellow",
+      "state": "green",
       "owner": "Codex/Tech",
       "assignees": [
         "Codex/Tech",
@@ -67,7 +66,7 @@
         "Pafi"
       ],
       "dueDate": "2026-06-24",
-      "summary": "Airtable is frozen/read-only as legacy evidence. Supabase/dashboard is the active ops layer, but Codex/agents are read-only by default; writes require explicit Pafi approval and visible Pafi-authorized marking."
+      "summary": "Supabase/dashboard is the active operating direction and Airtable is frozen/read-only legacy evidence. Agent writes remain approval-gated."
     },
     {
       "id": "gate-sku",
@@ -155,8 +154,8 @@
       ],
       "dueDate": "2026-06-24",
       "source": "Council owner-corrected wrapper",
-      "description": "Make one simple status board showing D2C live, ads not running, affiliate/copy/tooling cleanup needed, high-revenue SKUs continue, Dragos collaborator sales not active yet, and accessory marketplace waiting for proof/QC.",
-      "acceptance": "Each live/not-live item has owner, due date, proof link, and current state."
+      "description": "Create a simple 48-hour snapshot of what is actually live or not live right now: D2C sales live, ads not running, website compliance waiting for lawyer opinion, high-revenue SKUs continue selling, Dragos collaborator sales not active yet, Supabase/dashboard active, Airtable frozen, accessories waiting for proof/QC. This is a status register, not a freeze.",
+      "acceptance": "Each item has state, owner, next action, due date if relevant, and proof/evidence link. The team can open one board and see what is live, blocked, waiting, or ready."
     },
     {
       "id": "P0-0-002",
@@ -182,15 +181,14 @@
       "priority": "P0-0",
       "urgencyScore": 97,
       "status": "open",
-      "owner": "Pafi",
+      "owner": "Vic",
       "assignees": [
-        "Pafi",
         "Vic"
       ],
       "dueDate": "2026-06-24",
-      "source": "Council owner-corrected wrapper",
-      "description": "Package live-state, current claims, channels, SKUs, suppliers, import flow, affiliate status, B2B inbound position, and exact go/no-go questions.",
-      "acceptance": "Counsel/broker can answer what can stay live, what must change, and what evidence is required."
+      "source": "Owner override 2026-06-24",
+      "description": "Vic owns the counsel/customs broker packet: live-state summary, current claims/channel examples, SKU/status list, suppliers, import flow, affiliate posture, B2B inbound position, COA/SDS assumptions, and exact go/no-go questions.",
+      "acceptance": "Vic has a packet ready to send/review with counsel and customs broker. No legal/import posture is treated as cleared until written opinion/response exists."
     },
     {
       "id": "P0-0-005",
@@ -202,12 +200,12 @@
       "owner": "Dragos",
       "assignees": [
         "Dragos",
-        "Pafi"
+        "Narcis"
       ],
       "dueDate": "2026-06-22",
-      "source": "Implementation todo",
-      "description": "List actual cash, Zen, crypto, receivables, personal-stock debt, proof screenshots/records, and separate any back-pay discussion from company money owed.",
-      "acceptance": "Actual balances and proof match the EUR 4,999.43 cash target and USD 6,931.60 total accountable amount."
+      "source": "Owner override 2026-06-24",
+      "description": "Dragos provides the real cash/Zen/crypto/receivable/proof data; Narcis helps package it into the dashboard/evidence format. Separate company money owed from any back-pay or personal-stock discussion.",
+      "acceptance": "Actual balances, proofs, receivables, and personal-stock debt are recorded cleanly; Pafi is not treated as the owner of this task."
     },
     {
       "id": "P0-0-006",
@@ -215,7 +213,7 @@
       "category": "Data / Dashboard",
       "priority": "P0-0",
       "urgencyScore": 95,
-      "status": "in_progress",
+      "status": "done",
       "owner": "Codex/Tech",
       "assignees": [
         "Codex/Tech",
@@ -224,7 +222,9 @@
       "dueDate": "2026-06-24",
       "source": "Owner override",
       "description": "Supabase/dashboard becomes the active operating system for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links. Airtable remains frozen/read-only legacy evidence. Codex/agents remain read-only in Supabase unless Pafi explicitly approves a write.",
-      "acceptance": "No new operational writes go to Airtable. Supabase/dashboard can rebuild current operating state. Any Supabase write by Codex/agents requires explicit Pafi approval and must be visibly marked as Pafi-authorized with timestamp/source."
+      "acceptance": "No new operational writes go to Airtable. Supabase/dashboard can rebuild current operating state. Any Supabase write by Codex/agents requires explicit Pafi approval and must be visibly marked as Pafi-authorized with timestamp/source.",
+      "completedAt": "2026-06-24",
+      "completionNote": "Marked done by Pafi on 2026-06-24: active operating ledger moved into Supabase/dashboard direction; Airtable remains frozen/read-only legacy evidence."
     },
     {
       "id": "P0-0-007",
@@ -411,7 +411,7 @@
       "category": "Financial",
       "priority": "P1",
       "urgencyScore": 80,
-      "status": "waiting",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi",
@@ -420,7 +420,9 @@
       "dueDate": "2026-06-26",
       "source": "Financial audit",
       "description": "Document Vic net receivable USD 5,622.92, Pafi USD 537.18, Dragos recovery, back-pay payable, and monthly net-sales percentage separately.",
-      "acceptance": "Settlement uses actual Dragos cash data, not assumptions."
+      "acceptance": "Settlement uses actual Dragos cash data, not assumptions.",
+      "completedAt": "2026-06-24",
+      "completionNote": "Marked done by Pafi on 2026-06-24: audit closed; owner settlement confirmation no longer active."
     },
     {
       "id": "P1-009",
@@ -464,14 +466,12 @@
       "status": "open",
       "owner": "Narcis",
       "assignees": [
-        "Narcis",
-        "Pafi",
-        "Codex/Tech"
+        "Narcis"
       ],
       "dueDate": "2026-06-26",
-      "source": "Owner request",
-      "description": "Narcis integrates the Hermes agent into the shared Telegram group so the team uses one agent for everyone instead of separate assistants or fragmented bot channels.",
-      "acceptance": "Hermes is present in the Telegram group, team members know to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented."
+      "source": "Owner override 2026-06-24",
+      "description": "Narcis integrates the Hermes agent into the shared Telegram group so the team uses one agent for everyone. This is a Narcis-owned coordination/setup task.",
+      "acceptance": "Hermes is present in the shared Telegram group, the team knows to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented."
     },
     {
       "id": "P1-012",
@@ -528,21 +528,21 @@
     },
     {
       "id": "P2-002",
-      "title": "Run dummy website-paid Dragos handoff",
+      "title": "Build dummy website-paid order handoff and location notification flow",
       "category": "Sales / Dragos",
       "priority": "P2",
       "urgencyScore": 72,
       "status": "planned",
-      "owner": "Pafi",
+      "owner": "Narcis",
       "assignees": [
-        "Pafi",
-        "Codex",
-        "Dragos"
+        "Narcis",
+        "Dragos",
+        "Codex/Tech"
       ],
       "dueDate": "2026-07-03",
-      "source": "Dragos handoff",
-      "description": "Test website order ID to approved payment to local handoff to evidence record to stock impact to weekly AI report row.",
-      "acceptance": "No real collaborator activation until dummy flow passes."
+      "source": "Owner override 2026-06-24",
+      "description": "Narcis builds/tests a dummy paid website-order flow from order paid -> location decision -> notification -> local handoff -> evidence record -> stock movement. The notification must route based on customer delivery location: Ibiza orders notify the Ibiza/local handoff channel; Bulgaria/Bucharest/other warehouse-flow orders notify the Bulgaria/central logistics channel. Include order ID, customer location, product/SKU, paid status, delivery/handoff route, responsible person, required proof, and no medical/product-advice text.",
+      "acceptance": "A dummy paid order can be processed without real collaborator activation. The correct Ibiza vs Bulgaria/central notification is selected from customer location, the handoff recipient sees only operational details, stock/evidence records are created or drafted, and the flow can be repeated safely before real use."
     },
     {
       "id": "P2-003",
@@ -558,8 +558,8 @@
       ],
       "dueDate": "2026-07-10",
       "source": "Implementation todo",
-      "description": "Daily Ops, Stock, Finance, Compliance, Procurement, Accessories, Ibiza Network, and Weekly Business Reporter operate read-only/draft-first.",
-      "acceptance": "All mutating actions require approval ID and idempotency key."
+      "description": "Build AI helpers that can read the dashboard/Supabase/project context and draft actions or reports, but cannot change records by themselves. Examples: Daily Ops summary, Stock check, Finance check, Compliance check, Procurement draft, Accessories check, Ibiza Network update, and Weekly Business Reporter.",
+      "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution."
     },
     {
       "id": "P2-004",
@@ -593,8 +593,8 @@
       ],
       "dueDate": "2026-07-10",
       "source": "Implementation todo",
-      "description": "Track legal/customs/QA, OpCo, accessories, owner repayment, AI/data, marketing, and contingency monthly.",
-      "acceptance": "Dashboard shows budget vs actual and reserve impact by bucket."
+      "description": "Create a monthly budget view grouped by operating buckets: legal/customs/QA, peptide operating company, accessories, owner repayment, AI/data/dashboard, marketing/content, logistics, and contingency. Track planned budget, actual spend, remaining reserve, owner/person responsible, evidence/proof link, and variance.",
+      "acceptance": "Dashboard shows budget vs actual by month and bucket, so Pafi/Vic can see how much runway remains and which category is over/under budget."
     }
   ]
 }
