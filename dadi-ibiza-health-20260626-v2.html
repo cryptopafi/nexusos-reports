@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Andrada Florincuta (Dadi Ibiza) — Analiză Sânge &amp; Protocol Bachmeyer (v2)</title>
+  <meta name="description" content="Analiză completă de sânge și protocol peptide/suplimente cu titrare pentru pacient nou. Panel X61630691 · ENAC-acreditat (Spania)">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Andrada Florincuta (Dadi Ibiza) — Analiză Sânge &amp; Protocol Bachmeyer (v2)">
+  <meta property="og:description" content="Panel X61630691 · 47 markeri · 11 semnalați · titrare pacient nou · ENAC-acreditat (Spania)">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://cryptopafi.github.io/nexusos-reports/og-health.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: '#22c55e',
+            'accent-dim': '#16a34a',
+            'dark-bg': '#0A0A0F',
+            'dark-card': '#111118',
+            'dark-border': 'rgba(255,255,255,0.06)',
+            'light-bg': '#fafafa',
+            'light-card': '#ffffff',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --accent: #22c55e;
+      --accent-dim: #16a34a;
+      --glow: rgba(34,197,94,0.18);
+    }
+
+    /* ── Dark mode base ── */
+    html[data-theme="dark"] body {
+      background: #0A0A0F;
+      color: #e2e8f0;
+    }
+    html[data-theme="light"] body {
+      background: #fafafa;
+      color: #1e293b;
+    }
+
+    body { font-family: 'Inter', sans-serif; }
+
+    /* ── Glassmorphism cards ── */
+    .glass {
+      background: rgba(17,17,24,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+    }
+    html[data-theme="light"] .glass {
+      background: rgba(255,255,255,0.85);
+      border-color: rgba(0,0,0,0.08);
+    }
+
+    /* ── Accent glow ── */
+    .accent-glow {
+      box-shadow: 0 0 24px var(--glow);
+    }
+
+    /* ── TOC sidebar ── */
+    #toc-sidebar {
+      position: sticky;
+      top: 5rem;
+      max-height: calc(100vh - 6rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+    #toc-sidebar a {
+      display: block;
+      padding: 0.35rem 0.75rem;
+      border-left: 2px solid transparent;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: #94a3b8;
+      text-decoration: none;
+      transition: all 0.2s;
+      border-radius: 0 4px 4px 0;
+    }
+    #toc-sidebar a:hover,
+    #toc-sidebar a.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: var(--glow);
+    }
+    html[data-theme="light"] #toc-sidebar a { color: #64748b; }
+
+    /* ── Metadata sidebar ── */
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    html[data-theme="light"] .meta-item { border-bottom-color: rgba(0,0,0,0.06); }
+    .meta-label { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: #64748b; margin-bottom: 2px; }
+    .meta-value { font-size: 0.85rem; font-weight: 500; }
+
+    /* ── Flag badges ── */
+    .flag-red    { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+    .flag-yellow { background: rgba(234,179,8,0.15); color: #facc15; border: 1px solid rgba(234,179,8,0.3); }
+    .flag-green  { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+
+    /* ── Section heading accent line ── */
+    .section-heading::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-right: 0.6rem;
+      vertical-align: middle;
+    }
+
+    /* ── Scroll-fade-in ── */
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Cascade chain box ── */
+    .cascade-box {
+      background: rgba(34,197,94,0.05);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+
+    /* ── Pull quotes ── */
+    blockquote.pull-quote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      background: rgba(34,197,94,0.05);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #94a3b8;
+      margin: 1.5rem 0;
+    }
+    html[data-theme="light"] blockquote.pull-quote { color: #64748b; }
+
+    /* ── Protocol cards ── */
+    .protocol-card {
+      border-left: 3px solid var(--accent);
+      background: rgba(34,197,94,0.04);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Titration ramp box ── */
+    .ramp-box {
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 8px;
+      padding: 0.6rem 0.85rem;
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+    }
+    .ramp-box .ramp-title { color: #60a5fa; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .ramp-step { display: flex; gap: 0.5rem; padding: 0.15rem 0; }
+    .ramp-week { font-family: 'JetBrains Mono', monospace; color: #93c5fd; min-width: 4.5rem; font-size: 0.75rem; }
+
+    .caveat-box {
+      background: rgba(234,179,8,0.1);
+      border: 1px solid rgba(234,179,8,0.35);
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
+    }
+
+    /* ── Toggle button ── */
+    #theme-toggle {
+      cursor: pointer;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: 1px solid rgba(34,197,94,0.4);
+      color: var(--accent);
+      background: rgba(34,197,94,0.08);
+    }
+    #theme-toggle:hover { background: rgba(34,197,94,0.18); }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(34,197,94,0.35); border-radius: 9999px; }
+
+    /* ── Print ── */
+    @media print {
+      html[data-theme="dark"] body { background: #fff !important; color: #1e293b !important; }
+      .glass { background: #fff !important; border-color: #e2e8f0 !important; box-shadow: none !important; }
+      #toc-sidebar, #sidebar-meta, #theme-toggle, #share-btn, nav { display: none !important; }
+      main { margin: 0 !important; max-width: 100% !important; }
+      .fade-in { opacity: 1 !important; transform: none !important; }
+      section { page-break-inside: avoid; }
+      .ramp-box, .caveat-box { background: #f8fafc !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen transition-colors duration-300">
+
+  <!-- ── TOP NAV ── -->
+  <nav class="sticky top-0 z-50 glass border-b border-white/5 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-xs font-mono px-2 py-1 rounded-md" style="background:rgba(34,197,94,0.15);color:#22c55e;">NexusOS · HEALTH · v2</span>
+      <span class="text-sm font-medium truncate max-w-xs" style="color:#e2e8f0;">Analiză Sânge &amp; Protocol Bachmeyer</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="share-btn" onclick="shareReport()" class="text-xs px-3 py-1.5 rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-white/30 transition-all">
+        &#x1f517; Share
+      </button>
+      <button id="theme-toggle" onclick="toggleTheme()">&#9788; Light</button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <header class="px-4 pt-10 pb-6 max-w-7xl mx-auto">
+    <div class="glass accent-glow p-6 md:p-8 rounded-2xl fade-in">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div>
+          <p class="text-xs font-mono mb-2" style="color:#22c55e;">RAPORT SĂNĂTATE · v2 · cu titrare pacient nou</p>
+          <h1 class="text-2xl md:text-3xl font-bold leading-tight mb-2">Andrada Florincuta (Dadi Ibiza)</h1>
+          <p class="text-slate-400 text-sm">Analiză Completă de Sânge &amp; Protocol Bachmeyer</p>
+          <p class="text-xs text-slate-500 mt-2 font-mono">Panel X61630691 · ENAC-acreditat (Spania) · Dată recoltare: DE CONFIRMAT</p>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+          <div class="glass px-4 py-3 rounded-xl text-center min-w-[90px]">
+            <div class="text-2xl font-bold" style="color:#22c55e;">11</div>
+            <div class="text-xs text-slate-500 mt-0.5">Markeri semnalați</div>
+          </div>
+          <div class="glass px-4 py-3 rounded-xl text-center min-w-[90px]">
+            <div class="text-2xl font-bold text-slate-300">47</div>
+            <div class="text-xs text-slate-500 mt-0.5">Markeri evaluați</div>
+          </div>
+          <div class="glass px-4 py-3 rounded-xl text-center min-w-[90px]">
+            <div class="text-2xl font-bold" style="color:#ef4444;">2.09</div>
+            <div class="text-xs text-slate-500 mt-0.5">Raport Cu:Zn</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN LAYOUT ── -->
+  <div class="max-w-7xl mx-auto px-4 pb-16 flex gap-6">
+
+    <!-- ── LEFT: TOC sidebar ── -->
+    <aside class="hidden lg:block w-52 shrink-0">
+      <div id="toc-sidebar" class="glass p-4 rounded-xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Cuprins</p>
+        <a href="#s1">1. Sumar Executiv</a>
+        <a href="#s2">2. Excluderi</a>
+        <a href="#s3">3. Analiză Panel</a>
+        <a href="#charts">&#x25A0; Vizualizări</a>
+        <a href="#s4">4. Protocol Peptide</a>
+        <a href="#s5">5. Protocol Suplimente</a>
+        <a href="#s6">6. Faze Implementare</a>
+        <a href="#s7">7. Monitorizare</a>
+      </div>
+    </aside>
+
+    <!-- ── CENTER: Report content ── -->
+    <main class="flex-1 min-w-0 space-y-6">
+
+      <!-- DATA RECOLTARE CAVEAT -->
+      <div class="fade-in">
+        <div class="caveat-box">
+          <p class="text-sm font-semibold mb-1" style="color:#facc15;">&#9888; Dată recoltare: DE CONFIRMAT (coperta analizelor lipsește)</p>
+          <p class="text-xs text-slate-400">Coperta analizelor nu a fost furnizată. Data exactă a recoltării sângelui este <strong>de confirmat</strong> cu laboratorul/coperta. Data 2026-06-26 reprezintă DOAR ziua în care imaginile au fost primite, NU data recoltării.</p>
+        </div>
+      </div>
+
+      <!-- DISCLAIMER -->
+      <div class="fade-in">
+        <blockquote class="pull-quote text-sm">
+          <strong>Disclaimer:</strong> Acest raport este o sinteză educațională construită din conținut Dr. Trevor Bachmeyer (LLM-Wiki NexusOS) + interpretarea markerilor de laborator. NU este sfat medical. Orice protocol de peptide/suplimente trebuie validat cu un medic care vede analizele complete.
+        </blockquote>
+      </div>
+
+      <!-- CE S-A SCHIMBAT v2 -->
+      <div class="fade-in">
+        <div class="glass p-4 rounded-xl" style="border-left:3px solid #60a5fa;">
+          <p class="text-sm font-semibold mb-1" style="color:#60a5fa;">Ce s-a schimbat față de v1</p>
+          <p class="text-xs text-slate-400">Fiecare peptidă ȘI fiecare supliment are acum: doză exactă + frecvență/timing + <strong class="text-slate-200">rampă de titrare pentru pacient nou</strong> + întreținere/step-down. Creatina a fost corectată (track cognitiv 15–20 g/zi pe lângă doza musculară de 5 g). Adăugate note de reconstituire (apă bacteriostatică) + rotație loc de injectare. Valorile de laborator și raționamentul clinic sunt NESCHIMBATE.</p>
+        </div>
+      </div>
+
+      <!-- ── SECTION 1: Sumar Executiv ── -->
+      <section id="s1" class="glass p-6 fade-in">
+        <h2 class="text-xl font-bold mb-4 section-heading">1. Sumar Executiv — Cauza Rădăcină</h2>
+
+        <p class="text-slate-300 mb-4">Un singur dezechilibru explică <strong class="text-white">7+ anomalii</strong> aparent fără legătură: <strong style="color:#22c55e;">raportul Cupru:Zinc = 2.09</strong>.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+          <div class="glass p-4 rounded-xl border border-red-500/20">
+            <div class="text-xs text-slate-500 mb-1 font-mono">CUPRU</div>
+            <div class="text-2xl font-bold text-red-400">146 <span class="text-sm font-normal">µg/dL</span></div>
+            <div class="text-xs text-slate-500 mt-1">Ref: 70–140 · <span class="flag-red px-1.5 py-0.5 rounded-full text-xs">RIDICAT</span></div>
+          </div>
+          <div class="glass p-4 rounded-xl border border-yellow-500/20">
+            <div class="text-xs text-slate-500 mb-1 font-mono">ZINC</div>
+            <div class="text-2xl font-bold text-yellow-400">70 <span class="text-sm font-normal">µg/dL</span></div>
+            <div class="text-xs text-slate-500 mt-1">Ref: 70–120 · <span class="flag-yellow px-1.5 py-0.5 rounded-full text-xs">LIMITĂ JOS</span></div>
+          </div>
+          <div class="glass p-4 rounded-xl border border-red-500/30">
+            <div class="text-xs text-slate-500 mb-1 font-mono">RAPORT Cu:Zn</div>
+            <div class="text-2xl font-bold text-red-400">2.09</div>
+            <div class="text-xs text-slate-500 mt-1">Optim ~1.0 · <span class="flag-red px-1.5 py-0.5 rounded-full text-xs">CRITIC</span></div>
+          </div>
+        </div>
+
+        <p class="text-slate-400 text-sm mb-4">Acest exces de cupru pe fond de zinc insuficient generează stres oxidativ, care declanșează o cascadă inflamatorie confirmată de <strong class="text-white">hs-CRP 4.16 mg/L</strong> (&gt;3.0 = risc inflamator/cardiovascular ridicat).</p>
+
+        <h3 class="text-sm font-semibold text-slate-300 mb-3">Lanțul cauzal</h3>
+        <div class="cascade-box text-slate-300">
+          <span style="color:#22c55e;font-weight:600;">Cu:Zn 2.09</span> → stres oxidativ → <span style="color:#f87171;">hs-CRP 4.16</span> (inflamație sistemică)
+          <br>├─ Ficat stresat → AST/ALT la limită superioară
+          <br>├─ Inflamație hepatică → <span style="color:#fbbf24;">SHBG 63.4 ↑</span> (sechestrează androgenii liberi)
+          <br>├─ Schimbare imună → <span style="color:#fbbf24;">Eozinofile % ↑</span>, <span style="color:#fbbf24;">Neutrofile % ↓</span>
+          <br>├─ Supresie ovariană → <span style="color:#f87171;">AMH 0.793 ↓</span> (DOR)
+          <br>├─ Aromatază zinc-dependentă inhibată → <span style="color:#fbbf24;">Estronă 12.4 ↓</span>
+          <br>├─ Axă HPG dereglată → <span style="color:#fbbf24;">FSH 9.13</span> (compensator, la limita superioară)
+          <br>└─ Metabolism steroli afectat → <span style="color:#fbbf24;">Colesterol 207 ↑</span>
+        </div>
+      </section>
+
+      <!-- ── SECTION 2: Excluderi ── -->
+      <section id="s2" class="glass p-6 fade-in">
+        <h2 class="text-xl font-bold mb-4 section-heading">2. Ce NU este — Excluderi importante</h2>
+        <p class="text-slate-400 text-sm mb-4">Eliminăm îngrijorările frecvente, pentru a focaliza protocolul:</p>
+
+        <div class="space-y-3">
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);">
+            <span class="flag-green px-2 py-0.5 rounded-full text-xs shrink-0 mt-0.5">EXCLUSĂ</span>
+            <div>
+              <p class="text-sm font-semibold text-white">Menopauză</p>
+              <p class="text-xs text-slate-400 mt-0.5">Estradiol 100.6 + Progesteron 0.49 (fază foliculară) + LH 5.65 = ciclu activ.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);">
+            <span class="flag-green px-2 py-0.5 rounded-full text-xs shrink-0 mt-0.5">EXCLUSĂ</span>
+            <div>
+              <p class="text-sm font-semibold text-white">Hashimoto / tiroidită autoimună</p>
+              <p class="text-xs text-slate-400 mt-0.5">Anti-TG &lt;1.3 + Anti-TPO negative. TSH 2.51 (ușor crescut, dar în interval).</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);">
+            <span class="flag-green px-2 py-0.5 rounded-full text-xs shrink-0 mt-0.5">EXCLUS</span>
+            <div>
+              <p class="text-sm font-semibold text-white">PCOS (ovar polichistic)</p>
+              <p class="text-xs text-slate-400 mt-0.5">Raport LH:FSH = 5.65/9.13 = 0.62 (&lt;1 = fără PCOS).</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);">
+            <span class="flag-green px-2 py-0.5 rounded-full text-xs shrink-0 mt-0.5">EXCLUSĂ</span>
+            <div>
+              <p class="text-sm font-semibold text-white">Rezistență la insulină</p>
+              <p class="text-xs text-slate-400 mt-0.5">HOMA-IR 0.60 (Glucoză 78 × Insulină 3.14 / 405) = sensibilitate excelentă. Fenotip slab, masă grasă redusă.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 rounded-lg" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);">
+            <span class="flag-green px-2 py-0.5 rounded-full text-xs shrink-0 mt-0.5">JOS</span>
+            <div>
+              <p class="text-sm font-semibold text-white">Risc cardiovascular lipidic acut</p>
+              <p class="text-xs text-slate-400 mt-0.5">ApoB 91, raport ApoB/ApoA1 = 0.52 (sub 0.7 = bun), HDL 74 (protector), LDL 117.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 3: Analiză Panel ── -->
+      <section id="s3" class="glass p-6 fade-in">
+        <h2 class="text-xl font-bold mb-4 section-heading">3. Analiză pe Panel</h2>
+
+        <div class="space-y-5">
+
+          <div>
+            <h3 class="text-sm font-semibold mb-2" style="color:#22c55e;">Hematologie (P1, P5)</h3>
+            <p class="text-slate-300 text-sm"><strong class="text-white">Eozinofile % ↑ / Neutrofile % ↓</strong> — pattern de shift imun compatibil cu dezechilibrul Cu:Zn (zincul reglează diferențierea celulelor imune). Nu este semnal alergic/parazitar izolat în absența altor markeri.</p>
+            <p class="text-slate-400 text-sm mt-1">HbA1c, Feritină, B12, Acid Folic, Glucoză 78 — în interval.</p>
+          </div>
+
+          <div class="border-t border-white/5 pt-4">
+            <h3 class="text-sm font-semibold mb-2" style="color:#22c55e;">Hepatic &amp; Proteic (P2)</h3>
+            <p class="text-slate-300 text-sm"><strong class="text-white">AST/ALT la limită superioară</strong> — încărcătură oxidativă hepatică din excesul de cupru (ficatul este organul principal de stocare/clearance al cuprului).</p>
+            <p class="text-slate-400 text-sm mt-1">Vitamina D — de confirmat nivelul (suport ovarian/imun cheie). Albumină, Bilirubină, Gamma-GT — în interval.</p>
+          </div>
+
+          <div class="border-t border-white/5 pt-4">
+            <h3 class="text-sm font-semibold mb-2" style="color:#22c55e;">Rezervă Ovariană &amp; Axă HPG (P3, P4)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+              <div class="glass p-3 rounded-lg border border-red-500/20">
+                <div class="text-xs text-slate-500 font-mono">AMH</div>
+                <div class="text-lg font-bold text-red-400">0.793 <span class="text-xs">ng/mL</span></div>
+                <span class="flag-red px-2 py-0.5 rounded-full text-xs">DOR ↓</span>
+              </div>
+              <div class="glass p-3 rounded-lg border border-yellow-500/20">
+                <div class="text-xs text-slate-500 font-mono">FSH</div>
+                <div class="text-lg font-bold text-yellow-400">9.13 <span class="text-xs">mIU/mL</span></div>
+                <span class="flag-yellow px-2 py-0.5 rounded-full text-xs">LIMITĂ SUP ↑</span>
+              </div>
+              <div class="glass p-3 rounded-lg border border-yellow-500/20">
+                <div class="text-xs text-slate-500 font-mono">ESTRONĂ</div>
+                <div class="text-lg font-bold text-yellow-400">12.4 <span class="text-xs">pg/mL</span></div>
+                <span class="flag-yellow px-2 py-0.5 rounded-full text-xs">SCĂZUT ↓</span>
+              </div>
+            </div>
+            <p class="text-slate-400 text-sm">Estradiol 100.6 + LH 5.65 — fază foliculară normală. Inhibină B, DHEA — context de susținere.</p>
+          </div>
+
+          <div class="border-t border-white/5 pt-4">
+            <h3 class="text-sm font-semibold mb-2" style="color:#22c55e;">Lipide &amp; Minerale (P6, P8)</h3>
+            <p class="text-slate-300 text-sm"><strong class="text-white">Colesterol total 207 mg/dL ↑</strong> — modest crescut; profil per ansamblu protector (HDL 74, ApoB/ApoA1 0.52). Zincul este cofactor în metabolismul sterolilor.</p>
+            <p class="text-slate-300 text-sm mt-1"><strong class="text-white">Zinc 70 µg/dL 🔴</strong> — la limita de jos; <strong style="color:#22c55e;">prioritatea #1 de corecție.</strong></p>
+            <p class="text-slate-400 text-sm mt-1">Trigliceride 79, HDL 74, LDL 117 — favorabil.</p>
+          </div>
+
+          <div class="border-t border-white/5 pt-4">
+            <h3 class="text-sm font-semibold mb-2" style="color:#22c55e;">Tiroidă &amp; Estrogeni (P7)</h3>
+            <p class="text-slate-300 text-sm">TSH 2.51 🟡 — ușor crescut, monitorizare. T3/T4 liber, T3 Reverse — în interval.</p>
+            <p class="text-slate-300 text-sm mt-1"><strong class="text-white">Estronă 12.4 pg/mL ↓</strong> — scăzută; aromatază zinc-dependentă subactivă + masă grasă redusă (mai puțin estrogen periferic din țesut adipos).</p>
+          </div>
+
+          <div class="border-t border-white/5 pt-4">
+            <h3 class="text-sm font-semibold mb-2" style="color:#22c55e;">Androgeni &amp; SHBG (P9, P10)</h3>
+            <p class="text-slate-300 text-sm"><strong class="text-white">SHBG 63.4 nmol/L ↑</strong> — ridicat, condus de inflamația hepatică; sechestrează androgenii liberi (FAI 0.99 jos).</p>
+            <p class="text-slate-300 text-sm mt-1">Prolactina 19.9 — la limită superioară, monitorizare.</p>
+            <p class="text-red-400 text-sm font-semibold mt-2">hs-CRP 4.16 mg/L 🔴 — inflamație cronică sistemică confirmată. Markerul-cheie care leagă întreaga cascadă.</p>
+            <p class="text-slate-400 text-sm mt-1">HOMA-IR 0.60 ✅, Cortizol, Homocisteină, Androstendionă — în interval.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CHARTS ── -->
+      <section id="charts" class="fade-in">
+        <h2 class="text-xl font-bold mb-4 section-heading">Vizualizări — Date Cheie</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <!-- Cu:Zn Ratio Bar -->
+          <div class="glass p-5 rounded-xl">
+            <h3 class="text-sm font-semibold mb-1 text-slate-300">Raport Cupru : Zinc</h3>
+            <p class="text-xs text-slate-500 mb-4">vs. referință optimă ~1.0</p>
+            <div class="relative" style="height:180px;">
+              <canvas id="chartCuZn"></canvas>
+            </div>
+          </div>
+
+          <!-- hs-CRP Bar -->
+          <div class="glass p-5 rounded-xl">
+            <h3 class="text-sm font-semibold mb-1 text-slate-300">hs-CRP — Inflamație</h3>
+            <p class="text-xs text-slate-500 mb-4">vs. prag risc ridicat 3.0 mg/L</p>
+            <div class="relative" style="height:180px;">
+              <canvas id="chartCRP"></canvas>
+            </div>
+          </div>
+
+          <!-- Hormonal Panel -->
+          <div class="glass p-5 rounded-xl md:col-span-2">
+            <h3 class="text-sm font-semibold mb-1 text-slate-300">Panel Hormonal — Markeri Semnalați</h3>
+            <p class="text-xs text-slate-500 mb-4">AMH (ng/mL ×10) · FSH (mIU/mL) · Estronă (pg/mL)</p>
+            <div class="relative" style="height:200px;">
+              <canvas id="chartHormones"></canvas>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── SECTION 4: Protocol Peptide ── -->
+      <section id="s4" class="glass p-6 fade-in">
+        <h2 class="text-xl font-bold mb-4 section-heading">4. Protocol Peptide (surse Bachmeyer)</h2>
+        <blockquote class="pull-quote text-sm mb-5">Toate dozele-țintă și raționamentele provin din materialul Dr. Trevor Bachmeyer ingerat în LLM-Wiki. <strong>Pacienta este naivă la peptide → fiecare peptidă pornește la o fracțiune din doza-țintă și urcă treptat (titrare).</strong></blockquote>
+
+        <!-- Note generale administrare -->
+        <div class="glass p-4 rounded-xl mb-5" style="border-left:3px solid #60a5fa;">
+          <p class="text-sm font-semibold mb-2" style="color:#60a5fa;">Note generale de administrare (toate injectabilele)</p>
+          <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4">
+            <li><strong class="text-slate-200">Reconstituire cu apă bacteriostatică</strong> (NU apă sterilă simplă) — 0.9% alcool benzilic, păstrare la frigider 28+ zile. Se adaugă apa lent pe peretele flaconului, fără agitare; se rotește ușor.</li>
+            <li><strong class="text-slate-200">Păstrare:</strong> frigider 2–8 °C după reconstituire; liofilizatul la congelator/frigider până la reconstituire.</li>
+            <li><strong class="text-slate-200">Injectare SC</strong> cu ac de insulină 29–31G; <strong class="text-slate-200">rotație loc de injectare</strong> (abdomen stânga/dreapta, coapse, deltoid) — fără același loc 2 zile la rând.</li>
+            <li><strong class="text-slate-200">Igienă:</strong> dezinfectare cu alcool a dopului și a locului de injectare.</li>
+          </ul>
+        </div>
+
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#22c55e;">Nivel 1 — Fundație (Săptămâna 1, continuu, NU se ciclează)</h3>
+
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(34,197,94,0.15);color:#22c55e;">BPC-157</span>
+            <span class="text-xs text-slate-500">Țintă: 500 mcg SC, o dată la 2 zile</span>
+          </div>
+          <p class="text-slate-300 text-sm"><em>Sursă: "BPC-157 As A Forever Peptide" + stack personal Bachmeyer (Unbreakable 232); Unbreakable 291 — NU se ciclează ("forever peptide").</em></p>
+          <p class="text-slate-400 text-sm mt-1">Reparare barieră intestinală + vindecare hepatică (cheie, dat fiind stresul hepatic din cupru); crește oxidul nitric endotelial (Sikiric 2019); rezoluție inflamație sistemică.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — pacient nou</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">250 mcg SC la 2 zile (jumătate doză — toleranță)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2+</span><span class="text-slate-300">500 mcg SC la 2 zile (țintă)</span></div>
+            <p class="text-xs text-slate-500 mt-1">Ciclare: NU — peptidă de vindecare continuă. Întreținere = doza-țintă continuă.</p>
+          </div>
+        </div>
+
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(34,197,94,0.15);color:#22c55e;">TB-500</span>
+            <span class="text-xs text-slate-500">Țintă: 1 mg SC, o dată la 5 zile</span>
+          </div>
+          <p class="text-slate-300 text-sm"><em>Sursă: stack personal Bachmeyer (Unbreakable 232) + "I Started Taking TB500 Every Week"; Unbreakable 291 — NU se ciclează.</em></p>
+          <p class="text-slate-400 text-sm mt-1">Semnal de vindecare sistemică, sinergic cu BPC-157, rezoluție inflamație.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — pacient nou</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1–2</span><span class="text-slate-300">0.5 mg SC la 5 zile (primele 2 doze)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 3+</span><span class="text-slate-300">1 mg SC la 5 zile (țintă)</span></div>
+            <p class="text-xs text-slate-500 mt-1">Ciclare: NU — sinergic cu BPC, vindecare continuă.</p>
+          </div>
+        </div>
+
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(34,197,94,0.15);color:#22c55e;">MOTS-c</span>
+            <span class="text-xs text-slate-500">Țintă: 5 mg SC, o dată la 2 zile</span>
+          </div>
+          <p class="text-slate-300 text-sm"><em>Sursă: "MOTS-C Masterclass (with SS-31)" + "Reverse Your Age (For Women)".</em></p>
+          <p class="text-slate-400 text-sm mt-1">Optimizare mitocondrială Complex I (+40% ATP, Cell Metabolism 2015); suprimă NF-κB (Nature Communications 2020); crește NRF2 → glutation, SOD, catalază (Exp Mol Med 2018). <strong class="text-white">Direct relevant pentru DOR:</strong> calitatea ovocitelor depinde de funcția mitocondrială.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — pacient nou</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">2–2.5 mg SC la 2 zile (start mic — răspuns energetic)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2</span><span class="text-slate-300">3.5 mg SC la 2 zile (intermediar)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 3+</span><span class="text-slate-300">5 mg SC la 2 zile (țintă)</span></div>
+            <p class="text-xs text-slate-500 mt-1">Întreținere: după 8–12 săpt. se poate scădea frecvența (ex. 5 mg 2×/săpt.) la reevaluare.</p>
+          </div>
+        </div>
+
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3 mt-6" style="color:#22c55e;">Nivel 2 — Axă Hormonală (Săptămâna 3+) — SE CICLEAZĂ</h3>
+
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(34,197,94,0.15);color:#22c55e;">Kisspeptin-10</span>
+            <span class="text-xs text-slate-500">Țintă: 100 mcg SC, 2×/săpt (zilele 1–12)</span>
+          </div>
+          <p class="text-slate-300 text-sm"><em>Sursă: "Kisspeptin and IVF Fertility and TRT".</em></p>
+          <p class="text-slate-400 text-sm mt-1">Reglator UPSTREAM al axei HPG: Kisspeptin → GnRH → LH → FSH → ovulație. Adresează direct DOR-ul prin îmbunătățirea eficienței FSH și a semnalizării aromatazei (estronă). J Clin Endocrinol 2014: maturare ovocite în FIV cu risc redus de OHSS.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — pacient nou</p>
+            <div class="ramp-step"><span class="ramp-week">Prima săpt.</span><span class="text-slate-300">50 mcg SC, 2×/săpt (jumătate doză — răspuns LH)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Cicluri urm.</span><span class="text-slate-300">100 mcg SC, 2×/săpt (țintă), zilele 1–12</span></div>
+            <p class="text-xs text-slate-500 mt-1"><strong style="color:#facc15;">Ciclare: 8 săptămâni on / 2 săptămâni off.</strong> Doar în faza foliculară (zilele 1–12).</p>
+          </div>
+        </div>
+
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(34,197,94,0.15);color:#22c55e;">Ipamorelin</span>
+            <span class="text-xs text-slate-500">Țintă: 200 mcg SC, seara (30 min înainte culcare)</span>
+          </div>
+          <p class="text-slate-300 text-sm"><em>Sursă: video Kisspeptin (Tesamorelin + Ipamorelin "O-line" GH) + "Reverse Your Age for Women".</em></p>
+          <p class="text-slate-400 text-sm mt-1">Stimulare puls GH → IGF-1 → calitate ovocite; restaurare somn cu unde lente; mediu folicular îmbunătățit; colagen/elastină. <strong class="text-white">Timing:</strong> seara, fără mâncare/carbohidrați ~2h înainte (insulina blunteaza pulsul GH).</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — pacient nou</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 3</span><span class="text-slate-300">100 mcg SC seara (jumătate doză — toleranță)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 4+</span><span class="text-slate-300">200 mcg SC seara (țintă)</span></div>
+            <p class="text-xs text-slate-500 mt-1">Ciclare: secretagog GH — se poate cu pauze periodice (ex. 5 nopți on / 2 off) la reevaluare.</p>
+          </div>
+        </div>
+
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3 mt-6" style="color:#22c55e;">Nivel 3 — Adjuvant (opțional, Săptămâna 6+)</h3>
+
+        <div class="protocol-card" style="border-left-color:#f97316;">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-xs font-mono px-2 py-0.5 rounded" style="background:rgba(249,115,22,0.15);color:#f97316;">GHK-Cu</span>
+            <span class="text-xs text-slate-500">DOAR TOPIC (NU injectabil)</span>
+          </div>
+          <p class="text-slate-300 text-sm"><em>Sursă: stack zilnic Bachmeyer (Unbreakable 232) + "GHK-Cu Copper Masterclass"; Unbreakable 291 — NU se ciclează.</em></p>
+          <div class="mt-2 p-2 rounded-lg text-xs" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#f87171;">
+            ⚠️ ATENȚIE: dat fiind Cuprul 146 ridicat, <strong>evităm forma injectabilă</strong> (ar adăuga încărcătură de cupru sistemic). Forma topică oferă reparare tisulară + colagen fără loading de cupru. Reevaluăm la Săptămâna 8.
+          </div>
+          <div class="ramp-box" style="background:rgba(249,115,22,0.08);border-color:rgba(249,115,22,0.25);">
+            <p class="ramp-title" style="color:#fb923c;">Rampă titrare — pacient nou (topic)</p>
+            <div class="ramp-step"><span class="ramp-week" style="color:#fdba74;">Săpt. 6</span><span class="text-slate-300">Serum 0.5–1%, 1×/zi seara, zonă mică (test cutanat 48h întâi)</span></div>
+            <div class="ramp-step"><span class="ramp-week" style="color:#fdba74;">Săpt. 8+</span><span class="text-slate-300">2%, 1×/zi pe față/zone țintă (dacă tolerat &amp; Cu:Zn scade)</span></div>
+            <p class="text-xs mt-1" style="color:#facc15;">⚑ Concentrația exactă serum = <strong>doză de confirmat</strong> (variază pe brand). Topic — uz continuu, fără ciclare.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 5: Protocol Suplimente ── -->
+      <section id="s5" class="glass p-6 fade-in">
+        <h2 class="text-xl font-bold mb-4 section-heading">5. Protocol Suplimente (doze validate Bachmeyer)</h2>
+        <blockquote class="pull-quote text-sm mb-5">Pacienta naivă → fiecare supliment cu rampă de titrare unde toleranța GI o cere (Vit C, creatină, omega-3) și step-down de întreținere unde e cazul (zinc).</blockquote>
+
+        <!-- ZINC -->
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold" style="color:#22c55e;">1. Zinc bisglicinat</span>
+            <span class="text-xs flag-red px-1.5 py-0.5 rounded-full">#1 PRIORITATE</span>
+            <span class="text-xs text-slate-500 font-mono">Țintă: 100 mg/zi</span>
+          </div>
+          <p class="text-slate-400 text-sm"><em>(doza personală Bachmeyer, Unbreakable 232)</em> Corectează Cu:Zn 2.09, restaurează aromataza, normalizează imunitatea. Cu mâncare, <strong class="text-slate-200">separat de fier cu 2+ ore</strong>; ideal seara (reduce greața).</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare + step-down</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">50 mg/zi (toleranță GI)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2+</span><span class="text-slate-300">100 mg/zi (țintă)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 8–12+</span><span class="text-slate-300">step-down la 30–50 mg/zi întreținere</span></div>
+          </div>
+        </div>
+
+        <!-- VIT C -->
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold text-slate-200">2. Vitamina C</span>
+            <span class="text-xs text-slate-500 font-mono">Țintă: 10.000 mg/zi (doze divizate)</span>
+          </div>
+          <p class="text-slate-400 text-sm"><em>(doza personală Bachmeyer, Unbreakable 232)</em> Anti-cupru + antioxidant; suport adrenal; sinteză colagen. Formă lipozomală sau ascorbat de sodiu pentru toleranță GI.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — doza mare dă diaree osmotică</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">2.000 mg/zi (1.000 AM + 1.000 PM)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2</span><span class="text-slate-300">5.000 mg/zi divizat (2–3 prize)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 3+</span><span class="text-slate-300">10.000 mg/zi în 3–4 prize cu mâncare ("bowel tolerance")</span></div>
+          </div>
+        </div>
+
+        <!-- OMEGA-3 -->
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold text-slate-200">3. Omega-3 (EPA+DHA)</span>
+            <span class="text-xs text-slate-500 font-mono">Țintă: 3.000 mg/zi</span>
+          </div>
+          <p class="text-slate-400 text-sm"><em>(doza personală Bachmeyer, Unbreakable 232)</em> Reduce hs-CRP 4.16; DHA critic pentru membrana ovocitelor; protecție hepatică. Cu mâncare grasă.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — evită eructații/reflux</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">1.000 mg/zi cu mâncare</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2</span><span class="text-slate-300">2.000 mg/zi</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 3+</span><span class="text-slate-300">3.000 mg/zi divizat la 2 mese</span></div>
+          </div>
+        </div>
+
+        <!-- VIT D3 -->
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold text-slate-200">4. Vitamina D3</span>
+            <span class="text-xs text-slate-500 font-mono">Țintă: 5.000 IU/zi</span>
+          </div>
+          <p class="text-slate-400 text-sm"><em>(doza personală Bachmeyer, Unbreakable 232)</em> Funcție ovariană, reglare imună, prezervare AMH. Cu mâncare grasă + vitamina K2. <span style="color:#facc15;">Nivelul seric 25-OH-D = de confirmat din panel (P2).</span></p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">2.000 IU/zi</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2+</span><span class="text-slate-300">5.000 IU/zi</span></div>
+            <p class="text-xs text-slate-500 mt-1">Recontrol 25-OH-D la 8–12 săpt., apoi întreținere ghidată de nivel (tipic 2.000–5.000 IU).</p>
+          </div>
+        </div>
+
+        <!-- B-COMPLEX -->
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold text-slate-200">5. B-Complex (metilat)</span>
+            <span class="text-xs text-slate-500 font-mono">1 capsulă/zi</span>
+          </div>
+          <p class="text-slate-400 text-sm"><em>(stack personal Bachmeyer)</em> Metilare → clearance estrogen (calea COMT); B12/folat pentru funcție ovariană. <strong class="text-slate-200">Dimineața cu mâncare</strong> (energizant → evitați seara). Doza standard — fără rampă necesară.</p>
+        </div>
+
+        <!-- CoQ10 -->
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold text-slate-200">6. CoQ10 (ubiquinol)</span>
+            <span class="text-xs text-slate-500 font-mono">Țintă: 400 mg/zi</span>
+          </div>
+          <p class="text-slate-400 text-sm">Energie mitocondrială ovocite (intervenție directă DOR); se cuplează cu MOTS-c. Cu mâncare grasă, dimineața.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">200 mg/zi</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2+</span><span class="text-slate-300">400 mg/zi</span></div>
+          </div>
+        </div>
+
+        <!-- NMN -->
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold text-slate-200">7. NMN</span>
+            <span class="text-xs text-slate-500 font-mono">Țintă: 500 mg/zi</span>
+          </div>
+          <p class="text-slate-400 text-sm"><em>(doza personală Bachmeyer, Unbreakable 232 + "Reverse Your Age for Women")</em> Precursor NAD+; reparare energie celulară; biogeneză mitocondrială; calitate ovocite în DOR. Dimineața.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">250 mg/zi</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2+</span><span class="text-slate-300">500 mg/zi</span></div>
+          </div>
+        </div>
+
+        <!-- MAGNEZIU -->
+        <div class="protocol-card">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold text-slate-200">8. Magneziu glicinat</span>
+            <span class="text-xs text-slate-500 font-mono">Țintă: 400 mg seara</span>
+          </div>
+          <p class="text-slate-400 text-sm">Arhitectură somn; reglare cortizol; echilibru hormonal; suport axă HPA. Seara, ~1h înainte de culcare.</p>
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — evită scaun moale</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">200 mg seara</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2+</span><span class="text-slate-300">400 mg seara (reduce o treaptă dacă scaun moale)</span></div>
+          </div>
+        </div>
+
+        <!-- CREATINA — CORECTAT -->
+        <div class="protocol-card" style="border-left-color:#60a5fa;background:rgba(59,130,246,0.05);">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="text-sm font-semibold" style="color:#60a5fa;">9. Creatină monohidrat</span>
+            <span class="text-xs px-1.5 py-0.5 rounded-full" style="background:rgba(59,130,246,0.18);color:#60a5fa;border:1px solid rgba(59,130,246,0.35);">CORECTAT v2 — 2 track-uri</span>
+          </div>
+          <p class="text-slate-400 text-sm"><em>(doza musculară: Bachmeyer Unbreakable 232; doza cognitivă: wiki creatine / Candow / directivă Pafi)</em> Regenerare ATP; funcție cognitivă/creier; forță musculară.</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+            <div class="glass p-3 rounded-lg">
+              <p class="text-xs font-semibold text-slate-300 mb-1">Track A — Bază musculară/metabolică</p>
+              <p class="text-lg font-bold text-slate-200 font-mono">5 g/zi</p>
+              <p class="text-xs text-slate-500 mt-1">Doză saturație musculară clasică (păstrată din v1). Sursă: Bachmeyer U-232.</p>
+            </div>
+            <div class="glass p-3 rounded-lg" style="border:1px solid rgba(59,130,246,0.3);">
+              <p class="text-xs font-semibold mb-1" style="color:#60a5fa;">Track B — Funcție cognitivă/creier</p>
+              <p class="text-lg font-bold font-mono" style="color:#93c5fd;">15–20 g/zi</p>
+              <p class="text-xs text-slate-500 mt-1">Floor țintă cognitivă (directivă Pafi). Bază sursată Candow: ~0.1 g/kg/zi (≈7–9 g). Transportorul cerebral se saturează lent → dozele mici nu mișcă rezerva creierului.</p>
+            </div>
+          </div>
+
+          <div class="ramp-box">
+            <p class="ramp-title">Rampă titrare — OBLIGATORIU (doza mare singulară dă balonare/GI)</p>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 1</span><span class="text-slate-300">5 g/zi (toleranță GI; și doza musculară de bază)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 2</span><span class="text-slate-300">10 g/zi divizat (5 g AM / 5 g PM)</span></div>
+            <div class="ramp-step"><span class="ramp-week">Săpt. 3+</span><span class="text-slate-300">15–20 g/zi în 2–3 prize cu mâncare + hidratare</span></div>
+            <p class="text-xs text-slate-500 mt-1">Nuanță: 5 g = bază musculară; 0.1 g/kg = bază sursată Candow os/creier; 15–20 g = floor țintă cognitivă (Pafi). Loading-ul de 20 g × 7 zile e DOAR muscular (Candow: "nimic de-a face cu osul/creierul").</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 6: Faze de Implementare ── -->
+      <section id="s6" class="glass p-6 fade-in">
+        <h2 class="text-xl font-bold mb-4 section-heading">6. Faze de Implementare</h2>
+
+        <div class="space-y-3">
+          <div class="flex gap-4 items-start p-4 rounded-xl" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.2);">
+            <div class="shrink-0 text-center">
+              <div class="text-xs font-mono text-slate-500">SĂPt</div>
+              <div class="text-lg font-bold" style="color:#22c55e;">1–2</div>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white mb-1">Fundație — Corectăm Cu:Zn și inflamația</p>
+              <p class="text-sm text-slate-400">Toate suplimentele (de la treapta de start a titrării) + BPC-157 (250→500 mcg) + TB-500 (0.5→1 mg) + MOTS-c (2–2.5→5 mg)</p>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start p-4 rounded-xl" style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.12);">
+            <div class="shrink-0 text-center">
+              <div class="text-xs font-mono text-slate-500">SĂPt</div>
+              <div class="text-lg font-bold text-slate-300">3</div>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white mb-1">Axă Hormonală — după ce fundația e instalată</p>
+              <p class="text-sm text-slate-400">Adăugăm Kisspeptin-10 (50→100 mcg) + Ipamorelin (100→200 mcg)</p>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start p-4 rounded-xl" style="background:rgba(249,115,22,0.04);border:1px solid rgba(249,115,22,0.12);">
+            <div class="shrink-0 text-center">
+              <div class="text-xs font-mono text-slate-500">SĂPt</div>
+              <div class="text-lg font-bold text-orange-400">6+</div>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white mb-1">Adjuvant — opțional</p>
+              <p class="text-sm text-slate-400">GHK-Cu topic (test cutanat → 0.5–1% → 2%), dacă raportul Cu:Zn a început să scadă</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 7: Monitorizare ── -->
+      <section id="s7" class="glass p-6 fade-in">
+        <h2 class="text-xl font-bold mb-4 section-heading">7. Monitorizare &amp; Follow-up</h2>
+
+        <div class="space-y-3 mb-5">
+          <div class="flex items-center gap-4 p-3 rounded-lg border border-white/5">
+            <div class="text-sm font-mono font-bold" style="color:#22c55e;">Săpt 4</div>
+            <div class="text-sm text-slate-300">Recontrol Zinc + Cupru + hs-CRP</div>
+          </div>
+          <div class="flex items-center gap-4 p-3 rounded-lg border border-white/5">
+            <div class="text-sm font-mono font-bold" style="color:#22c55e;">Săpt 8</div>
+            <div class="text-sm text-slate-300">Panel complet (AMH, FSH, Estronă, Cu:Zn, hs-CRP, AST/ALT, Colesterol). Reevaluare doze (step-down zinc 100→30–50 mg; reevaluare GHK-Cu).</div>
+          </div>
+          <div class="flex items-center gap-4 p-3 rounded-lg border border-white/5">
+            <div class="text-sm font-mono font-bold" style="color:#22c55e;">Săpt 12</div>
+            <div class="text-sm text-slate-300">Evaluare completă axă hormonală + recontrol HOMA-IR</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl" style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.2);">
+          <p class="text-sm font-semibold mb-2" style="color:#22c55e;">Țintele de succes</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+            <div class="glass p-2 rounded-lg">
+              <div class="text-xs text-slate-500">Cu:Zn</div>
+              <div class="text-sm font-bold text-white">→ sub 1.5</div>
+            </div>
+            <div class="glass p-2 rounded-lg">
+              <div class="text-xs text-slate-500">hs-CRP</div>
+              <div class="text-sm font-bold text-white">→ sub 1.0</div>
+            </div>
+            <div class="glass p-2 rounded-lg">
+              <div class="text-xs text-slate-500">Estronă</div>
+              <div class="text-sm font-bold text-white">→ în interval</div>
+            </div>
+            <div class="glass p-2 rounded-lg">
+              <div class="text-xs text-slate-500">SHBG</div>
+              <div class="text-sm font-bold text-white">→ în scădere</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anexa doze de confirmat -->
+        <div class="caveat-box mt-5">
+          <p class="text-sm font-semibold mb-2" style="color:#facc15;">Anexă — itemi marcați "doză de confirmat"</p>
+          <ul class="text-xs text-slate-400 space-y-1 list-disc pl-4">
+            <li><strong class="text-slate-200">GHK-Cu topic:</strong> concentrația exactă a serumului (0.5–1% → 2%) depinde de produsul comercial → de confirmat la achiziție.</li>
+            <li><strong class="text-slate-200">Vitamina D3:</strong> doza de întreținere depinde de nivelul seric 25-OH-D, de confirmat din panel (P2). Țintă inițială 5.000 IU validată Bachmeyer.</li>
+            <li><strong class="text-slate-200">Data recoltării panelului:</strong> DE CONFIRMAT (coperta lipsește). Toate dozele provin din sursa validată (Bachmeyer / Candow / report v1), NU inventate.</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── RIGHT: Metadata sidebar ── -->
+    <aside class="hidden xl:block w-56 shrink-0">
+      <div id="sidebar-meta" class="glass p-4 rounded-xl sticky top-20">
+        <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Metadata</p>
+
+        <div class="meta-item">
+          <span class="meta-label">Agent</span>
+          <span class="meta-value" style="color:#22c55e;">HEALTH</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Versiune</span>
+          <span class="meta-value">v2 (titrare pacient nou)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Dată recoltare</span>
+          <span class="meta-value text-xs" style="color:#facc15;">DE CONFIRMAT</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Panel Ref</span>
+          <span class="meta-value font-mono text-xs">X61630691</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Laborator</span>
+          <span class="meta-value text-xs">ENAC-acreditat (Spania)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Markeri evaluați</span>
+          <span class="meta-value">47</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Markeri semnalați</span>
+          <span class="meta-value text-red-400 font-bold">11</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status fiziologic</span>
+          <span class="meta-value text-xs text-slate-300">Ciclu activ · DOR · Inflamație cronică</span>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-white/5">
+          <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2">Markeri critici</p>
+          <div class="space-y-1.5">
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Cu:Zn</span>
+              <span class="flag-red px-1.5 py-0.5 rounded-full">2.09 🔴</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">hs-CRP</span>
+              <span class="flag-red px-1.5 py-0.5 rounded-full">4.16 🔴</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">AMH</span>
+              <span class="flag-red px-1.5 py-0.5 rounded-full">0.793 ↓</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Zinc</span>
+              <span class="flag-yellow px-1.5 py-0.5 rounded-full">70 🟡</span>
+            </div>
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">SHBG</span>
+              <span class="flag-yellow px-1.5 py-0.5 rounded-full">63.4 ↑</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-white/5">
+          <p class="text-xs text-slate-600 font-mono">NexusOS v2 · Tier 2</p>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="border-t border-white/5 py-6 px-4 text-center">
+    <p class="text-xs text-slate-600 font-mono">NexusOS · HEALTH agent · Report v2 · Panel X61630691 · Dată recoltare: DE CONFIRMAT</p>
+    <p class="text-xs text-slate-700 mt-1">Nu este sfat medical. Validați cu un medic specialist.</p>
+  </footer>
+
+  <!-- ── SCRIPTS ── -->
+  <script>
+    // ── Theme toggle ──
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      if (isDark) {
+        html.classList.remove('dark');
+        document.getElementById('theme-toggle').textContent = '☽ Dark';
+      } else {
+        html.classList.add('dark');
+        document.getElementById('theme-toggle').textContent = '☀ Light';
+      }
+      localStorage.setItem('nexus-theme', isDark ? 'light' : 'dark');
+    }
+
+    // Restore saved theme
+    const saved = localStorage.getItem('nexus-theme');
+    if (saved === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.classList.remove('dark');
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('theme-toggle').textContent = '☽ Dark';
+      });
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+
+    // ── Share ──
+    function shareReport() {
+      const url = window.location.href;
+      if (navigator.share) {
+        navigator.share({ title: 'Analiză Sânge & Protocol Bachmeyer — Dadi Ibiza (v2)', url });
+      } else {
+        navigator.clipboard.writeText(url).then(() => {
+          const btn = document.getElementById('share-btn');
+          btn.textContent = '✓ Copiat!';
+          setTimeout(() => btn.innerHTML = '&#x1f517; Share', 2000);
+        });
+      }
+    }
+
+    // ── Scroll animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── Active TOC ──
+    const sections = document.querySelectorAll('section[id], section#charts');
+    const tocLinks = document.querySelectorAll('#toc-sidebar a');
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`#toc-sidebar a[href="#${e.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(s => tocObserver.observe(s));
+
+    // ── Chart.js ──
+    document.addEventListener('DOMContentLoaded', () => {
+      const accent = '#22c55e';
+      const isDarkTheme = () => document.documentElement.getAttribute('data-theme') === 'dark';
+      const gridColor = () => isDarkTheme() ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
+      const labelColor = () => isDarkTheme() ? '#94a3b8' : '#64748b';
+
+      Chart.defaults.font.family = 'Inter, sans-serif';
+
+      // Cu:Zn Bar
+      const ctxCuZn = document.getElementById('chartCuZn');
+      new Chart(ctxCuZn, {
+        type: 'bar',
+        data: {
+          labels: ['Cupru (µg/dL)', 'Zinc (µg/dL)', 'Raport Cu:Zn (×100)', 'Referință Raport (×100)'],
+          datasets: [{
+            label: 'Valoare',
+            data: [146, 70, 209, 100],
+            backgroundColor: ['rgba(239,68,68,0.7)', 'rgba(234,179,8,0.7)', 'rgba(239,68,68,0.8)', 'rgba(34,197,94,0.5)'],
+            borderColor: ['#ef4444', '#eab308', '#ef4444', '#22c55e'],
+            borderWidth: 1.5,
+            borderRadius: 5,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: gridColor() }, ticks: { color: labelColor() } },
+            x: { grid: { display: false }, ticks: { color: labelColor(), font: { size: 10 } } }
+          }
+        }
+      });
+
+      // hs-CRP Bar
+      const ctxCRP = document.getElementById('chartCRP');
+      new Chart(ctxCRP, {
+        type: 'bar',
+        data: {
+          labels: ['hs-CRP actual', 'Prag risc ridicat', 'Optim'],
+          datasets: [{
+            label: 'mg/L',
+            data: [4.16, 3.0, 1.0],
+            backgroundColor: ['rgba(239,68,68,0.75)', 'rgba(234,179,8,0.5)', 'rgba(34,197,94,0.5)'],
+            borderColor: ['#ef4444', '#eab308', '#22c55e'],
+            borderWidth: 1.5,
+            borderRadius: 5,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: gridColor() }, ticks: { color: labelColor() }, max: 6 },
+            x: { grid: { display: false }, ticks: { color: labelColor(), font: { size: 10 } } }
+          }
+        }
+      });
+
+      // Hormonal Panel Bar
+      const ctxH = document.getElementById('chartHormones');
+      new Chart(ctxH, {
+        type: 'bar',
+        data: {
+          labels: ['AMH (×10 ng/mL)', 'FSH (mIU/mL)', 'Estronă (pg/mL)'],
+          datasets: [
+            {
+              label: 'Valoare pacientă',
+              data: [7.93, 9.13, 12.4],
+              backgroundColor: ['rgba(239,68,68,0.7)', 'rgba(234,179,8,0.7)', 'rgba(234,179,8,0.7)'],
+              borderColor: ['#ef4444', '#eab308', '#eab308'],
+              borderWidth: 1.5,
+              borderRadius: 5,
+            },
+            {
+              label: 'Limita de jos referință',
+              data: [10, 3.5, 17],
+              backgroundColor: 'rgba(34,197,94,0.2)',
+              borderColor: '#22c55e',
+              borderWidth: 1.5,
+              borderRadius: 5,
+            }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: labelColor(), font: { size: 11 } } },
+          },
+          scales: {
+            y: { grid: { color: gridColor() }, ticks: { color: labelColor() } },
+            x: { grid: { display: false }, ticks: { color: labelColor(), font: { size: 10 } } }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
