@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-24T11:40:00Z",
+  "generatedAt": "2026-06-29T16:40:31Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -542,6 +542,23 @@
       "source": "Owner screenshot 2026-06-22 19:40",
       "description": "Dan previously handled deliveries and can cover selected deliveries until the Bulgaria stock/logistics setup is ready.",
       "acceptance": "Any Dan delivery is assigned through the dashboard, tied to a website/order ID, has stock movement and proof recorded, excludes direct/off-ledger cash by default, and includes no product advice or claim-making."
+    },
+    {
+      "id": "P1-014",
+      "title": "Activate SKU QR codes to direct Janoshik report pages",
+      "category": "Website / COA",
+      "priority": "P1",
+      "urgencyScore": 79,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis",
+        "Pafi"
+      ],
+      "dueDate": "2026-07-01",
+      "source": "Pafi request 2026-06-29",
+      "description": "Activate or generate QR codes for each SKU so scanning the SKU/label QR opens the matching Janoshik report page directly where a Janoshik report exists. Do not point QR codes to a generic homepage, generic lab archive, or wrong SKU/batch. For SKUs without a Janoshik report, use the approved COA absence state instead of creating a misleading QR.",
+      "acceptance": "Every active SKU has a QR status: direct Janoshik report URL verified, approved COA absence state, or blocked pending report. Narcis provides the SKU -> QR target map, changed label/site files if relevant, and scan-test proof for representative QR codes. Public wording uses Janoshik consistently and does not imply human-use safety."
     },
     {
       "id": "P2-001",
