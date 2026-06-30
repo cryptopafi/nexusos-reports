@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RUO Team Task Dashboard - Current</title>
+  <style>
+    :root {
+      --bg: #07110f;
+      --panel: rgba(16, 29, 26, 0.86);
+      --panel-strong: rgba(22, 39, 35, 0.96);
+      --text: #eef8f5;
+      --muted: #9fb2ac;
+      --faint: #6f817b;
+      --line: rgba(178, 206, 197, 0.18);
+      --green: #42d391;
+      --yellow: #f3c85b;
+      --red: #ff6b6b;
+      --blue: #78a7ff;
+      --cyan: #6bd8ff;
+      --ink: #08100e;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      color-scheme: dark;
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f7f6;
+      --panel: rgba(255, 255, 255, 0.9);
+      --panel-strong: rgba(255, 255, 255, 0.98);
+      --text: #14221f;
+      --muted: #52635e;
+      --faint: #788983;
+      --line: rgba(25, 55, 48, 0.15);
+      --ink: #ffffff;
+      --shadow: 0 18px 50px rgba(20, 34, 31, 0.13);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(66, 211, 145, 0.16), transparent 36rem),
+        linear-gradient(135deg, var(--bg), #0d1714 58%, #14211e);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    [data-theme="light"] body,
+    [data-theme="light"] {
+      background:
+        radial-gradient(circle at 8% 0%, rgba(66, 211, 145, 0.18), transparent 34rem),
+        linear-gradient(135deg, #f7faf8, #eef4f1 58%, #e9f0ed);
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    .shell {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(30px, 5vw, 58px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      min-width: 260px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      height: 40px;
+      padding: 0 13px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      border-color: rgba(66, 211, 145, 0.55);
+    }
+
+    .status-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0 18px;
+    }
+
+    .metric, .panel, .gate, .task-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      border-radius: 8px;
+    }
+
+    .metric {
+      padding: 16px;
+      min-height: 105px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .metric .value {
+      font-size: 34px;
+      font-weight: 760;
+      margin-top: 8px;
+    }
+
+    .metric .hint {
+      color: var(--faint);
+      font-size: 12px;
+      margin-top: 7px;
+    }
+
+    .panel {
+      padding: 18px;
+      margin: 14px 0;
+    }
+
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .panel-title h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: minmax(260px, 2fr) repeat(5, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .filters input, .filters select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      color: var(--text);
+      height: 42px;
+      border-radius: 8px;
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .filters input:focus, .filters select:focus {
+      border-color: var(--green);
+    }
+
+    .quick-filter-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr) minmax(0, 0.9fr);
+      gap: 14px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .quick-filter-group {
+      min-width: 0;
+    }
+
+    .quick-filter-title {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 720;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .quick-filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: rgba(180, 205, 197, 0.08);
+      color: var(--text);
+      min-height: 32px;
+      max-width: 100%;
+      padding: 5px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      line-height: 1.15;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(66, 211, 145, 0.58);
+    }
+
+    .filter-btn.active {
+      color: #c8ffe5;
+      border-color: rgba(66, 211, 145, 0.62);
+      background: rgba(66, 211, 145, 0.18);
+    }
+
+    [data-theme="light"] .filter-btn.active {
+      color: #137749;
+    }
+
+    .filter-count {
+      color: var(--faint);
+      font-size: 11px;
+    }
+
+    .active-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      min-height: 28px;
+    }
+
+    .gate-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(145px, 1fr));
+      gap: 10px;
+    }
+
+    .gate {
+      padding: 13px;
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gate::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gate-color);
+    }
+
+    .gate-name {
+      font-weight: 760;
+      line-height: 1.15;
+      margin-top: 4px;
+    }
+
+    .gate-owner {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .gate-summary {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .pill, .chip, .late-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      min-height: 24px;
+      padding: 3px 9px;
+      font-size: 12px;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .pill-red { color: #ffd9d9; border-color: rgba(255, 107, 107, 0.48); background: rgba(255, 107, 107, 0.14); }
+    .pill-yellow { color: #ffe9aa; border-color: rgba(243, 200, 91, 0.48); background: rgba(243, 200, 91, 0.14); }
+    .pill-green { color: #c8ffe5; border-color: rgba(66, 211, 145, 0.48); background: rgba(66, 211, 145, 0.14); }
+    .pill-blue { color: #d5e3ff; border-color: rgba(120, 167, 255, 0.46); background: rgba(120, 167, 255, 0.13); }
+    .pill-neutral { color: var(--muted); background: rgba(180, 205, 197, 0.08); }
+
+    [data-theme="light"] .pill-red { color: #8d2525; }
+    [data-theme="light"] .pill-yellow { color: #765300; }
+    [data-theme="light"] .pill-green { color: #137749; }
+    [data-theme="light"] .pill-blue { color: #254e9c; }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 170px 1fr 42px;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .bar-label {
+      color: var(--muted);
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .bar-track {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(180, 205, 197, 0.1);
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .bar-fill {
+      height: 100%;
+      min-width: 2px;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+    }
+
+    .tasks-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0 10px;
+    }
+
+    .task-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .task-card {
+      display: grid;
+      grid-template-columns: 92px minmax(280px, 1fr) 170px 160px 170px;
+      gap: 14px;
+      padding: 14px;
+      align-items: start;
+    }
+
+    .task-card.is-late {
+      border-color: rgba(255, 107, 107, 0.52);
+      background: linear-gradient(90deg, rgba(255, 107, 107, 0.1), transparent 42%), var(--panel);
+    }
+
+    .task-id {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .task-title {
+      font-weight: 760;
+      margin-bottom: 7px;
+      line-height: 1.25;
+    }
+
+    .task-desc {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .colour-dot {
+      display: inline-flex;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      margin-right: 6px;
+      vertical-align: -1px;
+    }
+
+    .colour-red { background: var(--red); }
+    .colour-yellow { background: var(--yellow); }
+    .colour-green { background: var(--green); }
+    .colour-grey { background: var(--faint); }
+
+    .plain-explanation {
+      margin-top: 8px;
+      padding: 9px 10px;
+      border: 1px solid rgba(107, 216, 255, 0.24);
+      background: rgba(107, 216, 255, 0.07);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .support-link {
+      display: block;
+      margin-top: 7px;
+      color: var(--cyan);
+      overflow-wrap: anywhere;
+    }
+
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .field-label {
+      color: var(--faint);
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .field-main {
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .late-badge.late {
+      color: #ffd9d9;
+      border-color: rgba(255, 107, 107, 0.58);
+      background: rgba(255, 107, 107, 0.16);
+    }
+
+    .late-badge.today {
+      color: #ffe9aa;
+      border-color: rgba(243, 200, 91, 0.55);
+      background: rgba(243, 200, 91, 0.15);
+    }
+
+    .late-badge.ok {
+      color: #c8ffe5;
+      border-color: rgba(66, 211, 145, 0.48);
+      background: rgba(66, 211, 145, 0.12);
+    }
+
+    [data-theme="light"] .late-badge.late { color: #8d2525; }
+    [data-theme="light"] .late-badge.today { color: #765300; }
+    [data-theme="light"] .late-badge.ok { color: #137749; }
+
+    .empty {
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+    }
+
+    .footer {
+      color: var(--faint);
+      font-size: 12px;
+      margin: 22px 0 4px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1150px) {
+      .status-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .quick-filter-panel { grid-template-columns: 1fr; }
+      .task-card { grid-template-columns: 80px minmax(0, 1fr); }
+      .chart-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .shell { padding: 18px; }
+      .topbar { flex-direction: column; }
+      .actions { justify-content: flex-start; min-width: 0; }
+      .status-strip, .gate-grid, .filters { grid-template-columns: 1fr; }
+      .task-card { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 110px 1fr 34px; }
+    }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      .actions, .filters, .quick-filter-panel, .active-filters, .chart-grid { display: none; }
+      .shell { max-width: none; padding: 0; }
+      .panel, .metric, .gate, .task-card { box-shadow: none; break-inside: avoid; }
+      .task-card { grid-template-columns: 70px 1fr 130px 120px 120px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div>
+        <h1>PetraLab RUO Task Dashboard</h1>
+        <div class="subtitle">
+          Team execution view for the owner-corrected RUO plan. The page polls the canonical GitHub task JSON every 15 seconds, so updating the data file updates the shared dashboard without editing this HTML.
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="refreshBtn" type="button">Refresh</button>
+        <button class="btn" id="pauseBtn" type="button">Pause live</button>
+        <button class="btn" id="themeBtn" type="button">Light mode</button>
+        <button class="btn" id="csvBtn" type="button">Export CSV</button>
+        <button class="btn" id="printBtn" type="button">Print</button>
+      </div>
+    </section>
+
+    <section class="status-strip" id="metrics"></section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>Filters</h2>
+        <div class="small" id="syncStatus">Loading dashboard data...</div>
+      </div>
+      <div class="filters">
+        <input id="searchFilter" type="search" placeholder="Search task, acceptance, assignee, source">
+        <select id="priorityFilter"><option value="">All priorities</option></select>
+        <select id="categoryFilter"><option value="">All categories</option></select>
+        <select id="assigneeFilter"><option value="">All assignees</option></select>
+        <select id="statusFilter"><option value="">All statuses</option></select>
+        <select id="lateFilter">
+          <option value="">All due states</option>
+          <option value="late">Late only</option>
+          <option value="today">Due today</option>
+          <option value="soon">Due in 48h</option>
+          <option value="none">No due date</option>
+        </select>
+      </div>
+      <div class="quick-filter-panel" aria-label="Quick task filters">
+        <div class="quick-filter-group">
+          <div class="quick-filter-title">By Assignee</div>
+          <div class="quick-filter-buttons" id="assigneeQuickFilters"></div>
+        </div>
+        <div class="quick-filter-group">
+          <div class="quick-filter-title">By Priority</div>
+          <div class="quick-filter-buttons" id="priorityQuickFilters"></div>
+        </div>
+        <div class="quick-filter-group">
+          <div class="quick-filter-title">By Due State</div>
+          <div class="quick-filter-buttons" id="dueQuickFilters"></div>
+        </div>
+      </div>
+      <div class="active-filters" id="activeFilters"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>Gate Scoreboard</h2>
+        <div class="small">Red = blocked or exposed. Yellow = active cleanup. Green = ready/controlled.</div>
+      </div>
+      <div class="gate-grid" id="gates"></div>
+    </section>
+
+    <section class="chart-grid">
+      <div class="panel">
+        <div class="panel-title">
+          <h2>Open Work By Category</h2>
+          <div class="small">Excludes completed/cancelled tasks.</div>
+        </div>
+        <div id="categoryBars"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">
+          <h2>Assignee Load</h2>
+          <div class="small">Open, waiting, planned, and in-progress tasks.</div>
+        </div>
+        <div id="assigneeBars"></div>
+      </div>
+    </section>
+
+    <section class="tasks-header">
+      <div>
+        <h2 style="margin:0;font-size:20px;">Task List</h2>
+        <div class="small" id="resultCount"></div>
+      </div>
+      <div class="small">Sorted by urgency, P0/P1/P2, then due date.</div>
+    </section>
+    <section class="task-list" id="taskList"></section>
+
+    <section class="footer" id="footer"></section>
+  </main>
+
+  <script type="application/json" id="dashboard-data">{"schemaVersion": "1.0", "project": "PetraLab RUO Peptides", "generatedAt": "2026-06-30T11:12:35Z", "timezone": "Europe/Madrid", "refreshSeconds": 15, "sourceFiles": ["/Users/pafi/.nexus/projects/petralab-ruo/implementation-todo-2026-06-22.md", "/Users/pafi/.nexus/projects/petralab-ruo/PROJECT-CARD.md", "/Users/pafi/Documents/RUO Peptides/output/live-site-audit-2026-06-22/peptralabs-live-audit-refined-modification-proposals-2026-06-22.md", "https://cryptopafi.github.io/nexusos-reports/petralab-ruo-legit-ai-business-plan-v4-20260622T1406Z.html"], "ownerOverrides": ["D2C is live.", "Ads are not running.", "High-revenue SKUs continue selling while public copy and buyer flow are cleaned.", "B2B is inbound/supporting only unless later chosen.", "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work.", "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized.", "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries.", "Urgent AOD9604 correction: website and labels must show 5 mg, not 10 mg.", "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow.", "Chapter model 2026-06-30: Compliance & Online Presence (Vic); Tech/Admin & AI Agents (Narcis); Products, SKUs & Budgeting (Pafi); Purchasing & Logistics (Pafi lead, Vic compliance, Narcis admin); Sales & Marketing (Pafi sales workflow, Vic rules/online presence, Narcis/Dan execution)."], "gates": [{"id": "gate-compliance-online-presence", "name": "Compliance & Online Presence", "state": "red", "owner": "Vic", "assignees": ["Vic", "Narcis", "Pafi"], "dueDate": "", "summary": "Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules. Website compliance waits for lawyer boundaries; Narcis implements approved changes; Pafi owns product/sales implications."}, {"id": "gate-tech-admin-ai", "name": "Tech/Admin & AI Agents", "state": "yellow", "owner": "Narcis", "assignees": ["Narcis", "Codex/Tech", "Pafi", "Vic"], "dueDate": "2026-07-03", "summary": "Narcis owns tech creation/admin, Supabase/dashboard operations, approval register, backups, Hermes Telegram stock-management agent, and peptide/supplement protocol agent."}, {"id": "gate-products-skus-budgeting", "name": "Products, SKUs & Budgeting", "state": "yellow", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis"], "dueDate": "2026-07-03", "summary": "Pafi owns product/SKU disposition, pricing/margin, budget, protocol economics, and sales-workflow economics. Vic signs off compliance and Narcis implements admin/site fields."}, {"id": "gate-purchasing-logistics", "name": "Purchasing & Logistics", "state": "red", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis", "Dragos"], "dueDate": "2026-07-02", "summary": "Purchasing/logistics remains blocked by SO-04 structured line proof, Ibiza 69-vial in-transit stock, accessory proof/QC, AOD label correction, and Retatrutide premium restock/COA planning."}, {"id": "gate-sales-marketing", "name": "Sales & Marketing", "state": "yellow", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis", "Dan", "Dragos"], "dueDate": "2026-07-04", "summary": "Pafi owns sales workflow; Vic owns marketing/affiliate/online-presence rules; Narcis and Dan execute only inside approved rule sets. Affiliate/referral engine is planned, not active."}, {"id": "gate-cash", "name": "Cash / Dragos Proof", "state": "red", "owner": "Dragos", "assignees": ["Dragos", "Narcis"], "dueDate": "2026-06-22", "summary": "Dragos provides real balances/proofs; Narcis packages the cash packet into dashboard/evidence format. This remains the single non-Pafi/Vic/Narcis blocker."}], "tasks": [{"id": "P0-001", "title": "Website Compliance", "category": "Compliance & Online Presence", "priority": "P0", "urgencyScore": 98, "status": "waiting", "owner": "Vic", "assignees": ["Vic", "Narcis", "Pafi"], "dueDate": "", "source": "Pafi ownership update 2026-06-30", "description": "Single consolidated website compliance task for PeptraLabs .com/.ro. No new website modifications should be executed until the lawyer opinion arrives and gives the allowed copy/flow boundaries. Prepare only the correction map and evidence while waiting. Corrections to prepare: affiliate/program pages must remove or pause public commission, override, sub-affiliate, influencer recruitment, passive-income, weekly crypto payout, and earnings-calculator claims unless counsel approves a compliant private policy; peptide calculator and reconstitution/dosing flows must stay gated or removed from public access; high-revenue/high-risk SKU pages continue selling only under the lawyer-approved RUO copy model and must remove treatment, healing, repair, fat-loss, human-use, injection, protocol, dosing, medical-benefit, and before/after style claims; checkout must keep intended-use acknowledgement and rejection/manual-review logic aligned with counsel; CTAs, promo strips, discount language, and support copy must avoid medical-use or aggressive commerce framing; visible page copy, meta titles/descriptions, FAQ schema, JSON-LD, llms.txt, llms-full.txt, AI snippets, and Romanian pages must all match the same approved RUO model; COA/report states must be consistent across product pages, lab-report archive, schema, support macros, and LLM files, using clear states such as verified report, supplier COA, independent COA, no public COA, failed, or not applicable; accessories must remain separated from peptide compliance language and must not imply dosing, injection, sterility, or cold-chain proof beyond evidence. Vic now owns compliance decisions for allowed products on the website, affiliate rules, and online presence; Narcis implements approved technical/site changes; Pafi reviews product/SKU and sales implications.", "acceptance": "Blocked until lawyer opinion is received. Before that, Narcis/Pafi may prepare URL-by-URL notes only. After counsel opinion arrives, apply only lawyer-approved changes, record changed URLs and screenshots, keep P0-002 calculator/reconstitution gate and P0-004 checkout acknowledgement as completed controls, and run a post-change scan confirming no banned affiliate/calculator/high-risk medical or passive-income claims remain across .com, .ro, schema, LLM files, checkout, support text, and promo surfaces. Vic signs off the allowed-product/compliance rule before Narcis implements site or online-presence changes.", "blockedBy": "Lawyer opinion required before execution", "consolidates": ["P0-0-003", "P0-001", "P0-002", "P0-003", "P0-004", "P0-009", "P1-001", "P1-002", "P1-003"], "completedControlsPreserved": ["P0-002 calculator/reconstitution public gating marked done by Pafi on 2026-06-24", "P0-004 checkout intended-use acknowledgement marked done by Pafi on 2026-06-24"], "workstream": "Website", "chapter": "Compliance & Online Presence", "chapterOwner": "Vic"}, {"id": "P0-011", "title": "Correct AOD9604 website strength from 10 mg to 5 mg", "category": "Products, SKUs & Budgeting", "priority": "P0", "urgencyScore": 97.8, "status": "open", "owner": "Narcis", "assignees": ["Narcis"], "dueDate": "2026-06-24", "source": "Owner request 2026-06-24", "description": "Urgent factual product correction: update AOD9604 website strength from 10 mg to 5 mg everywhere it appears. Check product title, product variant/option, product description, pricing table, cart/checkout display, related product blocks, search/category cards, .com/.ro surfaces, schema/JSON-LD, meta snippets, llms.txt/llms-full.txt, and any support/site text that repeats the strength. This is a factual strength correction, not a lawyer-gated copy rewrite.", "acceptance": "AOD9604 displays 5 mg everywhere on public and generated website surfaces; no AOD9604 10 mg references remain except archived evidence; Narcis provides changed URL list and screenshots/search proof.", "workstream": "Website", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi"}, {"id": "P0-012", "title": "Re-order AOD9604 labels with 5 mg instead of 10 mg", "category": "Purchasing & Logistics", "priority": "P0", "urgencyScore": 97.7, "status": "open", "owner": "Narcis", "assignees": ["Narcis", "Dragos"], "dueDate": "2026-06-24", "source": "Owner request 2026-06-24", "description": "Narcis coordinates the AOD9604 label correction with the new supplier: re-order/reprint labels that say 5 mg instead of 10 mg, update the label/design/order file, save supplier proof, and prevent old 10 mg labels from being used on 5 mg stock. Dragos must know which labels are valid before any handoff/delivery.", "acceptance": "Proof of 5 mg label reorder/reprint from the new supplier is saved; supplier/order/design file says AOD9604 5 mg; any old 10 mg labels are segregated, destroyed, or marked not-for-use; Dragos confirms only 5 mg labels are used going forward.", "workstream": "Logistics", "chapter": "Purchasing & Logistics", "chapterOwner": "Pafi", "colour": "yellow", "colourReason": "Open label correction; reorder must be placed/proven through the new supplier.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedAt": "2026-06-30T18:31:54Z", "colourUpdatedBy": "Codex", "plainExplanationRo": "Recomandarea este să se refacă etichetele AOD9604 cu 5 mg prin noul supplier. Narcis trebuie să salveze dovada comenzii/designului de la supplier, iar vechile etichete de 10 mg trebuie separate, distruse sau marcate not-for-use.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-0-001", "title": "Create 48h live-state register", "category": "Products, SKUs & Budgeting", "priority": "P0-0", "urgencyScore": 100, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis"], "dueDate": "2026-06-24", "source": "Pafi ownership update 2026-06-30", "description": "Create a simple 48-hour snapshot of what is actually live or not live right now: D2C sales live, ads not running, website compliance waiting for lawyer opinion, high-revenue SKUs continue selling, Dragos collaborator sales not active yet, Supabase/dashboard active, Airtable frozen, accessories waiting for proof/QC. This is a status register, not a freeze.", "acceptance": "Each item has state, owner, next action, due date if relevant, proof/evidence link, and subtask 4.6 SKU pricing/margin truth. The team can open one board and see what is live, blocked, waiting, or ready.", "workstream": "Administration", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi"}, {"id": "P0-0-002", "title": "Create red/yellow/green gate scoreboard", "category": "Tech/Admin & AI Agents", "priority": "P0-0", "urgencyScore": 99, "status": "open", "owner": "Codex/Tech", "assignees": ["Codex/Tech", "Narcis", "Pafi", "Vic"], "dueDate": "2026-06-24", "source": "Pafi ownership update 2026-06-30", "description": "Codex owns the red/yellow/green marking logic and keeps the gate scoreboard readable from Pafi-provided information. Narcis supports dashboard/admin rendering; Pafi supplies product/sales state; Vic supplies compliance state.", "acceptance": "Every gate has colour/state, owner, blocker, proof needed, next action, and evidence/reason. Colour changes use the RUO task colour marker skill so all agents read the same state.", "workstream": "Administration", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis", "colour": "yellow", "colourReason": "Pafi authorized Codex to do task 5; implementation/ongoing marking is active.", "colourEvidence": ["Pafi instruction 2026-06-30", "/Users/pafi/.codex/skills/ruo-task-colour-marker/SKILL.md"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "plainExplanationRo": "Acesta este tabelul de control pe culori: verde înseamnă că putem continua, galben înseamnă risc sau informație lipsă dar nu blocaj total, roșu înseamnă blocaj sau risc major, gri înseamnă planned/parcat. Codex actualizează culoarea pe baza informațiilor primite de la Pafi și a dovezilor verificate.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-0-004", "title": "Prepare counsel and customs broker packet", "category": "Compliance & Online Presence", "priority": "P0-0", "urgencyScore": 97, "status": "open", "owner": "Vic", "assignees": ["Vic", "Pafi", "Codex/Tech"], "dueDate": "2026-06-24", "source": "Pafi ownership update 2026-06-30", "description": "Compliance-owned counsel/customs broker packet. Vic decides what to do based on the lawyer response. Codex prepares the complete checklist of what Vic needs: live-state summary, current claims/channel examples, SKU/status list, suppliers, import flow, affiliate posture, B2B/wholesale posture, COA/SDS assumptions, payment/logistics flows, accessory separation, and exact go/no-go questions.", "acceptance": "Vic has a complete counsel/customs needs list and packet ready for review. No legal/import posture is treated as cleared until written lawyer/customs response exists; Vic decides actions after that response.", "workstream": "Compliance", "chapter": "Compliance & Online Presence", "chapterOwner": "Vic", "colour": "yellow", "colourReason": "Compliance packet can be prepared, but Vic decision waits on lawyer response.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "supportingFile": "/Users/pafi/Documents/RUO Peptides/output/vic-counsel-customs-needs-list-2026-06-30.md", "plainExplanationRo": "Acesta este dosarul pentru avocat/compliance și broker vamal. Vic decide ce se face după răspunsul avocatului; Codex pregătește lista completă de materiale necesare: produse, copy public, claims, import flow, COA/SDS, affiliate/wholesale, accesorii și întrebări go/no-go.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-0-005", "title": "Close Dragos cash packet", "category": "Products, SKUs & Budgeting", "priority": "P0-0", "urgencyScore": 96, "status": "overdue", "owner": "Dragos", "assignees": ["Dragos", "Narcis"], "dueDate": "2026-06-22", "source": "Owner override 2026-06-24", "description": "Dragos provides the real cash/Zen/crypto/receivable/proof data; Narcis helps package it into the dashboard/evidence format. Separate company money owed from any back-pay or personal-stock discussion.", "acceptance": "Actual balances, proofs, receivables, and personal-stock debt are recorded cleanly; Pafi is not treated as the owner of this task.", "workstream": "Financial", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi"}, {"id": "P0-0-006", "title": "Move active operating ledger into Supabase/dashboard", "category": "Tech/Admin & AI Agents", "priority": "P0-0", "urgencyScore": 95, "status": "done", "owner": "Narcis", "assignees": ["Narcis", "Pafi"], "dueDate": "2026-06-24", "source": "Owner override", "description": "Supabase/dashboard becomes the active operating system for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links. Airtable remains frozen/read-only legacy evidence. Codex/agents remain read-only in Supabase unless Pafi explicitly approves a write.", "acceptance": "No new operational writes go to Airtable. Supabase/dashboard can rebuild current operating state. Any Supabase write by Codex/agents requires explicit Pafi approval and must be visibly marked as Pafi-authorized with timestamp/source.", "completedAt": "2026-06-24", "completionNote": "Marked done by Pafi on 2026-06-24; operating responsibility assigned to Narcis by Pafi on 2026-06-30. Supabase/dashboard remains active operating layer; Airtable remains frozen/read-only legacy evidence.", "workstream": "Data / Dashboard", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis", "colour": "green", "colourReason": "Task is already done; ongoing ownership moved to Narcis for now.", "colourEvidence": ["Pafi instruction 2026-06-30", "dashboard completion 2026-06-24"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "plainExplanationRo": "Supabase/dashboard este registrul operațional activ pentru SKU-uri, stocuri, comenzi, plăți, COA/SDS, aprobări, excepții, prețuri și dovezi. Airtable rămâne doar arhivă read-only. Deocamdată Narcis gestionează această parte operațională.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-0-007", "title": "Reconcile audit number with Dragos transaction records", "category": "Tech/Admin & AI Agents", "priority": "P0-0", "urgencyScore": 94, "status": "open", "owner": "Dragos", "assignees": ["Dragos", "Pafi"], "dueDate": "2026-06-30", "source": "Pafi instruction 2026-06-30; supersedes completed Airtable/Supabase freeze sync.", "description": "Dragos must reconcile the audit number against his own transaction records, including Zen, crypto, cash, receivables, refunds, transfers, and any proof files. The old Airtable/Supabase sync remains historical context; this task is now about Dragos confirming the audit balance from his side.", "acceptance": "Dragos provides a transaction-by-transaction reconciliation that explains any difference between the audit number and his own records; each difference is marked as matched, missing proof, duplicate, timing difference, personal/back-pay, company receivable, or correction needed.", "completedAt": null, "completionNote": "Reopened/reassigned by Pafi on 2026-06-30. Previous completion was Airtable/Supabase payment sync before Airtable freeze; new scope is Dragos audit-number reconciliation.", "workstream": "Cash / Dragos Proof", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi"}, {"id": "P0-005", "title": "Produce 6-month budget and reserve allocation", "category": "Products, SKUs & Budgeting", "priority": "P0", "urgencyScore": 94, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Vic"], "dueDate": "2026-06-24", "source": "Pafi ownership update 2026-06-30", "description": "Split legal/customs/QA, peptide OpCo, accessories, owner repayment, Dragos compensation, COA/testing, inventory, ops, AI/data, and contingency.", "acceptance": "Budget states what Vic can commit and which reserves are protected.", "workstream": "Financial", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi", "plainExplanationRo": "Acesta este planul financiar pe 6 luni. Împarte banii pe legal/customs/QA, peptide OpCo, accesorii, owner repayment, Dragos compensation, COA/testing, inventar, ops, AI/data și contingency, ca să fie clar ce se poate cheltui și ce rezervă nu trebuie atinsă.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-006", "title": "4.6 Create canonical SKU pricing and margin table", "category": "Products, SKUs & Budgeting", "priority": "P0", "urgencyScore": 92, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Narcis"], "dueDate": "2026-06-25", "source": "Pafi ownership update 2026-06-30", "description": "Subtask 4.6 under the 48h live-state register. Build table with supplier cost, landed cost, public price, margin, discount/promoter/CAC cap, reorder status, counsel flag, and active copy status. Pafi owns commercial pricing/budget logic; Narcis supports dashboard/admin implementation.", "acceptance": "The live-state register includes one SKU pricing truth section with exception notes for each SKU.", "workstream": "Financial", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi", "parentTask": "P0-0-001", "subtask": "4.6", "colour": "yellow", "colourReason": "Confirmed as existing 4.6 component under task 4, not a separate strategic lane.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "plainExplanationRo": "Acesta este subtaskul 4.6 din live-state register. Face un singur adevăr comercial per SKU: supplier cost, landed cost, preț public, marjă, limite de discount/promoter/CAC, reorder status, counsel flag și copy status.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-007", "title": "Build SKU disposition table", "category": "Products, SKUs & Budgeting", "priority": "P0", "urgencyScore": 91, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Narcis"], "dueDate": "2026-06-25", "source": "Pafi ownership update 2026-06-30", "description": "Pafi classifies every SKU by continue, cleanup, COA needed, margin review, reorder focus, counsel review, or inbound-B2B support. Pafi owns product/SKU disposition decisions; Narcis implements dashboard/site/admin status fields. Vic is consulted through compliance tasks only when Pafi flags a compliance review need.", "acceptance": "No SKU status is inferred from memory or chat. Each SKU has a Pafi commercial/disposition status before public promotion, affiliate eligibility, reorder focus, or cleanup execution.", "workstream": "Logistics", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi", "colour": "yellow", "colourReason": "Pafi owns SKU disposition; Narcis implements fields; Vic is not assigned to task 12.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "plainExplanationRo": "Acesta este tabelul de decizie per SKU. Pafi decide dacă fiecare SKU continuă, se curăță, are nevoie de COA, cere margin review, devine reorder focus, intră la counsel review sau susține inbound/B2B. Vic nu este owner aici; compliance se consultă separat când Pafi cere.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-008", "title": "Confirm Vic accessory proof and low-risk MVP split", "category": "Accessories Business", "priority": "P0", "urgencyScore": 90, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Vic"], "dueDate": "2026-06-24", "source": "Pafi ownership update 2026-06-30", "description": "Pafi and Vic confirm accessory proof and split accessories into low-risk MVP vs legal-gated items. Pafi owns business/product decision; Vic owns compliance wording and allowed-claim boundaries.", "acceptance": "Proof is saved for each accessory; low-risk MVP vs legal-gated split is documented; copy only covers storage, transport, and organization unless Vic confirms stronger evidence is allowed.", "workstream": "Accessories / Products & Proof", "chapter": "Accessories Business", "chapterOwner": "Pafi", "colour": "yellow", "colourReason": "Open accessories decision owned by Pafi and Vic, not Dragos.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "plainExplanationRo": "Acesta este taskul de accesorii pentru proof și low-risk MVP split. Pafi și Vic decid ce accesorii pot intra în MVP cu risc mic și ce accesorii rămân legal-gated. Nu este task Dragos.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-010", "title": "Freeze Airtable as read-only legacy source", "category": "Tech/Admin & AI Agents", "priority": "P0", "urgencyScore": 89, "status": "done", "owner": "Pafi/Narcis", "assignees": ["Pafi", "Narcis"], "dueDate": "2026-06-24", "completedAt": "2026-06-24", "source": "Owner decision 2026-06-24", "description": "Stop using Airtable for new operational writes. Keep it only as frozen/read-only historical evidence while the active operating layer moves to Supabase/dashboard. Supabase access for Codex/agents is read-only by default.", "acceptance": "All new payments, transactions, stock movements, SKU states, approvals, and evidence links belong in Supabase/dashboard, but Codex/agents write only with explicit Pafi approval and visible Pafi-authorized marking; Airtable is referenced only for legacy reconciliation/export.", "workstream": "Data / Dashboard", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis", "completionNote": "Task done. Owner corrected by Pafi on 2026-06-30: Pafi and Narcis own Airtable read-only legacy/source-of-truth boundary.", "colour": "green", "colourReason": "Done; owner corrected to Pafi and Narcis.", "colourEvidence": ["Pafi instruction 2026-06-30", "Owner decision 2026-06-24"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "plainExplanationRo": "Airtable este înghețat ca sursă legacy/read-only. Nu se mai fac operațiuni noi acolo; operaționalul activ merge în Supabase/dashboard. Taskul este done și aparține Pafi/Narcis.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P1-004", "title": "Rerun Narcis dashboard on canonical Ehsan basis", "category": "Tech/Admin & AI Agents", "priority": "P1", "urgencyScore": 86, "status": "done", "owner": "Narcis", "assignees": ["Narcis", "Pafi"], "dueDate": "2026-06-23", "source": "Financial audit", "description": "Dashboard treasury aligns to corrected EUR 5,500 + USD 1,800 Ehsan basis; old ~$6,420 comparison carries the $264.95 offset note if shown.", "acceptance": "Dashboard no longer uses stale comparison as current truth.", "completedAt": "2026-06-24", "completionNote": "Marked done by Pafi on 2026-06-24: Narcis dashboard rerun on canonical Ehsan basis completed.", "workstream": "Data / Dashboard", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis", "colour": "green", "colourReason": "Pafi confirmed this should already be done; dashboard already had completedAt 2026-06-24.", "colourEvidence": ["Pafi instruction 2026-06-30", "dashboard completedAt 2026-06-24"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "plainExplanationRo": "Dashboardul Narcis trebuia rerulat pe baza Ehsan corectă: EUR 5,500 + USD 1,800. Comparația veche de aproximativ USD 6,420 nu mai este adevăr curent și trebuie afișată doar cu nota de offset USD 264.95 dacă apare.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P1-005", "title": "Freeze Airtable and migrate movement/status cleanup to Supabase", "category": "Tech/Admin & AI Agents", "priority": "P0", "urgencyScore": 90.5, "status": "done", "owner": "Codex/Tech", "assignees": ["Codex/Tech", "Pafi", "Narcis"], "dueDate": "2026-06-24", "source": "Owner decision 2026-06-24", "description": "Airtable is frozen/read-only; old Airtable movement types and stale exception statuses must be mapped into Supabase, not cleaned in Airtable as the long-term layer.", "acceptance": "Team treats Airtable as legacy evidence only; Supabase/dashboard owns movement types, exception status, payments, balances, SKU status, approvals, and evidence links going forward.", "completedAt": "2026-06-24", "completionNote": "Pafi decided on 2026-06-24: freeze Airtable, move to Supabase.", "workstream": "Data / Dashboard", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis"}, {"id": "P1-006", "title": "Write Dragos operating contract and local handoff checklist", "category": "Sales & Marketing", "priority": "P1", "urgencyScore": 84, "status": "done", "owner": "Pafi", "assignees": ["Pafi"], "dueDate": "2026-06-26", "source": "Pafi ownership update 2026-06-30", "description": "Contract covers allowed tasks, cannot-do list, approval triggers, evidence rule, AI boundary, escalation, and no off-ledger/direct cash default.", "acceptance": "Dragos cannot interpret observation mode as commercial activation.", "workstream": "Sales / Dragos", "chapter": "Sales & Marketing", "chapterOwner": "Pafi", "completedAt": "2026-06-30", "completionNote": "Marked decided by Pafi on 2026-06-30. Pafi owns Dragos operating contract/local handoff boundary.", "colour": "green", "colourReason": "Decided; Pafi owns this task.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z"}, {"id": "P1-007", "title": "Create separate accessories business operating model", "category": "Accessories Business", "priority": "P1", "urgencyScore": 83, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis", "Dragos"], "dueDate": "2026-07-02", "source": "Pafi instruction 2026-06-30; replaces Dragos observation-mode asset task.", "description": "Group all accessory-related issues into a separate accessories business, not as a side-note inside peptide operations. Split accessories the same way as peptides: compliance/allowed claims, product/SKU decisions, purchasing and proof, workflows/admin/data, marketing/sales, logistics, and budget/P&L.", "acceptance": "Accessories have their own operating view with sections for compliance, products, workflows, marketing/sales, purchasing/proof/QC, logistics, and budget/P&L. Each accessory issue has an owner, status, proof link, and go/no-go rule before public launch or sales activation.", "workstream": "Accessories / Operating Model", "chapter": "Accessories Business", "chapterOwner": "Pafi"}, {"id": "P1-008", "title": "Confirm owner settlement after Dragos cash is known", "category": "Products, SKUs & Budgeting", "priority": "P1", "urgencyScore": 80, "status": "done", "owner": "Pafi", "assignees": ["Pafi", "Vic"], "dueDate": "2026-06-26", "source": "Financial audit", "description": "Document Vic net receivable USD 5,622.92, Pafi USD 537.18, Dragos recovery, back-pay payable, and monthly net-sales percentage separately.", "acceptance": "Settlement uses actual Dragos cash data, not assumptions.", "completedAt": "2026-06-24", "completionNote": "Marked done by Pafi on 2026-06-24: audit closed; owner settlement confirmation no longer active.", "workstream": "Financial", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi"}, {"id": "P1-009", "title": "Create approval register for commercial and public changes", "category": "Tech/Admin & AI Agents", "priority": "P1", "urgencyScore": 79, "status": "open", "owner": "Narcis", "assignees": ["Narcis"], "dueDate": "2026-06-30", "source": "Pafi ownership update 2026-06-30", "description": "Narcis creates a Supabase-backed approval register for every commercial/public mutation: public copy, price change, discount code, supplier order, import decision, live outbound message, refund/replacement, marketplace listing, wholesale/dropshipping partner activation, and dashboard/admin data mutation. Pafi and Vic remain approval authorities where relevant, but Narcis owns the implementation and operating register.", "acceptance": "Narcis adds the approval register in Supabase or creates an implementation-ready schema; every mutating action can be tied to approval ID, approver, scope, evidence link, timestamp, owner, and status before execution.", "workstream": "Administration", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis", "colour": "yellow", "colourReason": "Narcis owns the Supabase approval register implementation.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:33:23Z", "plainExplanationRo": "Acesta este registrul oficial de aprobări în Supabase. Orice schimbare comercială sau publică importantă trebuie să aibă approval ID, cine a cerut, cine a aprobat, ce s-a schimbat, când, scope și evidence link. Narcis îl construiește.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P1-010", "title": "Create daily export and checksum backup", "category": "Tech/Admin & AI Agents", "priority": "P1", "urgencyScore": 78, "status": "planned", "owner": "Narcis", "assignees": ["Narcis", "Codex/Tech"], "dueDate": "2026-06-30", "source": "Pafi ownership update 2026-06-30", "description": "Potential daily export/checksum backup for dashboard-critical Supabase tables. This task is not decided yet; reads are allowed, but writes/backfills require explicit Pafi approval and Pafi-authorized marking.", "acceptance": "Team can prove whether data changed and when; any agent-created mutation is traceable to explicit Pafi approval.", "workstream": "Data / Dashboard", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis", "colour": "grey", "colourReason": "Pafi corrected that task 21 is not decided yet.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z"}, {"id": "P1-011", "title": "Integrate Hermes agent into the Telegram group", "category": "Tech/Admin & AI Agents", "priority": "P1", "urgencyScore": 77, "status": "open", "owner": "Narcis", "assignees": ["Narcis", "Codex/Tech"], "dueDate": "2026-06-26", "source": "Pafi ownership update 2026-06-30", "description": "Narcis integrates the Hermes agent into the shared Telegram group so the team uses one agent for everyone. This is a Narcis-owned coordination/setup task. Scope includes the new Hermes Telegram stock-management agent and the Hermes agent for peptides/supplements protocols.", "acceptance": "Hermes is present in the shared Telegram group, the team knows to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented. Hermes Telegram stock-management and peptide/supplement protocol agent responsibilities are documented, tested in read-only/draft-first mode, and routed to the correct group/admin workflow.", "workstream": "AI / Workflow", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis"}, {"id": "P1-012", "title": "Define wholesale and dropshipping services lane", "category": "Sales & Marketing", "priority": "P1", "urgencyScore": 76, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis", "Dan"], "dueDate": "2026-07-03", "source": "Pafi instruction 2026-06-30; transformed from Dan social/news support task.", "description": "Create a controlled wholesale and dropshipping services lane for PeptraLabs/RUO: eligible products, minimum order rules, client qualification, pricing tiers, margin protection, fulfillment responsibility, inventory reservation, payment terms, refund/replacement rules, evidence/COA handling, and compliance-approved service copy. This is a services/commercial workflow, not public medical-use promotion.", "acceptance": "Wholesale/dropshipping has a defined service offer, allowed-client criteria, SKU eligibility table, pricing/margin rules, order workflow, fulfillment handoff, payment/evidence requirements, approval register link, and Vic-approved public/private wording before any partner is activated.", "workstream": "Wholesale / Dropshipping", "chapter": "Sales & Marketing", "chapterOwner": "Pafi"}, {"id": "P1-013", "title": "Dan role decided; Narcis manages temporary delivery support", "category": "Purchasing & Logistics", "priority": "P1", "urgencyScore": 75, "status": "done", "owner": "Narcis", "assignees": ["Narcis", "Dan", "Pafi"], "dueDate": "2026-06-30", "source": "Pafi ownership update 2026-06-30", "description": "Dan role is decided: Narcis manages Dan for temporary delivery/logistics support until Bulgaria stock/logistics setup is ready. Dan may only operate inside assigned dashboard/order flows.", "acceptance": "Dan role is clear: Narcis manages him; any delivery is assigned through the dashboard, tied to a website/order ID, records stock movement and proof, excludes direct/off-ledger cash by default, and includes no product advice or claim-making.", "workstream": "Logistics", "chapter": "Purchasing & Logistics", "chapterOwner": "Pafi", "completedAt": "2026-06-30", "completionNote": "Marked decided by Pafi on 2026-06-30: Dan role is decided and Narcis manages him.", "colour": "green", "colourReason": "Dan role decided; Narcis manages him.", "colourEvidence": ["Pafi instruction 2026-06-30"], "colourUpdatedBy": "Codex", "colourUpdatedAt": "2026-06-30T18:26:02Z", "plainExplanationRo": "Rolul lui Dan este decis: Narcis îl gestionează pentru suport temporar de livrare/logistică până când setupul Bulgaria este gata. Dan operează doar prin dashboard/order flow, fără cash off-ledger și fără sfaturi/claims de produs.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P1-014", "title": "Codex owns RUO task colour marking and shared dashboard skill", "category": "Tech/Admin & AI Agents", "priority": "P1", "urgencyScore": 79, "status": "done", "owner": "Codex/Tech", "assignees": ["Codex/Tech", "Narcis", "Pafi"], "dueDate": "2026-06-30", "source": "Pafi instruction 2026-06-30; transformed from SKU QR task.", "description": "Codex owns the colour-marking layer for the RUO task dashboard. Build and maintain a dedicated skill that lets every agent classify tasks from Pafi's latest information, write red/yellow/green/grey fields into the shared dashboard JSON, preserve evidence/reason fields, and avoid each agent re-interpreting task state independently.", "acceptance": "A reusable Codex skill exists for RUO task colour marking; it documents the colour policy, authority order, dashboard fields, and guardrails; it includes a helper script agents can run against the dashboard JSON; task 25 is marked with the current colour state and future colour changes use that skill.", "workstream": "Dashboard / Task Colours", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis", "supersedesPreviousTask": "Activate SKU QR codes to direct Janoshik report pages", "colour": "green", "colourReason": "Dedicated RUO task colour marker skill created and validated; Codex owns future colour marking.", "colourEvidence": ["/Users/pafi/.codex/skills/ruo-task-colour-marker/SKILL.md", "quick_validate.py passed", "Pafi instruction 2026-06-30"], "colourUpdatedAt": "2026-06-30T12:34:35Z", "colourUpdatedBy": "Codex", "plainExplanationRo": "Codex deține stratul de colour marking pentru dashboard. Există skill dedicat care setează green/yellow/red/grey cu reason/evidence, ca fiecare agent să citească aceeași stare și să nu reinterpretăm taskurile din chat.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P2-002", "title": "Build dummy website-paid order handoff and location notification flow", "category": "Sales & Marketing", "priority": "P2", "urgencyScore": 72, "status": "planned", "owner": "Narcis", "assignees": ["Narcis", "Pafi", "Dragos", "Codex/Tech"], "dueDate": "2026-07-03", "source": "Pafi ownership update 2026-06-30", "description": "Narcis builds/tests a dummy paid website-order flow from order paid -> location decision -> notification -> local handoff -> evidence record -> stock movement. The notification must route based on customer delivery location: Ibiza orders notify the Ibiza/local handoff channel; Bulgaria/Bucharest/other warehouse-flow orders notify the Bulgaria/central logistics channel. Include order ID, customer location, product/SKU, paid status, delivery/handoff route, responsible person, required proof, and no medical/product-advice text.", "acceptance": "A dummy paid order can be processed without real collaborator activation. The correct Ibiza vs Bulgaria/central notification is selected from customer location, the handoff recipient sees only operational details, stock/evidence records are created or drafted, and the flow can be repeated safely before real use.", "workstream": "Sales / Dragos", "chapter": "Sales & Marketing", "chapterOwner": "Pafi", "plainExplanationRo": "Acesta este un test dummy pentru o comandă plătită pe website: paid order -> locație client -> notificare corectă -> handoff local/central -> evidence record -> stock movement. Ibiza merge pe flow local; Bulgaria/Bucharest/warehouse merge pe flow central.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P2-003", "title": "Build read-only/draft-first AI agent suite", "category": "Tech/Admin & AI Agents", "priority": "P2", "urgencyScore": 70, "status": "planned", "owner": "Narcis", "assignees": ["Narcis", "Codex/Tech", "Pafi", "Vic"], "dueDate": "2026-07-10", "source": "Pafi ownership update 2026-06-30", "description": "Build AI helpers that can read the dashboard/Supabase/project context and draft actions or reports, but cannot change records by themselves. Examples: Daily Ops summary, Stock check, Finance check, Compliance check, Procurement draft, Accessories check, Ibiza Network update, and Weekly Business Reporter. Narcis owns tech creation/admin for the agent suite, including stock-management and peptide/supplement protocol workflows; agents remain read-only/draft-first unless explicitly Pafi-authorized.", "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution.", "workstream": "AI / Workflow", "chapter": "Tech/Admin & AI Agents", "chapterOwner": "Narcis", "plainExplanationRo": "Acesta este suita de agenți AI read-only/draft-first. Agenții pot citi Supabase/dashboard și pot propune rapoarte sau drafturi, dar nu modifică prețuri, stocuri, comenzi, copy public, payments sau mesaje fără approval explicit.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P2-004", "title": "Launch accessories site only after proof and policy gates", "category": "Accessories Business", "priority": "P2", "urgencyScore": 68, "status": "planned", "owner": "Vic", "assignees": ["Vic", "Pafi", "Narcis"], "dueDate": "2026-07-10", "source": "Pafi ownership update 2026-06-30", "description": "Launch accesoriipeptide.ro only after proof, QC, copy, landed-cost, and eMAG/Amazon/Noon policy checks. Vic owns accessory/compliance gates and online-presence policy; Narcis supports site/admin implementation after gates pass.", "acceptance": "Low-risk SKUs first; no unsupported sterility/cold-chain/dosing/injection claims.", "workstream": "Accessories / Compliance & Launch", "chapter": "Accessories Business", "chapterOwner": "Pafi"}, {"id": "P2-005", "title": "Create monthly budget tracking by operating bucket", "category": "Products, SKUs & Budgeting", "priority": "P2", "urgencyScore": 66, "status": "planned", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis", "Codex/Tech"], "dueDate": "2026-07-10", "source": "Pafi ownership update 2026-06-30", "description": "Create a monthly budget view grouped by operating buckets: legal/customs/QA, peptide operating company, accessories, owner repayment, AI/data/dashboard, marketing/content, logistics, and contingency. Track planned budget, actual spend, remaining reserve, owner/person responsible, evidence/proof link, and variance.", "acceptance": "Dashboard shows budget vs actual by month and bucket, so Pafi/Vic can see how much runway remains and which category is over/under budget.", "workstream": "Financial", "chapter": "Products, SKUs & Budgeting", "chapterOwner": "Pafi", "plainExplanationRo": "Acesta este tracking lunar de buget pe operating buckets. Arată planned budget vs actual spend vs remaining reserve pentru legal/customs/QA, peptide OpCo, accesorii, owner repayment, AI/data/dashboard, marketing/content, logistics și contingency.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}, {"id": "P0-013", "title": "Resolve Ibiza 69-vial in-transit transfer and recount", "category": "Purchasing & Logistics", "chapter": "Purchasing & Logistics", "workstream": "Inventory / Logistics", "priority": "P0", "urgencyScore": 90, "status": "open", "owner": "Narcis", "assignees": ["Narcis", "Dragos", "Pafi"], "dueDate": "2026-07-01", "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30", "description": "Resolve the Bucharest -> Ibiza 69-vial transfer that is deducted from Bucharest and present in Ibiza accounting but not physically arrived according to Pafi. Keep those vials treated as in-transit/not sellable until physical receipt and recount.", "acceptance": "Receipt or non-receipt is evidenced; BPC-157 14, TB-500 5, Retatrutide 10, Mots-C 15, GHK-CU 15, and NAD+ 10 are either received/recounted or explicitly marked in-transit/not sellable in the operating view.", "chapterOwner": "Pafi"}, {"id": "P0-014", "title": "Structure SO-04 restock items and purchasing proof", "category": "Purchasing & Logistics", "chapter": "Purchasing & Logistics", "workstream": "Purchasing / Restock", "priority": "P0", "urgencyScore": 89, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Dragos", "Narcis"], "dueDate": "2026-07-01", "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30", "description": "SO-04 is the only open Supabase restock: 250 vials ordered, paid by Dragos via Zen, but restock_items has 0 structured line rows. Build the purchasing proof and line-item breakdown before treating the order as operationally clear.", "acceptance": "Supplier/order proof, payment proof, expected SKU/qty breakdown, ETA/status, and structured restock item plan are saved. No agent infers SO-04 SKU contents from legacy reports unless Pafi explicitly authorizes that cross-check.", "chapterOwner": "Pafi"}, {"id": "P0-015", "title": "Prepare Retatrutide premium restock and expanded COA plan", "category": "Purchasing & Logistics", "chapter": "Purchasing & Logistics", "workstream": "Purchasing / QA", "priority": "P0", "urgencyScore": 88, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis"], "dueDate": "2026-07-02", "source": "Implementation todo + project-card 2026-06-26 / chapter reorg 2026-06-30", "description": "Prepare first/next Retatrutide premium restock using EUR 149/vial list-base only with expanded third-party COA/testing. Normal promo/affiliate cap is 20%; sub-floor discounts require manual approval.", "acceptance": "Supplier/lab plan includes HPLC purity, LC-MS identity, assay/content if available, endotoxin LAL, heavy metals, residual solvents, and sterility/bioburden where practical. Vic confirms compliance wording; public language remains RUO/research-only and never says human-use safety.", "chapterOwner": "Pafi"}, {"id": "P1-015", "title": "Build discount, referral, affiliate, and Staff-class engine", "category": "Sales & Marketing", "chapter": "Sales & Marketing", "workstream": "Affiliate / Referral", "priority": "P1", "urgencyScore": 78, "status": "planned", "owner": "Narcis", "assignees": ["Narcis", "Vic", "Pafi", "Codex/Tech"], "dueDate": "2026-07-04", "source": "Affiliate/referral plan 2026-06-28 / chapter reorg 2026-06-30", "description": "Implement the approved discount/referral/affiliate engine structure: affiliate profiles, discount codes, customer discount assignments, product discount policies, order discount lines, affiliate order attribution, affiliate commission lines, and Staff class. Vic owns rules/compliance; Pafi owns sales economics; Narcis owns tech/admin implementation.", "acceptance": "Engine is built or implementation-ready with ex-VAT/ex-transport commission basis, no stacking by default, product-line margin gate, 20% default pool/30% ceiling, partial-refund reversal, legacy high-discount review, and no activation before Vic compliance signoff.", "chapterOwner": "Pafi"}, {"id": "P1-016", "title": "Resolve protocol blockers for Libido and Cognition stacks", "category": "Products, SKUs & Budgeting", "chapter": "Products, SKUs & Budgeting", "workstream": "Protocols / SKU Economics", "priority": "P1", "urgencyScore": 77, "status": "open", "owner": "Pafi", "assignees": ["Pafi", "Narcis", "Vic"], "dueDate": "2026-07-03", "source": "Stack pricing report 2026-06-29 / chapter reorg 2026-06-30", "description": "Resolve missing protocol blockers: Libido is blocked by missing PT-141 final protocol, and Cognition is blocked by missing Selank final protocol. Keep protocol economics separate from customer-use advice.", "acceptance": "PT-141 and Selank have final approved protocol-economics rows or remain explicitly blocked. Libido and Cognition stack statuses are updated accordingly, with Vic compliance review and Narcis protocol-agent/admin support.", "chapterOwner": "Pafi"}, {"id": "P1-017", "title": "Backfill structured Supabase transaction references plan", "category": "Tech/Admin & AI Agents", "chapter": "Tech/Admin & AI Agents", "workstream": "Data Quality / Supabase", "priority": "P1", "urgencyScore": 76, "status": "planned", "owner": "Narcis", "assignees": ["Narcis", "Pafi", "Codex/Tech"], "dueDate": "2026-07-03", "source": "Supabase transaction reference audit 2026-06-28 / chapter reorg 2026-06-30", "description": "Create a safe backfill plan for 118/534 transaction-like Supabase rows missing structured references across orders, customer_payments, expenses, restocks, stock_movements, and treasury_transfers. This is a plan first; writes remain Pafi-authorized only.", "acceptance": "Backfill plan maps each missing-reference table to reference source, proposed field, evidence link, and write authorization requirement. No write occurs without explicit Pafi authorization and performed_by=API/Pafi agent marking.", "chapterOwner": "Narcis", "plainExplanationRo": "Acesta este planul de curățare a referințelor lipsă din Supabase. Auditul a găsit rânduri de tranzacții fără legături clare către order/payment/invoice/restock/stock movement/evidence. Narcis face planul; nu se scrie nimic în DB fără aprobare Pafi.", "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z", "plainExplanationUpdatedBy": "Codex"}], "chapters": [{"id": "compliance-online-presence", "name": "Compliance & Online Presence", "owner": "Vic", "assignees": ["Vic", "Narcis", "Pafi"], "summary": "RUO compliance, allowed website products, affiliate rules, online-presence rules, COA/Janoshik public evidence boundaries."}, {"id": "tech-admin-ai-agents", "name": "Tech/Admin & AI Agents", "owner": "Narcis", "assignees": ["Narcis", "Codex/Tech", "Pafi", "Vic"], "summary": "Tech creation, admin systems, Supabase/dashboard operations, Hermes Telegram stock-management agent, peptide/supplement protocol agent, backups, approvals."}, {"id": "products-skus-budgeting", "name": "Products, SKUs & Budgeting", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis"], "summary": "Product/SKU decisions, pricing, margin, protocol economics, budget, SKU disposition, commercial status."}, {"id": "purchasing-logistics", "name": "Purchasing & Logistics", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis", "Dragos"], "summary": "Purchasing, supplier/restock proof, in-transit stock, labels, accessory proof/QC, delivery/logistics routing."}, {"id": "sales-marketing", "name": "Sales & Marketing", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis", "Dan", "Dragos"], "summary": "Sales workflow, B2B inbound handling, affiliate/referral engine, social/news execution, collaborator/local handoff workflows."}, {"id": "accessories-business", "name": "Accessories Business", "owner": "Pafi", "assignees": ["Pafi", "Vic", "Narcis", "Dragos"], "summary": "Separate operating lane for accessories: compliance/allowed claims, product/SKU decisions, purchasing/proof/QC, workflows/admin/data, marketing/sales, logistics, and budget/P&L."}]}</script>
+  <script>
+    const DATA_URL = "embedded local JSON snapshot: ruo-team-task-dashboard-data.json";
+    const MS_PER_DAY = 24 * 60 * 60 * 1000;
+    let dashboardData = null;
+    let filteredTasks = [];
+    let filteredGates = [];
+    let livePaused = false;
+    let refreshHandle = null;
+
+    const els = {
+      metrics: document.getElementById("metrics"),
+      gates: document.getElementById("gates"),
+      categoryBars: document.getElementById("categoryBars"),
+      assigneeBars: document.getElementById("assigneeBars"),
+      taskList: document.getElementById("taskList"),
+      resultCount: document.getElementById("resultCount"),
+      footer: document.getElementById("footer"),
+      syncStatus: document.getElementById("syncStatus"),
+      assigneeQuickFilters: document.getElementById("assigneeQuickFilters"),
+      priorityQuickFilters: document.getElementById("priorityQuickFilters"),
+      dueQuickFilters: document.getElementById("dueQuickFilters"),
+      activeFilters: document.getElementById("activeFilters"),
+      search: document.getElementById("searchFilter"),
+      priority: document.getElementById("priorityFilter"),
+      category: document.getElementById("categoryFilter"),
+      assignee: document.getElementById("assigneeFilter"),
+      status: document.getElementById("statusFilter"),
+      late: document.getElementById("lateFilter")
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, ch => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+      })[ch]);
+    }
+
+    function todayStart() {
+      const now = new Date();
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    }
+
+    function parseLocalDate(dateString) {
+      if (!dateString) return null;
+      const parts = String(dateString).split("-").map(Number);
+      if (parts.length !== 3 || parts.some(Number.isNaN)) return null;
+      return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function isClosed(status) {
+      return ["done", "completed", "cancelled", "closed"].includes(String(status || "").toLowerCase());
+    }
+
+    function dueState(item) {
+      const due = parseLocalDate(item.dueDate);
+      if (!due) return { bucket: "none", label: "No due date", days: null, className: "pill-neutral" };
+      if (isClosed(item.status)) return { bucket: "done", label: "Closed", days: null, className: "ok" };
+      const diff = Math.round((due - todayStart()) / MS_PER_DAY);
+      if (diff < 0) return { bucket: "late", label: `Late by ${Math.abs(diff)} day${Math.abs(diff) === 1 ? "" : "s"}`, days: diff, className: "late" };
+      if (diff === 0) return { bucket: "today", label: "Due today", days: diff, className: "today" };
+      if (diff <= 2) return { bucket: "soon", label: `Due in ${diff} day${diff === 1 ? "" : "s"}`, days: diff, className: "today" };
+      return { bucket: "future", label: `Due in ${diff} days`, days: diff, className: "ok" };
+    }
+
+    function priorityRank(priority) {
+      return { "P0-0": 4, "P0": 3, "P1": 2, "P2": 1 }[priority] || 0;
+    }
+
+    function normalizeStatus(status) {
+      return String(status || "open").replace(/_/g, " ");
+    }
+
+    function gateColor(state) {
+      return { red: "var(--red)", yellow: "var(--yellow)", green: "var(--green)" }[String(state).toLowerCase()] || "var(--blue)";
+    }
+
+    function gatePill(state) {
+      const normalized = String(state || "unknown").toLowerCase();
+      if (normalized === "red") return "pill-red";
+      if (normalized === "yellow") return "pill-yellow";
+      if (normalized === "green") return "pill-green";
+      return "pill-blue";
+    }
+
+    function statusPill(status) {
+      const normalized = String(status || "").toLowerCase();
+      if (normalized.includes("overdue") || normalized === "blocked") return "pill-red";
+      if (normalized.includes("progress") || normalized === "waiting" || normalized === "owner_override") return "pill-yellow";
+      if (normalized === "done" || normalized === "completed") return "pill-green";
+      if (normalized === "planned") return "pill-blue";
+      return "pill-neutral";
+    }
+
+    async function loadData(showManualRefresh) {
+      try {
+        const embedded = document.getElementById("dashboard-data");
+        if (!embedded) throw new Error("embedded dashboard JSON missing");
+        dashboardData = JSON.parse(embedded.textContent);
+        els.syncStatus.textContent = `Local dashboard snapshot loaded ${new Date().toLocaleString()} | source generated ${new Date(dashboardData.generatedAt).toLocaleString()}`;
+        hydrateFilters();
+        render();
+        if (showManualRefresh) pulseStatus("Local snapshot reloaded.");
+      } catch (error) {
+        els.syncStatus.textContent = `Local dashboard load failed: ${error.message}.`;
+        if (!dashboardData) {
+          els.taskList.innerHTML = `<div class="empty">No task data loaded from embedded JSON.</div>`;
+        }
+      }
+    }
+
+    function pulseStatus(message) {
+      const previous = els.syncStatus.textContent;
+      els.syncStatus.textContent = message;
+      setTimeout(() => {
+        if (dashboardData) {
+          els.syncStatus.textContent = previous;
+        }
+      }, 1600);
+    }
+
+    function hydrateSelect(selectEl, values, currentValue) {
+      const first = selectEl.options[0]?.outerHTML || "<option value=\"\">All</option>";
+      selectEl.innerHTML = first + values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join("");
+      selectEl.value = currentValue || "";
+    }
+
+    function hydrateFilters() {
+      const tasks = dashboardData?.tasks || [];
+      const current = {
+        priority: els.priority.value,
+        category: els.category.value,
+        assignee: els.assignee.value,
+        status: els.status.value
+      };
+      hydrateSelect(els.priority, [...new Set(tasks.map(t => t.priority).filter(Boolean))].sort((a, b) => priorityRank(b) - priorityRank(a)), current.priority);
+      hydrateSelect(els.category, [...new Set(tasks.map(t => t.category).filter(Boolean))].sort(), current.category);
+      hydrateSelect(els.assignee, [...new Set(tasks.flatMap(t => t.assignees || []).filter(Boolean))].sort(), current.assignee);
+      hydrateSelect(els.status, [...new Set(tasks.map(t => normalizeStatus(t.status)).filter(Boolean))].sort(), current.status);
+    }
+
+    function taskCountFor(field, value) {
+      return (dashboardData?.tasks || []).filter(task => {
+        if (field === "assignee") return (task.assignees || []).includes(value);
+        if (field === "priority") return task.priority === value;
+        if (field === "late") return dueState(task).bucket === value;
+        return false;
+      }).length;
+    }
+
+    function setFilter(field, value) {
+      const target = els[field];
+      if (!target) return;
+      target.value = target.value === value ? "" : value;
+      render();
+    }
+
+    function clearFilters() {
+      [els.search, els.priority, els.category, els.assignee, els.status, els.late].forEach(el => {
+        el.value = "";
+      });
+      render();
+    }
+
+    function quickFilterButton(field, value, label) {
+      const isActive = els[field]?.value === value;
+      const count = taskCountFor(field, value);
+      return `
+        <button class="filter-btn ${isActive ? "active" : ""}" type="button" data-filter-field="${escapeHtml(field)}" data-filter-value="${escapeHtml(value)}" aria-pressed="${isActive ? "true" : "false"}">
+          <span>${escapeHtml(label)}</span>
+          <span class="filter-count">${count}</span>
+        </button>
+      `;
+    }
+
+    function renderQuickFilters() {
+      const tasks = dashboardData?.tasks || [];
+      const assignees = [...new Set(tasks.flatMap(t => t.assignees || []).filter(Boolean))].sort();
+      const priorities = [...new Set(tasks.map(t => t.priority).filter(Boolean))].sort((a, b) => priorityRank(b) - priorityRank(a));
+      const dueStates = [
+        ["late", "Late"],
+        ["today", "Today"],
+        ["soon", "48h"],
+        ["none", "No due date"]
+      ];
+      els.assigneeQuickFilters.innerHTML = assignees.map(name => quickFilterButton("assignee", name, name)).join("");
+      els.priorityQuickFilters.innerHTML = priorities.map(priority => quickFilterButton("priority", priority, priority)).join("");
+      els.dueQuickFilters.innerHTML = dueStates.map(([value, label]) => quickFilterButton("late", value, label)).join("");
+    }
+
+    function activeFilterChip(field, label, value, displayValue = value) {
+      if (!value) return "";
+      return `<button class="filter-btn active" type="button" data-filter-field="${escapeHtml(field)}" data-filter-value="${escapeHtml(value)}">${escapeHtml(label)}: ${escapeHtml(displayValue)}</button>`;
+    }
+
+    function renderActiveFilters() {
+      const chips = [
+        activeFilterChip("assignee", "Assignee", els.assignee.value),
+        activeFilterChip("priority", "Priority", els.priority.value),
+        activeFilterChip("category", "Category", els.category.value),
+        activeFilterChip("status", "Status", els.status.value),
+        activeFilterChip("late", "Due", els.late.value, els.late.options[els.late.selectedIndex]?.textContent || els.late.value),
+        els.search.value ? `<button class="filter-btn active" type="button" data-filter-field="search" data-filter-value="${escapeHtml(els.search.value)}">Search: ${escapeHtml(els.search.value)}</button>` : ""
+      ].filter(Boolean);
+      if (!chips.length) {
+        els.activeFilters.innerHTML = `<span class="small">No filters active. Click a name under By Assignee to show that person's tasks.</span>`;
+        return;
+      }
+      els.activeFilters.innerHTML = chips.join("") + `<button class="filter-btn" type="button" id="clearFiltersBtn">Clear all</button>`;
+    }
+
+    function hasActiveFilters() {
+      return Boolean(
+        els.search.value.trim() ||
+        els.priority.value ||
+        els.category.value ||
+        els.assignee.value ||
+        els.status.value ||
+        els.late.value
+      );
+    }
+
+    function gateMatchesFilters(gate) {
+      const query = els.search.value.trim().toLowerCase();
+      const gateText = [
+        gate.id, gate.name, gate.state, gate.owner,
+        ...(gate.assignees || []), gate.summary
+      ].join(" ").toLowerCase();
+      const due = dueState(gate);
+      return (!query || gateText.includes(query))
+        && (!els.assignee.value || gate.owner === els.assignee.value || (gate.assignees || []).includes(els.assignee.value))
+        && (!els.late.value || due.bucket === els.late.value);
+    }
+
+    function applyFilters() {
+      const query = els.search.value.trim().toLowerCase();
+      filteredTasks = (dashboardData?.tasks || []).filter(task => {
+        const haystack = [
+          task.id, task.title, task.category, task.priority, task.status, task.owner,
+          ...(task.assignees || []), task.description, task.acceptance, task.source
+        ].join(" ").toLowerCase();
+        const due = dueState(task);
+        return (!query || haystack.includes(query))
+          && (!els.priority.value || task.priority === els.priority.value)
+          && (!els.category.value || task.category === els.category.value)
+          && (!els.assignee.value || (task.assignees || []).includes(els.assignee.value))
+          && (!els.status.value || normalizeStatus(task.status) === els.status.value)
+          && (!els.late.value || due.bucket === els.late.value);
+      }).sort((a, b) => {
+        const urgency = (Number(b.urgencyScore || 0) - Number(a.urgencyScore || 0));
+        if (urgency) return urgency;
+        const priority = priorityRank(b.priority) - priorityRank(a.priority);
+        if (priority) return priority;
+        return String(a.dueDate || "9999-99-99").localeCompare(String(b.dueDate || "9999-99-99"));
+      });
+      filteredGates = (dashboardData?.gates || []).filter(gateMatchesFilters);
+    }
+
+    function renderMetrics() {
+      const allTasks = dashboardData?.tasks || [];
+      const tasks = hasActiveFilters() ? filteredTasks : allTasks;
+      const openTasks = tasks.filter(task => !isClosed(task.status));
+      const overdue = openTasks.filter(task => dueState(task).bucket === "late");
+      const dueSoon = openTasks.filter(task => ["today", "soon"].includes(dueState(task).bucket));
+      const p0 = openTasks.filter(task => ["P0-0", "P0"].includes(task.priority));
+      const allGates = dashboardData?.gates || [];
+      const gates = hasActiveFilters() ? filteredGates : allGates;
+      const redGates = gates.filter(gate => gate.state === "red").length;
+      const metrics = [
+        ["Total open tasks", openTasks.length, hasActiveFilters() ? `${tasks.length} shown of ${allTasks.length} tracked` : `${allTasks.length} total tracked`],
+        ["Late tasks", overdue.length, overdue.length ? "Needs same-day owner action" : "No late tasks today"],
+        ["Due in 48h", dueSoon.length, "Includes due today and tomorrow/next day"],
+        ["Red gates", redGates, hasActiveFilters() ? `${gates.length} shown of ${allGates.length} gates` : `${allGates.length} gates tracked`],
+        ["P0/P0-0 open", p0.length, "Immediate control work"],
+        ["Owners", new Set(openTasks.flatMap(t => t.assignees || [])).size, "People or teams assigned"],
+        ["Live refresh", `${dashboardData?.refreshSeconds || 15}s`, "JSON polling interval"],
+        ["Last source update", new Date(dashboardData?.generatedAt || Date.now()).toLocaleDateString(), dashboardData?.timezone || ""]
+      ];
+      els.metrics.innerHTML = metrics.map(([label, value, hint]) => `
+        <article class="metric">
+          <div class="label">${escapeHtml(label)}</div>
+          <div class="value">${escapeHtml(value)}</div>
+          <div class="hint">${escapeHtml(hint)}</div>
+        </article>
+      `).join("");
+    }
+
+    function renderGates() {
+      const gates = hasActiveFilters() ? filteredGates : (dashboardData?.gates || []);
+      if (!gates.length) {
+        els.gates.innerHTML = `<div class="empty">No gates match the active filters.</div>`;
+        return;
+      }
+      els.gates.innerHTML = gates.map(gate => {
+        const due = dueState(gate);
+        return `
+          <article class="gate" style="--gate-color:${gateColor(gate.state)}">
+            <div class="stack">
+              <span class="pill ${gatePill(gate.state)}">${escapeHtml(String(gate.state).toUpperCase())}</span>
+              <span class="late-badge ${due.className}">${escapeHtml(due.label)}</span>
+            </div>
+            <div class="gate-name">${escapeHtml(gate.name)}</div>
+            <div class="gate-owner">Owner: ${escapeHtml(gate.owner)}<br>Assignees: ${escapeHtml((gate.assignees || []).join(", "))}</div>
+            <div class="gate-summary">${escapeHtml(gate.summary)}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function countBy(items, getKeys) {
+      const counts = new Map();
+      items.forEach(item => {
+        const keys = Array.isArray(getKeys(item)) ? getKeys(item) : [getKeys(item)];
+        keys.filter(Boolean).forEach(key => counts.set(key, (counts.get(key) || 0) + 1));
+      });
+      return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    }
+
+    function renderBars(target, rows) {
+      const max = Math.max(1, ...rows.map(row => row[1]));
+      target.innerHTML = rows.length ? rows.map(([label, value]) => `
+        <div class="bar-row">
+          <div class="bar-label" title="${escapeHtml(label)}">${escapeHtml(label)}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4, (value / max) * 100)}%"></div></div>
+          <div class="small">${value}</div>
+        </div>
+      `).join("") : `<div class="empty">No open work in this view.</div>`;
+    }
+
+    function renderCharts() {
+      const sourceTasks = hasActiveFilters() ? filteredTasks : (dashboardData?.tasks || []);
+      const openTasks = sourceTasks.filter(task => !isClosed(task.status));
+      renderBars(els.categoryBars, countBy(openTasks, task => task.category));
+      renderBars(els.assigneeBars, countBy(openTasks, task => task.assignees || []));
+    }
+
+    function renderTasks() {
+      els.resultCount.textContent = `${filteredTasks.length} tasks shown from ${(dashboardData?.tasks || []).length} tracked`;
+      if (!filteredTasks.length) {
+        els.taskList.innerHTML = `<div class="empty">No tasks match these filters.</div>`;
+        return;
+      }
+      els.taskList.innerHTML = filteredTasks.map(task => {
+        const due = dueState(task);
+        const isLate = due.bucket === "late";
+        return `
+          <article class="task-card ${isLate ? "is-late" : ""}">
+            <div>
+              <div class="task-id">${escapeHtml(task.id)}</div>
+              <div class="stack" style="margin-top:8px;">
+                <span class="pill ${task.priority === "P0-0" || task.priority === "P0" ? "pill-red" : task.priority === "P1" ? "pill-yellow" : "pill-blue"}">${escapeHtml(task.priority)}</span>
+                <span class="pill ${statusPill(task.status)}">${escapeHtml(normalizeStatus(task.status))}</span>
+              </div>
+            </div>
+            <div>
+              <div class="task-title">${escapeHtml(task.title)}</div>
+              ${task.colour ? `<div class="task-desc" style="margin-bottom:7px;"><span class="colour-dot colour-${escapeHtml(task.colour)}"></span><strong>${escapeHtml(task.colour)}</strong>${task.colourReason ? ` — ${escapeHtml(task.colourReason)}` : ""}</div>` : ""}
+              <div class="task-desc">${escapeHtml(task.description)}</div>
+              ${task.plainExplanationRo ? `<div class="plain-explanation"><strong>Explicație:</strong> ${escapeHtml(task.plainExplanationRo)}</div>` : ""}
+              <div class="task-desc" style="margin-top:7px;"><strong>Acceptance:</strong> ${escapeHtml(task.acceptance)}</div>
+              ${task.supportingFile ? `<a class="support-link" href="${escapeHtml(task.supportingFile)}">Supporting file</a>` : ""}
+            </div>
+            <div>
+              <div class="field-label">Assignees</div>
+              <div class="stack">${(task.assignees || []).map(name => `<span class="chip">${escapeHtml(name)}</span>`).join("")}</div>
+            </div>
+            <div>
+              <div class="field-label">Due / late</div>
+              <div class="field-main">${escapeHtml(task.dueDate || "No due date")}</div>
+              <div style="margin-top:7px;"><span class="late-badge ${due.className}">${escapeHtml(due.label)}</span></div>
+            </div>
+            <div>
+              <div class="field-label">Category / source</div>
+              <div class="field-main">${escapeHtml(task.category)}</div>
+              <div class="small" style="margin-top:7px;">${escapeHtml(task.source || "")}</div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderFooter() {
+      const overrides = dashboardData?.ownerOverrides || [];
+      els.footer.innerHTML = `
+        <strong>Owner overrides preserved:</strong> ${overrides.map(escapeHtml).join(" ")}
+        <br>Data source: <code>${escapeHtml(DATA_URL)}</code>. This file is a standalone local snapshot generated from the current JSON. Current browser date: ${todayStart().toLocaleDateString()}.
+      `;
+    }
+
+    function render() {
+      if (!dashboardData) return;
+      applyFilters();
+      renderMetrics();
+      renderQuickFilters();
+      renderActiveFilters();
+      renderGates();
+      renderCharts();
+      renderTasks();
+      renderFooter();
+    }
+
+    function csvEscape(value) {
+      const raw = String(value ?? "");
+      return /[",\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
+    }
+
+    function exportCsv() {
+      const rows = [["id", "priority", "category", "status", "owner", "assignees", "dueDate", "dueState", "title", "acceptance"]];
+      filteredTasks.forEach(task => rows.push([
+        task.id,
+        task.priority,
+        task.category,
+        normalizeStatus(task.status),
+        task.owner,
+        (task.assignees || []).join("; "),
+        task.dueDate || "",
+        dueState(task).label,
+        task.title,
+        task.acceptance
+      ]));
+      const csv = rows.map(row => row.map(csvEscape).join(",")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `ruo-task-dashboard-${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function setupEvents() {
+      [els.search, els.priority, els.category, els.assignee, els.status, els.late].forEach(el => {
+        el.addEventListener("input", render);
+        el.addEventListener("change", render);
+      });
+      document.getElementById("refreshBtn").addEventListener("click", () => loadData(true));
+      document.getElementById("csvBtn").addEventListener("click", exportCsv);
+      document.getElementById("printBtn").addEventListener("click", () => window.print());
+      document.getElementById("themeBtn").addEventListener("click", event => {
+        const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+        document.documentElement.dataset.theme = next;
+        event.currentTarget.textContent = next === "light" ? "Dark mode" : "Light mode";
+      });
+      document.getElementById("pauseBtn").addEventListener("click", event => {
+        livePaused = !livePaused;
+        event.currentTarget.textContent = livePaused ? "Resume live" : "Pause live";
+        pulseStatus(livePaused ? "Live polling paused." : "Live polling resumed.");
+      });
+      document.addEventListener("click", event => {
+        const button = event.target.closest("[data-filter-field]");
+        if (!button) return;
+        const field = button.dataset.filterField;
+        const value = button.dataset.filterValue || "";
+        setFilter(field, value);
+      });
+      els.activeFilters.addEventListener("click", event => {
+        if (event.target.closest("#clearFiltersBtn")) {
+          clearFilters();
+        }
+      });
+    }
+
+    function startPolling() {
+      if (refreshHandle) clearInterval(refreshHandle);
+      refreshHandle = setInterval(() => {
+        if (!livePaused) loadData(false);
+      }, (dashboardData?.refreshSeconds || 15) * 1000);
+    }
+
+    setupEvents();
+    loadData(false).then(startPolling);
+  </script>
+</body>
+</html>
