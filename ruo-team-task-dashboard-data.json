@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-30T11:08:18Z",
+  "generatedAt": "2026-06-30T11:12:35Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -19,12 +19,13 @@
     "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized.",
     "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries.",
     "Urgent AOD9604 correction: website and labels must show 5 mg, not 10 mg.",
-    "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow."
+    "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow.",
+    "Chapter model 2026-06-30: Compliance & Online Presence (Vic); Tech/Admin & AI Agents (Narcis); Products, SKUs & Budgeting (Pafi); Purchasing & Logistics (Pafi lead, Vic compliance, Narcis admin); Sales & Marketing (Pafi sales workflow, Vic rules/online presence, Narcis/Dan execution)."
   ],
   "gates": [
     {
-      "id": "gate-site",
-      "name": "RUO Compliance / Website Gate",
+      "id": "gate-compliance-online-presence",
+      "name": "Compliance & Online Presence",
       "state": "red",
       "owner": "Vic",
       "assignees": [
@@ -33,22 +34,67 @@
         "Pafi"
       ],
       "dueDate": "",
-      "summary": "Vic owns RUO compliance, allowed products on website, affiliate rules, and online-presence rules. Narcis implements approved site/admin changes; Pafi owns product/SKU and sales implications."
+      "summary": "Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules. Website compliance waits for lawyer boundaries; Narcis implements approved changes; Pafi owns product/sales implications."
     },
     {
-      "id": "gate-counsel-broker",
-      "name": "Counsel/Broker Gate",
+      "id": "gate-tech-admin-ai",
+      "name": "Tech/Admin & AI Agents",
       "state": "yellow",
-      "owner": "Vic",
+      "owner": "Narcis",
       "assignees": [
+        "Narcis",
+        "Codex/Tech",
+        "Pafi",
         "Vic"
       ],
-      "dueDate": "2026-06-24",
-      "summary": "Vic owns the counsel/customs broker packet and written opinion is needed before website compliance execution or legal/import posture is treated as cleared."
+      "dueDate": "2026-07-03",
+      "summary": "Narcis owns tech creation/admin, Supabase/dashboard operations, approval register, backups, Hermes Telegram stock-management agent, and peptide/supplement protocol agent."
+    },
+    {
+      "id": "gate-products-skus-budgeting",
+      "name": "Products, SKUs & Budgeting",
+      "state": "yellow",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Vic",
+        "Narcis"
+      ],
+      "dueDate": "2026-07-03",
+      "summary": "Pafi owns product/SKU disposition, pricing/margin, budget, protocol economics, and sales-workflow economics. Vic signs off compliance and Narcis implements admin/site fields."
+    },
+    {
+      "id": "gate-purchasing-logistics",
+      "name": "Purchasing & Logistics",
+      "state": "red",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Vic",
+        "Narcis",
+        "Dragos"
+      ],
+      "dueDate": "2026-07-02",
+      "summary": "Purchasing/logistics remains blocked by SO-04 structured line proof, Ibiza 69-vial in-transit stock, accessory proof/QC, AOD label correction, and Retatrutide premium restock/COA planning."
+    },
+    {
+      "id": "gate-sales-marketing",
+      "name": "Sales & Marketing",
+      "state": "yellow",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Vic",
+        "Narcis",
+        "Dan",
+        "Dragos"
+      ],
+      "dueDate": "2026-07-04",
+      "summary": "Pafi owns sales workflow; Vic owns marketing/affiliate/online-presence rules; Narcis and Dan execute only inside approved rule sets. Affiliate/referral engine is planned, not active."
     },
     {
       "id": "gate-cash",
-      "name": "Cash Gate",
+      "name": "Cash / Dragos Proof",
       "state": "red",
       "owner": "Dragos",
       "assignees": [
@@ -56,66 +102,14 @@
         "Narcis"
       ],
       "dueDate": "2026-06-22",
-      "summary": "Dragos provides real balances/proofs; Narcis packages the cash packet into dashboard/evidence format. Pafi is not owner of this task."
-    },
-    {
-      "id": "gate-dashboard",
-      "name": "Supabase/Dashboard Gate",
-      "state": "green",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis",
-        "Codex/Tech",
-        "Pafi"
-      ],
-      "dueDate": "2026-06-24",
-      "summary": "Narcis owns tech creation/admin for Supabase/dashboard and Hermes agent workflows. Supabase/dashboard remains active operating direction; agent writes remain approval-gated."
-    },
-    {
-      "id": "gate-sku",
-      "name": "SKU Gate",
-      "state": "yellow",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi",
-        "Vic",
-        "Narcis"
-      ],
-      "dueDate": "2026-06-25",
-      "summary": "Pafi owns products/SKUs, budgeting, and sales workflow; Vic provides allowed-product compliance signoff; Narcis implements dashboard/site/admin fields."
-    },
-    {
-      "id": "gate-accessories",
-      "name": "Accessories Gate",
-      "state": "yellow",
-      "owner": "Vic",
-      "assignees": [
-        "Vic",
-        "Pafi",
-        "Narcis"
-      ],
-      "dueDate": "2026-06-25",
-      "summary": "Vic owns accessory compliance/proof/QC/policy gates; Pafi owns product/budget choices; Narcis supports site/admin implementation after gates pass."
-    },
-    {
-      "id": "gate-dragos",
-      "name": "Dragos Gate",
-      "state": "red",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi",
-        "Narcis",
-        "Dragos"
-      ],
-      "dueDate": "2026-06-26",
-      "summary": "Pafi owns sales workflow and Dragos operating boundaries; Narcis packages tech/admin evidence and notification flows; Dragos remains in observation mode until cash reconciliation and dummy handoff pass."
+      "summary": "Dragos provides real balances/proofs; Narcis packages the cash packet into dashboard/evidence format. This remains the single non-Pafi/Vic/Narcis blocker."
     }
   ],
   "tasks": [
     {
       "id": "P0-001",
       "title": "Website Compliance",
-      "category": "Website",
+      "category": "Compliance & Online Presence",
       "priority": "P0",
       "urgencyScore": 98,
       "status": "waiting",
@@ -144,12 +138,15 @@
       "completedControlsPreserved": [
         "P0-002 calculator/reconstitution public gating marked done by Pafi on 2026-06-24",
         "P0-004 checkout intended-use acknowledgement marked done by Pafi on 2026-06-24"
-      ]
+      ],
+      "workstream": "Website",
+      "chapter": "Compliance & Online Presence",
+      "chapterOwner": "Vic"
     },
     {
       "id": "P0-011",
       "title": "Correct AOD9604 website strength from 10 mg to 5 mg",
-      "category": "Website",
+      "category": "Products, SKUs & Budgeting",
       "priority": "P0",
       "urgencyScore": 97.8,
       "status": "open",
@@ -160,12 +157,15 @@
       "dueDate": "2026-06-24",
       "source": "Owner request 2026-06-24",
       "description": "Urgent factual product correction: update AOD9604 website strength from 10 mg to 5 mg everywhere it appears. Check product title, product variant/option, product description, pricing table, cart/checkout display, related product blocks, search/category cards, .com/.ro surfaces, schema/JSON-LD, meta snippets, llms.txt/llms-full.txt, and any support/site text that repeats the strength. This is a factual strength correction, not a lawyer-gated copy rewrite.",
-      "acceptance": "AOD9604 displays 5 mg everywhere on public and generated website surfaces; no AOD9604 10 mg references remain except archived evidence; Narcis provides changed URL list and screenshots/search proof."
+      "acceptance": "AOD9604 displays 5 mg everywhere on public and generated website surfaces; no AOD9604 10 mg references remain except archived evidence; Narcis provides changed URL list and screenshots/search proof.",
+      "workstream": "Website",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-012",
       "title": "Re-order AOD9604 labels with 5 mg instead of 10 mg",
-      "category": "Logistics",
+      "category": "Purchasing & Logistics",
       "priority": "P0",
       "urgencyScore": 97.7,
       "status": "open",
@@ -177,12 +177,15 @@
       "dueDate": "2026-06-24",
       "source": "Owner request 2026-06-24",
       "description": "Narcis and Dragos coordinate the AOD9604 label correction: re-order/reprint labels that say 5 mg instead of 10 mg, update the label/design/order file, and prevent old 10 mg labels from being used on 5 mg stock. Dragos must know which labels are valid before any handoff/delivery.",
-      "acceptance": "Proof of 5 mg label reorder/reprint is saved; design/order file says AOD9604 5 mg; any old 10 mg labels are segregated, destroyed, or marked not-for-use; Dragos confirms only 5 mg labels are used going forward."
+      "acceptance": "Proof of 5 mg label reorder/reprint is saved; design/order file says AOD9604 5 mg; any old 10 mg labels are segregated, destroyed, or marked not-for-use; Dragos confirms only 5 mg labels are used going forward.",
+      "workstream": "Logistics",
+      "chapter": "Purchasing & Logistics",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-0-001",
       "title": "Create 48h live-state register",
-      "category": "Administration",
+      "category": "Products, SKUs & Budgeting",
       "priority": "P0-0",
       "urgencyScore": 100,
       "status": "open",
@@ -195,12 +198,15 @@
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Create a simple 48-hour snapshot of what is actually live or not live right now: D2C sales live, ads not running, website compliance waiting for lawyer opinion, high-revenue SKUs continue selling, Dragos collaborator sales not active yet, Supabase/dashboard active, Airtable frozen, accessories waiting for proof/QC. This is a status register, not a freeze.",
-      "acceptance": "Each item has state, owner, next action, due date if relevant, and proof/evidence link. The team can open one board and see what is live, blocked, waiting, or ready."
+      "acceptance": "Each item has state, owner, next action, due date if relevant, and proof/evidence link. The team can open one board and see what is live, blocked, waiting, or ready.",
+      "workstream": "Administration",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-0-002",
       "title": "Create red/yellow/green gate scoreboard",
-      "category": "Administration",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P0-0",
       "urgencyScore": 99,
       "status": "open",
@@ -214,12 +220,15 @@
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Maintain daily gate states for Site, Counsel/Broker, Cash, Supabase/Dashboard, SKU, Accessories, and Dragos. Narcis owns the admin/dashboard operating view; Pafi owns product/sales inputs; Vic owns compliance inputs.",
-      "acceptance": "Every gate has state, owner, blocker, proof needed, and next action."
+      "acceptance": "Every gate has state, owner, blocker, proof needed, and next action.",
+      "workstream": "Administration",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P0-0-004",
       "title": "Prepare counsel and customs broker packet",
-      "category": "Compliance",
+      "category": "Compliance & Online Presence",
       "priority": "P0-0",
       "urgencyScore": 97,
       "status": "open",
@@ -231,12 +240,15 @@
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Vic owns the counsel/customs broker packet: live-state summary, current claims/channel examples, SKU/status list, suppliers, import flow, affiliate posture, B2B inbound position, COA/SDS assumptions, and exact go/no-go questions.",
-      "acceptance": "Vic has a packet ready to send/review with counsel and customs broker. No legal/import posture is treated as cleared until written opinion/response exists."
+      "acceptance": "Vic has a packet ready to send/review with counsel and customs broker. No legal/import posture is treated as cleared until written opinion/response exists.",
+      "workstream": "Compliance",
+      "chapter": "Compliance & Online Presence",
+      "chapterOwner": "Vic"
     },
     {
       "id": "P0-0-005",
       "title": "Close Dragos cash packet",
-      "category": "Financial",
+      "category": "Products, SKUs & Budgeting",
       "priority": "P0-0",
       "urgencyScore": 96,
       "status": "overdue",
@@ -248,12 +260,15 @@
       "dueDate": "2026-06-22",
       "source": "Owner override 2026-06-24",
       "description": "Dragos provides the real cash/Zen/crypto/receivable/proof data; Narcis helps package it into the dashboard/evidence format. Separate company money owed from any back-pay or personal-stock discussion.",
-      "acceptance": "Actual balances, proofs, receivables, and personal-stock debt are recorded cleanly; Pafi is not treated as the owner of this task."
+      "acceptance": "Actual balances, proofs, receivables, and personal-stock debt are recorded cleanly; Pafi is not treated as the owner of this task.",
+      "workstream": "Financial",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-0-006",
       "title": "Move active operating ledger into Supabase/dashboard",
-      "category": "Data / Dashboard",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P0-0",
       "urgencyScore": 95,
       "status": "done",
@@ -267,12 +282,15 @@
       "description": "Supabase/dashboard becomes the active operating system for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links. Airtable remains frozen/read-only legacy evidence. Codex/agents remain read-only in Supabase unless Pafi explicitly approves a write.",
       "acceptance": "No new operational writes go to Airtable. Supabase/dashboard can rebuild current operating state. Any Supabase write by Codex/agents requires explicit Pafi approval and must be visibly marked as Pafi-authorized with timestamp/source.",
       "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24: active operating ledger moved into Supabase/dashboard direction; Airtable remains frozen/read-only legacy evidence."
+      "completionNote": "Marked done by Pafi on 2026-06-24: active operating ledger moved into Supabase/dashboard direction; Airtable remains frozen/read-only legacy evidence.",
+      "workstream": "Data / Dashboard",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P0-0-007",
       "title": "Airtable/Supabase payment sync completed before Airtable freeze",
-      "category": "Data / Dashboard",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P0-0",
       "urgencyScore": 94,
       "status": "done",
@@ -286,12 +304,15 @@
       "description": "Narcis reconciled Airtable with Supabase/dashboard and updated payments/transactions before Airtable freeze.",
       "acceptance": "Airtable is now read-only legacy evidence; Supabase/dashboard is the active place for payments, transactions, balances, proofs, and exceptions.",
       "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24; Airtable freeze decision recorded the same day."
+      "completionNote": "Marked done by Pafi on 2026-06-24; Airtable freeze decision recorded the same day.",
+      "workstream": "Data / Dashboard",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P0-005",
       "title": "Produce 6-month budget and reserve allocation",
-      "category": "Financial",
+      "category": "Products, SKUs & Budgeting",
       "priority": "P0",
       "urgencyScore": 94,
       "status": "open",
@@ -303,12 +324,15 @@
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Split legal/customs/QA, peptide OpCo, accessories, owner repayment, Dragos compensation, COA/testing, inventory, ops, AI/data, and contingency.",
-      "acceptance": "Budget states what Vic can commit and which reserves are protected."
+      "acceptance": "Budget states what Vic can commit and which reserves are protected.",
+      "workstream": "Financial",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-006",
       "title": "Create canonical SKU pricing and margin table",
-      "category": "Financial",
+      "category": "Products, SKUs & Budgeting",
       "priority": "P0",
       "urgencyScore": 92,
       "status": "open",
@@ -321,12 +345,15 @@
       "dueDate": "2026-06-25",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Build table with supplier cost, landed cost, public price, margin, discount/promoter/CAC cap, reorder status, counsel flag, and active copy status. Pafi owns commercial pricing/budget logic; Vic reviews compliance/channel caps; Narcis supports dashboard/admin implementation.",
-      "acceptance": "Each SKU has one pricing truth and exception notes."
+      "acceptance": "Each SKU has one pricing truth and exception notes.",
+      "workstream": "Financial",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-007",
       "title": "Build SKU disposition table",
-      "category": "Logistics",
+      "category": "Products, SKUs & Budgeting",
       "priority": "P0",
       "urgencyScore": 91,
       "status": "open",
@@ -339,12 +366,15 @@
       "dueDate": "2026-06-25",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Classify every SKU by continue, cleanup, COA needed, margin review, reorder focus, counsel review, or inbound-B2B support. Pafi owns product/SKU disposition; Vic owns allowed-product compliance signoff; Narcis implements dashboard/site/admin status fields.",
-      "acceptance": "No SKU status is inferred from memory or chat. Each SKU has both a Pafi commercial status and a Vic compliance/allowed-product status before public promotion or affiliate eligibility."
+      "acceptance": "No SKU status is inferred from memory or chat. Each SKU has both a Pafi commercial status and a Vic compliance/allowed-product status before public promotion or affiliate eligibility.",
+      "workstream": "Logistics",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-008",
       "title": "Confirm Vic accessory proof and low-risk MVP split",
-      "category": "Accessories",
+      "category": "Purchasing & Logistics",
       "priority": "P0",
       "urgencyScore": 90,
       "status": "open",
@@ -356,12 +386,15 @@
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Collect first order proof and split accessories into low-risk MVP vs legal-gated items.",
-      "acceptance": "Proof saved; copy only covers storage, transport, and organization unless stronger evidence exists."
+      "acceptance": "Proof saved; copy only covers storage, transport, and organization unless stronger evidence exists.",
+      "workstream": "Accessories",
+      "chapter": "Purchasing & Logistics",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-010",
       "title": "Freeze Airtable as read-only legacy source",
-      "category": "Data / Dashboard",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P0",
       "urgencyScore": 89,
       "status": "done",
@@ -375,12 +408,15 @@
       "completedAt": "2026-06-24",
       "source": "Owner decision 2026-06-24",
       "description": "Stop using Airtable for new operational writes. Keep it only as frozen/read-only historical evidence while the active operating layer moves to Supabase/dashboard. Supabase access for Codex/agents is read-only by default.",
-      "acceptance": "All new payments, transactions, stock movements, SKU states, approvals, and evidence links belong in Supabase/dashboard, but Codex/agents write only with explicit Pafi approval and visible Pafi-authorized marking; Airtable is referenced only for legacy reconciliation/export."
+      "acceptance": "All new payments, transactions, stock movements, SKU states, approvals, and evidence links belong in Supabase/dashboard, but Codex/agents write only with explicit Pafi approval and visible Pafi-authorized marking; Airtable is referenced only for legacy reconciliation/export.",
+      "workstream": "Data / Dashboard",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P1-004",
       "title": "Rerun Narcis dashboard on canonical Ehsan basis",
-      "category": "Data / Dashboard",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P1",
       "urgencyScore": 86,
       "status": "done",
@@ -394,12 +430,15 @@
       "description": "Dashboard treasury aligns to corrected EUR 5,500 + USD 1,800 Ehsan basis; old ~$6,420 comparison carries the $264.95 offset note if shown.",
       "acceptance": "Dashboard no longer uses stale comparison as current truth.",
       "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24: Narcis dashboard rerun on canonical Ehsan basis completed."
+      "completionNote": "Marked done by Pafi on 2026-06-24: Narcis dashboard rerun on canonical Ehsan basis completed.",
+      "workstream": "Data / Dashboard",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P1-005",
       "title": "Freeze Airtable and migrate movement/status cleanup to Supabase",
-      "category": "Data / Dashboard",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P0",
       "urgencyScore": 90.5,
       "status": "done",
@@ -414,12 +453,15 @@
       "description": "Airtable is frozen/read-only; old Airtable movement types and stale exception statuses must be mapped into Supabase, not cleaned in Airtable as the long-term layer.",
       "acceptance": "Team treats Airtable as legacy evidence only; Supabase/dashboard owns movement types, exception status, payments, balances, SKU status, approvals, and evidence links going forward.",
       "completedAt": "2026-06-24",
-      "completionNote": "Pafi decided on 2026-06-24: freeze Airtable, move to Supabase."
+      "completionNote": "Pafi decided on 2026-06-24: freeze Airtable, move to Supabase.",
+      "workstream": "Data / Dashboard",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P1-006",
       "title": "Write Dragos operating contract and local handoff checklist",
-      "category": "Sales / Dragos",
+      "category": "Sales & Marketing",
       "priority": "P1",
       "urgencyScore": 84,
       "status": "open",
@@ -432,12 +474,15 @@
       "dueDate": "2026-06-26",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Contract covers allowed tasks, cannot-do list, approval triggers, evidence rule, AI boundary, escalation, and no off-ledger/direct cash default.",
-      "acceptance": "Dragos cannot interpret observation mode as commercial activation."
+      "acceptance": "Dragos cannot interpret observation mode as commercial activation.",
+      "workstream": "Sales / Dragos",
+      "chapter": "Sales & Marketing",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P1-007",
       "title": "Build Dragos observation-mode assets",
-      "category": "Sales / Dragos",
+      "category": "Sales & Marketing",
       "priority": "P1",
       "urgencyScore": 83,
       "status": "open",
@@ -450,12 +495,15 @@
       "dueDate": "2026-06-26",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Create contact-map schema, collaborator qualification rubric, field-feedback template, approved/banned phrases, refusal language, and weekly AI report spec.",
-      "acceptance": "Dragos can collect field intelligence before commercial activation; no collaborator code or payout draft is active."
+      "acceptance": "Dragos can collect field intelligence before commercial activation; no collaborator code or payout draft is active.",
+      "workstream": "Sales / Dragos",
+      "chapter": "Sales & Marketing",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P1-008",
       "title": "Confirm owner settlement after Dragos cash is known",
-      "category": "Financial",
+      "category": "Products, SKUs & Budgeting",
       "priority": "P1",
       "urgencyScore": 80,
       "status": "done",
@@ -469,12 +517,15 @@
       "description": "Document Vic net receivable USD 5,622.92, Pafi USD 537.18, Dragos recovery, back-pay payable, and monthly net-sales percentage separately.",
       "acceptance": "Settlement uses actual Dragos cash data, not assumptions.",
       "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24: audit closed; owner settlement confirmation no longer active."
+      "completionNote": "Marked done by Pafi on 2026-06-24: audit closed; owner settlement confirmation no longer active.",
+      "workstream": "Financial",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P1-009",
       "title": "Create approval register for commercial and public changes",
-      "category": "Administration",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P1",
       "urgencyScore": 79,
       "status": "planned",
@@ -488,12 +539,15 @@
       "dueDate": "2026-06-30",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Track approvals for public copy, price changes, discount codes, supplier orders, import decisions, live messages, refunds/replacements, and marketplace listings. Narcis owns technical/admin creation of the approval register; Vic owns compliance approvals; Pafi owns product, budget, and sales approvals.",
-      "acceptance": "Every mutating action has approval ID, evidence link, timestamp, and owner."
+      "acceptance": "Every mutating action has approval ID, evidence link, timestamp, and owner.",
+      "workstream": "Administration",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P1-010",
       "title": "Create daily export and checksum backup",
-      "category": "Data / Dashboard",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P1",
       "urgencyScore": 78,
       "status": "planned",
@@ -505,12 +559,15 @@
       "dueDate": "2026-06-30",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Export dashboard-critical Supabase tables daily and store checksums to detect drift. Reads are allowed; writes/backfills require explicit Pafi approval and Pafi-authorized marking. Narcis owns ongoing admin/technical backup workflow; Codex/Tech supports implementation as needed.",
-      "acceptance": "Team can prove whether data changed and when; any agent-created mutation is traceable to explicit Pafi approval."
+      "acceptance": "Team can prove whether data changed and when; any agent-created mutation is traceable to explicit Pafi approval.",
+      "workstream": "Data / Dashboard",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P1-011",
       "title": "Integrate Hermes agent into the Telegram group",
-      "category": "AI / Workflow",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P1",
       "urgencyScore": 77,
       "status": "open",
@@ -522,12 +579,15 @@
       "dueDate": "2026-06-26",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Narcis integrates the Hermes agent into the shared Telegram group so the team uses one agent for everyone. This is a Narcis-owned coordination/setup task. Scope includes the new Hermes Telegram stock-management agent and the Hermes agent for peptides/supplements protocols.",
-      "acceptance": "Hermes is present in the shared Telegram group, the team knows to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented. Hermes Telegram stock-management and peptide/supplement protocol agent responsibilities are documented, tested in read-only/draft-first mode, and routed to the correct group/admin workflow."
+      "acceptance": "Hermes is present in the shared Telegram group, the team knows to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented. Hermes Telegram stock-management and peptide/supplement protocol agent responsibilities are documented, tested in read-only/draft-first mode, and routed to the correct group/admin workflow.",
+      "workstream": "AI / Workflow",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P1-012",
       "title": "Assign Dan to controlled social media and stiri.peptralabs.ro support",
-      "category": "Marketing",
+      "category": "Sales & Marketing",
       "priority": "P1",
       "urgencyScore": 76,
       "status": "open",
@@ -541,12 +601,15 @@
       "dueDate": "2026-06-27",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Dan currently handles social media and stiri.peptralabs.ro. Put him into the operating plan for approved social/news execution after the RUO-safe content model is defined. Vic owns the online-presence compliance rule and approved themes; Dan/Narcis execute only inside the approved content and banned-claim boundaries.",
-      "acceptance": "Dan has a clear content queue, approval rule, banned-claim checklist, Hermes routing, and no public post/news item goes live with dosing, human-use, treatment, medical-benefit, injection, or passive-income claims. Vic-approved online-presence rules exist before any new public post/news item goes live."
+      "acceptance": "Dan has a clear content queue, approval rule, banned-claim checklist, Hermes routing, and no public post/news item goes live with dosing, human-use, treatment, medical-benefit, injection, or passive-income claims. Vic-approved online-presence rules exist before any new public post/news item goes live.",
+      "workstream": "Marketing",
+      "chapter": "Sales & Marketing",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P1-013",
       "title": "Use Dan for temporary delivery support until Bulgaria stock setup is ready",
-      "category": "Logistics",
+      "category": "Purchasing & Logistics",
       "priority": "P1",
       "urgencyScore": 75,
       "status": "planned",
@@ -559,12 +622,15 @@
       "dueDate": "2026-06-30",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Dan previously handled deliveries and can cover selected deliveries until the Bulgaria stock/logistics setup is ready.",
-      "acceptance": "Any Dan delivery is assigned through the dashboard, tied to a website/order ID, has stock movement and proof recorded, excludes direct/off-ledger cash by default, and includes no product advice or claim-making."
+      "acceptance": "Any Dan delivery is assigned through the dashboard, tied to a website/order ID, has stock movement and proof recorded, excludes direct/off-ledger cash by default, and includes no product advice or claim-making.",
+      "workstream": "Logistics",
+      "chapter": "Purchasing & Logistics",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P1-014",
       "title": "Activate SKU QR codes to direct Janoshik report pages",
-      "category": "Website / COA",
+      "category": "Compliance & Online Presence",
       "priority": "P1",
       "urgencyScore": 79,
       "status": "open",
@@ -577,12 +643,15 @@
       "dueDate": "2026-07-01",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Activate or generate QR codes for each SKU so scanning the SKU/label QR opens the matching Janoshik report page directly where a Janoshik report exists. Do not point QR codes to a generic homepage, generic lab archive, or wrong SKU/batch. For SKUs without a Janoshik report, use the approved COA absence state instead of creating a misleading QR. Narcis owns QR implementation; Vic confirms compliance/COA wording; Pafi confirms product/SKU mapping where needed.",
-      "acceptance": "Every active SKU has a QR status: direct Janoshik report URL verified, approved COA absence state, or blocked pending report. Narcis provides the SKU -> QR target map, changed label/site files if relevant, and scan-test proof for representative QR codes. Public wording uses Janoshik consistently and does not imply human-use safety."
+      "acceptance": "Every active SKU has a QR status: direct Janoshik report URL verified, approved COA absence state, or blocked pending report. Narcis provides the SKU -> QR target map, changed label/site files if relevant, and scan-test proof for representative QR codes. Public wording uses Janoshik consistently and does not imply human-use safety.",
+      "workstream": "Website / COA",
+      "chapter": "Compliance & Online Presence",
+      "chapterOwner": "Vic"
     },
     {
       "id": "P2-001",
       "title": "Prepare inbound B2B support packet",
-      "category": "Sales / B2B",
+      "category": "Sales & Marketing",
       "priority": "P2",
       "urgencyScore": 73,
       "status": "planned",
@@ -595,12 +664,15 @@
       "dueDate": "2026-07-03",
       "source": "Pafi ownership update 2026-06-30",
       "description": "No special B2B launch. If someone asks, deliver only with evidence and evaluate how B2B supports RUO positioning. Pafi owns sales workflow; Vic reviews compliance posture; Narcis supports admin/technical flow.",
-      "acceptance": "B2B handling is inbound/supporting only and does not create public campaign risk."
+      "acceptance": "B2B handling is inbound/supporting only and does not create public campaign risk.",
+      "workstream": "Sales / B2B",
+      "chapter": "Sales & Marketing",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P2-002",
       "title": "Build dummy website-paid order handoff and location notification flow",
-      "category": "Sales / Dragos",
+      "category": "Sales & Marketing",
       "priority": "P2",
       "urgencyScore": 72,
       "status": "planned",
@@ -614,12 +686,15 @@
       "dueDate": "2026-07-03",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Narcis builds/tests a dummy paid website-order flow from order paid -> location decision -> notification -> local handoff -> evidence record -> stock movement. The notification must route based on customer delivery location: Ibiza orders notify the Ibiza/local handoff channel; Bulgaria/Bucharest/other warehouse-flow orders notify the Bulgaria/central logistics channel. Include order ID, customer location, product/SKU, paid status, delivery/handoff route, responsible person, required proof, and no medical/product-advice text.",
-      "acceptance": "A dummy paid order can be processed without real collaborator activation. The correct Ibiza vs Bulgaria/central notification is selected from customer location, the handoff recipient sees only operational details, stock/evidence records are created or drafted, and the flow can be repeated safely before real use."
+      "acceptance": "A dummy paid order can be processed without real collaborator activation. The correct Ibiza vs Bulgaria/central notification is selected from customer location, the handoff recipient sees only operational details, stock/evidence records are created or drafted, and the flow can be repeated safely before real use.",
+      "workstream": "Sales / Dragos",
+      "chapter": "Sales & Marketing",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P2-003",
       "title": "Build read-only/draft-first AI agent suite",
-      "category": "AI / Workflow",
+      "category": "Tech/Admin & AI Agents",
       "priority": "P2",
       "urgencyScore": 70,
       "status": "planned",
@@ -633,12 +708,15 @@
       "dueDate": "2026-07-10",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Build AI helpers that can read the dashboard/Supabase/project context and draft actions or reports, but cannot change records by themselves. Examples: Daily Ops summary, Stock check, Finance check, Compliance check, Procurement draft, Accessories check, Ibiza Network update, and Weekly Business Reporter. Narcis owns tech creation/admin for the agent suite, including stock-management and peptide/supplement protocol workflows; agents remain read-only/draft-first unless explicitly Pafi-authorized.",
-      "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution."
+      "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution.",
+      "workstream": "AI / Workflow",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis"
     },
     {
       "id": "P2-004",
       "title": "Launch accessories site only after proof and policy gates",
-      "category": "Accessories",
+      "category": "Purchasing & Logistics",
       "priority": "P2",
       "urgencyScore": 68,
       "status": "planned",
@@ -651,12 +729,15 @@
       "dueDate": "2026-07-10",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Launch accesoriipeptide.ro only after proof, QC, copy, landed-cost, and eMAG/Amazon/Noon policy checks. Vic owns accessory/compliance gates and online-presence policy; Narcis supports site/admin implementation after gates pass.",
-      "acceptance": "Low-risk SKUs first; no unsupported sterility/cold-chain/dosing/injection claims."
+      "acceptance": "Low-risk SKUs first; no unsupported sterility/cold-chain/dosing/injection claims.",
+      "workstream": "Accessories",
+      "chapter": "Purchasing & Logistics",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P2-005",
       "title": "Create monthly budget tracking by operating bucket",
-      "category": "Financial",
+      "category": "Products, SKUs & Budgeting",
       "priority": "P2",
       "urgencyScore": 66,
       "status": "planned",
@@ -670,7 +751,198 @@
       "dueDate": "2026-07-10",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Create a monthly budget view grouped by operating buckets: legal/customs/QA, peptide operating company, accessories, owner repayment, AI/data/dashboard, marketing/content, logistics, and contingency. Track planned budget, actual spend, remaining reserve, owner/person responsible, evidence/proof link, and variance.",
-      "acceptance": "Dashboard shows budget vs actual by month and bucket, so Pafi/Vic can see how much runway remains and which category is over/under budget."
+      "acceptance": "Dashboard shows budget vs actual by month and bucket, so Pafi/Vic can see how much runway remains and which category is over/under budget.",
+      "workstream": "Financial",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
+    },
+    {
+      "id": "P0-013",
+      "title": "Resolve Ibiza 69-vial in-transit transfer and recount",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Inventory / Logistics",
+      "priority": "P0",
+      "urgencyScore": 90,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis",
+        "Dragos",
+        "Pafi"
+      ],
+      "dueDate": "2026-07-01",
+      "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30",
+      "description": "Resolve the Bucharest -> Ibiza 69-vial transfer that is deducted from Bucharest and present in Ibiza accounting but not physically arrived according to Pafi. Keep those vials treated as in-transit/not sellable until physical receipt and recount.",
+      "acceptance": "Receipt or non-receipt is evidenced; BPC-157 14, TB-500 5, Retatrutide 10, Mots-C 15, GHK-CU 15, and NAD+ 10 are either received/recounted or explicitly marked in-transit/not sellable in the operating view.",
+      "chapterOwner": "Pafi"
+    },
+    {
+      "id": "P0-014",
+      "title": "Structure SO-04 restock items and purchasing proof",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Purchasing / Restock",
+      "priority": "P0",
+      "urgencyScore": 89,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Dragos",
+        "Narcis"
+      ],
+      "dueDate": "2026-07-01",
+      "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30",
+      "description": "SO-04 is the only open Supabase restock: 250 vials ordered, paid by Dragos via Zen, but restock_items has 0 structured line rows. Build the purchasing proof and line-item breakdown before treating the order as operationally clear.",
+      "acceptance": "Supplier/order proof, payment proof, expected SKU/qty breakdown, ETA/status, and structured restock item plan are saved. No agent infers SO-04 SKU contents from legacy reports unless Pafi explicitly authorizes that cross-check.",
+      "chapterOwner": "Pafi"
+    },
+    {
+      "id": "P0-015",
+      "title": "Prepare Retatrutide premium restock and expanded COA plan",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Purchasing / QA",
+      "priority": "P0",
+      "urgencyScore": 88,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Vic",
+        "Narcis"
+      ],
+      "dueDate": "2026-07-02",
+      "source": "Implementation todo + project-card 2026-06-26 / chapter reorg 2026-06-30",
+      "description": "Prepare first/next Retatrutide premium restock using EUR 149/vial list-base only with expanded third-party COA/testing. Normal promo/affiliate cap is 20%; sub-floor discounts require manual approval.",
+      "acceptance": "Supplier/lab plan includes HPLC purity, LC-MS identity, assay/content if available, endotoxin LAL, heavy metals, residual solvents, and sterility/bioburden where practical. Vic confirms compliance wording; public language remains RUO/research-only and never says human-use safety.",
+      "chapterOwner": "Pafi"
+    },
+    {
+      "id": "P1-015",
+      "title": "Build discount, referral, affiliate, and Staff-class engine",
+      "category": "Sales & Marketing",
+      "chapter": "Sales & Marketing",
+      "workstream": "Affiliate / Referral",
+      "priority": "P1",
+      "urgencyScore": 78,
+      "status": "planned",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis",
+        "Vic",
+        "Pafi",
+        "Codex/Tech"
+      ],
+      "dueDate": "2026-07-04",
+      "source": "Affiliate/referral plan 2026-06-28 / chapter reorg 2026-06-30",
+      "description": "Implement the approved discount/referral/affiliate engine structure: affiliate profiles, discount codes, customer discount assignments, product discount policies, order discount lines, affiliate order attribution, affiliate commission lines, and Staff class. Vic owns rules/compliance; Pafi owns sales economics; Narcis owns tech/admin implementation.",
+      "acceptance": "Engine is built or implementation-ready with ex-VAT/ex-transport commission basis, no stacking by default, product-line margin gate, 20% default pool/30% ceiling, partial-refund reversal, legacy high-discount review, and no activation before Vic compliance signoff.",
+      "chapterOwner": "Pafi"
+    },
+    {
+      "id": "P1-016",
+      "title": "Resolve protocol blockers for Libido and Cognition stacks",
+      "category": "Products, SKUs & Budgeting",
+      "chapter": "Products, SKUs & Budgeting",
+      "workstream": "Protocols / SKU Economics",
+      "priority": "P1",
+      "urgencyScore": 77,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Narcis",
+        "Vic"
+      ],
+      "dueDate": "2026-07-03",
+      "source": "Stack pricing report 2026-06-29 / chapter reorg 2026-06-30",
+      "description": "Resolve missing protocol blockers: Libido is blocked by missing PT-141 final protocol, and Cognition is blocked by missing Selank final protocol. Keep protocol economics separate from customer-use advice.",
+      "acceptance": "PT-141 and Selank have final approved protocol-economics rows or remain explicitly blocked. Libido and Cognition stack statuses are updated accordingly, with Vic compliance review and Narcis protocol-agent/admin support.",
+      "chapterOwner": "Pafi"
+    },
+    {
+      "id": "P1-017",
+      "title": "Backfill structured Supabase transaction references plan",
+      "category": "Tech/Admin & AI Agents",
+      "chapter": "Tech/Admin & AI Agents",
+      "workstream": "Data Quality / Supabase",
+      "priority": "P1",
+      "urgencyScore": 76,
+      "status": "planned",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis",
+        "Pafi",
+        "Codex/Tech"
+      ],
+      "dueDate": "2026-07-03",
+      "source": "Supabase transaction reference audit 2026-06-28 / chapter reorg 2026-06-30",
+      "description": "Create a safe backfill plan for 118/534 transaction-like Supabase rows missing structured references across orders, customer_payments, expenses, restocks, stock_movements, and treasury_transfers. This is a plan first; writes remain Pafi-authorized only.",
+      "acceptance": "Backfill plan maps each missing-reference table to reference source, proposed field, evidence link, and write authorization requirement. No write occurs without explicit Pafi authorization and performed_by=API/Pafi agent marking.",
+      "chapterOwner": "Narcis"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "compliance-online-presence",
+      "name": "Compliance & Online Presence",
+      "owner": "Vic",
+      "assignees": [
+        "Vic",
+        "Narcis",
+        "Pafi"
+      ],
+      "summary": "RUO compliance, allowed website products, affiliate rules, online-presence rules, COA/Janoshik public evidence boundaries."
+    },
+    {
+      "id": "tech-admin-ai-agents",
+      "name": "Tech/Admin & AI Agents",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis",
+        "Codex/Tech",
+        "Pafi",
+        "Vic"
+      ],
+      "summary": "Tech creation, admin systems, Supabase/dashboard operations, Hermes Telegram stock-management agent, peptide/supplement protocol agent, backups, approvals."
+    },
+    {
+      "id": "products-skus-budgeting",
+      "name": "Products, SKUs & Budgeting",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Vic",
+        "Narcis"
+      ],
+      "summary": "Product/SKU decisions, pricing, margin, protocol economics, budget, SKU disposition, commercial status."
+    },
+    {
+      "id": "purchasing-logistics",
+      "name": "Purchasing & Logistics",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Vic",
+        "Narcis",
+        "Dragos"
+      ],
+      "summary": "Purchasing, supplier/restock proof, in-transit stock, labels, accessory proof/QC, delivery/logistics routing."
+    },
+    {
+      "id": "sales-marketing",
+      "name": "Sales & Marketing",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Vic",
+        "Narcis",
+        "Dan",
+        "Dragos"
+      ],
+      "summary": "Sales workflow, B2B inbound handling, affiliate/referral engine, social/news execution, collaborator/local handoff workflows."
     }
   ]
 }
