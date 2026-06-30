@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-29T16:40:31Z",
+  "generatedAt": "2026-06-30T11:08:18Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -18,20 +18,22 @@
     "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work.",
     "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized.",
     "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries.",
-    "Urgent AOD9604 correction: website and labels must show 5 mg, not 10 mg."
+    "Urgent AOD9604 correction: website and labels must show 5 mg, not 10 mg.",
+    "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow."
   ],
   "gates": [
     {
       "id": "gate-site",
-      "name": "Website Compliance Gate",
+      "name": "RUO Compliance / Website Gate",
       "state": "red",
-      "owner": "Narcis",
+      "owner": "Vic",
       "assignees": [
+        "Vic",
         "Narcis",
         "Pafi"
       ],
       "dueDate": "",
-      "summary": "Website compliance remains waiting for lawyer opinion, but urgent factual AOD9604 correction must be made: website strength should be 5 mg, not 10 mg."
+      "summary": "Vic owns RUO compliance, allowed products on website, affiliate rules, and online-presence rules. Narcis implements approved site/admin changes; Pafi owns product/SKU and sales implications."
     },
     {
       "id": "gate-counsel-broker",
@@ -60,14 +62,14 @@
       "id": "gate-dashboard",
       "name": "Supabase/Dashboard Gate",
       "state": "green",
-      "owner": "Codex/Tech",
+      "owner": "Narcis",
       "assignees": [
-        "Codex/Tech",
         "Narcis",
+        "Codex/Tech",
         "Pafi"
       ],
       "dueDate": "2026-06-24",
-      "summary": "Supabase/dashboard is the active operating direction and Airtable is frozen/read-only legacy evidence. Agent writes remain approval-gated."
+      "summary": "Narcis owns tech creation/admin for Supabase/dashboard and Hermes agent workflows. Supabase/dashboard remains active operating direction; agent writes remain approval-gated."
     },
     {
       "id": "gate-sku",
@@ -76,10 +78,11 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
+        "Vic",
         "Narcis"
       ],
       "dueDate": "2026-06-25",
-      "summary": "SKU table still needed; urgent AOD9604 operational correction added: website and labels must show 5 mg, not 10 mg."
+      "summary": "Pafi owns products/SKUs, budgeting, and sales workflow; Vic provides allowed-product compliance signoff; Narcis implements dashboard/site/admin fields."
     },
     {
       "id": "gate-accessories",
@@ -88,10 +91,11 @@
       "owner": "Vic",
       "assignees": [
         "Vic",
-        "Pafi"
+        "Pafi",
+        "Narcis"
       ],
       "dueDate": "2026-06-25",
-      "summary": "Accessory marketplace waits for proof, QC, low-risk MVP split, landed cost, and marketplace policy checks."
+      "summary": "Vic owns accessory compliance/proof/QC/policy gates; Pafi owns product/budget choices; Narcis supports site/admin implementation after gates pass."
     },
     {
       "id": "gate-dragos",
@@ -100,11 +104,11 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
-        "Dragos",
-        "Codex"
+        "Narcis",
+        "Dragos"
       ],
       "dueDate": "2026-06-26",
-      "summary": "Dragos remains in observation mode until cash reconciliation, operating contract, evidence rule, and dummy handoff pass."
+      "summary": "Pafi owns sales workflow and Dragos operating boundaries; Narcis packages tech/admin evidence and notification flows; Dragos remains in observation mode until cash reconciliation and dummy handoff pass."
     }
   ],
   "tasks": [
@@ -115,15 +119,16 @@
       "priority": "P0",
       "urgencyScore": 98,
       "status": "waiting",
-      "owner": "Narcis",
+      "owner": "Vic",
       "assignees": [
+        "Vic",
         "Narcis",
         "Pafi"
       ],
       "dueDate": "",
-      "source": "Owner override 2026-06-24; consolidated from Narcis website tasks P0-0-003, P0-001, P0-002, P0-003, P0-004, P0-009, P1-001, P1-002, P1-003",
-      "description": "Single consolidated website compliance task for PeptraLabs .com/.ro. No new website modifications should be executed until the lawyer opinion arrives and gives the allowed copy/flow boundaries. Prepare only the correction map and evidence while waiting. Corrections to prepare: affiliate/program pages must remove or pause public commission, override, sub-affiliate, influencer recruitment, passive-income, weekly crypto payout, and earnings-calculator claims unless counsel approves a compliant private policy; peptide calculator and reconstitution/dosing flows must stay gated or removed from public access; high-revenue/high-risk SKU pages continue selling only under the lawyer-approved RUO copy model and must remove treatment, healing, repair, fat-loss, human-use, injection, protocol, dosing, medical-benefit, and before/after style claims; checkout must keep intended-use acknowledgement and rejection/manual-review logic aligned with counsel; CTAs, promo strips, discount language, and support copy must avoid medical-use or aggressive commerce framing; visible page copy, meta titles/descriptions, FAQ schema, JSON-LD, llms.txt, llms-full.txt, AI snippets, and Romanian pages must all match the same approved RUO model; COA/report states must be consistent across product pages, lab-report archive, schema, support macros, and LLM files, using clear states such as verified report, supplier COA, independent COA, no public COA, failed, or not applicable; accessories must remain separated from peptide compliance language and must not imply dosing, injection, sterility, or cold-chain proof beyond evidence.",
-      "acceptance": "Blocked until lawyer opinion is received. Before that, Narcis/Pafi may prepare URL-by-URL notes only. After counsel opinion arrives, apply only lawyer-approved changes, record changed URLs and screenshots, keep P0-002 calculator/reconstitution gate and P0-004 checkout acknowledgement as completed controls, and run a post-change scan confirming no banned affiliate/calculator/high-risk medical or passive-income claims remain across .com, .ro, schema, LLM files, checkout, support text, and promo surfaces.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Single consolidated website compliance task for PeptraLabs .com/.ro. No new website modifications should be executed until the lawyer opinion arrives and gives the allowed copy/flow boundaries. Prepare only the correction map and evidence while waiting. Corrections to prepare: affiliate/program pages must remove or pause public commission, override, sub-affiliate, influencer recruitment, passive-income, weekly crypto payout, and earnings-calculator claims unless counsel approves a compliant private policy; peptide calculator and reconstitution/dosing flows must stay gated or removed from public access; high-revenue/high-risk SKU pages continue selling only under the lawyer-approved RUO copy model and must remove treatment, healing, repair, fat-loss, human-use, injection, protocol, dosing, medical-benefit, and before/after style claims; checkout must keep intended-use acknowledgement and rejection/manual-review logic aligned with counsel; CTAs, promo strips, discount language, and support copy must avoid medical-use or aggressive commerce framing; visible page copy, meta titles/descriptions, FAQ schema, JSON-LD, llms.txt, llms-full.txt, AI snippets, and Romanian pages must all match the same approved RUO model; COA/report states must be consistent across product pages, lab-report archive, schema, support macros, and LLM files, using clear states such as verified report, supplier COA, independent COA, no public COA, failed, or not applicable; accessories must remain separated from peptide compliance language and must not imply dosing, injection, sterility, or cold-chain proof beyond evidence. Vic now owns compliance decisions for allowed products on the website, affiliate rules, and online presence; Narcis implements approved technical/site changes; Pafi reviews product/SKU and sales implications.",
+      "acceptance": "Blocked until lawyer opinion is received. Before that, Narcis/Pafi may prepare URL-by-URL notes only. After counsel opinion arrives, apply only lawyer-approved changes, record changed URLs and screenshots, keep P0-002 calculator/reconstitution gate and P0-004 checkout acknowledgement as completed controls, and run a post-change scan confirming no banned affiliate/calculator/high-risk medical or passive-income claims remain across .com, .ro, schema, LLM files, checkout, support text, and promo surfaces. Vic signs off the allowed-product/compliance rule before Narcis implements site or online-presence changes.",
       "blockedBy": "Lawyer opinion required before execution",
       "consolidates": [
         "P0-0-003",
@@ -184,10 +189,11 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
-        "Vic"
+        "Vic",
+        "Narcis"
       ],
       "dueDate": "2026-06-24",
-      "source": "Council owner-corrected wrapper",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Create a simple 48-hour snapshot of what is actually live or not live right now: D2C sales live, ads not running, website compliance waiting for lawyer opinion, high-revenue SKUs continue selling, Dragos collaborator sales not active yet, Supabase/dashboard active, Airtable frozen, accessories waiting for proof/QC. This is a status register, not a freeze.",
       "acceptance": "Each item has state, owner, next action, due date if relevant, and proof/evidence link. The team can open one board and see what is live, blocked, waiting, or ready."
     },
@@ -198,14 +204,16 @@
       "priority": "P0-0",
       "urgencyScore": 99,
       "status": "open",
-      "owner": "Codex/Tech",
+      "owner": "Narcis",
       "assignees": [
-        "Codex/Tech",
-        "Pafi"
+        "Narcis",
+        "Pafi",
+        "Vic",
+        "Codex/Tech"
       ],
       "dueDate": "2026-06-24",
-      "source": "Council owner-corrected wrapper",
-      "description": "Maintain daily gate states for Site, Counsel/Broker, Cash, Supabase/Dashboard, SKU, Accessories, and Dragos.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Maintain daily gate states for Site, Counsel/Broker, Cash, Supabase/Dashboard, SKU, Accessories, and Dragos. Narcis owns the admin/dashboard operating view; Pafi owns product/sales inputs; Vic owns compliance inputs.",
       "acceptance": "Every gate has state, owner, blocker, proof needed, and next action."
     },
     {
@@ -217,10 +225,11 @@
       "status": "open",
       "owner": "Vic",
       "assignees": [
-        "Vic"
+        "Vic",
+        "Pafi"
       ],
       "dueDate": "2026-06-24",
-      "source": "Owner override 2026-06-24",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Vic owns the counsel/customs broker packet: live-state summary, current claims/channel examples, SKU/status list, suppliers, import flow, affiliate posture, B2B inbound position, COA/SDS assumptions, and exact go/no-go questions.",
       "acceptance": "Vic has a packet ready to send/review with counsel and customs broker. No legal/import posture is treated as cleared until written opinion/response exists."
     },
@@ -292,7 +301,7 @@
         "Vic"
       ],
       "dueDate": "2026-06-24",
-      "source": "Implementation todo",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Split legal/customs/QA, peptide OpCo, accessories, owner repayment, Dragos compensation, COA/testing, inventory, ops, AI/data, and contingency.",
       "acceptance": "Budget states what Vic can commit and which reserves are protected."
     },
@@ -306,11 +315,12 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
-        "Codex/Tech"
+        "Vic",
+        "Narcis"
       ],
       "dueDate": "2026-06-25",
-      "source": "Implementation todo",
-      "description": "Build table with supplier cost, landed cost, public price, margin, discount/promoter/CAC cap, reorder status, counsel flag, and active copy status.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Build table with supplier cost, landed cost, public price, margin, discount/promoter/CAC cap, reorder status, counsel flag, and active copy status. Pafi owns commercial pricing/budget logic; Vic reviews compliance/channel caps; Narcis supports dashboard/admin implementation.",
       "acceptance": "Each SKU has one pricing truth and exception notes."
     },
     {
@@ -323,12 +333,13 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
+        "Vic",
         "Narcis"
       ],
       "dueDate": "2026-06-25",
-      "source": "Stock audit",
-      "description": "Classify every SKU by continue, cleanup, COA needed, margin review, reorder focus, counsel review, or inbound-B2B support.",
-      "acceptance": "No SKU status is inferred from memory or chat."
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Classify every SKU by continue, cleanup, COA needed, margin review, reorder focus, counsel review, or inbound-B2B support. Pafi owns product/SKU disposition; Vic owns allowed-product compliance signoff; Narcis implements dashboard/site/admin status fields.",
+      "acceptance": "No SKU status is inferred from memory or chat. Each SKU has both a Pafi commercial status and a Vic compliance/allowed-product status before public promotion or affiliate eligibility."
     },
     {
       "id": "P0-008",
@@ -343,7 +354,7 @@
         "Pafi"
       ],
       "dueDate": "2026-06-24",
-      "source": "Implementation todo",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Collect first order proof and split accessories into low-risk MVP vs legal-gated items.",
       "acceptance": "Proof saved; copy only covers storage, transport, and organization unless stronger evidence exists."
     },
@@ -415,10 +426,11 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
-        "Codex"
+        "Narcis",
+        "Dragos"
       ],
       "dueDate": "2026-06-26",
-      "source": "Dragos handoff",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Contract covers allowed tasks, cannot-do list, approval triggers, evidence rule, AI boundary, escalation, and no off-ledger/direct cash default.",
       "acceptance": "Dragos cannot interpret observation mode as commercial activation."
     },
@@ -432,10 +444,11 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
-        "Codex"
+        "Narcis",
+        "Dragos"
       ],
       "dueDate": "2026-06-26",
-      "source": "Dragos handoff",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Create contact-map schema, collaborator qualification rubric, field-feedback template, approved/banned phrases, refusal language, and weekly AI report spec.",
       "acceptance": "Dragos can collect field intelligence before commercial activation; no collaborator code or payout draft is active."
     },
@@ -465,14 +478,16 @@
       "priority": "P1",
       "urgencyScore": 79,
       "status": "planned",
-      "owner": "Codex/Tech",
+      "owner": "Narcis",
       "assignees": [
-        "Codex/Tech",
-        "Pafi"
+        "Narcis",
+        "Vic",
+        "Pafi",
+        "Codex/Tech"
       ],
       "dueDate": "2026-06-30",
-      "source": "Implementation todo",
-      "description": "Track approvals for public copy, price changes, discount codes, supplier orders, import decisions, live messages, refunds/replacements, and marketplace listings.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Track approvals for public copy, price changes, discount codes, supplier orders, import decisions, live messages, refunds/replacements, and marketplace listings. Narcis owns technical/admin creation of the approval register; Vic owns compliance approvals; Pafi owns product, budget, and sales approvals.",
       "acceptance": "Every mutating action has approval ID, evidence link, timestamp, and owner."
     },
     {
@@ -482,13 +497,14 @@
       "priority": "P1",
       "urgencyScore": 78,
       "status": "planned",
-      "owner": "Codex/Tech",
+      "owner": "Narcis",
       "assignees": [
+        "Narcis",
         "Codex/Tech"
       ],
       "dueDate": "2026-06-30",
-      "source": "Implementation todo",
-      "description": "Export dashboard-critical Supabase tables daily and store checksums to detect drift. Reads are allowed; writes/backfills require explicit Pafi approval and Pafi-authorized marking.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Export dashboard-critical Supabase tables daily and store checksums to detect drift. Reads are allowed; writes/backfills require explicit Pafi approval and Pafi-authorized marking. Narcis owns ongoing admin/technical backup workflow; Codex/Tech supports implementation as needed.",
       "acceptance": "Team can prove whether data changed and when; any agent-created mutation is traceable to explicit Pafi approval."
     },
     {
@@ -500,12 +516,13 @@
       "status": "open",
       "owner": "Narcis",
       "assignees": [
-        "Narcis"
+        "Narcis",
+        "Codex/Tech"
       ],
       "dueDate": "2026-06-26",
-      "source": "Owner override 2026-06-24",
-      "description": "Narcis integrates the Hermes agent into the shared Telegram group so the team uses one agent for everyone. This is a Narcis-owned coordination/setup task.",
-      "acceptance": "Hermes is present in the shared Telegram group, the team knows to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented."
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Narcis integrates the Hermes agent into the shared Telegram group so the team uses one agent for everyone. This is a Narcis-owned coordination/setup task. Scope includes the new Hermes Telegram stock-management agent and the Hermes agent for peptides/supplements protocols.",
+      "acceptance": "Hermes is present in the shared Telegram group, the team knows to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented. Hermes Telegram stock-management and peptide/supplement protocol agent responsibilities are documented, tested in read-only/draft-first mode, and routed to the correct group/admin workflow."
     },
     {
       "id": "P1-012",
@@ -514,16 +531,17 @@
       "priority": "P1",
       "urgencyScore": 76,
       "status": "open",
-      "owner": "Dan",
+      "owner": "Vic",
       "assignees": [
+        "Vic",
         "Dan",
-        "Pafi",
-        "Narcis"
+        "Narcis",
+        "Pafi"
       ],
       "dueDate": "2026-06-27",
-      "source": "Owner screenshot 2026-06-22 19:40",
-      "description": "Dan currently handles social media and stiri.peptralabs.ro. Put him into the operating plan for approved social/news execution after the RUO-safe content model is defined.",
-      "acceptance": "Dan has a clear content queue, approval rule, banned-claim checklist, Hermes routing, and no public post/news item goes live with dosing, human-use, treatment, medical-benefit, injection, or passive-income claims."
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Dan currently handles social media and stiri.peptralabs.ro. Put him into the operating plan for approved social/news execution after the RUO-safe content model is defined. Vic owns the online-presence compliance rule and approved themes; Dan/Narcis execute only inside the approved content and banned-claim boundaries.",
+      "acceptance": "Dan has a clear content queue, approval rule, banned-claim checklist, Hermes routing, and no public post/news item goes live with dosing, human-use, treatment, medical-benefit, injection, or passive-income claims. Vic-approved online-presence rules exist before any new public post/news item goes live."
     },
     {
       "id": "P1-013",
@@ -536,10 +554,10 @@
       "assignees": [
         "Pafi",
         "Dan",
-        "Codex/Tech"
+        "Narcis"
       ],
       "dueDate": "2026-06-30",
-      "source": "Owner screenshot 2026-06-22 19:40",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Dan previously handled deliveries and can cover selected deliveries until the Bulgaria stock/logistics setup is ready.",
       "acceptance": "Any Dan delivery is assigned through the dashboard, tied to a website/order ID, has stock movement and proof recorded, excludes direct/off-ledger cash by default, and includes no product advice or claim-making."
     },
@@ -553,11 +571,12 @@
       "owner": "Narcis",
       "assignees": [
         "Narcis",
+        "Vic",
         "Pafi"
       ],
       "dueDate": "2026-07-01",
-      "source": "Pafi request 2026-06-29",
-      "description": "Activate or generate QR codes for each SKU so scanning the SKU/label QR opens the matching Janoshik report page directly where a Janoshik report exists. Do not point QR codes to a generic homepage, generic lab archive, or wrong SKU/batch. For SKUs without a Janoshik report, use the approved COA absence state instead of creating a misleading QR.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Activate or generate QR codes for each SKU so scanning the SKU/label QR opens the matching Janoshik report page directly where a Janoshik report exists. Do not point QR codes to a generic homepage, generic lab archive, or wrong SKU/batch. For SKUs without a Janoshik report, use the approved COA absence state instead of creating a misleading QR. Narcis owns QR implementation; Vic confirms compliance/COA wording; Pafi confirms product/SKU mapping where needed.",
       "acceptance": "Every active SKU has a QR status: direct Janoshik report URL verified, approved COA absence state, or blocked pending report. Narcis provides the SKU -> QR target map, changed label/site files if relevant, and scan-test proof for representative QR codes. Public wording uses Janoshik consistently and does not imply human-use safety."
     },
     {
@@ -570,11 +589,12 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
-        "Vic"
+        "Vic",
+        "Narcis"
       ],
       "dueDate": "2026-07-03",
-      "source": "Owner override",
-      "description": "No special B2B launch. If someone asks, deliver only with evidence and evaluate how B2B supports RUO positioning.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "No special B2B launch. If someone asks, deliver only with evidence and evaluate how B2B supports RUO positioning. Pafi owns sales workflow; Vic reviews compliance posture; Narcis supports admin/technical flow.",
       "acceptance": "B2B handling is inbound/supporting only and does not create public campaign risk."
     },
     {
@@ -587,11 +607,12 @@
       "owner": "Narcis",
       "assignees": [
         "Narcis",
+        "Pafi",
         "Dragos",
         "Codex/Tech"
       ],
       "dueDate": "2026-07-03",
-      "source": "Owner override 2026-06-24",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Narcis builds/tests a dummy paid website-order flow from order paid -> location decision -> notification -> local handoff -> evidence record -> stock movement. The notification must route based on customer delivery location: Ibiza orders notify the Ibiza/local handoff channel; Bulgaria/Bucharest/other warehouse-flow orders notify the Bulgaria/central logistics channel. Include order ID, customer location, product/SKU, paid status, delivery/handoff route, responsible person, required proof, and no medical/product-advice text.",
       "acceptance": "A dummy paid order can be processed without real collaborator activation. The correct Ibiza vs Bulgaria/central notification is selected from customer location, the handoff recipient sees only operational details, stock/evidence records are created or drafted, and the flow can be repeated safely before real use."
     },
@@ -602,14 +623,16 @@
       "priority": "P2",
       "urgencyScore": 70,
       "status": "planned",
-      "owner": "Codex/Tech",
+      "owner": "Narcis",
       "assignees": [
+        "Narcis",
         "Codex/Tech",
-        "Pafi"
+        "Pafi",
+        "Vic"
       ],
       "dueDate": "2026-07-10",
-      "source": "Implementation todo",
-      "description": "Build AI helpers that can read the dashboard/Supabase/project context and draft actions or reports, but cannot change records by themselves. Examples: Daily Ops summary, Stock check, Finance check, Compliance check, Procurement draft, Accessories check, Ibiza Network update, and Weekly Business Reporter.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Build AI helpers that can read the dashboard/Supabase/project context and draft actions or reports, but cannot change records by themselves. Examples: Daily Ops summary, Stock check, Finance check, Compliance check, Procurement draft, Accessories check, Ibiza Network update, and Weekly Business Reporter. Narcis owns tech creation/admin for the agent suite, including stock-management and peptide/supplement protocol workflows; agents remain read-only/draft-first unless explicitly Pafi-authorized.",
       "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution."
     },
     {
@@ -622,11 +645,12 @@
       "owner": "Vic",
       "assignees": [
         "Vic",
-        "Pafi"
+        "Pafi",
+        "Narcis"
       ],
       "dueDate": "2026-07-10",
-      "source": "Implementation todo",
-      "description": "Launch accesoriipeptide.ro only after proof, QC, copy, landed-cost, and eMAG/Amazon/Noon policy checks.",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Launch accesoriipeptide.ro only after proof, QC, copy, landed-cost, and eMAG/Amazon/Noon policy checks. Vic owns accessory/compliance gates and online-presence policy; Narcis supports site/admin implementation after gates pass.",
       "acceptance": "Low-risk SKUs first; no unsupported sterility/cold-chain/dosing/injection claims."
     },
     {
@@ -640,10 +664,11 @@
       "assignees": [
         "Pafi",
         "Vic",
+        "Narcis",
         "Codex/Tech"
       ],
       "dueDate": "2026-07-10",
-      "source": "Implementation todo",
+      "source": "Pafi ownership update 2026-06-30",
       "description": "Create a monthly budget view grouped by operating buckets: legal/customs/QA, peptide operating company, accessories, owner repayment, AI/data/dashboard, marketing/content, logistics, and contingency. Track planned budget, actual spend, remaining reserve, owner/person responsible, evidence/proof link, and variance.",
       "acceptance": "Dashboard shows budget vs actual by month and bucket, so Pafi/Vic can see how much runway remains and which category is over/under budget."
     }
