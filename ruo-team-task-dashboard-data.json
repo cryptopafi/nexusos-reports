@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-06-30T11:12:35Z",
+  "generatedAt": "2026-07-01T09:51:09Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -18,7 +18,7 @@
     "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work.",
     "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized.",
     "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries.",
-    "Urgent AOD9604 correction: website and labels must show 5 mg, not 10 mg.",
+    "AOD9604 correction split 2026-07-01: website strength issue is completed; label/new-supplier issue is still open.",
     "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow.",
     "Chapter model 2026-06-30: Compliance & Online Presence (Vic); Tech/Admin & AI Agents (Narcis); Products, SKUs & Budgeting (Pafi); Purchasing & Logistics (Pafi lead, Vic compliance, Narcis admin); Sales & Marketing (Pafi sales workflow, Vic rules/online presence, Narcis/Dan execution)."
   ],
@@ -75,7 +75,7 @@
         "Dragos"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Purchasing/logistics remains blocked by SO-04 structured line proof, Ibiza 69-vial in-transit stock, accessory proof/QC, AOD label correction, and Retatrutide premium restock/COA planning."
+      "summary": "Purchasing/logistics remains blocked by SO-04 structured line proof, Ibiza 69-vial in-transit stock, accessory proof/QC, AOD9604 label/new-supplier correction, and Retatrutide premium restock/COA planning."
     },
     {
       "id": "gate-sales-marketing",
@@ -149,7 +149,7 @@
       "category": "Products, SKUs & Budgeting",
       "priority": "P0",
       "urgencyScore": 97.8,
-      "status": "open",
+      "status": "done",
       "owner": "Narcis",
       "assignees": [
         "Narcis"
@@ -160,7 +160,19 @@
       "acceptance": "AOD9604 displays 5 mg everywhere on public and generated website surfaces; no AOD9604 10 mg references remain except archived evidence; Narcis provides changed URL list and screenshots/search proof.",
       "workstream": "Website",
       "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi"
+      "chapterOwner": "Pafi",
+      "completedAt": "2026-07-01",
+      "completionNote": "Pafi confirmed on 2026-07-01 that the AOD9604 website strength issue is completely resolved: AOD9604 now uses 5 mg, not 10 mg.",
+      "colourReason": "Pafi confirmed AOD9604 website strength correction is completely resolved.",
+      "plainExplanationRo": "Rezolvat complet pentru website: AOD9604 este corectat la 5 mg, nu 10 mg. Acest task nu mai blocheaza partea de produse/SKU.",
+      "colour": "green",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-01: AOD9604 website issue resolved"
+      ],
+      "colourUpdatedAt": "2026-07-01T09:51:09Z",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationUpdatedAt": "2026-07-01T09:51:09Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-012",
@@ -176,11 +188,22 @@
       ],
       "dueDate": "2026-06-24",
       "source": "Owner request 2026-06-24",
-      "description": "Narcis and Dragos coordinate the AOD9604 label correction: re-order/reprint labels that say 5 mg instead of 10 mg, update the label/design/order file, and prevent old 10 mg labels from being used on 5 mg stock. Dragos must know which labels are valid before any handoff/delivery.",
-      "acceptance": "Proof of 5 mg label reorder/reprint is saved; design/order file says AOD9604 5 mg; any old 10 mg labels are segregated, destroyed, or marked not-for-use; Dragos confirms only 5 mg labels are used going forward.",
+      "description": "Narcis coordinates the AOD9604 label correction with the new supplier: re-order/reprint labels that say 5 mg instead of 10 mg, update the label/design/order file, save supplier proof, and prevent old 10 mg labels from being used on 5 mg stock. Dragos must know which labels are valid before any handoff/delivery.",
+      "acceptance": "Proof of 5 mg label reorder/reprint from the new supplier is saved; supplier/order/design file says AOD9604 5 mg; any old 10 mg labels are segregated, destroyed, or marked not-for-use; Dragos confirms only 5 mg labels are used going forward.",
       "workstream": "Logistics",
       "chapter": "Purchasing & Logistics",
-      "chapterOwner": "Pafi"
+      "chapterOwner": "Pafi",
+      "colour": "yellow",
+      "colourReason": "Pafi clarified AOD9604 label/new-supplier correction is not done yet.",
+      "colourEvidence": [
+        "Pafi correction 2026-07-01: labels are not done"
+      ],
+      "colourUpdatedAt": "2026-07-01T09:51:09Z",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Nu este rezolvat: problema etichetelor AOD9604 ramane deschisa. Website-ul e corectat, dar etichetele/new supplier trebuie inca finalizate si dovedite.",
+      "plainExplanationUpdatedAt": "2026-07-01T09:51:09Z",
+      "plainExplanationUpdatedBy": "Codex",
+      "completionNote": "Correction 2026-07-01: Pafi clarified that the label/new-supplier issue is not done yet; only the website AOD9604 issue is done."
     },
     {
       "id": "P0-0-001",
@@ -198,7 +221,7 @@
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Create a simple 48-hour snapshot of what is actually live or not live right now: D2C sales live, ads not running, website compliance waiting for lawyer opinion, high-revenue SKUs continue selling, Dragos collaborator sales not active yet, Supabase/dashboard active, Airtable frozen, accessories waiting for proof/QC. This is a status register, not a freeze.",
-      "acceptance": "Each item has state, owner, next action, due date if relevant, and proof/evidence link. The team can open one board and see what is live, blocked, waiting, or ready.",
+      "acceptance": "Each item has state, owner, next action, due date if relevant, proof/evidence link, and subtask 4.6 SKU pricing/margin truth. The team can open one board and see what is live, blocked, waiting, or ready.",
       "workstream": "Administration",
       "chapter": "Products, SKUs & Budgeting",
       "chapterOwner": "Pafi"
@@ -210,20 +233,31 @@
       "priority": "P0-0",
       "urgencyScore": 99,
       "status": "open",
-      "owner": "Narcis",
+      "owner": "Codex/Tech",
       "assignees": [
+        "Codex/Tech",
         "Narcis",
         "Pafi",
-        "Vic",
-        "Codex/Tech"
+        "Vic"
       ],
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Maintain daily gate states for Site, Counsel/Broker, Cash, Supabase/Dashboard, SKU, Accessories, and Dragos. Narcis owns the admin/dashboard operating view; Pafi owns product/sales inputs; Vic owns compliance inputs.",
-      "acceptance": "Every gate has state, owner, blocker, proof needed, and next action.",
+      "description": "Codex owns the red/yellow/green marking logic and keeps the gate scoreboard readable from Pafi-provided information. Narcis supports dashboard/admin rendering; Pafi supplies product/sales state; Vic supplies compliance state.",
+      "acceptance": "Every gate has colour/state, owner, blocker, proof needed, next action, and evidence/reason. Colour changes use the RUO task colour marker skill so all agents read the same state.",
       "workstream": "Administration",
       "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis"
+      "chapterOwner": "Narcis",
+      "colour": "yellow",
+      "colourReason": "Pafi authorized Codex to do task 5; implementation/ongoing marking is active.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30",
+        "/Users/pafi/.codex/skills/ruo-task-colour-marker/SKILL.md"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "plainExplanationRo": "Acesta este tabelul de control pe culori: verde înseamnă că putem continua, galben înseamnă risc sau informație lipsă dar nu blocaj total, roșu înseamnă blocaj sau risc major, gri înseamnă planned/parcat. Codex actualizează culoarea pe baza informațiilor primite de la Pafi și a dovezilor verificate.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-0-004",
@@ -235,15 +269,27 @@
       "owner": "Vic",
       "assignees": [
         "Vic",
-        "Pafi"
+        "Pafi",
+        "Codex/Tech"
       ],
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Vic owns the counsel/customs broker packet: live-state summary, current claims/channel examples, SKU/status list, suppliers, import flow, affiliate posture, B2B inbound position, COA/SDS assumptions, and exact go/no-go questions.",
-      "acceptance": "Vic has a packet ready to send/review with counsel and customs broker. No legal/import posture is treated as cleared until written opinion/response exists.",
+      "description": "Compliance-owned counsel/customs broker packet. Vic decides what to do based on the lawyer response. Codex prepares the complete checklist of what Vic needs: live-state summary, current claims/channel examples, SKU/status list, suppliers, import flow, affiliate posture, B2B/wholesale posture, COA/SDS assumptions, payment/logistics flows, accessory separation, and exact go/no-go questions.",
+      "acceptance": "Vic has a complete counsel/customs needs list and packet ready for review. No legal/import posture is treated as cleared until written lawyer/customs response exists; Vic decides actions after that response.",
       "workstream": "Compliance",
       "chapter": "Compliance & Online Presence",
-      "chapterOwner": "Vic"
+      "chapterOwner": "Vic",
+      "colour": "yellow",
+      "colourReason": "Compliance packet can be prepared, but Vic decision waits on lawyer response.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "supportingFile": "/Users/pafi/Documents/RUO Peptides/output/vic-counsel-customs-needs-list-2026-06-30.md",
+      "plainExplanationRo": "Acesta este dosarul pentru avocat/compliance și broker vamal. Vic decide ce se face după răspunsul avocatului; Codex pregătește lista completă de materiale necesare: produse, copy public, claims, import flow, COA/SDS, affiliate/wholesale, accesorii și întrebări go/no-go.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-0-005",
@@ -272,9 +318,9 @@
       "priority": "P0-0",
       "urgencyScore": 95,
       "status": "done",
-      "owner": "Codex/Tech",
+      "owner": "Narcis",
       "assignees": [
-        "Codex/Tech",
+        "Narcis",
         "Pafi"
       ],
       "dueDate": "2026-06-24",
@@ -282,32 +328,43 @@
       "description": "Supabase/dashboard becomes the active operating system for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links. Airtable remains frozen/read-only legacy evidence. Codex/agents remain read-only in Supabase unless Pafi explicitly approves a write.",
       "acceptance": "No new operational writes go to Airtable. Supabase/dashboard can rebuild current operating state. Any Supabase write by Codex/agents requires explicit Pafi approval and must be visibly marked as Pafi-authorized with timestamp/source.",
       "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24: active operating ledger moved into Supabase/dashboard direction; Airtable remains frozen/read-only legacy evidence.",
+      "completionNote": "Marked done by Pafi on 2026-06-24; operating responsibility assigned to Narcis by Pafi on 2026-06-30. Supabase/dashboard remains active operating layer; Airtable remains frozen/read-only legacy evidence.",
       "workstream": "Data / Dashboard",
       "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis"
+      "chapterOwner": "Narcis",
+      "colour": "green",
+      "colourReason": "Task is already done; ongoing ownership moved to Narcis for now.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30",
+        "dashboard completion 2026-06-24"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "plainExplanationRo": "Supabase/dashboard este registrul operațional activ pentru SKU-uri, stocuri, comenzi, plăți, COA/SDS, aprobări, excepții, prețuri și dovezi. Airtable rămâne doar arhivă read-only. Deocamdată Narcis gestionează această parte operațională.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-0-007",
-      "title": "Airtable/Supabase payment sync completed before Airtable freeze",
+      "title": "Reconcile audit number with Dragos transaction records",
       "category": "Tech/Admin & AI Agents",
       "priority": "P0-0",
       "urgencyScore": 94,
-      "status": "done",
-      "owner": "Narcis",
+      "status": "open",
+      "owner": "Dragos",
       "assignees": [
-        "Narcis",
+        "Dragos",
         "Pafi"
       ],
-      "dueDate": "2026-06-23",
-      "source": "Owner request",
-      "description": "Narcis reconciled Airtable with Supabase/dashboard and updated payments/transactions before Airtable freeze.",
-      "acceptance": "Airtable is now read-only legacy evidence; Supabase/dashboard is the active place for payments, transactions, balances, proofs, and exceptions.",
-      "completedAt": "2026-06-24",
-      "completionNote": "Marked done by Pafi on 2026-06-24; Airtable freeze decision recorded the same day.",
-      "workstream": "Data / Dashboard",
-      "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis"
+      "dueDate": "2026-06-30",
+      "source": "Pafi instruction 2026-06-30; supersedes completed Airtable/Supabase freeze sync.",
+      "description": "Dragos must reconcile the audit number against his own transaction records, including Zen, crypto, cash, receivables, refunds, transfers, and any proof files. The old Airtable/Supabase sync remains historical context; this task is now about Dragos confirming the audit balance from his side.",
+      "acceptance": "Dragos provides a transaction-by-transaction reconciliation that explains any difference between the audit number and his own records; each difference is marked as matched, missing proof, duplicate, timing difference, personal/back-pay, company receivable, or correction needed.",
+      "completedAt": null,
+      "completionNote": "Reopened/reassigned by Pafi on 2026-06-30. Previous completion was Airtable/Supabase payment sync before Airtable freeze; new scope is Dragos audit-number reconciliation.",
+      "workstream": "Cash / Dragos Proof",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi"
     },
     {
       "id": "P0-005",
@@ -327,11 +384,14 @@
       "acceptance": "Budget states what Vic can commit and which reserves are protected.",
       "workstream": "Financial",
       "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi"
+      "chapterOwner": "Pafi",
+      "plainExplanationRo": "Acesta este planul financiar pe 6 luni. Împarte banii pe legal/customs/QA, peptide OpCo, accesorii, owner repayment, Dragos compensation, COA/testing, inventar, ops, AI/data și contingency, ca să fie clar ce se poate cheltui și ce rezervă nu trebuie atinsă.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-006",
-      "title": "Create canonical SKU pricing and margin table",
+      "title": "4.6 Create canonical SKU pricing and margin table",
       "category": "Products, SKUs & Budgeting",
       "priority": "P0",
       "urgencyScore": 92,
@@ -339,16 +399,27 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
-        "Vic",
         "Narcis"
       ],
       "dueDate": "2026-06-25",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Build table with supplier cost, landed cost, public price, margin, discount/promoter/CAC cap, reorder status, counsel flag, and active copy status. Pafi owns commercial pricing/budget logic; Vic reviews compliance/channel caps; Narcis supports dashboard/admin implementation.",
-      "acceptance": "Each SKU has one pricing truth and exception notes.",
+      "description": "Subtask 4.6 under the 48h live-state register. Build table with supplier cost, landed cost, public price, margin, discount/promoter/CAC cap, reorder status, counsel flag, and active copy status. Pafi owns commercial pricing/budget logic; Narcis supports dashboard/admin implementation.",
+      "acceptance": "The live-state register includes one SKU pricing truth section with exception notes for each SKU.",
       "workstream": "Financial",
       "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi"
+      "chapterOwner": "Pafi",
+      "parentTask": "P0-0-001",
+      "subtask": "4.6",
+      "colour": "yellow",
+      "colourReason": "Confirmed as existing 4.6 component under task 4, not a separate strategic lane.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "plainExplanationRo": "Acesta este subtaskul 4.6 din live-state register. Face un singur adevăr comercial per SKU: supplier cost, landed cost, preț public, marjă, limite de discount/promoter/CAC, reorder status, counsel flag și copy status.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-007",
@@ -360,36 +431,55 @@
       "owner": "Pafi",
       "assignees": [
         "Pafi",
-        "Vic",
         "Narcis"
       ],
       "dueDate": "2026-06-25",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Classify every SKU by continue, cleanup, COA needed, margin review, reorder focus, counsel review, or inbound-B2B support. Pafi owns product/SKU disposition; Vic owns allowed-product compliance signoff; Narcis implements dashboard/site/admin status fields.",
-      "acceptance": "No SKU status is inferred from memory or chat. Each SKU has both a Pafi commercial status and a Vic compliance/allowed-product status before public promotion or affiliate eligibility.",
+      "description": "Pafi classifies every SKU by continue, cleanup, COA needed, margin review, reorder focus, counsel review, or inbound-B2B support. Pafi owns product/SKU disposition decisions; Narcis implements dashboard/site/admin status fields. Vic is consulted through compliance tasks only when Pafi flags a compliance review need.",
+      "acceptance": "No SKU status is inferred from memory or chat. Each SKU has a Pafi commercial/disposition status before public promotion, affiliate eligibility, reorder focus, or cleanup execution.",
       "workstream": "Logistics",
       "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi"
+      "chapterOwner": "Pafi",
+      "colour": "yellow",
+      "colourReason": "Pafi owns SKU disposition; Narcis implements fields; Vic is not assigned to task 12.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "plainExplanationRo": "Acesta este tabelul de decizie per SKU. Pafi decide dacă fiecare SKU continuă, se curăță, are nevoie de COA, cere margin review, devine reorder focus, intră la counsel review sau susține inbound/B2B. Vic nu este owner aici; compliance se consultă separat când Pafi cere.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-008",
       "title": "Confirm Vic accessory proof and low-risk MVP split",
-      "category": "Purchasing & Logistics",
+      "category": "Accessories Business",
       "priority": "P0",
       "urgencyScore": 90,
       "status": "open",
-      "owner": "Vic",
+      "owner": "Pafi",
       "assignees": [
-        "Vic",
-        "Pafi"
+        "Pafi",
+        "Vic"
       ],
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Collect first order proof and split accessories into low-risk MVP vs legal-gated items.",
-      "acceptance": "Proof saved; copy only covers storage, transport, and organization unless stronger evidence exists.",
-      "workstream": "Accessories",
-      "chapter": "Purchasing & Logistics",
-      "chapterOwner": "Pafi"
+      "description": "Pafi and Vic confirm accessory proof and split accessories into low-risk MVP vs legal-gated items. Pafi owns business/product decision; Vic owns compliance wording and allowed-claim boundaries.",
+      "acceptance": "Proof is saved for each accessory; low-risk MVP vs legal-gated split is documented; copy only covers storage, transport, and organization unless Vic confirms stronger evidence is allowed.",
+      "workstream": "Accessories / Products & Proof",
+      "chapter": "Accessories Business",
+      "chapterOwner": "Pafi",
+      "colour": "yellow",
+      "colourReason": "Open accessories decision owned by Pafi and Vic, not Dragos.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "plainExplanationRo": "Acesta este taskul de accesorii pentru proof și low-risk MVP split. Pafi și Vic decid ce accesorii pot intra în MVP cu risc mic și ce accesorii rămân legal-gated. Nu este task Dragos.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-010",
@@ -398,11 +488,10 @@
       "priority": "P0",
       "urgencyScore": 89,
       "status": "done",
-      "owner": "Pafi",
+      "owner": "Pafi/Narcis",
       "assignees": [
         "Pafi",
-        "Narcis",
-        "Codex/Tech"
+        "Narcis"
       ],
       "dueDate": "2026-06-24",
       "completedAt": "2026-06-24",
@@ -411,7 +500,19 @@
       "acceptance": "All new payments, transactions, stock movements, SKU states, approvals, and evidence links belong in Supabase/dashboard, but Codex/agents write only with explicit Pafi approval and visible Pafi-authorized marking; Airtable is referenced only for legacy reconciliation/export.",
       "workstream": "Data / Dashboard",
       "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis"
+      "chapterOwner": "Narcis",
+      "completionNote": "Task done. Owner corrected by Pafi on 2026-06-30: Pafi and Narcis own Airtable read-only legacy/source-of-truth boundary.",
+      "colour": "green",
+      "colourReason": "Done; owner corrected to Pafi and Narcis.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30",
+        "Owner decision 2026-06-24"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "plainExplanationRo": "Airtable este înghețat ca sursă legacy/read-only. Nu se mai fac operațiuni noi acolo; operaționalul activ merge în Supabase/dashboard. Taskul este done și aparține Pafi/Narcis.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P1-004",
@@ -433,7 +534,18 @@
       "completionNote": "Marked done by Pafi on 2026-06-24: Narcis dashboard rerun on canonical Ehsan basis completed.",
       "workstream": "Data / Dashboard",
       "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis"
+      "chapterOwner": "Narcis",
+      "colour": "green",
+      "colourReason": "Pafi confirmed this should already be done; dashboard already had completedAt 2026-06-24.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30",
+        "dashboard completedAt 2026-06-24"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "plainExplanationRo": "Dashboardul Narcis trebuia rerulat pe baza Ehsan corectă: EUR 5,500 + USD 1,800. Comparația veche de aproximativ USD 6,420 nu mai este adevăr curent și trebuie afișată doar cu nota de offset USD 264.95 dacă apare.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P1-005",
@@ -464,12 +576,10 @@
       "category": "Sales & Marketing",
       "priority": "P1",
       "urgencyScore": 84,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
-        "Pafi",
-        "Narcis",
-        "Dragos"
+        "Pafi"
       ],
       "dueDate": "2026-06-26",
       "source": "Pafi ownership update 2026-06-30",
@@ -477,27 +587,37 @@
       "acceptance": "Dragos cannot interpret observation mode as commercial activation.",
       "workstream": "Sales / Dragos",
       "chapter": "Sales & Marketing",
-      "chapterOwner": "Pafi"
+      "chapterOwner": "Pafi",
+      "completedAt": "2026-06-30",
+      "completionNote": "Marked decided by Pafi on 2026-06-30. Pafi owns Dragos operating contract/local handoff boundary.",
+      "colour": "green",
+      "colourReason": "Decided; Pafi owns this task.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z"
     },
     {
       "id": "P1-007",
-      "title": "Build Dragos observation-mode assets",
-      "category": "Sales & Marketing",
+      "title": "Create separate accessories business operating model",
+      "category": "Accessories Business",
       "priority": "P1",
       "urgencyScore": 83,
       "status": "open",
       "owner": "Pafi",
       "assignees": [
         "Pafi",
+        "Vic",
         "Narcis",
         "Dragos"
       ],
-      "dueDate": "2026-06-26",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Create contact-map schema, collaborator qualification rubric, field-feedback template, approved/banned phrases, refusal language, and weekly AI report spec.",
-      "acceptance": "Dragos can collect field intelligence before commercial activation; no collaborator code or payout draft is active.",
-      "workstream": "Sales / Dragos",
-      "chapter": "Sales & Marketing",
+      "dueDate": "2026-07-02",
+      "source": "Pafi instruction 2026-06-30; replaces Dragos observation-mode asset task.",
+      "description": "Group all accessory-related issues into a separate accessories business, not as a side-note inside peptide operations. Split accessories the same way as peptides: compliance/allowed claims, product/SKU decisions, purchasing and proof, workflows/admin/data, marketing/sales, logistics, and budget/P&L.",
+      "acceptance": "Accessories have their own operating view with sections for compliance, products, workflows, marketing/sales, purchasing/proof/QC, logistics, and budget/P&L. Each accessory issue has an owner, status, proof link, and go/no-go rule before public launch or sales activation.",
+      "workstream": "Accessories / Operating Model",
+      "chapter": "Accessories Business",
       "chapterOwner": "Pafi"
     },
     {
@@ -528,21 +648,28 @@
       "category": "Tech/Admin & AI Agents",
       "priority": "P1",
       "urgencyScore": 79,
-      "status": "planned",
+      "status": "open",
       "owner": "Narcis",
       "assignees": [
-        "Narcis",
-        "Vic",
-        "Pafi",
-        "Codex/Tech"
+        "Narcis"
       ],
       "dueDate": "2026-06-30",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Track approvals for public copy, price changes, discount codes, supplier orders, import decisions, live messages, refunds/replacements, and marketplace listings. Narcis owns technical/admin creation of the approval register; Vic owns compliance approvals; Pafi owns product, budget, and sales approvals.",
-      "acceptance": "Every mutating action has approval ID, evidence link, timestamp, and owner.",
+      "description": "Narcis creates a Supabase-backed approval register for every commercial/public mutation: public copy, price change, discount code, supplier order, import decision, live outbound message, refund/replacement, marketplace listing, wholesale/dropshipping partner activation, and dashboard/admin data mutation. Pafi and Vic remain approval authorities where relevant, but Narcis owns the implementation and operating register.",
+      "acceptance": "Narcis adds the approval register in Supabase or creates an implementation-ready schema; every mutating action can be tied to approval ID, approver, scope, evidence link, timestamp, owner, and status before execution.",
       "workstream": "Administration",
       "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis"
+      "chapterOwner": "Narcis",
+      "colour": "yellow",
+      "colourReason": "Narcis owns the Supabase approval register implementation.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:33:23Z",
+      "plainExplanationRo": "Acesta este registrul oficial de aprobări în Supabase. Orice schimbare comercială sau publică importantă trebuie să aibă approval ID, cine a cerut, cine a aprobat, ce s-a schimbat, când, scope și evidence link. Narcis îl construiește.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P1-010",
@@ -558,11 +685,18 @@
       ],
       "dueDate": "2026-06-30",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Export dashboard-critical Supabase tables daily and store checksums to detect drift. Reads are allowed; writes/backfills require explicit Pafi approval and Pafi-authorized marking. Narcis owns ongoing admin/technical backup workflow; Codex/Tech supports implementation as needed.",
+      "description": "Potential daily export/checksum backup for dashboard-critical Supabase tables. This task is not decided yet; reads are allowed, but writes/backfills require explicit Pafi approval and Pafi-authorized marking.",
       "acceptance": "Team can prove whether data changed and when; any agent-created mutation is traceable to explicit Pafi approval.",
       "workstream": "Data / Dashboard",
       "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis"
+      "chapterOwner": "Narcis",
+      "colour": "grey",
+      "colourReason": "Pafi corrected that task 21 is not decided yet.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z"
     },
     {
       "id": "P1-011",
@@ -586,88 +720,92 @@
     },
     {
       "id": "P1-012",
-      "title": "Assign Dan to controlled social media and stiri.peptralabs.ro support",
+      "title": "Define wholesale and dropshipping services lane",
       "category": "Sales & Marketing",
       "priority": "P1",
       "urgencyScore": 76,
       "status": "open",
-      "owner": "Vic",
+      "owner": "Pafi",
       "assignees": [
+        "Pafi",
         "Vic",
-        "Dan",
         "Narcis",
-        "Pafi"
+        "Dan"
       ],
-      "dueDate": "2026-06-27",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Dan currently handles social media and stiri.peptralabs.ro. Put him into the operating plan for approved social/news execution after the RUO-safe content model is defined. Vic owns the online-presence compliance rule and approved themes; Dan/Narcis execute only inside the approved content and banned-claim boundaries.",
-      "acceptance": "Dan has a clear content queue, approval rule, banned-claim checklist, Hermes routing, and no public post/news item goes live with dosing, human-use, treatment, medical-benefit, injection, or passive-income claims. Vic-approved online-presence rules exist before any new public post/news item goes live.",
-      "workstream": "Marketing",
+      "dueDate": "2026-07-03",
+      "source": "Pafi instruction 2026-06-30; transformed from Dan social/news support task.",
+      "description": "Create a controlled wholesale and dropshipping services lane for PeptraLabs/RUO: eligible products, minimum order rules, client qualification, pricing tiers, margin protection, fulfillment responsibility, inventory reservation, payment terms, refund/replacement rules, evidence/COA handling, and compliance-approved service copy. This is a services/commercial workflow, not public medical-use promotion.",
+      "acceptance": "Wholesale/dropshipping has a defined service offer, allowed-client criteria, SKU eligibility table, pricing/margin rules, order workflow, fulfillment handoff, payment/evidence requirements, approval register link, and Vic-approved public/private wording before any partner is activated.",
+      "workstream": "Wholesale / Dropshipping",
       "chapter": "Sales & Marketing",
       "chapterOwner": "Pafi"
     },
     {
       "id": "P1-013",
-      "title": "Use Dan for temporary delivery support until Bulgaria stock setup is ready",
+      "title": "Dan role decided; Narcis manages temporary delivery support",
       "category": "Purchasing & Logistics",
       "priority": "P1",
       "urgencyScore": 75,
-      "status": "planned",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi",
-        "Dan",
-        "Narcis"
-      ],
-      "dueDate": "2026-06-30",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Dan previously handled deliveries and can cover selected deliveries until the Bulgaria stock/logistics setup is ready.",
-      "acceptance": "Any Dan delivery is assigned through the dashboard, tied to a website/order ID, has stock movement and proof recorded, excludes direct/off-ledger cash by default, and includes no product advice or claim-making.",
-      "workstream": "Logistics",
-      "chapter": "Purchasing & Logistics",
-      "chapterOwner": "Pafi"
-    },
-    {
-      "id": "P1-014",
-      "title": "Activate SKU QR codes to direct Janoshik report pages",
-      "category": "Compliance & Online Presence",
-      "priority": "P1",
-      "urgencyScore": 79,
-      "status": "open",
+      "status": "done",
       "owner": "Narcis",
       "assignees": [
         "Narcis",
-        "Vic",
+        "Dan",
         "Pafi"
       ],
-      "dueDate": "2026-07-01",
+      "dueDate": "2026-06-30",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Activate or generate QR codes for each SKU so scanning the SKU/label QR opens the matching Janoshik report page directly where a Janoshik report exists. Do not point QR codes to a generic homepage, generic lab archive, or wrong SKU/batch. For SKUs without a Janoshik report, use the approved COA absence state instead of creating a misleading QR. Narcis owns QR implementation; Vic confirms compliance/COA wording; Pafi confirms product/SKU mapping where needed.",
-      "acceptance": "Every active SKU has a QR status: direct Janoshik report URL verified, approved COA absence state, or blocked pending report. Narcis provides the SKU -> QR target map, changed label/site files if relevant, and scan-test proof for representative QR codes. Public wording uses Janoshik consistently and does not imply human-use safety.",
-      "workstream": "Website / COA",
-      "chapter": "Compliance & Online Presence",
-      "chapterOwner": "Vic"
+      "description": "Dan role is decided: Narcis manages Dan for temporary delivery/logistics support until Bulgaria stock/logistics setup is ready. Dan may only operate inside assigned dashboard/order flows.",
+      "acceptance": "Dan role is clear: Narcis manages him; any delivery is assigned through the dashboard, tied to a website/order ID, records stock movement and proof, excludes direct/off-ledger cash by default, and includes no product advice or claim-making.",
+      "workstream": "Logistics",
+      "chapter": "Purchasing & Logistics",
+      "chapterOwner": "Pafi",
+      "completedAt": "2026-06-30",
+      "completionNote": "Marked decided by Pafi on 2026-06-30: Dan role is decided and Narcis manages him.",
+      "colour": "green",
+      "colourReason": "Dan role decided; Narcis manages him.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-06-30T18:26:02Z",
+      "plainExplanationRo": "Rolul lui Dan este decis: Narcis îl gestionează pentru suport temporar de livrare/logistică până când setupul Bulgaria este gata. Dan operează doar prin dashboard/order flow, fără cash off-ledger și fără sfaturi/claims de produs.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
-      "id": "P2-001",
-      "title": "Prepare inbound B2B support packet",
-      "category": "Sales & Marketing",
-      "priority": "P2",
-      "urgencyScore": 73,
-      "status": "planned",
-      "owner": "Pafi",
+      "id": "P1-014",
+      "title": "Codex owns RUO task colour marking and shared dashboard skill",
+      "category": "Tech/Admin & AI Agents",
+      "priority": "P1",
+      "urgencyScore": 79,
+      "status": "done",
+      "owner": "Codex/Tech",
       "assignees": [
-        "Pafi",
-        "Vic",
-        "Narcis"
+        "Codex/Tech",
+        "Narcis",
+        "Pafi"
       ],
-      "dueDate": "2026-07-03",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "No special B2B launch. If someone asks, deliver only with evidence and evaluate how B2B supports RUO positioning. Pafi owns sales workflow; Vic reviews compliance posture; Narcis supports admin/technical flow.",
-      "acceptance": "B2B handling is inbound/supporting only and does not create public campaign risk.",
-      "workstream": "Sales / B2B",
-      "chapter": "Sales & Marketing",
-      "chapterOwner": "Pafi"
+      "dueDate": "2026-06-30",
+      "source": "Pafi instruction 2026-06-30; transformed from SKU QR task.",
+      "description": "Codex owns the colour-marking layer for the RUO task dashboard. Build and maintain a dedicated skill that lets every agent classify tasks from Pafi's latest information, write red/yellow/green/grey fields into the shared dashboard JSON, preserve evidence/reason fields, and avoid each agent re-interpreting task state independently.",
+      "acceptance": "A reusable Codex skill exists for RUO task colour marking; it documents the colour policy, authority order, dashboard fields, and guardrails; it includes a helper script agents can run against the dashboard JSON; task 25 is marked with the current colour state and future colour changes use that skill.",
+      "workstream": "Dashboard / Task Colours",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis",
+      "supersedesPreviousTask": "Activate SKU QR codes to direct Janoshik report pages",
+      "colour": "green",
+      "colourReason": "Dedicated RUO task colour marker skill created and validated; Codex owns future colour marking.",
+      "colourEvidence": [
+        "/Users/pafi/.codex/skills/ruo-task-colour-marker/SKILL.md",
+        "quick_validate.py passed",
+        "Pafi instruction 2026-06-30"
+      ],
+      "colourUpdatedAt": "2026-06-30T12:34:35Z",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Codex deține stratul de colour marking pentru dashboard. Există skill dedicat care setează green/yellow/red/grey cu reason/evidence, ca fiecare agent să citească aceeași stare și să nu reinterpretăm taskurile din chat.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P2-002",
@@ -689,7 +827,10 @@
       "acceptance": "A dummy paid order can be processed without real collaborator activation. The correct Ibiza vs Bulgaria/central notification is selected from customer location, the handoff recipient sees only operational details, stock/evidence records are created or drafted, and the flow can be repeated safely before real use.",
       "workstream": "Sales / Dragos",
       "chapter": "Sales & Marketing",
-      "chapterOwner": "Pafi"
+      "chapterOwner": "Pafi",
+      "plainExplanationRo": "Acesta este un test dummy pentru o comandă plătită pe website: paid order -> locație client -> notificare corectă -> handoff local/central -> evidence record -> stock movement. Ibiza merge pe flow local; Bulgaria/Bucharest/warehouse merge pe flow central.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P2-003",
@@ -711,12 +852,15 @@
       "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution.",
       "workstream": "AI / Workflow",
       "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis"
+      "chapterOwner": "Narcis",
+      "plainExplanationRo": "Acesta este suita de agenți AI read-only/draft-first. Agenții pot citi Supabase/dashboard și pot propune rapoarte sau drafturi, dar nu modifică prețuri, stocuri, comenzi, copy public, payments sau mesaje fără approval explicit.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P2-004",
       "title": "Launch accessories site only after proof and policy gates",
-      "category": "Purchasing & Logistics",
+      "category": "Accessories Business",
       "priority": "P2",
       "urgencyScore": 68,
       "status": "planned",
@@ -730,8 +874,8 @@
       "source": "Pafi ownership update 2026-06-30",
       "description": "Launch accesoriipeptide.ro only after proof, QC, copy, landed-cost, and eMAG/Amazon/Noon policy checks. Vic owns accessory/compliance gates and online-presence policy; Narcis supports site/admin implementation after gates pass.",
       "acceptance": "Low-risk SKUs first; no unsupported sterility/cold-chain/dosing/injection claims.",
-      "workstream": "Accessories",
-      "chapter": "Purchasing & Logistics",
+      "workstream": "Accessories / Compliance & Launch",
+      "chapter": "Accessories Business",
       "chapterOwner": "Pafi"
     },
     {
@@ -754,7 +898,10 @@
       "acceptance": "Dashboard shows budget vs actual by month and bucket, so Pafi/Vic can see how much runway remains and which category is over/under budget.",
       "workstream": "Financial",
       "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi"
+      "chapterOwner": "Pafi",
+      "plainExplanationRo": "Acesta este tracking lunar de buget pe operating buckets. Arată planned budget vs actual spend vs remaining reserve pentru legal/customs/QA, peptide OpCo, accesorii, owner repayment, AI/data/dashboard, marketing/content, logistics și contingency.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-013",
@@ -881,7 +1028,10 @@
       "source": "Supabase transaction reference audit 2026-06-28 / chapter reorg 2026-06-30",
       "description": "Create a safe backfill plan for 118/534 transaction-like Supabase rows missing structured references across orders, customer_payments, expenses, restocks, stock_movements, and treasury_transfers. This is a plan first; writes remain Pafi-authorized only.",
       "acceptance": "Backfill plan maps each missing-reference table to reference source, proposed field, evidence link, and write authorization requirement. No write occurs without explicit Pafi authorization and performed_by=API/Pafi agent marking.",
-      "chapterOwner": "Narcis"
+      "chapterOwner": "Narcis",
+      "plainExplanationRo": "Acesta este planul de curățare a referințelor lipsă din Supabase. Auditul a găsit rânduri de tranzacții fără legături clare către order/payment/invoice/restock/stock movement/evidence. Narcis face planul; nu se scrie nimic în DB fără aprobare Pafi.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex"
     }
   ],
   "chapters": [
@@ -943,6 +1093,18 @@
         "Dragos"
       ],
       "summary": "Sales workflow, B2B inbound handling, affiliate/referral engine, social/news execution, collaborator/local handoff workflows."
+    },
+    {
+      "id": "accessories-business",
+      "name": "Accessories Business",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Vic",
+        "Narcis",
+        "Dragos"
+      ],
+      "summary": "Separate operating lane for accessories: compliance/allowed claims, product/SKU decisions, purchasing/proof/QC, workflows/admin/data, marketing/sales, logistics, and budget/P&L."
     }
   ]
 }
