@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-01T16:14:46Z",
+  "generatedAt": "2026-07-01T16:38:39Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -21,7 +21,8 @@
     "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries.",
     "AOD9604 correction split 2026-07-01: website strength issue is completed; label/new-supplier issue is still open.",
     "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow.",
-    "Chapter model 2026-06-30: Compliance & Online Presence (Vic); Tech/Admin & AI Agents (Narcis); Products, SKUs & Budgeting (Pafi); Purchasing & Logistics (Pafi lead, Vic compliance, Narcis admin); Sales & Marketing (Pafi sales workflow, Vic rules/online presence, Narcis/Dan execution)."
+    "Chapter model 2026-06-30: Compliance & Online Presence (Vic); Tech/Admin & AI Agents (Narcis); Products, SKUs & Budgeting (Pafi); Purchasing & Logistics (Pafi lead, Vic compliance, Narcis admin); Sales & Marketing (Pafi sales workflow, Vic rules/online presence, Narcis/Dan execution).",
+    "Sultan entering as a new owner requires a funds-input/ownership audit before owner settlement, reserve, cap-table, or budget numbers are treated as final."
   ],
   "gates": [
     {
@@ -62,7 +63,7 @@
         "Narcis"
       ],
       "dueDate": "2026-07-03",
-      "summary": "Pafi owns product/SKU disposition, pricing/margin, budget, protocol economics, and sales-workflow economics. Vic signs off compliance and Narcis implements admin/site fields."
+      "summary": "Pafi owns product/SKU disposition, pricing/margin, budget, protocol economics, sales-workflow economics, and Sultan owner funds-input reconciliation. Vic signs off compliance and Narcis implements admin/site fields."
     },
     {
       "id": "gate-purchasing-logistics",
@@ -103,7 +104,7 @@
         "Narcis"
       ],
       "dueDate": "2026-06-22",
-      "summary": "Dragos provides real balances/proofs; Narcis packages the cash packet into dashboard/evidence format. This remains the single non-Pafi/Vic/Narcis blocker."
+      "summary": "Dragos provides real balances/proofs; Sultan owner funds-input audit is added before new owner/cap-table settlement is final. Narcis packages evidence into dashboard/Supabase format."
     }
   ],
   "tasks": [
@@ -965,6 +966,39 @@
       "description": "Prepare first/next Retatrutide premium restock using EUR 149/vial list-base only with expanded third-party COA/testing. Normal promo/affiliate cap is 20%; sub-floor discounts require manual approval.",
       "acceptance": "Supplier/lab plan includes HPLC purity, LC-MS identity, assay/content if available, endotoxin LAL, heavy metals, residual solvents, and sterility/bioburden where practical. Vic confirms compliance wording; public language remains RUO/research-only and never says human-use safety.",
       "chapterOwner": "Pafi"
+    },
+    {
+      "id": "P0-016",
+      "title": "Audit Sultan owner funds input and ownership basis",
+      "category": "Products, SKUs & Budgeting",
+      "chapter": "Products, SKUs & Budgeting",
+      "workstream": "Owner Investment / Funds Audit",
+      "priority": "P0",
+      "urgencyScore": 87,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi",
+        "Sultan",
+        "Narcis",
+        "Vic"
+      ],
+      "dueDate": "2026-07-02",
+      "source": "Pafi instruction 2026-07-01: Sultan coming in as new owner; reconcile funds input",
+      "description": "Create a controlled owner-onboarding audit for Sultan before treating him as a finalized new owner. Reconcile every Sultan funds input against primary evidence: sender, receiver, account/wallet/Zen/bank path, date, native currency, FX policy if converted, amount, purpose, ownership basis, whether it is capital contribution, shareholder loan, owner receivable offset, inventory funding, operating reserve, or other treatment, and whether any funds have already been spent or reserved. Do not update cap table, owner settlement, budget reserve, or P&L numbers from memory only.",
+      "acceptance": "Sultan has a funds-input ledger with source evidence links, transaction dates, native currency, FX rule, cash custody target, classification, ownership terms/% or pending terms, impact on owner settlement/reserve/cap table, and unresolved questions. Control matrix rows are marked for evidence register, cash/Zen/bank/crypto, treasury/custodian target, owner investment/capital return, receivable/payable, budget reserve, exceptions, and published outputs. No Supabase write occurs unless explicitly Pafi-authorized with performed_by=API/Pafi agent and app.actor=Pafi transaction guardrail.",
+      "chapterOwner": "Pafi",
+      "colour": "yellow",
+      "colourReason": "Sultan owner/funds audit added from Pafi instruction; reconciliation can start, but owner status and numbers remain pending evidence.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-01: add audit for Sultan as new owner and reconcile funds input"
+      ],
+      "colourUpdatedAt": "2026-07-01T16:38:39Z",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Audit nou pentru Sultan: înainte să fie tratat ca owner final, trebuie reconciliate toate fondurile intrate de la el cu dovezi, valută, dată, cont/wallet, clasificare capital/loan/rezervă și impact pe settlement/cap table/buget. Fără cifre finale din memorie.",
+      "plainExplanationUpdatedAt": "2026-07-01T16:38:39Z",
+      "plainExplanationUpdatedBy": "Codex",
+      "supportingFile": "/Users/pafi/Documents/RUO Peptides/output/sultan-owner-funds-audit-2026-07-01.md"
     },
     {
       "id": "P1-015",
