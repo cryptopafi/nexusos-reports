@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-01T16:38:39Z",
+  "generatedAt": "2026-07-01T16:41:05Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -22,7 +22,8 @@
     "AOD9604 correction split 2026-07-01: website strength issue is completed; label/new-supplier issue is still open.",
     "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow.",
     "Chapter model 2026-06-30: Compliance & Online Presence (Vic); Tech/Admin & AI Agents (Narcis); Products, SKUs & Budgeting (Pafi); Purchasing & Logistics (Pafi lead, Vic compliance, Narcis admin); Sales & Marketing (Pafi sales workflow, Vic rules/online presence, Narcis/Dan execution).",
-    "Sultan entering as a new owner requires a funds-input/ownership audit before owner settlement, reserve, cap-table, or budget numbers are treated as final."
+    "Sultan entering as a new owner requires a funds-input/ownership audit before owner settlement, reserve, cap-table, or budget numbers are treated as final.",
+    "Sultan/Pafi operational additions: prepare Sultan client orders and plan a Sultan/Pafi restock, both before stock movement or customer handoff is treated as complete."
   ],
   "gates": [
     {
@@ -77,7 +78,7 @@
         "Dragos"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Purchasing/logistics remains blocked by SO-04 structured line proof, Ibiza 69-vial in-transit stock, accessory proof/QC, AOD9604 label/new-supplier correction, and Retatrutide premium restock/COA planning."
+      "summary": "Purchasing/logistics remains blocked by SO-04 structured line proof, Ibiza 69-vial in-transit stock, accessory proof/QC, AOD9604 label/new-supplier correction, Retatrutide premium restock/COA planning, and the new Sultan/Pafi restock plan."
     },
     {
       "id": "gate-sales-marketing",
@@ -92,7 +93,7 @@
         "Dragos"
       ],
       "dueDate": "2026-07-04",
-      "summary": "Pafi owns sales workflow; Vic owns marketing/affiliate/online-presence rules; Narcis and Dan execute only inside approved rule sets. Affiliate/referral engine is planned, not active."
+      "summary": "Pafi owns sales workflow; Sultan/Pafi prepare Sultan client orders; Vic owns marketing/affiliate/online-presence rules; Narcis and Dan execute only inside approved rule sets. Affiliate/referral engine is planned, not active."
     },
     {
       "id": "gate-cash",
@@ -999,6 +1000,69 @@
       "plainExplanationUpdatedAt": "2026-07-01T16:38:39Z",
       "plainExplanationUpdatedBy": "Codex",
       "supportingFile": "/Users/pafi/Documents/RUO Peptides/output/sultan-owner-funds-audit-2026-07-01.md"
+    },
+    {
+      "id": "P0-017",
+      "title": "Prepare Sultan client orders for controlled fulfillment",
+      "category": "Sales & Marketing",
+      "chapter": "Sales & Marketing",
+      "workstream": "Sales / Sultan Clients",
+      "priority": "P0",
+      "urgencyScore": 86,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Sultan",
+        "Pafi"
+      ],
+      "dueDate": "2026-07-02",
+      "source": "Pafi instruction 2026-07-01: prepare orders for Sultan clients; assignees Sultan and Pafi",
+      "description": "Prepare Sultan client orders as controlled order-prep records before any product handoff, stock movement, payment treatment, or customer communication is treated as complete. Capture client/order reference, requested products/SKUs, quantity, intended fulfillment route, payment state, stock source/location, compliance-safe customer wording, COA/evidence links, delivery/handoff proof requirement, and whether any item is blocked by stock, compliance, pricing, or approval register. This is order preparation only, not medical/protocol advice and not off-ledger fulfillment.",
+      "acceptance": "Each Sultan client order has a prepared order row/checklist with SKU, qty, stock location/source, price/discount basis if applicable, payment status, fulfillment owner, evidence links, approval status, and no off-ledger handoff. Any Supabase/order/stock write waits for explicit Pafi authorization, performed_by=API/Pafi agent marking where relevant, and app.actor=Pafi transaction guardrail for Codex/Pafi-agent writes.",
+      "chapterOwner": "Pafi",
+      "colour": "yellow",
+      "colourReason": "Sultan/Pafi client-order prep added; execution remains pending order details, stock/payment proof, and approval-safe fulfillment.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-01: prepare orders for Sultan clients and assign to Sultan/Pafi"
+      ],
+      "colourUpdatedAt": "2026-07-01T16:41:05Z",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pregătim comenzile clienților lui Sultan, dar nu le tratăm ca livrate sau mutate în stoc până nu există rând de comandă, SKU/qty, plată, locație stoc, dovadă și aprobare. Assignees: Sultan și Pafi.",
+      "plainExplanationUpdatedAt": "2026-07-01T16:41:05Z",
+      "plainExplanationUpdatedBy": "Codex"
+    },
+    {
+      "id": "P0-018",
+      "title": "Plan Sultan and Pafi restock order",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Purchasing / Sultan-Pafi Restock",
+      "priority": "P0",
+      "urgencyScore": 85,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Sultan",
+        "Pafi"
+      ],
+      "dueDate": "2026-07-02",
+      "source": "Pafi instruction 2026-07-01: create restock task; assignees Sultan and Pafi",
+      "description": "Prepare the Sultan/Pafi restock plan before placing or booking a restock. Capture SKU list, quantities, supplier, unit cost, landed-cost assumptions, COA/testing needs, labels/packaging, payment source, whether Sultan funds are used, ownership/capital classification impact, expected delivery route/location, cold-chain/logistics needs, and no-go items. Cross-reference Sultan owner funds audit if Sultan funds pay for the restock.",
+      "acceptance": "Restock plan has SKU/qty, supplier quote/proof, total expected cost, payment source, landed-cost estimate, COA/testing plan, labels/packaging state, delivery route, stock destination, owner/funds classification if Sultan pays, and explicit approval before any Supabase restock/payment/stock write. No restock is treated as operationally clear from chat memory only.",
+      "chapterOwner": "Pafi",
+      "relatedTasks": [
+        "P0-016"
+      ],
+      "colour": "yellow",
+      "colourReason": "Sultan/Pafi restock task added; plan can start, but purchase/payment/stock proof and approval are still pending.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-01: need to do a restock assigned to Sultan and Pafi"
+      ],
+      "colourUpdatedAt": "2026-07-01T16:41:05Z",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Restock nou Sultan/Pafi: trebuie pregătite SKU-urile, cantitățile, supplierul, costurile, COA/testing, plata și destinația stocului înainte să fie considerat comandat sau intrat în operare.",
+      "plainExplanationUpdatedAt": "2026-07-01T16:41:05Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P1-015",
