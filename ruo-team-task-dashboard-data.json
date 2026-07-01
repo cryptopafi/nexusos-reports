@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-01T09:51:09Z",
+  "generatedAt": "2026-07-01T10:17:40Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -17,6 +17,7 @@
     "B2B is inbound/supporting only unless later chosen.",
     "Airtable is frozen/read-only as legacy evidence; Supabase/dashboard is the active operating system for new work.",
     "Supabase is read-only by default for Codex/agents; writes require explicit Pafi approval and must be visibly marked as Pafi-authorized.",
+    "Codex/Pafi-agent Supabase writes must run inside a transaction that first sets local app.actor='Pafi', then applies the Pafi-authorized mutation; if the client cannot set actor in the same transaction, the write is blocked until a SQL/RPC wrapper exists.",
     "Narcis website work is consolidated into one Website Compliance task and is waiting for lawyer opinion; no new site modifications should be executed until counsel gives boundaries.",
     "AOD9604 correction split 2026-07-01: website strength issue is completed; label/new-supplier issue is still open.",
     "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow.",
@@ -326,22 +327,21 @@
       "dueDate": "2026-06-24",
       "source": "Owner override",
       "description": "Supabase/dashboard becomes the active operating system for SKU, batch, stock, orders, payments, COA/SDS, approvals, exceptions, pricing, and evidence links. Airtable remains frozen/read-only legacy evidence. Codex/agents remain read-only in Supabase unless Pafi explicitly approves a write.",
-      "acceptance": "No new operational writes go to Airtable. Supabase/dashboard can rebuild current operating state. Any Supabase write by Codex/agents requires explicit Pafi approval and must be visibly marked as Pafi-authorized with timestamp/source.",
+      "acceptance": "No new operational writes go to Airtable. Supabase/dashboard can rebuild current operating state. Any Supabase write by Codex/Pafi agents requires explicit Pafi approval, must be visibly marked Pafi-authorized with timestamp/source, must include performed_by=API/Pafi agent, and must execute inside a transaction that first runs set local app.actor='Pafi'.",
       "completedAt": "2026-06-24",
       "completionNote": "Marked done by Pafi on 2026-06-24; operating responsibility assigned to Narcis by Pafi on 2026-06-30. Supabase/dashboard remains active operating layer; Airtable remains frozen/read-only legacy evidence.",
       "workstream": "Data / Dashboard",
       "chapter": "Tech/Admin & AI Agents",
       "chapterOwner": "Narcis",
       "colour": "green",
-      "colourReason": "Task is already done; ongoing ownership moved to Narcis for now.",
+      "colourReason": "Pafi confirmed Narcis added DB actor support; Codex/Pafi write guardrail now requires set local app.actor='Pafi'.",
       "colourEvidence": [
-        "Pafi instruction 2026-06-30",
-        "dashboard completion 2026-06-24"
+        "Pafi instruction 2026-07-01: set local app.actor='Pafi' for Pafi/Codex writes"
       ],
       "colourUpdatedBy": "Codex",
-      "colourUpdatedAt": "2026-06-30T18:26:02Z",
-      "plainExplanationRo": "Supabase/dashboard este registrul operațional activ pentru SKU-uri, stocuri, comenzi, plăți, COA/SDS, aprobări, excepții, prețuri și dovezi. Airtable rămâne doar arhivă read-only. Deocamdată Narcis gestionează această parte operațională.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "colourUpdatedAt": "2026-07-01T10:17:40Z",
+      "plainExplanationRo": "Supabase/dashboard este registrul operațional activ. Airtable rămâne doar arhivă read-only. Orice write Codex/Pafi în Supabase trebuie să fie aprobat explicit, marcat Pafi-authorized + performed_by=API/Pafi agent și făcut într-o tranzacție care începe cu set local app.actor='Pafi'.",
+      "plainExplanationUpdatedAt": "2026-07-01T10:17:40Z",
       "plainExplanationUpdatedBy": "Codex"
     },
     {
@@ -849,12 +849,12 @@
       "dueDate": "2026-07-10",
       "source": "Pafi ownership update 2026-06-30",
       "description": "Build AI helpers that can read the dashboard/Supabase/project context and draft actions or reports, but cannot change records by themselves. Examples: Daily Ops summary, Stock check, Finance check, Compliance check, Procurement draft, Accessories check, Ibiza Network update, and Weekly Business Reporter. Narcis owns tech creation/admin for the agent suite, including stock-management and peptide/supplement protocol workflows; agents remain read-only/draft-first unless explicitly Pafi-authorized.",
-      "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution.",
+      "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution. Approved Supabase writes by Codex/Pafi agents must set local app.actor='Pafi' in the same write transaction.",
       "workstream": "AI / Workflow",
       "chapter": "Tech/Admin & AI Agents",
       "chapterOwner": "Narcis",
-      "plainExplanationRo": "Acesta este suita de agenți AI read-only/draft-first. Agenții pot citi Supabase/dashboard și pot propune rapoarte sau drafturi, dar nu modifică prețuri, stocuri, comenzi, copy public, payments sau mesaje fără approval explicit.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationRo": "Agenții AI rămân read-only/draft-first. Dacă un agent Codex/Pafi primește aprobare de write în Supabase, write-ul trebuie făcut cu set local app.actor='Pafi' în aceeași tranzacție, ca auditul să arate Pafi, nu rolul DB.",
+      "plainExplanationUpdatedAt": "2026-07-01T10:17:40Z",
       "plainExplanationUpdatedBy": "Codex"
     },
     {
@@ -1027,10 +1027,10 @@
       "dueDate": "2026-07-03",
       "source": "Supabase transaction reference audit 2026-06-28 / chapter reorg 2026-06-30",
       "description": "Create a safe backfill plan for 118/534 transaction-like Supabase rows missing structured references across orders, customer_payments, expenses, restocks, stock_movements, and treasury_transfers. This is a plan first; writes remain Pafi-authorized only.",
-      "acceptance": "Backfill plan maps each missing-reference table to reference source, proposed field, evidence link, and write authorization requirement. No write occurs without explicit Pafi authorization and performed_by=API/Pafi agent marking.",
+      "acceptance": "Backfill plan maps each missing-reference table to reference source, proposed field, evidence link, and write authorization requirement. No write occurs without explicit Pafi authorization, performed_by=API/Pafi agent marking, and set local app.actor='Pafi' in the same write transaction.",
       "chapterOwner": "Narcis",
-      "plainExplanationRo": "Acesta este planul de curățare a referințelor lipsă din Supabase. Auditul a găsit rânduri de tranzacții fără legături clare către order/payment/invoice/restock/stock movement/evidence. Narcis face planul; nu se scrie nimic în DB fără aprobare Pafi.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationRo": "Planul de backfill trebuie să includă și regula nouă de audit: pentru write-uri Codex/Pafi se setează set local app.actor='Pafi' în aceeași tranzacție. Fără asta, nu se face write direct.",
+      "plainExplanationUpdatedAt": "2026-07-01T10:17:40Z",
       "plainExplanationUpdatedBy": "Codex"
     }
   ],
