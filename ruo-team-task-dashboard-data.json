@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-02T11:07:23Z",
+  "generatedAt": "2026-07-02T12:42:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -24,7 +24,8 @@
     "Chapter model 2026-06-30: Compliance & Online Presence (Vic); Tech/Admin & AI Agents (Narcis); Products, SKUs & Budgeting (Pafi); Purchasing & Logistics (Pafi lead, Vic compliance, Narcis admin); Sales & Marketing (Pafi sales workflow, Vic rules/online presence, Narcis/Dan execution).",
     "Sultan entering as a new owner requires a funds-input/ownership audit before owner settlement, reserve, cap-table, or budget numbers are treated as final.",
     "Sultan/Pafi operational additions: prepare Sultan client orders and plan a Sultan/Pafi restock, both before stock movement or customer handoff is treated as complete.",
-    "Vic owns creating the RUO Slack workspace; Hermes agent attachment and Supabase/PepInternal access must be read-only/draft-first until explicit Pafi authorization and guardrails exist."
+    "Vic owns creating the RUO Slack workspace; Hermes agent attachment and Supabase/PepInternal access must be read-only/draft-first until explicit Pafi authorization and guardrails exist.",
+    "Referral tree addition 2026-07-02: every known customer/order needs a root account and direct referrer mapped from Pafi, Narcis, Vic, Dragos, or Sultan before relationship/affiliate reporting is trusted."
   ],
   "gates": [
     {
@@ -94,7 +95,7 @@
         "Dragos"
       ],
       "dueDate": "2026-07-04",
-      "summary": "Pafi owns sales workflow; Sultan/Pafi prepare Sultan client orders; Vic owns marketing/affiliate/online-presence rules; Narcis and Dan execute only inside approved rule sets. Affiliate/referral engine is planned, not active."
+      "summary": "Pafi owns sales workflow; Dragos and Narcis now map the customer referral relationship tree from root accounts Pafi, Narcis, Vic, Dragos, and Sultan; Sultan/Pafi prepare Sultan client orders; Vic owns marketing/affiliate/online-presence rules; Narcis and Dan execute only inside approved rule sets. Affiliate/referral engine is planned, not active."
     },
     {
       "id": "gate-cash",
@@ -1174,6 +1175,36 @@
       "plainExplanationRo": "Vic trebuie să creeze workspace Slack dedicat RUO. Hermes agent se atașează acolo, cu acces Supabase/PepInternal doar read-only/draft-first la început. Fără secrete în Slack și fără write-uri până există aprobare explicită și guardrails.",
       "plainExplanationUpdatedAt": "2026-07-02T10:26:20Z",
       "plainExplanationUpdatedBy": "Codex"
+    },
+    {
+      "id": "P1-019",
+      "title": "Map customer referral relationship tree from day one",
+      "category": "Sales & Marketing",
+      "chapter": "Sales & Marketing",
+      "workstream": "Referral / Relationship Tree",
+      "priority": "P1",
+      "urgencyScore": 73,
+      "status": "open",
+      "owner": "Dragos/Narcis",
+      "assignees": [
+        "Dragos",
+        "Narcis"
+      ],
+      "dueDate": "2026-07-05",
+      "source": "Pafi instruction 2026-07-02: check/add task for Dragos and Narcis to identify each customer referral and build the relationship tree from root accounts Pafi, Narcis, Vic, Dragos, and Sultan.",
+      "description": "Create the initial customer relationship/referral map before the referral/affiliate engine becomes active. For every known customer/order, identify who referred or originated the customer and attach the customer to one of the starting root accounts: Pafi, Narcis, Vic, Dragos, or Sultan. Dragos supplies field/customer-origin knowledge, especially Ibiza/local relationship context; Narcis turns the mapping into the Supabase/dashboard/admin structure. Do not guess unknown referrals: mark them unknown/unverified with evidence needed.",
+      "acceptance": "Every known customer/order has referral_root, direct_referrer, relationship_path, source/evidence link, confidence level, and unknown_reason when missing. Root accounts Pafi, Narcis, Vic, Dragos, and Sultan exist in the tree. Direct and indirect referrals are visible/exportable for dashboard/agent use. Conflicts are flagged instead of overwritten. No Supabase write/import occurs without explicit Pafi authorization, approval-register entry where relevant, and the required app.actor/performed_by audit markers.",
+      "chapterOwner": "Pafi",
+      "colour": "yellow",
+      "colourReason": "Task added because no existing task explicitly assigned Dragos and Narcis to identify each customer referral and build the root relationship tree.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-02: identify each customer referral; root accounts are Pafi, Narcis, Vic, Dragos, Sultan"
+      ],
+      "colourUpdatedAt": "2026-07-02T12:42:00Z",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Dragos si Narcis trebuie sa faca harta initiala: pentru fiecare client, cine l-a adus si sub ce cont radacina intra: Pafi, Narcis, Vic, Dragos sau Sultan. Dragos da informatia din teren/relatii, Narcis o structureaza in dashboard/Supabase. Ce nu stim se marcheaza necunoscut, nu se inventeaza.",
+      "plainExplanationUpdatedAt": "2026-07-02T12:42:00Z",
+      "plainExplanationUpdatedBy": "Codex"
     }
   ],
   "chapters": [
@@ -1234,7 +1265,7 @@
         "Dan",
         "Dragos"
       ],
-      "summary": "Sales workflow, B2B inbound handling, affiliate/referral engine, social/news execution, collaborator/local handoff workflows."
+      "summary": "Sales workflow, B2B inbound handling, customer referral relationship tree, affiliate/referral engine, social/news execution, collaborator/local handoff workflows."
     },
     {
       "id": "accessories-business",
