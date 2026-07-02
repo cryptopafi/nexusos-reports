@@ -971,14 +971,18 @@
           && (!els.assignee.value || (task.assignees || []).includes(els.assignee.value))
           && (!els.status.value || normalizeStatus(task.status) === els.status.value)
           && (!els.late.value || due.bucket === els.late.value);
-      }).sort((a, b) => {
-        const urgency = (Number(b.urgencyScore || 0) - Number(a.urgencyScore || 0));
-        if (urgency) return urgency;
-        const priority = priorityRank(b.priority) - priorityRank(a.priority);
-        if (priority) return priority;
-        return String(a.dueDate || "9999-99-99").localeCompare(String(b.dueDate || "9999-99-99"));
-      });
+      }).sort(compareTasks);
       filteredGates = (dashboardData?.gates || []).filter(gateMatchesFilters);
+    }
+
+    function compareTasks(a, b) {
+      const closedDelta = Number(isClosed(a.status)) - Number(isClosed(b.status));
+      if (closedDelta) return closedDelta;
+      const urgency = Number(b.urgencyScore || 0) - Number(a.urgencyScore || 0);
+      if (urgency) return urgency;
+      const priority = priorityRank(b.priority) - priorityRank(a.priority);
+      if (priority) return priority;
+      return String(a.dueDate || "9999-99-99").localeCompare(String(b.dueDate || "9999-99-99"));
     }
 
     function renderMetrics() {
