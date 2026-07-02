@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-01T16:41:05Z",
+  "generatedAt": "2026-07-02T10:26:20Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -23,7 +23,8 @@
     "Ownership update 2026-06-30: Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules; Narcis owns tech creation/admin including Hermes Telegram stock management and peptides/supplements protocol agents; Pafi owns products, SKUs, budgeting, and sales workflow.",
     "Chapter model 2026-06-30: Compliance & Online Presence (Vic); Tech/Admin & AI Agents (Narcis); Products, SKUs & Budgeting (Pafi); Purchasing & Logistics (Pafi lead, Vic compliance, Narcis admin); Sales & Marketing (Pafi sales workflow, Vic rules/online presence, Narcis/Dan execution).",
     "Sultan entering as a new owner requires a funds-input/ownership audit before owner settlement, reserve, cap-table, or budget numbers are treated as final.",
-    "Sultan/Pafi operational additions: prepare Sultan client orders and plan a Sultan/Pafi restock, both before stock movement or customer handoff is treated as complete."
+    "Sultan/Pafi operational additions: prepare Sultan client orders and plan a Sultan/Pafi restock, both before stock movement or customer handoff is treated as complete.",
+    "Vic owns creating the RUO Slack workspace; Hermes agent attachment and Supabase/PepInternal access must be read-only/draft-first until explicit Pafi authorization and guardrails exist."
   ],
   "gates": [
     {
@@ -37,7 +38,7 @@
         "Pafi"
       ],
       "dueDate": "",
-      "summary": "Vic owns RUO compliance, allowed website products, affiliate rules, and online-presence rules. Website compliance waits for lawyer boundaries; Narcis implements approved changes; Pafi owns product/sales implications."
+      "summary": "Vic owns RUO compliance, allowed website products, affiliate rules, online-presence rules, and creation of the RUO Slack workspace. Website compliance waits for lawyer boundaries; Narcis implements approved changes; Pafi owns product/sales implications."
     },
     {
       "id": "gate-tech-admin-ai",
@@ -51,7 +52,7 @@
         "Vic"
       ],
       "dueDate": "2026-07-03",
-      "summary": "Narcis owns tech creation/admin, Supabase/dashboard operations, approval register, backups, Hermes Telegram stock-management agent, and peptide/supplement protocol agent."
+      "summary": "Narcis owns tech creation/admin, Supabase/dashboard operations, approval register, backups, Hermes Telegram/Slack agent integrations, and peptide/supplement protocol agent. Vic owns the RUO Slack workspace creation task."
     },
     {
       "id": "gate-products-skus-budgeting",
@@ -1136,6 +1137,37 @@
       "chapterOwner": "Narcis",
       "plainExplanationRo": "Planul de backfill trebuie să includă și regula nouă de audit: pentru write-uri Codex/Pafi se setează set local app.actor='Pafi' în aceeași tranzacție. Fără asta, nu se face write direct.",
       "plainExplanationUpdatedAt": "2026-07-01T10:17:40Z",
+      "plainExplanationUpdatedBy": "Codex"
+    },
+    {
+      "id": "P1-018",
+      "title": "Create RUO Slack workspace with Hermes agent and data access",
+      "category": "Tech/Admin & AI Agents",
+      "chapter": "Tech/Admin & AI Agents",
+      "workstream": "Slack / Hermes / Data Access",
+      "priority": "P1",
+      "urgencyScore": 74,
+      "status": "open",
+      "owner": "Vic",
+      "assignees": [
+        "Vic",
+        "Narcis",
+        "Codex/Tech"
+      ],
+      "dueDate": "2026-07-05",
+      "source": "Pafi instruction 2026-07-02: add task for Vic to create RUO Slack workspace with Hermes agent attached and Supabase/PepInternal access",
+      "description": "Vic creates a dedicated RUO Slack workspace and coordinates attachment of a Hermes agent for internal RUO operations. Workspace should support controlled channels for ops, compliance, orders, stock/restock, approvals, and agent logs. Hermes access to Supabase and PepInternal must start read-only/draft-first, secret-safe, least-privilege, and aligned with RUO Supabase guardrails. Any write to Supabase remains blocked unless explicitly Pafi-authorized with required audit markers and app.actor=Pafi same-transaction guardrail for Codex/Pafi-agent writes.",
+      "acceptance": "Slack workspace exists with owner/admin list, required RUO channels, access policy, Hermes agent installed or implementation-ready, Supabase and PepInternal read-only smoke tests documented, no secrets posted in Slack, logs/audit route defined, and clear rule that Hermes drafts changes but cannot mutate Supabase/PepInternal or send external messages without explicit approval. Narcis/Tech support agent integration; Vic owns workspace creation and access policy.",
+      "chapterOwner": "Narcis",
+      "colour": "yellow",
+      "colourReason": "Vic Slack workspace task added; workspace, Hermes integration, and read-only data-access proof are still pending.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-02: Vic to create RUO Slack workspace with Hermes agent attached and Supabase/PepInternal access"
+      ],
+      "colourUpdatedAt": "2026-07-02T10:26:20Z",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Vic trebuie să creeze workspace Slack dedicat RUO. Hermes agent se atașează acolo, cu acces Supabase/PepInternal doar read-only/draft-first la început. Fără secrete în Slack și fără write-uri până există aprobare explicită și guardrails.",
+      "plainExplanationUpdatedAt": "2026-07-02T10:26:20Z",
       "plainExplanationUpdatedBy": "Codex"
     }
   ],
