@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU RUO Peptide Market Intelligence — PetraLab/PeptraLabs Q3 2026 | NexusOS DELPHI</title>
+<meta name="description" content="EU RUO peptide market demand analysis: INCREASE / CREATE / RESTOCK / STOCK FLOOR recommendations for PetraLab/PeptraLabs Q3 2026. EPR 12.3/20, D4 depth, 152 sources.">
+<meta property="og:title" content="EU RUO Peptide Market Intelligence — Q3 2026">
+<meta property="og:description" content="Catalog demand analysis: INCREASE / CREATE / RESTOCK / STOCK FLOOR. 152 sources, 5 scouts, EPR 12.3/20.">
+<meta property="og:type" content="article">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0A0F;
+  --card: #111118;
+  --glass: rgba(17,17,24,0.7);
+  --accent: #58a6ff;
+  --accent-glow: rgba(88,166,255,0.15);
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --border: rgba(48,54,61,0.8);
+  --success: #3fb950;
+  --warning: #d29922;
+  --danger: #f85149;
+  --emerging: #a371f7;
+}
+[data-theme="light"] {
+  --bg: #fafafa;
+  --card: #ffffff;
+  --glass: rgba(255,255,255,0.85);
+  --accent: #5E6AD2;
+  --accent-glow: rgba(94,106,210,0.1);
+  --text: #1a1a2e;
+  --muted: #57606a;
+  --border: rgba(208,215,222,0.8);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+}
+.glass-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.accent-glow {
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+.section-fade {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+/* Progress bar */
+#progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), #a371f7);
+  z-index: 100; transition: width 0.2s;
+}
+/* TOC */
+.toc-link {
+  color: var(--muted); text-decoration: none; font-size: 0.82rem;
+  transition: color 0.2s; padding: 2px 0; display: block;
+}
+.toc-link:hover, .toc-link.active { color: var(--accent); }
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th {
+  background: rgba(88,166,255,0.08);
+  color: var(--accent);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(88,166,255,0.04); }
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.badge-high { background: rgba(63,185,80,0.2); color: #3fb950; border: 1px solid rgba(63,185,80,0.4); }
+.badge-medium { background: rgba(210,153,34,0.2); color: #d29922; border: 1px solid rgba(210,153,34,0.4); }
+.badge-low { background: rgba(248,81,73,0.2); color: #f85149; border: 1px solid rgba(248,81,73,0.4); }
+.badge-emerging { background: rgba(163,113,247,0.2); color: #a371f7; border: 1px solid rgba(163,113,247,0.4); }
+.badge-restock { background: rgba(63,185,80,0.2); color: #3fb950; border: 1px solid rgba(63,185,80,0.4); }
+.badge-drop { background: rgba(248,81,73,0.2); color: #f85149; border: 1px solid rgba(248,81,73,0.4); }
+.badge-cond { background: rgba(210,153,34,0.2); color: #d29922; border: 1px solid rgba(210,153,34,0.4); }
+/* Callout */
+.callout {
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  background: rgba(88,166,255,0.06);
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+}
+.callout.warning { border-left-color: #d29922; background: rgba(210,153,34,0.06); }
+.callout.danger { border-left-color: #f85149; background: rgba(248,81,73,0.06); }
+.callout.success { border-left-color: #3fb950; background: rgba(63,185,80,0.06); }
+/* Code */
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  background: rgba(88,166,255,0.08);
+  color: var(--accent);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
+h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--accent); }
+h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+p { margin-bottom: 0.85rem; color: var(--muted); }
+ul { margin: 0.5rem 0 0.85rem 1.2rem; }
+li { margin-bottom: 0.35rem; color: var(--muted); }
+strong { color: var(--text); font-weight: 600; }
+
+/* Print */
+@media print {
+  [data-theme="dark"] { --bg: #fff; --card: #fff; --text: #111; --muted: #444; --border: #ddd; }
+  #progress-bar, #toc-sidebar, #top-nav { display: none; }
+  body { background: white; }
+  .glass-card { box-shadow: none; border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- NAV -->
+<nav id="top-nav" style="position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(10,10,15,0.85);border-bottom:1px solid var(--border);">
+  <div style="max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;">
+    <span style="font-size:0.8rem;font-weight:600;color:var(--accent);letter-spacing:0.1em;">NEXUSOS · DELPHI</span>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:0.75rem;color:var(--muted);">2026-07-02</span>
+      <button onclick="toggleTheme()" style="background:var(--glass);border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:0.75rem;color:var(--text);" id="theme-btn">☀ Light</button>
+      <button onclick="shareReport()" style="background:var(--accent);border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:0.75rem;color:#fff;font-weight:600;">⬆ Share</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="background:linear-gradient(135deg, #0A0A0F 0%, #0d1117 40%, #0f1a2e 100%);padding:60px 24px 48px;border-bottom:1px solid var(--border);">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div style="margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <span class="badge badge-high">D4 DEEP RESEARCH</span>
+      <span style="font-size:0.75rem;color:var(--muted);">EPR 12.3/20</span>
+      <span style="font-size:0.75rem;color:var(--muted);">· 152 sources · 5 scouts</span>
+    </div>
+    <h1 style="font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;line-height:1.2;margin-bottom:14px;background:linear-gradient(135deg,#e6edf3 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+      EU RUO Peptide Market Intelligence<br>PetraLab / PeptraLabs Q3 2026
+    </h1>
+    <p style="font-size:1rem;color:var(--muted);max-width:720px;margin-bottom:0;">
+      Catalog Demand Analysis: <strong style="color:var(--text);">INCREASE / CREATE / RESTOCK / STOCK FLOOR</strong><br>
+      ~56 orders/quarter · ~30 SKUs · 30-day China lead time · 2-year shelf life
+    </p>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div style="max-width:1400px;margin:0 auto;padding:32px 24px;display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start;">
+
+<!-- TOC SIDEBAR -->
+<aside id="toc-sidebar" style="position:sticky;top:72px;font-size:0.82rem;">
+  <div class="glass-card" style="padding:16px;">
+    <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">Contents</div>
+    <nav>
+      <a class="toc-link" href="#integrity">Evidence Integrity</a>
+      <a class="toc-link" href="#ranking">1. Demand Ranking</a>
+      <a class="toc-link" href="#increase" style="padding-left:10px;">Metabolic / GLP-1</a>
+      <a class="toc-link" href="#healing" style="padding-left:10px;">Healing / Recovery</a>
+      <a class="toc-link" href="#longevity" style="padding-left:10px;">Longevity</a>
+      <a class="toc-link" href="#cognitive" style="padding-left:10px;">Cognitive</a>
+      <a class="toc-link" href="#cosmetic" style="padding-left:10px;">Cosmetic / Tanning</a>
+      <a class="toc-link" href="#gh" style="padding-left:10px;">GH-Secretagogues</a>
+      <a class="toc-link" href="#sexual" style="padding-left:10px;">Sexual Health</a>
+      <a class="toc-link" href="#section-increase">2. INCREASE List</a>
+      <a class="toc-link" href="#section-create">3. CREATE List</a>
+      <a class="toc-link" href="#section-restock">4. RESTOCK / DROP</a>
+      <a class="toc-link" href="#section-floor">5. Stock Floor</a>
+      <a class="toc-link" href="#section-risk">6. Supply Chain Risk</a>
+      <a class="toc-link" href="#section-strategy">7. Strategy</a>
+      <a class="toc-link" href="#section-sources">Sources</a>
+    </nav>
+    <hr style="border:none;border-top:1px solid var(--border);margin:14px 0;">
+    <!-- Metadata -->
+    <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Metadata</div>
+    <div style="display:flex;flex-direction:column;gap:6px;font-size:0.75rem;">
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">EPR Score</span><span style="color:var(--accent);font-weight:700;">12.3/20</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Depth</span><span style="color:var(--text);">D4</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Sources</span><span style="color:var(--text);">~152</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Scouts</span><span style="color:var(--text);">5</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Self-grade</span><span style="color:var(--text);">88/100</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Date</span><span style="color:var(--text);">2026-07-02</span></div>
+      <div style="display:flex;justify-content:space-between;"><span style="color:var(--muted);">Agent</span><span style="color:var(--text);">DELPHI</span></div>
+    </div>
+    <hr style="border:none;border-top:1px solid var(--border);margin:14px 0;">
+    <!-- EPR Chart -->
+    <div style="font-size:0.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Critic Scores</div>
+    <canvas id="eprChart" height="120"></canvas>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- Evidence Integrity -->
+<section id="integrity" class="section-fade glass-card" style="padding:24px;margin-bottom:24px;">
+  <h2 style="display:flex;align-items:center;gap:10px;"><span style="color:var(--accent);">⚠</span> Evidence Integrity Notes</h2>
+  <p>Per Critic Council review, the following inputs were downgraded or excluded:</p>
+  <div class="callout warning" style="margin-bottom:12px;">
+    <strong>CONTRADICTORY — excluded:</strong> Market size $245.87M vs €16.08B — report-mill origin. Used for directional context only, not ranking inputs.
+  </div>
+  <div class="callout warning" style="margin-bottom:12px;">
+    <strong>UNVERIFIED — excluded from ranking:</strong> "France +40% annually" — no source found. Removed from evidence chain.
+  </div>
+  <div class="callout warning" style="margin-bottom:12px;">
+    <strong>LOGICAL FALLACY — removed:</strong> "Mod-removed thread = high demand" — absence of content is not demand signal.
+  </div>
+  <div class="callout" style="margin-bottom:12px;">
+    <strong>RISK SIGNAL only:</strong> China export tightening (mid-May 2026) — community-reported, not trade data. Treated as operational risk, not demand input.
+  </div>
+  <div class="callout" style="margin-bottom:0;">
+    <strong>AWARENESS proxy only:</strong> YouTube view counts — creator reach metric, not buyer intent. Used as category-awareness signal.
+  </div>
+  <div style="margin-top:20px;display:flex;gap:16px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;"><span class="badge badge-high">HIGH</span><span style="color:var(--muted);">PetraLab own sales + EU-specific external corroboration</span></div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;"><span class="badge badge-medium">MEDIUM</span><span style="color:var(--muted);">EU community signal + multi-vendor availability</span></div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;"><span class="badge badge-low">LOW</span><span style="color:var(--muted);">Global/US proxy only, or single source</span></div>
+  </div>
+</section>
+
+<!-- Section 1: Demand Ranking -->
+<section id="ranking" class="section-fade" style="margin-bottom:32px;">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;border-left:3px solid var(--accent);padding-left:14px;">1. EU Demand Ranking by Category</h2>
+
+  <!-- Metabolic / GLP-1 -->
+  <div id="increase" class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h3>Metabolic / GLP-1</h3>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Compound</th><th>EU Demand</th><th>Confidence</th><th>Key EU Signal</th><th>EU vs US Nuance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Retatrutide</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller; r/PeptidesEurope + r/AskGermany; Phase III trials in HU/PL/SK/ES</td><td>GLP-1 arbitrage window — temporary as pharma approval widens</td></tr>
+        <tr><td><strong>5-Amino-1MQ</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller; EU vendors confirmed</td><td>Low regulatory heat vs injectable GLP-1s</td></tr>
+        <tr><td><strong>Tirzepatide</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-low">LOW</span></td><td>GLP-1 EU price sensitivity ("under $2/mg")</td><td>HIGH defection risk as Mounjaro pharma access widens</td></tr>
+        <tr><td><strong>SLU-PP-332</strong></td><td><span class="badge badge-emerging">EMERGING</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>EU-exclusive at PurityBase; beyond-peptides.com EU</td><td>Exercise-mimetic novelty; EU-native availability</td></tr>
+        <tr><td><strong>AOD9604</strong></td><td><span class="badge badge-low">LOW</span></td><td><span class="badge badge-low">LOW</span></td><td>No EU-specific signal</td><td>Global proxy only</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Healing / Recovery -->
+  <div id="healing" class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h3>Healing / Recovery</h3>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Compound</th><th>EU Demand</th><th>Confidence</th><th>Key EU Signal</th><th>EU vs US Nuance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>BPC-157</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller; EU legal confirmed; 2025-26 systematic reviews</td><td>Germany AMG legal ambiguity — commoditized, price-war risk</td></tr>
+        <tr><td><strong>TB-500</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller; Wolverine Stack pairing with BPC-157</td><td>Bundle/stack attach is the merchandising lever</td></tr>
+        <tr><td><strong>KPV</strong></td><td><span class="badge badge-emerging">EMERGING</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>KLOW-stack "glue"; r/40Plus_IVF EU</td><td>Under-indexed, low reg exposure — curation hidden gem</td></tr>
+        <tr><td><strong>VIP</strong></td><td><span class="badge badge-low">LOW</span></td><td><span class="badge badge-low">LOW</span></td><td>Carried by beyond-peptides.com EU</td><td>Niche mast-cell/CIRS community</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Longevity / Anti-Aging -->
+  <div id="longevity" class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h3>Longevity / Anti-Aging</h3>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Compound</th><th>EU Demand</th><th>Confidence</th><th>Key EU Signal</th><th>EU vs US Nuance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>MOTS-C</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-high">HIGH</span></td><td>PetraLab #1 empirically; r/cfs EU CFS community; beyond-peptides.com EU</td><td>Own sales override external buzz — longevity/metabolic funnel</td></tr>
+        <tr><td><strong>NAD+</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller; category gateway</td><td>High awareness; stable mover</td></tr>
+        <tr><td><strong>Epithalon</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller; Frontiers Aging review Jan 2026; EU legal confirmed</td><td>Cheap, stable, strong reorder</td></tr>
+        <tr style="background:rgba(163,113,247,0.06)"><td><strong>Thymosin Alpha-1 ⭐</strong></td><td><span class="badge badge-emerging">EMERGING→HIGH</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>FDA Category 2 removal Apr 2026; 30+ country approvals; beyond-peptides.com EU</td><td><strong>STRONGEST structural catalyst in dataset — hidden gem</strong></td></tr>
+        <tr><td><strong>SS-31 (Elamipretide)</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>r/cfs EU; FDA approval Barth syndrome; strongest clinical pipeline; EU vendors</td><td>Rising clinical legitimacy; future channel-defection risk</td></tr>
+        <tr><td><strong>FOXO4-DRI</strong></td><td><span class="badge badge-low">LOW</span></td><td><span class="badge badge-low">LOW</span></td><td>No EU-specific signal; development stalled (Fight Aging Feb 2026)</td><td>Senolytic novelty only</td></tr>
+        <tr><td><strong>Glutathione</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-low">LOW</span></td><td>No strong EU signal</td><td>Commodity adjunct</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Cognitive -->
+  <div id="cognitive" class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h3>Cognitive / Nootropic</h3>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Compound</th><th>EU Demand</th><th>Confidence</th><th>Key EU Signal</th><th>EU vs US Nuance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Semax</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>r/Biohackers "Semax nasal spray EU"; biolabshop.eu + semaxpolska (Poland intra-Schengen)</td><td>Russian-origin with genuine EU cultural resonance (stronger than US)</td></tr>
+        <tr><td><strong>Selank</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>EU sourcing threads; Poland vendors; Semax+Selank natural bundle</td><td>Anxiolytic pairing; EU familiarity higher</td></tr>
+        <tr><td><strong>Cerebrolysin</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-low">LOW</span></td><td>r/Biohackers EU sourcing threads</td><td>CEE clinical heritage spreading westward</td></tr>
+        <tr><td><strong>DSIP</strong></td><td><span class="badge badge-low">LOW</span></td><td><span class="badge badge-low">LOW</span></td><td>r/40Plus_IVF EU mention only</td><td>Sleep niche, single signal</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Cosmetic -->
+  <div id="cosmetic" class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h3>Cosmetic / Tanning</h3>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Compound</th><th>EU Demand</th><th>Confidence</th><th>Key EU Signal</th><th>EU vs US Nuance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>GHK-Cu ⭐</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller; EU legal confirmed; cosmeceutical literature</td><td>ONLY compound bridgeable to cosmetic channel — lowest regulatory risk</td></tr>
+        <tr><td><strong>Melanotan-2</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-low">LOW</span></td><td>EU legal confirmed most states</td><td>Seasonal; reputationally complex</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- GH Secretagogues -->
+  <div id="gh" class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h3>GH-Secretagogues</h3>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Compound</th><th>EU Demand</th><th>Confidence</th><th>Key EU Signal</th><th>EU vs US Nuance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CJC-1295 (no DAC)</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>EU legal confirmed; most-requested GH stack</td><td>Commoditized — compete on bundle/curation</td></tr>
+        <tr><td><strong>Ipamorelin</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>EU legal confirmed; stack partner</td><td>Same — bundle attach lever</td></tr>
+        <tr><td><strong>Tesamorelin</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller</td><td>Higher-value SKU, clinical GH pedigree</td></tr>
+        <tr><td><strong>CJC-1295 DAC</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-low">LOW</span></td><td>Community shifting to no-DAC dosing</td><td>Deprecate; replace with no-DAC</td></tr>
+        <tr><td><strong>IGF1-LR3</strong></td><td><span class="badge badge-low">LOW</span></td><td><span class="badge badge-low">LOW</span></td><td>Bodybuilding niche</td><td>WADA-prohibited; sourcing compliance critical</td></tr>
+        <tr><td><strong>Kisspeptin-10</strong></td><td><span class="badge badge-low">LOW</span></td><td><span class="badge badge-low">LOW</span></td><td>CellPeptides EU only</td><td>Fertility/hormone niche, institutional</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- Sexual Health -->
+  <div id="sexual" class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h3>Sexual Health</h3>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Compound</th><th>EU Demand</th><th>Confidence</th><th>Key EU Signal</th><th>EU vs US Nuance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>PT-141 (Bremelanotide)</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>beyond-peptides.com EU; evergreen niche</td><td>Steady low-volume; Vyleesi approval creates some defection</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: INCREASE -->
+<section id="section-increase" class="section-fade" style="margin-bottom:32px;">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;border-left:3px solid #3fb950;padding-left:14px;">2. INCREASE List</h2>
+  <p>Currently carried SKUs with strong EU demand — increase safety stock depth.</p>
+  <div class="glass-card" style="padding:20px;">
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>SKU</th><th>Confidence</th><th>Rationale</th><th>Demand Signal</th><th>Risk Note</th></tr></thead>
+      <tbody>
+        <tr style="background:rgba(63,185,80,0.04)"><td><strong>MOTS-C 🥇</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Empirical #1 seller + EU r/cfs interest</td><td>Own sales + EU community</td><td>Protect first — longevity/metabolic funnel anchor</td></tr>
+        <tr><td><strong>Retatrutide</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Top seller + acute EU sourcing gap</td><td>Own sales + EU threads/vendors</td><td>Harvest now; do not over-commit long horizon (GLP-1 defection risk)</td></tr>
+        <tr><td><strong>5-Amino-1MQ</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Top seller, EU-available, low regulatory heat</td><td>Own sales + EU vendor</td><td>Safe to deepen</td></tr>
+        <tr><td><strong>GHK-Cu</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Top seller + cosmetic-bridge de-risker + high reorder</td><td>Own sales + literature</td><td>Lowest-risk anchor — deepen confidently</td></tr>
+        <tr><td><strong>TB-500</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Top seller + Wolverine Stack attach with BPC-157</td><td>Own sales + EU legal</td><td>Pair inventory with BPC-157</td></tr>
+        <tr><td><strong>BPC-157</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Top seller + external #1</td><td>Own sales + systematic reviews</td><td>Germany AMG risk — deepen but avoid price war</td></tr>
+        <tr><td><strong>Tesamorelin</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Top seller, higher-margin</td><td>Own sales</td><td>Moderate depth</td></tr>
+        <tr><td><strong>NAD+</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Top seller, category gateway</td><td>Own sales</td><td>Moderate depth</td></tr>
+        <tr><td><strong>Epithalon</strong></td><td><span class="badge badge-high">HIGH</span></td><td>Top seller, cheap/stable, clinical momentum</td><td>Own sales + Frontiers review</td><td>Low risk — deepen</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout" style="margin-top:16px;">
+      <strong>The BPC-157 vs MOTS-C Discrepancy Explained:</strong> External scouts rank BPC-157 as global #1 (YouTube 560K+, systematic reviews, universal EU legal status). PetraLab's empirical #1 is MOTS-C. This reveals PetraLab's actual customer base skews <em>longevity/metabolic/chronic-fatigue</em> rather than the gym/orthopedic-recovery crowd BPC-157 dominates globally. <strong>Trust your own funnel.</strong> BPC-157 is a strong secondary for top-of-funnel awareness, but do not reallocate MOTS-C shelf toward BPC on external buzz alone.
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: CREATE -->
+<section id="section-create" class="section-fade" style="margin-bottom:32px;">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;border-left:3px solid #a371f7;padding-left:14px;">3. CREATE List</h2>
+  <p>Compounds NOT currently in catalog — high-confidence EU demand warrants adding these.</p>
+  <div class="glass-card" style="padding:20px;">
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Compound</th><th>Priority</th><th>Confidence</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr style="background:rgba(163,113,247,0.06)"><td><strong>CJC-1295 (no DAC)</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>Complete the most-requested GH stack. Only DAC variant carried (OOS + deprecated "too aggressive"). Community shifted to no-DAC dosing. Bundle with Ipamorelin.</td></tr>
+        <tr style="background:rgba(163,113,247,0.06)"><td><strong>Thymosin Alpha-1 ⭐</strong></td><td><span class="badge badge-high">HIGH</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td><strong>Strongest structural catalyst in dataset:</strong> FDA Category 2 removal Apr 2026 + 30+ country approvals. EU-available (beyond-peptides.com). Rising, durable legitimacy.</td></tr>
+        <tr><td><strong>KPV</strong></td><td><span class="badge badge-medium">MEDIUM</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>KLOW-stack glue, anti-inflammatory, cheap synthesis, low regulatory exposure. Enables proprietary KLOW bundle. Under-indexed = curation edge.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: RESTOCK / DROP -->
+<section id="section-restock" class="section-fade" style="margin-bottom:32px;">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;border-left:3px solid #d29922;padding-left:14px;">4. RESTOCK-or-DROP for 12 OOS SKUs</h2>
+  <div class="glass-card" style="padding:20px;">
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>SKU</th><th>Verdict</th><th>Confidence</th><th>EU Evidence</th><th>Reasoning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Semax</strong></td><td><span class="badge badge-restock">RESTOCK</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>r/Biohackers EU threads; biolabshop.eu, semaxpolska</td><td>Genuine EU nootropic demand + intra-Schengen competitor edge. Bundle w/ Selank.</td></tr>
+        <tr><td><strong>Selank</strong></td><td><span class="badge badge-restock">RESTOCK</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>EU sourcing threads; Poland vendors</td><td>Natural Semax pairing — restock together for bundle attach.</td></tr>
+        <tr><td><strong>DSIP</strong></td><td><span class="badge badge-cond">CONDITIONAL</span></td><td><span class="badge badge-low">LOW</span></td><td>Single r/40Plus_IVF EU mention</td><td>Minimal restock if bundling into sleep/recovery kit only.</td></tr>
+        <tr><td><strong>Cerebrolysin</strong></td><td><span class="badge badge-cond">CONDITIONAL</span></td><td><span class="badge badge-low">LOW</span></td><td>r/Biohackers EU sourcing threads</td><td>CEE familiarity is real; ampoule handling + thin margin. Small restock or drop.</td></tr>
+        <tr><td><strong>FOXO4</strong></td><td><span class="badge badge-drop">DROP</span></td><td><span class="badge badge-low">LOW</span></td><td>No EU-specific signal; development stalled</td><td>Expensive, no demand proof. Drop.</td></tr>
+        <tr><td><strong>IGF1-LR3</strong></td><td><span class="badge badge-cond">CONDITIONAL</span></td><td><span class="badge badge-low">LOW</span></td><td>Bodybuilding niche; no EU signal</td><td>PED stigma + reg risk. Small restock only if serving bodybuilding segment.</td></tr>
+        <tr><td><strong>PT-141</strong></td><td><span class="badge badge-restock">RESTOCK</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>EU-available (beyond-peptides.com); evergreen sexual-health niche</td><td>Steady low-volume; diversification value.</td></tr>
+        <tr><td><strong>CJC-1295 DAC</strong></td><td><span class="badge badge-drop">DROP / SWAP</span></td><td><span class="badge badge-low">LOW</span></td><td>Community shift to no-DAC</td><td>Drop DAC; redirect to CREATE no-DAC (§3).</td></tr>
+        <tr><td><strong>SLU-PP-332</strong></td><td><span class="badge badge-restock">RESTOCK</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>EU-exclusive (PurityBase); beyond-peptides.com</td><td>Novelty exercise-mimetic + EU-native availability = curation edge.</td></tr>
+        <tr><td><strong>SS-31</strong></td><td><span class="badge badge-restock">RESTOCK</span></td><td><span class="badge badge-medium">MEDIUM</span></td><td>r/cfs EU; strongest clinical pipeline; beyond-peptides.com EU</td><td>Rising clinical legitimacy pulls demand.</td></tr>
+        <tr><td><strong>Tirzepatide</strong></td><td><span class="badge badge-cond">CONDITIONAL</span></td><td><span class="badge badge-low">LOW</span></td><td>GLP-1 EU price sensitivity; no own-sales</td><td>HIGH defection risk as pharma access widens. Restock thin or skip in favor of Retatrutide.</td></tr>
+        <tr><td><strong>Retatrutide-30mg</strong></td><td><span class="badge badge-restock">RESTOCK</span></td><td><span class="badge badge-high">HIGH</span></td><td>Own top-seller (base Reta); high-dose EU demand; acute EU supply gap</td><td>Restock — but treat as time-limited arbitrage. Do not build 2-year depth.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="text-align:center;padding:12px 20px;background:rgba(63,185,80,0.1);border-radius:8px;border:1px solid rgba(63,185,80,0.3);">
+        <div style="font-size:1.5rem;font-weight:800;color:#3fb950;">6</div>
+        <div style="font-size:0.75rem;color:var(--muted);">RESTOCK</div>
+      </div>
+      <div style="text-align:center;padding:12px 20px;background:rgba(210,153,34,0.1);border-radius:8px;border:1px solid rgba(210,153,34,0.3);">
+        <div style="font-size:1.5rem;font-weight:800;color:#d29922;">4</div>
+        <div style="font-size:0.75rem;color:var(--muted);">CONDITIONAL</div>
+      </div>
+      <div style="text-align:center;padding:12px 20px;background:rgba(248,81,73,0.1);border-radius:8px;border:1px solid rgba(248,81,73,0.3);">
+        <div style="font-size:1.5rem;font-weight:800;color:#f85149;">2</div>
+        <div style="font-size:0.75rem;color:var(--muted);">DROP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Stock Floor -->
+<section id="section-floor" class="section-fade" style="margin-bottom:32px;">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;border-left:3px solid #58a6ff;padding-left:14px;">5. Minimum Stock (Reorder Floor) Framework</h2>
+  <div class="callout" style="margin-bottom:16px;">
+    <strong>Reality check:</strong> ~18 orders/month across 30+ SKUs = mean SKU &lt;1 unit/month. Only top sellers move meaningfully. No false precision — tier-based ranges only.
+  </div>
+  <div class="glass-card" style="padding:20px;">
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Tier</th><th>SKUs</th><th>Safety Floor</th><th>Reorder Trigger</th><th>Rationale</th></tr></thead>
+      <tbody>
+        <tr style="background:rgba(63,185,80,0.05)"><td><strong>HIGH-DEMAND</strong></td><td><code>MOTS-C, Retatrutide, 5-Amino-1MQ, GHK-Cu, TB-500, BPC-157, Tesamorelin, NAD+, Epithalon</code></td><td><strong>6–10 units</strong></td><td>Reorder at ~2× monthly velocity remaining</td><td>Cover 30-day lead + buffer for China delay; cheap shelf-life headroom</td></tr>
+        <tr style="background:rgba(210,153,34,0.05)"><td><strong>MEDIUM-DEMAND</strong></td><td><code>Semax, Selank, SLU-PP-332, SS-31, PT-141, CJC-1295 no-DAC, Ipamorelin, Thymosin A1</code></td><td><strong>3–5 units</strong></td><td>Reorder when ≤2 on hand</td><td>Real but unproven velocity</td></tr>
+        <tr style="background:rgba(248,81,73,0.05)"><td><strong>LOW/NICHE</strong></td><td><code>KPV, VIP, DSIP, Cerebrolysin, IGF1-LR3, Kisspeptin-10, Melanotan-2, Glutathione</code></td><td><strong>1–3 units (buy-to-signal)</strong></td><td>Reorder only on actual sale</td><td>Avoid dead capital; keep 1-2 "live" for curation discovery</td></tr>
+        <tr><td><strong>OOS-RESTOCK</strong></td><td><code>6 RESTOCK SKUs</code></td><td><strong>Start at LOW end of target tier</strong></td><td>Re-evaluate after first sell-through</td><td>No velocity history — buy conservative, then calibrate</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="margin-top:20px;">
+      <h4>Calibration Protocol (after 2–3 months sell-through)</h4>
+      <ul style="margin-top:8px;">
+        <li>Floor = velocity × (lead-time months + safety factor). Safety factor <strong>1.5</strong> normally, <strong>2.0</strong> for China-only SKUs.</li>
+        <li>SKU with 0 sales in 6 months → drop to buy-to-order or DROP.</li>
+        <li>SKU hitting OOS repeatedly → promote a tier.</li>
+        <li>Re-run quarterly.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Supply Chain Risk -->
+<section id="section-risk" class="section-fade" style="margin-bottom:32px;">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;border-left:3px solid #f85149;padding-left:14px;">6. Supply Chain Risk Warning</h2>
+  <div class="callout danger" style="margin-bottom:16px;">
+    <strong>CRITICAL — China single-source + 30-day lead time + community-reported export tightening (mid-May 2026):</strong> If real, effective lead time balloons, cascading into multi-SKU OOS. This is the #1 operational threat.
+  </div>
+  <div class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h4 style="margin-bottom:12px;">Mitigation</h4>
+    <ul>
+      <li>Qualify a second EU-domestic supplier for all 9 HIGH-DEMAND SKUs (EU vendors: biolabshop.eu, Baltic BioLabs, Core Peptides, beyond-peptides.com)</li>
+      <li>Raise safety factor to 2.0 on China-only SKUs</li>
+      <li>Stagger reorders — no single shipment covers &gt;1 top seller's entire float</li>
+    </ul>
+  </div>
+  <div class="glass-card" style="padding:20px;margin-bottom:16px;">
+    <h4 style="margin-bottom:12px;">Regulatory Exposure (highest → lowest)</h4>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div class="callout danger" style="margin:0;"><strong>GLP-1s (Retatrutide, Tirzepatide):</strong> Most exposed — pharma approval narrows RUO window</div>
+      <div class="callout warning" style="margin:0;"><strong>BPC-157:</strong> Germany AMG legal ambiguity (~25% of EU market is DACH)</div>
+      <div class="callout success" style="margin:0;"><strong>Lower exposure:</strong> GHK-Cu (cosmetic bridge), KPV, Epithalon, MOTS-C</div>
+    </div>
+  </div>
+  <div class="callout success">
+    <strong>Compliance as moat:</strong> COA + endotoxin testing is community standard post-New Yorker contamination exposé. Publish per-batch COA + endotoxin data prominently — this is a trust moat and defense against commoditization.
+  </div>
+</section>
+
+<!-- Section 7: Strategy -->
+<section id="section-strategy" class="section-fade" style="margin-bottom:32px;">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;border-left:3px solid var(--accent);padding-left:14px;">7. Key Strategic Insights</h2>
+  <div class="callout" style="margin-bottom:20px;font-size:1rem;">
+    <strong>Core thesis:</strong> Win on CURATION and TRUST, not price or commodity stacks.
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+    <div class="glass-card" style="padding:20px;">
+      <h3 style="margin-bottom:12px;">Contrarian Views</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="border-left:2px solid #f85149;padding-left:12px;">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text);">1. BPC-157: Don't chase the price war</div>
+          <div style="font-size:0.8rem;color:var(--muted);">Most commoditized + Germany AMG risk. Compete on COA/purity + bundling, never on price. <span class="badge badge-high" style="font-size:0.65rem;">HIGH confidence</span></div>
+        </div>
+        <div style="border-left:2px solid #d29922;padding-left:12px;">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text);">2. GLP-1 RUO arbitrage is TEMPORARY</div>
+          <div style="font-size:0.8rem;color:var(--muted);">Harvest now with short-term depth — do NOT build 2-year GLP-1 inventory. <span class="badge badge-high" style="font-size:0.65rem;">HIGH confidence</span></div>
+        </div>
+        <div style="border-left:2px solid var(--accent);padding-left:12px;">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text);">3. CJC-1295+Ipamorelin: Most crowded stack</div>
+          <div style="font-size:0.8rem;color:var(--muted);">Use as gateway/attach item, not a hero SKU. <span class="badge badge-medium" style="font-size:0.65rem;">MEDIUM confidence</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="glass-card" style="padding:20px;">
+      <h3 style="margin-bottom:12px;">Hidden Gems (Under-Indexed)</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="border-left:2px solid #a371f7;padding-left:12px;">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text);">⭐ Thymosin Alpha-1</div>
+          <div style="font-size:0.8rem;color:var(--muted);">Strongest structural catalyst: FDA removal + 30+ country approvals. CREATE priority.</div>
+        </div>
+        <div style="border-left:2px solid #a371f7;padding-left:12px;">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text);">⭐ KPV</div>
+          <div style="font-size:0.8rem;color:var(--muted);">KLOW stack glue, cheap, low regulatory exposure, curation edge.</div>
+        </div>
+        <div style="border-left:2px solid #a371f7;padding-left:12px;">
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text);">⭐ GHK-Cu Topical Bridge</div>
+          <div style="font-size:0.8rem;color:var(--muted);">Only compound legally bridgeable to cosmetic channel; de-risking anchor with high reorder rate.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass-card" style="padding:20px;">
+    <h3 style="margin-bottom:14px;">Bundle Stacks (Merchandising Levers)</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+      <div style="padding:12px;background:rgba(88,166,255,0.06);border-radius:8px;border:1px solid rgba(88,166,255,0.2);">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--accent);margin-bottom:4px;">WOLVERINE STACK</div>
+        <div style="font-size:0.82rem;color:var(--text);">BPC-157 + TB-500</div>
+      </div>
+      <div style="padding:12px;background:rgba(163,113,247,0.06);border-radius:8px;border:1px solid rgba(163,113,247,0.2);">
+        <div style="font-size:0.75rem;font-weight:700;color:#a371f7;margin-bottom:4px;">KLOW STACK</div>
+        <div style="font-size:0.82rem;color:var(--text);">KPV + GHK-Cu (+ others)</div>
+      </div>
+      <div style="padding:12px;background:rgba(63,185,80,0.06);border-radius:8px;border:1px solid rgba(63,185,80,0.2);">
+        <div style="font-size:0.75rem;font-weight:700;color:#3fb950;margin-bottom:4px;">NOOTROPIC PAIR</div>
+        <div style="font-size:0.82rem;color:var(--text);">Semax + Selank</div>
+      </div>
+      <div style="padding:12px;background:rgba(88,166,255,0.06);border-radius:8px;border:1px solid rgba(88,166,255,0.2);">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--accent);margin-bottom:4px;">GH STACK</div>
+        <div style="font-size:0.82rem;color:var(--text);">CJC-1295 (no DAC) + Ipamorelin</div>
+      </div>
+      <div style="padding:12px;background:rgba(210,153,34,0.06);border-radius:8px;border:1px solid rgba(210,153,34,0.2);">
+        <div style="font-size:0.75rem;font-weight:700;color:#d29922;margin-bottom:4px;">LONGEVITY CORE</div>
+        <div style="font-size:0.82rem;color:var(--text);">MOTS-C + Epithalon + NAD+</div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:0.82rem;color:var(--muted);">⚠ Ensure both halves of every bundle are never OOS simultaneously.</p>
+  </div>
+</section>
+
+<!-- Section: Sources -->
+<section id="section-sources" class="section-fade" style="margin-bottom:32px;">
+  <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;border-left:3px solid var(--muted);padding-left:14px;">Source Coverage Report</h2>
+  <div class="glass-card" style="padding:20px;">
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr></thead>
+      <tbody>
+        <tr><td>Web Search</td><td><span class="badge badge-high">COVERED</span></td><td>Brave, Tavily, Exa</td><td>60+ sources</td></tr>
+        <tr><td>Social: Reddit</td><td><span class="badge badge-high">COVERED</span></td><td>reddit-search CLI + Brave proxy</td><td>26 sources</td></tr>
+        <tr><td>Social: X/Twitter</td><td><span class="badge badge-high">COVERED</span></td><td>Brave site:x.com proxy</td><td>5 sources</td></tr>
+        <tr><td>Social: HackerNews</td><td><span class="badge badge-high">COVERED</span></td><td>hn-search CLI</td><td>Minimal (low peptide signal)</td></tr>
+        <tr><td>Social: Instagram</td><td><span class="badge badge-medium">SKIPPED</span></td><td>Not relevant to B2B peptide research</td><td>0</td></tr>
+        <tr><td>Video: YouTube</td><td><span class="badge badge-high">COVERED</span></td><td>youtube-search CLI + Brave</td><td>19 sources</td></tr>
+        <tr><td>Video: TikTok</td><td><span class="badge badge-medium">SKIPPED</span></td><td>Conditional at D4 — not primary signal</td><td>0</td></tr>
+        <tr><td>Academic</td><td><span class="badge badge-high">COVERED</span></td><td>ArXiv, OpenAlex, Wikipedia</td><td>19 sources</td></tr>
+        <tr><td>News</td><td><span class="badge badge-high">COVERED</span></td><td>Brave news queries, Tavily</td><td>Integrated</td></tr>
+        <tr><td>Deep Research</td><td><span class="badge badge-high">COVERED</span></td><td>Tavily Research (mcp__tavily__tavily_research)</td><td>28 sources</td></tr>
+        <tr><td>Medical/Clinical</td><td><span class="badge badge-high">COVERED</span></td><td>EU Clinical Trials Registry, PubMed, FDA regulatory</td><td>Integrated</td></tr>
+        <tr><td>Finance</td><td><span class="badge badge-medium">SKIPPED</span></td><td>Not relevant — market research topic</td><td>0</td></tr>
+        <tr><td>LinkedIn</td><td><span class="badge badge-medium">SKIPPED</span></td><td>Not relevant to this research scope</td><td>0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="text-align:center;padding:12px 20px;background:rgba(88,166,255,0.1);border-radius:8px;border:1px solid rgba(88,166,255,0.3);">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--accent);">~152</div>
+        <div style="font-size:0.75rem;color:var(--muted);">Total Sources</div>
+      </div>
+      <div style="text-align:center;padding:12px 20px;background:rgba(88,166,255,0.1);border-radius:8px;border:1px solid rgba(88,166,255,0.3);">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--accent);">5</div>
+        <div style="font-size:0.75rem;color:var(--muted);">Scout Channels</div>
+      </div>
+      <div style="text-align:center;padding:12px 20px;background:rgba(88,166,255,0.1);border-radius:8px;border:1px solid rgba(88,166,255,0.3);">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--accent);">12.3</div>
+        <div style="font-size:0.75rem;color:var(--muted);">EPR Score /20</div>
+      </div>
+      <div style="text-align:center;padding:12px 20px;background:rgba(88,166,255,0.1);border-radius:8px;border:1px solid rgba(88,166,255,0.3);">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--accent);">88</div>
+        <div style="font-size:0.75rem;color:var(--muted);">Self-grade /100</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:16px;">
+      <strong>INCOMPLETE flags:</strong> Instagram, TikTok, LinkedIn skipped as not relevant to EU RUO peptide market research. These categories do not materially affect confidence in findings for this topic.
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top:1px solid var(--border);padding:24px 0;margin-top:16px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <div style="font-size:0.78rem;color:var(--muted);">
+      Generated by <strong style="color:var(--text);">NexusOS DELPHI</strong> · 2026-07-02 · Report ID: <code>nx-20260702-eu-peptide-market</code>
+    </div>
+    <div style="font-size:0.75rem;color:var(--muted);">Critic Council: A=12 · B=13 · C=12 · Opus Synthesis applied</div>
+  </div>
+</footer>
+
+</main>
+</div>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const el = document.documentElement;
+  const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Fade-in sections
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.05 });
+document.querySelectorAll('.section-fade').forEach(el => observer.observe(el));
+
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('theme-btn').textContent = isDark ? '🌙 Dark' : '☀ Light';
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+const saved = localStorage.getItem('theme');
+if (saved) {
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('theme-btn').textContent = saved === 'dark' ? '☀ Light' : '🌙 Dark';
+}
+
+// Share
+function shareReport() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'EU RUO Peptide Market Intelligence Q3 2026', url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => alert('URL copied to clipboard'));
+  }
+}
+
+// TOC active link
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  tocLinks.forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+  });
+});
+
+// EPR Chart
+const ctx = document.getElementById('eprChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Critic A', 'Critic B', 'Critic C'],
+    datasets: [{
+      data: [12, 13, 12],
+      backgroundColor: ['rgba(88,166,255,0.6)', 'rgba(88,166,255,0.8)', 'rgba(88,166,255,0.6)'],
+      borderColor: ['#58a6ff','#58a6ff','#58a6ff'],
+      borderWidth: 1,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: { label: ctx => `Score: ${ctx.raw}/20` }
+      }
+    },
+    scales: {
+      y: {
+        min: 0, max: 20,
+        ticks: { color: '#8b949e', font: { size: 10 } },
+        grid: { color: 'rgba(48,54,61,0.5)' }
+      },
+      x: {
+        ticks: { color: '#8b949e', font: { size: 10 } },
+        grid: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
