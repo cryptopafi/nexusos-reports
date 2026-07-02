@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-02T14:17:43Z",
+  "generatedAt": "2026-07-02T14:36:50Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -26,7 +26,8 @@
     "Sultan/Pafi operational additions: prepare Sultan client orders and plan a Sultan/Pafi restock, both before stock movement or customer handoff is treated as complete.",
     "Vic owns creating the RUO Slack workspace; Hermes agent attachment and Supabase/PepInternal access must be read-only/draft-first until explicit Pafi authorization and guardrails exist.",
     "Referral tree addition 2026-07-02: every known customer/order needs a root account and direct referrer mapped from Pafi, Narcis, Vic, Dragos, or Sultan before relationship/affiliate reporting is trusted.",
-    "Assignee audit 2026-07-02: every task now has exactly one primary assignee; previous extra assignees are preserved in supportingAssignees for context only."
+    "Assignee audit 2026-07-02: every task now has exactly one primary assignee; previous extra assignees are preserved in supportingAssignees for context only.",
+    "Purchasing & Logistics cleanup 2026-07-02: chapter/gate now has one primary assignee, Pafi; support people are listed as supportingAssignees only, and accessory proof/QC is kept under Accessories Business."
   ],
   "gates": [
     {
@@ -75,13 +76,19 @@
       "state": "red",
       "owner": "Pafi",
       "assignees": [
-        "Pafi",
-        "Vic",
-        "Narcis",
-        "Dragos"
+        "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Purchasing/logistics remains blocked by SO-04 structured line proof, Ibiza 69-vial in-transit stock, accessory proof/QC, AOD9604 label/new-supplier correction, Retatrutide premium restock/COA planning, and the new Sultan/Pafi restock plan."
+      "summary": "Purchasing/logistics is narrowed to active restock and movement blockers: SO-04 structured line proof, Ibiza 69-vial in-transit stock/recount, AOD9604 label/new-supplier correction, Retatrutide premium restock/COA planning, and the Sultan/Pafi restock plan. Accessory proof/QC is tracked in the separate Accessories Business lane.",
+      "supportingAssignees": [
+        "Narcis",
+        "Dragos",
+        "Vic",
+        "Sultan"
+      ],
+      "assignmentNote": "Pafi is the primary gate owner. Narcis, Dragos, Vic, and Sultan are support by task, not co-assignees of the whole gate.",
+      "updatedAt": "2026-07-02T14:36:50Z",
+      "updatedBy": "Codex"
     },
     {
       "id": "gate-sales-marketing",
@@ -819,7 +826,14 @@
         "Pafi"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "yellow",
+      "colourReason": "Ibiza 69-vial transfer remains in transit/not sellable until physical receipt and recount are confirmed.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments"
+      ],
+      "colourUpdatedAt": "2026-07-02T14:36:50Z",
+      "colourUpdatedBy": "Codex"
     },
     {
       "id": "P0-014",
@@ -850,7 +864,14 @@
         "Narcis"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "yellow",
+      "colourReason": "SO-04 is not operationally clear until supplier/order proof, payment proof, SKU/qty line breakdown, and ETA/status are structured.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments"
+      ],
+      "colourUpdatedAt": "2026-07-02T14:36:50Z",
+      "colourUpdatedBy": "Codex"
     },
     {
       "id": "P0-015",
@@ -881,7 +902,14 @@
         "Narcis"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "yellow",
+      "colourReason": "Retatrutide premium restock and expanded COA plan can proceed, but purchase/COA/testing decisions are not yet closed.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments"
+      ],
+      "colourUpdatedAt": "2026-07-02T14:36:50Z",
+      "colourUpdatedBy": "Codex"
     },
     {
       "id": "P0-016",
@@ -1616,12 +1644,18 @@
       "name": "Purchasing & Logistics",
       "owner": "Pafi",
       "assignees": [
-        "Pafi",
-        "Vic",
-        "Narcis",
-        "Dragos"
+        "Pafi"
       ],
-      "summary": "Purchasing, supplier/restock proof, in-transit stock, labels, accessory proof/QC, delivery/logistics routing."
+      "summary": "Purchasing, supplier/restock proof, in-transit stock, labels, delivery/logistics routing, and restock planning. Accessory proof/QC is not owned here; it belongs to Accessories Business.",
+      "supportingAssignees": [
+        "Narcis",
+        "Dragos",
+        "Vic",
+        "Sultan"
+      ],
+      "assignmentNote": "One primary chapter owner only; support remains visible per blocker/task.",
+      "updatedAt": "2026-07-02T14:36:50Z",
+      "updatedBy": "Codex"
     },
     {
       "id": "sales-marketing",
