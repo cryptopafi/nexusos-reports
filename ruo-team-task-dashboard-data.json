@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-02T14:36:50Z",
+  "generatedAt": "2026-07-02T14:51:47Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -27,7 +27,8 @@
     "Vic owns creating the RUO Slack workspace; Hermes agent attachment and Supabase/PepInternal access must be read-only/draft-first until explicit Pafi authorization and guardrails exist.",
     "Referral tree addition 2026-07-02: every known customer/order needs a root account and direct referrer mapped from Pafi, Narcis, Vic, Dragos, or Sultan before relationship/affiliate reporting is trusted.",
     "Assignee audit 2026-07-02: every task now has exactly one primary assignee; previous extra assignees are preserved in supportingAssignees for context only.",
-    "Purchasing & Logistics cleanup 2026-07-02: chapter/gate now has one primary assignee, Pafi; support people are listed as supportingAssignees only, and accessory proof/QC is kept under Accessories Business."
+    "Purchasing & Logistics cleanup 2026-07-02: chapter/gate now has one primary assignee, Pafi; support people are listed as supportingAssignees only, and accessory proof/QC is kept under Accessories Business.",
+    "SO-04 line-item breakdown 2026-07-02: Pafi supplied 5 boxes each of Selank 10mg, Semax 10mg, PT-141 10mg, TB-500 5mg, and BPC-157 5mg; assuming 10 vials/box this matches 250 vials and USD 1,300 total."
   ],
   "gates": [
     {
@@ -79,7 +80,7 @@
         "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Purchasing/logistics is narrowed to active restock and movement blockers: SO-04 structured line proof, Ibiza 69-vial in-transit stock/recount, AOD9604 label/new-supplier correction, Retatrutide premium restock/COA planning, and the Sultan/Pafi restock plan. Accessory proof/QC is tracked in the separate Accessories Business lane.",
+      "summary": "Purchasing/logistics blockers: SO-04 line breakdown is captured but still needs supplier/order proof, Dragos Zen payment proof, ETA/status, and Supabase structuring; Ibiza 69-vial in-transit stock/recount; AOD9604 label/new-supplier correction; Retatrutide premium restock/COA planning; Sultan/Pafi restock plan. Accessory proof/QC is tracked in Accessories Business.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -87,7 +88,7 @@
         "Sultan"
       ],
       "assignmentNote": "Pafi is the primary gate owner. Narcis, Dragos, Vic, and Sultan are support by task, not co-assignees of the whole gate.",
-      "updatedAt": "2026-07-02T14:36:50Z",
+      "updatedAt": "2026-07-02T14:51:47Z",
       "updatedBy": "Codex"
     },
     {
@@ -843,15 +844,15 @@
       "workstream": "Purchasing / Restock",
       "priority": "P0",
       "urgencyScore": 89,
-      "status": "open",
+      "status": "partial",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-07-01",
       "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30",
-      "description": "SO-04 is the only open Supabase restock: 250 vials ordered, paid by Dragos via Zen, but restock_items has 0 structured line rows. Build the purchasing proof and line-item breakdown before treating the order as operationally clear.",
-      "acceptance": "Supplier/order proof, payment proof, expected SKU/qty breakdown, ETA/status, and structured restock item plan are saved. No agent infers SO-04 SKU contents from legacy reports unless Pafi explicitly authorizes that cross-check.",
+      "description": "SO-04 is the open 250-vial restock. Pafi supplied the working line breakdown on 2026-07-02: 5 boxes each of Selank 10 mg, Semax 10 mg, PT-141 10 mg, TB-500 5 mg, and BPC-157 5 mg. Assuming 10 vials per box, this equals 250 expected vials and USD 1,300 total. The task is partial until supplier/order proof, Dragos Zen payment proof, ETA/status, and authorized Supabase restock_items structuring are complete.",
+      "acceptance": "Line breakdown saved and reconciles to 250 expected vials. Remaining acceptance: supplier/order proof, Dragos Zen payment proof, ETA/status, and structured restock item plan saved for Narcis/Supabase implementation. No Supabase write occurs without explicit Pafi authorization and app.actor=Pafi/performed_by audit guardrails.",
       "chapterOwner": "Pafi",
       "supportingAssignees": [
         "Dragos",
@@ -866,12 +867,90 @@
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex",
       "colour": "yellow",
-      "colourReason": "SO-04 is not operationally clear until supplier/order proof, payment proof, SKU/qty line breakdown, and ETA/status are structured.",
+      "colourReason": "SO-04 SKU/qty/cost line breakdown is captured; supplier/order proof, Zen payment proof, ETA/status, and Supabase structuring remain pending.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments"
+        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments",
+        "Pafi instruction 2026-07-02: SO-04 line items and costs",
+        "/Users/pafi/Documents/RUO Peptides/output/purchasing-logistics/so-04-structured-line-breakdown-2026-07-02.md"
       ],
-      "colourUpdatedAt": "2026-07-02T14:36:50Z",
-      "colourUpdatedBy": "Codex"
+      "colourUpdatedAt": "2026-07-02T14:51:47Z",
+      "colourUpdatedBy": "Codex",
+      "so04LineBreakdown": {
+        "source": "Pafi instruction 2026-07-02",
+        "workingAssumption": "1 box = 10 vials; line prices are treated as total USD per 5-box line unless Pafi later corrects this.",
+        "items": [
+          {
+            "product": "Selank",
+            "skuHint": "SELANK-10MG",
+            "strengthMg": 10,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 275,
+            "unitUsdPerVial": 5.5
+          },
+          {
+            "product": "Semax",
+            "skuHint": "SEMAX-10MG",
+            "strengthMg": 10,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 275,
+            "unitUsdPerVial": 5.5
+          },
+          {
+            "product": "PT-141",
+            "skuHint": "PT141-10MG",
+            "strengthMg": 10,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 275,
+            "unitUsdPerVial": 5.5
+          },
+          {
+            "product": "TB-500",
+            "skuHint": "TB500-5MG",
+            "strengthMg": 5,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 300,
+            "unitUsdPerVial": 6.0
+          },
+          {
+            "product": "BPC-157",
+            "skuHint": "BPC157-5MG",
+            "strengthMg": 5,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 175,
+            "unitUsdPerVial": 3.5
+          }
+        ],
+        "totals": {
+          "totalBoxes": 25,
+          "totalExpectedVials": 250,
+          "totalUsd": 1300,
+          "averageUsdPerVial": 5.2
+        },
+        "savedEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/purchasing-logistics/so-04-structured-line-breakdown-2026-07-02.md",
+        "remainingProofNeeded": [
+          "supplier/order proof",
+          "Dragos Zen payment proof",
+          "ETA/status",
+          "Pafi authorization before Supabase write",
+          "Narcis structured restock_items rows after authorization"
+        ],
+        "updatedAt": "2026-07-02T14:51:47Z",
+        "updatedBy": "Codex"
+      },
+      "partialCompletionNote": "SKU/qty/cost breakdown captured; proof and ETA remain pending.",
+      "plainExplanationRo": "SO-04 are acum structura de linii: 5 cutii Selank 10mg, 5 Semax 10mg, 5 PT-141 10mg, 5 TB-500 5mg, 5 BPC-157 5mg. Presupunere: 10 fiole/cutie = 250 fiole total, USD 1,300. Ramane partial pana avem dovada supplier/order, dovada plata Zen Dragos, ETA/status si autorizare pentru structurare in Supabase.",
+      "plainExplanationUpdatedAt": "2026-07-02T14:51:47Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-015",
