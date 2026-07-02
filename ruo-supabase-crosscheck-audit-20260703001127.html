@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RUO Peptides — Supabase Crosscheck Audit (→ 2026-06-30)</title>
+  <meta name="description" content="Read-only reconciliation audit of the production inventory/commerce database. Verdict: PASS. Coverage: inception → 2026-06-30." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="RUO Peptides — Supabase Crosscheck Audit (→ 2026-06-30)" />
+  <meta property="og:description" content="PASS — No evidence of stock corruption, double-counting, or financial-arithmetic error." />
+  <meta property="og:type" content="article" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+          colors: {
+            accent: '#eab308',
+            bgdark: '#0A0A0F',
+            carddark: '#111118',
+            bglight: '#fafafa',
+            cardlight: '#ffffff',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { --accent: #eab308; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Dark mode defaults */
+    .dark body { background-color: #0A0A0F; color: #e2e8f0; }
+    .dark .glass { background: rgba(17,17,24,0.75); backdrop-filter: blur(12px); border: 1px solid rgba(234,179,8,0.12); }
+    .dark .card { background: #111118; border: 1px solid rgba(255,255,255,0.06); }
+
+    /* Light mode */
+    .light body { background-color: #fafafa; color: #1a202c; }
+    .light .glass { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(234,179,8,0.2); }
+    .light .card { background: #ffffff; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+    /* Accent glow */
+    .accent-glow { box-shadow: 0 0 24px rgba(234,179,8,0.15), 0 0 48px rgba(234,179,8,0.06); }
+
+    /* Fade-in animation */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Table styles */
+    table { border-collapse: collapse; width: 100%; }
+    th { font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .dark th { color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .light th { color: #64748b; border-bottom: 1px solid rgba(0,0,0,0.08); }
+    td { padding: 0.75rem 1rem; font-size: 0.875rem; }
+    th { padding: 0.6rem 1rem; }
+    .dark tr:not(:last-child) td { border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .light tr:not(:last-child) td { border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .dark tr:hover td { background: rgba(255,255,255,0.02); }
+    .light tr:hover td { background: rgba(0,0,0,0.02); }
+
+    /* TOC */
+    .toc-link { font-size: 0.82rem; color: #94a3b8; text-decoration: none; display: block; padding: 0.3rem 0.5rem; border-radius: 0.375rem; transition: all 0.15s; }
+    .toc-link:hover { color: #eab308; background: rgba(234,179,8,0.08); }
+    .toc-link.active { color: #eab308; font-weight: 500; }
+
+    /* Verdict badge */
+    .verdict-pass { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
+    .verdict-review { background: rgba(234,179,8,0.12); color: #eab308; border: 1px solid rgba(234,179,8,0.25); }
+    .verdict-note { background: rgba(99,102,241,0.12); color: #818cf8; border: 1px solid rgba(99,102,241,0.25); }
+
+    /* Status icons */
+    .status-pass { color: #22c55e; }
+    .status-review { color: #eab308; }
+    .status-note { color: #818cf8; }
+
+    /* Print styles */
+    @media print {
+      html, body { background: #fff !important; color: #000 !important; }
+      .no-print { display: none !important; }
+      .card, .glass { border: 1px solid #ddd !important; background: #fff !important; box-shadow: none !important; }
+      table { font-size: 11px; }
+      th, td { border: 1px solid #ccc !important; }
+      .fade-in { opacity: 1 !important; transform: none !important; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="dark min-h-screen">
+
+  <!-- Theme toggle -->
+  <div class="fixed top-4 right-4 z-50 no-print">
+    <button id="themeToggle" onclick="toggleTheme()"
+      class="glass px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:border-yellow-500/40 cursor-pointer"
+      aria-label="Toggle dark/light mode">
+      <span id="themeIcon">☀️</span>
+    </button>
+  </div>
+
+  <!-- Share button -->
+  <div class="fixed top-4 right-16 z-50 no-print">
+    <button id="shareBtn" onclick="shareReport()"
+      class="glass px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:border-yellow-500/40 cursor-pointer"
+      aria-label="Share report">
+      🔗
+    </button>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Header -->
+    <header class="mb-10 fade-in">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-yellow-500/70">NexusOS · concierge · finance</span>
+        <span class="text-xs text-slate-500">·</span>
+        <span class="text-xs font-mono text-slate-500">2026-07-03</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-2" style="color: #eab308;">
+        RUO Peptides — Supabase Crosscheck Audit
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base">
+        Coverage: inception → 2026-06-30 (inclusive) · Mode: read-only reconciliation
+      </p>
+      <!-- Verdict hero -->
+      <div class="mt-5 inline-flex items-center gap-3 px-5 py-3 rounded-xl accent-glow verdict-pass">
+        <span class="text-2xl font-bold">PASS</span>
+        <span class="text-sm font-medium opacity-80">No evidence of stock corruption, double-counting, or financial-arithmetic error.</span>
+      </div>
+    </header>
+
+    <div class="flex flex-col lg:flex-row gap-8">
+
+      <!-- Sidebar -->
+      <aside class="lg:w-64 shrink-0 space-y-5 no-print">
+
+        <!-- TOC -->
+        <div class="card glass rounded-xl p-4 sticky top-8">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-yellow-500/80 mb-3">Contents</h3>
+          <nav class="space-y-1">
+            <a href="#verdict" class="toc-link">Verdict</a>
+            <a href="#key-figures" class="toc-link">Key Figures</a>
+            <a href="#scorecard" class="toc-link">Integrity Scorecard</a>
+            <a href="#deleted-orders" class="toc-link">Deleted &amp; Superseded Orders</a>
+            <a href="#review-items" class="toc-link">Review Items</a>
+            <a href="#financial-snapshot" class="toc-link">Financial Snapshot</a>
+            <a href="#scope" class="toc-link">Scope &amp; Limitations</a>
+            <a href="#methodology" class="toc-link">Methodology</a>
+          </nav>
+        </div>
+
+        <!-- Metadata sidebar -->
+        <div class="card glass rounded-xl p-4">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-yellow-500/80 mb-3">Audit Metadata</h3>
+          <dl class="space-y-2 text-sm">
+            <div>
+              <dt class="text-slate-500 text-xs">Period</dt>
+              <dd class="font-medium">inception → 2026-06-30</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Verdict</dt>
+              <dd><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">PASS</span></dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Net on-hand</dt>
+              <dd class="font-medium font-mono">749 units</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Negative balances</dt>
+              <dd class="font-medium status-pass">0</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Line-math errors</dt>
+              <dd class="font-medium status-pass">0 / 285</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Sales (window)</dt>
+              <dd class="font-medium font-mono">€17,448</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Restock / COGS</dt>
+              <dd class="font-medium font-mono">$7,663</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Review items</dt>
+              <dd><span class="verdict-review px-2 py-0.5 rounded text-xs font-semibold">2 (⩽31 units)</span></dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Agent</dt>
+              <dd class="font-medium">concierge</dd>
+            </div>
+            <div>
+              <dt class="text-slate-500 text-xs">Published</dt>
+              <dd class="font-medium">2026-07-03</dd>
+            </div>
+          </dl>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 min-w-0 space-y-10">
+
+        <!-- Section: Verdict -->
+        <section id="verdict" class="fade-in">
+          <div class="card glass rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-4" style="color: #eab308;">Verdict — PASS</h2>
+            <p class="text-slate-300 leading-relaxed">
+              <strong>No evidence of stock corruption, double-counting, or financial-arithmetic error.</strong>
+            </p>
+            <p class="text-slate-400 leading-relaxed mt-3">
+              A live, read-only snapshot of the production inventory/commerce database was reconciled across referential integrity, the stock ledger, order↔movement flow, restock↔movement flow, line-item arithmetic, payments, duplicates/reversals, and checksum drift. The physical stock ledger is internally sound: no negative balances, no SKU drained below its opening position, every deleted order reversed cleanly, and the one superseded order single-counted. All 208 order lines, 42 restock lines, and 31 SKU cost breakdowns reconcile to the cent. The 94 raw checks collapse to a documented data-cleanup footprint plus two small review items (~31 units across 4 orders) worth a human glance.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section: Key Figures -->
+        <section id="key-figures" class="fade-in">
+          <div class="card glass rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-5" style="color: #eab308;">Key Figures</h2>
+            <div class="overflow-x-auto rounded-lg">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-left">Metric</th>
+                    <th class="text-right">Value</th>
+                    <th class="text-left">Note</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium">Net on-hand</td>
+                    <td class="text-right font-mono font-semibold">749 units</td>
+                    <td class="text-slate-400">Bucharest 585 + secondary location 164</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Negative balances</td>
+                    <td class="text-right font-mono font-semibold status-pass">0</td>
+                    <td class="text-slate-400">no oversell state anywhere</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Line-math errors</td>
+                    <td class="text-right font-mono font-semibold status-pass">0</td>
+                    <td class="text-slate-400">of 285 checked lines / cost breakdowns</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Sales in window</td>
+                    <td class="text-right font-mono font-semibold">€17,448</td>
+                    <td class="text-slate-400">47 orders dated ≤ 2026-06-30</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Restock (COGS) spend</td>
+                    <td class="text-right font-mono font-semibold">$7,663</td>
+                    <td class="text-slate-400">3 receipts in window</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Review items</td>
+                    <td class="text-right font-mono font-semibold status-review">2</td>
+                    <td class="text-slate-400">~31 units to confirm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Integrity Scorecard -->
+        <section id="scorecard" class="fade-in">
+          <div class="card glass rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-5" style="color: #eab308;">Integrity Scorecard</h2>
+            <div class="overflow-x-auto rounded-lg">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-left">Check</th>
+                    <th class="text-left">Status</th>
+                    <th class="text-left">Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium">Negative on-hand balances</td>
+                    <td><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">✅ PASS</span></td>
+                    <td class="text-slate-400">0 SKUs negative at either location</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Ledger over-drain (negative implied opening)</td>
+                    <td><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">✅ PASS</span></td>
+                    <td class="text-slate-400">0 SKUs — ledger never drains below opening</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Order line-item arithmetic</td>
+                    <td><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">✅ PASS</span></td>
+                    <td class="text-slate-400">0 / 208 lines with qty × price ≠ line total</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Restock line &amp; total arithmetic</td>
+                    <td><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">✅ PASS</span></td>
+                    <td class="text-slate-400">0 / 42 lines, 0 / 5 restock totals off</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">SKU cost breakdown (acq + transport + label + COA)</td>
+                    <td><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">✅ PASS</span></td>
+                    <td class="text-slate-400">0 / 31 SKUs off vs recorded cost total</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Deleted-order reversals net to zero</td>
+                    <td><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">✅ PASS</span></td>
+                    <td class="text-slate-400">3 / 3 cancelled orders fully restored</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Superseded-order double-count</td>
+                    <td><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">✅ PASS</span></td>
+                    <td class="text-slate-400">single-counted; re-created order has no duplicate movement</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Live checksum vs stable tables</td>
+                    <td><span class="verdict-pass px-2 py-0.5 rounded text-xs font-semibold">✅ PASS</span></td>
+                    <td class="text-slate-400">order_items / SKUs / customers / location_stock / approvals identical</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Order → movement linkage (post-cleanup)</td>
+                    <td><span class="verdict-review px-2 py-0.5 rounded text-xs font-semibold">⚠️ REVIEW</span></td>
+                    <td class="text-slate-400">11 in-window orders don't cleanly tie items → movements (net +17 units)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Unexplained in-window outflows</td>
+                    <td><span class="verdict-review px-2 py-0.5 rounded text-xs font-semibold">⚠️ REVIEW</span></td>
+                    <td class="text-slate-400">4 orders / 31 units — confirm stock was decremented</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Stock-ledger horizon</td>
+                    <td><span class="verdict-note px-2 py-0.5 rounded text-xs font-semibold">ℹ️ NOTE</span></td>
+                    <td class="text-slate-400">movements start 2026-05-04; pre-May receipts &amp; orders sit in opening balance</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Audit-log horizon</td>
+                    <td><span class="verdict-note px-2 py-0.5 rounded text-xs font-semibold">ℹ️ NOTE</span></td>
+                    <td class="text-slate-400">audit trail starts 2026-07-01</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Provider payments sync</td>
+                    <td><span class="verdict-note px-2 py-0.5 rounded text-xs font-semibold">ℹ️ NOTE</span></td>
+                    <td class="text-slate-400">provider-payment table empty; cash tracked via customer payments + treasury</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Deleted & Superseded Orders -->
+        <section id="deleted-orders" class="fade-in">
+          <div class="card glass rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-2" style="color: #eab308;">Deleted &amp; Superseded Orders — Net Stock Effect</h2>
+            <p class="text-slate-400 text-sm mb-5">
+              A data-cleanup removed or re-keyed four orders. Their movements remain in the ledger (producing 51 "movement → missing order" references), so each was verified individually:
+            </p>
+            <div class="overflow-x-auto rounded-lg">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-left">Order group</th>
+                    <th class="text-right">Shipped</th>
+                    <th class="text-right">Reversed</th>
+                    <th class="text-right">Net</th>
+                    <th class="text-left">Outcome</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium">Cancelled group A</td>
+                    <td class="text-right font-mono">30</td>
+                    <td class="text-right font-mono">30</td>
+                    <td class="text-right font-mono font-semibold">0</td>
+                    <td class="text-slate-400">Stock restored</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Cancelled group B</td>
+                    <td class="text-right font-mono">40</td>
+                    <td class="text-right font-mono">40</td>
+                    <td class="text-right font-mono font-semibold">0</td>
+                    <td class="text-slate-400">Stock restored</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Cancelled group C</td>
+                    <td class="text-right font-mono">4</td>
+                    <td class="text-right font-mono">4</td>
+                    <td class="text-right font-mono font-semibold">0</td>
+                    <td class="text-slate-400">Stock restored</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Superseded group</td>
+                    <td class="text-right font-mono">115</td>
+                    <td class="text-right font-mono">10</td>
+                    <td class="text-right font-mono font-semibold status-pass">−105</td>
+                    <td class="text-slate-400">Real outflow retained (order re-keyed, single-counted)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-4 p-4 rounded-lg" style="background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15);">
+              <p class="text-sm text-slate-300">
+                The superseded group's <span class="font-mono font-semibold status-pass">−105 is correct</span>: the goods physically shipped; only the order record was re-keyed during cleanup (flagged with an accepted-exception marker). The re-created order carries <strong>no</strong> movement, so the stock is counted once — not twice. <strong>No double-count exists.</strong>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Review Items -->
+        <section id="review-items" class="fade-in">
+          <div class="card glass rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-2" style="color: #eab308;">Review Items (in-window)</h2>
+            <p class="text-slate-400 text-sm mb-5">
+              These orders don't cleanly tie order-items to shipment movements. Most are explained by the cleanup — sales at the secondary location settled directly against location stock, or orders moved between internal accounts. Worth confirming the stock was actually decremented so on-hand isn't overstated. <span class="font-semibold text-yellow-400">Maximum theoretical overstatement: 31 units.</span>
+            </p>
+            <div class="overflow-x-auto rounded-lg">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-left">Order</th>
+                    <th class="text-left">Date</th>
+                    <th class="text-right">Items</th>
+                    <th class="text-right">Shipped</th>
+                    <th class="text-right">Δ</th>
+                    <th class="text-left">Note</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-mono font-medium">Order 007</td>
+                    <td class="text-slate-400">2026-05-04</td>
+                    <td class="text-right font-mono">47</td>
+                    <td class="text-right font-mono">78</td>
+                    <td class="text-right font-mono font-semibold status-review">−31</td>
+                    <td class="text-slate-400">Movements exceed items on ledger-start day — reconcile</td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono font-medium">Order 037</td>
+                    <td class="text-slate-400">2026-06-24</td>
+                    <td class="text-right font-mono">21</td>
+                    <td class="text-right font-mono">0</td>
+                    <td class="text-right font-mono font-semibold status-review">+21</td>
+                    <td class="text-slate-400">API order, owner-authorized — confirm decrement path</td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono font-medium">Order 036</td>
+                    <td class="text-slate-400">2026-06-23</td>
+                    <td class="text-right font-mono">4</td>
+                    <td class="text-right font-mono">0</td>
+                    <td class="text-right font-mono font-semibold status-review">+4</td>
+                    <td class="text-slate-400">Secondary-location sale — likely direct stock adjust</td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono font-medium">Order 034</td>
+                    <td class="text-slate-400">2026-06-23</td>
+                    <td class="text-right font-mono">3</td>
+                    <td class="text-right font-mono">0</td>
+                    <td class="text-right font-mono font-semibold status-review">+3</td>
+                    <td class="text-slate-400">Secondary-location sale, €230 receivable</td>
+                  </tr>
+                  <tr>
+                    <td class="font-mono font-medium">Order 035</td>
+                    <td class="text-slate-400">2026-06-23</td>
+                    <td class="text-right font-mono">3</td>
+                    <td class="text-right font-mono">0</td>
+                    <td class="text-right font-mono font-semibold status-review">+3</td>
+                    <td class="text-slate-400">Moved from internal account → gift</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Financial Snapshot -->
+        <section id="financial-snapshot" class="fade-in">
+          <div class="card glass rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-5" style="color: #eab308;">Financial Snapshot (≤ 2026-06-30)</h2>
+            <div class="overflow-x-auto rounded-lg mb-5">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-left">Flow</th>
+                    <th class="text-right">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium">Sales — orders total (non-cancelled)</td>
+                    <td class="text-right font-mono font-semibold">€17,447.76</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Customer payments recorded (8)</td>
+                    <td class="text-right font-mono font-semibold">€10,731.98</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Restock / COGS spend (3 receipts)</td>
+                    <td class="text-right font-mono font-semibold">$7,663.00</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Treasury — custodian A (Bucharest)</td>
+                    <td class="text-right font-mono font-semibold">€642.41</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Treasury — custodian B (secondary location)</td>
+                    <td class="text-right font-mono font-semibold">€1,871.06</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="p-4 rounded-lg" style="background: rgba(234,179,8,0.06); border: 1px solid rgba(234,179,8,0.15);">
+              <p class="text-sm text-slate-300">
+                <span class="font-semibold text-yellow-400">Expense caveat:</span> in-window expenses mix currencies (USD / RON / EUR) and include 16 rows (≈13,940) flagged as excluded-from-cash — owner loans, salary, capital, and investment return. The raw expense sum is <strong>not</strong> a clean operating-cost figure; separate owner/capital movements before using it for P&amp;L.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Scope & Limitations -->
+        <section id="scope" class="fade-in">
+          <div class="card glass rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-5" style="color: #eab308;">Scope &amp; Limitations</h2>
+            <ul class="space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3">
+                <span class="text-yellow-500 mt-0.5 shrink-0">▸</span>
+                <span><strong>Ledger horizon:</strong> the stock-movement ledger begins 2026-05-04. Restocks received Feb–Apr (597 + 100 + 14 = 711 units) and pre-May orders are baked into opening balances — correct, but not independently ledger-verifiable before that date.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-yellow-500 mt-0.5 shrink-0">▸</span>
+                <span><strong>Audit-log horizon:</strong> the mutation audit trail begins 2026-07-01; earlier changes have only row timestamps.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-yellow-500 mt-0.5 shrink-0">▸</span>
+                <span><strong>Secondary-location coverage:</strong> only 27 movements (net −41) recorded there vs 164 units on-hand — outflows are often settled directly against location stock rather than laddered as movements.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-yellow-500 mt-0.5 shrink-0">▸</span>
+                <span><strong>Post-cutoff:</strong> 9 orders and 7 movements dated 2026-07-01 were excluded from the window.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-yellow-500 mt-0.5 shrink-0">▸</span>
+                <span><strong>Read-only:</strong> zero writes were made to the database. Evidence snapshot, reconciliation engine, and result JSON were retained locally.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section: Methodology -->
+        <section id="methodology" class="fade-in">
+          <div class="card glass rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-4" style="color: #eab308;">Methodology</h2>
+            <p class="text-slate-300 leading-relaxed text-sm">
+              A full paginated snapshot of all 24 tables was pulled live, bounded at 2026-06-30, and reconciled by a deterministic engine across eight check groups: referential integrity (orphans), stock-ledger vs on-hand balance, order↔movement, restock↔movement, financial line arithmetic, payments/receivables, duplicate/reversal detection, and stored-vs-recomputed checksum drift. Findings were then classified by evidence — separating documented cleanup artifacts and pre-ledger opening balances from genuine anomalies — to avoid false alarms.
+            </p>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-4 pb-8 text-center text-xs text-slate-600 fade-in">
+          NexusOS · shared-reporter · Tier 2 · Generated 2026-07-03 · De-identified public report
+        </footer>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Theme management
+    const savedTheme = localStorage.getItem('nexus-theme') || 'dark';
+    applyTheme(savedTheme);
+
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      document.body.classList.remove('dark', 'light');
+      document.body.classList.add(t);
+      document.getElementById('themeIcon').textContent = t === 'dark' ? '☀️' : '🌙';
+      localStorage.setItem('nexus-theme', t);
+    }
+
+    function toggleTheme() {
+      const current = localStorage.getItem('nexus-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    }
+
+    // Share
+    function shareReport() {
+      const url = window.location.href;
+      if (navigator.share) {
+        navigator.share({ title: 'RUO Peptides — Supabase Crosscheck Audit', url });
+      } else {
+        navigator.clipboard.writeText(url).then(() => {
+          const btn = document.getElementById('shareBtn');
+          btn.textContent = '✓';
+          setTimeout(() => { btn.textContent = '🔗'; }, 2000);
+        });
+      }
+    }
+
+    // Fade-in via IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active TOC link
+    const sections = document.querySelectorAll('section[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => tocObserver.observe(s));
+  </script>
+</body>
+</html>
