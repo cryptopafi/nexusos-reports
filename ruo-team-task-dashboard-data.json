@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-04T00:05:00+03:00",
+  "generatedAt": "2026-07-04T00:08:30+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -37,7 +37,8 @@
     "P0-016 update 2026-07-03: Pafi created the Sultan owner-entry plan; internal audit task closed. Only Sultan approval remains as external go/no-go: approve=start, no approval=do not start.",
     "Accessories update 2026-07-03: P0-008 and P1-007 merged into one active Accessories Business plan proposal; P1-007 closed as merged/superseded.",
     "P0-018 update 2026-07-03: task is Pafi-only; restock planner read-only next-order candidate is BAC Water 40, MOTS-C 30, Tesamorelin 10, est. supplier goods USD 868; Pafi approval required before any purchase/write.",
-    "P0-0-001 update 2026-07-04: 48h live-state register created at /Users/pafi/Documents/RUO Peptides/output/live-state-register-2026-07-04/ruo-48h-live-state-register-2026-07-04.md; this closes the register task only, not the underlying open gates."
+    "P0-0-001 update 2026-07-04: 48h live-state register created at /Users/pafi/Documents/RUO Peptides/output/live-state-register-2026-07-04/ruo-48h-live-state-register-2026-07-04.md; this closes the register task only, not the underlying open gates.",
+    "P0-005/P2-005 update 2026-07-04: monthly budget tracking by operating bucket merged into the 6-month budget and reserve allocation task; P2-005 closed as superseded."
   ],
   "gates": [
     {
@@ -427,14 +428,41 @@
       ],
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Split legal/customs/QA, peptide OpCo, accessories, owner repayment, Dragos compensation, COA/testing, inventory, ops, AI/data, and contingency.",
-      "acceptance": "Budget states what Vic can commit and which reserves are protected.",
+      "description": "Create one 6-month budget and reserve allocation with monthly tracking by operating bucket. Split and track legal/customs/QA, peptide OpCo, accessories, owner repayment, Dragos compensation, COA/testing, inventory, ops/logistics, AI/data/dashboard, marketing/content, and contingency. For each bucket, show planned budget, actual spend, remaining reserve, responsible owner/person, evidence/proof link, and variance.",
+      "acceptance": "Budget states what Vic can commit, which reserves are protected, and month-by-month budget vs actual by operating bucket so Pafi/Vic can see runway, over/under-budget categories, and reserve pressure.",
       "workstream": "Financial",
       "chapter": "Products, SKUs & Budgeting",
       "chapterOwner": "Pafi",
-      "plainExplanationRo": "Acesta este planul financiar pe 6 luni. Împarte banii pe legal/customs/QA, peptide OpCo, accesorii, owner repayment, Dragos compensation, COA/testing, inventar, ops, AI/data și contingency, ca să fie clar ce se poate cheltui și ce rezervă nu trebuie atinsă.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "colour": "yellow",
+      "colourReason": "Merged with P2-005; still open because the combined 6-month budget plus monthly operating-bucket tracker has not been produced yet.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-04: merge 2 and 9",
+        "Previous P0-005 Produce 6-month budget and reserve allocation",
+        "Previous P2-005 Create monthly budget tracking by operating bucket"
+      ],
+      "colourUpdatedAt": "2026-07-04T00:08:30+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Am unit taskul de buget pe 6 luni cu trackingul lunar. Rămâne un singur task: planul financiar pe 6 luni, împărțit pe buckets, cu planned budget, actual spend, remaining reserve, owner, proof/evidence și variance pentru fiecare lună.",
+      "plainExplanationUpdatedAt": "2026-07-04T00:08:30+03:00",
       "plainExplanationUpdatedBy": "Codex",
+      "mergedTasks": [
+        "P0-005",
+        "P2-005"
+      ],
+      "mergedTaskDetails": {
+        "updatedAt": "2026-07-04T00:08:30+03:00",
+        "updatedBy": "Codex",
+        "source": "Pafi instruction 2026-07-04: merge 2 and 9",
+        "activeTask": "P0-005",
+        "closedMergedTask": "P2-005",
+        "mergedScope": [
+          "6-month budget and reserve allocation",
+          "monthly budget tracking by operating bucket",
+          "planned vs actual spend",
+          "remaining reserve and variance by month/bucket",
+          "responsible owner/person and evidence/proof link"
+        ]
+      },
       "supportingAssignees": [
         "Vic"
       ],
@@ -728,7 +756,7 @@
       "category": "Sales & Marketing",
       "priority": "P2",
       "urgencyScore": 72,
-      "status": "planned",
+      "status": "closed",
       "owner": "Narcis",
       "assignees": [
         "Narcis"
@@ -831,21 +859,32 @@
       "category": "Products, SKUs & Budgeting",
       "priority": "P2",
       "urgencyScore": 66,
-      "status": "planned",
+      "status": "closed",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-07-10",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Create a monthly budget view grouped by operating buckets: legal/customs/QA, peptide operating company, accessories, owner repayment, AI/data/dashboard, marketing/content, logistics, and contingency. Track planned budget, actual spend, remaining reserve, owner/person responsible, evidence/proof link, and variance.",
-      "acceptance": "Dashboard shows budget vs actual by month and bucket, so Pafi/Vic can see how much runway remains and which category is over/under budget.",
+      "description": "Merged into P0-005 Produce 6-month budget and reserve allocation. The monthly operating-bucket tracking scope is preserved inside P0-005 and should no longer be tracked as a separate P2 task.",
+      "acceptance": "Closed as merged. Use P0-005 for the combined 6-month budget, reserve allocation, monthly planned-vs-actual spend, remaining reserve, evidence/proof links, and variance tracking.",
       "workstream": "Financial",
       "chapter": "Products, SKUs & Budgeting",
       "chapterOwner": "Pafi",
-      "plainExplanationRo": "Acesta este tracking lunar de buget pe operating buckets. Arată planned budget vs actual spend vs remaining reserve pentru legal/customs/QA, peptide OpCo, accesorii, owner repayment, AI/data/dashboard, marketing/content, logistics și contingency.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "completedAt": "2026-07-04",
+      "completedBy": "Codex",
+      "completionNote": "Closed as merged into P0-005 per Pafi instruction. Monthly budget tracking remains required inside the active P0-005 task.",
+      "colour": "grey",
+      "colourReason": "Superseded by merged P0-005 budget/reserve/monthly tracking task.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-04: merge 2 and 9"
+      ],
+      "colourUpdatedAt": "2026-07-04T00:08:30+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Acest task separat este închis pentru că a fost mutat în P0-005. Trackingul lunar nu dispare; este acum parte din taskul mare de buget pe 6 luni.",
+      "plainExplanationUpdatedAt": "2026-07-04T00:08:30+03:00",
       "plainExplanationUpdatedBy": "Codex",
+      "mergedInto": "P0-005",
       "supportingAssignees": [
         "Vic",
         "Narcis",
