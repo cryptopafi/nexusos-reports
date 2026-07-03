@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-03T20:00:00Z",
+  "generatedAt": "2026-07-03T19:35:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -35,7 +35,8 @@
     "SO-04 assignment update 2026-07-03: Pafi is not receiving the order; Pafi completed the order-as-is decision and Supabase COA gate. Remaining SO-04 receipt/admin acceptance belongs to Narcis, with batch number + COA required before stock acceptance.",
     "P1-016 update 2026-07-03: Libido/PT-141 and Cognition/Selank blockers are closed for internal stack economics only; public/customer protocol copy remains compliance-gated and not approved.",
     "P0-016 update 2026-07-03: Pafi created the Sultan owner-entry plan; internal audit task closed. Only Sultan approval remains as external go/no-go: approve=start, no approval=do not start.",
-    "Accessories update 2026-07-03: P0-008 and P1-007 merged into one active Accessories Business plan proposal; P1-007 closed as merged/superseded."
+    "Accessories update 2026-07-03: P0-008 and P1-007 merged into one active Accessories Business plan proposal; P1-007 closed as merged/superseded.",
+    "P0-018 update 2026-07-03: task is Pafi-only; restock planner read-only next-order candidate is BAC Water 40, MOTS-C 30, Tesamorelin 10, est. supplier goods USD 868; Pafi approval required before any purchase/write."
   ],
   "gates": [
     {
@@ -1158,10 +1159,10 @@
     },
     {
       "id": "P0-018",
-      "title": "Plan Sultan and Pafi restock order",
+      "title": "Approve next Pafi-only restock order",
       "category": "Purchasing & Logistics",
       "chapter": "Purchasing & Logistics",
-      "workstream": "Purchasing / Sultan-Pafi Restock",
+      "workstream": "Purchasing / Pafi Restock",
       "priority": "P0",
       "urgencyScore": 85,
       "status": "open",
@@ -1170,33 +1171,76 @@
         "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "source": "Pafi instruction 2026-07-01: create restock task; assignees Sultan and Pafi",
-      "description": "Prepare the Sultan/Pafi restock plan before placing or booking a restock. Capture SKU list, quantities, supplier, unit cost, landed-cost assumptions, COA/testing needs, labels/packaging, payment source, whether Sultan funds are used, ownership/capital classification impact, expected delivery route/location, cold-chain/logistics needs, and no-go items. Cross-reference Sultan owner funds audit if Sultan funds pay for the restock.",
-      "acceptance": "Restock plan has SKU/qty, supplier quote/proof, total expected cost, payment source, landed-cost estimate, COA/testing plan, labels/packaging state, delivery route, stock destination, owner/funds classification if Sultan pays, and explicit approval before any Supabase restock/payment/stock write. No restock is treated as operationally clear from chat memory only.",
+      "source": "Pafi instruction 2026-07-03: this is only Pafi; use RUO restock planner skill to search next order",
+      "description": "Pafi-only restock planning task. Sultan is not an assignee/support role for this task. The RUO restock planner was run read-only against live Supabase on 2026-07-03 and produced the next-order candidate: BAC Water 40 vials, MOTS-C 30 vials, Tesamorelin 10 vials; estimated supplier goods cost USD 868 before full landed/COA/FX completion. No purchase, payment, Supabase restock, or stock movement is approved or created until Pafi explicitly approves.",
+      "acceptance": "Pafi reviews the restock-planner recommendation and decides approve/change/hold. If approved, a separate Pafi-authorized purchasing/payment/Supabase workflow is required before any operational write. Recommendation evidence is saved at output/restock-planner-2026-07-03/next-order-recommendation-2026-07-03.md and output/restock-planner-2026-07-03/restock-plan-live-2026-07-03.json.",
       "chapterOwner": "Pafi",
       "relatedTasks": [
         "P0-016"
       ],
       "colour": "yellow",
-      "colourReason": "Sultan/Pafi restock task added; plan can start, but purchase/payment/stock proof and approval are still pending.",
+      "colourReason": "Restock planner found the next order candidate; task remains open/yellow until Pafi approves placing or changing the order.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-01: need to do a restock assigned to Sultan and Pafi"
+        "Pafi instruction 2026-07-03: P0-018 is only Pafi and should use restock planner skill",
+        "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/restock-plan-live-2026-07-03.json",
+        "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/next-order-recommendation-2026-07-03.md"
       ],
-      "colourUpdatedAt": "2026-07-01T16:41:05Z",
+      "colourUpdatedAt": "2026-07-03T19:35:00Z",
       "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Restock nou Sultan/Pafi: trebuie pregătite SKU-urile, cantitățile, supplierul, costurile, COA/testing, plata și destinația stocului înainte să fie considerat comandat sau intrat în operare.",
-      "plainExplanationUpdatedAt": "2026-07-01T16:41:05Z",
+      "plainExplanationRo": "Acesta este doar taskul lui Pafi. Am rulat restock planner read-only și următoarea comandă propusă este: BAC Water 40, MOTS-C 30, Tesamorelin 10, total estimat USD 868 goods cost. Nu se comandă nimic și nu se scrie nimic în Supabase până când Pafi aprobă explicit.",
+      "plainExplanationUpdatedAt": "2026-07-03T19:35:00Z",
       "plainExplanationUpdatedBy": "Codex",
-      "supportingAssignees": [
-        "Sultan"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
+      "supportingAssignees": [],
+      "assigneeAuditNote": "Updated 2026-07-03: Pafi clarified this is Pafi-only; Sultan removed from supportingAssignees.",
       "assigneeAuditPrevious": [
         "Sultan",
         "Pafi"
       ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedAt": "2026-07-03T19:35:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "nextRestockRecommendation": {
+        "generatedAt": "2026-07-03T19:35:00Z",
+        "mode": "READ_ONLY",
+        "skill": "ruo-restock-planner v1.4.5",
+        "verdict": "PASS",
+        "approvalRequiredBeforeAction": true,
+        "estimatedSupplierGoodsUsd": 868,
+        "recommendedItems": [
+          {
+            "code": "BAC-10ML",
+            "product": "BAC Water",
+            "qty": 40,
+            "boxes": 4,
+            "estimatedGoodsUsd": 124,
+            "status": "ORDER_NOW"
+          },
+          {
+            "code": "MOTSC-10MG",
+            "product": "MOTS-C",
+            "qty": 30,
+            "boxes": 3,
+            "estimatedGoodsUsd": 498,
+            "status": "ORDER_NOW"
+          },
+          {
+            "code": "TESAMORELIN-10MG",
+            "product": "Tesamorelin",
+            "qty": 10,
+            "boxes": 1,
+            "estimatedGoodsUsd": 246,
+            "status": "ORDER_NOW"
+          }
+        ],
+        "transferFirst": [
+          {
+            "code": "RETATRUTIDE-10MG",
+            "qty": 10,
+            "from": "Ibiza"
+          }
+        ],
+        "evidenceFile": "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/next-order-recommendation-2026-07-03.md",
+        "jsonReport": "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/restock-plan-live-2026-07-03.json"
+      }
     },
     {
       "id": "P1-015",
