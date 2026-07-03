@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-02T17:31:37Z",
+  "generatedAt": "2026-07-03T00:00:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -29,7 +29,7 @@
     "Assignee audit 2026-07-02: every task now has exactly one primary assignee; previous extra assignees are preserved in supportingAssignees for context only.",
     "Purchasing & Logistics cleanup 2026-07-02: chapter/gate now has one primary assignee, Pafi; support people are listed as supportingAssignees only, and accessory proof/QC is kept under Accessories Business.",
     "SO-04 line-item breakdown 2026-07-02: Pafi supplied 5 boxes each of Selank 10mg, Semax 10mg, PT-141 10mg, TB-500 5mg, and BPC-157 5mg; assuming 10 vials/box this matches 250 vials and USD 1,300 total.",
-    "SO-04 status update 2026-07-02: Pafi accepts the line breakdown as-is; ETA/status is in transit, arriving in EU this week; supplier/order proof and Dragos Zen payment proof still pending.",
+    "SO-04 status update 2026-07-03: Pafi accepts the order as-is; supplier/order proof and Dragos Zen payment proof are waived as blockers; ETA/status remains in transit, arriving in EU this week; batch number and COA remain required at delivery.",
     "SO-04 Supabase write 2026-07-02: Pafi-authorized restock_items itemization inserted with approval_id=SO04-ITEMIZATION-PAFI-20260702; 5 rows, 250 qty, generated USD 1,300; status remains ordered/in transit/not received; no stock movements or stock_qty changes.",
     "SO-04 delivery gate 2026-07-02: Pafi-authorized Supabase parent note now requires batch number and COA before delivery/receipt/stock-add/customer dispatch/sale-ready status; status remains ordered/not received and no stock was added."
   ],
@@ -77,13 +77,13 @@
     {
       "id": "gate-purchasing-logistics",
       "name": "Purchasing & Logistics",
-      "state": "red",
+      "state": "yellow",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Purchasing/logistics blockers: SO-04 itemization is written to Supabase and delivery now requires batch number plus COA before receipt/delivery/stock-add; SO-04 remains in transit/not received and still needs supplier/order proof plus Dragos Zen payment proof; Ibiza 69-vial in-transit stock/recount; AOD9604 label/new-supplier correction; Retatrutide premium restock/COA planning; Sultan/Pafi restock plan. Accessory proof/QC is tracked in Accessories Business.",
+      "summary": "Purchasing/logistics remains active with SO-04 accepted as-is and itemized; supplier/order proof and Dragos Zen payment proof are waived by Pafi for SO-04. Remaining blockers are physical receipt controls: batch number + COA at delivery, Ibiza 69-vial in-transit stock, AOD9604 label/new-supplier correction, Retatrutide premium restock/COA planning, and Sultan/Pafi restock plan.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -91,7 +91,7 @@
         "Sultan"
       ],
       "assignmentNote": "Pafi is the primary gate owner. Narcis, Dragos, Vic, and Sultan are support by task, not co-assignees of the whole gate.",
-      "updatedAt": "2026-07-02T17:31:37Z",
+      "updatedAt": "2026-07-03T00:00:00Z",
       "updatedBy": "Codex"
     },
     {
@@ -841,7 +841,7 @@
     },
     {
       "id": "P0-014",
-      "title": "Structure SO-04 restock items and purchasing proof",
+      "title": "Structure SO-04 restock items and delivery gate",
       "category": "Purchasing & Logistics",
       "chapter": "Purchasing & Logistics",
       "workstream": "Purchasing / Restock",
@@ -854,8 +854,8 @@
       ],
       "dueDate": "2026-07-01",
       "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30",
-      "description": "SO-04 is the open 250-vial restock. Pafi accepted the line breakdown as-is and authorized Supabase structuring with Pafi marking. Supabase restock_items has five structured rows totaling 250 expected vials and generated USD 1,300. ETA/status: in transit, arriving in EU this week. Delivery/receipt gate: batch number and COA are required before delivery, receipt, stock-add, customer dispatch, or sale-ready status is treated as complete. Status remains ordered/not received; no stock was added. Remaining blockers: supplier/order proof and Dragos Zen payment proof.",
-      "acceptance": "Line breakdown accepted as-is by Pafi and written to Supabase restock_items with approval_id=SO04-ITEMIZATION-PAFI-20260702. Read-back verified 5 item rows, 250 qty, generated line total USD 1,300, parent SO-04 generated total USD 1,300, status ordered, received_date null, Pafi-authorized/performed_by/API-only markers in parent notes, and no stock movements or stock_qty changes. Delivery gate added under approval_id=SO04-DELIVERY-BATCH-COA-GATE-20260702: batch number and COA are required before receipt/delivery/stock-add/customer dispatch/sale-ready status. Remaining acceptance: supplier/order proof and Dragos Zen payment proof.",
+      "description": "SO-04 is the open 250-vial restock. Pafi accepted the order as-is and explicitly waived supplier/order proof and Dragos Zen payment proof as blockers on 2026-07-03. Supabase restock_items has five structured rows totaling 250 expected vials and generated USD 1,300. ETA/status: in transit, arriving in EU this week. Delivery/receipt gate remains required: batch number and COA are required before delivery, receipt, stock-add, customer dispatch, or sale-ready status is treated as complete. Status remains ordered/not received; no stock was added.",
+      "acceptance": "Line breakdown accepted as-is by Pafi and written to Supabase restock_items with approval_id=SO04-ITEMIZATION-PAFI-20260702. Read-back verified 5 item rows, 250 qty, generated line total USD 1,300, parent SO-04 generated total USD 1,300, status ordered, received_date null, Pafi-authorized/performed_by/API-only markers in parent notes, and no stock movements or stock_qty changes. Pafi waived supplier/order proof and Dragos Zen payment proof as blockers on 2026-07-03; the order is to be considered as-is. Delivery gate remains active under approval_id=SO04-DELIVERY-BATCH-COA-GATE-20260702: batch number and COA are required before receipt/delivery/stock-add/customer dispatch/sale-ready status.",
       "chapterOwner": "Pafi",
       "supportingAssignees": [
         "Dragos",
@@ -870,7 +870,7 @@
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex",
       "colour": "yellow",
-      "colourReason": "SO-04 itemization is written and delivery gate now requires batch number and COA; supplier/order proof and Dragos Zen payment proof remain pending, and stock is not received.",
+      "colourReason": "SO-04 itemization is written and Pafi waived supplier/order proof plus Dragos Zen payment proof as blockers; task stays yellow because stock is not received and batch number + COA are still required at delivery.",
       "colourEvidence": [
         "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments",
         "Pafi instruction 2026-07-02: SO-04 line items and costs",
@@ -879,9 +879,10 @@
         "Supabase read-back 2026-07-02: SO-04 restock_items inserted, qty=250, line_total_usd=1300, approval_id=SO04-ITEMIZATION-PAFI-20260702",
         "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-restock-items-readback-2026-07-02.json",
         "Supabase read-back 2026-07-02: SO-04 delivery gate requires batch number and COA before receipt/delivery/stock-add",
-        "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-delivery-batch-coa-gate-readback-2026-07-02.json"
+        "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-delivery-batch-coa-gate-readback-2026-07-02.json",
+        "Pafi instruction 2026-07-03: consider the SO-04 order as-is, without supplier/order proof or Dragos Zen payment proof"
       ],
-      "colourUpdatedAt": "2026-07-02T17:31:37Z",
+      "colourUpdatedAt": "2026-07-03T00:00:00Z",
       "colourUpdatedBy": "Codex",
       "so04LineBreakdown": {
         "source": "Pafi instruction 2026-07-02",
@@ -925,7 +926,7 @@
             "assumedVialsPerBox": 10,
             "expectedVials": 50,
             "lineTotalUsd": 300,
-            "unitUsdPerVial": 6.0
+            "unitUsdPerVial": 6
           },
           {
             "product": "BPC-157",
@@ -946,12 +947,10 @@
         },
         "savedEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/purchasing-logistics/so-04-structured-line-breakdown-2026-07-02.md",
         "remainingProofNeeded": [
-          "supplier/order proof",
-          "Dragos Zen payment proof",
           "batch number at delivery",
           "COA at delivery"
         ],
-        "updatedAt": "2026-07-02T17:05:23Z",
+        "updatedAt": "2026-07-03T00:00:00Z",
         "updatedBy": "Codex",
         "lineBreakdownAcceptedAsIs": true,
         "etaStatus": "In transit, arriving in EU this week.",
@@ -981,12 +980,40 @@
           "readbackEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-delivery-batch-coa-gate-readback-2026-07-02.json",
           "updatedAt": "2026-07-02T17:31:37Z",
           "updatedBy": "Codex"
+        },
+        "proofWaiver": {
+          "waivedBy": "Pafi",
+          "waivedAt": "2026-07-03T00:00:00Z",
+          "source": "Pafi instruction 2026-07-03",
+          "waivedProof": [
+            "supplier/order proof",
+            "Dragos Zen payment proof"
+          ],
+          "decision": "Consider SO-04 order as-is without those proof blockers.",
+          "stillRequired": [
+            "batch number at delivery",
+            "COA at delivery"
+          ]
         }
       },
-      "partialCompletionNote": "Line breakdown accepted and written to Supabase; delivery gate requires batch number and COA; supplier/order proof and Dragos Zen payment proof remain pending.",
-      "plainExplanationRo": "SO-04 are itemizarea scrisă în Supabase, dar la recepție/livrare trebuie obligatoriu batch number și COA. Fără acestea nu se marchează primit, nu se adaugă în stoc, nu se trimite la client și nu se marchează sale-ready. Mai lipsesc supplier/order proof și dovada Zen Dragos.",
-      "plainExplanationUpdatedAt": "2026-07-02T17:31:37Z",
-      "plainExplanationUpdatedBy": "Codex"
+      "partialCompletionNote": "Line breakdown accepted and written to Supabase; Pafi waived supplier/order proof and Dragos Zen payment proof as blockers; delivery gate still requires batch number and COA before receipt/stock/customer dispatch.",
+      "plainExplanationRo": "SO-04 este acceptat ca atare de Pafi, fără să mai cerem supplier/order proof sau dovada Zen Dragos ca blocaje. Rămâne galben/partial doar pentru că marfa nu este încă recepționată. La sosire sunt obligatorii batch number și COA înainte de primit în stoc, livrat clientului sau marcat sale-ready.",
+      "plainExplanationUpdatedAt": "2026-07-03T00:00:00Z",
+      "plainExplanationUpdatedBy": "Codex",
+      "proofWaiver": {
+        "waivedBy": "Pafi",
+        "waivedAt": "2026-07-03T00:00:00Z",
+        "source": "Pafi instruction 2026-07-03",
+        "waivedProof": [
+          "supplier/order proof",
+          "Dragos Zen payment proof"
+        ],
+        "decision": "Consider SO-04 order as-is without those proof blockers.",
+        "stillRequired": [
+          "batch number at delivery",
+          "COA at delivery"
+        ]
+      }
     },
     {
       "id": "P0-015",
@@ -1761,7 +1788,7 @@
       "assignees": [
         "Pafi"
       ],
-      "summary": "Purchasing, supplier/restock proof, in-transit stock, labels, delivery/logistics routing, and restock planning. Accessory proof/QC is not owned here; it belongs to Accessories Business.",
+      "summary": "Purchasing, in-transit stock, labels, delivery/logistics routing, and restock planning. SO-04 is accepted as-is without supplier/order or Dragos Zen proof blockers; batch number and COA remain required at delivery.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -1769,7 +1796,7 @@
         "Sultan"
       ],
       "assignmentNote": "One primary chapter owner only; support remains visible per blocker/task.",
-      "updatedAt": "2026-07-02T14:36:50Z",
+      "updatedAt": "2026-07-03T00:00:00Z",
       "updatedBy": "Codex"
     },
     {
