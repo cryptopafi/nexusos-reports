@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-03T19:45:00Z",
+  "generatedAt": "2026-07-03T20:00:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -34,7 +34,8 @@
     "SO-04 delivery gate 2026-07-02: Pafi-authorized Supabase parent note now requires batch number and COA before delivery/receipt/stock-add/customer dispatch/sale-ready status; status remains ordered/not received and no stock was added.",
     "SO-04 assignment update 2026-07-03: Pafi is not receiving the order; Pafi completed the order-as-is decision and Supabase COA gate. Remaining SO-04 receipt/admin acceptance belongs to Narcis, with batch number + COA required before stock acceptance.",
     "P1-016 update 2026-07-03: Libido/PT-141 and Cognition/Selank blockers are closed for internal stack economics only; public/customer protocol copy remains compliance-gated and not approved.",
-    "P0-016 update 2026-07-03: Pafi created the Sultan owner-entry plan; internal audit task closed. Only Sultan approval remains as external go/no-go: approve=start, no approval=do not start."
+    "P0-016 update 2026-07-03: Pafi created the Sultan owner-entry plan; internal audit task closed. Only Sultan approval remains as external go/no-go: approve=start, no approval=do not start.",
+    "Accessories update 2026-07-03: P0-008 and P1-007 merged into one active Accessories Business plan proposal; P1-007 closed as merged/superseded."
   ],
   "gates": [
     {
@@ -504,7 +505,7 @@
     },
     {
       "id": "P0-008",
-      "title": "Confirm Vic accessory proof and low-risk MVP split",
+      "title": "Create Accessories Business plan proposal",
       "category": "Accessories Business",
       "priority": "P0",
       "urgencyScore": 90,
@@ -515,23 +516,27 @@
       ],
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Pafi and Vic confirm accessory proof and split accessories into low-risk MVP vs legal-gated items. Pafi owns business/product decision; Vic owns compliance wording and allowed-claim boundaries.",
-      "acceptance": "Proof is saved for each accessory; low-risk MVP vs legal-gated split is documented; copy only covers storage, transport, and organization unless Vic confirms stronger evidence is allowed.",
-      "workstream": "Accessories / Products & Proof",
+      "description": "Create one Accessories Business plan proposal that merges the old accessory proof/MVP split and the separate accessories operating model. The proposal must treat accessories as a separate business lane, not a side-note inside peptide operations. It must cover compliance/allowed claims, product/SKU selection, proof/QC, purchasing, workflows/admin/data, marketing/sales, logistics, budget/P&L, low-risk MVP vs legal-gated products, launch gates, and owner/support responsibilities.",
+      "acceptance": "One Accessories Business plan proposal exists with sections for: 1) business objective and scope, 2) low-risk MVP vs legal-gated accessory split, 3) proof/QC and supplier evidence, 4) compliance/allowed copy and claim boundaries, 5) product/SKU list and pricing logic, 6) purchasing/logistics/marketplace path, 7) workflows/admin/data/dashboard fields, 8) marketing/sales channels, 9) budget/P&L, 10) launch go/no-go gates. This task supersedes P1-007.",
+      "workstream": "Accessories / Business Plan",
       "chapter": "Accessories Business",
       "chapterOwner": "Pafi",
       "colour": "yellow",
-      "colourReason": "Open accessories decision owned by Pafi and Vic, not Dragos.",
+      "colourReason": "Merged P0-008 and P1-007 into one active Accessories Business plan proposal task per Pafi instruction.",
       "colourEvidence": [
-        "Pafi instruction 2026-06-30"
+        "Pafi instruction 2026-07-03: merge tasks 5 and 10 into the accessories business plan proposal",
+        "Previous P0-008 accessory proof/MVP split task",
+        "Previous P1-007 separate accessories operating model task"
       ],
       "colourUpdatedBy": "Codex",
-      "colourUpdatedAt": "2026-06-30T18:26:02Z",
-      "plainExplanationRo": "Acesta este taskul de accesorii pentru proof și low-risk MVP split. Pafi și Vic decid ce accesorii pot intra în MVP cu risc mic și ce accesorii rămân legal-gated. Nu este task Dragos.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "colourUpdatedAt": "2026-07-03T20:00:00Z",
+      "plainExplanationRo": "Am unit taskul de proof/MVP accesorii cu taskul de operating model accesorii. Rămâne un singur task activ: planul/propunerea pentru business-ul separat de accesorii, cu compliance, produse/SKU, proof/QC, purchasing, workflow/admin, marketing/sales, logistică și buget/P&L.",
+      "plainExplanationUpdatedAt": "2026-07-03T20:00:00Z",
       "plainExplanationUpdatedBy": "Codex",
       "supportingAssignees": [
-        "Vic"
+        "Vic",
+        "Narcis",
+        "Dragos"
       ],
       "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
       "assigneeAuditPrevious": [
@@ -539,23 +544,38 @@
         "Vic"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "mergedTasks": [
+        "P0-008",
+        "P1-007"
+      ],
+      "mergedTaskDetails": {
+        "updatedAt": "2026-07-03T20:00:00Z",
+        "updatedBy": "Codex",
+        "activeTask": "P0-008",
+        "closedMergedTask": "P1-007",
+        "mergedScope": [
+          "accessory proof and low-risk MVP split",
+          "separate accessories business operating model",
+          "compliance/products/workflows/marketing-sales/purchasing-logistics/budget split"
+        ]
+      }
     },
     {
       "id": "P1-007",
-      "title": "Create separate accessories business operating model",
+      "title": "Merged into Accessories Business plan proposal",
       "category": "Accessories Business",
       "priority": "P1",
       "urgencyScore": 83,
-      "status": "open",
+      "status": "closed",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-07-02",
       "source": "Pafi instruction 2026-06-30; replaces Dragos observation-mode asset task.",
-      "description": "Group all accessory-related issues into a separate accessories business, not as a side-note inside peptide operations. Split accessories the same way as peptides: compliance/allowed claims, product/SKU decisions, purchasing and proof, workflows/admin/data, marketing/sales, logistics, and budget/P&L.",
-      "acceptance": "Accessories have their own operating view with sections for compliance, products, workflows, marketing/sales, purchasing/proof/QC, logistics, and budget/P&L. Each accessory issue has an owner, status, proof link, and go/no-go rule before public launch or sales activation.",
+      "description": "Merged into P0-008 Create Accessories Business plan proposal. The separate accessories operating-model scope is preserved inside P0-008 and should no longer be tracked as a separate open Pafi task.",
+      "acceptance": "Closed as merged/superseded by P0-008. No separate action remains here.",
       "workstream": "Accessories / Operating Model",
       "chapter": "Accessories Business",
       "chapterOwner": "Pafi",
@@ -572,7 +592,21 @@
         "Dragos"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "grey",
+      "completedAt": "2026-07-03T20:00:00Z",
+      "completedBy": "Codex",
+      "colourReason": "Merged into P0-008 per Pafi instruction; no separate active task remains.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-03: merge tasks 5 and 10 into the accessories business plan proposal"
+      ],
+      "colourUpdatedAt": "2026-07-03T20:00:00Z",
+      "colourUpdatedBy": "Codex",
+      "supersededBy": "P0-008",
+      "completionNote": "Merged into P0-008 Accessories Business plan proposal on 2026-07-03.",
+      "plainExplanationRo": "Închis ca task separat. Conținutul lui a fost mutat în P0-008, planul/propunerea pentru business-ul de accesorii.",
+      "plainExplanationUpdatedAt": "2026-07-03T20:00:00Z",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P1-009",
@@ -1878,7 +1912,9 @@
         "Narcis",
         "Dragos"
       ],
-      "summary": "Separate operating lane for accessories: compliance/allowed claims, product/SKU decisions, purchasing/proof/QC, workflows/admin/data, marketing/sales, logistics, and budget/P&L."
+      "summary": "Separate accessories business lane. Current active Pafi task is one Accessories Business plan proposal covering low-risk MVP vs legal-gated split, compliance/allowed claims, product/SKU decisions, purchasing/proof/QC, workflows/admin/data, marketing/sales, logistics, and budget/P&L.",
+      "updatedAt": "2026-07-03T20:00:00Z",
+      "updatedBy": "Codex"
     }
   ]
 }
