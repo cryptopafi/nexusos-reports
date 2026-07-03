@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategic Partnership Structuring Proposal</title>
+<meta property="og:title" content="Strategic Partnership Structuring Proposal">
+<meta property="og:description" content="Strategic partnership structuring proposal. Frozen audit basis: 2026-06-30. Gross margin 74.18%. Verdict: proceed reformulated, dual-door.">
+<meta property="og:type" content="article">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --glass: rgba(17,17,24,0.7);
+    --accent: #eab308;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: rgba(234,179,8,0.15);
+  }
+  .light {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --glass: rgba(255,255,255,0.85);
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: rgba(234,179,8,0.25);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    transition: background 0.3s, color 0.3s;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .glass-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .accent { color: var(--accent); }
+  .glow { box-shadow: 0 0 24px rgba(234,179,8,0.08); }
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+  th { color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.75rem; }
+  td:last-child { text-align: right; font-family: 'JetBrains Mono', monospace; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(234,179,8,0.04); }
+  .toc a { color: var(--muted); text-decoration: none; display: block; padding: 5px 10px; border-radius: 6px; font-size: 0.82rem; transition: all 0.2s; }
+  .toc a:hover { color: var(--accent); background: rgba(234,179,8,0.08); }
+  .sidebar-meta span.label { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .sidebar-meta span.val { color: var(--text); font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; }
+  #toc-sidebar { min-width: 200px; max-width: 220px; }
+  @media (max-width: 1024px) { #toc-sidebar { display: none; } }
+  @media print {
+    html { background: #fff !important; color: #000 !important; }
+    body { background: #fff !important; color: #000 !important; }
+    #toc-sidebar, #meta-sidebar, #top-nav, .no-print { display: none !important; }
+    .glass-card { background: #fff !important; border: 1px solid #ccc !important; box-shadow: none !important; page-break-inside: avoid; }
+    table { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav id="top-nav" class="sticky top-0 z-50 border-b" style="background:var(--glass);border-color:var(--border);backdrop-filter:blur(16px)">
+  <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-xs font-semibold px-2 py-1 rounded" style="background:rgba(234,179,8,0.15);color:var(--accent)">CONFIDENTIAL</span>
+      <span class="font-semibold text-sm" style="color:var(--text)">Strategic Partnership Structuring Proposal</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="share-btn" class="no-print text-xs px-3 py-1.5 rounded-lg font-medium transition-all" style="background:rgba(234,179,8,0.15);color:var(--accent)" onclick="shareReport()">Share</button>
+      <button id="theme-btn" onclick="toggleTheme()" class="no-print w-8 h-8 rounded-lg flex items-center justify-center text-sm transition-all" style="background:var(--card);color:var(--muted)">◑</button>
+    </div>
+  </div>
+</nav>
+
+<div class="max-w-screen-xl mx-auto px-4 py-8 flex gap-6">
+
+  <!-- TOC Sidebar -->
+  <aside id="toc-sidebar" class="sticky top-20 self-start glass-card p-4 glow toc" style="height:fit-content">
+    <p class="text-xs font-semibold mb-3" style="color:var(--accent);letter-spacing:0.08em;text-transform:uppercase">Contents</p>
+    <a href="#s1">1. Executive Summary</a>
+    <a href="#s2">2. The Business Today</a>
+    <a href="#s3">3. Strong Entry Point</a>
+    <a href="#s4">4. The Ask, Reformulated</a>
+    <a href="#s5">5. Use of Funds</a>
+    <a href="#s6">6. Amazon.ae Opportunity</a>
+    <a href="#s7">7. Governance</a>
+    <a href="#s8">8. Pilot Alternative</a>
+    <a href="#s9">9. Open Items</a>
+    <a href="#s10">10. Next Steps</a>
+    <a href="#s11">11. Council Appendix</a>
+    <a href="#charts">Charts</a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 min-w-0 flex flex-col gap-6">
+
+    <!-- Hero -->
+    <div class="glass-card glow p-8 fade-in" id="hero">
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="text-xs px-2 py-1 rounded-full" style="background:rgba(234,179,8,0.12);color:var(--accent)">Finance</span>
+        <span class="text-xs px-2 py-1 rounded-full" style="background:rgba(234,179,8,0.06);color:var(--muted)">Partnership Proposal</span>
+        <span class="text-xs px-2 py-1 rounded-full" style="background:rgba(234,179,8,0.06);color:var(--muted)">De-identified</span>
+      </div>
+      <h1 class="text-3xl font-bold mb-2" style="color:var(--text)">Strategic Partnership Structuring Proposal</h1>
+      <p class="text-sm mb-1" style="color:var(--muted)"><span class="mono">Prepared:</span> 2026-07-03</p>
+      <p class="text-sm mb-1" style="color:var(--muted)"><span class="mono">Confidential:</span> for the incoming partner, the founding investor, and the operating team</p>
+      <p class="text-sm" style="color:var(--muted)"><span class="mono">Financial basis:</span> the frozen 2026-06-30 audit. Every figure in this document is audited and will not move.</p>
+      <div class="mt-5 p-4 rounded-xl text-sm" style="background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.12)">
+        This proposal invites the incoming partner into the Company (research use only peptides operation), as a strategic partner rather than a capital provider. The company has a working engine: audited gross margin of <strong class="accent">74.18 percent</strong>, <strong class="mono accent">EUR 48,663.78</strong> of stock at retail value, and a May that proved real demand. What it lacks is what the incoming partner brings: recurring customer inflow from Ibiza and Dubai, and the Amazon.ae (Amazon United Arab Emirates) relationships to launch a peptides accessories line that the peptide products themselves can never touch. We have structured the offer so the incoming partner's capital enters on exactly the same terms as the founding investor's, and equity reflects the strategic delivery only the incoming partner can make.
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <section id="s1" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">1. Executive Summary</h2>
+      <ul class="flex flex-col gap-3 text-sm" style="color:var(--text)">
+        <li class="flex gap-2"><span class="accent font-bold">→</span><span><strong>The loan, unchanged:</strong> EUR 25,000 as a shareholder owner loan, matching the founding investor's audited exposure baseline of <span class="mono">EUR 24,757.33</span>, on paper identical to the founding investor's, ranking pari passu (equal ranking) with the founding investor. Signed before any wire.</span></li>
+        <li class="flex gap-2"><span class="accent font-bold">→</span><span><strong>The equity, reformulated:</strong> 20.00 percent participation locks at wire. The remaining 13.33 percent vests on two measurable milestones, taking the incoming partner to a full 33.33 percent.</span></li>
+        <li class="flex gap-2"><span class="accent font-bold">→</span><span><strong>The milestones:</strong> M1 is EUR 7,500 of incoming-partner-tagged delivered revenue within 90 days (vests 6.67 percent). M2 is the Amazon.ae accessories line live within 120 days (vests 6.66 percent).</span></li>
+        <li class="flex gap-2"><span class="accent font-bold">→</span><span><strong>Paper first:</strong> conversion mechanics, seniority, and governance are signed on day one. No handshake equity. If the milestones do not land, the EUR 25,000 stands as a protected loan and the 20.00 percent stays.</span></li>
+        <li class="flex gap-2"><span class="accent font-bold">→</span><span><strong>Funds:</strong> 100 percent to operations on a published allocation, never to repay the founding investor, tracked in a separate owner-loan ledger. A standby second tranche of EUR 15,000 to 25,000 is pre-agreed for the moment a milestone fires.</span></li>
+        <li class="flex gap-2"><span class="accent font-bold">→</span><span><strong>Your choice:</strong> if you prefer to prove the channels before committing capital, a 90-day paid pilot is on the table with the same measurement rails (Section 8).</span></li>
+      </ul>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="s2" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">2. The Business Today: Audited Evidence</h2>
+      <p class="text-sm mb-4" style="color:var(--muted)">All figures cover inception through 2026-06-30, from a read-only audit of the internal order system. Foreign exchange (FX) rate used: USD 1 = EUR 0.864528.</p>
+
+      <h3 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color:var(--muted)">Profit and Loss (P&L) Snapshot</h3>
+      <div class="overflow-x-auto mb-6">
+        <table>
+          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Delivered commercial revenue</td><td>EUR 14,415.10</td></tr>
+            <tr><td>Cost of goods sold (COGS) on delivered revenue</td><td>USD 4,305.00 / EUR 3,721.79</td></tr>
+            <tr><td>Gross profit</td><td>EUR 10,693.31</td></tr>
+            <tr><td><strong>Gross margin</strong></td><td><strong class="accent">74.18 percent</strong></td></tr>
+            <tr><td>Settled delivered sales</td><td>EUR 13,899.94</td></tr>
+            <tr><td>Delivered receivable</td><td>EUR 515.17</td></tr>
+            <tr><td>Customer liability (paid, not yet delivered)</td><td>EUR 110.99</td></tr>
+            <tr><td>Operating expenses, excluding the capital return to the founding investor</td><td>EUR 23,692.80</td></tr>
+            <tr><td><strong>Net after overhead (management P&L)</strong></td><td><strong class="accent">EUR -12,999.49</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mb-5" style="color:var(--muted)">Delivered volume: 303 commercial units (297 revenue-bearing for COGS).</p>
+
+      <h3 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color:var(--muted)">Monthly Performance</h3>
+      <div class="overflow-x-auto mb-6">
+        <table>
+          <thead><tr><th>Month</th><th>Delivered Revenue</th><th>Net after Operating Expenses</th></tr></thead>
+          <tbody>
+            <tr><td>Feb 2026</td><td>EUR 0.00</td><td>EUR -1,945.81</td></tr>
+            <tr><td>Mar 2026</td><td>EUR 0.00</td><td>EUR -1,945.81</td></tr>
+            <tr><td>Apr 2026</td><td>EUR 109.98</td><td>EUR -4,060.21</td></tr>
+            <tr><td>May 2026</td><td><span class="accent font-semibold">EUR 9,329.70</span></td><td>EUR -3,198.10</td></tr>
+            <tr><td>Jun 2026</td><td>EUR 4,975.42</td><td>EUR -1,849.55</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mb-5" style="color:var(--text)">May proves the demand engine: <strong class="accent">EUR 9,329.70</strong> delivered in one month, before any paid marketing program. The cumulative net of EUR -12,999.49 is build-out cost, not broken unit economics. Fixed monthly burn runs about EUR 4,200 to 4,500; June actual operating expenses were EUR 5,526.19. Core salaries: the Bucharest Operations Lead EUR 1,600, the Courier Lead EUR 750, the Ibiza Logistics Lead EUR 1,000, total EUR 3,350 per month. Every cost line is itemized in the frozen 2026-06-30 audit, from online management (EUR 8,000.00 cumulative) to testing and Certificate of Analysis (COA) work (EUR 3,411.60).</p>
+
+      <h3 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color:var(--muted)">Stock and Assets at Cutoff</h3>
+      <div class="overflow-x-auto mb-3">
+        <table>
+          <thead><tr><th>Item</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Stock on hand</td><td>757 units</td></tr>
+            <tr><td>Landed cost value</td><td>USD 13,020.20 / EUR 11,256.33</td></tr>
+            <tr><td>Retail list value</td><td><span class="accent font-semibold">EUR 48,663.78</span></td></tr>
+            <tr><td>Purchase order SO-04, in transit, correctly excluded</td><td>~USD 1,300 / EUR 1,123.89</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs" style="color:var(--muted)">Top SKUs by landed cost: 5AMINO1MQ-50MG (96 units), RETATRUTIDE-10MG (67), EPITHALON-10MG (63), IPAMORELIN-5MG (59), VIP-10MG (50).</p>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="s3" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">3. Why This Is a Strong Entry Point</h2>
+      <div class="flex flex-col gap-3 mb-5">
+        <div class="p-4 rounded-xl text-sm" style="background:rgba(234,179,8,0.06);border-left:3px solid var(--accent)">
+          <strong>The margin is real and audited.</strong> At 74.18 percent delivered gross margin, every EUR 100 of demand routed in produces about EUR 74 of gross profit.
+        </div>
+        <div class="p-4 rounded-xl text-sm" style="background:rgba(234,179,8,0.06);border-left:3px solid var(--accent)">
+          <strong>Demand is proven, not promised.</strong> May delivered EUR 9,329.70, already above every realistic break-even threshold below.
+        </div>
+        <div class="p-4 rounded-xl text-sm" style="background:rgba(234,179,8,0.06);border-left:3px solid var(--accent)">
+          <strong>The shelf is stocked.</strong> EUR 48,663.78 of retail value sits ready to sell. The binding constraint is demand, which is exactly the incoming partner's asset.
+        </div>
+      </div>
+      <h3 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color:var(--muted)">Break-even Thresholds at 74.18% Margin</h3>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>Scenario</th><th>Monthly Revenue Needed</th></tr></thead>
+          <tbody>
+            <tr><td>Bare current burn</td><td>~EUR 5,864</td></tr>
+            <tr><td>June-actual burn</td><td>~EUR 7,450</td></tr>
+            <tr><td>With 20% customer acquisition cost (CAC)</td><td>~EUR 8,029</td></tr>
+            <tr><td>With 30% CAC</td><td>~EUR 9,846</td></tr>
+            <tr><td>Full growth push</td><td>~EUR 16,636</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mt-3" style="color:var(--muted)">Realistic break-even is 60 to 90 days, provided marketing starts and fast movers stay in stock. The incoming partner's channels shorten that path directly.</p>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="s4" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">4. The Ask, Reformulated</h2>
+      <p class="text-sm mb-4" style="color:var(--text)">The original idea was EUR 25,000 for one third, paper later. Stress-tested by a five-lens advisory council, it failed in both directions: it underpriced the incoming partner (money now against paper later, seniority undefined) and it underpriced the company (the full third granted before either channel delivers). Here is the structure that fixes both.</p>
+      <p class="text-sm mb-4" style="color:var(--text)"><strong>The instrument.</strong> EUR 25,000 shareholder owner loan, single wire, on paper identical to the founding investor's, ranking pari passu with the founding investor's EUR 24,757.33 baseline. That baseline is itself audited: USD 14,929.91 of unrecovered historical funding (EUR 12,907.33 at the audit FX rate) plus EUR 11,850.00 of owner-loan salary and fuel rows, with a USD 2,330.00 capital return already deducted. Everything is signed before the wire, together with the conversion side letter. The incoming partner is never an unsecured afterthought.</p>
+
+      <h3 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color:var(--muted)">Equity Earn-in Structure</h3>
+      <div class="overflow-x-auto mb-5">
+        <table>
+          <thead><tr><th>Stage</th><th>Participation</th><th>Trigger</th></tr></thead>
+          <tbody>
+            <tr><td>At wire</td><td class="accent">20.00%</td><td>Loan received, documents signed</td></tr>
+            <tr><td>Milestone M1</td><td class="accent">+6.67%</td><td>EUR 7,500 incoming-partner-tagged delivered revenue within 90 days of wire</td></tr>
+            <tr><td>Milestone M2</td><td class="accent">+6.66%</td><td>Amazon.ae accessories line live within 120 days: seller account approved, first listing live, first 50 units fulfilled</td></tr>
+            <tr><td><strong>Full</strong></td><td class="accent font-bold">33.33%</td><td>Both milestones achieved</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mb-4" style="color:var(--text)">M1 is calibrated modestly: less than the company delivered in May alone, spread across a full quarter. Attribution is mechanical, not judged. The incoming partner receives unique referral codes per channel, tagged at order entry, live and tested before the wire.</p>
+      <p class="text-sm mb-4" style="color:var(--text)"><strong>If milestones do not land.</strong> The EUR 25,000 remains a loan on founding-investor-equivalent terms. Participation stays at 20.00 percent. Landing one milestone vests its slice. There is no scenario in which the incoming partner loses the loan protection.</p>
+      <p class="text-sm mb-5" style="color:var(--text)"><strong>The company's obligations run the other way too.</strong> Supplier lead time is about 37 days. If the company lets a designated fast mover go out of stock, milestone clocks pause day for day. The incoming partner cannot be timed out by our supply chain.</p>
+
+      <h3 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color:var(--muted)">Original vs Reformulated</h3>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>Dimension</th><th>Original Ask</th><th>Reformulated</th></tr></thead>
+          <tbody>
+            <tr><td>Cash</td><td>EUR 25,000</td><td>EUR 25,000, unchanged</td></tr>
+            <tr><td>Equity at wire</td><td>Full 1/3, informal</td><td>20.00 percent, documented</td></tr>
+            <tr><td>Path to 33.33 percent</td><td>Handshake</td><td>Two measurable milestones, 90 and 120 days</td></tr>
+            <tr><td>Conversion terms</td><td>Signed later</td><td>Signed day one</td></tr>
+            <tr><td>Seniority versus founding investor</td><td>Undefined</td><td>Pari passu, in writing</td></tr>
+            <tr><td>If channels underdeliver</td><td>Company gave a third for cash</td><td>Loan protected, 20.00 percent held</td></tr>
+            <tr><td>If channels deliver</td><td>No recognition of extra value</td><td>Full third, accessories economics, standby tranche</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-4" style="color:var(--text)"><strong>Why this protects both sides.</strong> The incoming partner stops wiring money against a handshake, because every term including the downside is signed before the wire. The company stops granting its last third for promises, because the premium above capital parity is paid for delivery. This is mutual de-risking, not a loyalty test. If the incoming partner prefers to prove first and commit after, Section 8 is an equally honorable door.</p>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="s5" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">5. Use of Funds</h2>
+      <p class="text-sm mb-4" style="color:var(--muted)">Audited allocation for the EUR 25,000, published and tracked line by line:</p>
+      <div class="overflow-x-auto mb-4">
+        <table>
+          <thead><tr><th>Use</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Restock and supplier reserve (protect fast movers, clear SO-04, fund next purchase)</td><td>EUR 8,000</td></tr>
+            <tr><td>Marketing test budget (capped by CAC, compliance-approved copy)</td><td>EUR 6,000</td></tr>
+            <tr><td>Operating runway</td><td>EUR 5,000</td></tr>
+            <tr><td>COA, batch, labels, packaging, compliance proof</td><td>EUR 3,000</td></tr>
+            <tr><td>Treasury buffer and customer-liability reserve</td><td>EUR 3,000</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong class="accent">EUR 25,000</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm" style="color:var(--text)"><strong>Standby second tranche.</strong> EUR 15,000 to 25,000 on the same owner-loan terms, pre-agreed now and drawable when either milestone fires. A 37-day supplier lead time means a demand win must be restocked before it can be fulfilled: the first EUR 25,000 funds the proof, the standby tranche funds the win.</p>
+    </section>
+
+    <!-- Section 6 -->
+    <section id="s6" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">6. The Accessories Opportunity: Amazon.ae</h2>
+      <p class="text-sm mb-3" style="color:var(--text)">Research use only peptides can never be listed on Amazon. Accessories can. Repeat-purchase consumables on Amazon.ae ride scalable Gulf fulfillment rails and carry none of the peptide products' listing restrictions. This is effectively a second business inside the deal, and the incoming partner's relationships are its key.</p>
+      <p class="text-sm" style="color:var(--text)">Our proposal: treat accessories as a distinct line with enhanced economics for the incoming partner, structured as a joint venture (JV) whose split is agreed in the side letter before launch. One honest caveat: Amazon.ae operations will likely require a United Arab Emirates (UAE) entity, and written legal advice may place that entity outside this cap table. We will not blur that line; keeping the research use only peptide entity clean protects the equity being earned. M2 stands regardless of which entity hosts the listings.</p>
+    </section>
+
+    <!-- Section 7 -->
+    <section id="s7" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">7. Governance and Alignment</h2>
+      <div class="flex flex-col gap-3 text-sm" style="color:var(--text)">
+        <p><strong>The founding investor is a party, not a bystander.</strong> The incoming partner's 33.33 percent is created by pro rata dilution of all existing holders, so no single owner funds it alone, and the founding investor countersigns the full package: loan ranking, dilution, and earn-in. Nothing in this deal is bilateral.</p>
+        <p><strong>Three equal owners need deadlock rules.</strong> The shareholders agreement will include reserved matters (owner repayments, new owner debt, dilution, channel exclusivity, major contracts), a pre-named tie-breaker mechanism with mediation before any buy-sell, and leaver plus clawback provisions so vested equity tracks continued delivery. Channels are attributed, not exclusive: the incoming partner keeps attribution economics on tagged customers, the company keeps the right to serve any market. No one owns a chokepoint.</p>
+        <p><strong>Treasury discipline.</strong> Funds sit in a separate owner-loan ledger with custody reporting. Full transparency: a single capital return of USD 2,330.00 to the founding investor occurred before the audit cutoff; it is disclosed in the frozen 2026-06-30 audit and already deducted from the founding investor's EUR 24,757.33 baseline. From signing onward there are no owner repayments to anyone, the founding investor included, until the owners jointly approve a repayment plan. The incoming partner's money funds operations, and that is verifiable rather than promised.</p>
+        <p><strong>Supply reciprocity.</strong> The company commits to keep designated fast movers in stock, and milestone clocks pause during any company-side stockout, as defined in Section 4.</p>
+      </div>
+    </section>
+
+    <!-- Section 8 -->
+    <section id="s8" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">8. The Lighter Alternative: A 90-Day Pilot</h2>
+      <p class="text-sm" style="color:var(--text)">If the incoming partner would rather price the channels with real data before buying into the cap table, we welcome that. Structure: a 90-day paid commission and distribution pilot on the same referral-code rails, commission on incoming-partner-tagged delivered revenue at a rate agreed on the call, no capital in, no equity, weekly dashboard. If the incoming partner converts to the partnership within 30 days after the pilot, tagged pilot revenue counts toward M1. Choosing this door is not read as doubt; it lets the numbers speak first.</p>
+    </section>
+
+    <!-- Section 9 -->
+    <section id="s9" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">9. Open Items Before the Final Cap Table</h2>
+      <p class="text-sm mb-3" style="color:var(--muted)">The audit exceptions, on the table before signing rather than after:</p>
+      <ol class="text-sm flex flex-col gap-2" style="color:var(--text);padding-left:1.5rem;list-style:decimal">
+        <li>Ownership terms are unsigned. This proposal exists to fix that.</li>
+        <li>Owner-fund custody proof is pending physical, bank, and crypto confirmation for the Ibiza Logistics Lead and Bucharest Operations Lead treasuries.</li>
+        <li>The exact Bucharest Operations Lead treasury figure depends on the treatment of a RON 75 (Romanian leu) item.</li>
+        <li>A customer's EUR 110.99 credit remains a customer liability until delivery.</li>
+        <li>Purchase order SO-04 (about USD 1,300 / EUR 1,123.89) is in transit and excluded from cutoff stock.</li>
+        <li>Overhead absorption into inventory begins only under the policy effective 2026-07-01.</li>
+        <li>A written legal opinion on research use only status for Ibiza and Dubai consumer inflow, and on the Amazon.ae accessories structure, is required before scaled consumer marketing. This is professional counsel work, and we will not assert it informally.</li>
+      </ol>
+    </section>
+
+    <!-- Section 10 -->
+    <section id="s10" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">10. Recommended Next Steps</h2>
+      <ol class="text-sm flex flex-col gap-3" style="color:var(--text);padding-left:1.5rem;list-style:decimal">
+        <li><strong>Today.</strong> This memo plus the frozen 2026-06-30 audit pack goes to the incoming partner and to the founding investor.</li>
+        <li><strong>Within 3 days.</strong> One call with all parties: choose the partnership or the pilot, and set the commission rate if piloting.</li>
+        <li><strong>Week 1, signing.</strong> Three documents: the owner-loan agreement on founding-investor-identical paper, the conversion and earn-in side letter, and a one-page deal memo with the audit attached. The founding investor countersigns all three.</li>
+        <li><strong>Before the wire.</strong> Attribution rails live: unique referral code per channel, tagged at order entry, verified with a test order.</li>
+        <li><strong>The wire.</strong> EUR 25,000 to the company account, booked in the separate owner-loan ledger.</li>
+        <li><strong>Every Monday.</strong> Vesting dashboard: tagged delivered revenue against M1, the M2 checklist, fast-mover stock levels, and milestone clocks including any pauses.</li>
+      </ol>
+    </section>
+
+    <!-- Section 11 -->
+    <section id="s11" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-4" style="color:var(--accent)">11. How This Proposal Was Stress-Tested: Council Appendix</h2>
+      <p class="text-sm mb-4" style="color:var(--text)">Five independent advisory lenses reviewed the original ask:</p>
+      <div class="grid gap-3 text-sm">
+        <div class="p-4 rounded-xl" style="background:rgba(234,179,8,0.06);border:1px solid var(--border)">
+          <span class="font-semibold accent">Contrarian:</span> do not sell the last third for cash before delivery; sign seniority and conversion now. <span style="color:var(--muted)">Adopted.</span>
+        </div>
+        <div class="p-4 rounded-xl" style="background:rgba(234,179,8,0.06);border:1px solid var(--border)">
+          <span class="font-semibold accent">First Principles:</span> demand, not capital, is the binding constraint; cash is the bond, equity pays for delivery. <span style="color:var(--muted)">Adopted as the core logic.</span>
+        </div>
+        <div class="p-4 rounded-xl" style="background:rgba(234,179,8,0.06);border:1px solid var(--border)">
+          <span class="font-semibold accent">Expansionist:</span> the channels and Amazon.ae are the real assets; pre-commit a standby tranche so a win can be funded. <span style="color:var(--muted)">Adopted, with revenue projections deliberately excluded.</span>
+        </div>
+        <div class="p-4 rounded-xl" style="background:rgba(234,179,8,0.06);border:1px solid var(--border)">
+          <span class="font-semibold accent">Outsider:</span> from the incoming partner's chair, money now and paper later fails; sign day one, disclose all capital flows, put legal questions in writing. <span style="color:var(--muted)">Adopted.</span>
+        </div>
+        <div class="p-4 rounded-xl" style="background:rgba(234,179,8,0.06);border:1px solid var(--border)">
+          <span class="font-semibold accent">Executor:</span> three documents, two countable milestones, attribution before the wire, weekly dashboard. <span style="color:var(--muted)">Adopted as the execution spine.</span>
+        </div>
+      </div>
+      <div class="mt-5 p-4 rounded-xl" style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.3)">
+        <strong>Council verdict:</strong> proceed with the earn-in structure above, keep the pilot open as an honorable alternative, require the founding investor's countersignature on everything, and obtain a written legal opinion before scaling consumer channels.
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section id="charts" class="glass-card p-6 fade-in">
+      <h2 class="text-xl font-bold mb-6" style="color:var(--accent)">Charts</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide mb-4" style="color:var(--muted)">Monthly Delivered Revenue (EUR)</h3>
+          <canvas id="revenueChart" height="220"></canvas>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide mb-4" style="color:var(--muted)">Use of Funds — EUR 25,000</h3>
+          <canvas id="fundsChart" height="220"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-xs text-center pb-6" style="color:var(--muted)">
+      Financial figures: the frozen 2026-06-30 audit, prepared 2026-07-03. Legal and regulatory items (research use only classification, UAE, Amazon.ae) require professional counsel and are flagged as gates, not asserted as facts.
+    </footer>
+
+  </main>
+
+  <!-- Metadata Sidebar -->
+  <aside class="sticky top-20 self-start glass-card p-4 glow sidebar-meta flex flex-col gap-3 no-print" style="min-width:180px;max-width:200px;height:fit-content" id="meta-sidebar">
+    <p class="text-xs font-semibold mb-1" style="color:var(--accent);letter-spacing:0.08em;text-transform:uppercase">Metadata</p>
+    <div><span class="label block">Financial basis</span><span class="val">Frozen audit 2026-06-30</span></div>
+    <div><span class="label block">Gross margin</span><span class="val accent">74.18%</span></div>
+    <div><span class="label block">Verdict</span><span class="val">Proceed reformulated, dual-door</span></div>
+    <div><span class="label block">Prepared</span><span class="val">2026-07-03</span></div>
+    <div class="pt-2 border-t" style="border-color:var(--border)"><span class="label block">Confidentiality</span><span class="val" style="font-size:0.75rem">De-identified public version</span></div>
+  </aside>
+
+</div>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  html.classList.toggle('dark');
+  html.classList.toggle('light');
+  localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+}
+(function() {
+  const t = localStorage.getItem('theme');
+  if (t === 'light') { document.documentElement.classList.remove('dark'); document.documentElement.classList.add('light'); }
+})();
+
+// Scroll fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Share
+function shareReport() {
+  const data = { title: 'Strategic Partnership Structuring Proposal', url: window.location.href };
+  if (navigator.share) { navigator.share(data).catch(() => {}); }
+  else { navigator.clipboard.writeText(window.location.href).then(() => alert('URL copied to clipboard')).catch(() => alert('Copy: ' + window.location.href)); }
+}
+
+// Charts
+try {
+  const isDark = document.documentElement.classList.contains('dark');
+  const gridColor = 'rgba(148,163,184,0.12)';
+  const labelColor = '#94a3b8';
+
+  new Chart(document.getElementById('revenueChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Delivered Revenue (EUR)',
+        data: [0, 0, 109.98, 9329.70, 4975.42],
+        backgroundColor: ['rgba(234,179,8,0.3)','rgba(234,179,8,0.3)','rgba(234,179,8,0.5)','rgba(234,179,8,0.9)','rgba(234,179,8,0.7)'],
+        borderColor: 'rgba(234,179,8,0.8)',
+        borderWidth: 1,
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: gridColor }, ticks: { color: labelColor } },
+        y: { grid: { color: gridColor }, ticks: { color: labelColor, callback: v => 'EUR ' + v.toLocaleString() } }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('fundsChart').getContext('2d'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Restock', 'Marketing', 'Runway', 'COA/Compliance', 'Treasury Buffer'],
+      datasets: [{
+        data: [8000, 6000, 5000, 3000, 3000],
+        backgroundColor: ['rgba(234,179,8,0.85)','rgba(234,179,8,0.65)','rgba(234,179,8,0.45)','rgba(234,179,8,0.3)','rgba(234,179,8,0.15)'],
+        borderColor: 'rgba(234,179,8,0.4)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { color: labelColor, font: { size: 11 } } },
+        tooltip: { callbacks: { label: ctx => ctx.label + ': EUR ' + ctx.raw.toLocaleString() } }
+      }
+    }
+  });
+} catch(e) { console.warn('Chart.js skipped:', e.message); }
+</script>
+</body>
+</html>
