@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-03T19:30:00Z",
+  "generatedAt": "2026-07-03T19:45:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -33,7 +33,8 @@
     "SO-04 Supabase write 2026-07-02: Pafi-authorized restock_items itemization inserted with approval_id=SO04-ITEMIZATION-PAFI-20260702; 5 rows, 250 qty, generated USD 1,300; status remains ordered/in transit/not received; no stock movements or stock_qty changes.",
     "SO-04 delivery gate 2026-07-02: Pafi-authorized Supabase parent note now requires batch number and COA before delivery/receipt/stock-add/customer dispatch/sale-ready status; status remains ordered/not received and no stock was added.",
     "SO-04 assignment update 2026-07-03: Pafi is not receiving the order; Pafi completed the order-as-is decision and Supabase COA gate. Remaining SO-04 receipt/admin acceptance belongs to Narcis, with batch number + COA required before stock acceptance.",
-    "P1-016 update 2026-07-03: Libido/PT-141 and Cognition/Selank blockers are closed for internal stack economics only; public/customer protocol copy remains compliance-gated and not approved."
+    "P1-016 update 2026-07-03: Libido/PT-141 and Cognition/Selank blockers are closed for internal stack economics only; public/customer protocol copy remains compliance-gated and not approved.",
+    "P0-016 update 2026-07-03: Pafi created the Sultan owner-entry plan; internal audit task closed. Only Sultan approval remains as external go/no-go: approve=start, no approval=do not start."
   ],
   "gates": [
     {
@@ -1068,31 +1069,31 @@
     },
     {
       "id": "P0-016",
-      "title": "Audit Sultan owner funds input and ownership basis",
+      "title": "Create Sultan owner entry plan and decision gate",
       "category": "Products, SKUs & Budgeting",
       "chapter": "Products, SKUs & Budgeting",
       "workstream": "Owner Investment / Funds Audit",
       "priority": "P0",
       "urgencyScore": 87,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-07-02",
       "source": "Pafi instruction 2026-07-01: Sultan coming in as new owner; reconcile funds input",
-      "description": "Create a controlled owner-onboarding audit for Sultan before treating him as a finalized new owner. Reconcile every Sultan funds input against primary evidence: sender, receiver, account/wallet/Zen/bank path, date, native currency, FX policy if converted, amount, purpose, ownership basis, whether it is capital contribution, shareholder loan, owner receivable offset, inventory funding, operating reserve, or other treatment, and whether any funds have already been spent or reserved. Do not update cap table, owner settlement, budget reserve, or P&L numbers from memory only.",
-      "acceptance": "Sultan has a funds-input ledger with source evidence links, transaction dates, native currency, FX rule, cash custody target, classification, ownership terms/% or pending terms, impact on owner settlement/reserve/cap table, and unresolved questions. Control matrix rows are marked for evidence register, cash/Zen/bank/crypto, treasury/custodian target, owner investment/capital return, receivable/payable, budget reserve, exceptions, and published outputs. No Supabase write occurs unless explicitly Pafi-authorized with performed_by=API/Pafi agent and app.actor=Pafi transaction guardrail.",
+      "description": "Pafi solved the Sultan owner onboarding task by creating the plan for Sultan to join the company. No further internal audit work is needed at this stage. The decision gate is simple: if Sultan approves the plan, onboarding starts; if Sultan does not approve, onboarding does not start.",
+      "acceptance": "Done by Pafi. Sultan owner entry plan exists. No owner/cap-table/start action happens until Sultan approves the plan. If Sultan rejects or does not approve, the company does not start the Sultan onboarding path.",
       "chapterOwner": "Pafi",
-      "colour": "yellow",
-      "colourReason": "Sultan owner/funds audit added from Pafi instruction; reconciliation can start, but owner status and numbers remain pending evidence.",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the Sultan owner funds/ownership task is solved: plan created; only Sultan approval remains as an external decision gate.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-01: add audit for Sultan as new owner and reconcile funds input"
+        "Pafi instruction 2026-07-03: created a plan for Sultan to join the company; if he approves we start, if not we do not start"
       ],
-      "colourUpdatedAt": "2026-07-01T16:38:39Z",
+      "colourUpdatedAt": "2026-07-03T19:45:00Z",
       "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Audit nou pentru Sultan: înainte să fie tratat ca owner final, trebuie reconciliate toate fondurile intrate de la el cu dovezi, valută, dată, cont/wallet, clasificare capital/loan/rezervă și impact pe settlement/cap table/buget. Fără cifre finale din memorie.",
-      "plainExplanationUpdatedAt": "2026-07-01T16:38:39Z",
+      "plainExplanationRo": "Rezolvat: Pafi a creat planul prin care Sultan poate intra în companie. Nu mai trebuie audit intern acum. Următorul pas este doar decizia lui Sultan: dacă aprobă, se pornește onboardingul; dacă nu aprobă, nu se pornește.",
+      "plainExplanationUpdatedAt": "2026-07-03T19:45:00Z",
       "plainExplanationUpdatedBy": "Codex",
       "supportingFile": "/Users/pafi/Documents/RUO Peptides/output/sultan-owner-funds-audit-2026-07-01.md",
       "supportingAssignees": [
@@ -1108,7 +1109,18 @@
         "Vic"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "completedAt": "2026-07-03T19:45:00Z",
+      "completedBy": "Pafi",
+      "completionNote": "Pafi created the Sultan entry plan. Internal audit task closed; Sultan approval is an external go/no-go gate, not an open Pafi task.",
+      "decisionGate": {
+        "updatedAt": "2026-07-03T19:45:00Z",
+        "owner": "Sultan",
+        "gate": "Sultan approval of Pafi owner-entry plan",
+        "ifApproved": "Start Sultan onboarding/company entry process",
+        "ifRejectedOrNoApproval": "Do not start Sultan onboarding/company entry process",
+        "internalAuditRequiredNow": false
+      }
     },
     {
       "id": "P0-018",
