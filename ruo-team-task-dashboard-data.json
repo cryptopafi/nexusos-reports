@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-03T00:20:00Z",
+  "generatedAt": "2026-07-03T19:30:00Z",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -32,7 +32,8 @@
     "SO-04 status update 2026-07-03: Pafi accepts the order as-is; supplier/order proof and Dragos Zen payment proof are waived as blockers; ETA/status remains in transit, arriving in EU this week; batch number and COA remain required at delivery.",
     "SO-04 Supabase write 2026-07-02: Pafi-authorized restock_items itemization inserted with approval_id=SO04-ITEMIZATION-PAFI-20260702; 5 rows, 250 qty, generated USD 1,300; status remains ordered/in transit/not received; no stock movements or stock_qty changes.",
     "SO-04 delivery gate 2026-07-02: Pafi-authorized Supabase parent note now requires batch number and COA before delivery/receipt/stock-add/customer dispatch/sale-ready status; status remains ordered/not received and no stock was added.",
-    "SO-04 assignment update 2026-07-03: Pafi is not receiving the order; Pafi completed the order-as-is decision and Supabase COA gate. Remaining SO-04 receipt/admin acceptance belongs to Narcis, with batch number + COA required before stock acceptance."
+    "SO-04 assignment update 2026-07-03: Pafi is not receiving the order; Pafi completed the order-as-is decision and Supabase COA gate. Remaining SO-04 receipt/admin acceptance belongs to Narcis, with batch number + COA required before stock acceptance.",
+    "P1-016 update 2026-07-03: Libido/PT-141 and Cognition/Selank blockers are closed for internal stack economics only; public/customer protocol copy remains compliance-gated and not approved."
   ],
   "gates": [
     {
@@ -1199,15 +1200,15 @@
       "workstream": "Protocols / SKU Economics",
       "priority": "P1",
       "urgencyScore": 77,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-07-03",
       "source": "Stack pricing report 2026-06-29 / chapter reorg 2026-06-30",
-      "description": "Resolve missing protocol blockers: Libido is blocked by missing PT-141 final protocol, and Cognition is blocked by missing Selank final protocol. Keep protocol economics separate from customer-use advice.",
-      "acceptance": "PT-141 and Selank have final approved protocol-economics rows or remain explicitly blocked. Libido and Cognition stack statuses are updated accordingly, with Vic compliance review and Narcis protocol-agent/admin support.",
+      "description": "Resolved for internal RUO stack economics only. PT-141/Libido has local Bachmeyer stack evidence plus official Vyleesi/DailyMed bremelanotide label boundary for internal costing. Selank/Cognition is modeled same as Semax per Pafi decision and remains low-confidence/internal-only. This does not approve public/customer dosing copy or human-use protocols; public copy remains compliance-gated under Website Compliance.",
+      "acceptance": "Internal blocker closed: Libido and Cognition can remain costed internally for stack economics, vial/cycle planning, and agent guardrails. PT-141 source hierarchy: local Bachmeyer stack source + DailyMed/Vyleesi label anchor. Selank source hierarchy: local wiki/product-page evidence + PubMed low-confidence evidence + Pafi equivalent-to-Semax decision. Public protocol/customer-use copy remains blocked unless Vic/legal explicitly approves a compliant RUO copy model.",
       "chapterOwner": "Pafi",
       "supportingAssignees": [
         "Narcis",
@@ -1220,7 +1221,38 @@
         "Vic"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "green",
+      "completedAt": "2026-07-03T19:30:00Z",
+      "completedBy": "Codex",
+      "colourReason": "PT-141 and Selank blockers resolved for internal economics; public/customer protocol copy remains compliance-gated elsewhere.",
+      "colourEvidence": [
+        "/Users/pafi/Documents/RUO Peptides/output/protocol-research-pt141-selank-2026-07-03.md",
+        "/Users/pafi/.nexus/projects/petralab-ruo/PROJECT-CARD.md#2026-06-30--libido-stack-bachmeyer-protocol-costing",
+        "/Users/pafi/.nexus/projects/petralab-ruo/PROJECT-CARD.md#2026-06-30--selank-set-same-as-semax-cognition-stack-unblocked",
+        "DailyMed Vyleesi label: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f1d0c1b5-2f39-4bad-a6a4-0066e3ad5dcf",
+        "FDA compounding safety-risk page: https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks"
+      ],
+      "colourUpdatedAt": "2026-07-03T19:30:00Z",
+      "colourUpdatedBy": "Codex",
+      "completionNote": "Research completed 2026-07-03. Internal stack economics are resolved: PT-141 uses local Bachmeyer + Vyleesi/DailyMed label boundary; Selank uses Pafi-approved Semax-equivalent internal model. Public/customer protocol use remains compliance-gated and is not approved by this task.",
+      "plainExplanationRo": "Rezolvat pentru economie internă de stack, nu pentru protocol public către clienți. Libido/PT-141 are bază locală Bachmeyer plus limita oficială Vyleesi/DailyMed pentru costare. Cognition/Selank rămâne modelat ca Semax pentru costare internă, cu încredere mai mică. Nu se publică dosing/protocol de uz uman; asta rămâne sub compliance/Vic/legal.",
+      "plainExplanationUpdatedAt": "2026-07-03T19:30:00Z",
+      "plainExplanationUpdatedBy": "Codex",
+      "protocolResearch": {
+        "updatedAt": "2026-07-03T19:30:00Z",
+        "evidenceFile": "/Users/pafi/Documents/RUO Peptides/output/protocol-research-pt141-selank-2026-07-03.md",
+        "internalEconomicsResolved": true,
+        "publicProtocolApproved": false,
+        "pt141": {
+          "status": "COSTABLE_LABEL_ANCHOR_PLUS_LOCAL_BACHMEYER",
+          "internalOnly": true
+        },
+        "selank": {
+          "status": "COSTABLE_LOW_CONFIDENCE_PAFI_EQUIVALENT_TO_SEMAX",
+          "internalOnly": true
+        }
+      }
     },
     {
       "id": "P1-017",
