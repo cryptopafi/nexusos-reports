@@ -1,0 +1,528 @@
+<!doctype html><html><head><meta charset="utf-8"><title>RUO SKU Pricing And Disposition v1</title><style>body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:32px;background:#f7faf8;color:#13231f}h1{font-size:34px}table{border-collapse:collapse;width:100%;font-size:13px;background:white}th,td{border:1px solid #d9e3df;padding:7px;text-align:left;vertical-align:top}th{background:#e9f2ee}.red{background:#ffe8e8}.yellow{background:#fff7db}.green{background:#e5f8ee}.grey{background:#eeeeee}.small{color:#52635e}.wrap{max-width:1500px;margin:auto}.pill{display:inline-block;border-radius:999px;padding:3px 8px;font-weight:700}</style></head><body><div class="wrap">
+<h1>RUO SKU Pricing And Disposition Tables v1</h1>
+<p class="small">Generated 2026-07-04 00:20 EEST. Control table based on Pafi grill-me decisions.</p>
+<h2>Summary</h2><ul>
+<li><strong>rows</strong>: 31</li>
+<li><strong>green</strong>: 0</li>
+<li><strong>yellow</strong>: 12</li>
+<li><strong>red</strong>: 11</li>
+<li><strong>grey</strong>: 8</li>
+<li><strong>verified_coa</strong>: 12</li>
+<li><strong>hold_until_verified_coa</strong>: 11</li>
+<li><strong>reorder_focus_or_blocked</strong>: 3</li>
+</ul>
+<h2>Disposition Table</h2><table><thead><tr>
+<th>code</th>
+<th>name</th>
+<th>size</th>
+<th>row_colour</th>
+<th>disposition</th>
+<th>current_stock</th>
+<th>incoming_open_qty</th>
+<th>verified_coa_gate</th>
+<th>margin_status</th>
+<th>counsel_flag</th>
+<th>public_copy_status</th>
+<th>restock_decision</th>
+<th>recommended_restock_qty</th>
+<th>issues</th>
+</tr></thead><tbody>
+<tr class="red">
+<td>5AMINO1MQ-50MG</td>
+<td>5 Amino 1MQ</td>
+<td>50 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>96.0</td>
+<td>0</td>
+<td>coa_review_hold_quantity_only</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="red">
+<td>AOD9604-5MG</td>
+<td>AOD9604</td>
+<td>10 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>20.0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_demand_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; counsel_review; AOD 5mg/10mg historical drift + label task open; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; NO_RECENT_CUSTOMER_DEMAND; SS_HEURISTIC</td>
+</tr>
+<tr class="red">
+<td>BAC-10ML</td>
+<td>BAC Water</td>
+<td>10 ml</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>28.0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>reorder_blocked_quality_proof_needed</td>
+<td>150</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="yellow">
+<td>BPC157-5MG</td>
+<td>BPC-157</td>
+<td>5 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>8.0</td>
+<td>50.0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="grey">
+<td>CEREBROLYSIN-60MG</td>
+<td>Cerebrolysin</td>
+<td>60 mg</td>
+<td>grey</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PERSONAL_USE_SKEW; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="red">
+<td>CJC1295-5MG</td>
+<td>CJC-1295</td>
+<td>5 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>50.0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_demand_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; NO_RECENT_CUSTOMER_DEMAND; SS_HEURISTIC</td>
+</tr>
+<tr class="grey">
+<td>CJC1295DAC-5MG</td>
+<td>CJC-1295 DAC</td>
+<td>5 mg</td>
+<td>grey</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PERSONAL_USE_SKEW; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="grey">
+<td>DSIP-10MG</td>
+<td>DSIP</td>
+<td>10 mg</td>
+<td>grey</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="yellow">
+<td>EPITHALON-10MG</td>
+<td>Epithalon</td>
+<td>10 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>63.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>strict_margin_not_green; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="grey">
+<td>FOXO4-10MG</td>
+<td>FOXO4</td>
+<td>10 mg</td>
+<td>grey</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PERSONAL_USE_SKEW; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="yellow">
+<td>GHKCU-50MG</td>
+<td>GHK-CU</td>
+<td>50 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>48.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>strict_margin_not_green; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="red">
+<td>GLUTATHIONE-1500MG</td>
+<td>Glutathione</td>
+<td>1500 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>47.0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; SS_HEURISTIC</td>
+</tr>
+<tr class="grey">
+<td>IGF1LR3-1MG</td>
+<td>IGF1-LR3</td>
+<td>1 mg</td>
+<td>grey</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PERSONAL_USE_SKEW; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="yellow">
+<td>IPAMORELIN-5MG</td>
+<td>Ipamorelin</td>
+<td>5 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>59.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="yellow">
+<td>KISSPEPTIN10-5MG</td>
+<td>Kisspeptin 10</td>
+<td>5 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>38.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>strict_margin_not_green; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; SS_HEURISTIC</td>
+</tr>
+<tr class="yellow">
+<td>KPV-10MG</td>
+<td>KPV</td>
+<td>10 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>38.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>strict_margin_not_green; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="yellow">
+<td>MELANOTAN2-10MG</td>
+<td>Melanotan 2</td>
+<td>10 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>17.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; SS_HEURISTIC</td>
+</tr>
+<tr class="yellow">
+<td>MOTSC-10MG</td>
+<td>MOTS-C</td>
+<td>10 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>41.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>reorder_focus_coa_economic</td>
+<td>90</td>
+<td>strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; SS_HEURISTIC</td>
+</tr>
+<tr class="red">
+<td>NAD+-500MG</td>
+<td>NAD+</td>
+<td>500 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>26.0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="red">
+<td>PT141-10MG</td>
+<td>PT-141</td>
+<td>10 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>0</td>
+<td>50.0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_demand_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; NO_RECENT_CUSTOMER_DEMAND; SS_HEURISTIC</td>
+</tr>
+<tr class="yellow">
+<td>RETATRUTIDE-10MG</td>
+<td>Retatrutide</td>
+<td>10 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>67.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>transfer_first_no_purchase</td>
+<td>0</td>
+<td>strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="yellow">
+<td>RETATRUTIDE-30MG</td>
+<td>Retatrutide</td>
+<td></td>
+<td>yellow</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>unknown</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PERSONAL_USE_SKEW; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="red">
+<td>SELANK-10MG</td>
+<td>Selank</td>
+<td>10 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>0</td>
+<td>50.0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_demand_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; NO_RECENT_CUSTOMER_DEMAND; SS_HEURISTIC</td>
+</tr>
+<tr class="red">
+<td>SEMAX-10MG</td>
+<td>Semax</td>
+<td>10 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>0</td>
+<td>50.0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_demand_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; NO_RECENT_CUSTOMER_DEMAND; SS_HEURISTIC</td>
+</tr>
+<tr class="grey">
+<td>SLUPP332-5MG</td>
+<td>SLU-PP-332</td>
+<td>5 mg</td>
+<td>grey</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PERSONAL_USE_SKEW; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="grey">
+<td>SS31-10MG</td>
+<td>SS-31</td>
+<td>10 mg</td>
+<td>grey</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PERSONAL_USE_SKEW; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="yellow">
+<td>TB500-5MG</td>
+<td>TB-500</td>
+<td>5 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>3.0</td>
+<td>50.0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_restock_now</td>
+<td>0</td>
+<td>strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="yellow">
+<td>TESAMORELIN-10MG</td>
+<td>Tesamorelin</td>
+<td>10 mg</td>
+<td>yellow</td>
+<td>continue_controlled_margin_review</td>
+<td>20.0</td>
+<td>0</td>
+<td>verified_public_batch_linked</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>reorder_focus_coa_economic</td>
+<td>60</td>
+<td>strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; SS_HEURISTIC</td>
+</tr>
+<tr class="red">
+<td>THYMOSINALPHA1-10MG</td>
+<td>Thymosin Alpha 1</td>
+<td>10 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>30.0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_demand_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; NO_RECENT_CUSTOMER_DEMAND; SS_HEURISTIC</td>
+</tr>
+<tr class="grey">
+<td>TIRZEPATIDE-10MG</td>
+<td>Tirzepatide</td>
+<td>10 mg</td>
+<td>grey</td>
+<td>parked_no_stock_until_coa_margin_decision</td>
+<td>0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>high_counsel_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>parked_no_stock_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; counsel_review; public copy waits Vic/lawyer pass; FORECAST_IS_LOWER_BOUND; SS_HEURISTIC; PERSONAL_USE_SKEW; PARKED_OUT_OF_STOCK</td>
+</tr>
+<tr class="red">
+<td>VIP-10MG</td>
+<td>VIP</td>
+<td>10 mg</td>
+<td>red</td>
+<td>hold_until_verified_coa</td>
+<td>50.0</td>
+<td>0</td>
+<td>hold_no_verified_public_coa</td>
+<td>yellow_below_60_fix_by_reprice_or_reserve_cap</td>
+<td>standard_ruo_review</td>
+<td>yellow_ruo_copy_needs_vic_lawyer_pass</td>
+<td>no_demand_no_restock</td>
+<td>0</td>
+<td>verified_public_coa_missing_or_incomplete; strict_margin_not_green; public copy waits Vic/lawyer pass; PERSONAL_USE_SKEW; NO_RECENT_CUSTOMER_DEMAND; SS_HEURISTIC</td>
+</tr>
+</tbody></table>
+<p class="small">Detailed pricing/margin CSV: sku-pricing-margin-table-v1-2026-07-04.csv</p>
+</div></body></html>

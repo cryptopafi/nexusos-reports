@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-04T00:08:30+03:00",
+  "generatedAt": "2026-07-04T00:25:00+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -38,7 +38,8 @@
     "Accessories update 2026-07-03: P0-008 and P1-007 merged into one active Accessories Business plan proposal; P1-007 closed as merged/superseded.",
     "P0-018 update 2026-07-03: task is Pafi-only; restock planner read-only next-order candidate is BAC Water 40, MOTS-C 30, Tesamorelin 10, est. supplier goods USD 868; Pafi approval required before any purchase/write.",
     "P0-0-001 update 2026-07-04: 48h live-state register created at /Users/pafi/Documents/RUO Peptides/output/live-state-register-2026-07-04/ruo-48h-live-state-register-2026-07-04.md; this closes the register task only, not the underlying open gates.",
-    "P0-005/P2-005 update 2026-07-04: monthly budget tracking by operating bucket merged into the 6-month budget and reserve allocation task; P2-005 closed as superseded."
+    "P0-005/P2-005 update 2026-07-04: monthly budget tracking by operating bucket merged into the 6-month budget and reserve allocation task; P2-005 closed as superseded.",
+    "P0-006/P0-007 update 2026-07-04: canonical SKU pricing/margin table and SKU disposition table v1 created from Supabase export, live website price scrape, Janoshik COA crossref, and COA-corrected restock planner. Table tasks are done; row-level SKU states remain red/yellow/grey."
   ],
   "gates": [
     {
@@ -480,29 +481,31 @@
       "category": "Products, SKUs & Budgeting",
       "priority": "P0",
       "urgencyScore": 92,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-06-25",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Subtask 4.6 under the 48h live-state register. Build table with supplier cost, landed cost, public price, margin, discount/promoter/CAC cap, reorder status, counsel flag, and active copy status. Pafi owns commercial pricing/budget logic; Narcis supports dashboard/admin implementation.",
-      "acceptance": "The live-state register includes one SKU pricing truth section with exception notes for each SKU.",
+      "description": "Canonical SKU pricing and margin table v1 created. It combines supplier/base cost, economic COA allocation, landed cost, public price, net revenue ex VAT, 30% discount/commission/CAC reserve, strict 60% margin gate, restock status, counsel flag, and public copy status. Row-level SKU states remain red/yellow/grey where gates are not passed.",
+      "acceptance": "Done for v1: one source-backed SKU pricing truth exists with exception notes for each SKU. Remaining work is row-level cleanup/repricing/COA/copy action, not creation of the table.",
       "workstream": "Financial",
       "chapter": "Products, SKUs & Budgeting",
       "chapterOwner": "Pafi",
       "parentTask": "P0-0-001",
       "subtask": "4.6",
-      "colour": "yellow",
-      "colourReason": "Pafi completed the best-practice pricing-structure plan and sent it to Narcis; implementation/proof in dashboard/Supabase remains pending.",
+      "colour": "green",
+      "colourReason": "Pricing/margin table v1 created and published; row-level SKU gaps remain tracked inside the table.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-01: pricing structure plan completed and sent to Narcis for implementation"
+        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
+        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
+        "Pafi grill-me decisions 2026-07-04 D1-D10"
       ],
       "colourUpdatedBy": "Codex",
-      "colourUpdatedAt": "2026-07-01T16:13:11Z",
-      "plainExplanationRo": "Acesta este subtaskul 4.6 din live-state register. Face un singur adevăr comercial per SKU: supplier cost, landed cost, preț public, marjă, limite de discount/promoter/CAC, reorder status, counsel flag și copy status.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "colourUpdatedAt": "2026-07-04T00:25:00+03:00",
+      "plainExplanationRo": "Am creat tabelul canonical de pricing/margin per SKU. Include cost, COA economic, preț public, net ex VAT, rezervă 30%, margin gate 60%, restock status, counsel flag și copy status. Taskul de creare este gata; problemele pe fiecare SKU rămân marcate în tabel.",
+      "plainExplanationUpdatedAt": "2026-07-04T00:25:00+03:00",
       "plainExplanationUpdatedBy": "Codex",
       "supportingAssignees": [
         "Narcis"
@@ -513,7 +516,32 @@
         "Narcis"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "completedAt": "2026-07-04",
+      "completedBy": "Codex",
+      "completionNote": "Canonical SKU pricing/margin table v1 generated from available sources and Pafi grill-me decisions. Zero rows are green under the strict policy; row-level gates are visible in the table.",
+      "supportingFile": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
+      "skuPricingMarginTable": {
+        "generatedAt": "2026-07-04T00:20:00+03:00",
+        "rows": 31,
+        "green": 0,
+        "yellow": 12,
+        "red": 11,
+        "grey": 8,
+        "verifiedCoa": 12,
+        "holdUntilVerifiedCoa": 11,
+        "publicReport": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-disposition-report-v1-2026-07-04.html",
+        "pricingCsv": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
+        "dispositionCsv": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
+        "localFiles": [
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.html",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-summary-2026-07-04.json"
+        ],
+        "policy": "Pafi grill-me decisions D1-D10: controlled continue, verified public COA required for sellability/green, strict 60% margin after COA/VAT/30% reserve, restock only if COA-economic, RUO-safe public copy only."
+      }
     },
     {
       "id": "P0-007",
@@ -521,27 +549,29 @@
       "category": "Products, SKUs & Budgeting",
       "priority": "P0",
       "urgencyScore": 91,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-06-25",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Pafi classifies every SKU by continue, cleanup, COA needed, margin review, reorder focus, counsel review, or inbound-B2B support. Pafi owns product/SKU disposition decisions; Narcis implements dashboard/site/admin status fields. Vic is consulted through compliance tasks only when Pafi flags a compliance review need.",
-      "acceptance": "No SKU status is inferred from memory or chat. Each SKU has a Pafi commercial/disposition status before public promotion, affiliate eligibility, reorder focus, or cleanup execution.",
+      "description": "SKU disposition table v1 created. Each SKU is classified as continue-controlled, hold-until-verified-COA, parked/no-stock, margin review, restock focus, counsel review, or quality-proof blocked according to Pafi decisions and available evidence.",
+      "acceptance": "Done for v1: every SKU has an explicit disposition and no SKU status is inferred from memory only. Remaining work is executing the red/yellow row actions.",
       "workstream": "Logistics",
       "chapter": "Products, SKUs & Budgeting",
       "chapterOwner": "Pafi",
-      "colour": "yellow",
-      "colourReason": "Pafi owns SKU disposition; Narcis implements fields; Vic is not assigned to task 12.",
+      "colour": "green",
+      "colourReason": "SKU disposition table v1 created and published; row-level actions remain visible in the table.",
       "colourEvidence": [
-        "Pafi instruction 2026-06-30"
+        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
+        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
+        "Pafi grill-me decisions 2026-07-04 D1-D10"
       ],
       "colourUpdatedBy": "Codex",
-      "colourUpdatedAt": "2026-06-30T18:26:02Z",
-      "plainExplanationRo": "Acesta este tabelul de decizie per SKU. Pafi decide dacă fiecare SKU continuă, se curăță, are nevoie de COA, cere margin review, devine reorder focus, intră la counsel review sau susține inbound/B2B. Vic nu este owner aici; compliance se consultă separat când Pafi cere.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "colourUpdatedAt": "2026-07-04T00:25:00+03:00",
+      "plainExplanationRo": "Am creat tabelul de disposition per SKU. Fiecare SKU are status explicit: continue controlled, hold până la COA verificat, parked/no-stock, margin review, restock focus, counsel review sau quality-proof blocked. Taskul de creare este gata; execuția pe rânduri rămâne de făcut.",
+      "plainExplanationUpdatedAt": "2026-07-04T00:25:00+03:00",
       "plainExplanationUpdatedBy": "Codex",
       "supportingAssignees": [
         "Narcis"
@@ -552,7 +582,32 @@
         "Narcis"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "completedAt": "2026-07-04",
+      "completedBy": "Codex",
+      "completionNote": "SKU disposition table v1 generated. Existing stock without verified public/independent COA is hold/red; high-risk verified-COA SKUs remain yellow/counsel-review; parked no-stock rows are grey.",
+      "supportingFile": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
+      "skuDispositionTable": {
+        "generatedAt": "2026-07-04T00:20:00+03:00",
+        "rows": 31,
+        "green": 0,
+        "yellow": 12,
+        "red": 11,
+        "grey": 8,
+        "verifiedCoa": 12,
+        "holdUntilVerifiedCoa": 11,
+        "publicReport": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-disposition-report-v1-2026-07-04.html",
+        "pricingCsv": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
+        "dispositionCsv": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
+        "localFiles": [
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.html",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-summary-2026-07-04.json"
+        ],
+        "policy": "Pafi grill-me decisions D1-D10: controlled continue, verified public COA required for sellability/green, strict 60% margin after COA/VAT/30% reserve, restock only if COA-economic, RUO-safe public copy only."
+      }
     },
     {
       "id": "P0-008",
