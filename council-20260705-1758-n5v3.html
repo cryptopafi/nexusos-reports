@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pass: Evaluate Whether Implemented Final Plan Ruo Supabase Business-Management Structure Correct. Decide Whether — council-20260705-1758-n5v3</title>
+<style>
+:root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --panel2:#242424; --line:#303030; --text:#e8e8e8; --muted:#a0a0a0; --green:#5bc46b; --amber:#f0a631; --red:#e5534b; --blue:#76a9ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 16% 0%, #1f2937 0, transparent 28rem), var(--bg); color:var(--text); font:14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:30px 24px 60px; }
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:26px; }
+.brand { font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+button { border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:8px; padding:8px 12px; }
+.hero { padding:28px 0 22px; border-bottom:1px solid var(--line); }
+h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter-spacing:0; }
+.subtitle { max-width:850px; color:var(--muted); font-size:17px; }
+.meta { margin-top:16px; color:var(--muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+.grid { display:grid; gap:16px; }
+.metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
+.two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
+.card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
+.metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
+.metric span { color:var(--muted); }
+h2 { margin:0 0 14px; font-size:22px; }
+h3 { margin:18px 0 8px; color:var(--blue); }
+.score { display:grid; grid-template-columns:130px minmax(120px, 1fr) 52px; align-items:center; gap:12px; margin:11px 0; }
+.score b { height:16px; background:#111; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.score i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--red), var(--amber), var(--green)); }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+table { border-collapse:collapse; width:100%; min-width:760px; background:var(--panel); }
+th,td { border-bottom:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; }
+th { background:var(--panel2); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+tr:hover td { background:rgba(255,255,255,.025); }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:#151515; font-weight:700; }
+.narrative { margin-top:16px; }
+.narrative p { margin:9px 0; }
+.narrative ul { padding-left:22px; }
+code { background:#101010; border:1px solid var(--line); border-radius:5px; padding:1px 5px; }
+pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(--line); border-radius:8px; padding:14px; }
+.muted { color:var(--muted); }
+summary { cursor:pointer; color:var(--muted); }
+a { color:var(--blue); text-decoration:none; }
+@media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
+  <header class="hero"><h1>Pass: Evaluate Whether Implemented Final Plan Ruo Supabase Business-Management Structure Correct. Decide Whether — council-20260705-1758-n5v3</h1><p class="subtitle">Advisor Vote Ledger This ledger is generated from structured advisor records and is authoritative if any model-written narrative sentence labels an advisor differently.</p><div class="meta">Generated 2026-07-05 18:07 UTC | Task council-20260705-1758-n5v3</div></header>
+  <section class="grid metrics">
+    <article class="card metric"><small>Outcome</small><strong>PASS</strong><span>Verdict</span></article>
+    <article class="card metric"><small>Certainty</small><strong>0.92</strong><span>Confidence</span></article>
+    <article class="card metric"><small>Quality</small><strong>3.55/4</strong><span>NPLF average</span></article>
+    <article class="card metric"><small>Run Spend</small><strong>$0.1784</strong><span>Cost</span></article>
+    <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
+  </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>3 PASS</strong><span>Final reconciler tier: PASS</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>PASS + PASS + PASS</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>PASS after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor A</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.88</strong></div><h3>Why this advisor voted this way</h3><p>Phased plan correctly sequences canonical management view layer and settings contract before SQL/admin packet application, minimizing blast radius while the ambiguous statuses remain unresolved</p><h3>Main objection or warning</h3><p>Mutating TIM-IBIZA-20260701 or MRW-FRANCE-20260701 without business confirmation could corrupt July 2026 order/payment state — the contradiction between status=paid and payment_status=pending has multiple valid business interpretations</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor B</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.88</strong></div><h3>Why this advisor voted this way</h3><p>Phased architecture correctly sequences low-blast-radius work first (settings contract + regression now, SQL/admin views later) before any base-fact mutation or schema change</p><h3>Main objection or warning</h3><p>Mutating the two ambiguous July order rows without business confirmation could corrupt July 2026 financial/delivery state irreversibly, especially if &#x27;paid&#x27; has a domain-specific meaning not captured in the schema</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor C</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.93</strong></div><h3>Why this advisor voted this way</h3><p>The plan preserves API-only implementation boundaries while preparing SQL/admin changes for later application.</p><h3>Main objection or warning</h3><p>Mutating the two July orders now would infer payment or delivery facts that the live DB does not confirm.</p></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:85.0%'></i></b><strong>3.40</strong></div>
+<div class='score'><span>Plan</span><b><i style='width:92.5%'></i></b><strong>3.70</strong></div>
+<div class='score'><span>Leverage</span><b><i style='width:87.5%'></i></b><strong>3.50</strong></div>
+<div class='score'><span>Fit</span><b><i style='width:90.0%'></i></b><strong>3.60</strong></div></article>
+    <article class="card"><h2>Advisor Matrix</h2><div class="table-wrap"><table><thead><tr><th>Advisor</th><th>Position</th><th>Confidence</th><th>Agrees On</th><th>Disagrees / Warns On</th></tr></thead><tbody><tr><td><strong>Advisor A</strong></td><td><span class='pill'>PASS</span></td><td>0.88</td><td>Phased plan correctly sequences canonical management view layer and settings contract before SQL/admin packet application, minimizing blast radius while the ambiguous statuses remain unresolved; API-only access discipline maintained throughout implementation — no direct DB writes beyond the settings row, preserving the established access pattern; MGMT-006 regression failure is correctly isolated to exactly the two genuinely ambiguous rows, demonstrating the regression check is precise and not producing false positives</td><td>Mutating TIM-IBIZA-20260701 or MRW-FRANCE-20260701 without business confirmation could corrupt July 2026 order/payment state — the contradiction between status=paid and payment_status=pending has multiple valid business interpretations; Leaving MGMT-006 unresolved blocks regression success and therefore blocks clean goal closure, creating a dependency on external human confirmation that has no stated SLA; The prepared-but-unapplied SQL/admin canonical views packet could be accidentally or prematurely applied before the ambiguous statuses are settled, increasing blast radius without business sign-off</td></tr>
+<tr><td><strong>Advisor B</strong></td><td><span class='pill'>PASS</span></td><td>0.88</td><td>Phased architecture correctly sequences low-blast-radius work first (settings contract + regression now, SQL/admin views later) before any base-fact mutation or schema change; MGMT-006 regression failure is functioning as designed — it correctly surfaces a genuine semantic contradiction (status=paid vs payment_status=pending vs notes saying no cash collected) rather than masking it; API-only access discipline maintained throughout implementation, preserving auditability and avoiding direct DB manipulation that could bypass application-layer validation</td><td>Mutating the two ambiguous July order rows without business confirmation could corrupt July 2026 financial/delivery state irreversibly, especially if &#x27;paid&#x27; has a domain-specific meaning not captured in the schema; The SQL/admin canonical views packet remains unapplied — if forgotten or applied out of sequence, the management view layer will be incomplete and regression may pass falsely or fail on downstream checks; No explicit escalation channel or deadline is documented for the Pafi/Narcis business-confirmation question, creating an open-ended blocker that could stall goal closure indefinitely</td></tr>
+<tr><td><strong>Advisor C</strong></td><td><span class='pill'>PASS</span></td><td>0.93</td><td>The plan preserves API-only implementation boundaries while preparing SQL/admin changes for later application.; It correctly separates technical structure work from uncertain business facts in the July 2026 order records.; The regression failure is isolated to MGMT-006, making the remaining decision narrow and auditable.</td><td>Mutating the two July orders now would infer payment or delivery facts that the live DB does not confirm.; Leaving MGMT-006 as a plain regression failure without business-blocker classification could make the goal look technically incomplete rather than intentionally gated.; Applying the SQL/admin canonical views packet before resolving or documenting MGMT-006 could increase blast radius before the contract is settled.</td></tr></tbody></table></div></article>
+  </section>
+  <section class="card narrative"><h2>Decision Trace</h2><p># Council Report</p>
+<h2>Final Verdict</h2>
+<h2>Advisor Vote Ledger</h2>
+<p>This ledger is generated from structured advisor records and is authoritative if any model-written narrative sentence labels an advisor differently.</p>
+<ul>
+<li>Response A: PASS, confidence 0.88; support: Phased architecture sequences settings contract and regression before later SQL admin views and base fact or schema changes; warning: Mutating two ambiguous July order rows without confirmation could corrupt July 2026 state if paid has domain specific meaning.</li>
+<li>Response B: PASS, confidence 0.93; support: The plan preserves API-only implementation boundaries while preparing SQL and admin changes for later application; warning: Mutating the two July orders now would infer payment or delivery facts that the live DB does not confirm.</li>
+<li>Response C: PASS, confidence 0.88; support: The phased plan sequences canonical management views and settings contract before SQL and admin packets to limit unresolved status risk; warning: Changing TIM-IBIZA-20260701 or MRW-FRANCE-20260701 without business confirmation risks corrupting July 2026 state because status=paid and payment_status=pending have multiple interpretations..</li>
+</ul>
+<h2>Summary</h2>
+<p>All three advisors return PASS and converge on the same operational decision: accept the phased final plan, do not mutate the two ambiguous July 1 orders now, and resolve MGMT-006 as a documented business-confirmation blocker. The remaining implementation work is not DML; it is blocker packaging/classification and handoff to Pafi/Narcis.</p>
+<h2>Substantive Answer</h2>
+<h3>1. Is the final plan correct?</h3>
+<p>Yes. The final plan is correct: canonical management view layer first, settings contract and regression now, SQL/admin canonical views packet later, typed evidence and month-close migration later.</p>
+<p>Response A supports the sequencing because it establishes the contract and regression before structural SQL changes or base-fact rewrites. Response B supports it because it preserves API-only boundaries while preparing later SQL/admin changes. Response C supports it because deferring SQL/admin and migration work limits blast radius while MGMT-006 remains unresolved.</p>
+<h3>2. Should TIM-IBIZA-20260701 or MRW-FRANCE-20260701 be mutated now?</h3>
+<p>No. Do not mutate either row now.</p>
+<p>Both <code>TIM-IBIZA-20260701</code> and <code>MRW-FRANCE-20260701</code> have <code>status=paid</code>, <code>payment_status=pending</code>, notes indicating no cash was collected, and delivery scheduled for <code>2026-07-03</code>. As of <code>2026-07-05</code>, the live DB has no confirmed payment or delivery update. Response A, Response B, and Response C all say this is not enough evidence to choose which field is authoritative.</p>
+<p>The correct resolution is to package MGMT-006 as <code>BUSINESS_CONFIRMATION_REQUIRED</code> or equivalent, not to perform DML. The explicit question should ask Pafi/Narcis whether payment was collected, whether delivery occurred, and what the correct target <code>status</code> and <code>payment_status</code> should be for each order.</p>
+<h3>3. What final implementation step remains before closing the goal?</h3>
+<p>The final implementation step is to document MGMT-006 as an intentional business-confirmation blocker in the regression/handoff output, with the two exact order IDs, current values, evidence, and questions for Pafi/Narcis.</p>
+<p>The strongest combined version is:</p>
+<ul>
+<li>Create or update a structured MGMT-006 blocker note.</li>
+<li>Classify the regression result as blocked on business confirmation rather than an ordinary technical failure.</li>
+<li>Leave <code>sql-admin-canonical-views-packet-2026-07-05.sql</code> unapplied until the ambiguity is resolved or formally waived.</li>
+<li>After confirmation, apply only the confirmed minimal DML if needed, rerun <code>management_regression_check.mjs</code>, then proceed with the SQL/admin packet.</li>
+</ul>
+<h2>Where Models Agree</h2>
+<p>All three agree the phased plan is correct. Response A calls the contract/regression-first order risk-minimizing, Response B says the plan preserves API-only boundaries, and Response C says it limits unresolved status risk.</p>
+<p>All three agree the two July orders must not be mutated now. Response A emphasizes ambiguous domain semantics, Response B says the notes establish ambiguity rather than final state, and Response C lists multiple plausible interpretations.</p>
+<p>All three agree MGMT-006 is a real business-data ambiguity, not a code defect. Response A says the regression failure is correct behavior, Response B says the failure is narrow and auditable, and Response C says the check is precise.</p>
+<p>All three agree the SQL/admin canonical views packet should remain unapplied for now. Response A cites blast-radius risk, Response B cites premature contract settlement risk, and Response C cites business sign-off risk.</p>
+<h2>Where Models Disagree</h2>
+<p>There is no disagreement on the core decision. The only material difference is closure mechanics.</p>
+<p>Response A says that once the blocker is documented and dispatched, the implementation phase can be considered closed with MGMT-006 tracked separately. Response B frames the close state as technical implementation accepted but MGMT-006 blocked on confirmation. Response C is stricter: it recommends updating regression output to classify MGMT-006 as <code>BLOCKED_ON_BUSINESS_CONFIRMATION</code> and recording the blocker in settings or a companion note before closure.</p>
+<p>Final synthesis adopts Response C&#x27;s stricter closure mechanics while preserving Response A and Response B&#x27;s conclusion that no DML should occur now.</p>
+<h2>Unique Discoveries</h2>
+<p>Response A uniquely highlights the risk that the Pafi/Narcis confirmation question lacks an escalation channel or deadline, which could stall closure indefinitely.</p>
+<p>Response B uniquely gives the cleanest final close-state formula: technical implementation accepted, SQL packet prepared but unapplied, MGMT-006 blocked on business confirmation, no guessed mutation.</p>
+<p>Response C uniquely identifies that <code>status=paid</code> may have a domain-specific meaning, meaning the eventual fix could be either row DML or a refinement/waiver of the regression rule itself.</p>
+<h2>Advisor Positions</h2>
+<p>Response A: PASS, confidence 0.88. Primary support: the phased architecture correctly sequences settings contract and regression before SQL/admin views and base-fact changes. Primary concern: mutating ambiguous orders could corrupt July 2026 state, and the blocker needs an escalation path.</p>
+<p>Response B: PASS, confidence 0.93. Primary support: the implementation preserved API-only boundaries and isolated the remaining issue to MGMT-006. Primary concern: treating MGMT-006 as a plain failure could misrepresent an intentional business gate as a technical defect.</p>
+<p>Response C: PASS, confidence 0.88. Primary support: the regression is precise and the implementation maintained the intended API-only access pattern. Primary concern: MGMT-006 still blocks clean regression success and must be explicitly classified before closure.</p>
+<h2>Agreement Zones</h2>
+<p>Final plan correctness: Response A, Response B, and Response C all accept the canonical-management-first plan with settings contract and regression now, SQL/admin packet later, and typed evidence/month-close migration later.</p>
+<p>No immediate DML: Response A, Response B, and Response C all state that mutating <code>TIM-IBIZA-20260701</code> or <code>MRW-FRANCE-20260701</code> now would infer business facts not confirmed by the live DB.</p>
+<p>MGMT-006 is a valid blocker: Response A says the regression failure correctly surfaces a genuine contradiction, Response B says the failure is narrow and auditable, and Response C says failing only on the two ambiguous rows proves precision.</p>
+<p>SQL/admin packet should remain unapplied: Response A, Response B, and Response C all warn that applying it before resolving or formally handling MGMT-006 would increase blast radius.</p>
+<h2>Split Zones</h2>
+<p>Closure mechanics: Response A says documenting and dispatching the blocker can close the implementation phase, while Response B says the blocker must be recorded in regression/handoff output and Response C says the regression output should explicitly classify MGMT-006 as <code>BLOCKED_ON_BUSINESS_CONFIRMATION</code> plus record it in a settings or companion note. CRITIC challenge: Response A&#x27;s closure language is weakened by Response B and Response C&#x27;s concern that a plain FAIL can look technically incomplete unless reclassified.</p>
+<p>Blocker detail level: Response A emphasizes a business question and escalation risk, Response B emphasizes exact order IDs and target-field confirmation, and Response C adds possible interpretations including the chance that the regression rule itself may need adjustment. CRITIC challenge: Response B&#x27;s concise blocker packet is operationally clean but less complete than Response C&#x27;s interpretation list; Response C&#x27;s broader possibilities are useful but should not delay the immediate blocker handoff.</p>
+<p>SQL/admin timing nuance: Response A allows application after MGMT-006 is resolved or treated as a documented known exception, Response B says proceed after confirmation, DML if needed, and rerun, while Response C says proceed after MGMT-006 passes or is formally waived. CRITIC challenge: Response B&#x27;s confirmation-first path is safest for data integrity, while Response A and Response C correctly leave room for a formal waiver if business semantics show the regression expectation is wrong.</p>
+<h2>Agreement Matrix</h2>
+<p>Final plan accepted: Response A + Response B + Response C agree.</p>
+<p>Do not mutate <code>TIM-IBIZA-20260701</code>: Response A + Response B + Response C agree.</p>
+<p>Do not mutate <code>MRW-FRANCE-20260701</code>: Response A + Response B + Response C agree.</p>
+<p>MGMT-006 should be treated as business-confirmation required: Response A + Response B + Response C agree.</p>
+<p>SQL/admin canonical views packet should remain unapplied now: Response A + Response B + Response C agree.</p>
+<p>Need explicit Pafi/Narcis question: Response A + Response B + Response C agree.</p>
+<h2>Disagreement Matrix</h2>
+<p>Closure threshold: Response A permits implementation-phase closure after blocker dispatch; Response B requires blocker status in regression/handoff; Response C requires explicit regression classification and companion recording before clean closure.</p>
+<p>Blocker format: Response A proposes a dispatchable business-confirmation question, Response B proposes a compact table of required confirmations, and Response C proposes a structured document plus regression classification.</p>
+<p>Future SQL/admin packet gate: Response A says resolve or formally known-exception; Response B says confirm, correct if needed, rerun, then apply; Response C says pass or formally waive before applying.</p>
+<h2>Final Synthesis Trace</h2>
+<p>The final verdict is PASS because all three advisors approve the plan and all three reject immediate DML. There is no advisor support for mutating the two July orders now. The decisive shared premise is that <code>status=paid</code>, <code>payment_status=pending</code>, notes saying no cash was collected, and no later confirmed update create ambiguity, not authority for correction.</p>
+<p>The only meaningful split is implementation closure mechanics. I weight Response C&#x27;s stricter regression-classification recommendation highest because it directly prevents MGMT-006 from being mistaken for an unresolved code defect, while preserving Response A&#x27;s and Response B&#x27;s core conclusion that the technical implementation is accepted. Therefore the final answer is: accept the plan, do not mutate, classify/document MGMT-006 as business-confirmation blocked, and defer SQL/admin application.</p>
+<h2>NPLF Arithmetic</h2>
+<p>My independent NPLF: N=3.4, P=3.7, L=3.5, F=3.6. N is strong because the need for canonical management structure is real, though business ambiguity remains. P is strong because the phased API-safe plan minimizes blast radius. L is strong because the decision discipline avoids guessing business facts. F is strong because preserving data integrity outweighs the short-term cost of a blocked regression.</p>
+<p>Cross-advisor means, advisory only: N≈3.30, P≈3.57, L≈3.40, F≈3.50. My scores are close to the advisor cluster but slightly raise P/F because the documented-blocker path cleanly resolves the current decision without corrupting base facts.</p>
+<h2>Dissent</h2>
+<h2>Split Zones</h2>
+<p>Closure mechanics: Response A says documenting and dispatching the blocker can close the implementation phase, while Response B says the blocker must be recorded in regression/handoff output and Response C says the regression output should explicitly classify MGMT-006 as <code>BLOCKED_ON_BUSINESS_CONFIRMATION</code> plus record it in a settings or companion note. CRITIC challenge: Response A&#x27;s closure language is weakened by Response B and Response C&#x27;s concern that a plain FAIL can look technically incomplete unless reclassified.</p>
+<p>Blocker detail level: Response A emphasizes a business question and escalation risk, Response B emphasizes exact order IDs and target-field confirmation, and Response C adds possible interpretations including the chance that the regression rule itself may need adjustment. CRITIC challenge: Response B&#x27;s concise blocker packet is operationally clean but less complete than Response C&#x27;s interpretation list; Response C&#x27;s broader possibilities are useful but should not delay the immediate blocker handoff.</p>
+<p>SQL/admin timing nuance: Response A allows application after MGMT-006 is resolved or treated as a documented known exception, Response B says proceed after confirmation, DML if needed, and rerun, while Response C says proceed after MGMT-006 passes or is formally waived. CRITIC challenge: Response B&#x27;s confirmation-first path is safest for data integrity, while Response A and Response C correctly leave room for a formal waiver if business semantics show the regression expectation is wrong.</p>
+<h2>Advisor Positions</h2>
+<h3>Advisor A</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.88</li>
+<li>Agrees on: Phased plan correctly sequences canonical management view layer and settings contract before SQL/admin packet application, minimizing blast radius while the ambiguous statuses remain unresolved; API-only access discipline maintained throughout implementation — no direct DB writes beyond the settings row, preserving the established access pattern; MGMT-006 regression failure is correctly isolated to exactly the two genuinely ambiguous rows, demonstrating the regression check is precise and not producing false positives</li>
+<li>Disagrees or warns on: Mutating TIM-IBIZA-20260701 or MRW-FRANCE-20260701 without business confirmation could corrupt July 2026 order/payment state — the contradiction between status=paid and payment_status=pending has multiple valid business interpretations; Leaving MGMT-006 unresolved blocks regression success and therefore blocks clean goal closure, creating a dependency on external human confirmation that has no stated SLA; The prepared-but-unapplied SQL/admin canonical views packet could be accidentally or prematurely applied before the ambiguous statuses are settled, increasing blast radius without business sign-off</li>
+</ul>
+<h3>Advisor B</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.88</li>
+<li>Agrees on: Phased architecture correctly sequences low-blast-radius work first (settings contract + regression now, SQL/admin views later) before any base-fact mutation or schema change; MGMT-006 regression failure is functioning as designed — it correctly surfaces a genuine semantic contradiction (status=paid vs payment_status=pending vs notes saying no cash collected) rather than masking it; API-only access discipline maintained throughout implementation, preserving auditability and avoiding direct DB manipulation that could bypass application-layer validation</li>
+<li>Disagrees or warns on: Mutating the two ambiguous July order rows without business confirmation could corrupt July 2026 financial/delivery state irreversibly, especially if &#x27;paid&#x27; has a domain-specific meaning not captured in the schema; The SQL/admin canonical views packet remains unapplied — if forgotten or applied out of sequence, the management view layer will be incomplete and regression may pass falsely or fail on downstream checks; No explicit escalation channel or deadline is documented for the Pafi/Narcis business-confirmation question, creating an open-ended blocker that could stall goal closure indefinitely</li>
+</ul>
+<h3>Advisor C</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.93</li>
+<li>Agrees on: The plan preserves API-only implementation boundaries while preparing SQL/admin changes for later application.; It correctly separates technical structure work from uncertain business facts in the July 2026 order records.; The regression failure is isolated to MGMT-006, making the remaining decision narrow and auditable.</li>
+<li>Disagrees or warns on: Mutating the two July orders now would infer payment or delivery facts that the live DB does not confirm.; Leaving MGMT-006 as a plain regression failure without business-blocker classification could make the goal look technically incomplete rather than intentionally gated.; Applying the SQL/admin canonical views packet before resolving or documenting MGMT-006 could increase blast radius before the contract is settled.</li>
+</ul>
+<h2>Scoring</h2>
+<ul>
+<li>Tier: PASS</li>
+<li>Confidence: 0.92</li>
+<li>Cost: $0.1784</li>
+<li>N: 3.40/4</li>
+<li>P: 3.70/4</li>
+<li>L: 3.50/4</li>
+<li>F: 3.60/4</li>
+</ul></section>
+</main>
+</body>
+</html>
