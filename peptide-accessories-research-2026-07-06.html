@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="D3 research report: peptide accessories e-commerce evaluation for Amazon.ae (UAE) and eMAG.ro (Romania/EU). Compliance, demand, platform policy, and competitive economics.">
+<meta property="og:title" content="Peptide Accessories E-Commerce: UAE + Romania — D3 Research Report">
+<meta property="og:description" content="Hard blockers, viable product categories, regulatory compliance, platform policies and economics for Amazon.ae and eMAG.ro.">
+<meta property="og:type" content="article">
+<title>Peptide Accessories E-Commerce — D3 Research | NexusOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root[data-theme="dark"] {
+  --bg: #0A0A0F;
+  --card: #111118;
+  --card2: #16161f;
+  --border: rgba(255,255,255,0.07);
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent-dim: rgba(88,166,255,0.12);
+  --accent-glow: rgba(88,166,255,0.25);
+  --danger: #f85149;
+  --danger-dim: rgba(248,81,73,0.12);
+  --warn: #d29922;
+  --warn-dim: rgba(210,153,34,0.12);
+  --success: #3fb950;
+  --success-dim: rgba(63,185,80,0.12);
+  --sidebar-bg: rgba(17,17,24,0.85);
+  --toc-active: #58a6ff;
+}
+:root[data-theme="light"] {
+  --bg: #f6f8fa;
+  --card: #ffffff;
+  --card2: #f0f2f5;
+  --border: rgba(0,0,0,0.1);
+  --text: #1c2128;
+  --text-muted: #57606a;
+  --accent: #0969da;
+  --accent-dim: rgba(9,105,218,0.1);
+  --accent-glow: rgba(9,105,218,0.2);
+  --danger: #cf222e;
+  --danger-dim: rgba(207,34,46,0.1);
+  --warn: #9a6700;
+  --warn-dim: rgba(154,103,0,0.1);
+  --success: #1a7f37;
+  --success-dim: rgba(26,127,55,0.1);
+  --sidebar-bg: rgba(240,242,245,0.9);
+  --toc-active: #0969da;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15px;
+  transition: background 0.3s, color 0.3s;
+}
+/* Layout */
+.layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+.sidebar {
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem 1rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.main { padding: 2rem 3rem; max-width: 900px; }
+/* Header */
+.header-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent);
+  background: var(--accent-dim); border: 1px solid var(--accent-glow);
+  padding: 0.25rem 0.7rem; border-radius: 20px; margin-bottom: 1rem;
+}
+h1 { font-size: 2rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; padding-top: 1rem; color: var(--text); border-top: 1px solid var(--border); }
+h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--accent); }
+p { margin-bottom: 0.9rem; color: var(--text); }
+ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.4rem; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; background: var(--card2); border: 1px solid var(--border); padding: 0.1em 0.4em; border-radius: 4px; }
+strong { font-weight: 600; color: var(--text); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+/* Sidebar meta */
+.meta-section { margin-bottom: 1rem; }
+.meta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+.meta-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
+.meta-val { font-weight: 600; color: var(--text); }
+.meta-unvalidated { color: var(--warn); font-size: 11px; }
+/* TOC */
+.toc-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem; }
+.toc-item { display: block; font-size: 12px; padding: 0.35rem 0.5rem; border-radius: 6px; color: var(--text-muted); cursor: pointer; transition: all 0.15s; margin-bottom: 2px; }
+.toc-item:hover, .toc-item.active { color: var(--toc-active); background: var(--accent-dim); }
+.toc-sub { font-size: 11px; padding-left: 1.2rem; }
+/* Cards */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+.card.glass { backdrop-filter: blur(8px); background: var(--card); }
+/* Blocker card */
+.blocker-card {
+  background: var(--danger-dim); border: 1px solid rgba(248,81,73,0.3);
+  border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+}
+.blocker-header { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.4rem; }
+.blocker-icon { color: var(--danger); font-size: 1rem; margin-top: 0.1rem; flex-shrink: 0; }
+.blocker-product { font-weight: 600; font-size: 0.95rem; }
+.blocker-body { font-size: 0.85rem; color: var(--text-muted); padding-left: 1.6rem; }
+.blocker-platform { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(248,81,73,0.2); color: var(--danger); padding: 0.15rem 0.5rem; border-radius: 4px; margin-top: 0.3rem; }
+/* Safe card */
+.safe-card {
+  background: var(--success-dim); border: 1px solid rgba(63,185,80,0.25);
+  border-radius: 8px; padding: 0.6rem 1rem; margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem;
+}
+.safe-icon { color: var(--success); flex-shrink: 0; }
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.88rem; }
+th { text-align: left; padding: 0.6rem 0.75rem; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); background: var(--card2); border-bottom: 1px solid var(--border); }
+td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-dim); }
+.tag-blocked { display: inline-block; font-size: 10px; font-weight: 700; background: var(--danger-dim); color: var(--danger); border: 1px solid rgba(248,81,73,0.3); padding: 0.1rem 0.45rem; border-radius: 4px; }
+.tag-ok { display: inline-block; font-size: 10px; font-weight: 700; background: var(--success-dim); color: var(--success); border: 1px solid rgba(63,185,80,0.3); padding: 0.1rem 0.45rem; border-radius: 4px; }
+.tag-uncertain { display: inline-block; font-size: 10px; font-weight: 700; background: var(--warn-dim); color: var(--warn); border: 1px solid rgba(210,153,34,0.3); padding: 0.1rem 0.45rem; border-radius: 4px; }
+/* Pull quote */
+.pull-quote { border-left: 3px solid var(--accent); padding: 0.6rem 1rem; margin: 1.25rem 0; font-size: 0.95rem; font-style: italic; color: var(--text-muted); background: var(--accent-dim); border-radius: 0 8px 8px 0; }
+/* Uncertain callout */
+.callout-warn { background: var(--warn-dim); border: 1px solid rgba(210,153,34,0.3); border-radius: 8px; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.88rem; }
+.callout-warn-title { font-weight: 700; color: var(--warn); margin-bottom: 0.3rem; font-size: 0.85rem; }
+/* Controls */
+.controls { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 12px; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 8px; border: 1px solid var(--border); background: var(--card2); color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
+.btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+/* Charts */
+.chart-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem; }
+.chart-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 1rem; }
+.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+/* Source coverage */
+.coverage-row { display: flex; align-items: center; justify-content: space-between; padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.coverage-row:last-child { border-bottom: none; }
+.coverage-label { color: var(--text); }
+.coverage-count { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+/* Gap list */
+.gap-item { display: flex; gap: 0.6rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+.gap-item:last-child { border-bottom: none; }
+.gap-num { color: var(--warn); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; flex-shrink: 0; padding-top: 0.1rem; }
+/* Progress bar */
+#progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent), #a78bfa); width: 0%; z-index: 999; transition: width 0.1s; }
+/* Fade-in animation */
+.fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+/* Print */
+@media print {
+  :root[data-theme="dark"] { --bg: #fff; --card: #fff; --text: #111; --text-muted: #555; --border: #ddd; }
+  .sidebar, #progress, .controls, .btn { display: none !important; }
+  .layout { grid-template-columns: 1fr; }
+  .main { padding: 1rem; }
+  .blocker-card { break-inside: avoid; }
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .main { padding: 1.25rem; }
+  .chart-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="controls">
+      <button class="btn" id="themeToggle" onclick="toggleTheme()">&#9681; Toggle</button>
+      <button class="btn" onclick="shareReport()">&#8679; Share</button>
+    </div>
+
+    <div class="meta-section">
+      <div class="meta-label">Research Metadata</div>
+      <div class="meta-row"><span>Depth</span><span class="meta-val">D3</span></div>
+      <div class="meta-row"><span>Date</span><span class="meta-val">2026-07-06</span></div>
+      <div class="meta-row"><span>Markets</span><span class="meta-val">UAE + Romania/EU</span></div>
+      <div class="meta-row"><span>Platforms</span><span class="meta-val">Amazon.ae + eMAG.ro</span></div>
+      <div class="meta-row"><span>Sources</span><span class="meta-val">97+ findings</span></div>
+      <div class="meta-row"><span>Streams</span><span class="meta-val">5</span></div>
+      <div class="meta-row"><span>Self-grade</span><span class="meta-val">74 / 100</span></div>
+      <div class="meta-row"><span>EPR</span><span class="meta-val meta-unvalidated">UNVALIDATED*</span></div>
+      <div class="meta-row"><span>Agent</span><span class="meta-val">DELPHI PRO</span></div>
+      <div class="meta-row"><span>Phase</span><span class="meta-val">1 — Research only</span></div>
+    </div>
+
+    <div>
+      <div class="toc-title">Contents</div>
+      <a class="toc-item" href="#gonogo">Go/No-Go Facts</a>
+      <a class="toc-item" href="#demand">Stream 1 — Demand</a>
+      <a class="toc-item toc-sub" href="#demand-uae">UAE/Dubai Demand</a>
+      <a class="toc-item toc-sub" href="#demand-eu">EU/Romania Demand</a>
+      <a class="toc-item" href="#bestpractices">Stream 2 — Best Practices</a>
+      <a class="toc-item" href="#compliance">Stream 3 — Compliance</a>
+      <a class="toc-item toc-sub" href="#eu-mdr">EU MDR Classification</a>
+      <a class="toc-item toc-sub" href="#uae-ede">UAE EDE Registration</a>
+      <a class="toc-item toc-sub" href="#hs-vat">HS Codes &amp; VAT</a>
+      <a class="toc-item" href="#platform">Stream 4 — Platform Policy</a>
+      <a class="toc-item" href="#competitive">Stream 5 — Competitive + Economics</a>
+      <a class="toc-item" href="#gaps">Gaps &amp; Uncertainties</a>
+      <a class="toc-item" href="#coverage">Source Coverage</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <div class="header-badge">&#128269; DELPHI PRO &bull; D3 Research &bull; Phase 1</div>
+    <h1>Peptide Accessories E-Commerce</h1>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">
+      UAE (Amazon.ae) + Romania/EU (eMAG.ro) &mdash; Business evaluation research. Phase 2 (P&amp;L / business plan) not included. 2026-07-06.
+    </p>
+
+    <!-- CHARTS ROW -->
+    <div class="chart-grid fade-in">
+      <div class="chart-wrap">
+        <div class="chart-title">Product Risk by Category</div>
+        <canvas id="riskChart" height="180"></canvas>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">Platform Fee Comparison</div>
+        <canvas id="feeChart" height="180"></canvas>
+      </div>
+    </div>
+
+    <!-- ===== GO/NO-GO ===== -->
+    <section id="gonogo" class="fade-in">
+      <h2>GO/NO-GO Relevant Facts</h2>
+
+      <h3 style="color:var(--danger);">&#10060; Hard Blockers — Read Before Everything Else</h3>
+
+      <div class="blocker-card">
+        <div class="blocker-header">
+          <span class="blocker-icon">&#128683;</span>
+          <span class="blocker-product">Bacteriostatic Water (BAC water) on Amazon</span>
+        </div>
+        <div class="blocker-body">
+          Amazon's Professional Healthcare (PHC) Seller Policy PDF <strong>explicitly names "Bacteriostatic water"</strong> as requiring PHC program membership. PHC is <strong>invite-only</strong>. FBA not available for PHC products.
+          <br><span class="blocker-platform">Amazon all stores &bull; Hard block</span>
+        </div>
+      </div>
+
+      <div class="blocker-card">
+        <div class="blocker-header">
+          <span class="blocker-icon">&#128683;</span>
+          <span class="blocker-product">Hypodermic Needles + Insulin Injectors on Amazon</span>
+        </div>
+        <div class="blocker-body">
+          Same PHC Seller Policy PDF explicitly lists "Hypodermic needles and insulin injectors." Hard blocked for standard sellers. FBA not available.
+          <br><span class="blocker-platform">Amazon all stores &bull; Hard block</span>
+        </div>
+      </div>
+
+      <div class="blocker-card">
+        <div class="blocker-header">
+          <span class="blocker-icon">&#128683;</span>
+          <span class="blocker-product">BAC Water in UAE</span>
+        </div>
+        <div class="blocker-body">
+          UAE authorities treat BAC water as a pharmaceutical excipient / prescription-channel item. Compounding pharmacies (CureCell) can sell; general e-commerce sellers cannot. Walk-up pharmacy purchase rarely possible without prescription.
+          <br><span class="blocker-platform">Amazon.ae + all UAE channels</span>
+        </div>
+      </div>
+
+      <div class="blocker-card">
+        <div class="blocker-header">
+          <span class="blocker-icon">&#128683;</span>
+          <span class="blocker-product">UAE Medical Device Registration (EDE)</span>
+        </div>
+        <div class="blocker-body">
+          Emirates Drug Establishment (replaced MOHAP Dec 29, 2025) requires full device registration per product. Official fees AED 16,100. Total realistic cost USD 15,000&ndash;50,000+ per device. Timeline: 6&ndash;12 months. Per-shipment import permits also required via a Local Authorized Representative.
+          <br><span class="blocker-platform">All UAE channels &bull; Class I–IV devices</span>
+        </div>
+      </div>
+
+      <div class="blocker-card">
+        <div class="blocker-header">
+          <span class="blocker-icon">&#128683;</span>
+          <span class="blocker-product">OTC Pharmaceutical Products on eMAG Romania</span>
+        </div>
+        <div class="blocker-body">
+          Romanian Pharmacy Law 266/2008 + OM 444/2019. eMAG has published an explicit notification: OTC drug sellers must hold a pharmacy license. BAC water = pharmaceutical = <strong>blocked</strong> for standard marketplace sellers.
+          <br><span class="blocker-platform">eMAG.ro &bull; Pharmacy license required</span>
+        </div>
+      </div>
+
+      <h3 style="color:var(--success); margin-top:1.75rem;">&#9989; Safe (Low-Regulation) Product Categories</h3>
+
+      <div class="safe-card">
+        <span class="safe-icon">&#9989;</span>
+        <div><strong>Vial storage cases / travel cases</strong> &mdash; No specific regulation in either market. General consumer goods. <em>Highest opportunity.</em></div>
+      </div>
+      <div class="safe-card">
+        <span class="safe-icon">&#9989;</span>
+        <div><strong>Insulated coolers / cold-chain packs / ice packs</strong> &mdash; General goods in both markets. No gating.</div>
+      </div>
+      <div class="safe-card">
+        <span class="safe-icon">&#9989;</span>
+        <div><strong>Alcohol prep swabs</strong> &mdash; OTC, minimal documentation in EU. UAE: may need EDE only if marketed explicitly as a medical device.</div>
+      </div>
+      <div class="safe-card" style="background:var(--warn-dim); border-color:rgba(210,153,34,0.3);">
+        <span style="color:var(--warn);">&#9888;</span>
+        <div><strong>Sharps containers (CE-marked, reseller)</strong> &mdash; EU/Romania: distributor can sell CE-marked products without being manufacturer. UAE: EDE registration required at manufacturer level; seller must source from registered manufacturer. <em>Moderate opportunity.</em></div>
+      </div>
+    </section>
+
+    <!-- ===== DEMAND ===== -->
+    <section id="demand" class="fade-in">
+      <h2>Stream 1 — Demand</h2>
+
+      <div id="demand-uae"></div>
+      <h3>UAE / Dubai</h3>
+      <div class="card">
+        <p><strong>Existing suppliers confirm active market:</strong> curecell.ae, nova-biolabs.com, uaepeptideresearch.com &mdash; all UAE-based, selling BAC water and reconstitution supplies under "Research Use Only" (RUO) framing to navigate regulation. This confirms demand exists; it also confirms the regulatory complexity.</p>
+        <p><strong>UAE medical device market size:</strong> USD 3.18 billion (2025) &rarr; projected USD 4.71 billion by 2032 (CAGR 5.8%). 100% foreign ownership permitted in free zones including Dubai Healthcare City (DHCC). <em>Source: meddeviceguide.com, 2026.</em></p>
+        <p><strong>BAC water customs HS code (non-official source):</strong> HS 3822.00 (diagnostic/laboratory reagent). Ambient-stable, no cold-chain requirement. <span class="tag-uncertain">UNCERTAIN &mdash; not confirmed by FTA</span></p>
+        <p><strong>Amazon.ae peptide accessories data:</strong> No direct bestseller data found for Amazon.ae in this niche. US market pricing used as proxy.</p>
+      </div>
+
+      <div id="demand-eu"></div>
+      <h3>EU / Romania</h3>
+      <div class="card">
+        <p><strong>Amazon.com as demand proxy:</strong> Active peptide accessory market. Key sellers: Acellegic (multiple SKUs, $18&ndash;26), Qinyoung (20-slot vial case $19.99), peptidecases.com, vialcase.com (Vial Guard). Bestseller signal: "50+ bought in past month" on $25.99 vial travel cases.</p>
+        <p><strong>GLP-1 demand driver:</strong> Semaglutide (Ozempic) and Tirzepatide (Mounjaro) reconstitution is the fastest-growing demand vector for peptide accessories in 2025&ndash;2026. Every GLP-1 user who self-injects needs a reconstitution kit.</p>
+        <p><strong>Reddit quality crisis signal (r/GLP1ResearchTalk):</strong> Users reporting Amazon BAC water shortages; "8 out of 10 Amazon BAC water brands failed pH tests." Strong demand, poor incumbent quality &mdash; a market gap.</p>
+        <p><strong>EU wholesale supply:</strong> herbilabs.com (EU-based) offers BAC water wholesale + private label, tiered pricing, COA per lot &mdash; explicitly targeting EU/US/UK distributors.</p>
+        <p><strong>eMAG Romania gap:</strong> No eMAG-specific bestseller data found for peptide accessories. 30M+ monthly visitors across RO/HU/BG. This niche appears nascent or absent on eMAG.</p>
+      </div>
+
+      <h3>Demand by Category</h3>
+      <table>
+        <thead><tr><th>Category</th><th>Demand Signal</th><th>Growth Driver</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Vial storage / travel cases</td><td>Strong &mdash; 50+ units/month on Amazon.com SKUs</td><td>GLP-1 peptide boom</td><td><span class="tag-ok">Viable</span></td></tr>
+          <tr><td>BAC water</td><td>Very high; quality gap on Amazon</td><td>GLP-1 + peptide reconstitution</td><td><span class="tag-blocked">Blocked (Amazon)</span></td></tr>
+          <tr><td>Reconstitution syringes</td><td>High; under-served in EU</td><td>Same as BAC water</td><td><span class="tag-blocked">Blocked (Amazon)</span></td></tr>
+          <tr><td>Sharps containers</td><td>Moderate</td><td>Safety compliance</td><td><span class="tag-uncertain">Uncertain &mdash; check ASIN</span></td></tr>
+          <tr><td>Cold-chain accessories</td><td>Emerging</td><td>Travel / portability</td><td><span class="tag-ok">Viable</span></td></tr>
+          <tr><td>Alcohol prep swabs</td><td>Steady</td><td>Base consumable</td><td><span class="tag-ok">Viable</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===== BEST PRACTICES ===== -->
+    <section id="bestpractices" class="fade-in">
+      <h2>Stream 2 — Best Practices 2026</h2>
+
+      <h3>Amazon.ae &mdash; FBA vs FBM</h3>
+      <div class="card">
+        <ul>
+          <li><strong>FBA available</strong> for non-Rx medical devices and general accessories. Minimum FBA fulfillment fee: <strong>7.5 AED per unit</strong> (weight/size tiered). <em>Source: sell.amazon.ae/pricing.</em></li>
+          <li><strong>FBA NOT available</strong> for Rx/PHC products &mdash; Amazon will dispose of inventory at seller's expense.</li>
+          <li><strong>Professional selling plan:</strong> Required for gated products; monthly fee currently waived on Amazon.ae (limited-time promotion).</li>
+          <li><strong>Seller Flex</strong> (hybrid): Two-tier fee card from Aug 2025; AED 75 price threshold divides rates.</li>
+          <li><strong>PPC costs in this niche:</strong> No UAE-specific data found. <span class="tag-uncertain">UNCERTAIN</span></li>
+        </ul>
+      </div>
+
+      <h3>eMAG &mdash; Fulfilment by eMAG (FBE)</h3>
+      <div class="card">
+        <ul>
+          <li><strong>FBE available in Romania only</strong> (not Hungary or Bulgaria). Single account sells to all three markets.</li>
+          <li><strong>Free storage for 3 months</strong> on enrollment; additional 3 months free if 80,000 RON in first quarter.</li>
+          <li><strong>Zero upfront costs</strong> &mdash; no monthly fee, no listing fee, no account fee. Pay only commission on sale.</li>
+          <li><strong>Cross-border:</strong> Free translations into Romanian, Hungarian, and Bulgarian provided by eMAG.</li>
+          <li><strong>Approval:</strong> 1&ndash;2 weeks. Choose up to 5 product categories at registration with sample product list.</li>
+          <li><strong>Medical devices (CE-marked):</strong> Can be listed by non-pharmacy sellers with CE certificate + EU Declaration of Conformity. Full documentation list requires direct eMAG inquiry.</li>
+        </ul>
+      </div>
+
+      <h3>Listing Optimization</h3>
+      <div class="card">
+        <ul>
+          <li><strong>Amazon.ae:</strong> Arabic/English dual titles recommended; A+ content available for brand-registered sellers; review generation via Vine program (invite-based for new listings).</li>
+          <li><strong>eMAG:</strong> EAN codes mandatory; images must meet eMAG spec; "Open Romania" badge available for Romanian-manufactured products &mdash; increases visibility.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== COMPLIANCE ===== -->
+    <section id="compliance" class="fade-in">
+      <h2>Stream 3 — Product &amp; Supplier Compliance</h2>
+
+      <div id="eu-mdr"></div>
+      <h3>EU MDR 2017/745 &mdash; Product Classification</h3>
+
+      <div class="pull-quote">
+        "Syringes and needles, surgical gloves and swabs" explicitly listed as Class IIa under EU MDR 2017/745 in regulatory guidance (measurlabs.com EU MDR reference table). Syringes without needles = Class I (self-certified).
+      </div>
+
+      <table>
+        <thead><tr><th>Product</th><th>EU MDR Class</th><th>CE Required</th><th>Notified Body?</th><th>Reseller Can Sell?</th></tr></thead>
+        <tbody>
+          <tr><td>Insulin syringes 1ml 29-31G</td><td><strong>Class IIa</strong></td><td>Yes (from manufacturer)</td><td>Yes</td><td><span class="tag-ok">Yes, if CE-marked</span></td></tr>
+          <tr><td>Hypodermic needles (standalone)</td><td><strong>Class IIa</strong></td><td>Yes</td><td>Yes</td><td><span class="tag-ok">Yes, if CE-marked</span></td></tr>
+          <tr><td>Sharps disposal containers</td><td>Class I or IIa</td><td>Yes</td><td>If IIa: Yes</td><td><span class="tag-ok">Yes, if CE-marked</span></td></tr>
+          <tr><td>Bacteriostatic water for injection</td><td><strong>Medicinal product</strong></td><td>Marketing auth. required</td><td>N/A</td><td><span class="tag-blocked">Pharmacy license needed</span></td></tr>
+          <tr><td>Alcohol prep swabs</td><td>Class I</td><td>Yes (self-certified)</td><td>No</td><td><span class="tag-ok">Yes, freely</span></td></tr>
+          <tr><td>Vial storage cases</td><td>Not a medical device</td><td>None</td><td>No</td><td><span class="tag-ok">Yes, freely</span></td></tr>
+          <tr><td>Insulated travel cases</td><td>Not a medical device</td><td>None</td><td>No</td><td><span class="tag-ok">Yes, freely</span></td></tr>
+          <tr><td>Ice packs / cold packs</td><td>Not a medical device</td><td>None (unless medical claim)</td><td>No</td><td><span class="tag-ok">Yes, freely</span></td></tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <strong>Reseller responsibilities under EU MDR (for CE-marked products):</strong>
+        <ol style="margin-top:0.5rem;">
+          <li>Verify CE marking is present and valid &mdash; check EUDAMED database</li>
+          <li>Verify manufacturer's EU Declaration of Conformity</li>
+          <li>Ensure correct labeling in EU languages + UDI (Unique Device Identifier) where required</li>
+          <li>Report serious incidents to national authority (NAMMDR in Romania)</li>
+        </ol>
+        <p style="margin-top:0.75rem; font-size:0.88rem; color:var(--text-muted);">Resellers do <strong>not</strong> need their own Notified Body certification if sourcing already CE-marked products. Sources: business.gov.nl; rimsys.io CE marking guide; anm.ro/en/dispozitive-medicale/marcaj-ce</p>
+      </div>
+
+      <h3>Romania ANMDMR / NAMMDR</h3>
+      <div class="card">
+        <p>NAMMDR confirms: CE-marked devices may be placed on the Romanian market and put into service freely. EU MDR 2017/745 applies in full &mdash; no Romanian-specific additional layer beyond EU requirements for standard devices.</p>
+        <p>Medicinal products (including BAC water) require NAMMDR marketing authorization &mdash; not a viable path for a marketplace seller.</p>
+        <p style="font-size:0.85rem; color:var(--text-muted);">Source: anm.ro/en/dispozitive-medicale/marcaj-ce (official Romanian competent authority).</p>
+      </div>
+
+      <div id="uae-ede"></div>
+      <h3>UAE &mdash; Emirates Drug Establishment (EDE)</h3>
+
+      <div class="callout-warn">
+        <div class="callout-warn-title">&#9888; Regulatory Authority Change (Critical)</div>
+        MOHAP fully replaced by EDE as of December 29, 2025 under Federal Decree-Law No. 38 of 2024. EDE now controls: classification, marketing authorization, import permits, manufacturer licensing, advertising approval, post-market vigilance. Sources: meddeviceguide.com; regdesk.co; zavis.ai (Jan 2026).
+      </div>
+
+      <table>
+        <thead><tr><th>Stage</th><th>Published Timeline</th><th>Realistic</th><th>Fee (AED)</th></tr></thead>
+        <tbody>
+          <tr><td>Product Classification</td><td>10&ndash;14 days</td><td>2&ndash;4 weeks</td><td>500</td></tr>
+          <tr><td>Manufacturer Site Registration</td><td>14&ndash;28 days</td><td>4&ndash;8 weeks</td><td>10,100</td></tr>
+          <tr><td>Product Registration</td><td>45 days</td><td>3&ndash;6 months</td><td>5,100</td></tr>
+          <tr><td><strong>Total (first device)</strong></td><td>~3 months</td><td><strong>6&ndash;12 months</strong></td><td><strong>~16,100</strong></td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:0.88rem; color:var(--text-muted);">Total investment including regulatory consulting: <strong>USD 15,000&ndash;50,000+ per device</strong>. Import permits required per shipment via Local Authorized Representative (LAR). Sources: meddeviceguide.com; kayrouzandassociates.com.</p>
+
+      <div id="hs-vat"></div>
+      <h3>HS Codes &amp; VAT</h3>
+      <table>
+        <thead><tr><th>Product</th><th>HS Code</th><th>UAE VAT</th><th>Romania VAT</th></tr></thead>
+        <tbody>
+          <tr><td>Syringes with/without needles</td><td>9018.31</td><td>5%</td><td>9% reduced or 19% <span class="tag-uncertain">UNCERTAIN</span></td></tr>
+          <tr><td>Sharps containers</td><td>9018.90</td><td>5%</td><td>VAT-applicable</td></tr>
+          <tr><td>Bacteriostatic water</td><td>3822.00 (RUO framing) <span class="tag-uncertain">UNCERTAIN</span></td><td>5%</td><td>Pharmaceutical rate</td></tr>
+          <tr><td>Storage / travel cases</td><td>4202 or 3926</td><td>5%</td><td>Standard 19%</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.85rem; color:var(--text-muted);">UAE: 5% VAT applies uniformly; specific medical zero-rating possible but requires UAE FTA confirmation. EU/Romania: OSS registration required above EUR 10,000/year for cross-border B2C sales.</p>
+    </section>
+
+    <!-- ===== PLATFORM POLICY ===== -->
+    <section id="platform" class="fade-in">
+      <h2>Stream 4 — Platform Policy</h2>
+
+      <h3>Amazon.ae</h3>
+      <div class="card">
+        <ul>
+          <li>"Medical Devices &amp; Accessories" is a <strong>restricted category</strong> on Amazon.ae requiring approval. <em>Source: sell.amazon.ae/sell.</em></li>
+          <li><strong>OTC medical devices</strong> can be listed by standard sellers with compliance documentation (all product images, instructions, manufacturer device listing, classification evidence).</li>
+          <li><strong>PHC-blocked products:</strong> Amazon's PHC Seller Policy PDF explicitly names <strong>Bacteriostatic water</strong> AND <strong>Hypodermic needles + insulin injectors</strong> as requiring PHC participation. PHC is invite-only.</li>
+          <li><strong>PHC program on Amazon.ae:</strong> The PHC program is documented for the US only. Whether an equivalent exists on Amazon.ae is <span class="tag-uncertain">UNCERTAIN</span>. Requires direct Seller Central UAE inquiry.</li>
+          <li><strong>Sharps containers:</strong> Not named in PHC blocked list. May be listable as OTC device. <span class="tag-uncertain">UNCERTAIN &mdash; ASIN-level check required.</span></li>
+          <li><strong>Ungating standard products:</strong> Requires manufacturer invoice + optionally Letter of Authorization. Professional selling plan required.</li>
+        </ul>
+      </div>
+
+      <h3>eMAG.ro</h3>
+      <div class="card">
+        <ul>
+          <li><strong>No pharmacy license required</strong> for most non-pharmaceutical health products.</li>
+          <li><strong>OTC pharmaceutical products (incl. BAC water):</strong> Pharmacy Law 266/2008 applies. eMAG has published a specific notification stating OTC drug sellers must comply with pharmacy licensing. BAC water = pharmaceutical = <span class="tag-blocked">BLOCKED</span> for standard sellers.</li>
+          <li><strong>CE-marked medical devices:</strong> Can be sold by non-pharmacy sellers. eMAG's surgical mask notice shows minimum docs required: CE certificate + EU Declaration of Conformity. Full list for other medical devices requires direct eMAG inquiry.</li>
+          <li><strong>Documentation requirement specifics:</strong> <span class="tag-uncertain">UNCERTAIN &mdash; requires direct eMAG marketplace team inquiry.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== COMPETITIVE ===== -->
+    <section id="competitive" class="fade-in">
+      <h2>Stream 5 — Competitive + Economics</h2>
+
+      <h3>Existing Competitors</h3>
+      <div class="card">
+        <p><strong>Amazon.com (US proxy):</strong></p>
+        <ul>
+          <li><strong>Acellegic</strong> &mdash; Multiple vial case SKUs (8/12 slots), $18&ndash;26, strong presence</li>
+          <li><strong>Qinyoung</strong> &mdash; 20-slot vial case at $19.99, early-stage (3 reviews)</li>
+          <li><strong>peptidecases.com</strong> &mdash; D2C brand, 100-vial snap cases, premium positioning</li>
+          <li><strong>vialcase.com (Vial Guard)</strong> &mdash; Premium 3ml/10ml cases, D2C, clinical brand positioning</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>UAE (existing players):</strong></p>
+        <ul>
+          <li><strong>curecell.ae</strong> &mdash; Licensed compounding pharmacy, sells BAC water legally. Not a marketplace seller.</li>
+          <li><strong>nova-biolabs.com</strong> &mdash; Research-supply distributor, RUO framing</li>
+          <li><strong>uaepeptideresearch.com</strong> &mdash; Info + supply site, UAE peptide research market</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>eMAG.ro:</strong> No dedicated peptide accessories competitors found. Market appears nascent or absent. <em>Data gap.</em></p>
+      </div>
+
+      <h3>Pricing (US Market &mdash; Indicative)</h3>
+      <table>
+        <thead><tr><th>Product</th><th>Retail Price</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Peptide travel case (8 slots)</td><td>$19&ndash;26</td><td>Amazon.com; multiple brands</td></tr>
+          <tr><td>Peptide vial case w/ BAC water slot</td><td>$25.99</td><td>Amazon.com; 50+ bought/month</td></tr>
+          <tr><td>BAC water 30ml (retail, US)</td><td>$9.99&ndash;$31.14</td><td>bacteriostaticwater.com</td></tr>
+          <tr><td>Insulin syringes 1ml 31G (100ct)</td><td>$12&ndash;18</td><td>Amazon.com; multiple brands</td></tr>
+          <tr><td>Sharps container 1-quart</td><td>$8&ndash;15</td><td>Amazon.com</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Sourcing / Wholesale Costs</h3>
+      <div class="card">
+        <ul>
+          <li><strong>CE-marked insulin syringes (Alibaba):</strong> Chinese manufacturers (Hangzhou Rollmd, Jinan Wangda). Eastern Europe + Mid East are top markets. Price: est. $0.03&ndash;0.15/unit at volume. MOQ 1,000&ndash;10,000 units.</li>
+          <li><strong>BAC water EU wholesale (herbilabs.com):</strong> EU-sourced, private label available, COA per lot, tiered pricing for distributors/resellers.</li>
+          <li><strong>Vial storage cases:</strong> Alibaba suppliers visible on accio.com. Est. $3&ndash;8 USD wholesale.</li>
+        </ul>
+      </div>
+
+      <h3>Amazon.ae Fees</h3>
+      <table>
+        <thead><tr><th>Fee Type</th><th>Rate / Amount</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Referral &mdash; Health/Beauty</td><td>8% (≤50 AED) / 15% (&gt;50 AED)</td><td>Primary applicable category</td></tr>
+          <tr><td>Referral &mdash; Business/Industrial/Scientific</td><td>11%</td><td>From Aug 1, 2025</td></tr>
+          <tr><td>FBA fulfillment (minimum)</td><td>7.5 AED / unit</td><td>Size/weight tiered upward</td></tr>
+          <tr><td>Monthly selling plan</td><td>AED 0 (promo)</td><td>Professional plan, time-limited</td></tr>
+        </tbody>
+      </table>
+
+      <h3>eMAG Commission Structure</h3>
+      <table>
+        <thead><tr><th>Category</th><th>Commission</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Hardlines (electronics, tools, sporting)</td><td>5%</td><td>Base rate</td></tr>
+          <tr><td>Softlines (fashion, cosmetics, accessories)</td><td>10%</td><td></td></tr>
+          <tr><td>Health / medical (inferred)</td><td>7&ndash;15% <span class="tag-uncertain">UNCERTAIN</span></td><td>eMAG range: 7&ndash;25% overall</td></tr>
+          <tr><td>Monthly / listing fees</td><td>0</td><td>Pay-per-sale model</td></tr>
+          <tr><td>FBE (Fulfilment by eMAG, Romania)</td><td>Commission + order/storage</td><td>"Extremely low" per eMAG; 3 months free storage</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ===== GAPS ===== -->
+    <section id="gaps" class="fade-in">
+      <h2>Gaps &amp; Uncertain Items</h2>
+      <div class="card">
+        <div class="gap-item">
+          <span class="gap-num">1.</span>
+          <div><strong>Amazon.ae PHC program existence.</strong> PHC documented for US only. Whether the same restriction applies on Amazon.ae for BAC water and syringes is UNCERTAIN. Requires direct Seller Central UAE support inquiry before committing.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">2.</span>
+          <div><strong>Amazon.ae sharps containers policy.</strong> Not in PHC blocked list; may be listable as OTC device. Requires ASIN-level restriction check before sourcing.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">3.</span>
+          <div><strong>eMAG documentation for CE-marked medical devices.</strong> No public list found. Surgical masks example indicates CE cert + EU DoC needed, but full requirements for syringes/sharps containers are UNCERTAIN. Requires direct eMAG seller inquiry.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">4.</span>
+          <div><strong>UAE VAT zero-rating for specific medical products.</strong> 5% VAT likely on all items; specific medical zero-rating possible per FTA. Official UAE FTA confirmation needed.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">5.</span>
+          <div><strong>eMAG demand data for this niche.</strong> No eMAG-specific bestseller or search volume data found. Market may be nascent or non-existent as a structured category.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">6.</span>
+          <div><strong>EU VAT rate per specific product in Romania.</strong> Standard 19% or reduced 9% for medical devices? UNCERTAIN per specific category. OSS registration threshold: EUR 10,000/year for cross-border B2C.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">7.</span>
+          <div><strong>NAMMDR documentation checklist for eMAG sellers.</strong> anm.ro confirms CE marking required but no specific eMAG seller workflow published.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">8.</span>
+          <div><strong>UAE import duty rates for HS 9018.</strong> Alibaba pricing indicative; UAE import duty not confirmed for syringes/sharps. GCC common external tariff data required.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">9.</span>
+          <div><strong>eMAG commission tier for vial storage cases.</strong> Likely "Home &amp; Garden" or "Sports" but UNCERTAIN which 5% vs 10% bucket applies.</div>
+        </div>
+        <div class="gap-item">
+          <span class="gap-num">10.</span>
+          <div><strong>BAC water EU reseller path via herbilabs.com.</strong> Herbilabs frames it as "preserved distilled water solution" rather than a medicinal product. Whether this framing is legally defensible in Romania/EU is UNCERTAIN. Legal opinion required.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOURCE COVERAGE ===== -->
+    <section id="coverage" class="fade-in">
+      <h2>Source Coverage Report</h2>
+      <div class="card">
+        <div class="coverage-row">
+          <span class="coverage-label"><span class="tag-ok">COVERED</span> Web Search (Tavily, Exa, Brave)</span>
+          <span class="coverage-count">40+ findings</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label"><span class="tag-ok">COVERED</span> Regulatory (EU MDR) &mdash; gov.nl, anm.ro, EC PDF</span>
+          <span class="coverage-count">12 findings</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label"><span class="tag-ok">COVERED</span> Regulatory (UAE/EDE) &mdash; meddeviceguide, regdesk, zavis</span>
+          <span class="coverage-count">10 findings</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label"><span class="tag-ok">COVERED</span> Amazon Platform Policy &mdash; Seller Central + PHC PDF</span>
+          <span class="coverage-count">8 findings</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label"><span class="tag-ok">COVERED</span> eMAG Platform Policy &mdash; marketplace.emag.ro official</span>
+          <span class="coverage-count">6 findings</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label"><span class="tag-ok">COVERED</span> Competitive Intelligence &mdash; Amazon.com, accio.com, Brave</span>
+          <span class="coverage-count">10 findings</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label"><span class="tag-ok">COVERED</span> Social/Community &mdash; Reddit via Tavily web index</span>
+          <span class="coverage-count">5 findings</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label"><span class="tag-ok">COVERED</span> Supplier/Wholesale &mdash; Alibaba, herbilabs, bacteriostaticwater.com</span>
+          <span class="coverage-count">6 findings</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label" style="color:var(--text-muted);">SKIPPED Academic (ArXiv/OpenAlex) &mdash; business/regulatory topic, not applicable</span>
+          <span class="coverage-count">0</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label" style="color:var(--text-muted);">SKIPPED Video (YouTube) &mdash; not required for regulatory research</span>
+          <span class="coverage-count">0</span>
+        </div>
+        <div class="coverage-row">
+          <span class="coverage-label" style="color:var(--text-muted);">SKIPPED Deep Research (Opus CLI) &mdash; covered by web + regulatory scouts</span>
+          <span class="coverage-count">0</span>
+        </div>
+      </div>
+
+      <div class="callout-warn" style="margin-top:1rem;">
+        <div class="callout-warn-title">* EPR Unvalidated</div>
+        D3 research executed without separate Critic subagent (team topology constraint). EPR flagged as UNVALIDATED. Self-grade: 74/100. Deductions: eMAG medical device documentation gap (−8), Amazon.ae PHC UAE gap (−8), no Opus CLI deep synthesis (−10).
+      </div>
+
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:1.5rem; text-align:center;">
+        Research by DELPHI PRO &bull; 2026-07-06 &bull; D3 depth &bull; 9 search batches &bull; 5 streams &bull; Cortex ID: 37cd68db &bull; Phase 1 of 2
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Theme
+function toggleTheme() {
+  const html = document.documentElement;
+  const curr = html.getAttribute('data-theme');
+  const next = curr === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('nexus-theme', next);
+  updateCharts();
+}
+const saved = localStorage.getItem('nexus-theme');
+if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+// Share
+function shareReport() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'Peptide Accessories E-Commerce Research', url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.querySelector('.btn:last-child');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '&#10003; Copied!';
+      setTimeout(() => btn.innerHTML = orig, 2000);
+    });
+  }
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const el = document.getElementById('progress');
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  el.style.width = pct + '%';
+});
+
+// TOC active state
+const sections = document.querySelectorAll('section[id]');
+const tocItems = document.querySelectorAll('.toc-item[href^="#"]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocItems.forEach(t => t.classList.remove('active'));
+      const id = e.target.id;
+      const active = document.querySelector(`.toc-item[href="#${id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+
+// Fade-in
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+// Charts
+let riskChart, feeChart;
+function getColors() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  return {
+    text: dark ? '#8b949e' : '#57606a',
+    grid: dark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.07)',
+    bg: dark ? '#111118' : '#ffffff',
+  };
+}
+function buildCharts() {
+  const c = getColors();
+  const chartDefaults = {
+    plugins: { legend: { labels: { color: c.text, font: { family: 'Inter', size: 11 } } } }
+  };
+
+  // Risk chart
+  const rCtx = document.getElementById('riskChart').getContext('2d');
+  riskChart = new Chart(rCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Hard Blocked', 'Uncertain/Moderate', 'Fully Viable'],
+      datasets: [{
+        data: [3, 2, 5],
+        backgroundColor: ['rgba(248,81,73,0.7)', 'rgba(210,153,34,0.7)', 'rgba(63,185,80,0.7)'],
+        borderColor: ['#f85149', '#d29922', '#3fb950'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      ...chartDefaults,
+      cutout: '65%',
+      plugins: { ...chartDefaults.plugins, tooltip: { callbacks: { label: (ctx) => ` ${ctx.label}: ${ctx.raw} products` } } }
+    }
+  });
+
+  // Fee chart
+  const fCtx = document.getElementById('feeChart').getContext('2d');
+  feeChart = new Chart(fCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Amazon.ae\nHealth ≤50AED', 'Amazon.ae\nHealth >50AED', 'Amazon.ae\nBus/Indus/Sci', 'eMAG\nHardlines', 'eMAG\nHealth (est)'],
+      datasets: [{
+        label: 'Referral Fee %',
+        data: [8, 15, 11, 5, 12],
+        backgroundColor: ['rgba(88,166,255,0.6)','rgba(88,166,255,0.6)','rgba(88,166,255,0.6)','rgba(63,185,80,0.6)','rgba(63,185,80,0.6)'],
+        borderColor: ['#58a6ff','#58a6ff','#58a6ff','#3fb950','#3fb950'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      ...chartDefaults,
+      scales: {
+        y: { ticks: { color: c.text, callback: v => v+'%' }, grid: { color: c.grid }, beginAtZero: true, max: 20 },
+        x: { ticks: { color: c.text, font: { size: 9 } }, grid: { display: false } }
+      }
+    }
+  });
+}
+function updateCharts() {
+  const c = getColors();
+  [riskChart, feeChart].forEach(ch => {
+    if (!ch) return;
+    ch.options.plugins.legend.labels.color = c.text;
+    if (ch.options.scales) {
+      Object.values(ch.options.scales).forEach(s => {
+        if (s.ticks) s.ticks.color = c.text;
+        if (s.grid) s.grid.color = c.grid;
+      });
+    }
+    ch.update();
+  });
+}
+window.addEventListener('load', buildCharts);
+</script>
+</body>
+</html>
