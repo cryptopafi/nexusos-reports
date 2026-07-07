@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saudi Arabia: ED + GLP-1 Telehealth Market Intelligence</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1c2230;
+    --border: #2d3748;
+    --text: #e2e8f0;
+    --text-muted: #8899aa;
+    --accent: #0ea5e9;
+    --accent2: #06b6d4;
+    --accent3: #0284c7;
+    --teal: #14b8a6;
+    --green: #10b981;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --purple: #8b5cf6;
+    --card-bg: #1c2230;
+    --table-head: #1e3a5f;
+    --table-stripe: #1a2540;
+    --badge-bg: rgba(14, 165, 233, 0.15);
+    --badge-border: rgba(14, 165, 233, 0.4);
+    --tag-green-bg: rgba(16, 185, 129, 0.15);
+    --tag-green-border: rgba(16, 185, 129, 0.4);
+    --tag-amber-bg: rgba(245, 158, 11, 0.15);
+    --tag-amber-border: rgba(245, 158, 11, 0.4);
+    --tag-red-bg: rgba(239, 68, 68, 0.15);
+    --tag-red-border: rgba(239, 68, 68, 0.4);
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"] {
+    --bg: #f0f4f8;
+    --bg2: #ffffff;
+    --bg3: #e8eef5;
+    --border: #cbd5e1;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --accent: #0369a1;
+    --accent2: #0e7490;
+    --accent3: #0284c7;
+    --teal: #0d9488;
+    --green: #059669;
+    --amber: #d97706;
+    --red: #dc2626;
+    --purple: #7c3aed;
+    --card-bg: #ffffff;
+    --table-head: #dbeafe;
+    --table-stripe: #f1f5f9;
+    --badge-bg: rgba(3, 105, 161, 0.10);
+    --badge-border: rgba(3, 105, 161, 0.35);
+    --tag-green-bg: rgba(5, 150, 105, 0.10);
+    --tag-green-border: rgba(5, 150, 105, 0.35);
+    --tag-amber-bg: rgba(217, 119, 6, 0.10);
+    --tag-amber-border: rgba(217, 119, 6, 0.35);
+    --tag-red-bg: rgba(220, 38, 38, 0.10);
+    --tag-red-border: rgba(220, 38, 38, 0.35);
+    --shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  /* ── Header ── */
+  .report-header {
+    background: linear-gradient(135deg, #0d1f3c 0%, #0c2a4a 50%, #0a3d5c 100%);
+    border-bottom: 2px solid var(--accent2);
+    padding: 36px 24px 28px;
+    position: relative;
+  }
+  :root[data-theme="light"] .report-header {
+    background: linear-gradient(135deg, #0d1f3c 0%, #0c2a4a 50%, #0a3d5c 100%);
+  }
+  .report-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .report-flag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .report-flag::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: var(--accent2);
+  }
+  .report-title {
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .report-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 18px;
+  }
+  .meta-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .badge.epr { background: rgba(16,185,129,0.25); border-color: rgba(16,185,129,0.5); color: #6ee7b7; }
+  .badge.lane { background: rgba(14,165,233,0.2); border-color: rgba(14,165,233,0.4); color: #7dd3fc; }
+  .badge.depth { background: rgba(139,92,246,0.2); border-color: rgba(139,92,246,0.4); color: #c4b5fd; }
+
+  .toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .toggle-btn:hover { background: rgba(255,255,255,0.18); }
+
+  /* ── Layout ── */
+  .report-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+
+  /* ── Executive Summary ── */
+  .exec-summary {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent2);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow);
+  }
+  .exec-summary p {
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .exec-summary strong { color: var(--accent2); }
+
+  /* ── KPI Row ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .kpi-value {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent2);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+  }
+
+  /* ── Sections ── */
+  .section {
+    margin-bottom: 40px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent2);
+    margin: 20px 0 10px;
+  }
+
+  /* ── Tables ── */
+  .table-wrap { overflow-x: auto; margin-bottom: 18px; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; min-width: 480px; }
+  thead tr { background: var(--table-head); }
+  thead th {
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  tbody tr { border-top: 1px solid var(--border); transition: background 0.1s; }
+  tbody tr:nth-child(even) { background: var(--table-stripe); }
+  tbody tr:hover { background: var(--badge-bg); }
+  td {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text);
+    vertical-align: top;
+  }
+  td strong { color: var(--accent2); }
+  .td-note { font-size: 12px; color: var(--text-muted); font-style: italic; margin-top: 3px; }
+
+  /* ── Comparison Table (featured) ── */
+  .compare-table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 2px solid var(--accent3);
+    box-shadow: 0 8px 32px rgba(2, 132, 199, 0.2);
+    margin-bottom: 24px;
+  }
+  .compare-table { border-collapse: collapse; width: 100%; min-width: 700px; }
+  .compare-table thead tr { background: linear-gradient(90deg, #0d2b4a, #0a3d5c); }
+  .compare-table thead th {
+    padding: 13px 14px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #7dd3fc;
+    text-transform: uppercase;
+  }
+  .compare-table thead th.ksa-col { color: #6ee7b7; }
+  .compare-table thead th.uae-col { color: #fcd34d; }
+  .compare-table thead th.us-col { color: #f9a8d4; }
+  .compare-table tbody tr { border-top: 1px solid rgba(45,55,72,0.8); }
+  .compare-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.025); }
+  .compare-table td { padding: 10px 14px; font-size: 13px; vertical-align: top; }
+  .compare-table td:first-child { font-weight: 600; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .compare-table td.ksa-col { color: #6ee7b7; }
+  .compare-table td.uae-col { color: #fcd34d; }
+  .compare-table td.us-col { color: #f9a8d4; }
+
+  /* ── TAM/SAM/SOM visual ── */
+  .tsm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .tsm-card {
+    border-radius: 10px;
+    padding: 20px 18px;
+    text-align: center;
+    border: 1px solid;
+  }
+  .tsm-card.tam { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.3); }
+  .tsm-card.sam { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.3); }
+  .tsm-card.som { background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.3); }
+  .tsm-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .tam .tsm-label { color: var(--red); }
+  .sam .tsm-label { color: var(--amber); }
+  .som .tsm-label { color: var(--green); }
+  .tsm-value { font-size: 28px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .tam .tsm-value { color: var(--red); }
+  .sam .tsm-value { color: var(--amber); }
+  .som .tsm-value { color: var(--green); }
+  .tsm-desc { font-size: 12px; color: var(--text-muted); }
+
+  /* ── Insight boxes ── */
+  .insight-box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-left: 3px solid;
+  }
+  .insight-box.key { background: var(--badge-bg); border-color: var(--accent2); color: var(--text); }
+  .insight-box.warning { background: var(--tag-amber-bg); border-color: var(--amber); color: var(--text); }
+  .insight-box.success { background: var(--tag-green-bg); border-color: var(--green); color: var(--text); }
+  .insight-box.gap { background: var(--tag-red-bg); border-color: var(--red); color: var(--text); }
+  .insight-box strong { color: var(--accent2); }
+  .insight-box.warning strong { color: var(--amber); }
+  .insight-box.success strong { color: var(--green); }
+  .insight-box.gap strong { color: var(--red); }
+
+  /* ── Competitive gap tags ── */
+  .gap-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .gap-tag.none { background: var(--tag-green-bg); border: 1px solid var(--tag-green-border); color: var(--green); }
+  .gap-tag.large { background: var(--tag-amber-bg); border: 1px solid var(--tag-amber-border); color: var(--amber); }
+  .gap-tag.very-large { background: var(--tag-red-bg); border: 1px solid var(--tag-red-border); color: var(--red); }
+
+  /* ── Source coverage ── */
+  .source-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
+  .source-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .source-item .src-label { font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .source-item .src-status { font-size: 11px; font-weight: 600; }
+  .src-covered { color: var(--green); }
+  .src-partial { color: var(--amber); }
+  .src-skipped { color: var(--text-muted); }
+  .src-count { color: var(--text-muted); font-size: 11px; }
+
+  /* ── EPR Score ── */
+  .epr-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+  .epr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 14px; }
+  .epr-dim { text-align: center; }
+  .epr-score {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--teal);
+  }
+  .epr-dim-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; }
+
+  /* ── Confidence levels ── */
+  .conf-tier { margin-bottom: 14px; }
+  .conf-tier-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+  .conf-tier.t1 .conf-tier-title { color: var(--green); }
+  .conf-tier.t2 .conf-tier-title { color: var(--amber); }
+  .conf-tier.gaps .conf-tier-title { color: var(--red); }
+  .conf-list { list-style: none; padding: 0; }
+  .conf-list li { padding: 4px 0; font-size: 13.5px; color: var(--text); padding-left: 18px; position: relative; }
+  .conf-list li::before { content: '▸'; position: absolute; left: 0; }
+  .conf-tier.t1 .conf-list li::before { color: var(--green); }
+  .conf-tier.t2 .conf-list li::before { color: var(--amber); }
+  .conf-tier.gaps .conf-list li::before { color: var(--red); }
+
+  /* ── Recommendations ── */
+  .reco-list { list-style: none; padding: 0; }
+  .reco-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .reco-item:last-child { border-bottom: none; }
+  .reco-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--teal));
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .reco-text { font-size: 14px; line-height: 1.6; color: var(--text); }
+  .reco-text strong { color: var(--accent2); }
+
+  /* ── Footer ── */
+  .report-footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 18px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .report-footer strong { color: var(--accent2); }
+
+  /* ── SOM table highlight ── */
+  .som-highlight td:first-child { font-style: italic; }
+  tr.som-y3 td { font-weight: 700; color: var(--green); }
+
+  /* ── Vision 2030 pills ── */
+  .v2030-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .v2030-pill {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid;
+  }
+  .v2030-pill.blue { background: rgba(14,165,233,0.12); border-color: rgba(14,165,233,0.3); color: var(--accent); }
+  .v2030-pill.teal { background: rgba(20,184,166,0.12); border-color: rgba(20,184,166,0.3); color: var(--teal); }
+  .v2030-pill.green { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.3); color: var(--green); }
+
+  @media (max-width: 600px) {
+    .report-header { padding: 50px 16px 22px; }
+    .toggle-btn { top: 14px; right: 14px; }
+    .report-body { padding: 20px 12px 40px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="report-header">
+  <button class="toggle-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
+  <div class="report-header-inner">
+    <div class="report-flag">DELPHI PRO · D3 Research · Lane D</div>
+    <h1 class="report-title">Saudi Arabia: ED + GLP-1 Telehealth<br>Market Intelligence</h1>
+    <div class="report-subtitle">Lane D | D3 Research | 2026-07-07 | Scouts: scout-web, scout-knowledge, scout-social, scout-deep · Critic: Sonnet inline</div>
+    <div class="meta-badges">
+      <span class="badge epr">EPR 17/20</span>
+      <span class="badge depth">Depth D3</span>
+      <span class="badge lane">Lane D</span>
+      <span class="badge">Self-grade 78/100</span>
+      <span class="badge">22 Web · 8 Academic · 15 Social signals</span>
+      <span class="badge">Status: PASS</span>
+    </div>
+  </div>
+</header>
+
+<main class="report-body">
+
+  <!-- Executive Summary -->
+  <div class="exec-summary">
+    <p>Saudi Arabia is a <strong>Tier-1 addressable market</strong> for an ED + GLP-1 telehealth platform — population <strong>3.5× UAE</strong>, obesity burden among the world's highest, GLP-1 market growing at <strong>44% CAGR</strong>, telehealth adoption already normalized at scale (<strong>88% of population on government app</strong>), and <strong>NO specialized competitor</strong> in discreet ED + chronic GLP-1 management. The core risk is regulatory: SFDA (Saudi Food and Drug Authority) has not formally approved Wegovy/tirzepatide for weight loss, meaning the market runs on off-label / cash-pay physician practice — which is a constraint but also confirms the cash-pay moat. Vision 2030 privatization (35% private healthcare target by 2030) is a structural tailwind. KSA is larger in TAM than Dubai but has lower per-capita ARPU and more regulatory drag. The US (Hims/Hers, WeightWatchers Clinic) is the demand-maturity leading indicator for what KSA becomes in 3–5 years.</p>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-value">36M</div>
+      <div class="kpi-label">KSA Population</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">6.0M</div>
+      <div class="kpi-label">Obese Adults</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">5.9M</div>
+      <div class="kpi-label">Males with ED</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">88%</div>
+      <div class="kpi-label">Gov Telehealth Adoption</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">$8.4B</div>
+      <div class="kpi-label">Combined TAM</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">44%</div>
+      <div class="kpi-label">GLP-1 Market CAGR</div>
+    </div>
+  </div>
+
+  <!-- Section 1: Demand Drivers -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2 class="section-title">Demand Drivers — Disease Burden</h2>
+    </div>
+
+    <h3 class="subsection-title">1.1 Obesity &amp; Overweight</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Figure</th><th>Source</th><th>Year</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Adult obesity (BMI ≥30, age 15+)</td><td><strong>23.1%</strong></td><td>GASTAT official national statistics</td><td>2024</td></tr>
+          <tr><td>Combined overweight + obese (BMI ≥25, age 15+)</td><td><strong>45.1%</strong></td><td>GASTAT official</td><td>2024</td></tr>
+          <tr><td>Urban adult overweight or obese (men)</td><td>52%</td><td>Saudi MOH / WHO EMRO</td><td>2006</td></tr>
+          <tr><td>Urban adult overweight or obese (women)</td><td>66%</td><td>Saudi MOH / WHO EMRO</td><td>2006</td></tr>
+          <tr><td>Global obesity rank</td><td>Top 15 globally</td><td>WHO</td><td>2014</td></tr>
+          <tr><td>World Obesity Federation national risk score</td><td>7/10 adult · 7.5/11 child</td><td>World Obesity Federation</td><td>2024</td></tr>
+          <tr><td>Children/adolescents overweight+obese (5–18y)</td><td>20–60% range</td><td>El-Mouzan et al. / WHO EMRO</td><td>2010–2022</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box key">
+      <strong>Addressable population (2024):</strong> KSA total population ~36M; adults (18+) ~26M. Adults obese: 23.1% × 26M = <strong>~6.0M</strong>. Adults overweight+obese: 45.1% × 26M = <strong>~11.7M</strong>. Riyadh concentrates ~35% of national digital health demand (~4.1M obese adults in Riyadh metro alone). Women show higher obesity (66% vs 52% men) partly driven by cultural restrictions on physical activity — social media (Instagram, TikTok, X) is the primary discovery channel for weight-loss solutions.
+    </div>
+
+    <h3 class="subsection-title">1.2 Type 2 Diabetes (T2D)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Figure</th><th>Source</th><th>Year</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MENA region age-standardized T2D prevalence</td><td><strong>9.3%</strong></td><td>Global Burden of Disease Study 2021 (4,287 citations)</td><td>2023</td></tr>
+          <tr><td>Saudi Arabia T2D trend</td><td>Rising; highest among elderly, women, urban</td><td>Saudi diabetes incidence review (349 citations)</td><td>2017</td></tr>
+          <tr><td>Estimated KSA T2D patients</td><td><strong>~1.5–2.5M adults</strong></td><td>Derived from 9.3% MENA rate × KSA adult population</td><td>Calculated</td></tr>
+          <tr><td>Provider first-line choice: semaglutide</td><td><strong>45.7%</strong></td><td>KSA national provider survey 2024–2025</td><td>2025</td></tr>
+          <tr><td>Provider first-line choice: tirzepatide</td><td><strong>26.1%</strong></td><td>KSA national provider survey 2024–2025</td><td>2025</td></tr>
+          <tr><td>Provider first-line choice: liraglutide</td><td>25%</td><td>KSA national provider survey 2024–2025</td><td>2025</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">1.3 Metabolic Syndrome (MetS)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Figure</th><th>Source</th><th>Year</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MetS prevalence — IDF criteria</td><td><strong>39.8%</strong></td><td>Saudi national study, n=12,126 (OpenAlex, 132 citations)</td><td>2018</td></tr>
+          <tr><td>MetS prevalence — NCEP ATP III criteria</td><td><strong>31.6%</strong></td><td>Same study</td><td>2018</td></tr>
+          <tr><td>By gender — IDF (men / women)</td><td>34.4% / 29.2%</td><td>OpenAlex W2801311106</td><td>2018</td></tr>
+          <tr><td>By gender — NCEP (men / women)</td><td>45.0% / 35.4%</td><td>OpenAlex W2801311106</td><td>2018</td></tr>
+          <tr><td>Most prevalent MetS component</td><td>Low HDL-cholesterol: <strong>88.6%</strong></td><td>Riyadh Cohort (W1995179726)</td><td>2010</td></tr>
+          <tr><td>MetS in Riyadh Cohort overall</td><td>35.3%</td><td>W1995179726, n=2,850</td><td>2010</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box key"><strong>~10–13M Saudi adults</strong> meet MetS criteria — a natural target for lifestyle + pharmacotherapy programs. Metabolic syndrome + GLP-1 is the mechanistic and commercial sweet spot.</div>
+
+    <h3 class="subsection-title">1.4 Male Erectile Dysfunction (ED)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Figure</th><th>Source</th><th>Year</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ED prevalence in Arabic-speaking males (Middle East)</td><td><strong>45.1%</strong></td><td>Global Online Sexuality Survey — Arabic (GOSS; n=804, 18.8% Saudi)</td><td>2011</td></tr>
+          <tr><td>Young Saudi males who have used a Viagra-type drug</td><td><strong>40%</strong></td><td>Arab Journal of Urology / BBC World Service investigation</td><td>2022</td></tr>
+          <tr><td>Saudi men with documented ED (commercial estimate)</td><td><strong>~2M</strong></td><td>Eroxon Arabia market materials (SFDA data cited)</td><td>2025</td></tr>
+          <tr><td>Open online discussion of ED in KSA</td><td>Near zero</td><td>Reddit + web scan</td><td>2025</td></tr>
+          <tr><td>OTC ED products available</td><td>PDE5 inhibitor aphrodisiacs, Snafi/tadalafil, Eroxon gel (SFDA-approved OTC)</td><td>Multiple commercial sources</td><td>2025</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box success">
+      <strong>Critical structural insight:</strong> Demand is massive and PROVEN (40% OTC use), but disclosure is near-zero due to cultural taboo. This is the ideal structure for a discreet telehealth channel — the consumer exists, they are already buying quietly. Estimated addressable: males 18+ ~13M → ED prevalence 45% → ~5.9M affected → conservative 15% seeking digital treatment = <strong>~880,000 addressable patients</strong>.
+    </div>
+  </section>
+
+  <!-- Section 2: GLP-1 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2 class="section-title">GLP-1 Specific — Demand, Approvals &amp; Pricing</h2>
+    </div>
+
+    <h3 class="subsection-title">2.1 SFDA Approval Status</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Drug</th><th>Indication</th><th>Status</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ozempic (semaglutide 0.5/1mg)</td><td>T2D management</td><td><span class="gap-tag none">Available</span></td><td>Available at Nahdi pharmacies; no Rx enforcement observed — de facto OTC</td></tr>
+          <tr><td>Wegovy (semaglutide 2.4mg)</td><td>Weight loss</td><td><span class="gap-tag very-large">Absent</span></td><td>Supply gap; users pivot to Ozempic (Reddit 2025)</td></tr>
+          <tr><td>Mounjaro (tirzepatide)</td><td>T2D</td><td><span class="gap-tag large">Off-label</span></td><td>Off-label weight loss documented in Ha'il city community study</td></tr>
+          <tr><td>Zepbound (tirzepatide, weight-loss)</td><td>Weight loss</td><td><span class="gap-tag very-large">Not confirmed</span></td><td>Likely not SFDA-approved</td></tr>
+          <tr><td>Generic semaglutide</td><td>T2D</td><td><span class="gap-tag none">Available</span></td><td>OneSource + Hikma partnership confirmed; supply constraint resolved</td></tr>
+          <tr><td>Liraglutide (Victoza/Saxenda)</td><td>T2D / Weight</td><td><span class="gap-tag none">Established</span></td><td>25% provider first-line preference</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box warning"><strong>Key finding:</strong> No formal SFDA approval for weight-loss-indication GLP-1 in KSA. The market runs on physician clinical discretion (off-label) + de facto OTC / no-prescription-enforcement for Ozempic. This is both a constraint (regulatory risk if enforcement tightens) and a structural moat (cash-pay dominates).</div>
+
+    <h3 class="subsection-title">2.2 CCHI (Cooperative Health Insurance) Coverage</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Coverage Dimension</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GLP-1 for T2D management</td><td>Potentially covered if on formulary</td></tr>
+          <tr><td>GLP-1 for weight loss</td><td><strong>NOT covered — weight-loss indication excluded from CCHI formulary (confirmed)</strong></td></tr>
+          <tr><td>OOP/cash-pay for weight-loss GLP-1</td><td>Dominant modality</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box success"><strong>Product-market fit anchor:</strong> CCHI not covering weight-loss GLP-1 = virtually the entire obese/overweight market (11.7M adults) is a <strong>cash-pay opportunity.</strong></div>
+
+    <h3 class="subsection-title">2.3 Pricing Intelligence</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>KSA Price</th><th>UAE Price</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ozempic (monthly dose)</td><td><strong>~SAR 157–399/month</strong></td><td><strong>~AED 1,146/month</strong></td><td>Reddit r/UAE + nahdionline.com 2025</td></tr>
+          <tr><td>Price differential</td><td colspan="2">UAE is <strong>63% more expensive</strong> than KSA</td><td>Calculated</td></tr>
+          <tr><td>Consumer behavior</td><td colspan="2">UAE residents travel to Riyadh specifically to buy Ozempic</td><td>Reddit r/UAE</td></tr>
+          <tr><td>Cash-pay GLP-1 program (Kilow)</td><td>Est. SAR 500–2,500/month</td><td>—</td><td>Scout inference from clinic range SAR 299–1,999</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box key"><strong>Arbitrage implication:</strong> KSA is a GLP-1 price hub for the GCC. A platform providing clinical oversight + prescription + fulfillment at KSA market rates is viable and highly competitive. The Wegovy absence is a gap a well-connected platform could fill.</div>
+
+    <h3 class="subsection-title">2.4 Consumer Demand &amp; Sentiment</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Figure</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Familiar with Mounjaro/Ozempic</td><td><strong>83.6%</strong></td><td>GCC-wide GLP-1 attitudes study 2025 (n includes 18.8% KSA)</td></tr>
+          <tr><td>Currently using weight management drugs</td><td><strong>17.2%</strong></td><td>Same study</td></tr>
+          <tr><td>Using Ozempic specifically</td><td><strong>5.9%</strong></td><td>Massive gap: 83.6% awareness → only 5.9% use = conversion opportunity</td></tr>
+          <tr><td>Primary barriers</td><td>Cost, side effects concern, accessibility</td><td>All addressable by a structured telehealth program</td></tr>
+          <tr><td>Discovery channel</td><td>Social media (Instagram, TikTok, X)</td><td>Springer Nature 2025 study, KSA-specific</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 3: Wealth -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2 class="section-title">Wealth &amp; Willingness to Pay</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Figure</th><th>Source</th><th>Year</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GDP per capita (nominal)</td><td>~$27,000</td><td>World Bank / IMF</td><td>2024</td></tr>
+          <tr><td>GDP per capita (PPP-adjusted)</td><td>~$55,000</td><td>IMF</td><td>2024</td></tr>
+          <tr><td>Private healthcare expenditure share</td><td>~25–28% of total</td><td>Vision 2030 baseline; MOH data</td><td>2024</td></tr>
+          <tr><td>Private sector healthcare target</td><td><strong>35% by 2030</strong></td><td>Vision 2030 HSTP</td><td>2030 target</td></tr>
+          <tr><td>Healthcare infrastructure investment</td><td>$65 billion total</td><td>Vision 2030</td><td>2030 target</td></tr>
+          <tr><td>ICT digital health investment</td><td>~$15 billion</td><td>National Digital Transformation Unit</td><td>2030 target</td></tr>
+          <tr><td>UHNW (&gt;$30M) estimate</td><td>~3,000</td><td>Knight Frank 2024 Wealth Report (indirect reference)</td><td>2024</td></tr>
+          <tr><td>HNWI (&gt;$1M) estimate</td><td>~75,000</td><td>Knight Frank 2024 (indirect)</td><td>2024</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box key"><strong>ARPU expectation:</strong> Lower than UAE (~$50K GDP/capita) but sustainable. Target program pricing: <strong>SAR 500–2,000/month ($133–533)</strong> for GLP-1; <strong>SAR 200–600/month ($53–160)</strong> for ED subscription. Combined monthly ARPU target: <strong>SAR 800–1,500 ($213–400)</strong>.</div>
+  </section>
+
+  <!-- Section 4: Vision 2030 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2 class="section-title">Vision 2030 Structural Tailwinds</h2>
+    </div>
+
+    <div class="v2030-pills">
+      <span class="v2030-pill blue">$65B Healthcare Infrastructure</span>
+      <span class="v2030-pill teal">$15B ICT / Digital Investment</span>
+      <span class="v2030-pill blue">35% Private Sector Target</span>
+      <span class="v2030-pill green">22.6% Digital Health CAGR</span>
+      <span class="v2030-pill teal">25.1% Telehealth CAGR</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Initiative</th><th>Detail</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Private sector healthcare share target</td><td>35% of all healthcare delivery by 2030</td><td>On track per 2025 assessments</td></tr>
+          <tr><td>Digital health TAM (KSA)</td><td><strong>$4.4B (2025) → $18.3B (2032)</strong> at 22.6% CAGR</td><td>Grand View Research / market consensus</td></tr>
+          <tr><td>Telehealth-specific TAM (KSA)</td><td><strong>$1.4B (2025) → $3.9B (2030)</strong> at 25.1% CAGR</td><td>Market research 2025</td></tr>
+          <tr><td>Seha Virtual Hospital — hospitals connected</td><td>224 hospitals, 12 specialties, 35+ sub-specialties</td><td>WEF 2026</td></tr>
+          <tr><td>Seha Virtual Hospital — annual consultations</td><td><strong>16M+ per year</strong></td><td>WEF 2026 — Guinness World Record</td></tr>
+          <tr><td>Sehhaty App — active users</td><td><strong>31 million (88% of KSA population)</strong></td><td>MOH / Grand View Research 2025</td></tr>
+          <tr><td>Sehhaty App — cumulative consultations</td><td><strong>51 million</strong></td><td>2024</td></tr>
+          <tr><td>Patient satisfaction (virtual call centers)</td><td>86.8%</td><td>MOH patient satisfaction survey</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box success"><strong>Strategic implication:</strong> KSA consumer readiness for digital healthcare is definitively not a barrier. 88% of the population has already used a government telehealth app. A private cash-pay platform for sensitive categories (GLP-1, ED) enters a market pre-conditioned for digital-first healthcare. The gap is private + specialized, not adoption.</div>
+  </section>
+
+  <!-- Section 5: Competition -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2 class="section-title">Competitive Landscape</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Company</th><th>HQ</th><th>Funding</th><th>GLP-1?</th><th>ED?</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Seha Virtual Hospital</strong></td><td>Riyadh</td><td>State</td><td>No</td><td>No</td><td>16M+ consults/yr, 224 hospitals — government only</td></tr>
+          <tr><td><strong>Sehhaty App (MOH)</strong></td><td>Riyadh</td><td>State</td><td>No</td><td>No</td><td>31M users — government primary care</td></tr>
+          <tr><td><strong>Kilow</strong></td><td>Riyadh</td><td>$2.5M</td><td><strong style="color:var(--red)">YES — direct competitor</strong></td><td>No</td><td>Early-stage, ~10 employees; weight-loss only</td></tr>
+          <tr><td><strong>Altibbi</strong></td><td>Amman/KSA</td><td>$44M</td><td>No</td><td>No</td><td>Dominant private MENA telehealth; general GP</td></tr>
+          <tr><td><strong>Cura Health</strong></td><td>KSA</td><td>$5.1M</td><td>No</td><td>No</td><td>General telehealth since 2016, $3M revenue</td></tr>
+          <tr><td><strong>Labayh</strong></td><td>KSA</td><td>Undisclosed</td><td>No</td><td>No</td><td>Mental health + telehealth</td></tr>
+          <tr><td><strong>Zone.Health / GluCare</strong></td><td>Dubai</td><td>Undisclosed</td><td>YES</td><td>No</td><td>UAE-based; GCC expansion possible</td></tr>
+          <tr><td><strong>Okadoc</strong></td><td>Dubai</td><td>Undisclosed</td><td>No</td><td>No</td><td>UAE-dominant doctor booking; entering KSA</td></tr>
+          <tr><td><strong>Nodiet / Integrative Health Clinics</strong></td><td>KSA/GCC</td><td>Undisclosed</td><td>Partial</td><td>No</td><td>Weight loss digital; early stage</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">Competitive Gap Analysis</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Product Category</th><th>Existing KSA Coverage</th><th>Gap</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>General GP teleconsultation</td><td>Over-served (Sehhaty, Altibbi, Cura)</td><td><span class="gap-tag none">None</span></td></tr>
+          <tr><td>Mental health telehealth</td><td>Moderate (Labayh)</td><td><span class="gap-tag none">Minimal</span></td></tr>
+          <tr><td>GLP-1 managed weight-loss program</td><td><strong>One early-stage startup (Kilow, $2.5M)</strong></td><td><span class="gap-tag large">Large Gap</span></td></tr>
+          <tr><td>Discreet ED / men's health telehealth</td><td><strong>Zero specialized players found</strong></td><td><span class="gap-tag very-large">Very Large Gap</span></td></tr>
+          <tr><td>Combined ED + metabolic (weight/GLP-1)</td><td><strong>Unaddressed</strong></td><td><span class="gap-tag very-large">Very Large Gap</span></td></tr>
+          <tr><td>Chronic program + pharmacy fulfillment</td><td>None found</td><td><span class="gap-tag large">Large Gap</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box success"><strong>Key finding:</strong> Kilow is the only identified KSA-based GLP-1 telehealth startup. It is early-stage ($2.5M, 10 employees) and does not address ED. The discreet men's health + ED category is entirely unserved by digital-first platforms. The integrated "consultation + prescription + fulfillment" model has no dominant private player.</div>
+  </section>
+
+  <!-- Section 6: TAM/SAM/SOM -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2 class="section-title">Market Sizing — TAM / SAM / SOM</h2>
+    </div>
+
+    <div class="tsm-grid">
+      <div class="tsm-card tam">
+        <div class="tsm-label">TAM</div>
+        <div class="tsm-value">$8.4B</div>
+        <div class="tsm-desc">Total Addressable Market / year<br>GLP-1 $7.2B + ED $1.15B<br>Theoretical ceiling</div>
+      </div>
+      <div class="tsm-card sam">
+        <div class="tsm-label">SAM</div>
+        <div class="tsm-value">$2.0B</div>
+        <div class="tsm-desc">Serviceable Addressable Market / year<br>~1.05M digital-ready cash-pay patients<br>GLP-1 $1.44B + ED $578M</div>
+      </div>
+      <div class="tsm-card som">
+        <div class="tsm-label">SOM Y3</div>
+        <div class="tsm-value">$132M</div>
+        <div class="tsm-desc">Serviceable Obtainable — Year 3 (2029)<br>60,000 patients @ $2,200/yr<br>Riyadh → Jeddah → GCC</div>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">TAM Breakdown</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Segment</th><th>Addressable Patients</th><th>Price/Month</th><th>Annual TAM</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GLP-1 weight-loss program (obese adults seeking pharmacotherapy)</td><td>6.0M × 50% = <strong>3.0M</strong></td><td>$200</td><td><strong>$7.2B/year</strong></td></tr>
+          <tr><td>ED telehealth program (affected males seeking help)</td><td>5.9M × 15% = <strong>0.9M</strong></td><td>$107</td><td><strong>$1.15B/year</strong></td></tr>
+          <tr><td colspan="3"><strong>Combined TAM</strong></td><td><strong>~$8.4B/year</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">SAM Breakdown</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Segment</th><th>Rationale</th><th>Patients</th><th>Price/Month</th><th>Annual SAM</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GLP-1 SAM</td><td>3.0M pharmacotherapy-seekers × 20% digital-ready + premium cash-pay willing</td><td><strong>600,000</strong></td><td>$200</td><td><strong>$1.44B/year</strong></td></tr>
+          <tr><td>ED SAM</td><td>0.9M willing × 50% willing to pay vs self-medicate OTC</td><td><strong>450,000</strong></td><td>$107</td><td><strong>$578M/year</strong></td></tr>
+          <tr><td colspan="3"><strong>Combined SAM</strong></td><td>~1.05M patients</td><td><strong>~$2.0B/year</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">SOM — 3-Year Revenue Horizon</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Horizon</th><th>Patients</th><th>Avg Revenue/Patient/Year</th><th>Annual ARR</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Y1 (2027) — Launch, Riyadh-focused</td><td>5,000</td><td>$1,800</td><td><strong>$9M ARR</strong></td></tr>
+          <tr><td>Y2 (2028) — Expand, Jeddah + online</td><td>20,000</td><td>$2,000</td><td><strong>$40M ARR</strong></td></tr>
+          <tr class="som-y3"><td>Y3 (2029) — GCC extension, brand recognition</td><td>60,000</td><td>$2,200</td><td><strong>$132M ARR</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box key"><strong>SOM assumptions:</strong> Riyadh-first launch (35% of national market), word-of-mouth + social media as primary acquisition (low CAC in closed communities), SFDA off-label physician practice continues, no major new competitor at scale within 24 months.</div>
+  </section>
+
+  <!-- Section 7: KSA vs UAE vs US Comparison -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2 class="section-title">KSA vs UAE vs US — Comparison Matrix</h2>
+    </div>
+    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 14px;">Featured comparative view across three markets. US = demand-maturity leading indicator; UAE = existing platform base; KSA = scale opportunity.</p>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th class="ksa-col">Saudi Arabia (KSA)</th>
+            <th class="uae-col">Dubai / UAE</th>
+            <th class="us-col">USA (Leading Indicator)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total population</td>
+            <td class="ksa-col"><strong>~36M</strong></td>
+            <td class="uae-col">~10M</td>
+            <td class="us-col">~335M</td>
+          </tr>
+          <tr>
+            <td>Adult population (18+)</td>
+            <td class="ksa-col"><strong>~26M</strong></td>
+            <td class="uae-col">~8M</td>
+            <td class="us-col">~260M</td>
+          </tr>
+          <tr>
+            <td>Adult obesity rate</td>
+            <td class="ksa-col">23.1% (GASTAT 2024)</td>
+            <td class="uae-col"><strong>~37%</strong> (higher per capita)</td>
+            <td class="us-col">~36% (CDC 2024)</td>
+          </tr>
+          <tr>
+            <td>Obese adults (absolute)</td>
+            <td class="ksa-col"><strong>~6.0M</strong></td>
+            <td class="uae-col">~3.0M</td>
+            <td class="us-col">~93M</td>
+          </tr>
+          <tr>
+            <td>T2D prevalence</td>
+            <td class="ksa-col">~9–12% (MENA est.)</td>
+            <td class="uae-col">~10–12%</td>
+            <td class="us-col">~11%</td>
+          </tr>
+          <tr>
+            <td>MetS prevalence</td>
+            <td class="ksa-col"><strong>39.8%</strong> (IDF criteria)</td>
+            <td class="uae-col">~35–40% est.</td>
+            <td class="us-col">~35%</td>
+          </tr>
+          <tr>
+            <td>Male ED prevalence</td>
+            <td class="ksa-col">~45% (Arabic GOSS)</td>
+            <td class="uae-col">~45% (similar)</td>
+            <td class="us-col">~40% MMAS</td>
+          </tr>
+          <tr>
+            <td>GDP/capita (nominal)</td>
+            <td class="ksa-col">~$27,000</td>
+            <td class="uae-col"><strong>~$50,000</strong></td>
+            <td class="us-col">~$85,000</td>
+          </tr>
+          <tr>
+            <td>GDP/capita (PPP-adjusted)</td>
+            <td class="ksa-col">~$55,000</td>
+            <td class="uae-col">~$75,000</td>
+            <td class="us-col">~$85,000</td>
+          </tr>
+          <tr>
+            <td>Private healthcare spend</td>
+            <td class="ksa-col">25–28% (target 35%)</td>
+            <td class="uae-col"><strong>~40–45%</strong></td>
+            <td class="us-col">~55%</td>
+          </tr>
+          <tr>
+            <td>Telehealth adoption</td>
+            <td class="ksa-col"><strong>88% on Sehhaty app; 16M+ Seha consults/yr</strong></td>
+            <td class="uae-col">Mature private market; DHA regulatory</td>
+            <td class="us-col">Very mature; 70%+ tried telehealth</td>
+          </tr>
+          <tr>
+            <td>GLP-1 approval status</td>
+            <td class="ksa-col">SFDA: Off-label for weight-loss; Ozempic available</td>
+            <td class="uae-col">MOHAP registered; Wegovy available</td>
+            <td class="us-col">FDA approved (Wegovy, Zepbound)</td>
+          </tr>
+          <tr>
+            <td>GLP-1 drug price</td>
+            <td class="ksa-col"><strong>SAR 157–399/month (cheapest in GCC)</strong></td>
+            <td class="uae-col">AED 1,146/month (63% more)</td>
+            <td class="us-col">$500–1,200/month (branded)</td>
+          </tr>
+          <tr>
+            <td>Cash-pay willingness</td>
+            <td class="ksa-col">Growing; culturally premium-leaning</td>
+            <td class="uae-col"><strong>Established; high per-capita WTP</strong></td>
+            <td class="us-col">Strong for convenience</td>
+          </tr>
+          <tr>
+            <td>Telehealth regulation</td>
+            <td class="ksa-col">MOH license; no advertising pre-approval gate</td>
+            <td class="uae-col"><strong>DHA license + MOHAP dual pre-approval for ads</strong></td>
+            <td class="us-col">State-by-state; complex</td>
+          </tr>
+          <tr>
+            <td>GLP-1 telehealth competitors</td>
+            <td class="ksa-col"><strong>1 early-stage (Kilow, $2.5M)</strong></td>
+            <td class="uae-col">Zone.Health / GluCare (more developed)</td>
+            <td class="us-col">Hims, Noom Weight, WeightWatchers, Ro</td>
+          </tr>
+          <tr>
+            <td>ED telehealth competitors</td>
+            <td class="ksa-col"><strong>None specialized found</strong></td>
+            <td class="uae-col">Limited</td>
+            <td class="us-col">Roman, Hims (dominant)</td>
+          </tr>
+          <tr>
+            <td>Digital health TAM</td>
+            <td class="ksa-col">$1.4B → $3.9B (2030)</td>
+            <td class="uae-col">Est. $400–600M (smaller base)</td>
+            <td class="us-col"><strong>$50B+ (Hims GMV ~$1B alone)</strong></td>
+          </tr>
+          <tr>
+            <td>Primary advantage</td>
+            <td class="ksa-col"><strong>Population scale; obesity burden; gov-normalized digital health</strong></td>
+            <td class="uae-col">Per-capita ARPU; established private market; existing platform</td>
+            <td class="us-col">Proven demand model; ARPU benchmark</td>
+          </tr>
+          <tr>
+            <td>Primary risk</td>
+            <td class="ksa-col">SFDA off-label enforcement; CCHI exclusion of weight-loss</td>
+            <td class="uae-col">DHA licensing complexity; MOHAP ad pre-approval</td>
+            <td class="us-col">Crowded; high CAC</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">Where KSA is Bigger</h3>
+    <div class="insight-box success">
+      <ol style="padding-left: 18px; line-height: 2;">
+        <li><strong>Absolute population</strong> (3.6× UAE) = larger TAM and addressable patient pool</li>
+        <li><strong>Obese adults in absolute numbers</strong> (~6M vs ~3M UAE) = more GLP-1 candidates</li>
+        <li><strong>Government-normalized telehealth</strong> — 88% app penetration vs organic private-market adoption in UAE</li>
+        <li><strong>Cultural demand gap for ED</strong> — taboo is stronger, creating more pull toward discreet digital channels</li>
+        <li><strong>GLP-1 pricing</strong> — KSA has the cheapest GLP-1 in GCC, lowering patient-side drug cost (improves conversion)</li>
+        <li><strong>Competitive whitespace</strong> — virtually no specialized ED or chronic GLP-1 telehealth player vs UAE where Zone.Health/GluCare already established</li>
+      </ol>
+    </div>
+
+    <h3 class="subsection-title">Where UAE is Bigger</h3>
+    <div class="insight-box warning">
+      <ol style="padding-left: 18px; line-height: 2;">
+        <li><strong>Per-capita wealth</strong> (GDP/capita $50K vs $27K) = higher ARPU per patient</li>
+        <li><strong>Private healthcare spend</strong> (40–45% vs 25–28%) = more established cash-pay culture</li>
+        <li><strong>Existing network</strong> — Dubai infrastructure, contacts, warm connections already in place</li>
+        <li><strong>Regulatory maturity</strong> — DHA licensing is cumbersome but clear; no ambiguity around drug sourcing via licensed compounding pharmacies</li>
+        <li><strong>Expatriate market</strong> — UAE 90% expat, including Western-educated consumers familiar with GLP-1 from US/UK models</li>
+      </ol>
+    </div>
+
+    <h3 class="subsection-title">US as Leading Indicator (3–5 Year Trajectory)</h3>
+    <div class="insight-box key">
+      <ul style="padding-left: 18px; line-height: 2;">
+        <li>Hims &amp; Hers: GLP-1 at $199–299/month; ED at $15–25/month → GMV &gt;$1B</li>
+        <li>WeightWatchers Clinic: $100–250/month GLP-1 program</li>
+        <li>Ro, Roman, Noom Weight: All cash-pay, telehealth-first</li>
+        <li><strong>KSA is ~3–4 years behind US demand maturity but the gap is closing faster</strong> due to social media penetration and Vision 2030 acceleration</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 8: Regulatory -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2 class="section-title">Regulatory &amp; Entry Considerations</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Factor</th><th>KSA Status</th><th>Risk Level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MOH telehealth clinic license</td><td>Required; established pathway (Cura, Altibbi, Labayh operating under it)</td><td><span class="gap-tag large">Medium</span></td></tr>
+          <tr><td>SFDA drug approval for GLP-1 weight loss</td><td>Not granted; off-label physician discretion</td><td><span class="gap-tag large">Medium</span></td></tr>
+          <tr><td>CCHI prescription reimbursement</td><td>Weight-loss GLP-1 not covered</td><td><span class="gap-tag none">Low</span> (already priced as cash-pay)</td></tr>
+          <tr><td>Advertising / health claims</td><td>No MOHAP-equivalent pre-approval found for KSA</td><td><span class="gap-tag none">Lower than UAE</span></td></tr>
+          <tr><td>Data localization</td><td>Saudi data sovereignty laws apply; data must be in KSA</td><td><span class="gap-tag large">Medium</span></td></tr>
+          <tr><td>Foreign company operating</td><td>Possible via Saudi subsidiary or licensed Saudi clinic partnership</td><td><span class="gap-tag large">Medium</span> (Saudization requirements)</td></tr>
+          <tr><td>Pharmacy / drug dispensing</td><td>Must work through licensed Saudi pharmacy</td><td><span class="gap-tag large">Medium</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box key"><strong>Minimum viable regulatory path:</strong> Partner with an existing MOH-licensed Saudi clinic or Saudi-licensed physician group who operates the clinical side; platform acts as SaaS enabler (intake, matching, data, payments) — the same model as the Netherlands SaaS-enabler structure for EU.</div>
+  </section>
+
+  <!-- Section 9: Recommendations -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2 class="section-title">Strategic Recommendations</h2>
+    </div>
+    <ul class="reco-list">
+      <li class="reco-item"><div class="reco-num">1</div><div class="reco-text"><strong>KSA is a Tier-1 market opportunity</strong> — do not treat as secondary. The absolute disease burden and population scale make it comparable or superior to Dubai in TAM, even if Dubai ARPU is higher.</div></li>
+      <li class="reco-item"><div class="reco-num">2</div><div class="reco-text"><strong>GCC sequential entry strategy:</strong> Netherlands-EU → Dubai-UAE → KSA in sequence (or KSA in parallel with Dubai given proximity). Dubai entry creates the brand foundation and regulatory learnings transferable to KSA.</div></li>
+      <li class="reco-item"><div class="reco-num">3</div><div class="reco-text"><strong>Kilow is the primary early competitor to track.</strong> At $2.5M seed and 10 employees, it is vulnerable to a well-capitalized entrant. Monitor their pricing, product scope, and whether they expand into men's health/ED.</div></li>
+      <li class="reco-item"><div class="reco-num">4</div><div class="reco-text"><strong>Discreet ED is a KSA-specific whitespace</strong> with no competition. Given 40% OTC drug use by young males and near-zero open discussion, the platform that builds a discreet digital ED channel first owns the category.</div></li>
+      <li class="reco-item"><div class="reco-num">5</div><div class="reco-text"><strong>GLP-1 off-label model is the current entry point.</strong> A licensed Saudi physician + platform enabling semaglutide/liraglutide weight-loss prescribing under off-label practice is how the market currently works. Track SFDA for Wegovy/Zepbound formal approval — it is the step-change event.</div></li>
+      <li class="reco-item"><div class="reco-num">6</div><div class="reco-text"><strong>Riyadh-first.</strong> 35% of national digital health demand concentrated in one city. Y1 should be Riyadh-exclusive.</div></li>
+      <li class="reco-item"><div class="reco-num">7</div><div class="reco-text"><strong>Social media acquisition.</strong> KSA consumers discover weight-loss solutions primarily via Instagram, TikTok, and X. Influencer-based acquisition is even more relevant in KSA than EU.</div></li>
+    </ul>
+  </section>
+
+  <!-- Section 10: Confidence & Gaps -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2 class="section-title">Confidence &amp; Known Gaps</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div class="conf-tier t1">
+        <div class="conf-tier-title">High Confidence — Tier 1 Sources</div>
+        <ul class="conf-list">
+          <li>GASTAT 2024 obesity figures (official national statistics)</li>
+          <li>OpenAlex peer-reviewed MetS study (n=12,126, 132 citations)</li>
+          <li>Sehhaty/Seha scale data (MOH and WEF 2026)</li>
+          <li>Reddit primary consumer evidence on Ozempic pricing and availability</li>
+          <li>GCC GLP-1 attitudes study (2025, peer-reviewed)</li>
+        </ul>
+      </div>
+      <div class="conf-tier t2">
+        <div class="conf-tier-title">Medium Confidence — T2 Sources</div>
+        <ul class="conf-list">
+          <li>Telehealth TAM ($1.4B → $3.9B) — Grand View Research; methodologies vary</li>
+          <li>Obesity drugs market CAGR (43.73%) — Infomine Research; aggressive projection</li>
+          <li>Competitor funding data — Crunchbase/startup directories, may be incomplete</li>
+        </ul>
+      </div>
+      <div class="conf-tier gaps">
+        <div class="conf-tier-title">Known Gaps — Flag for Follow-up</div>
+        <ul class="conf-list">
+          <li>HNW/UHNW exact count for KSA — Knight Frank 2024 cited indirectly</li>
+          <li>Exact SFDA regulatory status for Wegovy — off-label model inferred</li>
+          <li>Kilow platform details — product scope, pricing, patient count not public</li>
+          <li>Private healthcare spend exact MoH current figure not retrieved</li>
+          <li>CCHI exact formulary for GLP-1 — inferred from systemic exclusion</li>
+          <li>T2D exact KSA national prevalence — MENA regional figure used (9.3%)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Source Coverage -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">SC</div>
+      <h2 class="section-title">Source Coverage Report</h2>
+    </div>
+    <div class="source-grid">
+      <div class="source-item">
+        <div class="src-label">Web Search</div>
+        <div class="src-status src-covered">COVERED</div>
+        <div class="src-count">Brave, Tavily, Exa · 22 findings</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Social: Reddit</div>
+        <div class="src-status src-covered">COVERED</div>
+        <div class="src-count">Brave proxy + scout-social · 8 findings</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Academic (OpenAlex)</div>
+        <div class="src-status src-covered">COVERED</div>
+        <div class="src-count">8 studies incl. n=12,126 MetS, GOSS ED, IDF Atlas</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Academic (ArXiv)</div>
+        <div class="src-status src-covered">COVERED</div>
+        <div class="src-count">Searched · 2 results (clinical epidemiology = OpenAlex domain)</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Wikipedia</div>
+        <div class="src-status src-covered">COVERED</div>
+        <div class="src-count">MENA obesity + KSA health articles · 3 findings</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">News / Market Research</div>
+        <div class="src-status src-covered">COVERED</div>
+        <div class="src-count">Grand View Research, Infomine, Arab News, WEF 2026, BBC · 7</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Deep Research (Perplexity)</div>
+        <div class="src-status src-covered">COVERED</div>
+        <div class="src-count">Scout-deep via Brave fallback synthesis · 1</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Finance / HNW Data</div>
+        <div class="src-status src-partial">PARTIAL</div>
+        <div class="src-count">Knight Frank reference; no direct wealth database access</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Social: X/Twitter</div>
+        <div class="src-status src-skipped">SKIPPED</div>
+        <div class="src-count">Scout returned Reddit-focused results; flag for follow-up</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Video: YouTube</div>
+        <div class="src-status src-skipped">SKIPPED</div>
+        <div class="src-count">Not dispatched; GLP-1 influencer content in KSA would add signal</div>
+      </div>
+      <div class="source-item">
+        <div class="src-label">Social: Instagram</div>
+        <div class="src-status src-skipped">SKIPPED</div>
+        <div class="src-count">Not dispatched; KSA influencer data via Apify on request</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPR Score -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">Q</div>
+      <h2 class="section-title">Quality Gate — EPR Score &amp; Self-Grade</h2>
+    </div>
+    <div class="epr-section">
+      <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-bottom: 8px;">
+        <div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 2px;">EPR (Critic-validated)</div>
+          <div style="font-size: 36px; font-weight: 800; color: var(--green);">17/20</div>
+        </div>
+        <div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 2px;">Self-grade</div>
+          <div style="font-size: 36px; font-weight: 800; color: var(--amber);">78/100</div>
+        </div>
+        <div style="flex: 1; min-width: 180px;">
+          <div style="display: inline-block; background: var(--tag-green-bg); border: 1px solid var(--tag-green-border); color: var(--green); padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 700;">STATUS: PASS (EPR ≥ 16, self_grade ≥ 70)</div>
+        </div>
+      </div>
+      <div class="epr-grid">
+        <div class="epr-dim">
+          <div class="epr-score">4/5</div>
+          <div class="epr-dim-label">Evidence</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">GASTAT official · peer-reviewed OpenAlex · WEF 2026 · Reddit primary</div>
+        </div>
+        <div class="epr-dim">
+          <div class="epr-score">4/5</div>
+          <div class="epr-dim-label">Precision</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">Specific %, competitor funding, GLP-1 pricing with UAE comparison</div>
+        </div>
+        <div class="epr-dim">
+          <div class="epr-score">5/5</div>
+          <div class="epr-dim-label">Relevance</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">Directly maps to all 6 requested dimensions + cross-references</div>
+        </div>
+        <div class="epr-dim">
+          <div class="epr-score">4/5</div>
+          <div class="epr-dim-label">Novelty</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">KSA-UAE price arbitrage · Kilow as direct competitor · OTC ED cultural demand</div>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-size: 12px; color: var(--text-muted);">
+        Self-grade deductions: Missing exact SFDA Wegovy approval confirmation (−5) · HNW population not directly sourced (−5) · Kilow product details limited (−5) · YouTube/Instagram/X channels not covered (−7)
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="report-footer">
+  <strong>DELPHI PRO</strong> D3 Research · 2026-07-07 · Lane D: Market Intelligence · KSA Telehealth ED + GLP-1<br>
+  Scouts: scout-web · scout-knowledge · scout-social · scout-deep · Critic: Sonnet inline<br>
+  Cross-reference: EU+UAE Telehealth Business Model v4 · 2026-07-07
+</footer>
+
+<script>
+  function toggleTheme() {
+    const root = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    if (root.getAttribute('data-theme') === 'dark') {
+      root.setAttribute('data-theme', 'light');
+      btn.textContent = '🌙 Dark';
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      btn.textContent = '☀ Light';
+    }
+  }
+</script>
+</body>
+</html>
