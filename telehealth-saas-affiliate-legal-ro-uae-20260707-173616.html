@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telehealth SaaS + Affiliate + Advertiser: Legality in Romania (EU) and UAE</title>
+<meta name="description" content="D2 Research: Compliant SaaS/affiliate/advertiser architecture and red lines for telehealth in Romania (EU) and UAE (Dubai/DHA).">
+<meta property="og:title" content="Telehealth SaaS + Affiliate Legality: Romania & UAE">
+<meta property="og:description" content="Compliant architecture and hard red lines — illustrative context, not legal advice.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        brand: '#58a6ff',
+        'dark-bg': '#0A0A0F',
+        'dark-card': '#111118',
+        'dark-border': 'rgba(88,166,255,0.12)',
+        'light-bg': '#fafafa',
+        'light-card': '#ffffff',
+        'light-accent': '#5E6AD2',
+      },
+      fontFamily: { sans: ['Inter','sans-serif'], mono: ['JetBrains Mono','monospace'] }
+    }
+  }
+}
+</script>
+<style>
+  :root { scroll-behavior: smooth; }
+  .dark body { background: #0A0A0F; color: #e6edf3; }
+  .light body { background: #fafafa; color: #1a1a2e; }
+  .glass {
+    background: rgba(17,17,24,0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(88,166,255,0.12);
+    border-radius: 12px;
+  }
+  .light .glass {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(94,106,210,0.18);
+  }
+  .glow { box-shadow: 0 0 32px rgba(88,166,255,0.08); }
+  .badge-yes { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .badge-no { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+  .badge-cond { background: rgba(234,179,8,0.15); color: #facc15; border: 1px solid rgba(234,179,8,0.3); }
+  .badge-skip { background: rgba(100,116,139,0.15); color: #94a3b8; border: 1px solid rgba(100,116,139,0.3); }
+  .red-line { border-left: 3px solid #f87171; padding-left: 1rem; }
+  .green-line { border-left: 3px solid #4ade80; padding-left: 1rem; }
+  .yellow-line { border-left: 3px solid #facc15; padding-left: 1rem; }
+  .blue-line { border-left: 3px solid #58a6ff; padding-left: 1rem; }
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  .toc-link { transition: color 0.2s, padding-left 0.2s; }
+  .toc-link:hover { color: #58a6ff; padding-left: 4px; }
+  .light .toc-link:hover { color: #5E6AD2; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { background: rgba(88,166,255,0.1); padding: 8px 12px; text-align: left; font-weight: 600; color: #58a6ff; }
+  .light th { background: rgba(94,106,210,0.08); color: #5E6AD2; }
+  td { padding: 8px 12px; border-bottom: 1px solid rgba(88,166,255,0.07); }
+  tr:last-child td { border-bottom: none; }
+  .dark tr:hover { background: rgba(88,166,255,0.04); }
+  .light tr:hover { background: rgba(94,106,210,0.04); }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 0.75rem; font-weight: 600; }
+  #toc { position: sticky; top: 80px; }
+  @media (max-width: 1024px) { #toc { display: none; } }
+  @media print {
+    html { background: white !important; color: black !important; }
+    .glass { background: white !important; border: 1px solid #ccc !important; box-shadow: none !important; }
+    #top-bar, #toc, #toggle-btn, #share-btn { display: none !important; }
+    .fade-in { opacity: 1 !important; transform: none !important; }
+    table { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body class="font-sans min-h-screen">
+
+<!-- Top bar -->
+<div id="top-bar" class="fixed top-0 left-0 right-0 z-50 glass flex items-center justify-between px-6 py-3" style="border-radius:0;border-left:none;border-right:none;border-top:none;">
+  <div class="flex items-center gap-3">
+    <span class="text-xs font-mono px-2 py-1 rounded" style="background:rgba(88,166,255,0.15);color:#58a6ff;">DELPHI D2</span>
+    <span class="text-xs text-gray-400">Telehealth SaaS + Affiliate Legality · Romania + UAE · 2026-07-07</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <button id="toggle-btn" onclick="toggleMode()" class="text-xs px-3 py-1.5 rounded-lg border border-opacity-20 hover:opacity-80 transition" style="border-color:rgba(88,166,255,0.3);color:#58a6ff;">
+      Toggle Light
+    </button>
+    <button id="share-btn" onclick="share()" class="text-xs px-3 py-1.5 rounded-lg text-white transition hover:opacity-80" style="background:#58a6ff;">
+      Share
+    </button>
+  </div>
+</div>
+
+<!-- Layout -->
+<div class="max-w-7xl mx-auto px-4 pt-24 pb-16 flex gap-8">
+
+  <!-- TOC sidebar -->
+  <aside id="toc" class="w-56 shrink-0 text-xs">
+    <div class="glass p-4 space-y-1.5">
+      <p class="text-gray-500 uppercase tracking-wider text-xs font-semibold mb-3">Contents</p>
+      <a href="#abstract" class="toc-link block text-gray-400">Abstract</a>
+      <a href="#s1" class="toc-link block text-gray-400">1. Scope & Caveats</a>
+      <a href="#s2" class="toc-link block text-gray-400">2. SaaS Enabler vs Drug Marketer</a>
+      <a href="#s3" class="toc-link block text-gray-400">3. Peptide Status — Red Lines</a>
+      <a href="#s4" class="toc-link block text-gray-400">4. Affiliate Marketing</a>
+      <a href="#s5" class="toc-link block text-gray-400">5. Influencer Disclosure</a>
+      <a href="#s6" class="toc-link block text-gray-400">6. Advertiser Networks</a>
+      <a href="#s7" class="toc-link block text-gray-400">7. Broker Model</a>
+      <a href="#s8" class="toc-link block text-gray-400">8. Romania Specifics</a>
+      <a href="#s9" class="toc-link block text-gray-400">9. UAE / DHA Specifics</a>
+      <a href="#s10" class="toc-link block text-gray-400">10. Open Exceptions</a>
+      <a href="#s11" class="toc-link block text-gray-400">11. Compliant Architecture</a>
+      <a href="#coverage" class="toc-link block text-gray-400">Source Coverage</a>
+    </div>
+    <!-- Metadata card -->
+    <div class="glass p-4 mt-4 space-y-2 text-xs">
+      <p class="text-gray-500 uppercase tracking-wider font-semibold mb-2">Metadata</p>
+      <div class="flex justify-between"><span class="text-gray-500">Depth</span><span class="font-mono text-brand">D2</span></div>
+      <div class="flex justify-between"><span class="text-gray-500">EPR</span><span class="font-mono text-yellow-400">UNVALIDATED</span></div>
+      <div class="flex justify-between"><span class="text-gray-500">Markets</span><span class="font-mono text-gray-300">RO + UAE</span></div>
+      <div class="flex justify-between"><span class="text-gray-500">Sources</span><span class="font-mono text-gray-300">28+</span></div>
+      <div class="flex justify-between"><span class="text-gray-500">Date</span><span class="font-mono text-gray-300">2026-07-07</span></div>
+      <div class="flex justify-between"><span class="text-gray-500">Cortex ID</span><span class="font-mono text-gray-400">5a62553b</span></div>
+      <div class="mt-3 p-2 rounded text-yellow-300 text-xs" style="background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.2);">
+        ILLUSTRATIVE CONTEXT ONLY — not legal advice. Counsel-gate all decisions.
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 min-w-0 space-y-8">
+
+    <!-- Title -->
+    <div class="fade-in">
+      <h1 class="text-3xl font-bold leading-tight mb-2" style="color:#e6edf3;">SaaS + Affiliate + Advertiser:<br>Telehealth Legality in Romania (EU) and UAE (Dubai/DHA)</h1>
+      <p class="text-gray-400 text-sm">Research by DELPHI PRO · D2 · 2026-07-07 · Illustrative context, not legal advice</p>
+    </div>
+
+    <!-- Abstract -->
+    <section id="abstract" class="fade-in glass p-6 glow">
+      <h2 class="text-lg font-semibold mb-3" style="color:#58a6ff;">Abstract</h2>
+      <p class="text-gray-300 leading-relaxed">
+        The compliant architecture: a SaaS platform that sells software to licensed healthcare providers and promotes the consultation service — not named drugs. Affiliates drive traffic to branded assessment flows; influencers disclose commercial relationships under UCPD/DSA (EU) and hold MOHAP media licences (UAE). The platform never names, recommends, or prices a prescription medicine and never intermediates a drug sale without a pharmacy licence.
+      </p>
+      <div class="mt-4 space-y-2">
+        <p class="font-semibold text-sm text-red-400">Hard Red Lines:</p>
+        <div class="red-line text-sm text-gray-300">RX peptides (BPC-157, TB-500) are unapproved in both jurisdictions — cannot be sold, marketed, or "enabled" as treatments.</div>
+        <div class="red-line text-sm text-gray-300">EU Dir 2001/83/EC Art 88 and UAE MOHAP Ministerial Resolution 430/2007 flatly prohibit consumer-facing RX drug advertising.</div>
+        <div class="red-line text-sm text-gray-300">Brokering a prescription sale without a licensed pharmacy partner is unlawful in both markets.</div>
+      </div>
+    </section>
+
+    <!-- Section 1 -->
+    <section id="s1" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">1. Scope, Caveats, and Legal Posture</h2>
+      <div class="space-y-3 text-sm text-gray-300 leading-relaxed">
+        <p><span class="font-semibold text-white">Romania</span> — Single EU entry point. Implements Directive 2001/83/EC via national law; telemedicine regulated under Law 95/2006 + GEO 8/2018 + GEO 196/2020 + GD 1133/2022.</p>
+        <p><span class="font-semibold text-white">UAE — Dubai/DHA</span> — DHA Telehealth Standard ST-14 v4 (effective 26 November 2025); MOHAP Ministerial Resolution 430/2007; Federal Decree-Law 38/2024 on Medical Products.</p>
+        <p><span class="font-semibold text-white">US references</span> appear only as regulatory benchmarks. They are not market-entry proposals.</p>
+        <div class="p-3 rounded mt-2" style="background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.2);">
+          <p class="text-yellow-300 text-xs font-semibold mb-1">ILLUSTRATIVE CONTEXT ONLY</p>
+          <p class="text-yellow-200 text-xs">Every framing of a rule or compliance pathway describes the general regulatory logic as documented in public law and guidance. None of it constitutes legal advice. Engage Romanian (NAMMDR-accredited) and UAE (DHA/MOHAP-experienced) counsel before any commercial launch.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="s2" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">2. The Core Distinction: SaaS Enabler vs Drug Marketer</h2>
+
+      <h3 class="font-semibold text-green-400 mb-2">2.1 The Compliant SaaS-Enabler Position</h3>
+      <p class="text-sm text-gray-400 mb-3">A platform is on the safe side of the line when it:</p>
+      <div class="space-y-2 mb-4">
+        <div class="green-line text-sm text-gray-300">Sells software infrastructure to licensed healthcare providers (clinics, telehealth facilities, licensed physicians). The provider — not the platform — prescribes, dispenses, and takes clinical responsibility.</div>
+        <div class="green-line text-sm text-gray-300">Promotes the service (e.g. "Get a teleconsultation with a licensed doctor") rather than naming, recommending, or pricing any specific prescription medicine.</div>
+        <div class="green-line text-sm text-gray-300">Generates leads to a licensed provider or clinic. The patient-provider relationship is formed with the licensed party. The platform is a referral/booking conduit, not the medical actor.</div>
+        <div class="green-line text-sm text-gray-300">Does not intermediate the drug sale — no cart, no drug pricing, no dispensing fulfilment unless a licensed pharmacy is the contracting party for that leg.</div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+        <div class="p-3 rounded text-xs" style="background:rgba(88,166,255,0.06);border:1px solid rgba(88,166,255,0.15);">
+          <p class="font-semibold text-brand mb-1">EU Legal Anchor</p>
+          <p class="text-gray-400">eCommerce Directive + DSA conditional intermediary safe harbour. MDCG 2025-4: platform hosting third-party medical apps without ownership = intermediary service provider under DSA, not MDR manufacturer. Immunity collapses if platform facilitates unlawful drug advertising.</p>
+        </div>
+        <div class="p-3 rounded text-xs" style="background:rgba(88,166,255,0.06);border:1px solid rgba(88,166,255,0.15);">
+          <p class="font-semibold text-brand mb-1">UAE Legal Anchor</p>
+          <p class="text-gray-400">DHA ST-14 v4 distinguishes licensed health facility from technology/software providers. Platform vendor is not the licensed health facility — but must not conduct healthcare activity or drug promotion without the appropriate licence.</p>
+        </div>
+      </div>
+
+      <h3 class="font-semibold text-red-400 mb-2 mt-4">2.2 The Unlawful Drug-Marketer/Broker Position</h3>
+      <p class="text-sm text-gray-400 mb-2">A platform crosses the line when it:</p>
+      <div class="space-y-2 mb-3">
+        <div class="red-line text-sm text-gray-300">Names a specific prescription medicine and promotes its use to consumers (even "Our doctors prescribe [X]" with a booking CTA is borderline; "Buy [X] online" is clearly prohibited).</div>
+        <div class="red-line text-sm text-gray-300">Acts as a price comparison or marketplace for prescription drugs without being or partnering with a licensed pharmacy.</div>
+        <div class="red-line text-sm text-gray-300">Enables affiliates or influencers to promote named RX medicines — even if a licensed provider is behind the curtain. The advertising act itself is the violation under Art 88.</div>
+        <div class="red-line text-sm text-gray-300">Receives revenue as a percentage of drug sales rather than a subscription or lead fee for the service.</div>
+      </div>
+      <div class="yellow-line text-xs text-yellow-300 mt-3">Named exception — unresolved: The line blurs when a platform's specialty is narrow (e.g. "peptide optimisation clinic"). If the specialty itself implies a specific unlicensed compound, even service-level copy may attract regulatory scrutiny. Requires counsel-by-counsel assessment.</div>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="s3" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">3. Peptide Status: Hard Red Lines (Both Markets)</h2>
+      <div class="p-3 rounded mb-4" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);">
+        <p class="text-red-300 text-sm font-semibold">BPC-157 and TB-500 are unapproved in EU and UAE. No lawful sale as treatments exists today in either market.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">EU / Romania</h3>
+          <ul class="space-y-2 text-xs text-gray-300">
+            <li class="red-line">EMA has NOT issued a marketing authorisation or regulatory opinion on BPC-157 or TB-500.</li>
+            <li class="red-line">Fall under "investigational medicinal products" requiring CTA + IMPD before any EU clinical use. MDPI Pharmaceutics (2025) confirms BPC-157 lacks the required pharmaceutical-grade characterisation.</li>
+            <li class="red-line">Selling or supplying an unauthorised medicinal product is a criminal offence in Romania (Law 95/2006).</li>
+            <li class="red-line">Platform cannot list "BPC-157 consultations" or "TB-500 therapy" as a service category. Doing so collapses the intermediary safe harbour.</li>
+            <li class="yellow-line">WADA: BPC-157 = S0 (Non-Approved Substances); TB-500 = Growth Factor Modulator. Reputational/advertiser risk if athletes targeted.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">UAE (Dubai/DHA)</h3>
+          <ul class="space-y-2 text-xs text-gray-300">
+            <li class="red-line">Any product marketed for human therapeutic use without MOHAP/EDE registration = "unregistered pharmaceutical product" under Federal Decree-Law 38/2024.</li>
+            <li class="red-line">BPC-157 and TB-500 do not appear on MOHAP's registered products list.</li>
+            <li class="red-line">Platform cannot be the commercial front for peptide supply even if a licensed Dubai clinic is the prescriber.</li>
+            <li class="yellow-line">Named exception — unresolved: Some Dubai clinics market peptide therapies under "wellness protocol" framings. Whether DHA-licensed facilities doing this operate under enforcement tolerance or formal grey zone is unclear. Counsel must confirm DHA position before enabling this category.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="s4" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">4. Prescription-Medicine Affiliate Marketing</h2>
+
+      <h3 class="font-semibold text-white text-sm mb-2">4.1 EU — Directive 2001/83/EC Article 88</h3>
+      <p class="text-xs text-gray-400 mb-3">Art 88 prohibits advertising of prescription-only medicines (POMs) to the general public. Comprehensively harmonised across EU (ECJ C-374/05 Gintec, 2007). Applies to social media and digital channels. EU Pharma Package revision expected to maintain and expand this prohibition (~2028-2029 effective date).</p>
+
+      <div class="overflow-x-auto mb-6">
+        <table>
+          <thead><tr><th>Affiliate Structure</th><th>Compliant?</th><th>Reasoning</th></tr></thead>
+          <tbody>
+            <tr><td>Promote consultation booking (brand + service, no drug named)</td><td><span class="pill badge-yes">YES — cond.</span></td><td class="text-gray-400">Promoting a service, not a medicine. Full UCPD disclosure required.</td></tr>
+            <tr><td>Promote "OTC supplement advice consults"</td><td><span class="pill badge-cond">CARE</span></td><td class="text-gray-400">OTC is Art 88 exempt, but supplement claims must not be medicinal.</td></tr>
+            <tr><td>Promote "get a prescription for [named drug]"</td><td><span class="pill badge-no">NO</span></td><td class="text-gray-400">Advertising a POM to the public. Art 88 violation regardless of affiliate payment.</td></tr>
+            <tr><td>Lead-gen to licensed clinic (flat fee per patient)</td><td><span class="pill badge-yes">YES — cond.</span></td><td class="text-gray-400">Service promotion. Flat fee or % of service fee only. Full UCPD disclosure required.</td></tr>
+            <tr><td>Influencer reviews peptide + links to buying page</td><td><span class="pill badge-no">NO</span></td><td class="text-gray-400">Dual violation: unauthorised medicinal product + POM advertising.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-semibold text-white text-sm mb-2">4.2 UAE — MOHAP Ministerial Resolution 430/2007</h3>
+      <p class="text-xs text-gray-400 mb-3">All advertising of medicines requires prior MOHAP approval. Influencers need: (1) UAE Media Council commercial licence; (2) MOHAP healthcare advertising licence (AED 1,000/month or AED 3,000/year); (3) DHA Medical Director approval for facility-branded content.</p>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>Affiliate Structure</th><th>Compliant?</th><th>Reasoning</th></tr></thead>
+          <tbody>
+            <tr><td>Media Council-licensed influencer promotes consultation booking with MOHAP content approval</td><td><span class="pill badge-yes">YES</span></td><td class="text-gray-400">Service promotion, proper licensing chain in place.</td></tr>
+            <tr><td>Influencer mentions specific RX medicine available through platform</td><td><span class="pill badge-no">NO</span></td><td class="text-gray-400">MOHAP product-level pre-approval will not be issued for unregistered pharmaceuticals.</td></tr>
+            <tr><td>Affiliate drives traffic to DHA-licensed clinic booking page</td><td><span class="pill badge-yes">YES — cond.</span></td><td class="text-gray-400">Legitimate referral. Clinic is the medical actor. Platform earns service fee, not drug revenue share.</td></tr>
+            <tr><td>Anyone promoting unlicensed peptides for therapeutic use</td><td><span class="pill badge-no">NO</span></td><td class="text-gray-400">Federal Decree-Law 38/2024 criminalises unregistered pharmaceutical marketing.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="s5" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">5. Influencer Disclosure Regimes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">EU (applies in Romania)</h3>
+          <ul class="space-y-2 text-xs text-gray-300">
+            <li class="blue-line"><span class="font-semibold text-white">UCPD (Dir 2005/29/EC):</span> Applies whenever influencer receives ANY consideration — monetary, free product, affiliate %. Disclosure must be visible and prominent. Brand/platform co-liable even without editorial control.</li>
+            <li class="blue-line"><span class="font-semibold text-white">DSA (Reg 2022/2065):</span> Art 26 requires platforms to label commercial communications in real time. Art 39 requires VLOPs to maintain ad repository — creates audit trail.</li>
+            <li class="blue-line"><span class="font-semibold text-white">Digital Fairness Act (proposed 2025):</span> Would codify influencer disclosure more explicitly. Still in legislative process. Plan for tightening.</li>
+            <li class="blue-line"><span class="font-semibold text-white">Romania:</span> UCPD via Law 363/2007. No additional influencer licensing analogous to UAE. AVMSD baseline applies.</li>
+            <li class="yellow-line">Generic hashtag piles ("#ad" buried in many tags) may be insufficient — disclosure must be impossible to miss per EU guidance.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">UAE (Dubai/DHA)</h3>
+          <ul class="space-y-2 text-xs text-gray-300">
+            <li class="blue-line">Media Council influencer licence mandatory for commercial promotions.</li>
+            <li class="blue-line">DHA ST-21 (2022): Official account must display MOHAP medical advertisement licence number.</li>
+            <li class="blue-line">Healthcare professionals must use only DHA-licensed specialty title. "Anti-aging specialist," "aesthetic consultant," "beauty expert" explicitly prohibited.</li>
+            <li class="blue-line">All filmed content within health facility premises — including personal mobile devices — is the facility's liability.</li>
+            <li class="blue-line">Content must present advantages AND disadvantages. Absolute statements and alarming expressions prohibited.</li>
+            <li class="yellow-line">Named exception — unresolved: Interaction between Media Council and MOHAP approval when a non-UAE influencer promotes a UAE platform to a UAE audience is not resolved in public guidance.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6 -->
+    <section id="s6" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">6. Advertiser-Network Constraints</h2>
+      <div class="space-y-5">
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">Meta (Facebook + Instagram)</h3>
+          <ul class="space-y-1.5 text-xs text-gray-300">
+            <li class="red-line">From Jan 2025: EU healthcare advertisers cannot use Meta Pixel, custom audiences from website behaviour, or lookalike audiences built from health visitors (GDPR + DSA).</li>
+            <li class="red-line">Lower-funnel conversion events (Purchase, Add to Cart, Appointment Booking) restricted or blocked for EU healthcare advertisers.</li>
+            <li class="red-line">Online pharmacies and pharmaceutical advertisers must be LegitScript certified.</li>
+            <li class="green-line">What can still run (EU): brand awareness campaigns for the telehealth service (not naming drugs); traffic campaigns to booking page; lead ads with strict data minimisation.</li>
+            <li class="yellow-line">UAE-targeted campaigns face fewer tracking restrictions but MOHAP pre-approval of content is the advertiser's legal obligation — Meta does not enforce it at the platform level.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">Google Ads</h3>
+          <ul class="space-y-1.5 text-xs text-gray-300">
+            <li class="blue-line">Pharmaceutical manufacturers must be Google-certified (LegitScript as prerequisite for many categories).</li>
+            <li class="blue-line">Telemedicine is a specific Google certification category — separate from Online Pharmacy. Requires demonstrating the underlying licensed provider network.</li>
+            <li class="blue-line">Prescription drug sales to consumers prohibited unless advertiser holds country-specific pharmacy licence + Google certification.</li>
+            <li class="blue-line">OTC medicines with Google certification allowed, subject to age-gating.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">TikTok</h3>
+          <ul class="space-y-1.5 text-xs text-gray-300">
+            <li class="red-line">Prescription medicines: NOT allowed globally. No certification pathway exists.</li>
+            <li class="blue-line">OTC medicines: conditionally allowed with national authority proof (MOHAP/UAE, ANMDM/Romania); must age-gate to 18+.</li>
+            <li class="blue-line">Medical institutions/clinics: conditionally allowed with Ministry of Health registration + facility licence proof.</li>
+            <li class="yellow-line">Platform can promote telehealth service under "medical institution" category if underlying licensed clinic provides licence documentation. Named drugs or peptides cannot appear.</li>
+          </ul>
+        </div>
+        <div class="p-3 rounded text-xs" style="background:rgba(88,166,255,0.06);border:1px solid rgba(88,166,255,0.15);">
+          <p class="font-semibold text-brand mb-1">Key constraint across all three platforms</p>
+          <p class="text-gray-400">The underlying licensed entity — not the SaaS layer — must hold the relevant certification or licence. The platform can advertise in co-branding with its licensed provider partners if those providers are certified. The platform cannot hold certifications for providers it merely enables.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7 -->
+    <section id="s7" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">7. The Broker Model: Lawful vs Unlawful Forms</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h3 class="font-semibold text-green-400 text-sm mb-3">Lawful Forms</h3>
+          <div class="space-y-3 text-xs text-gray-300">
+            <div class="green-line">
+              <p class="font-semibold text-white mb-1">A. Appointment marketplace</p>
+              <p>Platform lists DHA-licensed (UAE) or ANMDMR-registered (Romania) providers. Patient books consultation; fee goes to clinic; platform takes booking commission. Platform must not exercise clinical control; provider retains prescribing authority and liability.</p>
+            </div>
+            <div class="green-line">
+              <p class="font-semibold text-white mb-1">B. Lead-generation to licensed clinic</p>
+              <p>Affiliate drives a lead to the licensed clinic. Clinic pays flat lead fee or % of consultation revenue (NOT of drug revenue). Content used to generate the lead must not name or promote specific RX medicines.</p>
+            </div>
+            <div class="green-line">
+              <p class="font-semibold text-white mb-1">C. Pharmacy referral (OTC only)</p>
+              <p>Licensed pharmacy (ANMDM in Romania; DHA/DOH/MOHAP in UAE) is the selling party. Platform earns software licence fee or % of OTC product revenue. Marketing copy promotes the pharmacy service, not specific RX drugs.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-semibold text-red-400 text-sm mb-3">Unlawful Forms</h3>
+          <div class="space-y-3 text-xs text-gray-300">
+            <div class="red-line">Platform sells RX drugs directly without holding a pharmacy licence — illegal in both markets.</div>
+            <div class="red-line">Platform enables purchasing of unlicensed compounds (BPC-157, TB-500) — illegal in both markets under pharmaceutical products law.</div>
+            <div class="red-line">Platform receives revenue as % of RX drug dispensing without a licensed pharmacy as contracting entity.</div>
+            <div class="red-line">Cross-border prescription fulfilment where a Romanian provider prescribes and a non-EU pharmacy fulfils — GDPR + pharmaceutical law + customs complexity. Do not operationalise without multi-jurisdiction counsel.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8 -->
+    <section id="s8" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">8. Romania (EU) Specific Items</h2>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>Topic</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="font-semibold text-gray-200">Telemedicine legal basis</td><td class="text-gray-400 font-mono text-xs">Law 95/2006 + GEO 8/2018 + GEO 196/2020 + GD 1133/2022</td></tr>
+            <tr><td class="font-semibold text-gray-200">Regulatory authority</td><td class="text-gray-400">ANMDMR + Ministry of Health</td></tr>
+            <tr><td class="font-semibold text-gray-200">Country-of-origin principle</td><td class="text-gray-400">CJEU C-115/24 (2025): governed by where provider is established; mixed telemedicine/in-person models excluded</td></tr>
+            <tr><td class="font-semibold text-gray-200">RX advertising prohibition</td><td class="text-gray-400">Law 95/2006 + subsidiary ANMDM orders; UCPD via Law 363/2007</td></tr>
+            <tr><td class="font-semibold text-gray-200">Transfer-of-value disclosure</td><td class="text-gray-400">Annual disclosure (ARPIM Code): company site + ANMDMR site; 3-year retention</td></tr>
+            <tr><td class="font-semibold text-gray-200">SaaS platform MDR status</td><td class="text-gray-400">Assess MDR MDSW definition under MDCG 2025-4; booking/CRM layer may qualify for intermediary exemption</td></tr>
+            <tr><td class="font-semibold text-gray-200">EU Product Liability Dir 2024/2853</td><td class="text-gray-400">Software is a "product" from Dec 2026; transposition deadline Dec 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 9 -->
+    <section id="s9" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">9. UAE (Dubai/DHA) Specific Items</h2>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>Topic</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="font-semibold text-gray-200">Telehealth authorisation</td><td class="text-gray-400">DHA ST-14 v4 (effective 26 Nov 2025); mandatory facility registration + care pathway compliance</td></tr>
+            <tr><td class="font-semibold text-gray-200">Data localisation</td><td class="text-gray-400">Federal Law 2/2019: health data must be hosted in UAE; offshore cloud = AED 700,000 fine from first consultation</td></tr>
+            <tr><td class="font-semibold text-gray-200">Health info exchange</td><td class="text-gray-400">Dubai: NABIDH; Abu Dhabi: Malaffi; Northern Emirates: Riyati</td></tr>
+            <tr><td class="font-semibold text-gray-200">Pharmaceutical advertising</td><td class="text-gray-400">Ministerial Resolution 430/2007 + Federal Decree-Law 38/2024: all pharma advertising = MOHAP pre-approval</td></tr>
+            <tr><td class="font-semibold text-gray-200">Influencer licence</td><td class="text-gray-400">Media Council commercial account + MOHAP healthcare ad licence (AED 1,000/month or AED 3,000/year)</td></tr>
+            <tr><td class="font-semibold text-gray-200">DHA social media standard</td><td class="text-gray-400">ST-21 (2022): Medical Director approves all SMA content; specialty title restrictions; balanced content required</td></tr>
+            <tr><td class="font-semibold text-gray-200">Advertising violation penalty</td><td class="text-gray-400">AED 50,000–200,000 fine; active enforcement confirmed (IBA 2024 guide)</td></tr>
+            <tr><td class="font-semibold text-gray-200">Peptide status</td><td class="text-gray-400">Unregistered pharmaceuticals under Decree-Law 38/2024 if marketed for therapeutic use without MOHAP/EDE registration</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 10 -->
+    <section id="s10" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">10. Named Exceptions and Unresolved Items</h2>
+      <p class="text-xs text-gray-400 mb-4">These items carry material uncertainty. They cannot be resolved from public sources alone and must be flagged to counsel before commercial decisions.</p>
+      <div class="space-y-3">
+        <div class="p-3 rounded text-xs" style="background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.2);">
+          <p class="font-semibold text-yellow-300 mb-1">1. Dubai peptide grey zone</p>
+          <p class="text-gray-400">Whether DHA-licensed clinics administering BPC-157/TB-500 under physician supervision operate within enforcement tolerance or formal regulatory pathway is unclear. If the platform lists such clinics, it may share in the legal exposure.</p>
+        </div>
+        <div class="p-3 rounded text-xs" style="background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.2);">
+          <p class="font-semibold text-yellow-300 mb-1">2. Narrow-specialty copy problem</p>
+          <p class="text-gray-400">When a platform's specialty is implicitly linked to an unapproved compound (e.g. "peptide optimisation clinic"), even service-level ad copy may attract scrutiny as implied drug promotion. Threshold not defined in current EU or UAE guidance.</p>
+        </div>
+        <div class="p-3 rounded text-xs" style="background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.2);">
+          <p class="font-semibold text-yellow-300 mb-1">3. UAE cross-market influencer reach</p>
+          <p class="text-gray-400">Whether UAE Media Council and MOHAP licensing requirements apply extraterritorially to a non-UAE influencer promoting a UAE platform to a UAE audience is unresolved. Seek formal MOHAP position.</p>
+        </div>
+        <div class="p-3 rounded text-xs" style="background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.2);">
+          <p class="font-semibold text-yellow-300 mb-1">4. Revenue-share vs fixed-fee affiliate (Romania)</p>
+          <p class="text-gray-400">Whether an affiliate earning % of total order value (where order includes OTC products post-consultation) triggers pharmaceutical revenue-sharing rules under Romanian law is not addressed in ANMDMR guidance. Fixed consultation fees are safer.</p>
+        </div>
+        <div class="p-3 rounded text-xs" style="background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.2);">
+          <p class="font-semibold text-yellow-300 mb-1">5. EU Digital Fairness Act timeline</p>
+          <p class="text-gray-400">DFA still in legislative process (2025-2026). Final scope on affiliate commission disclosure and influencer obligations may affect platform affiliate T&Cs. Monitor.</p>
+        </div>
+        <div class="p-3 rounded text-xs" style="background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.2);">
+          <p class="font-semibold text-yellow-300 mb-1">6. Google Telemedicine Certification — linked to provider licence</p>
+          <p class="text-gray-400">Google requires demonstration of the licensed provider network. If the platform launches before its provider roster holds national licences, the certification application will fail. Timeline-dependent risk.</p>
+        </div>
+        <div class="p-3 rounded text-xs" style="background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.2);">
+          <p class="font-semibold text-yellow-300 mb-1">7. Romania telemedicine prescription rules (GD 1133/2022)</p>
+          <p class="text-gray-400">Whether a Romanian telehealth consultation can legally result in an electronic prescription for a controlled substance (e.g. scheduled hormones) under GD 1133/2022 requires direct counsel review.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 11 -->
+    <section id="s11" class="fade-in glass p-6 glow">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">11. Synthesis: The Compliant Architecture</h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">Platform Layer</h3>
+          <ul class="space-y-1 text-xs text-gray-300">
+            <li class="green-line">Sells software subscriptions to licensed telehealth providers (DHA-licensed in UAE; ANMDMR-registered in Romania)</li>
+            <li class="green-line">Does not prescribe, dispense, or name specific medicines</li>
+            <li class="green-line">Earns SaaS subscription or booking fee — not pharmaceutical revenue</li>
+            <li class="green-line">Data hosted in UAE for UAE clients (AED 700k fine risk); GDPR-compliant for EU clients</li>
+            <li class="yellow-line">If platform software meets MDR MDSW definition, CE marking required; MDCG 2025-4 intermediary exemption may apply for booking/CRM layer — requires legal analysis</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">Affiliate/Influencer Layer</h3>
+          <ul class="space-y-1 text-xs text-gray-300">
+            <li class="green-line">EU: Affiliates promote consultation brand and booking CTA; no named medicines; full UCPD disclosure; platform co-liable for influencer non-disclosure</li>
+            <li class="green-line">UAE: Influencers hold Media Council licence + MOHAP healthcare advertising licence; MOHAP pre-approves each content piece; DHA Medical Director approves facility-associated content</li>
+            <li class="green-line">Revenue model: flat lead fee or % of consultation fee — not % of drug revenue</li>
+            <li class="red-line">No affiliate or influencer may name, imply, or link to BPC-157, TB-500, or any unapproved compound in any market</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">Advertiser Layer</h3>
+          <ul class="space-y-1 text-xs text-gray-300">
+            <li class="green-line">Meta EU: awareness and traffic campaigns only; no pixel-based retargeting; no health data in custom audiences; LegitScript for any pharmacy partner</li>
+            <li class="green-line">Google: Telemedicine certification required; tied to provider network build timeline</li>
+            <li class="green-line">TikTok: Promote as medical institution (with licence proof); no RX drugs or peptides</li>
+            <li class="green-line">All ad copy promotes the service ("speak to a licensed doctor") — not a medicine</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-white text-sm mb-2">Broker/Intermediary Layer</h3>
+          <ul class="space-y-1 text-xs text-gray-300">
+            <li class="green-line">Appointment marketplace: licensed providers list services; patient pays clinic; platform takes booking commission</li>
+            <li class="green-line">Pharmacy referral (OTC only): licensed pharmacy is the selling entity; platform is booking/referral infrastructure</li>
+            <li class="red-line">Peptide services: do not list until both markets confirm a lawful pathway — currently unresolved in Romania/EU and likely non-compliant in UAE without MOHAP product registration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Source Coverage -->
+    <section id="coverage" class="fade-in glass p-6">
+      <h2 class="text-lg font-semibold mb-4" style="color:#58a6ff;">Source Coverage Report</h2>
+      <div class="overflow-x-auto mb-3">
+        <table>
+          <thead><tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr></thead>
+          <tbody>
+            <tr><td>Web Search</td><td><span class="pill badge-yes">COVERED</span></td><td class="text-gray-400 text-xs">Brave Search, Tavily Search</td><td class="text-gray-300 font-mono">28</td></tr>
+            <tr><td>Academic / Regulatory</td><td><span class="pill badge-yes">COVERED</span></td><td class="text-gray-400 text-xs">MDPI, PMC/NIH, European Papers, EMA-adjacent</td><td class="text-gray-300 font-mono">6</td></tr>
+            <tr><td>Legal guidance / expert guides</td><td><span class="pill badge-yes">COVERED</span></td><td class="text-gray-400 text-xs">CMS Law, Bird & Bird, IBA, Osborne Clarke, Hogan Lovells</td><td class="text-gray-300 font-mono">12</td></tr>
+            <tr><td>Official regulatory documents</td><td><span class="pill badge-yes">COVERED</span></td><td class="text-gray-400 text-xs">EU Council, DHA ST-14/ST-21 PDFs, MOHAP/IBA 2024, UAE legislation</td><td class="text-gray-300 font-mono">8</td></tr>
+            <tr><td>Platform ad policies</td><td><span class="pill badge-yes">COVERED</span></td><td class="text-gray-400 text-xs">Meta, TikTok, Google Ads Policy, LegitScript</td><td class="text-gray-300 font-mono">6</td></tr>
+            <tr><td>Industry analysis</td><td><span class="pill badge-yes">COVERED</span></td><td class="text-gray-400 text-xs">BSCG, USADA, AESGP, EPF, APMA</td><td class="text-gray-300 font-mono">5</td></tr>
+            <tr><td>Social / YouTube</td><td><span class="pill badge-skip">SKIPPED</span></td><td class="text-gray-400 text-xs">D2 protocol — social scouts not dispatched at this depth</td><td class="text-gray-300 font-mono">0</td></tr>
+            <tr><td>Finance</td><td><span class="pill badge-skip">SKIPPED</span></td><td class="text-gray-400 text-xs">Not relevant to this research topic</td><td class="text-gray-300 font-mono">0</td></tr>
+            <tr><td>Deep Research</td><td><span class="pill badge-skip">SKIPPED</span></td><td class="text-gray-400 text-xs">D2 depth; Tavily quota reached; Brave rate-limited late in run</td><td class="text-gray-300 font-mono">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500">Coverage note: Tavily quota exhausted after 4 search calls. Brave rate-limited after 3 calls. Google Telemedicine certification pathway and Romania GD 1133/2022 prescription rules remain partially confirmed — flagged as named exceptions in Section 10. EPR: UNVALIDATED (Critic not dispatched at D2).</p>
+    </section>
+
+    <!-- Footer -->
+    <div class="fade-in text-center text-xs text-gray-600 pt-4">
+      DELPHI PRO · D2 Research · 2026-07-07 · Cortex: 5a62553b · ILLUSTRATIVE CONTEXT ONLY — not legal advice
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Dark/light toggle
+function toggleMode() {
+  const html = document.documentElement;
+  const btn = document.getElementById('toggle-btn');
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    html.classList.add('light');
+    btn.textContent = 'Toggle Dark';
+  } else {
+    html.classList.remove('light');
+    html.classList.add('dark');
+    btn.textContent = 'Toggle Light';
+  }
+  localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+}
+
+// Restore theme
+const saved = localStorage.getItem('theme');
+if (saved === 'light') { toggleMode(); }
+
+// Share
+function share() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: document.title, url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('share-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Share'; }, 2000);
+    });
+  }
+}
+
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
