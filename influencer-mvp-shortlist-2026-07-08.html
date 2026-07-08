@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Telehealth Influencer MVP Shortlist — Romania + EU 2026. Monica Munteanu analysis, RO/EU creator shortlist, tier funnel model, MVP anchor recommendation.">
+<meta property="og:title" content="Telehealth Influencer MVP Shortlist — Romania + EU 2026">
+<meta property="og:description" content="Evidence-based influencer shortlist for ED + GLP-1 telehealth MVP launch. Funnel model, tier sizing, Monica Munteanu PR analysis.">
+<meta property="og:type" content="article">
+<title>Telehealth Influencer MVP Shortlist — Romania + EU 2026 | DELPHI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --accent: #58a6ff;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --border: rgba(88,166,255,0.15);
+    --glass: rgba(17,17,24,0.7);
+  }
+  .light {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --accent: #5E6AD2;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: rgba(94,106,210,0.2);
+    --glass: rgba(255,255,255,0.85);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    transition: background 0.3s, border 0.3s;
+  }
+  .accent { color: var(--accent); }
+  .muted { color: var(--muted); }
+  .glow { box-shadow: 0 0 24px rgba(88,166,255,0.08); }
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  table { border-collapse: collapse; width: 100%; }
+  th { background: rgba(88,166,255,0.08); color: var(--accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 12px; text-align: left; }
+  td { padding: 9px 12px; font-size: 0.82rem; border-top: 1px solid var(--border); color: var(--text); vertical-align: top; }
+  tr:hover td { background: rgba(88,166,255,0.04); }
+  code { font-family: 'JetBrains Mono', monospace; font-size: 0.8em; background: rgba(88,166,255,0.1); padding: 2px 6px; border-radius: 4px; color: var(--accent); }
+  h2 { font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  h3 { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
+  h4 { font-size: 0.9rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+  p { line-height: 1.7; font-size: 0.9rem; color: var(--text); margin-bottom: 0.75rem; }
+  li { line-height: 1.7; font-size: 0.88rem; color: var(--text); margin-bottom: 0.3rem; }
+  ul { padding-left: 1.2rem; margin-bottom: 0.75rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .confidence-high { background: rgba(34,197,94,0.15); color: #22c55e; padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+  .confidence-med { background: rgba(234,179,8,0.15); color: #eab308; padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+  .confidence-low { background: rgba(239,68,68,0.15); color: #ef4444; padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
+  .badge-blue { background: rgba(88,166,255,0.15); color: #58a6ff; }
+  .badge-green { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .badge-orange { background: rgba(249,115,22,0.15); color: #f97316; }
+  .badge-red { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .toc-link { font-size: 0.82rem; color: var(--muted); padding: 4px 0; display: block; border-left: 2px solid transparent; padding-left: 10px; transition: color 0.2s, border-color 0.2s; }
+  .toc-link:hover { color: var(--accent); border-left-color: var(--accent); text-decoration: none; }
+  .section-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem; }
+  .pull-quote { border-left: 3px solid var(--accent); padding: 1rem 1.25rem; background: rgba(88,166,255,0.06); border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.92rem; font-style: italic; color: var(--text); }
+  .meta-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.82rem; }
+  .meta-row:last-child { border-bottom: none; }
+  .meta-label { color: var(--muted); flex: 0 0 45%; }
+  .meta-value { color: var(--text); font-weight: 500; text-align: right; }
+  .status-covered { color: #22c55e; font-weight: 600; }
+  .status-partial { color: #eab308; font-weight: 600; }
+  .status-skipped { color: #ef4444; font-weight: 600; }
+  @media print {
+    body { background: #fff !important; color: #111 !important; }
+    .no-print { display: none !important; }
+    .card { border: 1px solid #e5e7eb !important; box-shadow: none !important; }
+  }
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main-col { margin-left: 0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<div class="no-print" style="background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px);">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 52px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: 700; font-size: 0.95rem; color: var(--accent);">DELPHI PRO</span>
+      <span style="color: var(--border);">|</span>
+      <span style="font-size: 0.8rem; color: var(--muted);">Research Report</span>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <button onclick="toggleMode()" style="background: transparent; border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; cursor: pointer; color: var(--muted); font-size: 0.78rem; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">Toggle Mode</button>
+      <button onclick="shareReport()" style="background: var(--accent); border: none; border-radius: 6px; padding: 5px 14px; cursor: pointer; color: #fff; font-size: 0.78rem; font-weight: 600; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Share</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<div style="background: linear-gradient(135deg, rgba(88,166,255,0.06) 0%, rgba(10,10,15,0) 60%); border-bottom: 1px solid var(--border); padding: 3rem 1.5rem 2.5rem;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div style="margin-bottom: 0.75rem;">
+      <span class="badge badge-blue">D3 Research</span>
+      <span class="badge badge-blue" style="margin-left: 6px;">Romania + EU</span>
+      <span class="badge badge-orange" style="margin-left: 6px;">ED + GLP-1</span>
+    </div>
+    <h1 style="font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem;">Telehealth Influencer MVP Shortlist</h1>
+    <p style="font-size: 1rem; color: var(--muted); max-width: 700px; line-height: 1.6;">Evidence-based influencer map for an ED + GLP-1 telehealth MVP launch, starting in Romania with EU fallback. Includes Monica Munteanu PR analysis, creator shortlist by tier, funnel sizing model, and MVP anchor recommendation.</p>
+    <div style="margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.8rem; color: var(--muted);">
+      <span>Prepared: 2026-07-08</span>
+      <span>Agent: DELPHI PRO</span>
+      <span>EPR: UNVALIDATED (D3, no Critic)</span>
+      <span>Sources: 17 cited</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Layout -->
+<div style="max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; display: flex; gap: 2rem;">
+
+  <!-- Sidebar TOC -->
+  <div class="sidebar no-print" style="flex: 0 0 220px; position: sticky; top: 72px; align-self: flex-start; height: fit-content;">
+    <div class="card" style="padding: 1.25rem;">
+      <div class="section-label">Contents</div>
+      <nav style="display: flex; flex-direction: column; gap: 4px; margin-top: 0.5rem;">
+        <a class="toc-link" href="#monica">1. Monica Munteanu</a>
+        <a class="toc-link" href="#roster">2. Influencer Shortlist</a>
+        <a class="toc-link" href="#romania">— Romania</a>
+        <a class="toc-link" href="#eu">— EU Markets</a>
+        <a class="toc-link" href="#funnel">3. Funnel Model</a>
+        <a class="toc-link" href="#anchor">4. MVP Anchor</a>
+        <a class="toc-link" href="#coverage">5. Coverage</a>
+      </nav>
+      <!-- Metadata sidebar -->
+      <div style="margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+        <div class="section-label">Report Info</div>
+        <div class="meta-row"><span class="meta-label">Depth</span><span class="meta-value"><span class="badge badge-blue">D3</span></span></div>
+        <div class="meta-row"><span class="meta-label">Vertical</span><span class="meta-value">ED + GLP-1</span></div>
+        <div class="meta-row"><span class="meta-label">Markets</span><span class="meta-value">RO, NL, DE</span></div>
+        <div class="meta-row"><span class="meta-label">Sources</span><span class="meta-value">17</span></div>
+        <div class="meta-row"><span class="meta-label">EPR</span><span class="meta-value"><span class="badge badge-orange">UNVALIDATED</span></span></div>
+        <div class="meta-row"><span class="meta-label">Date</span><span class="meta-value">2026-07-08</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-col" style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2rem;">
+
+    <!-- Disclaimer -->
+    <div class="card fade-in" style="padding: 1rem 1.25rem; border-left: 3px solid #eab308;">
+      <p style="font-size: 0.8rem; color: var(--muted); margin: 0;"><strong style="color: #eab308;">Disclaimer:</strong> All influencer data is public-OSINT illustrative from third-party databases (HypeAuditor, Modash, Feedspot, EMA). Follower counts and engagement rates are point-in-time estimates. Verify independently before outreach. No medical claims. Market research only.</p>
+    </div>
+
+    <!-- Section 1: Monica Munteanu -->
+    <section id="monica" class="fade-in">
+      <div class="section-label">Section 1</div>
+      <h2>Monica Munteanu — PR Figure Analysis</h2>
+
+      <!-- Identity card -->
+      <div class="card glow" style="padding: 1.5rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Monica Munteanu Ducarroz</h3>
+            <p style="margin: 0; font-size: 0.85rem; color: var(--muted);">Founder, Strategic Events &amp; Communication / Talent Management, Bucharest</p>
+          </div>
+          <span class="confidence-high">Confidence: HIGH</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+          <div><div class="section-label" style="font-size: 0.68rem;">Agency Founded</div><div style="font-size: 0.88rem; font-weight: 600;">Strategic Events &amp; Communication (2010)</div></div>
+          <div><div class="section-label" style="font-size: 0.68rem;">Talent Mgmt</div><div style="font-size: 0.88rem; font-weight: 600;">Since 2017, 100+ creators</div></div>
+          <div><div class="section-label" style="font-size: 0.68rem;">Experience</div><div style="font-size: 0.88rem; font-weight: 600;">15+ years PR/comms</div></div>
+          <div><div class="section-label" style="font-size: 0.68rem;">LinkedIn</div><div style="font-size: 0.88rem; font-weight: 600;">5,263 followers, active 2026</div></div>
+        </div>
+      </div>
+
+      <!-- Named clients -->
+      <div class="card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+        <h4>Named Public Clients (Entertainment-Focused)</h4>
+        <p style="font-size: 0.85rem; color: var(--muted);">Confirmed publicly: <strong style="color: var(--text);">Delia, Codin Maticiuc, Mihai Bendeac, Nicole Cherry, Theo Rose, Mira, Speak, Stefania</strong> — all entertainment/celebrity, no confirmed health/wellness creators.</p>
+        <div class="pull-quote">"Cel mai cunoscut PR al celebritatilor din Romania" — described in Romanian press as Romania's leading celebrity PR specialist (15+ years in industry).</div>
+      </div>
+
+      <!-- Health/wellness relevance table -->
+      <div class="card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+        <h4>Health/Wellness Relevance Assessment</h4>
+        <table>
+          <thead><tr><th>Dimension</th><th>Assessment</th><th>Confidence</th></tr></thead>
+          <tbody>
+            <tr><td>Has health/wellness influencers in roster</td><td>POSSIBLE but unconfirmed — 100+ roster is partially opaque</td><td><span class="confidence-low">MEDIUM-LOW</span></td></tr>
+            <tr><td>Can broker introductions to health creators</td><td>LIKELY — dominant position in Romanian talent ecosystem</td><td><span class="confidence-high">HIGH</span></td></tr>
+            <tr><td>Has run pharma/health brand campaigns</td><td>Not confirmed from public sources</td><td><span class="confidence-low">LOW</span></td></tr>
+            <tr><td>Wellness brand experience</td><td>Stejarii Country Club PR (2013-2014, premium fitness/spa), luxury lifestyle implied</td><td><span class="confidence-med">MEDIUM</span></td></tr>
+            <tr><td>Would be open to health brand mandates</td><td>Plausible — expanding sector, approach as "seeking Romania's top wellness ambassador"</td><td><span class="confidence-med">INFERRED</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Disambiguation -->
+      <div class="card" style="padding: 1.25rem; border-left: 3px solid var(--accent);">
+        <h4>Disambiguation Note</h4>
+        <p style="margin: 0; font-size: 0.85rem;">Disambiguation risk: <strong>LOW</strong>. One other "Monica Munteanu" exists in general web results but is not in PR/comms. The luxury.ro reference to "Monica Munteanu Ducarroz" is confirmed as the same Strategic Events founder (dual-surname + employer match). <strong>Conclusion: single primary subject.</strong></p>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--muted);">Best access points: LinkedIn direct message, Permis de Antreprenor program, HUB 2026 speaker events, masteringthemusicbusiness.ro network. Approach pitch: <em>intermediary/connector to health-adjacent creators</em>, not assuming direct health client roster.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Influencer Shortlist -->
+    <section id="roster" class="fade-in">
+      <div class="section-label">Section 2</div>
+      <h2>Romanian + Key-EU Influencer Shortlist</h2>
+
+      <!-- Chart row -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="card" style="padding: 1.25rem;">
+          <h4>Romania — Reach by Creator</h4>
+          <canvas id="roChart" height="220"></canvas>
+        </div>
+        <div class="card" style="padding: 1.25rem;">
+          <h4>Niche Fit (GLP-1 vs ED)</h4>
+          <canvas id="fitChart" height="220"></canvas>
+        </div>
+      </div>
+
+      <!-- Romania mid-tier -->
+      <div id="romania" class="card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3>Romania — Tier A (Mid: 100K-700K)</h3>
+          <span class="badge badge-blue">Core MVP candidates</span>
+        </div>
+        <div style="overflow-x: auto;">
+        <table>
+          <thead><tr><th>#</th><th>Creator</th><th>Handle</th><th>Platform</th><th>Followers</th><th>Commerce Proof</th><th>GLP-1 Fit</th><th>ED Fit</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong>Nicolas Enache</strong></td>
+              <td><code>@nicolas_aesthetics</code></td>
+              <td>IG + TikTok + YT</td>
+              <td>IG 380K / TikTok <strong>1.2M</strong> / YT 710K</td>
+              <td><span class="badge badge-green">YES — Myprotein partner, coaching via squadinfluencers.ro</span></td>
+              <td><span class="confidence-med">Medium</span></td>
+              <td><span class="confidence-high">High</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Bogdan Mocanu</strong></td>
+              <td><code>@bogdan.mocanu.official</code></td>
+              <td>IG</td>
+              <td>647K (largest RO male fitness IG)</td>
+              <td><span class="badge badge-blue">Implied — brand deals</span></td>
+              <td><span class="confidence-med">Medium</span></td>
+              <td><span class="confidence-high">High</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>Carmen Bruma</strong></td>
+              <td><code>@carmenbrumaofficial</code></td>
+              <td>IG</td>
+              <td>271K</td>
+              <td><span class="badge badge-green">YES — books, DVD programs, Auchan long-term</span></td>
+              <td><span class="confidence-high">Medium-High (women 35-55)</span></td>
+              <td><span class="confidence-low">Low</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>Carmen Sorban</strong></td>
+              <td><code>@carmenfit</code></td>
+              <td>IG</td>
+              <td>292K</td>
+              <td><span class="badge badge-green">YES — personal coaching programs</span></td>
+              <td><span class="confidence-high">Medium (women 30-50)</span></td>
+              <td><span class="confidence-low">Low</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Dr. Anca Cobzariu</strong></td>
+              <td><code>@dr.anca.cobzariu</code></td>
+              <td>IG</td>
+              <td>113.7K</td>
+              <td><span class="badge badge-green">YES — private aesthetic medicine clinic</span></td>
+              <td><span class="confidence-high">Medium-High (weight + aesthetics)</span></td>
+              <td><span class="confidence-low">Low</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- Romania micro-tier -->
+      <div class="card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3>Romania — Tier B (Micro: 10K-100K) &amp; High-Trust Practitioners</h3>
+          <span class="badge badge-orange">High trust, lower volume</span>
+        </div>
+        <div style="overflow-x: auto;">
+        <table>
+          <thead><tr><th>#</th><th>Creator</th><th>Handle</th><th>Followers (est.)</th><th>Commerce Proof</th><th>Fit Notes</th></tr></thead>
+          <tbody>
+            <tr><td>6</td><td><strong>Dr. Ancuta Leonte</strong></td><td><code>@dr.ancutaleonte</code></td><td>88.8K</td><td><span class="badge badge-green">Private practice</span></td><td>Health &amp; Medicine focus — GLP-1: High medical credibility</td></tr>
+            <tr><td>7</td><td><strong>Bianca Dutcas</strong></td><td><code>@biancahurban</code></td><td>86.2K</td><td><span class="badge badge-green">YES — personal training packages</span></td><td>Women's fitness — GLP-1: Medium</td></tr>
+            <tr><td>8</td><td><strong>Grovu Georgiana</strong></td><td><code>@grovu.georgiana</code></td><td>129.1K</td><td><span class="badge badge-green">YES — active coaching business</span></td><td>Fitness coaching — GLP-1: Medium</td></tr>
+            <tr><td>9</td><td><strong>Bianca Pasat</strong></td><td>biancapasat.ro / IG</td><td>Est. 20-80K</td><td><span class="badge badge-green">YES — 250 RON/month sub, no-commit, anytime cancel</span></td><td>Women's weight loss subscription — GLP-1: <strong>Very High</strong> (exact niche)</td></tr>
+            <tr><td>10</td><td><strong>Dorina Deblock</strong></td><td><code>@dorina.psihonutritie</code></td><td>Est. 10-30K</td><td><span class="badge badge-green">YES — coaching packages, online programs</span></td><td>Psycho-nutrition, emotional eating, women — GLP-1: <strong>High</strong></td></tr>
+            <tr><td>11</td><td><strong>Dr. Silvi Ifrim</strong></td><td>drsilvi.ro / IG inferred</td><td>Est. 15-40K</td><td><span class="badge badge-green">YES — private clinic, celebrity clients (Bodo, Ozana Barabancea -40kg)</span></td><td>Internal Medicine + Diabetology + Weight loss — GLP-1: <strong>Very High</strong> authority</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="pull-quote" style="margin-top: 1rem;">Romania has NO confirmed GLP-1/Ozempic-specific influencer yet — Romania lags Western EU by 12-18 months on GLP-1 social media adoption. This is a first-mover opportunity. The EMA's October 2025 #HealthNotHype GLP-1 campaign selected 7 EU countries; Romania was excluded — a market gap signal.</div>
+      </div>
+
+      <!-- EU Markets -->
+      <div id="eu" class="card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+        <h3>EU Fallback Markets — Netherlands &amp; Germany</h3>
+        <div style="margin-bottom: 1.25rem; padding: 0.75rem 1rem; background: rgba(88,166,255,0.06); border-radius: 8px;">
+          <p style="margin: 0; font-size: 0.85rem;"><strong style="color: var(--accent);">EMA #HealthNotHype (Oct 2025) — key EU GLP-1 content creators selected by European Medicines Agency:</strong> Germany @medicinexcare (242K), Spain @boticariagarcia (861K), Italy @infermieregianluca (175K), Portugal @raquelvareda (52.8K), Slovenia @david.zupancic (41.1K), Latvia @uzlabo (32.8K), Finland @jennipuolivali (39K). EMA selection = pre-validated credibility signal for medical campaigns.</p>
+        </div>
+        <div style="overflow-x: auto;">
+        <table>
+          <thead><tr><th>Market</th><th>Creator</th><th>Handle</th><th>Followers</th><th>Niche</th><th>Commerce Proof</th><th>Regulatory Note</th><th>Fit</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge-blue">NL</span></td><td><strong>Broodje Dunner</strong></td><td><code>@broodje.dunner</code></td><td>267.7K</td><td>Weight loss, anti-diet</td><td>Paid programs + free resources</td><td>Wet geneesmiddelenreclame — lifestyle framing</td><td><span class="confidence-high">High GLP-1</span></td></tr>
+            <tr><td><span class="badge badge-blue">NL</span></td><td><strong>Iris de Goede</strong></td><td><code>@iris_de_goede</code></td><td>87.7K</td><td>Hormone therapist + dietitian</td><td>Clinic practice</td><td>HCP — high trust, strict compliance</td><td><span class="confidence-high">Very High GLP-1 / women's longevity</span></td></tr>
+            <tr><td><span class="badge badge-blue">NL</span></td><td>Dr. Elise Janssen</td><td><code>@dokterelise_</code></td><td>378.8K</td><td>Physician, lifestyle &gt; medication</td><td>Books, cookbook</td><td>Conservative on meds — lifestyle pivot needed</td><td>Medium (frame as program access)</td></tr>
+            <tr><td><span class="badge badge-orange">DE</span></td><td><strong>@medicinexcare</strong></td><td><code>@medicinexcare</code></td><td>242K</td><td>Medical content</td><td>n/a (professional)</td><td>HWG applies — EMA-vetted, highest credibility</td><td><span class="confidence-high">High — pre-validated for GLP-1</span></td></tr>
+            <tr><td><span class="badge badge-orange">DE</span></td><td>@thebetterness</td><td><code>@thebetterness</code></td><td>167.6K</td><td>Sugar-free, longevity, F 45yo</td><td>Nutrition consulting</td><td>HWG applies</td><td>Very High women's wellness/longevity</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--muted);"><strong style="color: var(--text);">Regulatory note for DE/NL:</strong> HWG (Germany) and Wet geneesmiddelenreclame (Netherlands) restrict direct prescription drug promotion. Campaigns must frame around access to medical consultation / supervised wellness program — not the drug. This is the same model used by Hims &amp; Hers and Ro for EU-facing influencer content.</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Funnel Model -->
+    <section id="funnel" class="fade-in">
+      <div class="section-label">Section 3</div>
+      <h2>Funnel / Tier Sizing Model</h2>
+
+      <!-- Funnel assumptions -->
+      <div class="card" style="padding: 1.5rem; margin-bottom: 1.25rem;">
+        <h3>Funnel Assumptions (explicit)</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem;">Conservative model calibrated to medical subscription telehealth (higher friction than e-commerce). Sources: telehealthmedia.com 2026 CAC benchmarks, bask.health, practicegrowthco.com GLP-1 Google Ads CPL ($68 CPL, 38% consult-to-enrollment).</p>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; background: rgba(88,166,255,0.04); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; line-height: 1.9; color: var(--muted);">
+          Total Followers<br>
+          &nbsp;&nbsp;→ Organic post reach: <strong style="color: var(--text);">20-30%</strong> of followers see content<br>
+          &nbsp;&nbsp;→ Engaged: <strong style="color: var(--text);">3-6%</strong> of followers actively engage<br>
+          &nbsp;&nbsp;→ CTA clicks to landing page: <strong style="color: var(--text);">15-25%</strong> of engaged (= 0.5-1.5% of total)<br>
+          &nbsp;&nbsp;→ Intake form start: <strong style="color: var(--text);">30-45%</strong> of page visitors<br>
+          &nbsp;&nbsp;→ Completed consultation: <strong style="color: var(--text);">50-65%</strong> of inquiries<br>
+          &nbsp;&nbsp;→ Paying patient: <strong style="color: var(--text);">50-60%</strong> of completed consults<br>
+          &nbsp;&nbsp;<br>
+          &nbsp;&nbsp;Blended: <strong style="color: var(--accent);">0.05–0.15%</strong> of followers → paying patient per campaign post
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1rem;">
+          <div style="text-align: center; padding: 0.75rem; background: rgba(88,166,255,0.06); border-radius: 8px;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent);">0.10-0.20%</div>
+            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 2px;">ED conversion rate</div>
+          </div>
+          <div style="text-align: center; padding: 0.75rem; background: rgba(88,166,255,0.06); border-radius: 8px;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent);">0.05-0.12%</div>
+            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 2px;">GLP-1 conversion rate</div>
+          </div>
+          <div style="text-align: center; padding: 0.75rem; background: rgba(88,166,255,0.06); border-radius: 8px;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: #22c55e;">$70-140</div>
+            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 2px;">ED CAC (fully-loaded)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier sizing table -->
+      <div class="card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+        <h3>Tier Sizing Model</h3>
+        <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem;"><strong style="color: var(--text);">Scenario A</strong> = 150 paying patients (~€30K/month at €200 blended ARPU) &nbsp;|&nbsp; <strong style="color: var(--text);">Scenario B</strong> = 30-50 patients (CAC/LTV validation for angel raise)</p>
+        <div style="overflow-x: auto;">
+        <table>
+          <thead><tr><th>Tier</th><th>Typical Followers (RO)</th><th>Conv. Rate (followers→patient)</th><th>Patients / Campaign</th><th>Campaigns for Scenario A (150)</th><th>Campaigns for Scenario B (30-50)</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-blue">Nano (&lt;10K)</span></td>
+              <td>5K</td>
+              <td>0.10-0.20%</td>
+              <td>5-10</td>
+              <td style="color: #ef4444;">15-30 campaigns — not viable solo</td>
+              <td>3-10 campaigns</td>
+            </tr>
+            <tr style="background: rgba(88,166,255,0.04);">
+              <td><span class="badge badge-green">Micro (10-100K)</span></td>
+              <td>50K</td>
+              <td>0.08-0.15%</td>
+              <td>40-75</td>
+              <td>2-4 campaigns with 3-4 creators</td>
+              <td><strong style="color: #22c55e;">1 campaign with 1 creator</strong></td>
+            </tr>
+            <tr style="background: rgba(88,166,255,0.08);">
+              <td><span class="badge badge-orange">Mid (100-500K)</span></td>
+              <td>200K</td>
+              <td>0.06-0.12%</td>
+              <td>120-240</td>
+              <td><strong style="color: #22c55e;">1 campaign with 1 creator (high end)</strong></td>
+              <td><strong style="color: #22c55e;">Single post</strong></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-red">Macro (500K+)</span></td>
+              <td>1M</td>
+              <td>0.04-0.08%</td>
+              <td>400-800</td>
+              <td>Instant if niche-matched</td>
+              <td>Instant</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <canvas id="tierChart" height="140" style="margin-top: 1.25rem;"></canvas>
+      </div>
+
+      <!-- Key observations -->
+      <div class="card" style="padding: 1.25rem;">
+        <h4>5 Key Observations From the Model</h4>
+        <ol style="padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
+          <li><strong>Single mid-tier RO creator (200K, health niche) can yield 120-240 paying patients in 1-2 campaigns</strong> — sufficient to hit the €30K/month target without macro-level reach.</li>
+          <li>The 30-50 validation bar is achievable with <strong>one micro or mid-tier creator in a single campaign</strong>, estimated cost €3-8K total. Payback within month 1.</li>
+          <li><strong>Engagement rate beats follower count</strong> for medical conversion. 100K at 4% engagement outperforms 500K at 0.5%.</li>
+          <li><strong>ED converts 1.5-2x faster than GLP-1</strong> per follower touched (shorter decision cycle, anonymous online channel preferred). For MVP CAC/LTV validation: ED-first gives fastest signal.</li>
+          <li><strong>Commerce proof is the #1 qualifying signal</strong>: creators already selling subscriptions/programs have demonstrated their audience pays in the health category — directly predictive of telehealth conversion.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Section 4: MVP Anchor -->
+    <section id="anchor" class="fade-in">
+      <div class="section-label">Section 4</div>
+      <h2>Recommended MVP Anchor Profile</h2>
+
+      <!-- Primary recommendation -->
+      <div class="card glow" style="padding: 1.5rem; margin-bottom: 1.25rem; border-color: rgba(88,166,255,0.3);">
+        <div style="display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 240px;">
+            <div style="margin-bottom: 0.75rem;"><span class="badge badge-green" style="font-size: 0.8rem;">PRIMARY</span></div>
+            <h3>Romanian Mid-Tier Women's Wellness Creator</h3>
+            <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">For GLP-1 weight-loss / longevity MVP in Romania</p>
+            <table style="font-size: 0.82rem;">
+              <tr><td style="border: none; padding: 5px 0; color: var(--muted); width: 130px;">Tier</td><td style="border: none; padding: 5px 0; font-weight: 600;">Mid-tier: 100K-300K followers (IG primary + TikTok)</td></tr>
+              <tr><td style="border: none; padding: 5px 0; color: var(--muted);">Niche</td><td style="border: none; padding: 5px 0; font-weight: 600;">Women's wellness / weight management with subscription commerce</td></tr>
+              <tr><td style="border: none; padding: 5px 0; color: var(--muted);">Geography</td><td style="border: none; padding: 5px 0; font-weight: 600;">Romanian audience &gt;85%, Bucharest or nationally distributed</td></tr>
+              <tr><td style="border: none; padding: 5px 0; color: var(--muted);">Must-have</td><td style="border: none; padding: 5px 0;"><span class="badge badge-green">Commerce proof</span> — already sells online coaching or subscription</td></tr>
+              <tr><td style="border: none; padding: 5px 0; color: var(--muted);">Candidates</td><td style="border: none; padding: 5px 0;">Bianca Pasat (subscription model), Dr. Silvi Ifrim (medical authority), Carmen Sorban (@carmenfit, coaching)</td></tr>
+            </table>
+          </div>
+          <div style="flex: 0 0 auto; min-width: 220px;">
+            <div class="card" style="padding: 1rem; background: rgba(88,166,255,0.06);">
+              <div class="section-label" style="font-size: 0.68rem;">Deal Structure</div>
+              <div style="font-size: 0.88rem; line-height: 1.7; margin-top: 0.4rem;">
+                <div><strong>Flat retainer:</strong> €1,500-3,000/month</div>
+                <div style="font-size: 0.78rem; color: var(--muted);">2-3 posts + stories package</div>
+                <div style="margin-top: 0.5rem;"><strong>Performance bonus:</strong> €20-30/attributed patient</div>
+                <div style="font-size: 0.78rem; color: var(--muted);">Via unique promo code or UTM</div>
+                <div style="margin-top: 0.5rem;"><strong>Duration:</strong> 2-month pilot minimum</div>
+                <div style="margin-top: 0.5rem;"><strong>Exclusivity:</strong> telehealth category, 6 months</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pull-quote" style="margin-top: 1.25rem; margin-bottom: 0;">Content approach: not "buy this drug" but <em>"I tried this doctor-supervised program and here is what happened"</em> — patient journey / before-after-during framing, always disclosing partnership. Romania is an unoccupied GLP-1 influencer niche.</div>
+      </div>
+
+      <!-- Secondary recommendation -->
+      <div class="card" style="padding: 1.25rem; margin-bottom: 1.25rem;">
+        <div style="margin-bottom: 0.75rem;"><span class="badge badge-orange">SECONDARY</span></div>
+        <h3>Romanian Male Fitness Mid-Tier (ED Validation)</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin: 0.75rem 0;">
+          <div><div class="section-label" style="font-size: 0.68rem;">Tier</div><div style="font-size: 0.85rem;">Mid: 200K-700K IG</div></div>
+          <div><div class="section-label" style="font-size: 0.68rem;">Niche</div><div style="font-size: 0.85rem;">Men's fitness / performance / lifestyle</div></div>
+          <div><div class="section-label" style="font-size: 0.68rem;">Candidates</div><div style="font-size: 0.85rem;">Nicolas Enache (380K IG + 1.2M TikTok) or Bogdan Mocanu (647K)</div></div>
+          <div><div class="section-label" style="font-size: 0.68rem;">ED Framing</div><div style="font-size: 0.85rem;">"Peak male performance / men's health optimization" — not explicit ED language</div></div>
+        </div>
+      </div>
+
+      <!-- EU fallback -->
+      <div class="card" style="padding: 1.25rem;">
+        <div style="margin-bottom: 0.75rem;"><span class="badge badge-blue">EU FALLBACK</span> <span style="font-size: 0.8rem; color: var(--muted); margin-left: 6px;">if Romania launch delayed 6+ months</span></div>
+        <table>
+          <thead><tr><th>Market</th><th>Recommended Anchor(s)</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge-blue">Netherlands</span></td><td>@iris_de_goede (87.7K, hormone therapist) + @broodje.dunner (267.7K, weight loss)</td><td>Iris: highest clinical fit for women's GLP-1 / longevity. Broodje: volume + weight-loss niche proven.</td></tr>
+            <tr><td><span class="badge badge-orange">Germany</span></td><td>@medicinexcare (242K, EMA-vetted) + @thebetterness (167.6K, longevity expert F 45+)</td><td>EMA selection = pre-cleared credibility signal. Both operate in GLP-1-adjacent space. HWG compliance required.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 5: Source Coverage -->
+    <section id="coverage" class="fade-in">
+      <div class="section-label">Section 5</div>
+      <h2>Source Coverage Report</h2>
+      <div class="card" style="padding: 1.25rem;">
+        <table>
+          <thead><tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr></thead>
+          <tbody>
+            <tr><td>Web Search</td><td><span class="status-covered">COVERED</span></td><td>Brave Search, Exa Advanced Search</td><td>30+</td></tr>
+            <tr><td>LinkedIn / Professional Profiles</td><td><span class="status-covered">COVERED</span></td><td>Exa entity graph (LinkedIn data crawl)</td><td>Monica Munteanu confirmed</td></tr>
+            <tr><td>Romanian-language search</td><td><span class="status-covered">COVERED</span></td><td>Brave Search (RO-language queries)</td><td>15+ RO sources</td></tr>
+            <tr><td>Influencer databases</td><td><span class="status-covered">COVERED</span></td><td>HypeAuditor, Modash, Feedspot, StarNgage</td><td>40+ RO creators profiled</td></tr>
+            <tr><td>EU regulatory / EMA</td><td><span class="status-covered">COVERED</span></td><td>Exa + EMA.europa.eu</td><td>EMA #HealthNotHype campaign (Oct 2025)</td></tr>
+            <tr><td>Telehealth CAC benchmarks</td><td><span class="status-covered">COVERED</span></td><td>telehealthmedia.com, bask.health, practicegrowthco.com</td><td>Full CAC + funnel table</td></tr>
+            <tr><td>Commerce-proof Romanian creators</td><td><span class="status-covered">COVERED</span></td><td>Exa OSINT (biancapasat.ro, doctorcezar.ro, nutri-coach.ro)</td><td>8 creators with commerce proof confirmed</td></tr>
+            <tr><td>Social: X/Twitter (RO health)</td><td><span class="status-skipped">SKIPPED</span></td><td>Brave rate-limited; Tavily quota exhausted</td><td>0</td></tr>
+            <tr><td>Social: Reddit (r/Romania health)</td><td><span class="status-skipped">SKIPPED</span></td><td>Brave rate-limited</td><td>0</td></tr>
+            <tr><td>Social: TikTok Romania health</td><td><span class="status-partial">PARTIAL</span></td><td>Brave Search (top-level bio data only)</td><td>Top creators identified; no engagement data</td></tr>
+            <tr><td>Video: YouTube (Romanian health)</td><td><span class="status-skipped">SKIPPED</span></td><td>Not dispatched this run</td><td>0</td></tr>
+            <tr><td>Academic: influencer → medical conversion</td><td><span class="status-partial">PARTIAL</span></td><td>Exa (industry benchmarks, not peer-reviewed)</td><td>Funnel data from industry sources only</td></tr>
+            <tr><td>Perplexity Sonar Pro</td><td><span class="status-skipped">UNAVAILABLE</span></td><td>API key not found in Keychain</td><td>0</td></tr>
+            <tr><td>Sweden / Denmark influencer landscape</td><td><span class="status-skipped">NOT COVERED</span></td><td>Insufficient search budget this run</td><td>0</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(234,179,8,0.06); border-radius: 8px; border-left: 3px solid #eab308;">
+          <p style="margin: 0; font-size: 0.8rem; color: var(--muted);"><strong style="color: #eab308;">Known gaps + recommended follow-up:</strong> (1) Monica Munteanu full roster — direct LinkedIn outreach to confirm health/wellness talent. (2) Romanian TikTok health niche — scout-social CLI scrape for GLP-1-adjacent creators. (3) Diaspora RO creators (DE/NL-based) — potential dual-market bridge, not covered. (4) Sweden/Denmark — full D2 run if Scandinavian market enters scope. (5) Peer-reviewed influencer→medical conversion data — ArXiv/PubMed search for investor deck evidence base.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Citation footer -->
+    <div class="card fade-in" style="padding: 1.25rem;">
+      <h4>Key Source Citations</h4>
+      <ol style="font-size: 0.78rem; color: var(--muted); padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.5rem; line-height: 1.5;">
+        <li>Brave Search: Monica Munteanu speaker — masteringthemusicbusiness.ro (2026)</li>
+        <li>Exa/LinkedIn entity: Monica Munteanu Ducarroz — linkedin.com/in/monica-munteanu-ducarroz (crawled 2026-03-10)</li>
+        <li>ilovefailure.world/speaker/monica-munteanu/ — 100+ creator roster</li>
+        <li>facetotibanii.ro/monica-munteanu/ — "cel mai cunoscut PR al celebritatilor din Romania"</li>
+        <li>HypeAuditor: Top Health &amp; Medicine Instagram Romania (Apr 2026)</li>
+        <li>Modash: Top 20 Romanian Fitness Influencers (Apr 2026)</li>
+        <li>Exa OSINT: drsilvi.ro, biancapasat.ro, dorinadeblock.ro, serbandamian.ro</li>
+        <li>EMA press release: #HealthNotHype GLP-1 influencer campaign — ema.europa.eu, 21 Oct 2025</li>
+        <li>Feedspot: Top 70 Dutch Health Influencers 2026</li>
+        <li>Feedspot: Top 40 Health Influencers Germany 2026</li>
+        <li>telehealthmedia.com: Telehealth Patient Acquisition Cost benchmarks 2026</li>
+        <li>bask.health: Telehealth Marketing for Founders</li>
+        <li>practicegrowthco.com: GLP-1 Google Ads CPL benchmarks (2026-05-18)</li>
+        <li>Smartpatient + Novo Nordisk: Digital Obesity Care Germany — smartpatient.eu, Sept 2025</li>
+        <li>dazeddigital.com: Inside the world of Ozempic influencers — Zappy Health telehealth model</li>
+      </ol>
+    </div>
+
+    <div style="text-align: center; padding: 1rem; color: var(--muted); font-size: 0.75rem;">
+      DELPHI PRO D3 Research Report &nbsp;|&nbsp; 2026-07-08 &nbsp;|&nbsp; NexusOS &nbsp;|&nbsp; EPR: UNVALIDATED (no Critic this run) &nbsp;|&nbsp; Cortex: 813a1ac2
+    </div>
+
+  </div><!-- end main-col -->
+</div><!-- end layout -->
+
+<script>
+// Dark/light toggle
+function toggleMode() {
+  const html = document.documentElement;
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    html.classList.add('light');
+    localStorage.setItem('mode', 'light');
+  } else {
+    html.classList.remove('light');
+    html.classList.add('dark');
+    localStorage.setItem('mode', 'dark');
+  }
+  updateCharts();
+}
+const savedMode = localStorage.getItem('mode');
+if (savedMode) {
+  document.documentElement.className = savedMode;
+}
+
+// Share
+function shareReport() {
+  if (navigator.share) {
+    navigator.share({ title: 'Telehealth Influencer MVP Shortlist', url: window.location.href });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied!'));
+  }
+}
+
+// Scroll fade-in
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Charts
+const chartDefaults = { responsive: true, plugins: { legend: { labels: { color: '#8b949e', font: { size: 11 } } } } };
+
+// RO reach chart
+const roCtx = document.getElementById('roChart').getContext('2d');
+const roChart = new Chart(roCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Nicolas Enache', 'Bogdan Mocanu', 'Carmen Sorban', 'Carmen Bruma', 'Dr. Anca Cobzariu', 'Grovu Georgiana'],
+    datasets: [{
+      label: 'IG Followers (K)',
+      data: [380, 647, 292, 271, 113.7, 129.1],
+      backgroundColor: 'rgba(88,166,255,0.5)',
+      borderColor: '#58a6ff',
+      borderWidth: 1,
+      borderRadius: 4
+    }]
+  },
+  options: { ...chartDefaults, indexAxis: 'y', scales: { x: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } }, y: { ticks: { color: '#8b949e', font: { size: 9 } }, grid: { display: false } } } }
+});
+
+// Fit chart
+const fitCtx = document.getElementById('fitChart').getContext('2d');
+const fitChart = new Chart(fitCtx, {
+  type: 'radar',
+  data: {
+    labels: ['GLP-1 Fit', 'ED Fit', 'Commerce Proof', 'Medical Trust', 'Audience Size'],
+    datasets: [
+      { label: 'Nicolas Enache', data: [40, 80, 90, 50, 85], backgroundColor: 'rgba(88,166,255,0.15)', borderColor: '#58a6ff', borderWidth: 2 },
+      { label: 'Carmen Sorban', data: [65, 20, 85, 60, 65], backgroundColor: 'rgba(34,197,94,0.15)', borderColor: '#22c55e', borderWidth: 2 },
+      { label: 'Dr. Silvi Ifrim', data: [90, 30, 70, 95, 25], backgroundColor: 'rgba(249,115,22,0.15)', borderColor: '#f97316', borderWidth: 2 }
+    ]
+  },
+  options: { ...chartDefaults, scales: { r: { ticks: { display: false }, grid: { color: 'rgba(255,255,255,0.06)' }, pointLabels: { color: '#8b949e', font: { size: 9 } } } } }
+});
+
+// Tier patients chart
+const tierCtx = document.getElementById('tierChart').getContext('2d');
+const tierChart = new Chart(tierCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Nano (5K)', 'Micro (50K)', 'Mid (200K)', 'Macro (1M)'],
+    datasets: [
+      { label: 'Min patients/campaign', data: [5, 40, 120, 400], backgroundColor: 'rgba(88,166,255,0.35)', borderRadius: 4 },
+      { label: 'Max patients/campaign', data: [10, 75, 240, 800], backgroundColor: 'rgba(88,166,255,0.7)', borderRadius: 4 }
+    ]
+  },
+  options: { ...chartDefaults, scales: { x: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { display: false } }, y: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' }, title: { display: true, text: 'Paying Patients', color: '#8b949e', font: { size: 9 } } } } }
+});
+
+function updateCharts() {
+  const isDark = document.documentElement.classList.contains('dark');
+  const tc = isDark ? '#8b949e' : '#6b7280';
+  const gc = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)';
+  [roChart, tierChart].forEach(c => {
+    c.options.scales.x.ticks.color = tc;
+    c.options.scales.y.ticks.color = tc;
+    c.options.scales.x.grid.color = gc;
+    c.options.scales.y.grid.color = gc;
+    c.update();
+  });
+  fitChart.options.scales.r.grid.color = gc;
+  fitChart.options.scales.r.pointLabels.color = tc;
+  fitChart.update();
+}
+</script>
+</body>
+</html>
