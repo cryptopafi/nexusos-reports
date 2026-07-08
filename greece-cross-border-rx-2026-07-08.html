@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Greece → Romania: Cross-Border Rx Delivery — Legal Verdict</title>
+<meta name="description" content="Can a Greek pharmacy lawfully mail prescription medicines to Romanian patients? DELPHI PRO D3 research verdict.">
+<meta property="og:title" content="Greece → Romania: Cross-Border Rx Delivery — Legal Verdict">
+<meta property="og:description" content="DELPHI PRO D3 | EPR 16/20 | Legal verdict on cross-border Rx mail-order from Greece to Romania">
+<meta property="og:type" content="article">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --card: #111118;
+    --card2: #16161f;
+    --accent: #58a6ff;
+    --accent-dim: rgba(88,166,255,0.15);
+    --accent-border: rgba(88,166,255,0.3);
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --border: rgba(255,255,255,0.08);
+    --glass: rgba(17,17,24,0.7);
+    --verdict-red: #ef4444;
+    --verdict-red-bg: rgba(239,68,68,0.1);
+    --verdict-red-border: rgba(239,68,68,0.3);
+    --verdict-green: #22c55e;
+    --verdict-green-bg: rgba(34,197,94,0.1);
+    --verdict-green-border: rgba(34,197,94,0.3);
+    --verdict-amber: #f59e0b;
+    --verdict-amber-bg: rgba(245,158,11,0.1);
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f0f4f8;
+    --card: #ffffff;
+    --card2: #f8fafc;
+    --accent: #2563eb;
+    --accent-dim: rgba(37,99,235,0.08);
+    --accent-border: rgba(37,99,235,0.25);
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: rgba(0,0,0,0.09);
+    --glass: rgba(255,255,255,0.85);
+    --verdict-red: #dc2626;
+    --verdict-red-bg: rgba(220,38,38,0.07);
+    --verdict-red-border: rgba(220,38,38,0.25);
+    --verdict-green: #16a34a;
+    --verdict-green-bg: rgba(22,163,74,0.07);
+    --verdict-green-border: rgba(22,163,74,0.25);
+    --verdict-amber: #d97706;
+    --verdict-amber-bg: rgba(217,119,6,0.07);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      --bg: #f0f4f8; --card: #ffffff; --card2: #f8fafc;
+      --accent: #2563eb; --accent-dim: rgba(37,99,235,0.08);
+      --accent-border: rgba(37,99,235,0.25); --text: #1e293b;
+      --text-muted: #64748b; --border: rgba(0,0,0,0.09);
+      --glass: rgba(255,255,255,0.85);
+      --verdict-red: #dc2626; --verdict-red-bg: rgba(220,38,38,0.07); --verdict-red-border: rgba(220,38,38,0.25);
+      --verdict-green: #16a34a; --verdict-green-bg: rgba(22,163,74,0.07); --verdict-green-border: rgba(22,163,74,0.25);
+      --verdict-amber: #d97706; --verdict-amber-bg: rgba(217,119,6,0.07);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.65;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* Layout */
+  .layout { display: flex; min-height: 100vh; }
+  .sidebar {
+    width: 280px; min-width: 260px;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    background: var(--card); border-right: 1px solid var(--border);
+    padding: 1.5rem 1.25rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .main { flex: 1; padding: 2rem 2.5rem; max-width: 920px; }
+
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; min-width: unset; position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); flex-direction: row; flex-wrap: wrap; gap: 0.75rem; }
+    .main { padding: 1.25rem 1rem; }
+    .sidebar-section { flex: 1 1 200px; }
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Verdict boxes */
+  .verdict-red {
+    background: var(--verdict-red-bg);
+    border: 1.5px solid var(--verdict-red-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .verdict-green {
+    background: var(--verdict-green-bg);
+    border: 1.5px solid var(--verdict-green-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .verdict-amber {
+    background: var(--verdict-amber-bg);
+    border: 1.5px solid rgba(245,158,11,0.3);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .verdict-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .verdict-label.red { color: var(--verdict-red); }
+  .verdict-label.green { color: var(--verdict-green); }
+  .verdict-label.amber { color: var(--verdict-amber); }
+
+  .verdict-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .verdict-title.red { color: var(--verdict-red); }
+  .verdict-title.green { color: var(--verdict-green); }
+
+  /* Typography */
+  h1 { font-size: 1.8rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--accent); display: flex; align-items: center; gap: 0.5rem; }
+  h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+  h4 { font-size: 0.9rem; font-weight: 600; margin: 1rem 0 0.4rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  p { margin-bottom: 0.75rem; color: var(--text); }
+  strong { font-weight: 600; }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; margin-bottom: 1.25rem; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+  th { background: var(--card2); color: var(--text-muted); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 0.9rem; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--accent-dim); transition: background 0.15s; }
+
+  /* Badges */
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    padding: 0.2rem 0.6rem; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+  }
+  .badge-blue { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); }
+  .badge-red { background: var(--verdict-red-bg); color: var(--verdict-red); border: 1px solid var(--verdict-red-border); }
+  .badge-green { background: var(--verdict-green-bg); color: var(--verdict-green); border: 1px solid var(--verdict-green-border); }
+  .badge-amber { background: var(--verdict-amber-bg); color: var(--verdict-amber); border: 1px solid rgba(245,158,11,0.3); }
+
+  /* Metadata sidebar items */
+  .meta-item { margin-bottom: 0.85rem; }
+  .meta-label { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.2rem; }
+  .meta-value { font-size: 0.87rem; font-weight: 500; color: var(--text); }
+  .meta-divider { border: none; border-top: 1px solid var(--border); margin: 0.75rem 0; }
+
+  /* TOC */
+  .toc-link {
+    display: block; padding: 0.3rem 0.5rem; border-radius: 6px;
+    font-size: 0.82rem; color: var(--text-muted); text-decoration: none;
+    transition: all 0.15s;
+  }
+  .toc-link:hover { background: var(--accent-dim); color: var(--accent); }
+  .toc-link.active { color: var(--accent); background: var(--accent-dim); }
+
+  /* Section anchors */
+  .section-anchor { scroll-margin-top: 1.5rem; }
+
+  /* Code */
+  code { font-family: 'JetBrains Mono', monospace; font-size: 0.82em; background: var(--card2); padding: 0.15em 0.45em; border-radius: 4px; color: var(--accent); }
+
+  /* Pull quote */
+  .pull-quote {
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background: var(--accent-dim);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  /* Layer blocker list */
+  .blocker-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .blocker-num {
+    flex-shrink: 0;
+    width: 1.75rem; height: 1.75rem;
+    border-radius: 50%;
+    background: var(--verdict-red-bg);
+    border: 1px solid var(--verdict-red-border);
+    color: var(--verdict-red);
+    font-size: 0.78rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Toggle */
+  .theme-toggle {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.35rem 0.75rem;
+    font-size: 0.8rem; cursor: pointer; color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Share button */
+  .share-btn {
+    background: var(--accent-dim); border: 1px solid var(--accent-border);
+    border-radius: 8px; padding: 0.4rem 0.9rem;
+    font-size: 0.8rem; font-weight: 600; cursor: pointer;
+    color: var(--accent); transition: all 0.2s; width: 100%;
+    margin-top: 0.5rem;
+  }
+  .share-btn:hover { background: var(--accent); color: #fff; }
+
+  /* EPR ring */
+  .epr-ring {
+    display: flex; align-items: center; justify-content: center;
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    background: var(--accent-dim);
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--accent);
+    margin: 0 auto 0.5rem;
+  }
+
+  /* Fade-in animation */
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.45s, transform 0.45s; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* Top bar */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--glass); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.65rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .progress-bar {
+    position: fixed; top: 0; left: 0; height: 2px;
+    background: var(--accent); z-index: 100;
+    transition: width 0.1s;
+  }
+
+  /* Counsel footer */
+  .counsel-footer {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Gap IDs */
+  .gap-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; color: var(--accent); font-weight: 600;
+  }
+
+  /* Comparison win/loss */
+  td.win { color: var(--verdict-green); font-weight: 600; }
+  td.loss { color: var(--verdict-red); font-weight: 600; }
+  td.neutral { color: var(--text-muted); }
+
+  @media print {
+    :root { --bg: #fff; --card: #fff; --text: #111; --text-muted: #555; --border: #ddd; --accent: #2563eb; }
+    body { background: #fff; }
+    .sidebar, .topbar, .progress-bar, .theme-toggle, .share-btn { display: none !important; }
+    .layout { display: block; }
+    .main { max-width: 100%; padding: 0; }
+    .card, .verdict-red, .verdict-green, .verdict-amber { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- Top bar -->
+<div class="topbar">
+  <span style="font-size:0.78rem;color:var(--text-muted);flex:1">
+    <span class="badge badge-blue">DELPHI PRO</span>
+    &nbsp;Greece → Romania: Cross-Border Rx Delivery
+  </span>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀ Light</button>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div>
+      <div class="epr-ring">16</div>
+      <div style="text-align:center;font-size:0.72rem;color:var(--text-muted)">EPR score / 20</div>
+    </div>
+
+    <hr class="meta-divider">
+
+    <div class="sidebar-section">
+      <div class="meta-item">
+        <div class="meta-label">Report Type</div>
+        <div class="meta-value">D3 Legal Research</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Date</div>
+        <div class="meta-value">2026-07-08</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Project</div>
+        <div class="meta-value">Telehealth Peptides</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Self-Grade</div>
+        <div class="meta-value">77 / 100</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Sources</div>
+        <div class="meta-value">T1: 10 &nbsp;|&nbsp; T2: 20+ &nbsp;|&nbsp; T3: 8</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Verdict</div>
+        <div><span class="badge badge-red">NOT LAWFUL</span></div>
+      </div>
+    </div>
+
+    <hr class="meta-divider">
+
+    <div class="sidebar-section">
+      <div class="meta-label" style="margin-bottom:0.5rem">Contents</div>
+      <nav>
+        <a class="toc-link" href="#verdict">Executive Verdict</a>
+        <a class="toc-link" href="#s1">1. Greek Pharmacy Law</a>
+        <a class="toc-link" href="#s2">2. EU Legal Mechanisms</a>
+        <a class="toc-link" href="#s3">3. Romania Receiving Rules</a>
+        <a class="toc-link" href="#s4">4. Greece as Tele-Base</a>
+        <a class="toc-link" href="#s5">5. GR vs NL Comparison</a>
+        <a class="toc-link" href="#s6">6. Reconciliation (v4)</a>
+        <a class="toc-link" href="#s7">7. Standing Gaps</a>
+        <a class="toc-link" href="#s8">8. Source Coverage</a>
+      </nav>
+    </div>
+
+    <hr class="meta-divider">
+
+    <div>
+      <div class="meta-label" style="margin-bottom:0.35rem">Tags</div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.3rem">
+        <span class="badge badge-blue">telehealth</span>
+        <span class="badge badge-blue">EU pharmacy</span>
+        <span class="badge badge-blue">Greece</span>
+        <span class="badge badge-blue">Romania</span>
+        <span class="badge badge-blue">cross-border Rx</span>
+      </div>
+    </div>
+
+    <div style="margin-top:auto">
+      <button class="share-btn" onclick="shareReport()">&#x1F517; Copy Share Link</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Header -->
+    <div class="fade-in" style="margin-bottom:2rem">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem">
+        <span class="badge badge-blue">DELPHI PRO D3</span>
+        <span class="badge badge-red">EPR 16/20</span>
+        <span style="font-size:0.78rem;color:var(--text-muted)">2026-07-08</span>
+      </div>
+      <h1>Greece → Romania:<br>Cross-Border Rx Delivery</h1>
+      <p style="font-size:1.05rem;color:var(--text-muted);margin-top:0.4rem">
+        Can a Greek pharmacy lawfully mail prescription medicines to Romanian patients?
+      </p>
+    </div>
+
+    <!-- ============ EXECUTIVE VERDICT ============ -->
+    <div id="verdict" class="section-anchor fade-in">
+      <div class="verdict-red">
+        <div class="verdict-label red">&#x26D4; Executive Verdict &mdash; Negative</div>
+        <div class="verdict-title red">Mail-order of prescription-only medicines from Greece to Romanian patients is not lawful under any existing EU or national mechanism.</div>
+        <p style="font-size:0.9rem;margin-top:0.75rem;margin-bottom:0">
+          The arrangement fails at three independent legal layers. Each is individually sufficient to block it.
+        </p>
+      </div>
+
+      <!-- Three blocking layers -->
+      <div class="card" style="margin-bottom:1.5rem">
+        <h3 style="margin-top:0;margin-bottom:1rem">Three Independent Blocking Layers</h3>
+        <div class="blocker-item">
+          <div class="blocker-num">1</div>
+          <div>
+            <strong>EU sending-side:</strong> Directive 2011/62/EU Article 85c(3) — member states may restrict or prohibit distance-selling of POM (prescription-only medicines). Greece has exercised this restriction.
+          </div>
+        </div>
+        <div class="blocker-item">
+          <div class="blocker-num">2</div>
+          <div>
+            <strong>Greece national:</strong> Greek online pharmacy framework (via 2016 ministerial circular) was not substantially activated for POM as of 2022 and remains inactive for outbound cross-border mail-order. No cross-border outbound POM mail provision identified.
+          </div>
+        </div>
+        <div class="blocker-item" style="border-bottom:none">
+          <div class="blocker-num">3</div>
+          <div>
+            <strong>Romania receiving-side:</strong> Romanian Law of Pharmacy 266/2008 + ANMDM: dispensing occurs only through registered community pharmacies. &ldquo;Buying prescription medicines from unregistered foreign online sources is illegal.&rdquo; (ANMDM official; ExpatFocus Romania 2025)
+          </div>
+        </div>
+      </div>
+
+      <!-- Greek pharmacy claim -->
+      <div class="verdict-amber">
+        <div class="verdict-label amber">&#x26A0; Note on Greek Pharmacy Verbal Claim</div>
+        <p style="margin-bottom:0;font-size:0.9rem">
+          The verbal claim from the Greek pharmacy (&ldquo;we can deliver to Romania&rdquo;) most likely reflects either (a) misreading of 2011/24/EU prescription recognition (which covers in-person dispensing, not mail-order), (b) reference to OTC products only, or (c) an informal/grey-market arrangement. It does not reflect a verified lawful export mechanism for POM.
+        </p>
+      </div>
+
+      <!-- Route 2 -->
+      <div class="verdict-green">
+        <div class="verdict-label green">&#x2714; Viable Architecture: Route 2</div>
+        <div class="verdict-title green">Greek-licensed tele-doctor &rarr; e-prescription &rarr; ANMDM-registered Romanian pharmacy &rarr; Romanian patient</div>
+        <p style="font-size:0.9rem;margin-top:0.75rem;margin-bottom:0">
+          A viable lawful route exists via a different architecture. Greek-licensed telemedicine physician issues an EU-format e-prescription. The Romanian patient presents it at an ANMDM-registered Romanian pharmacy (in-person or domestic online delivery within Romania). This is Route 2 and is the commercially viable, SaaS-enabler-compatible architecture.
+        </p>
+      </div>
+    </div>
+
+    <!-- ============ S1: GREEK PHARMACY LAW ============ -->
+    <section id="s1" class="section-anchor fade-in">
+      <h2><span style="color:var(--text-muted);font-weight:400">01</span> Greek Pharmacy Cross-Border Dispensing Law</h2>
+
+      <h3>The Controlling EU Instrument: Directive 2011/62/EU</h3>
+      <p>A precision error common in cross-border pharmacy discussions is attributing the mail-order framework to Directive 2011/24/EU (patient rights). The operative instrument governing online pharmacy distance-selling is <strong>Directive 2011/62/EU</strong> (Falsified Medicines Directive), specifically Article 85c(3):</p>
+      <div class="pull-quote">&ldquo;Member States may restrict or prohibit the distance selling of medicinal products subject to prescription.&rdquo;</div>
+      <p>This is an explicit opt-out. Each EU member state decides whether to permit or prohibit mail-order of POM. There is no EU-wide mandate that pharmacies must (or may) mail prescription medicines across borders.</p>
+
+      <h3>Greek Implementation and EOF Status</h3>
+      <p>Greece transposed the online pharmacy framework via Ministerial Circular &Gamma;5(&beta;)/&Gamma;.&Pi;.&omicron;&iota;&kappa;.20293/2016. A licensed Greek pharmacy may apply to operate an online store through the Hellenic Pharmaceutical Association (&Pi;&Phi;&Sigma;).</p>
+      <div class="verdict-red" style="margin:1rem 0">
+        <div class="verdict-label red">Critical Finding</div>
+        <p style="margin-bottom:0;font-size:0.9rem">The Greek National Transparency Authority (EAD) audit (September 2021 &ndash; February 2022, covering 250+ websites) found that the online pharmacy provision <strong>&ldquo;had not been substantially activated, due to an institutional request by the &Pi;&Phi;&Sigma; for the establishment of restrictions on categories of medicines that could be sold via the internet.&rdquo;</strong> The 2026 IBA Healthcare Survey confirms no cross-border outbound POM mail-order provision was identified.</p>
+      </div>
+      <p><strong>Net Greek position:</strong> No lawful basis found for a Greek pharmacy to mail POM (sildenafil, tadalafil, semaglutide, tirzepatide) to a Romanian patient. Cross-border outbound mail-order for POM is not an activated, authorized category.</p>
+      <p style="font-size:0.85rem;color:var(--text-muted)"><strong>Counsel gate:</strong> An EOF circular dated 2023&ndash;2026 could theoretically have updated this position. No such circular was identified in this research. Greek pharmaceutical counsel should confirm current EOF stance before any commercial decision.</p>
+    </section>
+
+    <!-- ============ S2: EU LEGAL MECHANISMS ============ -->
+    <section id="s2" class="section-anchor fade-in">
+      <h2><span style="color:var(--text-muted);font-weight:400">02</span> The EU Legal Mechanisms: Three-Way Distinction</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Mechanism</th>
+              <th>What It Covers</th>
+              <th>What It Does NOT Cover</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A. Directive 2011/24/EU</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Patients' Rights</span></td>
+              <td>Patient travels to Greece, sees Greek doctor, fills Rx in-person in Greece, returns to Romania with medicines</td>
+              <td>Does NOT require Greek pharmacy to mail medicines to patient remaining in Romania. Recital 17 explicitly carves out internet/distance-selling.</td>
+              <td><span class="badge badge-amber">Lawful but not mail-order</span></td>
+            </tr>
+            <tr>
+              <td><strong>B. MyHealth@EU / epSOS</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">e-Prescription interoperability</span></td>
+              <td>Romanian patient physically present at Greek pharmacy can have Romanian e-prescription recognised electronically (Greece participant as of Aug 2024)</td>
+              <td>Requires patient physical presence at dispensing pharmacy. Does NOT enable unilateral cross-border mail-order. (JMIR 2023, DOI: 10.2196/42453)</td>
+              <td><span class="badge badge-amber">Lawful but presence-dependent</span></td>
+            </tr>
+            <tr>
+              <td><strong>C. Parallel Import</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Dir 2001/83/EC Art. 76&ndash;85</span></td>
+              <td>B2B pharmaceutical trade between licensed wholesale distributors</td>
+              <td>Requires wholesale distributor licence + import authorisation in destination country. Not a patient-to-pharmacy telehealth route.</td>
+              <td><span class="badge badge-red">Not applicable</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pull-quote">
+        Mechanism A (patient travel) is lawful but commercially unscalable. Mechanism B (MyHealth@EU) is lawful but patient-presence-dependent. Mechanism C (parallel import) is not applicable to retail pharmacy-patient supply. There is no lawful mechanism by which a Greek pharmacy can mail POM directly to a Romanian patient under current EU and national law.
+      </div>
+    </section>
+
+    <!-- ============ S3: ROMANIA RECEIVING-SIDE ============ -->
+    <section id="s3" class="section-anchor fade-in">
+      <h2><span style="color:var(--text-muted);font-weight:400">03</span> Romania&rsquo;s Receiving-Side Rules: Is the Ban Symmetric?</h2>
+
+      <p><strong>Romanian Law of Pharmacy No. 266/2008 (ANMDM official):</strong> Pharmaceutical assistance is ensured through community pharmacies and drugstores. Prescription medicine dispensing occurs through registered community pharmacies only. There is no provision for dispensing by foreign pharmacies to Romanian residents.</p>
+
+      <div class="verdict-red" style="margin:1rem 0">
+        <div class="verdict-label red">ANMDM Official Position</div>
+        <p style="margin-bottom:0;font-size:0.9rem">&ldquo;Buying prescription medicines from unregistered foreign online sources is illegal and poses genuine health risks.&rdquo; (ANMDM website; ExpatFocus Romania 2025)</p>
+      </div>
+
+      <h3>The Ban is Structural, Not Just Operator-Level</h3>
+      <p>The Romania ban operates at multiple independent points:</p>
+      <ol style="padding-left:1.5rem;margin-bottom:1rem">
+        <li style="margin-bottom:0.4rem">The sending pharmacy has no authorisation to mail POM to Romanian residents (no Romanian wholesale/dispensing licence)</li>
+        <li style="margin-bottom:0.4rem">ANMDM does not authorise foreign pharmacies to supply Romanian patients remotely</li>
+        <li style="margin-bottom:0.4rem">Romanian customs/postal regulations: prescription medicines from non-authorised foreign pharmacies can be seized</li>
+        <li style="margin-bottom:0.4rem">The individual patient receiving such a shipment is not protected by any Romanian legal safe harbour</li>
+      </ol>
+
+      <div class="verdict-amber">
+        <div class="verdict-label amber">Key Distinction from NL&rarr;RO Question</div>
+        <p style="margin-bottom:0;font-size:0.9rem">
+          The NL&rarr;Romania finding in the v4 model was correct. The Netherlands' permissive domestic mail-order framework does not help because Romania's receiving-side rules block the delivery regardless of the sending country. <strong>Greece&rarr;Romania faces the identical Romania-side wall.</strong> The sending country (NL vs GR) makes no difference if Romania does not authorize inbound foreign pharmacy deliveries. <strong>There is no legal distinction that makes Greece&rarr;Romania delivery lawful where NL&rarr;Romania was flagged as blocked.</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ S4: GREECE AS TELE-BASE ============ -->
+    <section id="s4" class="section-anchor fade-in">
+      <h2><span style="color:var(--text-muted);font-weight:400">04</span> Greece as Doctor / Telemedicine Base for Romanian Patients</h2>
+
+      <h3>Greece&rsquo;s New Telemedicine Legal Framework (2024&ndash;2025)</h3>
+
+      <div class="card" style="margin:1rem 0">
+        <div style="display:flex;flex-direction:column;gap:0.75rem">
+          <div style="display:flex;align-items:flex-start;gap:0.75rem">
+            <span class="badge badge-green" style="flex-shrink:0;margin-top:0.15rem">NEW</span>
+            <div><strong>Law 5129/2024, Article 66</strong> &mdash; Greece's first explicit telemedicine legalisation. Formally authorises the use of digital applications for medical examination and procedures, amending the Code of Medical Ethics (Law 3418/2005).</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.75rem">
+            <span class="badge badge-green" style="flex-shrink:0;margin-top:0.15rem">NEW</span>
+            <div><strong>Ministerial Decision YA 7686/2025 (&#934;&#917;&#922; 1083/&#914;/10-3-2025)</strong> &mdash; March 2025 decision establishing terms, conditions, and procedures for operating a telemedicine application.</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.75rem">
+            <span class="badge badge-green" style="flex-shrink:0;margin-top:0.15rem">TAX</span>
+            <div><strong>E.2008/2026 (Greek Tax Authority, Feb 2026)</strong> &mdash; VAT-exempt confirmation for telemedicine services with therapeutic purpose (diagnosis, treatment, prevention). Equivalent to in-person medical services.</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Route 2: The Viable Architecture</h3>
+      <div class="verdict-green">
+        <div class="verdict-label green">&#x2714; Viable: Route 2 Architecture</div>
+        <p style="font-size:0.9rem;margin-top:0.5rem;margin-bottom:0.5rem">A Greek-licensed physician may conduct telemedicine consultations and issue e-prescriptions digitally under Law 5129/2024. The Romanian patient can then present the EU cross-border format prescription (Directive 2012/52/EU: patient name, DoB, prescriber details, INN, format, strength, dosage, signature) at:</p>
+        <ol style="padding-left:1.5rem;font-size:0.9rem;margin-bottom:0">
+          <li style="margin-bottom:0.35rem"><strong>A physical Romanian pharmacy</strong> (in-person, lawful under 2011/24/EU)</li>
+          <li><strong>An ANMDM-registered Romanian online pharmacy</strong> (domestic delivery within Romania, lawful if the pharmacy is registered)</li>
+        </ol>
+      </div>
+
+      <h3>Language Considerations</h3>
+      <p>Greek medical practice is primarily in Greek. For a Romania-first patient base, a Greek doctor network would need to operate in Romanian or English. This is a practical, not legal, constraint. The cross-border prescription format is language-neutral (uses INN generic names). <strong>This is an operational hurdle, not a legal blocker.</strong></p>
+    </section>
+
+    <!-- ============ S5: GR vs NL COMPARISON ============ -->
+    <section id="s5" class="section-anchor fade-in">
+      <h2><span style="color:var(--text-muted);font-weight:400">05</span> Greece vs Netherlands as EU Base &mdash; Full Comparison</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Netherlands (v4 chosen)</th>
+              <th>Greece</th>
+              <th>Winner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mail-order pharmacy (POM, domestic)</strong></td>
+              <td>Lawful + established (DocMorris model; IGJ-licensed)</td>
+              <td>Stalled for POM: framework exists but not substantially activated (&#928;&#934;&#931; lobby)</td>
+              <td class="win">NL wins</td>
+            </tr>
+            <tr>
+              <td><strong>Cross-border mail-order to Romania</strong></td>
+              <td>Not lawful &mdash; blocked by Romania's receiving-side rules</td>
+              <td>Not lawful &mdash; same Romania block + Greek law non-activation</td>
+              <td class="neutral">Equal: both blocked</td>
+            </tr>
+            <tr>
+              <td><strong>Cross-border mail-order to other EU states</strong></td>
+              <td>NL can mail to permissive EU states (DE, SE, DK, FI, EE, LT)</td>
+              <td>Unlikely &mdash; Greek framework not activated for outbound POM</td>
+              <td class="win">NL wins</td>
+            </tr>
+            <tr>
+              <td><strong>Telemedicine legal framework</strong></td>
+              <td>No dedicated licensing law; permissive by default; IGJ supervises</td>
+              <td>New framework (Law 5129/2024 + YA 7686/2025); comprehensive but new (Mar 2025)</td>
+              <td class="win">NL slight edge (proven); GR catching up</td>
+            </tr>
+            <tr>
+              <td><strong>Compounding pharmacy ecosystem</strong></td>
+              <td>Fagron HQ Rotterdam; strong EU compounding; GMP-certified; NL pharma export tradition</td>
+              <td>Greek compounding exists; smaller market; no Fagron equivalent</td>
+              <td class="win">NL wins significantly</td>
+            </tr>
+            <tr>
+              <td><strong>Corporate income tax (CIT)</strong></td>
+              <td>25.8% (19% on first &euro;245k profit)</td>
+              <td><strong>22% flat</strong></td>
+              <td class="loss">Greece +3.8pp advantage</td>
+            </tr>
+            <tr>
+              <td><strong>VAT on telemedicine</strong></td>
+              <td>21% standard VAT; medical services may be exempt but commercial telehealth platforms face complexity</td>
+              <td><strong>0% VAT</strong> on telemedicine with therapeutic purpose (E.2008/2026 ruling)</td>
+              <td class="loss">Greece wins</td>
+            </tr>
+            <tr>
+              <td><strong>English-language regulatory environment</strong></td>
+              <td>Excellent &mdash; IGJ, CBG documents in English; NL is EU pharma hub</td>
+              <td>Lower &mdash; EOF, &#928;&#934;&#931;, EOPYY documents primarily in Greek</td>
+              <td class="win">NL wins significantly</td>
+            </tr>
+            <tr>
+              <td><strong>Doctor network for Romanian patients</strong></td>
+              <td>NL doctors (Dutch-speaking); require Romanian-language coverage separately</td>
+              <td>Greek doctors; require Romanian coverage; closer geographically to Balkans</td>
+              <td class="neutral">Roughly equal</td>
+            </tr>
+            <tr>
+              <td><strong>EU regulatory relationships</strong></td>
+              <td>NL: EMA HQ; extensive regulatory intelligence; pharma lobbying</td>
+              <td>GR: EOPYY; EOF; less EU pharma regulatory influence</td>
+              <td class="win">NL wins</td>
+            </tr>
+            <tr>
+              <td><strong>Time-to-operate</strong></td>
+              <td>Existing regulated framework; setup weeks to months</td>
+              <td>New telemedicine law (Mar 2025); operational procedures still being established</td>
+              <td class="win">NL faster</td>
+            </tr>
+            <tr>
+              <td><strong>Complementary role (Route 2)</strong></td>
+              <td>Best choice for pharmacy and compounding base</td>
+              <td>Viable as telemedicine/medical consultation layer if Greek doctor network assembled</td>
+              <td class="neutral">Complementary: GR=doctor base; NL=pharmacy base</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pull-quote">
+        <strong>Summary judgment: Netherlands remains the superior EU operating base.</strong> Greece is not a better EU base than Netherlands. It is a potential complementary medical consultation layer (Greek doctors performing EU-compliant tele-consultations) within a NL-pharmacy-anchored model &mdash; provided a Romanian-language doctor network is assembled and the cross-border prescribing framework is confirmed with counsel.
+      </div>
+
+      <!-- Comparison chart -->
+      <div class="card" style="padding:1.25rem">
+        <h3 style="margin-top:0;margin-bottom:1rem;font-size:0.9rem">Key Metrics at a Glance</h3>
+        <canvas id="comparisonChart" height="200"></canvas>
+      </div>
+    </section>
+
+    <!-- ============ S6: RECONCILIATION ============ -->
+    <section id="s6" class="section-anchor fade-in">
+      <h2><span style="color:var(--text-muted);font-weight:400">06</span> Reconciliation with v4 Model (Netherlands EU Base)</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>v4 Finding</th>
+              <th>Greece Research Finding</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Netherlands = EU pharmacy/compounding base</td>
+              <td>Confirmed as superior choice</td>
+              <td><span class="badge badge-green">v4 CONFIRMED</span></td>
+            </tr>
+            <tr>
+              <td>Romania = patient/audience market, no inbound Rx mail-order</td>
+              <td>Romania ban is symmetric; neither NL nor GR can lawfully mail POM to Romania</td>
+              <td><span class="badge badge-green">v4 CONFIRMED + EXTENDED</span></td>
+            </tr>
+            <tr>
+              <td>&ldquo;Romanian patients collect in person&rdquo;</td>
+              <td>Correct model: ANMDM-registered pharmacy in Romania fills prescription locally</td>
+              <td><span class="badge badge-green">v4 CONFIRMED</span></td>
+            </tr>
+            <tr>
+              <td>ED + GLP-1 = valid product scope</td>
+              <td>Both require POM dispensing; semaglutide/tirzepatide may face shortage-order restrictions in GR and RO</td>
+              <td><span class="badge badge-amber">v4 CONFIRMED with caveat</span></td>
+            </tr>
+            <tr>
+              <td>Rx peptides HARD-EXCLUDED</td>
+              <td>Unchanged</td>
+              <td><span class="badge badge-green">v4 CONFIRMED</span></td>
+            </tr>
+            <tr>
+              <td>SaaS enabler not drug-marketer</td>
+              <td>Route 2 (Greek tele-doctor + Romanian pharmacy partner) is the SaaS-enabler-compatible architecture</td>
+              <td><span class="badge badge-green">v4 CONSISTENT</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>What Greece Adds to the v4 Model</h3>
+      <ol style="padding-left:1.5rem">
+        <li style="margin-bottom:0.5rem"><strong>Greek doctor network as medical consultation layer</strong> &mdash; Law 5129/2024 + YA 7686/2025 gives legal cover from March 2025.</li>
+        <li style="margin-bottom:0.5rem"><strong>22% CIT and VAT-exempt telemedicine</strong> &mdash; if the corporate entity for medical services is Greek-registered, this may reduce tax burden on the consultation revenue stream.</li>
+        <li style="margin-bottom:0.5rem"><strong>Proximity arbitrage</strong> &mdash; Greece is geographically and culturally closer to Romania/Balkans; potentially easier to recruit bilingual doctors and establish patient trust.</li>
+      </ol>
+      <p><strong>What Greece does NOT add:</strong> Any pharmacy fulfillment advantage. The mail-order gap is a Romania-side block, not a sending-country variable.</p>
+    </section>
+
+    <!-- ============ S7: STANDING GAPS ============ -->
+    <section id="s7" class="section-anchor fade-in">
+      <h2><span style="color:var(--text-muted);font-weight:400">07</span> Standing Gaps &mdash; Counsel Gates</h2>
+      <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1rem">These items remain unresolved and require formal legal opinion before any commercial decision on the Greece route.</p>
+
+      <div style="display:flex;flex-direction:column;gap:0.75rem">
+
+        <div class="card" style="margin-bottom:0;padding:1rem 1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:0.75rem">
+            <div>
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+                <span class="gap-id">GR-001</span>
+                <span class="badge badge-amber">LOW prob / HIGH impact</span>
+              </div>
+              <strong style="font-size:0.9rem">Current Greek EOF position on online POM dispensing (2024&ndash;2026)</strong>
+              <p style="font-size:0.85rem;margin-bottom:0;margin-top:0.25rem;color:var(--text-muted)">Post-2022 acceleration may have changed status. Gate: Greek pharmaceutical counsel.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:0;padding:1rem 1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:0.75rem">
+            <div>
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+                <span class="gap-id">GR-002</span>
+                <span class="badge badge-red">MEDIUM prob / HIGH impact</span>
+              </div>
+              <strong style="font-size:0.9rem">GLP-1 shortage export restrictions</strong>
+              <p style="font-size:0.85rem;margin-bottom:0;margin-top:0.25rem;color:var(--text-muted)">EOF and ANMDM may have active export/import restriction orders on semaglutide/tirzepatide. Confirmed shortage conditions exist in both GR and RO. Gate: Greek pharma counsel + ANMDM inquiry.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:0;padding:1rem 1.25rem">
+          <div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+              <span class="gap-id">GR-003</span>
+              <span class="badge badge-amber">LOW uncertainty</span>
+            </div>
+            <strong style="font-size:0.9rem">Romanian ANMDM primary implementing order for online pharmacy authorization</strong>
+            <p style="font-size:0.85rem;margin-bottom:0;margin-top:0.25rem;color:var(--text-muted)">Specific order text needed to confirm the exact scope of the inbound foreign pharmacy ban. Gate: Romanian pharmaceutical counsel.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:0;padding:1rem 1.25rem">
+          <div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+              <span class="gap-id">GR-004</span>
+              <span class="badge badge-red">MEDIUM uncertainty / CRITICAL</span>
+            </div>
+            <strong style="font-size:0.9rem">Cross-border prescribing: Romanian recognition of Greek tele-prescriptions</strong>
+            <p style="font-size:0.85rem;margin-bottom:0;margin-top:0.25rem;color:var(--text-muted)">Whether Romania will accept a Greek doctor's e-prescription issued to a Romanian patient in Romania, for dispensing at a Romanian-registered pharmacy. Gate: Greek + Romanian counsel jointly.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:0;padding:1rem 1.25rem">
+          <div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+              <span class="gap-id">GR-005</span>
+              <span class="badge badge-amber">MEDIUM uncertainty</span>
+            </div>
+            <strong style="font-size:0.9rem">Greek Medical Association position on treating foreign EU patients via telemedicine</strong>
+            <p style="font-size:0.85rem;margin-bottom:0;margin-top:0.25rem;color:var(--text-muted)">Whether the Medical Association has guidance or restrictions on cross-border telemedicine prescribing. Gate: Greek Medical Association inquiry.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:0;padding:1rem 1.25rem">
+          <div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+              <span class="gap-id">GR-006</span>
+              <span class="badge badge-amber">MEDIUM complexity</span>
+            </div>
+            <strong style="font-size:0.9rem">Greek entity structure for mixed telemedicine + SaaS revenue</strong>
+            <p style="font-size:0.85rem;margin-bottom:0;margin-top:0.25rem;color:var(--text-muted)">Whether a Greek entity capturing VAT-exempt telemedicine fees and taxable SaaS platform fees requires a single or dual entity structure. Gate: Greek tax + corporate counsel.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:0;padding:1rem 1.25rem">
+          <div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem">
+              <span class="gap-id">GR-007</span>
+              <span class="badge badge-blue">LOW probability / model-changing if true</span>
+            </div>
+            <strong style="font-size:0.9rem">Sildenafil/tadalafil OTC reclassification</strong>
+            <p style="font-size:0.85rem;margin-bottom:0;margin-top:0.25rem;color:var(--text-muted)">Some EU states have moved low-dose sildenafil to pharmacist-supervised OTC. If Greece or Romania does so, the POM restriction may not apply to ED products at low dose. Gate: Greek and Romanian pharmacy counsel.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ S8: SOURCE COVERAGE ============ -->
+    <section id="s8" class="section-anchor fade-in">
+      <h2><span style="color:var(--text-muted);font-weight:400">08</span> Source Coverage Report</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Channels Used</th>
+              <th>Key Sources</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Web Search (Exa, Brave)</td>
+              <td><span class="badge badge-green">COVERED</span></td>
+              <td>Exa neural search, Brave web</td>
+              <td>EUR-Lex, IBA 2026 Greece, EOPYY NCP, Europa.eu (20+)</td>
+            </tr>
+            <tr>
+              <td>Academic</td>
+              <td><span class="badge badge-green">COVERED</span></td>
+              <td>OpenAlex, ArXiv, JMIR</td>
+              <td>JMIR 2023 (MyHealth@EU), EurPubHealth 2013, ScienceDirect 2024 (8)</td>
+            </tr>
+            <tr>
+              <td>Legal Primary Sources</td>
+              <td><span class="badge badge-green">COVERED</span></td>
+              <td>EUR-Lex, CURIA, ANM.ro, EAD.gr</td>
+              <td>Dir 2011/62, Dir 2011/24, Dir 2012/52, Law 266/2008 RO, EAD audit (10)</td>
+            </tr>
+            <tr>
+              <td>News / Recent Regulatory</td>
+              <td><span class="badge badge-green">COVERED</span></td>
+              <td>Exa, law firm alerts</td>
+              <td>Potamitis Vekris 2025, Koutalidis 2025, VATupdate 2026, TaxHeaven 2026 (6)</td>
+            </tr>
+            <tr>
+              <td>ECJ Case Law</td>
+              <td><span class="badge badge-green">COVERED</span></td>
+              <td>EUR-Lex CURIA</td>
+              <td>C-322/01 (DocMorris 2003), C-517/23 (DocMorris 27 Feb 2025), C-222/18 (VIPA 2019) (3)</td>
+            </tr>
+            <tr>
+              <td>Deep Research</td>
+              <td><span class="badge badge-amber">FALLBACK</span></td>
+              <td>Perplexity CLI (rate-limited) &rarr; Opus CLI fallback</td>
+              <td>Findings confirmed via Opus CLI</td>
+            </tr>
+            <tr>
+              <td>Social (Reddit/HN)</td>
+              <td><span class="badge badge-blue">SEARCHED</span></td>
+              <td>Scout-social (Brave fallback)</td>
+              <td>No material community discussions found on this specialist legal question</td>
+            </tr>
+            <tr>
+              <td>Video / Finance / Social Media</td>
+              <td><span class="badge badge-blue">SKIPPED</span></td>
+              <td>&mdash;</td>
+              <td>Not relevant to legal regulatory research</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Key Legal Instruments -->
+      <h3>Key Legal Instrument Reference</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Instrument</th><th>Relevance</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>Dir 2011/24/EU</code></td><td>Cross-border healthcare rights; Article 11 prescription recognition; Recital 17 carves out mail-order</td></tr>
+            <tr><td><code>Dir 2011/62/EU</code></td><td>Amended Dir 2001/83 Article 85c: member states may restrict/prohibit POM distance-selling</td></tr>
+            <tr><td><code>Dir 2012/52/EU</code></td><td>Implementing Dir on cross-border prescription format requirements</td></tr>
+            <tr><td><code>Dir 2001/83/EC</code></td><td>EU Code on medicinal products; marketing authorisation; dispensing categories</td></tr>
+            <tr><td><code>Dir 2005/36/EC</code></td><td>Professional recognition (doctor licences across EU)</td></tr>
+            <tr><td><code>Greek Law 5129/2024 Art 66</code></td><td>First comprehensive Greek telemedicine legalisation</td></tr>
+            <tr><td><code>YA 7686/2025</code></td><td>Greek Ministerial Decision implementing telemedicine application rules (March 2025)</td></tr>
+            <tr><td><code>E.2008/2026</code></td><td>Greek Tax Authority: VAT exemption for telemedicine with therapeutic purpose</td></tr>
+            <tr><td><code>Romanian Law 266/2008</code></td><td>Romanian pharmacy dispensing requires registered community pharmacies</td></tr>
+            <tr><td><code>ECJ C-322/01</code></td><td>DocMorris 2003: destination-state restrictions on POM mail-order upheld</td></tr>
+            <tr><td><code>ECJ C-517/23</code></td><td>DocMorris/Apothekerkammer (27 Feb 2025): 2025 judgment confirming destination-state advertising restrictions</td></tr>
+            <tr><td><code>ECJ C-222/18</code></td><td>VIPA 2019: cross-border prescription dispensing &mdash; member state discretion confirmed</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Counsel footer -->
+    <div class="counsel-footer fade-in">
+      <strong>COUNSEL CAVEAT &mdash; IRON LAW:</strong> Every legal statement in this document is illustrative research output only, not legal advice. EU pharmaceutical, healthcare, and telehealth law is member-state-fragmented, actively evolving, and jurisdiction-specific. No commercial or clinical decision should be taken without formal opinion from licensed counsel in both Greece and Romania. All references to &ldquo;lawful&rdquo; or &ldquo;unlawful&rdquo; express the weight of evidence from public sources as of July 2026, not a legal conclusion.
+      <br><br>
+      <em>Self-grade: 77/100 &nbsp;|&nbsp; Research depth: D3 &nbsp;|&nbsp; EPR: 16/20 &nbsp;|&nbsp; Dated: 2026-07-08 &nbsp;|&nbsp; Generated by DELPHI PRO via NexusOS shared-reporter</em>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const root = document.documentElement;
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeToggle').textContent = isDark ? '☾ Dark' : '☀ Light';
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  updateChart();
+}
+
+// Load saved theme
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('themeToggle').textContent = saved === 'light' ? '☾ Dark' : '☀ Light';
+  }
+})();
+
+// Share
+function shareReport() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'Greece → Romania: Cross-Border Rx Delivery — Legal Verdict', url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.querySelector('.share-btn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = orig, 2000);
+    });
+  }
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const el = document.getElementById('progress');
+  const total = document.body.scrollHeight - window.innerHeight;
+  el.style.width = (window.scrollY / total * 100) + '%';
+});
+
+// Fade-in
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// TOC active
+const sections = document.querySelectorAll('.section-anchor');
+const tocLinks = document.querySelectorAll('.toc-link');
+const tocObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const id = e.target.id;
+      const link = document.querySelector(`.toc-link[href="#${id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => tocObserver.observe(s));
+
+// Chart.js
+let chart;
+function updateChart() {
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  const textColor = isDark ? '#8b949e' : '#64748b';
+  const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+
+  const data = {
+    labels: ['Mail-order POM\n(domestic)', 'Cross-border\nto Romania', 'Telemedicine\nframework', 'Compounding\necosystem', 'CIT rate\n(lower=better)', 'Time to\noperate'],
+    datasets: [
+      {
+        label: 'Netherlands',
+        data: [9, 1, 7, 9, 5, 9],
+        backgroundColor: 'rgba(88,166,255,0.6)',
+        borderColor: '#58a6ff',
+        borderWidth: 1.5
+      },
+      {
+        label: 'Greece',
+        data: [2, 1, 6, 3, 8, 5],
+        backgroundColor: 'rgba(34,197,94,0.45)',
+        borderColor: '#22c55e',
+        borderWidth: 1.5
+      }
+    ]
+  };
+
+  const ctx = document.getElementById('comparisonChart').getContext('2d');
+  if (chart) chart.destroy();
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: textColor, font: { family: 'Inter', size: 11 } } },
+        tooltip: { backgroundColor: isDark ? '#111118' : '#fff', titleColor: textColor, bodyColor: textColor, borderColor: gridColor, borderWidth: 1 }
+      },
+      scales: {
+        y: {
+          beginAtZero: true, max: 10,
+          ticks: { color: textColor, font: { size: 10 } },
+          grid: { color: gridColor }
+        },
+        x: {
+          ticks: { color: textColor, font: { size: 10 } },
+          grid: { color: 'transparent' }
+        }
+      }
+    }
+  });
+}
+
+updateChart();
+</script>
+</body>
+</html>
