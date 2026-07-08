@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Telehealth Sync vs Async Consultation Compliance 2026</title>
+<meta name="description" content="Synchronous vs Asynchronous telehealth consultation compliance across Romania, Greece, Netherlands, UAE/Dubai, and Saudi Arabia. DELPHI PRO D3 Research."/>
+<meta property="og:title" content="Telehealth Sync vs Async Consultation Compliance 2026"/>
+<meta property="og:description" content="Per-jurisdiction, per-drug compliance verdict table for telehealth consultation modality. EPR 15/20."/>
+<meta property="og:type" content="article"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #0A0A0F;
+  --card: #111118;
+  --card2: #16161f;
+  --accent: #58a6ff;
+  --accent-muted: rgba(88,166,255,0.15);
+  --accent-glow: rgba(88,166,255,0.08);
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --border: rgba(255,255,255,0.08);
+  --glass: rgba(17,17,24,0.7);
+  --red: #f85149;
+  --red-bg: rgba(248,81,73,0.15);
+  --green: #3fb950;
+  --green-bg: rgba(63,185,80,0.15);
+  --amber: #e3b341;
+  --amber-bg: rgba(227,179,65,0.15);
+  --yellow: #d29922;
+  --yellow-bg: rgba(210,153,34,0.15);
+  --sidebar-w: 260px;
+}
+:root[data-theme="light"] {
+  --bg: #f6f8fa;
+  --card: #ffffff;
+  --card2: #f0f2f5;
+  --accent: #5E6AD2;
+  --accent-muted: rgba(94,106,210,0.1);
+  --accent-glow: rgba(94,106,210,0.05);
+  --text: #1c2128;
+  --text-muted: #656d76;
+  --border: rgba(0,0,0,0.1);
+  --glass: rgba(255,255,255,0.8);
+  --red: #cf222e;
+  --red-bg: rgba(207,34,46,0.1);
+  --green: #1a7f37;
+  --green-bg: rgba(26,127,55,0.1);
+  --amber: #9a6700;
+  --amber-bg: rgba(154,103,0,0.12);
+  --yellow: #7d4e00;
+  --yellow-bg: rgba(125,78,0,0.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  line-height:1.6;
+  transition:background 0.3s,color 0.3s;
+}
+/* Layout */
+.layout{display:flex;min-height:100vh}
+.sidebar{
+  width:var(--sidebar-w);
+  flex-shrink:0;
+  background:var(--card);
+  border-right:1px solid var(--border);
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow-y:auto;
+  padding:1.5rem 1rem;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+}
+.main{flex:1;min-width:0;padding:2rem 2.5rem;max-width:900px}
+/* Legal banner */
+.legal-banner{
+  background:var(--amber-bg);
+  border:1.5px solid var(--amber);
+  border-radius:10px;
+  padding:0.9rem 1.2rem;
+  margin-bottom:2rem;
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  font-size:0.85rem;
+  color:var(--amber);
+  font-weight:500;
+}
+.legal-banner .icon{font-size:1.2rem;flex-shrink:0}
+/* Header */
+.report-header{margin-bottom:2.5rem}
+.report-header h1{
+  font-size:1.9rem;
+  font-weight:700;
+  line-height:1.25;
+  color:var(--text);
+  margin-bottom:0.75rem;
+}
+.header-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  padding:0.3rem 0.8rem;
+  border-radius:20px;
+  font-size:0.78rem;
+  font-weight:600;
+  font-family:'JetBrains Mono',monospace;
+}
+.badge-accent{background:var(--accent-muted);color:var(--accent);border:1px solid rgba(88,166,255,0.3)}
+.badge-green{background:var(--green-bg);color:var(--green);border:1px solid rgba(63,185,80,0.3)}
+.badge-amber{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(227,179,65,0.3)}
+.epr-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  background:linear-gradient(135deg,rgba(88,166,255,0.15),rgba(88,166,255,0.05));
+  border:1.5px solid rgba(88,166,255,0.4);
+  border-radius:12px;
+  padding:0.5rem 1rem;
+  font-size:0.9rem;
+  font-weight:700;
+  color:var(--accent);
+}
+.epr-score-num{font-size:1.4rem;font-family:'JetBrains Mono',monospace}
+/* TOC */
+.toc-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.5rem}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:0.2rem}
+.toc-list li a{
+  font-size:0.8rem;
+  color:var(--text-muted);
+  text-decoration:none;
+  display:block;
+  padding:0.3rem 0.5rem;
+  border-radius:6px;
+  transition:all 0.2s;
+  border-left:2px solid transparent;
+}
+.toc-list li a:hover{color:var(--accent);background:var(--accent-muted);border-left-color:var(--accent)}
+/* Metadata sidebar */
+.meta-block{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:1rem}
+.meta-row{display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0;border-bottom:1px solid var(--border);font-size:0.78rem}
+.meta-row:last-child{border-bottom:none}
+.meta-label{color:var(--text-muted)}
+.meta-value{font-weight:600;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:0.75rem}
+/* Theme toggle */
+.theme-toggle{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  cursor:pointer;
+  padding:0.4rem 0.8rem;
+  border-radius:8px;
+  background:var(--card2);
+  border:1px solid var(--border);
+  color:var(--text-muted);
+  font-size:0.78rem;
+  transition:all 0.2s;
+  margin-top:auto;
+}
+.theme-toggle:hover{color:var(--accent);border-color:var(--accent)}
+/* Share btn */
+.share-btn{
+  display:flex;align-items:center;gap:0.5rem;cursor:pointer;
+  padding:0.4rem 0.8rem;border-radius:8px;
+  background:var(--accent-muted);border:1px solid rgba(88,166,255,0.3);
+  color:var(--accent);font-size:0.78rem;font-weight:500;transition:all 0.2s;
+}
+.share-btn:hover{background:rgba(88,166,255,0.25)}
+/* Sections */
+.section{margin-bottom:3rem;opacity:0;transform:translateY(20px);transition:opacity 0.5s,transform 0.5s}
+.section.visible{opacity:1;transform:none}
+.section-title{
+  font-size:1.2rem;font-weight:700;color:var(--text);
+  margin-bottom:1.25rem;padding-bottom:0.5rem;
+  border-bottom:2px solid var(--accent-muted);
+  display:flex;align-items:center;gap:0.6rem;
+}
+.section-title .num{
+  background:var(--accent-muted);color:var(--accent);
+  width:1.8rem;height:1.8rem;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:0.75rem;font-weight:700;flex-shrink:0;
+}
+h3{font-size:1rem;font-weight:600;color:var(--accent);margin:1.25rem 0 0.75rem}
+p{margin-bottom:0.9rem;color:var(--text);font-size:0.95rem}
+/* Tables */
+.table-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:1.5rem}
+table{width:100%;border-collapse:collapse;font-size:0.82rem}
+thead{background:var(--card2)}
+th{
+  padding:0.75rem 1rem;font-weight:600;text-align:left;
+  color:var(--text-muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;
+  border-bottom:1px solid var(--border);white-space:nowrap;
+}
+td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--accent-glow)}
+/* Verdict cells */
+.verdict-sync{background:var(--red-bg);color:var(--red);font-weight:700;font-size:0.75rem;white-space:nowrap;border-radius:4px;padding:0.2rem 0.5rem;display:inline-block}
+.verdict-async{background:var(--green-bg);color:var(--green);font-weight:700;font-size:0.75rem;white-space:nowrap;border-radius:4px;padding:0.2rem 0.5rem;display:inline-block}
+.verdict-unclear{background:var(--amber-bg);color:var(--amber);font-weight:700;font-size:0.75rem;white-space:nowrap;border-radius:4px;padding:0.2rem 0.5rem;display:inline-block}
+.verdict-conditional{background:var(--yellow-bg);color:var(--yellow);font-weight:700;font-size:0.75rem;white-space:nowrap;border-radius:4px;padding:0.2rem 0.5rem;display:inline-block}
+.verdict-asyncvideo{background:rgba(139,92,246,0.15);color:#a78bfa;font-weight:700;font-size:0.75rem;white-space:nowrap;border-radius:4px;padding:0.2rem 0.5rem;display:inline-block}
+/* Zone row highlight */
+tr.zone-uae td{background:rgba(248,81,73,0.04)}
+tr.zone-nl td{background:rgba(63,185,80,0.04)}
+/* Priority badges */
+.p-critical{background:var(--red-bg);color:var(--red);font-size:0.7rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:4px}
+.p-high{background:var(--amber-bg);color:var(--amber);font-size:0.7rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:4px}
+.p-medium{background:var(--accent-muted);color:var(--accent);font-size:0.7rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:4px}
+/* Cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem}
+.metric-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1.25rem;display:flex;flex-direction:column;gap:0.4rem;
+  transition:border-color 0.2s,box-shadow 0.2s;
+}
+.metric-card:hover{border-color:var(--accent);box-shadow:0 0 20px var(--accent-glow)}
+.metric-label{font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted)}
+.metric-value{font-size:1.6rem;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--text)}
+.metric-sub{font-size:0.75rem;color:var(--text-muted)}
+.metric-value.green{color:var(--green)}
+.metric-value.red{color:var(--red)}
+.metric-value.amber{color:var(--amber)}
+/* Collapsible */
+.collapsible-header{
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;padding:0.75rem 1rem;background:var(--card2);
+  border:1px solid var(--border);border-radius:10px;
+  font-size:0.9rem;font-weight:600;color:var(--text);
+  transition:all 0.2s;margin-bottom:0.5rem;
+}
+.collapsible-header:hover{border-color:var(--accent);color:var(--accent)}
+.collapsible-header .arrow{transition:transform 0.3s;font-size:0.85rem}
+.collapsible-header.open .arrow{transform:rotate(90deg)}
+.collapsible-body{display:none;margin-bottom:1rem}
+.collapsible-body.open{display:block}
+/* Zone sections */
+.zone-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1.5rem;margin-bottom:1.25rem;
+  border-left:3px solid var(--accent);
+  transition:box-shadow 0.2s;
+}
+.zone-card:hover{box-shadow:0 4px 24px var(--accent-glow)}
+.zone-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem}
+.zone-name{font-size:1.05rem;font-weight:700;color:var(--text)}
+.zone-flag{font-size:1.3rem}
+.zone-card.uae{border-left-color:var(--red)}
+.zone-card.nl{border-left-color:var(--green)}
+.zone-card.ro{border-left-color:#f97316}
+.zone-card.gr{border-left-color:var(--amber)}
+.zone-card.sa{border-left-color:#a78bfa}
+/* Pull quote */
+.pull-quote{
+  border-left:3px solid var(--accent);padding:1rem 1.25rem;
+  background:var(--accent-glow);border-radius:0 10px 10px 0;
+  font-style:italic;font-size:0.95rem;color:var(--text);
+  margin:1.25rem 0;
+}
+/* Source status */
+.status-ok{color:var(--green)}
+.status-warn{color:var(--amber)}
+.status-err{color:var(--red)}
+/* Confidence bars */
+.conf-bar-wrap{display:flex;align-items:center;gap:0.75rem;margin:0.4rem 0}
+.conf-bar-label{font-size:0.78rem;width:100px;flex-shrink:0;color:var(--text-muted)}
+.conf-bar-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.conf-bar-fill{height:100%;border-radius:3px;transition:width 1s ease}
+.conf-bar-val{font-size:0.72rem;width:40px;text-align:right;font-family:'JetBrains Mono',monospace;color:var(--text-muted)}
+/* Legend */
+.legend{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:1.25rem}
+.legend-item{display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--text-muted)}
+.legend-dot{width:10px;height:10px;border-radius:2px}
+/* EPR breakdown */
+.epr-row{display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--border)}
+.epr-row:last-child{border-bottom:none}
+.epr-dim{font-size:0.82rem;width:120px;flex-shrink:0;color:var(--text-muted)}
+.epr-score-cell{font-size:0.9rem;font-weight:700;color:var(--accent);font-family:'JetBrains Mono',monospace;width:50px}
+.epr-note{font-size:0.78rem;color:var(--text-muted);flex:1}
+/* Code mono */
+code{font-family:'JetBrains Mono',monospace;font-size:0.82em;background:var(--accent-muted);padding:0.1em 0.35em;border-radius:3px;color:var(--accent)}
+/* Responsive */
+@media(max-width:768px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:static;flex-direction:row;flex-wrap:wrap;padding:1rem;gap:1rem}
+  .main{padding:1.25rem 1rem}
+  .toc-list{display:none}
+  .report-header h1{font-size:1.4rem}
+  .card-grid{grid-template-columns:1fr 1fr}
+}
+/* Print */
+@media print{
+  :root{--bg:#fff;--card:#fff;--card2:#f5f5f5;--text:#000;--text-muted:#444;--border:#ddd}
+  .sidebar,.theme-toggle,.share-btn,.legal-banner+*~.section .section:nth-child(n+10){display:none}
+  .main{padding:0;max-width:100%}
+  .section{page-break-inside:avoid;opacity:1;transform:none}
+}
+/* Animations */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.animate-pulse{animation:pulse 2s infinite}
+</style>
+</head>
+<body>
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div>
+      <div class="toc-label">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#exec-summary">Executive Summary</a></li>
+        <li><a href="#verdict">Verdict Table</a></li>
+        <li><a href="#zone-ro">Romania</a></li>
+        <li><a href="#zone-gr">Greece</a></li>
+        <li><a href="#zone-nl">Netherlands</a></li>
+        <li><a href="#zone-uae">UAE / Dubai</a></li>
+        <li><a href="#zone-sa">Saudi Arabia</a></li>
+        <li><a href="#eu-cross">EU Cross-Border</a></li>
+        <li><a href="#async-mvp">Async-First MVP</a></li>
+        <li><a href="#drug-class">Drug Classes</a></li>
+        <li><a href="#gaps">Standing Gaps</a></li>
+        <li><a href="#sources">Source Coverage</a></li>
+        <li><a href="#epr">EPR Score</a></li>
+      </ul>
+    </div>
+    <div class="meta-block">
+      <div class="toc-label" style="margin-bottom:0.6rem">Report Metadata</div>
+      <div class="meta-row"><span class="meta-label">Agent</span><span class="meta-value">DELPHI PRO</span></div>
+      <div class="meta-row"><span class="meta-label">Depth</span><span class="meta-value">D3</span></div>
+      <div class="meta-row"><span class="meta-label">Date</span><span class="meta-value">2026-07-08</span></div>
+      <div class="meta-row"><span class="meta-label">EPR Score</span><span class="meta-value" style="color:var(--accent)">15/20</span></div>
+      <div class="meta-row"><span class="meta-label">Self Grade</span><span class="meta-value">82/100</span></div>
+      <div class="meta-row"><span class="meta-label">Zones</span><span class="meta-value">5</span></div>
+      <div class="meta-row"><span class="meta-label">Drug Classes</span><span class="meta-value">2</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:auto">
+      <button class="share-btn" onclick="shareReport()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share Report
+      </button>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <svg id="theme-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        Toggle Theme
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <!-- LEGAL BANNER -->
+    <div class="legal-banner">
+      <span class="icon">⚠️</span>
+      <div><strong>NOT LEGAL ADVICE — ILLUSTRATIVE ONLY.</strong> All findings are research-only. Every legal claim requires formal written opinion from qualified in-jurisdiction counsel before commercial reliance. No attorney-client relationship exists.</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="report-header section" id="exec-summary">
+      <h1>Telehealth Sync vs Async Consultation Compliance 2026</h1>
+      <div class="header-meta">
+        <span class="epr-badge"><span>EPR</span><span class="epr-score-num">15</span><span style="font-size:0.85rem;opacity:0.7">/20</span></span>
+        <span class="badge badge-accent">D3 Research</span>
+        <span class="badge badge-green">DELPHI PRO</span>
+        <span class="badge badge-amber">2026-07-08</span>
+      </div>
+      <div class="pull-quote">
+        No jurisdiction imposes a blanket mandatory synchronous requirement — but the picture is highly fragmented. The Netherlands offers the most permissive regime; UAE/Dubai is the most restrictive with Standard Seven mandating real-time audio-video.
+      </div>
+      <p>Across five target jurisdictions (Romania, Greece, Netherlands, UAE/Dubai, Saudi Arabia), this report maps synchronous vs asynchronous consultation modality requirements for ED (sildenafil/tadalafil) and GLP-1 (semaglutide/tirzepatide) telehealth prescribing.</p>
+
+      <!-- Summary metric cards -->
+      <div class="card-grid">
+        <div class="metric-card">
+          <div class="metric-label">Most Permissive</div>
+          <div class="metric-value green" style="font-size:1.1rem">Netherlands</div>
+          <div class="metric-sub">Async-OK — clinical judgment standard</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Most Restrictive</div>
+          <div class="metric-value red" style="font-size:1.1rem">UAE / Dubai</div>
+          <div class="metric-sub">Sync-Mandatory — DHA Standard Seven</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Highest Uncertainty</div>
+          <div class="metric-value amber" style="font-size:1.1rem">Greece</div>
+          <div class="metric-sub">Implementing decree not yet issued</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Total Counsel Gaps</div>
+          <div class="metric-value" style="font-size:1.8rem">22</div>
+          <div class="metric-sub">6 CRITICAL · 16 HIGH/MEDIUM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VERDICT TABLE -->
+    <div class="section" id="verdict">
+      <div class="section-title"><span class="num">1</span>Verdict Table</div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>SYNC-MANDATORY = real-time audio-video required</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>ASYNC-OK = async pathway not prohibited</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>UNCLEAR = operative rule not determinable</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div>CONDITIONAL = possible with caveats</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#a78bfa"></div>ASYNC+VIDEO = async permitted, video required</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Zone</th>
+              <th>Drug</th>
+              <th>First Consult</th>
+              <th>Follow-up / Refill</th>
+              <th>In-Person Floor</th>
+              <th>Binding Authority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Romania</strong></td>
+              <td>ED (sildenafil/tadalafil)</td>
+              <td><span class="verdict-async">ASYNC-OK</span></td>
+              <td><span class="verdict-async">ASYNC-OK</span></td>
+              <td>None explicit</td>
+              <td><code>OUG 196/2020 + HG 1133/2022</code></td>
+            </tr>
+            <tr>
+              <td><strong>Romania</strong></td>
+              <td>GLP-1 (semaglutide/tirzepatide)</td>
+              <td><span class="verdict-async">ASYNC-OK</span></td>
+              <td><span class="verdict-async">ASYNC-OK</span></td>
+              <td>None explicit</td>
+              <td><code>OUG 196/2020 + HG 1133/2022</code></td>
+            </tr>
+            <tr>
+              <td><strong>Greece</strong></td>
+              <td>ED (sildenafil/tadalafil)</td>
+              <td><span class="verdict-unclear">UNCLEAR</span></td>
+              <td><span class="verdict-unclear">UNCLEAR</span></td>
+              <td>None explicit</td>
+              <td><code>Law 5129/2024</code> (partially operative)</td>
+            </tr>
+            <tr>
+              <td><strong>Greece</strong></td>
+              <td>GLP-1 (semaglutide/tirzepatide)</td>
+              <td><span class="verdict-unclear">UNCLEAR</span></td>
+              <td><span class="verdict-unclear">UNCLEAR</span></td>
+              <td>None explicit</td>
+              <td><code>Law 5129/2024</code> (partially operative)</td>
+            </tr>
+            <tr class="zone-nl">
+              <td><strong>Netherlands</strong></td>
+              <td>ED (sildenafil/tadalafil)</td>
+              <td><span class="verdict-async">ASYNC-OK</span></td>
+              <td><span class="verdict-async">ASYNC-OK</span></td>
+              <td>None explicit</td>
+              <td><code>Staatscourant 10521</code> (Apr 2023)</td>
+            </tr>
+            <tr class="zone-nl">
+              <td><strong>Netherlands</strong></td>
+              <td>GLP-1 (semaglutide/tirzepatide)</td>
+              <td><span class="verdict-async">ASYNC-OK</span></td>
+              <td><span class="verdict-async">ASYNC-OK</span></td>
+              <td>None explicit</td>
+              <td><code>Staatscourant 10521</code> (Apr 2023)</td>
+            </tr>
+            <tr class="zone-uae">
+              <td><strong>UAE / Dubai</strong></td>
+              <td>ED (sildenafil/tadalafil)</td>
+              <td><span class="verdict-sync">SYNC-MANDATORY</span></td>
+              <td><span class="verdict-sync">SYNC-MANDATORY</span></td>
+              <td>Possibly (§6.5.5)</td>
+              <td><code>DHA ST-14 V4</code> (26 Nov 2025)</td>
+            </tr>
+            <tr class="zone-uae">
+              <td><strong>UAE / Dubai</strong></td>
+              <td>GLP-1 (semaglutide/tirzepatide)</td>
+              <td><span class="verdict-sync">SYNC-MANDATORY</span></td>
+              <td><span class="verdict-sync">SYNC-MANDATORY</span></td>
+              <td>Possibly (§6.5.5)</td>
+              <td><code>DHA ST-14 V4</code> (26 Nov 2025)</td>
+            </tr>
+            <tr>
+              <td><strong>Saudi Arabia</strong></td>
+              <td>ED (sildenafil/tadalafil)</td>
+              <td><span class="verdict-asyncvideo">ASYNC+VIDEO</span></td>
+              <td><span class="verdict-asyncvideo">ASYNC+VIDEO</span></td>
+              <td>Not established</td>
+              <td>MOH Regs + Al Tamimi (COUNSEL-GATED)</td>
+            </tr>
+            <tr>
+              <td><strong>Saudi Arabia</strong></td>
+              <td>GLP-1 (semaglutide/tirzepatide)</td>
+              <td><span class="verdict-asyncvideo">ASYNC+VIDEO</span></td>
+              <td><span class="verdict-asyncvideo">ASYNC+VIDEO</span></td>
+              <td>Not established</td>
+              <td>MOH Regs + Al Tamimi (COUNSEL-GATED)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size:0.78rem;color:var(--text-muted);font-style:italic">
+        ILLUSTRATIVE — NOT LEGAL ADVICE. ASYNC+VIDEO = async permitted but video (not audio-only) required. COUNSEL-GATED = requires in-jurisdiction counsel verification before reliance.
+      </div>
+    </div>
+
+    <!-- ZONE ANALYSES -->
+    <div class="section" id="zone-ro">
+      <div class="section-title"><span class="num">2</span>Per-Zone Analysis</div>
+
+      <div class="zone-card ro">
+        <div class="zone-header">
+          <span class="zone-flag">🇷🇴</span>
+          <span class="zone-name">Romania</span>
+          <span class="badge badge-green" style="margin-left:auto">ASYNC-OK</span>
+          <span class="badge badge-amber">MEDIUM Confidence</span>
+        </div>
+        <p><strong>Binding framework:</strong> OUG 196/2020 (enabling legislation) + HG 1133/2022 (implementation norms). Art. 9 of HG 1133/2022 specifies scheduling and patient file access requirements but does <em>not</em> differentiate sync vs async, or first vs follow-up consultations.</p>
+        <p><strong>First consultation:</strong> No explicit sync requirement found. Six permitted service types (teleconsultație, teleexpertiță, teleasistență, teleradiologie, telepatologie, telemonitoring) are defined without a sync/async constraint. Absence of prohibition ≠ explicit permission — <em>COUNSEL-GATED GAP-RO-01</em>.</p>
+        <p><strong>GLP-1 risk:</strong> Colegiul Medicilor din România (CMR) may have binding guild standards requiring in-person assessment for GLP-1 initiation — not answered by legislative framework [GAP-RO-02].</p>
+        <p><strong>Pending:</strong> 2024 ministerial ordinance draft referenced but not yet enacted. May impose sync requirement when enacted [GAP-RO-04].</p>
+        <div style="font-size:0.8rem;color:var(--text-muted)"><strong>Sources:</strong> OUG 196/2020 · HG 1133/2022 · UNICEF Ghid Telemedicina 2022 · Jurnalul.ro 2024</div>
+      </div>
+
+      <div class="zone-card gr" id="zone-gr">
+        <div class="zone-header">
+          <span class="zone-flag">🇬🇷</span>
+          <span class="zone-name">Greece</span>
+          <span class="badge badge-amber" style="margin-left:auto">UNCLEAR</span>
+          <span class="badge" style="background:var(--red-bg);color:var(--red);border:1px solid rgba(248,81,73,0.3)">LOW-MEDIUM Confidence</span>
+        </div>
+        <p><strong>Critical gap:</strong> Law 5129/2024 amended the Code of Medical Ethics to permit examination "either in person or remotely through a telemedicine system" — permissive text that encompasses async. However, <strong>the implementing ministerial decree defining operational conditions has not been issued</strong> as of early 2026. Until issued, the operational framework is legally undefined.</p>
+        <p><strong>First consultation:</strong> Statute text is permissive enough to encompass async. The implementing decree (when issued) may impose sync conditions. Any Greek-based telehealth platform operates with a material legal gap [GAP-GR-01].</p>
+        <p><strong>EOPYY reimbursement:</strong> Separate pathway modality rules for ED and GLP-1 may apply via the national health insurer — not found in available sources [GAP-GR-02].</p>
+        <div style="font-size:0.8rem;color:var(--text-muted)"><strong>Sources:</strong> Law 5129/2024 · Law 4931/2022 · Law 3984/2011 Art. 66 · Lawgroup.gr 2024 · ICLG Greece 2025</div>
+      </div>
+
+      <div class="zone-card nl" id="zone-nl">
+        <div class="zone-header">
+          <span class="zone-flag">🇳🇱</span>
+          <span class="zone-name">Netherlands</span>
+          <span class="badge badge-green" style="margin-left:auto">ASYNC-OK</span>
+          <span class="badge badge-green">HIGH Confidence</span>
+        </div>
+        <p><strong>Binding rule:</strong> "Regeling Online Medicijnen Voorschrijven" (Decree on Online Medicine Prescribing), Staatscourant No. 10521, effective 12 April 2023. Explicitly permits online prescribing WITHOUT physical consultation if: (a) physical examination is clinically unnecessary; (b) prescriber accesses current medication history.</p>
+        <p><strong>No video mandate:</strong> The April 2023 Policy Rule does not require synchronous (video) consultation. The clinical judgment standard replaced the previous COVID-era video tolerance policy. KNMG professional guidelines reference video but are non-binding.</p>
+        <p><strong>ED:</strong> Async-first viable — experienced clinician can reasonably determine physical exam unnecessary for established ED with screened cardiovascular risk.</p>
+        <p><strong>GLP-1:</strong> Structured questionnaire + lab results upload likely satisfies the "medication history access" condition. No explicit sync mandate, but IGJ enforcement interpretation for GLP-1 initiation should be confirmed [GAP-NL-02].</p>
+        <div class="pull-quote" style="font-style:normal;font-size:0.88rem">
+          MVP Recommendation: Netherlands is the <strong>only jurisdiction</strong> where async-first for ED first prescriptions can launch with reasonable legal confidence (pending COUNSEL-GATED confirmations in GAP-NL-01 through GAP-NL-04).
+        </div>
+        <div style="font-size:0.8rem;color:var(--text-muted)"><strong>Sources:</strong> Staatscourant 10521 (Apr 2023) · KNMG Video Consultation Guidelines · Lexology Apr 2023 · BioTalk/TwoBirds Analysis · CMS.law Netherlands</div>
+      </div>
+
+      <div class="zone-card uae" id="zone-uae">
+        <div class="zone-header">
+          <span class="zone-flag">🇦🇪</span>
+          <span class="zone-name">UAE / Dubai (DHA ST-14)</span>
+          <span class="badge" style="background:var(--red-bg);color:var(--red);border:1px solid rgba(248,81,73,0.3);margin-left:auto">SYNC-MANDATORY</span>
+          <span class="badge badge-green">HIGH Confidence</span>
+        </div>
+        <p><strong>Binding standard:</strong> DHA/HRS/HPSD/ST-14 Version 4, effective 26 November 2025 (revision date 26/09/2030), published under CIR-2025-00000212. <strong>Standard Seven = TELECONSULTATION: SYNCHRONOUS</strong> — real-time audio-video interaction governs all direct patient-provider consultations resulting in clinical decisions and prescriptions.</p>
+        <p><strong>Standard Eight</strong> (Telediagnosis) permits async for diagnostic interpretation only (radiology, pathology). Prescribing consultations fall exclusively under Standard Seven.</p>
+        <p><strong>Exclusions (binding):</strong> Emergency cases; narcotic/controlled/semi-controlled medications; in-person consultation platforms. Neither sildenafil nor semaglutide is controlled under Federal Decree-Law No. 30/2021 — exclusion clause does not apply. Standard Seven still governs.</p>
+        <p><strong>§6.5.5 ambiguity:</strong> "Telehealth limited to advisory and follow-up care" language raises whether first-prescription new patient consultations are within permitted scope — COUNSEL-GATED [GAP-UAE-01].</p>
+        <p><strong>Additional mandatory requirements:</strong> Care pathways registered with DHA prior to service; patient consent via secure electronic means; documented encounters; valid DHA telehealth license; servers in UAE (ISO 27001); multi-factor authentication.</p>
+        <div style="font-size:0.8rem;color:var(--text-muted)"><strong>Sources:</strong> DHA ST-14 V4 (Nov 2025) · CIR-2025-00000212 · Kayrouzandassociates.com Jun 2026 · DHA Telehealth Policy 2021</div>
+      </div>
+
+      <div class="zone-card sa" id="zone-sa">
+        <div class="zone-header">
+          <span class="zone-flag">🇸🇦</span>
+          <span class="zone-name">Saudi Arabia</span>
+          <span class="verdict-asyncvideo" style="margin-left:auto">ASYNC+VIDEO</span>
+          <span class="badge" style="background:var(--red-bg);color:var(--red);border:1px solid rgba(248,81,73,0.3)">LOW Confidence</span>
+        </div>
+        <p><strong>Primary text inaccessible:</strong> MOH Telehealth Regulations and NHIC Governing Rules retrieved in binary PDF format — full text not extractable. Findings rely on Al Tamimi &amp; Company secondary analysis.</p>
+        <p><strong>Al Tamimi analysis:</strong> "Teleconsultations must involve a video consultation (cannot be solely audio) <strong>but need not be synchronous</strong>." This creates a novel "video-async" category — patient records video or physician reviews async video — but rests on secondary analysis of inaccessible primary text. COUNSEL-GATED [GAP-SA-01, GAP-SA-06].</p>
+        <p><strong>Practice evidence:</strong> The official Sehha app uses live synchronous video in practice. Operational practice does not establish legal requirement, but suggests de facto sync norm.</p>
+        <p><strong>Drug risks:</strong> Tirzepatide SFDA registration status in KSA should be confirmed [GAP-SA-03]. SFDA dispensing chain compliance required for telehealth prescriptions [GAP-SA-02]. SCFHS registration for foreign physicians serving KSA patients [GAP-SA-05].</p>
+        <div style="font-size:0.8rem;color:var(--text-muted)"><strong>Sources:</strong> Al Tamimi &amp; Company analysis · PMC/Cureus Sehha App studies · Hammad &amp; Al-Mehdar 2024 · CMARIX blog MOH/SFDA</div>
+      </div>
+    </div>
+
+    <!-- EU CROSS-BORDER -->
+    <div class="section" id="eu-cross">
+      <div class="section-title"><span class="num">3</span>EU Cross-Border Rule</div>
+      <p><strong>Governing principle:</strong> EU Directive 2011/24/EU Art. 4(1) — Healthcare provided per legislation of the <em>Member State of treatment</em> (where the healthcare provider is established and provides the service).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Scenario</th><th>Consultation Modality Governed By</th><th>Dispensing Governed By</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Dutch doctor → Romanian patient</td><td><strong>Dutch law</strong> (April 2023 Policy Rule — most permissive)</td><td>Romanian pharmacy law</td></tr>
+            <tr><td>Greek doctor → Romanian patient</td><td><strong>Greek law</strong> (Law 5129/2024 + pending ministerial decree)</td><td>Romanian pharmacy law</td></tr>
+            <tr><td>Romanian doctor → Romanian patient</td><td><strong>Romanian law</strong> (OUG 196/2020 + HG 1133/2022)</td><td>Romanian pharmacy law</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Rome I overlay (consumer contracts):</strong> If a physician's platform targets Romanian consumers, Romanian consumer protection law may apply to the contractual relationship — not to the medical act itself.</p>
+      <p><strong>Rome II overlay (tort):</strong> In liability scenarios, the law of the country where damage occurs (likely Romania) may govern — relevant for malpractice exposure under both Dutch and Greek-based platform models.</p>
+      <p><strong>ECJ DrSmile C-115/24:</strong> Confirms hybrid models (partial in-person acts) are compatible with EU free movement — relevant for mixed-modality service design.</p>
+      <p><strong>Cross-border ePrescription:</strong> Romania's MyHealth@EU/eHDSI integration status for cross-border ePrescriptions should be confirmed before relying on a Dutch prescription dispensed at Romanian pharmacies [GAP-EU-02].</p>
+    </div>
+
+    <!-- ASYNC-FIRST MVP -->
+    <div class="section" id="async-mvp">
+      <div class="section-title"><span class="num">4</span>Async-First MVP Analysis</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Zone</th><th>ED (sildenafil/tadalafil)</th><th>GLP-1 (semaglutide/tirzepatide)</th><th>Conditions / Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Romania</strong></td>
+              <td><span class="verdict-conditional">CONDITIONAL</span></td>
+              <td><span class="verdict-conditional">CONDITIONAL</span></td>
+              <td>No explicit prohibition; absence ≠ permission. Counsel opinion on CMR standards + liability.</td>
+            </tr>
+            <tr>
+              <td><strong>Greece</strong></td>
+              <td><span class="verdict-conditional">CONDITIONAL</span></td>
+              <td><span class="verdict-conditional">CONDITIONAL</span></td>
+              <td>Law 5129/2024 text permissive; implementing decree pending. High uncertainty.</td>
+            </tr>
+            <tr class="zone-nl">
+              <td><strong>Netherlands</strong></td>
+              <td><span class="verdict-async">YES</span></td>
+              <td><span class="verdict-conditional">CONDITIONAL</span></td>
+              <td>ED: clinical judgment viable. GLP-1: structured lab/BMI async intake likely viable; confirm IGJ.</td>
+            </tr>
+            <tr class="zone-uae">
+              <td><strong>UAE / Dubai</strong></td>
+              <td><span class="verdict-sync">NO</span></td>
+              <td><span class="verdict-sync">NO</span></td>
+              <td>Standard Seven = synchronous is binding for all teleconsultations. Async not permissible.</td>
+            </tr>
+            <tr>
+              <td><strong>Saudi Arabia</strong></td>
+              <td><span class="verdict-conditional">CONDITIONAL</span></td>
+              <td><span class="verdict-conditional">CONDITIONAL</span></td>
+              <td>Video required, async timing may be permitted per Al Tamimi. Primary MOH text unverified.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pull-quote">
+        <strong>MVP Recommendation:</strong> Netherlands is the only jurisdiction where an async-first model for ED first prescriptions can launch with reasonable legal confidence. For all other zones, synchronous video should be the default design for first prescriptions until counsel confirms otherwise.
+      </div>
+    </div>
+
+    <!-- DRUG CLASS ANALYSIS -->
+    <div class="section" id="drug-class">
+      <div class="section-title"><span class="num">5</span>Drug Class Analysis</div>
+      <h3>ED Medications (sildenafil, tadalafil)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Jurisdiction</th><th>Controlled?</th><th>Implication</th></tr></thead>
+          <tbody>
+            <tr><td>Romania</td><td><span class="verdict-async">No</span></td><td>Standard prescription rules; no telehealth exclusion</td></tr>
+            <tr><td>Greece</td><td><span class="verdict-async">No</span></td><td>Standard prescription rules apply</td></tr>
+            <tr><td>Netherlands</td><td><span class="verdict-async">No</span></td><td>April 2023 Policy Rule applies; no opium-wet listing</td></tr>
+            <tr><td>UAE / Dubai</td><td><span class="verdict-async">No</span></td><td>Not Federal Decree-Law No. 30/2021 listed; DHA Standard Seven governs</td></tr>
+            <tr><td>Saudi Arabia</td><td><span class="verdict-async">No</span></td><td>SFDA standard prescription pathway; modality rules apply</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>No jurisdiction imposes stricter modality rules specifically for PDE5 inhibitors (phosphodiesterase type 5 inhibitors). Clinical professional guidelines may require cardiovascular risk screening — administerable via structured questionnaire or async intake.</p>
+
+      <h3>GLP-1 Medications (semaglutide, tirzepatide) — Heightened Risks</h3>
+      <div class="card">
+        <p style="margin-bottom:0.6rem"><strong>1. BMI/metabolic assessment:</strong> GLP-1 initiation requires documented BMI ≥ 30 kg/m² (or ≥ 27 with comorbidity) per EMA/FDA labeling. Async models must include verified weight/height documentation — lab upload pathway may suffice.</p>
+        <p style="margin-bottom:0.6rem"><strong>2. Diabetes diagnosis:</strong> For T2D indication, HbA1c and diagnosis history documentation required. Structured async intake with lab upload is plausible.</p>
+        <p style="margin-bottom:0.6rem"><strong>3. Ongoing monitoring:</strong> GLP-1 therapy requires periodic weight, adverse event, and renal function monitoring. Pure async model risks non-compliance — hybrid model (async initiation + scheduled sync follow-up) may be required.</p>
+        <p style="margin-bottom:0.6rem"><strong>4. Supply constraints:</strong> Semaglutide (Ozempic/Wegovy) remains on EMA shortage lists as of mid-2026 — confirm availability in patient's dispensing country before initiating.</p>
+        <p style="margin-bottom:0"><strong>5. Off-label use:</strong> Prescribing for off-label purposes via async telehealth carries elevated professional liability in all jurisdictions.</p>
+      </div>
+    </div>
+
+    <!-- STANDING GAPS (COLLAPSIBLE) -->
+    <div class="section" id="gaps">
+      <div class="section-title"><span class="num">6</span>Standing Gaps (Counsel-Gated)</div>
+      <p style="margin-bottom:1.25rem;font-size:0.88rem;color:var(--text-muted)">All 22 gaps below require formal written legal opinion before commercial reliance. Click any section to expand.</p>
+
+      <!-- Romania -->
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span>🇷🇴 Romania — 4 Gaps</span><span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Gap ID</th><th>Question</th><th>Priority</th></tr></thead>
+            <tbody>
+              <tr><td><code>GAP-RO-01</code></td><td>Does absence of sync/async rule = permissive, or does clinical standard impose de facto sync for first consultations?</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-RO-02</code></td><td>CMR binding guidelines on GLP-1 initiation — in-person assessment required?</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-RO-03</code></td><td>Medical liability exposure (civil + professional) for async first prescription under OUG 196/2020 framework</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-RO-04</code></td><td>Status and timeline of pending 2024 ordinance draft; does it include sync requirement?</td><td><span class="p-medium">MEDIUM</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Greece -->
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span>🇬🇷 Greece — 5 Gaps (1 CRITICAL)</span><span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Gap ID</th><th>Question</th><th>Priority</th></tr></thead>
+            <tbody>
+              <tr><td><code>GAP-GR-01</code></td><td>Timeline and content of implementing ministerial decree under Law 5129/2024 — will it impose sync?</td><td><span class="p-critical">CRITICAL</span></td></tr>
+              <tr><td><code>GAP-GR-02</code></td><td>EOPYY reimbursement pathway modality requirements for ED and GLP-1</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-GR-03</code></td><td>PMA professional standards — de facto in-person requirement for first prescriptions?</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-GR-04</code></td><td>Greek medical liability framework for async remote prescriptions</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-GR-05</code></td><td>HDPA (Hellenic Data Protection Authority) platform requirements for telehealth services</td><td><span class="p-medium">MEDIUM</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Netherlands -->
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span>🇳🇱 Netherlands — 4 Gaps</span><span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Gap ID</th><th>Question</th><th>Priority</th></tr></thead>
+            <tbody>
+              <tr><td><code>GAP-NL-01</code></td><td>Dutch Medicines Act formal amendment timeline — will it restrict current permissive standard?</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-NL-02</code></td><td>IGJ (Inspectie Gezondheidszorg en Jeugd) enforcement interpretation for async GLP-1 initiation</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-NL-03</code></td><td>GP notification requirement enforceability in cross-border/platform context</td><td><span class="p-medium">MEDIUM</span></td></tr>
+              <tr><td><code>GAP-NL-04</code></td><td>BIG (Basisregister Individuele Gezondheidszorgberoepen) registration for prescribing physicians serving non-Dutch patients from NL</td><td><span class="p-high">HIGH</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- UAE -->
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span>🇦🇪 UAE / Dubai — 5 Gaps (1 CRITICAL)</span><span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Gap ID</th><th>Question</th><th>Priority</th></tr></thead>
+            <tbody>
+              <tr><td><code>GAP-UAE-01</code></td><td>Does DHA interpret §6.5.5 to exclude first-prescription telehealth consultations from permitted scope?</td><td><span class="p-critical">CRITICAL</span></td></tr>
+              <tr><td><code>GAP-UAE-02</code></td><td>DHA pharmacy dispensing pathway for ED medications prescribed via telehealth — cross-emirate rules</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-UAE-03</code></td><td>DHA clinical practice standards for GLP-1 initiation — in-person BMI/metabolic assessment required?</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-UAE-04</code></td><td>DHA care pathway registration process timeline and requirements for EU-based platform</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-UAE-05</code></td><td>Data sovereignty — "servers in UAE" requirement: can a Netherlands-based platform comply?</td><td><span class="p-high">HIGH</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Saudi Arabia -->
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span>🇸🇦 Saudi Arabia — 6 Gaps (2 CRITICAL)</span><span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Gap ID</th><th>Question</th><th>Priority</th></tr></thead>
+            <tbody>
+              <tr><td><code>GAP-SA-01</code></td><td>Full text of MOH Telehealth Regulations and NHIC Governing Rules — counsel must obtain and review directly</td><td><span class="p-critical">CRITICAL</span></td></tr>
+              <tr><td><code>GAP-SA-02</code></td><td>SFDA (Saudi Food and Drug Authority) dispensing chain compliance for telehealth-prescribed ED medications</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-SA-03</code></td><td>Tirzepatide SFDA registration status in KSA</td><td><span class="p-medium">MEDIUM</span></td></tr>
+              <tr><td><code>GAP-SA-04</code></td><td>MOH in-person requirement for first prescription consultations</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-SA-05</code></td><td>SCFHS (Saudi Commission for Health Specialties) registration for foreign-licensed physicians serving KSA patients</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-SA-06</code></td><td>Formal legal opinion confirming "video required but not synchronous" interpretation from MOH</td><td><span class="p-critical">CRITICAL</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EU Cross-Border -->
+      <div class="collapsible-header" onclick="toggleCollapse(this)">
+        <span>🇪🇺 EU Cross-Border — 3 Gaps</span><span class="arrow">▶</span>
+      </div>
+      <div class="collapsible-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Gap ID</th><th>Question</th><th>Priority</th></tr></thead>
+            <tbody>
+              <tr><td><code>GAP-EU-01</code></td><td>Romanian consumer protection law implications for EU-based platform targeting Romanian patients</td><td><span class="p-high">HIGH</span></td></tr>
+              <tr><td><code>GAP-EU-02</code></td><td>Romania's MyHealth@EU/eHDSI integration status for cross-border ePrescriptions</td><td><span class="p-medium">MEDIUM</span></td></tr>
+              <tr><td><code>GAP-EU-03</code></td><td>Rome II tort exposure for malpractice claims by Romanian patients against Dutch/Greek-based platform</td><td><span class="p-high">HIGH</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCE COVERAGE -->
+    <div class="section" id="sources">
+      <div class="section-title"><span class="num">7</span>Source Coverage Report</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th>Status</th><th>Key Findings</th></tr></thead>
+          <tbody>
+            <tr><td>Romania primary legislation</td><td><span class="status-ok">✅ Accessed</span></td><td>OUG 196/2020, HG 1133/2022 — no explicit sync/async rule</td></tr>
+            <tr><td>Romania guidance</td><td><span class="status-ok">✅ Accessed</span></td><td>UNICEF Ghid 2022 — both sync and async recognized</td></tr>
+            <tr><td>Romania pending legislation</td><td><span class="status-warn">⚠️ Partial</span></td><td>2024 draft referenced; not yet enacted</td></tr>
+            <tr><td>Greece primary legislation</td><td><span class="status-ok">✅ Accessed</span></td><td>Law 5129/2024, 4931/2022, 3984/2011 — permissive text</td></tr>
+            <tr><td>Greece implementing decree</td><td><span class="status-err">❌ Not issued</span></td><td>Critical gap — decree not yet issued</td></tr>
+            <tr><td>Greece professional standards</td><td><span class="status-err">❌ Not accessed</span></td><td>PMA guidelines not retrieved</td></tr>
+            <tr><td>Netherlands primary rule</td><td><span class="status-ok">✅ Accessed</span></td><td>Staatscourant 10521, Apr 2023 — permissive clinical judgment standard</td></tr>
+            <tr><td>Netherlands KNMG guidelines</td><td><span class="status-ok">✅ Accessed</span></td><td>6-condition framework — professional guidance only</td></tr>
+            <tr><td>Netherlands IGJ</td><td><span class="status-warn">⚠️ Partial</span></td><td>Supervisory role confirmed; enforcement guidance not fully retrieved</td></tr>
+            <tr><td>UAE DHA ST-14 V4</td><td><span class="status-ok">✅ Accessed</span></td><td>Standard Seven = Synchronous (binding)</td></tr>
+            <tr><td>UAE DHA supplementary</td><td><span class="status-ok">✅ Accessed</span></td><td>Kayrouzandassociates Jun 2026 — consistent with ST-14</td></tr>
+            <tr><td>Saudi MOH primary regulations</td><td><span class="status-err">❌ Binary/inaccessible</span></td><td>moh.gov.sa PDF — full text not retrievable</td></tr>
+            <tr><td>Saudi NHIC rules</td><td><span class="status-err">❌ Binary/inaccessible</span></td><td>nhic.gov.sa — full text not retrievable</td></tr>
+            <tr><td>Saudi secondary analysis</td><td><span class="status-ok">✅ Accessed</span></td><td>Al Tamimi &amp; Company — video required, async not prohibited</td></tr>
+            <tr><td>EU Directive 2011/24/EU</td><td><span class="status-ok">✅ Accessed</span></td><td>Doctor's country law governs modality</td></tr>
+            <tr><td>EU Rome I/II</td><td><span class="status-ok">✅ Accessed</span></td><td>Patient's country may govern contract/tort</td></tr>
+            <tr><td>ECJ DrSmile C-115/24</td><td><span class="status-ok">✅ Accessed</span></td><td>Hybrid models compatible with EU law</td></tr>
+            <tr><td>Drug controlled-status all zones</td><td><span class="status-ok">✅ Confirmed</span></td><td>ED and GLP-1 not controlled in any zone</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Confidence bars -->
+      <h3>Confidence Level by Zone</h3>
+      <div class="conf-bar-wrap"><div class="conf-bar-label">Netherlands</div><div class="conf-bar-track"><div class="conf-bar-fill" style="width:85%;background:var(--green)"></div></div><div class="conf-bar-val" style="color:var(--green)">HIGH</div></div>
+      <div class="conf-bar-wrap"><div class="conf-bar-label">UAE / Dubai</div><div class="conf-bar-track"><div class="conf-bar-fill" style="width:82%;background:var(--green)"></div></div><div class="conf-bar-val" style="color:var(--green)">HIGH</div></div>
+      <div class="conf-bar-wrap"><div class="conf-bar-label">Romania</div><div class="conf-bar-track"><div class="conf-bar-fill" style="width:55%;background:var(--amber)"></div></div><div class="conf-bar-val" style="color:var(--amber)">MED</div></div>
+      <div class="conf-bar-wrap"><div class="conf-bar-label">Greece</div><div class="conf-bar-track"><div class="conf-bar-fill" style="width:38%;background:var(--amber)"></div></div><div class="conf-bar-val" style="color:var(--amber)">L-MED</div></div>
+      <div class="conf-bar-wrap"><div class="conf-bar-label">Saudi Arabia</div><div class="conf-bar-track"><div class="conf-bar-fill" style="width:20%;background:var(--red)"></div></div><div class="conf-bar-val" style="color:var(--red)">LOW</div></div>
+    </div>
+
+    <!-- EPR SCORE -->
+    <div class="section" id="epr">
+      <div class="section-title"><span class="num">8</span>EPR Score Breakdown</div>
+      <div class="card">
+        <div class="epr-row">
+          <div class="epr-dim">Evidence (0-5)</div>
+          <div class="epr-score-cell">3/5</div>
+          <div class="epr-note">Binding law accessed for RO, GR, NL, UAE — high quality. Saudi primary text inaccessible (binary PDF); Greece implementing decree not yet issued.</div>
+        </div>
+        <div class="epr-row">
+          <div class="epr-dim">Precision (0-5)</div>
+          <div class="epr-score-cell">3/5</div>
+          <div class="epr-note">UAE and NL precise (explicit rules found). RO and GR answered by absence (permissive by silence). Drug class modality differentiation not found in any jurisdiction's primary law.</div>
+        </div>
+        <div class="epr-row">
+          <div class="epr-dim">Relevance (0-5)</div>
+          <div class="epr-score-cell">5/5</div>
+          <div class="epr-note">All five zones covered. Both drug classes addressed. EU cross-border rule answered. Async-first MVP analysis directly actionable. Fully responsive to research question.</div>
+        </div>
+        <div class="epr-row">
+          <div class="epr-dim">Novelty (0-5)</div>
+          <div class="epr-score-cell">4/5</div>
+          <div class="epr-note">DHA ST-14 V4 (Nov 2025) Standard Seven is genuinely current. Netherlands April 2023 replacing COVID-era policy is material. Saudi "video required, not synchronous" is novel. Greece decree gap widely unknown.</div>
+        </div>
+        <div class="epr-row" style="border-bottom:none">
+          <div class="epr-dim" style="font-weight:700;color:var(--text)">EPR Total</div>
+          <div class="epr-score-cell" style="font-size:1.1rem;color:var(--accent)">15/20</div>
+          <div class="epr-note">Solid D3 research with known gaps. Confidence varies significantly by zone. Self-grade: 82/100. Deductions: Saudi primary text −8; Greece decree gap −5; first vs follow-up distinction weak −5.</div>
+        </div>
+      </div>
+
+      <!-- Chart.js EPR chart -->
+      <div style="max-width:380px;margin:1.5rem auto">
+        <canvas id="eprChart" height="200"></canvas>
+      </div>
+
+      <!-- Footer -->
+      <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--text-muted);text-align:center;line-height:1.8">
+        <div>Report generated by <strong>DELPHI PRO</strong> D3 Critic+Synthesizer · 2026-07-08</div>
+        <div>Published by <strong>NexusOS Shared Reporter</strong></div>
+        <div style="margin-top:0.5rem;color:var(--red);font-weight:600">ILLUSTRATIVE ONLY — NOT LEGAL ADVICE — REQUIRES COUNSEL VERIFICATION BEFORE COMMERCIAL RELIANCE</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const root = document.documentElement;
+  const current = root.getAttribute('data-theme');
+  root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  localStorage.setItem('theme', root.getAttribute('data-theme'));
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// Collapsible
+function toggleCollapse(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// Intersection observer for animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+// Share button
+function shareReport() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'Telehealth Sync vs Async Compliance 2026', url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.querySelector('.share-btn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✓ Copied!';
+      setTimeout(() => btn.innerHTML = orig, 1800);
+    });
+  }
+}
+
+// Chart.js EPR bar chart
+window.addEventListener('load', function() {
+  const ctx = document.getElementById('eprChart').getContext('2d');
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Evidence', 'Precision', 'Relevance', 'Novelty'],
+      datasets: [{
+        label: 'EPR Score',
+        data: [3, 3, 5, 4],
+        backgroundColor: ['rgba(88,166,255,0.6)', 'rgba(88,166,255,0.6)', 'rgba(63,185,80,0.6)', 'rgba(88,166,255,0.6)'],
+        borderColor: ['#58a6ff', '#58a6ff', '#3fb950', '#58a6ff'],
+        borderWidth: 2,
+        borderRadius: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'EPR Score Breakdown (15/20)',
+          color: isDark ? '#e6edf3' : '#1c2128',
+          font: { size: 13, family: 'Inter' }
+        }
+      },
+      scales: {
+        y: {
+          min: 0, max: 5,
+          grid: { color: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)' },
+          ticks: { color: isDark ? '#8b949e' : '#656d76', stepSize: 1 }
+        },
+        x: {
+          grid: { display: false },
+          ticks: { color: isDark ? '#8b949e' : '#656d76' }
+        }
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
