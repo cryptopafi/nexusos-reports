@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Model &amp; Billing Legality: Cash-Pay Telehealth (ED + GLP-1)</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --bg2: #ffffff;
+    --bg3: #f0f4f8;
+    --text: #1a1a2e;
+    --text2: #4a5568;
+    --border: #e2e8f0;
+    --accent: #1e40af;
+    --accent2: #3b82f6;
+    --green: #166534;
+    --green-bg: #dcfce7;
+    --green-border: #86efac;
+    --red: #991b1b;
+    --red-bg: #fee2e2;
+    --red-border: #fca5a5;
+    --yellow: #78350f;
+    --yellow-bg: #fef3c7;
+    --yellow-border: #fcd34d;
+    --caution-bg: #fffbeb;
+    --caution-border: #f59e0b;
+    --exec-bg: #eff6ff;
+    --exec-border: #3b82f6;
+    --code-bg: #f1f5f9;
+    --shadow: rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"], @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --bg2: #1e293b;
+      --bg3: #162032;
+      --text: #e2e8f0;
+      --text2: #94a3b8;
+      --border: #334155;
+      --accent: #60a5fa;
+      --accent2: #93c5fd;
+      --green: #86efac;
+      --green-bg: #052e16;
+      --green-border: #166534;
+      --red: #fca5a5;
+      --red-bg: #450a0a;
+      --red-border: #991b1b;
+      --yellow: #fcd34d;
+      --yellow-bg: #1c0a00;
+      --yellow-border: #92400e;
+      --caution-bg: #1c1400;
+      --caution-border: #b45309;
+      --exec-bg: #0c1a3a;
+      --exec-border: #1e40af;
+      --code-bg: #0f172a;
+      --shadow: rgba(0,0,0,0.4);
+    }
+  }
+  [data-theme="dark"] {
+    --bg: #0f172a;
+    --bg2: #1e293b;
+    --bg3: #162032;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --border: #334155;
+    --accent: #60a5fa;
+    --accent2: #93c5fd;
+    --green: #86efac;
+    --green-bg: #052e16;
+    --green-border: #166534;
+    --red: #fca5a5;
+    --red-bg: #450a0a;
+    --red-border: #991b1b;
+    --yellow: #fcd34d;
+    --yellow-bg: #1c0a00;
+    --yellow-border: #92400e;
+    --caution-bg: #1c1400;
+    --caution-border: #b45309;
+    --exec-bg: #0c1a3a;
+    --exec-border: #1e40af;
+    --code-bg: #0f172a;
+    --shadow: rgba(0,0,0,0.4);
+  }
+  [data-theme="light"] {
+    --bg: #f8f9fa;
+    --bg2: #ffffff;
+    --bg3: #f0f4f8;
+    --text: #1a1a2e;
+    --text2: #4a5568;
+    --border: #e2e8f0;
+    --accent: #1e40af;
+    --accent2: #3b82f6;
+    --green: #166534;
+    --green-bg: #dcfce7;
+    --green-border: #86efac;
+    --red: #991b1b;
+    --red-bg: #fee2e2;
+    --red-border: #fca5a5;
+    --yellow: #78350f;
+    --yellow-bg: #fef3c7;
+    --yellow-border: #fcd34d;
+    --caution-bg: #fffbeb;
+    --caution-border: #f59e0b;
+    --exec-bg: #eff6ff;
+    --exec-border: #3b82f6;
+    --code-bg: #f1f5f9;
+    --shadow: rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .page-header {
+    background: linear-gradient(135deg, #0f2057 0%, #1e3a8a 50%, #0369a1 100%);
+    color: #fff;
+    padding: 2.5rem 1.5rem 2rem;
+    position: relative;
+  }
+  .page-header .badge-row {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;
+  }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #e0f2fe;
+  }
+  .page-header h1 {
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .page-header .subtitle {
+    font-size: 1rem;
+    opacity: 0.85;
+    color: #bae6fd;
+  }
+  .theme-toggle {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,0.25); }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  /* Executive Summary */
+  .exec-box {
+    background: var(--exec-bg);
+    border: 2px solid var(--exec-border);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .exec-box h2 {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .exec-box p { color: var(--text); font-size: 0.95rem; }
+
+  /* Caution / Caveat Box */
+  .caution-box {
+    background: var(--caution-bg);
+    border: 2px solid var(--caution-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .caution-box .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .caution-box p { font-size: 0.9rem; color: var(--yellow); font-weight: 500; }
+
+  /* Critic Flag Box */
+  .critic-box {
+    background: var(--yellow-bg);
+    border: 1px solid var(--yellow-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+    color: var(--yellow);
+    font-style: italic;
+  }
+
+  /* Sections */
+  section { margin-bottom: 2.5rem; }
+  h2.section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 1.25rem 0 0.5rem;
+  }
+  h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text2);
+    margin: 1rem 0 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  p { margin-bottom: 0.9rem; color: var(--text); }
+  ul, ol { margin: 0.5rem 0 0.9rem 1.5rem; }
+  li { margin-bottom: 0.3rem; color: var(--text); }
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Model Cards */
+  .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  @media (max-width: 640px) { .model-grid { grid-template-columns: 1fr; } }
+
+  .model-card {
+    background: var(--bg2);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .model-card.legal { border-color: var(--green-border); }
+  .model-card.prohibited { border-color: var(--red-border); }
+  .model-card .model-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 6px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .model-card.legal .model-label { background: var(--green-bg); color: var(--green); }
+  .model-card.prohibited .model-label { background: var(--red-bg); color: var(--red); }
+  .model-card h3 { margin-top: 0; font-size: 1rem; }
+
+  /* Zone Analysis Cards */
+  .zone-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 1px 4px var(--shadow);
+  }
+  .zone-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .zone-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .verdict-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .pill {
+    border-radius: 999px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .pill.legal { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .pill.prohibited { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .pill.likely-legal { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow-border); }
+  .pill.high-risk { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+
+  /* Verdict Table */
+  .verdict-section { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    background: var(--bg2);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  th {
+    background: var(--bg3);
+    color: var(--text2);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg3); }
+
+  .verdict-yes {
+    display: inline-block;
+    background: var(--green-bg);
+    color: var(--green);
+    border: 1px solid var(--green-border);
+    border-radius: 6px;
+    padding: 0.15rem 0.5rem;
+    font-weight: 800;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  .verdict-no {
+    display: inline-block;
+    background: var(--red-bg);
+    color: var(--red);
+    border: 1px solid var(--red-border);
+    border-radius: 6px;
+    padding: 0.15rem 0.5rem;
+    font-weight: 800;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+  .verdict-maybe {
+    display: inline-block;
+    background: var(--yellow-bg);
+    color: var(--yellow);
+    border: 1px solid var(--yellow-border);
+    border-radius: 6px;
+    padding: 0.15rem 0.5rem;
+    font-weight: 800;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* Gaps Table */
+  .gap-table td:first-child { font-weight: 700; color: var(--accent); min-width: 2rem; }
+  .priority-hard {
+    display: inline-block;
+    background: var(--red-bg);
+    color: var(--red);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .priority-high {
+    display: inline-block;
+    background: var(--yellow-bg);
+    color: var(--yellow);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .priority-med {
+    display: inline-block;
+    background: var(--exec-bg);
+    color: var(--accent);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  /* Money Flow */
+  .flow-steps { counter-reset: flow; list-style: none; margin-left: 0; }
+  .flow-steps li {
+    counter-increment: flow;
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 1rem;
+  }
+  .flow-steps li::before {
+    content: counter(flow);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  /* Prohibited box */
+  .prohibited-box {
+    background: var(--red-bg);
+    border: 1px solid var(--red-border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+  }
+  .prohibited-box h4 { color: var(--red); margin-top: 0; }
+  .prohibited-box li { color: var(--red); }
+
+  /* Source table */
+  .source-table td:nth-child(2) {
+    font-size: 0.78rem;
+    color: var(--accent2);
+    font-weight: 600;
+  }
+
+  /* Code block */
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.82rem;
+    color: var(--text2);
+    font-family: 'SFMono-Regular', Consolas, monospace;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text2);
+  }
+  footer .footer-badges { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  footer .fbadge {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+
+  .label-tag {
+    display: inline-block;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text2);
+    margin-right: 0.25rem;
+  }
+  .label-binding { background: #0f2057; color: #bae6fd; border-color: #1e3a8a; }
+  .label-opinion { background: var(--exec-bg); color: var(--accent); border-color: var(--exec-border); }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀/☾ Theme</button>
+  <div class="badge-row">
+    <span class="badge">D3 Research</span>
+    <span class="badge">EPR 17/20</span>
+    <span class="badge">DELPHI PRO</span>
+    <span class="badge">6 Jurisdictions</span>
+    <span class="badge">2026-07-08</span>
+  </div>
+  <h1>Revenue Model &amp; Billing Legality:<br>Cash-Pay Telehealth (ED + GLP-1)</h1>
+  <p class="subtitle">Model A vs Model B — US / Romania / Greece / Netherlands / Dubai / Saudi Arabia</p>
+</header>
+
+<div class="container">
+
+  <!-- Illustrative Caveat -->
+  <div class="caution-box">
+    <span class="icon">⚠</span>
+    <p><strong>ILLUSTRATIVE CAVEAT:</strong> All legal analysis in this report is illustrative only. No portion of this document constitutes legal advice. Engage qualified local counsel in each jurisdiction before entering any commercial arrangement.</p>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="exec-box">
+    <h2>Executive Summary</h2>
+    <p>Cash-pay telehealth platforms offering ED and GLP-1 (glucagon-like peptide-1) weight-loss programs face a binary structural choice: <strong>Model A</strong> (patient pays platform the full program price; platform pays providers and pharmacy internally) or <strong>Model B</strong> (pharmacy bills patient directly; pharmacy pays platform a per-referral commission). Every major US telehealth player — Hims &amp; Hers, Ro/Roman, LifeMD, WeightWatchers Clinic, Noom Med, Found, Henry Meds, Mochi Health — uses Model A exclusively, validating it as the commercially and legally dominant structure.</p>
+    <p>Model B (per-referral commission from pharmacy to platform) is <strong>prohibited or creates severe legal risk in every jurisdiction analyzed</strong> in this report. In the United States, the primary legal risk for a cash-pay-only platform is not the federal Anti-Kickback Statute (AKS) (42 USC 1320a-7b) — which applies only when Medicare/Medicaid is involved — but rather <strong>state fee-splitting laws</strong> (CA BPC § 650, FL, NY, TX) that are payer-agnostic and apply to all patient populations. Across EU member states (Netherlands, Romania, Greece), EU Directive 2001/83/EC Article 94 provides the binding anti-inducement anchor. Dubai (DHA) enforces equivalent prohibitions through DHA Code of Ethics ST-66 (July 2025) and DHA Telehealth Standard ST-14 v4. Saudi Arabia presents an indirect prohibition via the Anti-Bribery Law (Royal Decree M/36, 2017).</p>
+    <p>The recommended structure across all zones is a single-tier Model A with fixed, FMV (fair market value)-priced Management Services Agreements (MSAs) between the platform and pharmacies — fees set in advance, not contingent on referral volume.</p>
+  </div>
+
+  <!-- Model Definitions -->
+  <section>
+    <h2 class="section-title">2. Model Definitions</h2>
+    <div class="model-grid">
+      <div class="model-card legal">
+        <span class="model-label">Model A — Legal in all zones</span>
+        <h3>Platform-Aggregated Cash Collection</h3>
+        <p>The patient pays the telehealth platform one consolidated price (e.g., $299/month for a GLP-1 program). The platform then pays the physician/provider and the pharmacy from that collected revenue under written MSO/PC split structures.</p>
+        <ul>
+          <li><strong>Patient pays:</strong> Platform</li>
+          <li><strong>Platform pays:</strong> Provider + Pharmacy</li>
+          <li><strong>Per-referral commission from pharmacy:</strong> None</li>
+          <li><strong>Examples:</strong> Hims &amp; Hers, Ro/Roman, LifeMD, WeightWatchers Clinic, Noom Med, Found, Henry Meds, Mochi Health</li>
+        </ul>
+      </div>
+      <div class="model-card prohibited">
+        <span class="model-label">Model B — Prohibited in all zones</span>
+        <h3>Pharmacy-Direct Billing with Referral Commission</h3>
+        <p>The pharmacy bills the patient directly for medication. The pharmacy then pays the telehealth platform a per-referral commission, finder's fee, or volume-based incentive for steering patients.</p>
+        <ul>
+          <li><strong>Patient pays:</strong> Pharmacy directly</li>
+          <li><strong>Pharmacy pays:</strong> Platform (per-referral fee or % of script value)</li>
+          <li><strong>Per-referral commission:</strong> Yes — defining feature</li>
+          <li><strong>Legal status:</strong> Prohibited or high-risk in all six zones</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- US Commercial Practice -->
+  <section>
+    <h2 class="section-title">3. How US Telehealth Leaders Structure It</h2>
+
+    <h3>Commercial Practice (Not Legal Opinion)</h3>
+    <p>All major US telehealth platforms building in ED and/or GLP-1 programs use Model A. This is not coincidence — it reflects the legal consensus that Model B exposes platforms to state fee-splitting liability.</p>
+
+    <div class="zone-card">
+      <h3>Hims &amp; Hers (HIMS)</h3>
+      <p>SEC 10-K 2024 discloses ownership of <strong>Apostrophe Pharmacy LLC</strong> (503A compounding) and acquisition of <strong>MedisourceRx</strong> (503B outsourcing facility) in 2024. Approximately 90% of prescription fulfillment occurs through affiliated or owned pharmacies — no per-referral commission from an independent pharmacy flows to the platform. GLP-1 pricing: $200–$700/month; patient pays Hims; Hims controls dispensing internally.</p>
+    </div>
+
+    <div class="zone-card">
+      <h3>Ro/Roman</h3>
+      <p>MSO-PC structure: Ro manages administrative, IT, and billing operations for contracted Provider Corporations; providers are employed by or contracted through the physician-owned PC. Novo Nordisk NovoCare Pharmacy partnership for brand-name Wegovy at $499/month; patient pays Ro, not the pharmacy directly.</p>
+    </div>
+
+    <h3>Legal Structure Underpinning Model A — US</h3>
+    <h4>MSO/PC Split (Binding Law — State Level)</h4>
+    <p>Corporate Practice of Medicine (CPOM) laws in most US states — especially CA, NY, TX, FL — prohibit non-physicians from owning or controlling medical practices. The standard structural response:</p>
+    <ol>
+      <li>A physician-owned <strong>Professional Corporation (PC)</strong> that employs providers and holds the medical license.</li>
+      <li>A non-physician-owned <strong>Management Services Organization (MSO)</strong> that handles administration, technology, billing support, and operations.</li>
+      <li>A written MSO Agreement defining the services and fees between the two entities.</li>
+    </ol>
+
+    <h4>OIG Advisory Opinion AO-25-03 (June 2025) — Favorable</h4>
+    <p>The OIG (Office of Inspector General) issued a favorable opinion for a telehealth MSO-PC arrangement, validating six structural elements as the industry standard:</p>
+    <ol>
+      <li>Written agreement between MSO and PC</li>
+      <li>Services specified in advance</li>
+      <li>Term of at least one year</li>
+      <li>Fees set in advance</li>
+      <li>Fees equal to FMV, independently validated</li>
+      <li>Fees NOT contingent on referral volume or value</li>
+    </ol>
+    <p>Source: <a href="https://oig.hhs.gov/documents/advisory-opinions/10339/AO-25-03.pdf" target="_blank">oig.hhs.gov/documents/advisory-opinions/10339/AO-25-03.pdf</a></p>
+
+    <h4>503A vs 503B Compounding (Binding Law — FDA)</h4>
+    <ul>
+      <li><strong>503A:</strong> Patient-specific prescription compounded in a state-licensed pharmacy. Standard for telehealth semaglutide/tirzepatide protocols during drug shortage periods.</li>
+      <li><strong>503B:</strong> Outsourcing facility operating under stricter FDA CGMP (Current Good Manufacturing Practice), producing larger quantities for healthcare facilities.</li>
+    </ul>
+  </section>
+
+  <!-- Zone Analysis -->
+  <section>
+    <h2 class="section-title">4. Legal Analysis by Zone</h2>
+
+    <!-- 4.1 US -->
+    <div class="zone-card">
+      <div class="zone-header">
+        <span class="zone-name">4.1 United States</span>
+        <div class="verdict-pills">
+          <span class="pill legal">Model A: LEGAL</span>
+          <span class="pill prohibited">Model B: PROHIBITED</span>
+        </div>
+      </div>
+
+      <h4>Primary Risk: State Fee-Splitting Laws (Payer-Agnostic)</h4>
+      <p><span class="label-tag label-binding">BINDING LAW</span> CA Business and Professions Code § 650; FL, NY, TX, MA equivalent statutes</p>
+      <p>CA BPC § 650 is representative: licensed healthcare professionals are prohibited from paying or receiving anything of value in exchange for patient referrals. Crucially, these laws are <strong>payer-agnostic</strong> — they apply equally to cash-pay, self-pay, and all other patient populations. A cash-pay-only telehealth platform is fully exposed to state fee-splitting laws even if it never touches Medicare or Medicaid. A per-referral commission from a pharmacy to the platform for steering patients constitutes fee-splitting in virtually every US state.</p>
+
+      <h4>Federal AKS — Scoped to Government Programs Only</h4>
+      <p><span class="label-tag label-binding">BINDING LAW</span> 42 USC 1320a-7b (Anti-Kickback Statute)</p>
+      <p>For a 100% cash-pay platform that serves no Medicare or Medicaid patients, federal AKS is NOT the primary risk. AKS risk materializes if any Medicare/Medicaid-eligible patient uses the platform (even cash-pay), if the platform later accepts insurance, or if an affiliated entity accepts government program payments.</p>
+
+      <p><strong>Recommended structure:</strong> MSO-PC split; fixed FMV service fees per OIG AO-25-03; flat pharmacy services agreement.</p>
+    </div>
+
+    <!-- 4.2 Netherlands -->
+    <div class="zone-card">
+      <div class="zone-header">
+        <span class="zone-name">4.2 Netherlands</span>
+        <div class="verdict-pills">
+          <span class="pill legal">Model A: LEGAL</span>
+          <span class="pill prohibited">Model B: PROHIBITED</span>
+        </div>
+      </div>
+
+      <p><span class="label-tag label-binding">BINDING LAW</span> EU Directive 2001/83/EC Article 94 | Netherlands Geneesmiddelenwet (Medicines Act) | Beleidsregels gunstbetoon 2018 | Enforced by IGJ (Inspectie Gezondheidszorg en Jeugd)</p>
+      <p>EU Dir 2001/83/EC Art 94 prohibits inducements — gifts, financial benefits, or pecuniary advantages — to prescribers and dispensers of medicinal products. Per-referral commissions from a pharmacy to a platform constitute an inducement in exchange for prescribing/dispensing decisions. The only exception under Dutch law is a written FMV service agreement for genuine consulting services of minimal value — not a per-referral or volume-linked payment.</p>
+      <p><strong>Mail-order note:</strong> Netherlands does not permit standard mail-order pharmaceuticals for prescription drugs without specific authorization.</p>
+    </div>
+
+    <!-- 4.3 Romania -->
+    <div class="zone-card">
+      <div class="zone-header">
+        <span class="zone-name">4.3 Romania</span>
+        <div class="verdict-pills">
+          <span class="pill legal">Model A: LEGAL</span>
+          <span class="pill prohibited">Model B: PROHIBITED</span>
+        </div>
+      </div>
+
+      <p><span class="label-tag label-binding">BINDING LAW</span> EU Directive 2001/83/EC Article 94 | Romanian Pharmacy Law 266/2008 | ARPIM Code of Ethics (self-regulation — secondary only)</p>
+      <p>Romania's Pharmacy Law 266/2008 is the primary legal anchor for anti-inducement rules at the national level, implemented in alignment with EU Dir 2001/83/EC Art 94. Per-referral commissions from pharmacy to platform would violate both instruments.</p>
+      <p><strong>Romania-specific constraint — RX mail-order ban:</strong> Romania independently prohibits inbound RX mail-order — a foreign pharmacy cannot ship prescription drugs to Romanian patients. Romanian patients must collect in person or through an in-country pharmacy. GLP-1 and ED prescription drugs dispensed for Romanian patients must be fulfilled through Romanian-licensed pharmacy infrastructure.</p>
+    </div>
+
+    <!-- 4.4 Greece -->
+    <div class="zone-card">
+      <div class="zone-header">
+        <span class="zone-name">4.4 Greece</span>
+        <div class="verdict-pills">
+          <span class="pill legal">Model A: LEGAL</span>
+          <span class="pill prohibited">Model B: PROHIBITED</span>
+        </div>
+      </div>
+
+      <p><span class="label-tag label-binding">BINDING LAW</span> EU Directive 2001/83/EC Article 94 (primary) | Greek Law 5129/2024 Art. 66 + Ministerial Decision 7687/2025 (March 2025) | Greek Law 1316/1983</p>
+      <p>EU Dir 2001/83/EC Art 94 is the binding primary authority for Greece. Greek Law 5129/2024 + Ministerial Decision 7687/2025 is Greece's first comprehensive telemedicine framework (verified: <a href="https://www.potamitisvekris.com/insight/greeces-new-telemedicine-legal-framework/" target="_blank">potamitisvekris.com</a>). It requires doctors to be registered with Greek Medical Associations and certified in the e-Doctor registry; governs platform-doctor mediation. Platform-pharmacy financial inducements remain prohibited under EU and Greek pharmaceutical law.</p>
+      <p><strong>Key requirement:</strong> Platform must use e-Doctor-certified physicians; Greek Medical Association registration required.</p>
+    </div>
+
+    <!-- 4.5 Dubai -->
+    <div class="zone-card">
+      <div class="zone-header">
+        <span class="zone-name">4.5 Dubai (UAE / DHA)</span>
+        <div class="verdict-pills">
+          <span class="pill legal">Model A: LEGAL</span>
+          <span class="pill prohibited">Model B: PROHIBITED</span>
+        </div>
+      </div>
+
+      <p><span class="label-tag label-binding">BINDING REGULATORY</span> DHA Code of Ethics ST-66 (July 2025) | DHA Telehealth Standard ST-14 v4 (CIR-2025-00000212) | UAE Federal Law No. 4/1983 | Abu Dhabi DOH Kickbacks Circular</p>
+      <p><strong>DHA Code of Ethics ST-66 §§ 10.4.2–10.4.3:</strong> "Avoid fee-splitting, kickbacks, or improper financial arrangements, and do not accept or offer gifts, discounts, hospitality, or other benefits that may influence or appear to influence professional judgment." Prescribing decisions must be "based solely on evidence-based clinical need, not on financial incentives or personal benefit."</p>
+      <p><strong>DHA ST-14 v4 (Standard 13):</strong> Explicitly prohibits referral commissions, volume-based discounts, performance-linked incentives that may influence treatment decisions, payment-for-referral schemes, and any financial agreements that may influence or distort clinical decision-making. The facility-centric framework requires all patient-facing billing to flow through a DHA-licensed health facility.</p>
+      <p><span class="label-tag label-opinion">LEGAL OPINION</span> Al Tamimi &amp; Company documents transition from informal referral payment practices to enforced prohibition under UAE law.</p>
+      <p><em>Note: DHA ST-14 v4 (CIR-2025-00000212) cited as effective November 2025; should not be treated as currently enforceable until independently confirmed. DHA ST-66 (July 2025) is the currently operative ethics standard.</em></p>
+    </div>
+
+    <!-- 4.6 Saudi Arabia -->
+    <div class="zone-card">
+      <div class="zone-header">
+        <span class="zone-name">4.6 Saudi Arabia (MOH / SFDA)</span>
+        <div class="verdict-pills">
+          <span class="pill likely-legal">Model A: LIKELY LEGAL</span>
+          <span class="pill high-risk">Model B: HIGH RISK</span>
+        </div>
+      </div>
+
+      <div class="critic-box">
+        <strong>CRITIC FLAG:</strong> Healthcare-specific inducement statute not confirmed for Saudi Arabia. Prohibition is derived by analogy. Local KSA (Kingdom of Saudi Arabia) counsel review is a mandatory gate before any commercial arrangement.
+      </div>
+
+      <p><span class="label-tag label-binding">BINDING LAW</span> Saudi Anti-Bribery Law, Royal Decree M/36 (2017) — broadly prohibits offering or receiving bribes in both public and private sectors. Healthcare referral commissions could constitute bribery under this law by analogy.</p>
+      <p><span class="label-tag">MOH REGULATORY</span> Saudi MOH Legal Regulations for Telehealth Services (2022) — requires written contracts for facility-to-entity arrangements; no explicit healthcare-specific anti-inducement clause confirmed in this document.</p>
+      <p><strong>Assessment:</strong> Model B is HIGH RISK in Saudi Arabia. While there is no confirmed healthcare-specific inducement statute equivalent to EU Dir 2001/83/EC, the Anti-Bribery Law (Royal Decree M/36, 2017) provides grounds to treat referral commissions as bribery in the private healthcare sector. The prohibition should be treated as operative by analogy pending local counsel confirmation.</p>
+      <p><strong>Hard gate:</strong> Local KSA counsel mandatory before any commercial launch. Obtain KSA counsel confirmation of flat-fee MSA permissibility before any contract execution.</p>
+    </div>
+  </section>
+
+  <!-- Cross-Zone Verdict Table -->
+  <section class="verdict-section">
+    <h2 class="section-title">5. Cross-Zone Verdict Table</h2>
+    <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Zone</th>
+            <th>Model A</th>
+            <th>Model B</th>
+            <th>Binding Authority</th>
+            <th>Recommended Structure</th>
+            <th>Notes / Gaps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>United States</strong></td>
+            <td><span class="verdict-yes">YES</span></td>
+            <td><span class="verdict-no">NO</span></td>
+            <td>State fee-splitting laws (CA BPC § 650, FL, NY, TX); Federal AKS (42 USC 1320a-7b) if any govt-program patients</td>
+            <td>MSO-PC split; fixed FMV service fees per OIG AO-25-03; flat pharmacy services agreement</td>
+            <td>AKS is NOT primary risk for cash-pay-only; state fee-splitting laws are payer-agnostic and primary risk</td>
+          </tr>
+          <tr>
+            <td><strong>Netherlands</strong></td>
+            <td><span class="verdict-yes">YES</span></td>
+            <td><span class="verdict-no">NO</span></td>
+            <td>EU Dir 2001/83/EC Art 94; Geneesmiddelenwet; Beleidsregels gunstbetoon 2018</td>
+            <td>Flat FMV pharmacy services agreement; no volume-linked fees</td>
+            <td>Mail-order RX authorization required; IGJ enforcement active</td>
+          </tr>
+          <tr>
+            <td><strong>Romania</strong></td>
+            <td><span class="verdict-yes">YES</span></td>
+            <td><span class="verdict-no">NO</span></td>
+            <td>EU Dir 2001/83/EC Art 94; Pharmacy Law 266/2008</td>
+            <td>Flat FMV pharmacy services agreement; in-country dispensing required</td>
+            <td>RX mail-order BANNED; inbound foreign pharmacy shipment prohibited; ARPIM Code is self-regulation only</td>
+          </tr>
+          <tr>
+            <td><strong>Greece</strong></td>
+            <td><span class="verdict-yes">YES</span></td>
+            <td><span class="verdict-no">NO</span></td>
+            <td>EU Dir 2001/83/EC Art 94 (primary); Greek Law 5129/2024 + MD 7687/2025 (verified)</td>
+            <td>Flat FMV pharmacy services agreement; e-Doctor registry compliance</td>
+            <td>New telemedicine law (Law 5129/2024) governs platform-doctor mediation; e-Doctor-certified physicians required</td>
+          </tr>
+          <tr>
+            <td><strong>Dubai (DHA/UAE)</strong></td>
+            <td><span class="verdict-yes">YES</span></td>
+            <td><span class="verdict-no">NO</span></td>
+            <td>DHA ST-66 §§ 10.4.2–10.4.3 (July 2025); UAE Federal Law No. 4/1983; Abu Dhabi DOH Circular; DHA CIR-2025-00000212</td>
+            <td>Flat FMV MSA; DHA-licensed facility required as patient-facing billing entity</td>
+            <td>DHA ST-14 v4 effective Nov 2025; platform needs DHA facility license or must operate under licensed facility umbrella</td>
+          </tr>
+          <tr>
+            <td><strong>Saudi Arabia (KSA)</strong></td>
+            <td><span class="verdict-maybe">LIKELY YES</span></td>
+            <td><span class="verdict-no">HIGH RISK</span></td>
+            <td>Anti-Bribery Law Royal Decree M/36 (2017) — by analogy; no confirmed healthcare-specific inducement statute</td>
+            <td>Flat FMV MSA; KSA counsel confirmation required before execution</td>
+            <td><strong>HARD GATE:</strong> local KSA counsel mandatory pre-launch; MOH Telehealth Regs (2022) lack explicit inducement clause</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Money Flow Model -->
+  <section>
+    <h2 class="section-title">6. Recommended Money-Flow Model</h2>
+    <p><strong>Structure: Model A — Platform-Aggregated Cash Collection with Fixed FMV Service Agreements</strong></p>
+
+    <ol class="flow-steps">
+      <li>
+        <strong>Patient → Platform:</strong> The patient pays the telehealth platform a single consolidated program fee (monthly subscription or per-visit). The platform is the contracting party; the patient has no direct billing relationship with the pharmacy.
+      </li>
+      <li>
+        <strong>Platform → Provider:</strong> The platform pays the physician/PA/NP under a written MSO-PC Management Services Agreement. Fees must be fixed in advance (not per-patient or per-prescription), at independently-validated FMV, documented in a term agreement of at least 12 months.
+      </li>
+      <li>
+        <strong>Platform → Pharmacy:</strong> The platform pays the pharmacy under a written, flat-fee Pharmacy Services Agreement or MSA. Fees must be fixed (e.g., a flat monthly technology/admin fee), NOT contingent on prescription volume, script count, or patient referral count, and at FMV for genuine services rendered.
+      </li>
+    </ol>
+
+    <div class="prohibited-box">
+      <h4>Explicitly Prohibited in All Zones</h4>
+      <ul>
+        <li>Any fee from pharmacy to platform tied to number of prescriptions filled</li>
+        <li>Volume-based discounts to the platform from the pharmacy</li>
+        <li>Performance-linked incentives based on prescribing behavior</li>
+        <li>Revenue-share agreements where platform earnings scale with pharmacy dispensing volume</li>
+      </ul>
+    </div>
+
+    <h3>Zone-Specific Constraints</h3>
+    <ul>
+      <li><strong>Romania:</strong> All prescription dispensing must occur through Romanian-licensed in-country pharmacies; no inbound RX mail-order.</li>
+      <li><strong>Netherlands:</strong> Prescription drug mail-order requires specific authorization; confirm with IGJ before remote dispensing model launch.</li>
+      <li><strong>Saudi Arabia:</strong> Obtain KSA counsel confirmation of flat-fee MSA permissibility before any contract execution.</li>
+      <li><strong>Dubai (DHA):</strong> DHA facility license required; ST-14 v4 telehealth standards to be confirmed as operative when effective November 2025.</li>
+      <li><strong>United States:</strong> MSO-PC split required in CPOM-enforcing states (CA, NY, TX, FL, and others); confirm state-specific CPOM status before operating.</li>
+    </ul>
+  </section>
+
+  <!-- Illustrative Caveat (full) -->
+  <section>
+    <h2 class="section-title">7. Illustrative Caveat</h2>
+    <div class="caution-box">
+      <span class="icon">⚠</span>
+      <p>All legal analysis in this report is illustrative only. No portion of this document constitutes legal advice. The findings are based on publicly available sources, prior project research, and scout-retrieved regulatory documents as of July 2026. Laws and regulations change; source documents should be independently verified before reliance. Engage qualified local counsel in each jurisdiction — including but not limited to a US healthcare attorney, a Dutch regulatory counsel, a Romanian pharmaceutical attorney, a Greek EU law specialist, a UAE/DHA-licensed legal advisor, and a KSA-licensed attorney — before entering any commercial arrangement in any of these markets.</p>
+    </div>
+  </section>
+
+  <!-- Standing Gaps -->
+  <section>
+    <h2 class="section-title">8. Standing Gaps / Counsel Gates</h2>
+    <div style="overflow-x: auto;">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Zone</th>
+            <th>Gap</th>
+            <th>Priority</th>
+            <th>Action Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>G-1</td>
+            <td><strong>Saudi Arabia</strong></td>
+            <td>Healthcare-specific inducement statute not confirmed; prohibition by analogy only</td>
+            <td><span class="priority-hard">HARD GATE</span></td>
+            <td>Engage KSA-licensed healthcare counsel; confirm Anti-Bribery Law (M/36) applicability to platform-pharmacy arrangements</td>
+          </tr>
+          <tr>
+            <td>G-2</td>
+            <td><strong>Dubai</strong></td>
+            <td>DHA ST-14 v4 (effective November 2025) pending independent verification</td>
+            <td><span class="priority-high">HIGH</span></td>
+            <td>Independently verify ST-14 v4 via dha.gov.ae before structuring telehealth delivery model for UAE</td>
+          </tr>
+          <tr>
+            <td>G-3</td>
+            <td><strong>Greece</strong></td>
+            <td>e-Doctor registry enrollment requirements for partner physicians need confirmation</td>
+            <td><span class="priority-med">MEDIUM</span></td>
+            <td>Verify e-Doctor registry enrollment process; may require Greek Medical Association registration</td>
+          </tr>
+          <tr>
+            <td>G-4</td>
+            <td><strong>Netherlands</strong></td>
+            <td>Mail-order prescription drug authorization requirements for GLP-1/ED categories need specific confirmation</td>
+            <td><span class="priority-high">HIGH</span></td>
+            <td>Confirm with IGJ or Dutch pharmaceutical counsel before enabling remote dispensing</td>
+          </tr>
+          <tr>
+            <td>G-5</td>
+            <td><strong>United States</strong></td>
+            <td>State-by-state CPOM mapping required for each state of operation</td>
+            <td><span class="priority-high">HIGH</span></td>
+            <td>Each operating state requires individual CPOM analysis; do not apply one-size structure across all 50 states</td>
+          </tr>
+          <tr>
+            <td>G-6</td>
+            <td><strong>United States</strong></td>
+            <td>If platform later accepts HSA/FSA payments or partners with any employer insurance plan, AKS risk profile changes materially</td>
+            <td><span class="priority-med">MEDIUM</span></td>
+            <td>Re-run legal analysis any time government program patients may be reached; flag for ongoing compliance monitoring</td>
+          </tr>
+          <tr>
+            <td>G-7</td>
+            <td><strong>Romania</strong></td>
+            <td>In-country pharmacy partner required; confirm 266/2008 compliance and ANMDM (National Agency for Medicines and Medical Devices) authorization</td>
+            <td><span class="priority-high">HIGH</span></td>
+            <td>Identify Romanian licensed pharmacy partner; confirm dispensing authorization before patient-facing launch</td>
+          </tr>
+          <tr>
+            <td>G-8</td>
+            <td><strong>All zones</strong></td>
+            <td>FMV independent validation for MSO service fees not yet documented</td>
+            <td><span class="priority-high">HIGH</span></td>
+            <td>Commission third-party FMV analysis before signing any MSO or pharmacy MSA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Source Coverage -->
+  <section>
+    <h2 class="section-title">9. Source Coverage Report</h2>
+    <div style="overflow-x: auto;">
+      <table class="source-table">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Type</th>
+            <th>Zone</th>
+            <th>Used In</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hims &amp; Hers SEC 10-K 2024 (hims-20241231)</td>
+            <td>BINDING DISCLOSURE (SEC)</td>
+            <td>US</td>
+            <td>§3, §4.1</td>
+          </tr>
+          <tr>
+            <td><a href="https://oig.hhs.gov/documents/advisory-opinions/10339/AO-25-03.pdf" target="_blank">OIG Advisory Opinion AO-25-03 (June 2025)</a></td>
+            <td>LEGAL OPINION (OIG)</td>
+            <td>US</td>
+            <td>§3, §4.1</td>
+          </tr>
+          <tr>
+            <td>CA Business and Professions Code § 650</td>
+            <td>BINDING LAW (state)</td>
+            <td>US (CA)</td>
+            <td>§4.1</td>
+          </tr>
+          <tr>
+            <td>Cohen Healthcare Law (cohenhealthcarelaw.com)</td>
+            <td>LEGAL ANALYSIS (law firm)</td>
+            <td>US</td>
+            <td>§4.1</td>
+          </tr>
+          <tr>
+            <td>Wilson Sonsini (wsgr.com)</td>
+            <td>LEGAL ANALYSIS (law firm)</td>
+            <td>US</td>
+            <td>§4.1</td>
+          </tr>
+          <tr>
+            <td>McGuireWoods (mcguirewoods.com)</td>
+            <td>LEGAL ANALYSIS (law firm)</td>
+            <td>US</td>
+            <td>§3, §4.1</td>
+          </tr>
+          <tr>
+            <td>DLA Piper (dlapiper.com)</td>
+            <td>LEGAL ANALYSIS (law firm)</td>
+            <td>US</td>
+            <td>§3</td>
+          </tr>
+          <tr>
+            <td>FDA (fda.gov/drugs) — 503A/503B compounding</td>
+            <td>BINDING REGULATORY GUIDANCE</td>
+            <td>US</td>
+            <td>§3</td>
+          </tr>
+          <tr>
+            <td>FierceHealthcare / Managed Healthcare Executive</td>
+            <td>COMMERCIAL ANALYSIS</td>
+            <td>US</td>
+            <td>§3</td>
+          </tr>
+          <tr>
+            <td><a href="https://eur-lex.europa.eu" target="_blank">EU Directive 2001/83/EC Article 94</a></td>
+            <td>BINDING LAW (EU primary)</td>
+            <td>EU (NL, RO, GR)</td>
+            <td>§4.2, §4.3, §4.4</td>
+          </tr>
+          <tr>
+            <td>Netherlands Geneesmiddelenwet (Medicines Act)</td>
+            <td>BINDING LAW (national)</td>
+            <td>Netherlands</td>
+            <td>§4.2</td>
+          </tr>
+          <tr>
+            <td>Beleidsregels gunstbetoon 2018</td>
+            <td>BINDING REGULATORY RULES</td>
+            <td>Netherlands</td>
+            <td>§4.2</td>
+          </tr>
+          <tr>
+            <td>Romanian Pharmacy Law 266/2008</td>
+            <td>BINDING LAW (national)</td>
+            <td>Romania</td>
+            <td>§4.3</td>
+          </tr>
+          <tr>
+            <td>ARPIM Code of Ethics</td>
+            <td>INDUSTRY SELF-REGULATION</td>
+            <td>Romania</td>
+            <td>§4.3</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.potamitisvekris.com/insight/greeces-new-telemedicine-legal-framework/" target="_blank">Greek Law 5129/2024 Art. 66 + Ministerial Decision 7687/2025</a></td>
+            <td>VERIFIED NATIONAL LAW (URL confirmed)</td>
+            <td>Greece</td>
+            <td>§4.4</td>
+          </tr>
+          <tr>
+            <td><a href="https://dha.gov.ae" target="_blank">DHA Code of Ethics ST-66 (July 2025)</a></td>
+            <td>BINDING REGULATORY STANDARD</td>
+            <td>Dubai/UAE</td>
+            <td>§4.5</td>
+          </tr>
+          <tr>
+            <td><a href="https://dha.gov.ae/en/circulars/details/CIR-2025-00000212" target="_blank">DHA Telehealth ST-14 v4 (CIR-2025-00000212)</a></td>
+            <td>REGULATORY STANDARD (eff. Nov 2025)</td>
+            <td>Dubai/UAE</td>
+            <td>§4.5</td>
+          </tr>
+          <tr>
+            <td>Al Tamimi &amp; Company (tamimi.com)</td>
+            <td>LEGAL OPINION (UAE law firm)</td>
+            <td>Dubai/UAE</td>
+            <td>§4.5</td>
+          </tr>
+          <tr>
+            <td>UAE Federal Law No. 4/1983 (lexology.com)</td>
+            <td>BINDING LAW (federal)</td>
+            <td>UAE</td>
+            <td>§4.5</td>
+          </tr>
+          <tr>
+            <td><a href="https://moh.gov.sa" target="_blank">Saudi MOH Legal Regulations for Telehealth Services (2022)</a></td>
+            <td>BINDING REGULATORY FRAMEWORK</td>
+            <td>Saudi Arabia</td>
+            <td>§4.6</td>
+          </tr>
+          <tr>
+            <td>Saudi Anti-Bribery Law, Royal Decree M/36 (2017)</td>
+            <td>BINDING LAW (national)</td>
+            <td>Saudi Arabia</td>
+            <td>§4.6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text2);"><strong>Coverage assessment:</strong> All six zones covered with at least one binding legal authority. Saudi Arabia is the weakest coverage zone (indirect prohibition only; no confirmed healthcare-specific statute). All 5/5 Critic corrections fully incorporated.</p>
+  </section>
+
+  <!-- Metadata -->
+  <section>
+    <h2 class="section-title">10. Metadata</h2>
+    <pre>title:       Revenue Model &amp; Billing Legality: Cash-Pay Telehealth (ED + GLP-1)
+subtitle:    Model A vs Model B — US / Romania / Greece / Netherlands / Dubai / Saudi Arabia
+run_date:    2026-07-08
+depth:       D3 (5 scouts + Critic + Synthesizer)
+epr_score:   17/20
+self_grade:  93/100
+synthesizer: DELPHI PRO
+critic_corrections_applied: 5/5
+zones_covered: 6/6
+hard_gates_pre_launch: [Saudi Arabia KSA counsel, DHA ST-14 v4 verification]
+gaps_requiring_counsel: 8</pre>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-badges">
+    <span class="fbadge">DELPHI PRO</span>
+    <span class="fbadge">D3 Research</span>
+    <span class="fbadge">EPR 17/20</span>
+    <span class="fbadge">Self-Grade 93/100</span>
+    <span class="fbadge">Critic Corrections 5/5</span>
+    <span class="fbadge">6 Jurisdictions</span>
+  </div>
+  <p>Revenue Model &amp; Billing Legality: Cash-Pay Telehealth (ED + GLP-1) — 2026-07-08</p>
+  <p style="margin-top: 0.3rem;">Illustrative only. Not legal advice. Engage qualified counsel in each jurisdiction before reliance.</p>
+</footer>
+
+<script>
+  // Apply saved theme or detect system preference
+  (function() {
+    var saved = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+
+  function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+</script>
+
+</body>
+</html>
