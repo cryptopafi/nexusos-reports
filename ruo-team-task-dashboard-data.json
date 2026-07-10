@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-10T09:30:28.936135+03:00",
+  "generatedAt": "2026-07-10T10:03:53.084676+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -42,7 +42,8 @@
     "P0-006/P0-007 update 2026-07-04: canonical SKU pricing/margin table and SKU disposition table v1 created from Supabase export, live website price scrape, Janoshik COA crossref, and COA-corrected restock planner. Table tasks are done; row-level SKU states remain red/yellow/grey.",
     "2026-07-08 update: 3 new tasks added by Pafi (voice) — P1-020 Narcis 8% newsletter second-order discount (missing from P1-015 engine spec), P1-021 Pafi contact eMag/Amazon accessories + next order plan, P1-022 Pafi calculate total cost price (COGS) for peptide.ro SKUs.",
     "2026-07-08 update: P1-023 added by Pafi (voice) — Narcis to scrape Affiliate World Conference app attendee/exhibitor database via iOS/Android emulator on laptop; exact app/event identity unresolved and needs Pafi confirmation before start.",
-    "2026-07-08 clarification: P1-023 app identity confirmed as the official Affiliate World Conference (AWC) app — Pafi and Vic are on-site at AWC now; app holds full affiliate/exhibitor/company database. Method: Narcis installs Android emulator on laptop, loads AWC app, runs scraping agent on the laptop against it."
+    "2026-07-08 clarification: P1-023 app identity confirmed as the official Affiliate World Conference (AWC) app — Pafi and Vic are on-site at AWC now; app holds full affiliate/exhibitor/company database. Method: Narcis installs Android emulator on laptop, loads AWC app, runs scraping agent on the laptop against it.",
+    "2026-07-08 clarification #2: P1-023 scope is cross-project — the AWC scraped database serves PetraLab RUO, Telehealth Peptides, and SMSads simultaneously, not RUO alone. No Vic compliance approval is required for this scraping task. AWC edition/city unknown to Pafi; treat as 'AWC 2026' generically."
   ],
   "gates": [
     {
@@ -2101,20 +2102,25 @@
       ],
       "dueDate": "",
       "source": "Pafi instruction 2026-07-08 (voice, Telegram)",
-      "description": "Pafi and Vic are currently attending the Affiliate World Conference (AWC) in person. The official AWC conference app contains the full attendee database: all affiliates, all participating companies, and all exhibitors. This database is needed for lead generation and outreach. Narcis must install an Android emulator on a laptop, load the official AWC app inside the emulator, then run a scraping agent directly on that laptop to extract the app's attendee/exhibitor/company database while logged into the app with a valid conference account.",
-      "acceptance": "Android emulator running on a laptop with the official AWC app installed and logged in. A scraping agent runs on that laptop against the running emulator/app and extracts the full attendee, exhibitor, and company database (names, companies, contact info, categories as available in-app) to a structured export (CSV/JSON) usable for outreach.",
+      "description": "Pafi and Vic are currently attending the Affiliate World Conference (AWC) 2026 in person. The official AWC conference app contains the full attendee database: all affiliates, all participating companies, and all exhibitors. This database is needed for lead generation and outreach across THREE separate projects: PetraLab RUO, Telehealth Peptides, and SMSads — the same scraped dataset feeds all three, not RUO alone. Narcis must install an Android emulator on a laptop, load the official AWC app inside the emulator, then run a scraping agent directly on that laptop to extract the app's attendee/exhibitor/company database while logged into the app with a valid conference account.",
+      "acceptance": "Android emulator running on a laptop with the official AWC app installed and logged in. A scraping agent runs on that laptop against the running emulator/app and extracts the full attendee, exhibitor, and company database (names, companies, contact info, categories as available in-app) to a structured export (CSV/JSON) usable for outreach across RUO, Telehealth, and SMSads.",
       "blockedBy": "Needs valid AWC conference app login/account credentials (Pafi/Vic on-site) before scraping can start.",
       "openQuestions": [
-        "Which AWC edition/city is this (for context/dating the export)?",
-        "Any ToS/privacy/GDPR review needed before scraping attendee data, given RUO's existing compliance sensitivity (Vic owns compliance decisions)?"
+        "AWC edition/city not specifically known by Pafi; treat as 'AWC 2026' generically for export dating."
       ],
       "colour": "yellow",
-      "colourReason": "App identity confirmed by Pafi 2026-07-08 (official AWC conference app); method confirmed (Android emulator + on-laptop scraping agent). Ready for Narcis to start once app account access is available.",
+      "colourReason": "App identity confirmed (official AWC 2026 app); method confirmed (Android emulator + on-laptop scraping agent); scope confirmed as cross-project (RUO + Telehealth + SMSads), no Vic compliance approval required for this scraping task. Ready for Narcis to start once app account access is available.",
       "colourEvidence": [
-        "Pafi voice instruction 2026-07-08 (clarification): 'Aplicatia este aplicatia site-ului Affiliate World Conference... noi cu Vic participam la aceasta conferinta acum... contine toata baza de date cu toti afiliatii, cu toate firmele care participa, expozanti.' Method: 'Narcis trebuie sa instaleze un emulator de Android ca sa poata sa incarce aplicatia AWC pe un laptop, dupa care sa ruleze un agent care sa faca scraping direct de pe laptopul respectiv.'"
+        "Pafi voice instruction 2026-07-08 (clarification): 'Aplicatia este aplicatia site-ului Affiliate World Conference... noi cu Vic participam la aceasta conferinta acum... contine toata baza de date cu toti afiliatii, cu toate firmele care participa, expozanti.' Method: 'Narcis trebuie sa instaleze un emulator de Android ca sa poata sa incarce aplicatia AWC pe un laptop, dupa care sa ruleze un agent care sa faca scraping direct de pe laptopul respectiv.'",
+        "Pafi voice instruction 2026-07-08 (2nd clarification): 'Scraping este si pentru Telehealth si pentru smsads, si pentru RUO, nu trebuie niciun acord de la Vic. Nu stiu editia evenimentului, cred ca este 2026 simplu.'"
       ],
-      "colourUpdatedAt": "2026-07-10T09:30:28.936135+03:00",
-      "colourUpdatedBy": "Hermes"
+      "colourUpdatedAt": "2026-07-10T10:03:53.084676+03:00",
+      "colourUpdatedBy": "Hermes",
+      "relatedProjects": [
+        "PetraLab RUO",
+        "Telehealth Peptides",
+        "SMSads"
+      ]
     }
   ],
   "chapters": [
