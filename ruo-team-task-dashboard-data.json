@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-04T00:25:00+03:00",
+  "generatedAt": "2026-07-10T09:08:10.564856+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -39,7 +39,8 @@
     "P0-018 update 2026-07-03: task is Pafi-only; restock planner read-only next-order candidate is BAC Water 40, MOTS-C 30, Tesamorelin 10, est. supplier goods USD 868; Pafi approval required before any purchase/write.",
     "P0-0-001 update 2026-07-04: 48h live-state register created at /Users/pafi/Documents/RUO Peptides/output/live-state-register-2026-07-04/ruo-48h-live-state-register-2026-07-04.md; this closes the register task only, not the underlying open gates.",
     "P0-005/P2-005 update 2026-07-04: monthly budget tracking by operating bucket merged into the 6-month budget and reserve allocation task; P2-005 closed as superseded.",
-    "P0-006/P0-007 update 2026-07-04: canonical SKU pricing/margin table and SKU disposition table v1 created from Supabase export, live website price scrape, Janoshik COA crossref, and COA-corrected restock planner. Table tasks are done; row-level SKU states remain red/yellow/grey."
+    "P0-006/P0-007 update 2026-07-04: canonical SKU pricing/margin table and SKU disposition table v1 created from Supabase export, live website price scrape, Janoshik COA crossref, and COA-corrected restock planner. Table tasks are done; row-level SKU states remain red/yellow/grey.",
+    "2026-07-08 update: 3 new tasks added by Pafi (voice) — P1-020 Narcis 8% newsletter second-order discount (missing from P1-015 engine spec), P1-021 Pafi contact eMag/Amazon accessories + next order plan, P1-022 Pafi calculate total cost price (COGS) for peptide.ro SKUs."
   ],
   "gates": [
     {
@@ -1994,6 +1995,94 @@
       ],
       "completedAt": "2026-07-02T14:17:43Z",
       "completedBy": "Pafi"
+    },
+    {
+      "id": "P1-020",
+      "title": "Add 8% discount on second order for newsletter subscribers",
+      "category": "Sales & Marketing",
+      "chapter": "Sales & Marketing",
+      "workstream": "Affiliate / Referral",
+      "priority": "P1",
+      "urgencyScore": 60,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "",
+      "source": "Pafi instruction 2026-07-08 (voice, Telegram)",
+      "description": "Newsletter subscribers get an 8% discount on their second order. This rule was missing from the discount/referral/affiliate engine spec (P1-015) and must be added as an explicit discount policy: trigger = customer subscribed to newsletter, applies to = second qualifying order only (not first order, not third+), discount = 8% off that order.",
+      "acceptance": "8% newsletter second-order discount rule is documented and implemented as part of (or alongside) the P1-015 discount/referral/affiliate engine, with the same ex-VAT/ex-transport basis, no-stacking-by-default, and Vic compliance signoff requirements as the rest of that engine. Rule is testable: a newsletter-subscribed customer's second order receives exactly 8% off; first order and non-subscribers do not.",
+      "blockedBy": "",
+      "relatesTo": [
+        "P1-015"
+      ],
+      "colour": "yellow",
+      "colourReason": "New task added by Pafi 2026-07-08; not yet built, no compliance signoff yet.",
+      "colourEvidence": [
+        "Pafi voice instruction 2026-07-08: 8% discount for second order if subscribed to newsletter — was missing from the engine spec"
+      ],
+      "colourUpdatedAt": "2026-07-10T09:08:10.564856+03:00",
+      "colourUpdatedBy": "Hermes"
+    },
+    {
+      "id": "P1-021",
+      "title": "Contact eMag and Amazon for accessories suppliers and plan next order",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Accessories",
+      "priority": "P1",
+      "urgencyScore": 55,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "",
+      "source": "Pafi instruction 2026-07-08 (voice, Telegram)",
+      "description": "Contact eMag and Amazon regarding accessories (supplier/marketplace options, pricing, terms) and use findings to plan the next accessories order.",
+      "acceptance": "eMag and Amazon contacted; supplier/pricing/terms info gathered; next accessories order plan drafted with quantities and estimated cost.",
+      "blockedBy": "",
+      "relatesTo": [
+        "P2-004"
+      ],
+      "colour": "yellow",
+      "colourReason": "New task added by Pafi 2026-07-08; not yet started.",
+      "colourEvidence": [
+        "Pafi voice instruction 2026-07-08"
+      ],
+      "colourUpdatedAt": "2026-07-10T09:08:10.564856+03:00",
+      "colourUpdatedBy": "Hermes"
+    },
+    {
+      "id": "P1-022",
+      "title": "Calculate total cost price (COGS) for peptide.ro SKUs",
+      "category": "Products, SKUs & Budgeting",
+      "chapter": "Products, SKUs & Budgeting",
+      "workstream": "Pricing",
+      "priority": "P1",
+      "urgencyScore": 55,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "",
+      "source": "Pafi instruction 2026-07-08 (voice, Telegram)",
+      "description": "Calculate the total cost price (full landed cost / COGS: product cost, shipping, customs, labels, packaging, etc.) for peptide.ro SKUs. Distinct from the existing canonical SKU pricing/margin table (P0-006) and SKU disposition table (P0-007) — this is the underlying total-cost-basis input those tables should be checked against.",
+      "acceptance": "Total cost price calculated and documented per peptide.ro SKU; cross-checked against P0-006 canonical pricing/margin table for consistency.",
+      "blockedBy": "",
+      "relatesTo": [
+        "P0-006",
+        "P0-007"
+      ],
+      "colour": "yellow",
+      "colourReason": "New task added by Pafi 2026-07-08; not yet started.",
+      "colourEvidence": [
+        "Pafi voice instruction 2026-07-08"
+      ],
+      "colourUpdatedAt": "2026-07-10T09:08:10.564856+03:00",
+      "colourUpdatedBy": "Hermes"
     }
   ],
   "chapters": [
