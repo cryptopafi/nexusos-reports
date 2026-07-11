@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-10T10:03:53.084676+03:00",
+  "generatedAt": "2026-07-11T12:50:00+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -43,7 +43,8 @@
     "2026-07-08 update: 3 new tasks added by Pafi (voice) — P1-020 Narcis 8% newsletter second-order discount (missing from P1-015 engine spec), P1-021 Pafi contact eMag/Amazon accessories + next order plan, P1-022 Pafi calculate total cost price (COGS) for peptide.ro SKUs.",
     "2026-07-08 update: P1-023 added by Pafi (voice) — Narcis to scrape Affiliate World Conference app attendee/exhibitor database via iOS/Android emulator on laptop; exact app/event identity unresolved and needs Pafi confirmation before start.",
     "2026-07-08 clarification: P1-023 app identity confirmed as the official Affiliate World Conference (AWC) app — Pafi and Vic are on-site at AWC now; app holds full affiliate/exhibitor/company database. Method: Narcis installs Android emulator on laptop, loads AWC app, runs scraping agent on the laptop against it.",
-    "2026-07-08 clarification #2: P1-023 scope is cross-project — the AWC scraped database serves PetraLab RUO, Telehealth Peptides, and SMSads simultaneously, not RUO alone. No Vic compliance approval is required for this scraping task. AWC edition/city unknown to Pafi; treat as 'AWC 2026' generically."
+    "2026-07-08 clarification #2: P1-023 scope is cross-project — the AWC scraped database serves PetraLab RUO, Telehealth Peptides, and SMSads simultaneously, not RUO alone. No Vic compliance approval is required for this scraping task. AWC edition/city unknown to Pafi; treat as 'AWC 2026' generically.",
+    "Urgent 2026-07-11 logistics: Narcis prepares Ibiza shipment for Monday 2026-07-13 (BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15), orders new batch labels using RUO-{YYYYMMDD}-{PO_NO}-{SKU}, and orders COAs for BPC-157/TB-500/PT-141/Semax/Selank; Vic orders 50 BAC Water from Netherlands to Bucharest."
   ],
   "gates": [
     {
@@ -89,13 +90,13 @@
     {
       "id": "gate-purchasing-logistics",
       "name": "Purchasing & Logistics",
-      "state": "yellow",
+      "state": "red",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Purchasing/logistics remains active. SO-04 is accepted as-is by Pafi and no longer needs supplier/order or Dragos Zen proof as blockers; Pafi is not receiving the order. Narcis owns the receipt/admin gate; batch number + COA are required before stock acceptance. Other blockers: Ibiza 69-vial in-transit stock, AOD9604 label/new-supplier correction, Retatrutide premium restock/COA planning, and Sultan/Pafi restock plan.",
+      "summary": "Purchasing/logistics has urgent 2026-07-11 actions: Narcis prepares the Monday 2026-07-13 Ibiza shipment, orders batch labels, and orders COAs for newly arrived SKUs; Vic orders 50 BAC Water from Netherlands to Bucharest. Existing COA/batch/receipt guardrails still apply before stock acceptance or sale-ready status.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -103,7 +104,7 @@
         "Sultan"
       ],
       "assignmentNote": "Pafi is the primary gate owner. Narcis, Dragos, Vic, and Sultan are support by task, not co-assignees of the whole gate.",
-      "updatedAt": "2026-07-03T00:20:00Z",
+      "updatedAt": "2026-07-11T12:50:00+03:00",
       "updatedBy": "Codex"
     },
     {
@@ -221,6 +222,187 @@
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex"
+    },
+    {
+      "id": "P0-019",
+      "title": "Prepare Ibiza shipment for Monday 2026-07-13",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Ibiza Shipment / Stock Transfer",
+      "priority": "P0",
+      "urgencyScore": 99.2,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-13",
+      "source": "Pafi instruction 2026-07-11: urgent Ibiza shipment, new batch labels, COAs, and BAC Water NL->Bucharest order",
+      "description": "Narcis prepares the urgent shipment to Ibiza for Monday 2026-07-13 with exact quantities from Pafi: BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15. This is a controlled shipment-preparation task: pack list, source stock location, receiving destination, shipment method, handoff proof, and dashboard/Supabase-ready transfer evidence must be prepared before dispatch.",
+      "acceptance": "Shipment pack list exists with SKU, quantity, source location, destination Ibiza, dispatch date 2026-07-13, responsible sender/receiver, shipment/tracking proof requirement, and receiving checklist. No stock movement/receipt is treated as complete until the actual dispatch/receipt proof is captured and the authorized dashboard/Supabase workflow records it.",
+      "shipmentItems": [
+        {
+          "sku": "BPC157-5MG",
+          "label": "BPC-157",
+          "qty": 25
+        },
+        {
+          "sku": "TB500-5MG",
+          "label": "TB-500",
+          "qty": 25
+        },
+        {
+          "sku": "PT141-10MG",
+          "label": "PT-141",
+          "qty": 10
+        },
+        {
+          "sku": "SEMAX-10MG",
+          "label": "Semax",
+          "qty": 10
+        },
+        {
+          "sku": "SELANK-10MG",
+          "label": "Selank",
+          "qty": 10
+        },
+        {
+          "sku": "BAC-10ML",
+          "label": "BAC Water",
+          "qty": 15
+        }
+      ],
+      "chapterOwner": "Pafi",
+      "colour": "red",
+      "colourReason": "Urgent owner instruction for Monday 2026-07-13 Ibiza shipment; packing, proof, and transfer evidence not yet completed.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-11: prepare Ibiza shipment for Monday 13.07 with exact SKU quantities"
+      ],
+      "colourUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Narcis trebuie sa pregateasca urgent transportul pentru Ibiza pentru luni 13.07: BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15. Trebuie pack list, locatie sursa, dovada de predare/transport si checklist de primire.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "plainExplanationUpdatedBy": "Codex"
+    },
+    {
+      "id": "P0-020",
+      "title": "Order new batch labels for Ibiza shipment SKUs",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Labels / Batch Traceability",
+      "priority": "P0",
+      "urgencyScore": 98.9,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-13",
+      "source": "Pafi instruction 2026-07-11: urgent Ibiza shipment, new batch labels, COAs, and BAC Water NL->Bucharest order",
+      "description": "Narcis orders labels for the shipment products with new batch numbers before the Ibiza stock is treated as ready. Batch model: RUO-{YYYYMMDD}-{PO_NO}-{SKU}, e.g. RUO-20260713-POXX-BPC1575MG. Use the real PO/order number once Narcis confirms it; if PO is not yet assigned, create a temporary draft value and replace it before printing/ordering labels. Labels must cover the shipment/arrived products: BPC-157, TB-500, PT-141, Semax, Selank, and BAC Water if BAC stock also needs relabeling/batch display in the shipment pack.",
+      "acceptance": "Batch-number model is documented and applied consistently; every label order record includes SKU, product display name, strength/size, PO/order number, batch number, quantity ordered, supplier/designer proof, and approval/readback before print. Old or mismatched labels are not used. Batch numbers must be ready for dashboard/Supabase receipt and COA matching.",
+      "batchNumberModel": "RUO-{YYYYMMDD}-{PO_NO}-{SKU}",
+      "batchNumberExample": "RUO-20260713-POXX-BPC1575MG",
+      "shipmentLabelItems": [
+        "BPC157-5MG",
+        "TB500-5MG",
+        "PT141-10MG",
+        "SEMAX-10MG",
+        "SELANK-10MG",
+        "BAC-10ML"
+      ],
+      "chapterOwner": "Pafi",
+      "relatedTasks": [
+        "P0-019",
+        "P0-012"
+      ],
+      "colour": "red",
+      "colourReason": "Urgent labels/batch traceability task created for the Monday Ibiza shipment and new arrived stock.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-11: order labels with new batch no.; create model using date/PO no./SKU name"
+      ],
+      "colourUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Narcis trebuie sa comande etichete noi cu batch number. Model propus: RUO-YYYYMMDD-PO-SKU, de exemplu RUO-20260713-POXX-BPC1575MG. Etichetele vechi sau gresite nu se folosesc.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "plainExplanationUpdatedBy": "Codex"
+    },
+    {
+      "id": "P0-021",
+      "title": "Order COAs for the 5 newly arrived SKUs",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "COA / Batch Quality Gate",
+      "priority": "P0",
+      "urgencyScore": 98.8,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-13",
+      "source": "Pafi instruction 2026-07-11: urgent Ibiza shipment, new batch labels, COAs, and BAC Water NL->Bucharest order",
+      "description": "Narcis orders COAs for all 5 newly arrived SKUs named in the owner instruction context: BPC-157, TB-500, PT-141, Semax, and Selank. Each COA order must tie to the new batch number/PO model and be recorded as pending evidence until the actual COA files arrive and are matched to batch/SKU.",
+      "acceptance": "COA order/proof exists for BPC-157, TB-500, PT-141, Semax, and Selank; each line has SKU, batch number, PO/order reference, lab/provider, order date, expected return date, status, and file/evidence slot. No newly arrived SKU is marked sale-ready, shipment-ready for customer fulfillment, or accepted into clean stock without its matching batch/COA evidence state being visible.",
+      "coaItems": [
+        "BPC157-5MG",
+        "TB500-5MG",
+        "PT141-10MG",
+        "SEMAX-10MG",
+        "SELANK-10MG"
+      ],
+      "chapterOwner": "Pafi",
+      "relatedTasks": [
+        "P0-019",
+        "P0-020"
+      ],
+      "colour": "red",
+      "colourReason": "Urgent COA orders required for five newly arrived SKUs before clean stock/sale-ready status.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-11: order COA for all 5 new SKUs that have arrived"
+      ],
+      "colourUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Narcis trebuie sa comande COA pentru cele 5 SKU-uri noi sosite: BPC-157, TB-500, PT-141, Semax si Selank. Fiecare COA trebuie legat de batch number si PO/order reference.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "plainExplanationUpdatedBy": "Codex"
+    },
+    {
+      "id": "P0-022",
+      "title": "Order 50 BAC Water from Netherlands to Bucharest",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "BAC Water / Netherlands Purchase",
+      "priority": "P0",
+      "urgencyScore": 98.4,
+      "status": "open",
+      "owner": "Vic",
+      "assignees": [
+        "Vic"
+      ],
+      "dueDate": "2026-07-13",
+      "source": "Pafi instruction 2026-07-11: urgent Ibiza shipment, new batch labels, COAs, and BAC Water NL->Bucharest order",
+      "description": "Vic urgently orders 50 BAC Water units from the Netherlands to Bucharest. This is a purchasing/logistics task, not a stock receipt. Capture supplier, order confirmation, price, shipping route, ETA, payment/proof, and receiving responsibility before the order is treated as operationally complete.",
+      "acceptance": "Order proof exists for 50 BAC Water from Netherlands to Bucharest, including supplier/order reference, quantity 50, payment/proof or invoice state, ETA, shipment/tracking when available, receiving plan in Bucharest, and dashboard/Supabase-ready evidence. Stock is not accepted or made available until received and evidence is recorded.",
+      "purchaseItems": [
+        {
+          "sku": "BAC-10ML",
+          "label": "BAC Water",
+          "qty": 50,
+          "route": "Netherlands -> Bucharest"
+        }
+      ],
+      "chapterOwner": "Pafi",
+      "colour": "red",
+      "colourReason": "Urgent owner instruction for Vic to order 50 BAC Water from the Netherlands to Bucharest.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-11: urgent task for Vic, order 50 BAC water from Netherland to Bucharest"
+      ],
+      "colourUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Vic trebuie sa comande urgent 50 BAC Water din Olanda catre Bucuresti. Trebuie dovada comanda, supplier, pret/invoice sau payment state, ETA si plan de primire in Bucuresti.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-0-001",
@@ -2165,7 +2347,7 @@
       "assignees": [
         "Pafi"
       ],
-      "summary": "Purchasing, in-transit stock, labels, delivery/logistics routing, and restock planning. SO-04 order decision is complete for Pafi; Narcis owns receipt/admin acceptance and must require batch number + COA before stock acceptance.",
+      "summary": "Purchasing, in-transit stock, labels, delivery/logistics routing, and restock planning. Urgent 2026-07-11 additions: Narcis prepares Ibiza shipment for 2026-07-13, orders batch labels and COAs; Vic orders 50 BAC Water Netherlands -> Bucharest.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -2173,7 +2355,7 @@
         "Sultan"
       ],
       "assignmentNote": "One primary chapter owner only; support remains visible per blocker/task.",
-      "updatedAt": "2026-07-03T00:20:00Z",
+      "updatedAt": "2026-07-11T12:50:00+03:00",
       "updatedBy": "Codex"
     },
     {
