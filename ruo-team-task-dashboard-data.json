@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-11T12:53:31+03:00",
+  "generatedAt": "2026-07-11T12:58:13+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -45,7 +45,8 @@
     "2026-07-08 clarification: P1-023 app identity confirmed as the official Affiliate World Conference (AWC) app — Pafi and Vic are on-site at AWC now; app holds full affiliate/exhibitor/company database. Method: Narcis installs Android emulator on laptop, loads AWC app, runs scraping agent on the laptop against it.",
     "2026-07-08 clarification #2: P1-023 scope is cross-project — the AWC scraped database serves PetraLab RUO, Telehealth Peptides, and SMSads simultaneously, not RUO alone. No Vic compliance approval is required for this scraping task. AWC edition/city unknown to Pafi; treat as 'AWC 2026' generically.",
     "Urgent 2026-07-11 logistics: Narcis prepares Ibiza shipment for Monday 2026-07-13 (BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15), orders new batch labels using RUO-{YYYYMMDD}-{PO_NO}-{SKU}, and orders COAs for BPC-157/TB-500/PT-141/Semax/Selank; Vic orders 50 BAC Water from Netherlands to Bucharest.",
-    "Urgent 2026-07-11 logistics addition: Narcis buys 10 reusable pens and 100 pen cartridges from Amazon and delivers them to Ibiza."
+    "Urgent 2026-07-11 logistics addition: Narcis buys 10 reusable pens and 100 pen cartridges from Amazon and delivers them to Ibiza.",
+    "Pafi clarification 2026-07-11: P0-014 SO-04 receiving is directly related to P0-020 batch labels and P0-021 COA orders; labels and COAs are prerequisites for receipt/stock acceptance."
   ],
   "gates": [
     {
@@ -97,7 +98,7 @@
         "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Purchasing/logistics has urgent 2026-07-11 actions: Narcis prepares the Monday 2026-07-13 Ibiza shipment, orders batch labels, orders COAs for newly arrived SKUs, and buys 10 reusable pens plus 100 pen cartridges from Amazon for Ibiza delivery; Vic orders 50 BAC Water from Netherlands to Bucharest. Existing COA/batch/receipt guardrails still apply before stock acceptance or sale-ready status.",
+      "summary": "Purchasing/logistics has urgent 2026-07-11 actions: Narcis prepares the Monday 2026-07-13 Ibiza shipment, orders batch labels, orders COAs for newly arrived SKUs, and buys 10 reusable pens plus 100 pen cartridges from Amazon for Ibiza delivery; Vic orders 50 BAC Water from Netherlands to Bucharest. SO-04 receipt P0-014 is directly dependent on P0-020 batch labels and P0-021 COAs before stock acceptance or sale-ready status.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -105,7 +106,7 @@
         "Sultan"
       ],
       "assignmentNote": "Pafi is the primary gate owner. Narcis, Dragos, Vic, and Sultan are support by task, not co-assignees of the whole gate.",
-      "updatedAt": "2026-07-11T12:53:31+03:00",
+      "updatedAt": "2026-07-11T12:58:13+03:00",
       "updatedBy": "Codex"
     },
     {
@@ -300,7 +301,7 @@
       ],
       "dueDate": "2026-07-13",
       "source": "Pafi instruction 2026-07-11: urgent Ibiza shipment, new batch labels, COAs, and BAC Water NL->Bucharest order",
-      "description": "Narcis orders labels for the shipment products with new batch numbers before the Ibiza stock is treated as ready. Batch model: RUO-{YYYYMMDD}-{PO_NO}-{SKU}, e.g. RUO-20260713-POXX-BPC1575MG. Use the real PO/order number once Narcis confirms it; if PO is not yet assigned, create a temporary draft value and replace it before printing/ordering labels. Labels must cover the shipment/arrived products: BPC-157, TB-500, PT-141, Semax, Selank, and BAC Water if BAC stock also needs relabeling/batch display in the shipment pack.",
+      "description": "Narcis orders labels for the shipment products with new batch numbers before the Ibiza stock is treated as ready. Batch model: RUO-{YYYYMMDD}-{PO_NO}-{SKU}, e.g. RUO-20260713-POXX-BPC1575MG. Use the real PO/order number once Narcis confirms it; if PO is not yet assigned, create a temporary draft value and replace it before printing/ordering labels. Labels must cover the shipment/arrived products: BPC-157, TB-500, PT-141, Semax, Selank, and BAC Water if BAC stock also needs relabeling/batch display in the shipment pack. This task is directly tied to P0-014: SO-04 cannot be cleanly received/accepted into stock until the required batch-label evidence is ready.",
       "acceptance": "Batch-number model is documented and applied consistently; every label order record includes SKU, product display name, strength/size, PO/order number, batch number, quantity ordered, supplier/designer proof, and approval/readback before print. Old or mismatched labels are not used. Batch numbers must be ready for dashboard/Supabase receipt and COA matching.",
       "batchNumberModel": "RUO-{YYYYMMDD}-{PO_NO}-{SKU}",
       "batchNumberExample": "RUO-20260713-POXX-BPC1575MG",
@@ -315,14 +316,17 @@
       "chapterOwner": "Pafi",
       "relatedTasks": [
         "P0-019",
-        "P0-012"
+        "P0-012",
+        "P0-014",
+        "P0-021"
       ],
       "colour": "red",
       "colourReason": "Urgent labels/batch traceability task created for the Monday Ibiza shipment and new arrived stock.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-11: order labels with new batch no.; create model using date/PO no./SKU name"
+        "Pafi instruction 2026-07-11: order labels with new batch no.; create model using date/PO no./SKU name",
+        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021"
       ],
-      "colourUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "colourUpdatedAt": "2026-07-11T12:58:13+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Narcis trebuie sa comande etichete noi cu batch number. Model propus: RUO-YYYYMMDD-PO-SKU, de exemplu RUO-20260713-POXX-BPC1575MG. Etichetele vechi sau gresite nu se folosesc.",
       "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
@@ -343,7 +347,7 @@
       ],
       "dueDate": "2026-07-13",
       "source": "Pafi instruction 2026-07-11: urgent Ibiza shipment, new batch labels, COAs, and BAC Water NL->Bucharest order",
-      "description": "Narcis orders COAs for all 5 newly arrived SKUs named in the owner instruction context: BPC-157, TB-500, PT-141, Semax, and Selank. Each COA order must tie to the new batch number/PO model and be recorded as pending evidence until the actual COA files arrive and are matched to batch/SKU.",
+      "description": "Narcis orders COAs for all 5 newly arrived SKUs named in the owner instruction context: BPC-157, TB-500, PT-141, Semax, and Selank. Each COA order must tie to the new batch number/PO model and be recorded as pending evidence until the actual COA files arrive and are matched to batch/SKU. This task is directly tied to P0-014: SO-04 cannot be cleanly received/accepted into stock until matching COA evidence exists.",
       "acceptance": "COA order/proof exists for BPC-157, TB-500, PT-141, Semax, and Selank; each line has SKU, batch number, PO/order reference, lab/provider, order date, expected return date, status, and file/evidence slot. No newly arrived SKU is marked sale-ready, shipment-ready for customer fulfillment, or accepted into clean stock without its matching batch/COA evidence state being visible.",
       "coaItems": [
         "BPC157-5MG",
@@ -355,14 +359,16 @@
       "chapterOwner": "Pafi",
       "relatedTasks": [
         "P0-019",
-        "P0-020"
+        "P0-020",
+        "P0-014"
       ],
       "colour": "red",
       "colourReason": "Urgent COA orders required for five newly arrived SKUs before clean stock/sale-ready status.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-11: order COA for all 5 new SKUs that have arrived"
+        "Pafi instruction 2026-07-11: order COA for all 5 new SKUs that have arrived",
+        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021"
       ],
-      "colourUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "colourUpdatedAt": "2026-07-11T12:58:13+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Narcis trebuie sa comande COA pentru cele 5 SKU-uri noi sosite: BPC-157, TB-500, PT-141, Semax si Selank. Fiecare COA trebuie legat de batch number si PO/order reference.",
       "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
@@ -1195,8 +1201,8 @@
       ],
       "dueDate": "2026-07-01",
       "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30",
-      "description": "SO-04 is the open 250-vial restock. Pafi accepted the order as-is, waived supplier/order proof and Dragos Zen payment proof as blockers, and ensured the Supabase delivery/receipt gate requires batch number and COA before the order can be accepted into stock. Remaining work is not Pafi receiving the order: Narcis owns the Supabase/admin receipt gate and Dragos supports physical delivery/receiving evidence if he receives or dispatches it. Status remains ordered/not received; no stock was added.",
-      "acceptance": "Pafi commercial/order decision is complete: line breakdown accepted as-is, Supabase restock_items written with approval_id=SO04-ITEMIZATION-PAFI-20260702, supplier/order proof and Dragos Zen payment proof waived as blockers on 2026-07-03, and delivery gate active under approval_id=SO04-DELIVERY-BATCH-COA-GATE-20260702. Remaining acceptance for Narcis/receiving admin: before receipt/delivery/stock-add/customer dispatch/sale-ready status, capture batch number and COA, verify received quantities, and only then accept the restock into stock/admin flow.",
+      "description": "SO-04 is the open 250-vial restock. Pafi accepted the order as-is, waived supplier/order proof and Dragos Zen payment proof as blockers, and ensured the Supabase delivery/receipt gate requires batch number and COA before the order can be accepted into stock. P0-020 batch labels and P0-021 COA orders are direct prerequisites for this SO-04 receiving gate. Remaining work is not Pafi receiving the order: Narcis owns the Supabase/admin receipt gate and Dragos supports physical delivery/receiving evidence if he receives or dispatches it. Status remains ordered/not received; no stock was added.",
+      "acceptance": "Pafi commercial/order decision is complete: line breakdown accepted as-is, Supabase restock_items written with approval_id=SO04-ITEMIZATION-PAFI-20260702, supplier/order proof and Dragos Zen payment proof waived as blockers on 2026-07-03, and delivery gate active under approval_id=SO04-DELIVERY-BATCH-COA-GATE-20260702. Remaining acceptance for Narcis/receiving admin: complete or attach P0-020 batch-label evidence and P0-021 COA evidence, capture batch number and COA before receipt/delivery/stock-add/customer dispatch/sale-ready status, verify received quantities, and only then accept the restock into stock/admin flow.",
       "chapterOwner": "Pafi",
       "supportingAssignees": [
         "Dragos",
@@ -1211,7 +1217,7 @@
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex",
       "colour": "yellow",
-      "colourReason": "Pafi part is complete; remaining work is Narcis-owned receipt/admin gate with batch number + COA required before stock acceptance.",
+      "colourReason": "Open receiving/admin gate; Pafi clarified it is directly linked to P0-020 labels and P0-021 COAs before SO-04 stock acceptance.",
       "colourEvidence": [
         "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments",
         "Pafi instruction 2026-07-02: SO-04 line items and costs",
@@ -1223,9 +1229,10 @@
         "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-delivery-batch-coa-gate-readback-2026-07-02.json",
         "Pafi instruction 2026-07-03: consider the SO-04 order as-is, without supplier/order proof or Dragos Zen payment proof",
         "Pafi instruction 2026-07-03: Pafi is not receiving SO-04 and already ensured Supabase requires COA before acceptance",
-        "Pafi instruction 2026-07-03: consider SO-04 order as-is without supplier/order proof or Dragos Zen payment proof"
+        "Pafi instruction 2026-07-03: consider SO-04 order as-is without supplier/order proof or Dragos Zen payment proof",
+        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021"
       ],
-      "colourUpdatedAt": "2026-07-03T00:20:00Z",
+      "colourUpdatedAt": "2026-07-11T12:58:13+03:00",
       "colourUpdatedBy": "Codex",
       "so04LineBreakdown": {
         "source": "Pafi instruction 2026-07-02",
@@ -1341,8 +1348,8 @@
         }
       },
       "partialCompletionNote": "Pafi decision/gate complete. Remaining open work: Narcis must enforce receipt/admin acceptance only after batch number + COA; Dragos supports physical receipt/dispatch evidence if applicable.",
-      "plainExplanationRo": "Partea lui Pafi este gata: comanda SO-04 este acceptată ca atare, fără proof de supplier/order sau Zen Dragos ca blocaje, iar Supabase cere batch number + COA înainte de acceptarea în stoc. Pafi nu recepționează comanda. De aici taskul rămâne la Narcis pentru recepție/admin în Supabase, cu Dragos suport dacă el primește sau livrează fizic.",
-      "plainExplanationUpdatedAt": "2026-07-03T00:20:00Z",
+      "plainExplanationRo": "P0-014 este poarta de primire pentru SO-04. P0-020 (etichete/batch) si P0-021 (COA) sunt direct legate de el: fara batch label + COA nu se accepta stocul, nu se marcheaza sale-ready si nu se face dispatch catre clienti.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:58:13+03:00",
       "plainExplanationUpdatedBy": "Codex",
       "proofWaiver": {
         "waivedBy": "Pafi",
@@ -1365,7 +1372,11 @@
         "previousOwner": "Pafi",
         "newOwner": "Narcis",
         "reason": "Pafi does not receive the order; Pafi completed the order-as-is decision and Supabase COA gate. Remaining work is receipt/admin control."
-      }
+      },
+      "relatedTasks": [
+        "P0-020",
+        "P0-021"
+      ]
     },
     {
       "id": "P0-015",
@@ -2392,7 +2403,7 @@
       "assignees": [
         "Pafi"
       ],
-      "summary": "Purchasing, in-transit stock, labels, delivery/logistics routing, and restock planning. Urgent 2026-07-11 additions: Narcis prepares Ibiza shipment for 2026-07-13, orders batch labels and COAs, and buys 10 reusable pens plus 100 pen cartridges from Amazon for Ibiza; Vic orders 50 BAC Water Netherlands -> Bucharest.",
+      "summary": "Purchasing, in-transit stock, labels, delivery/logistics routing, and restock planning. Urgent 2026-07-11 additions: Narcis prepares Ibiza shipment for 2026-07-13, orders batch labels and COAs, and buys 10 reusable pens plus 100 pen cartridges from Amazon for Ibiza; Vic orders 50 BAC Water Netherlands -> Bucharest. P0-014 SO-04 receipt depends directly on P0-020 labels and P0-021 COAs.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -2400,7 +2411,7 @@
         "Sultan"
       ],
       "assignmentNote": "One primary chapter owner only; support remains visible per blocker/task.",
-      "updatedAt": "2026-07-11T12:53:31+03:00",
+      "updatedAt": "2026-07-11T12:58:13+03:00",
       "updatedBy": "Codex"
     },
     {
