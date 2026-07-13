@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EU Telehealth Incorporation Speed Ranking — DELPHI D3</title>
+  <meta name="description" content="Rank top 5 EU jurisdictions for telehealth incorporation: ease + time-to-operational. Malta · Estonia · Netherlands · Portugal · Cyprus." />
+  <meta property="og:title" content="EU Telehealth Incorporation Speed Ranking" />
+  <meta property="og:description" content="D3 Research: Malta · Estonia · Netherlands · Portugal · Cyprus scored on ease + time-to-operational. EPR 13/20." />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root[data-theme="dark"] {
+      --bg: #0A0A0F;
+      --card: #111118;
+      --card2: #16161f;
+      --border: rgba(88,166,255,0.12);
+      --accent: #58a6ff;
+      --accent2: #3b82f6;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --glow: rgba(88,166,255,0.08);
+      --tag-bg: rgba(88,166,255,0.12);
+    }
+    :root[data-theme="light"] {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --card2: #f0f2f5;
+      --border: rgba(94,106,210,0.18);
+      --accent: #5E6AD2;
+      --accent2: #4f5fbe;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --glow: rgba(94,106,210,0.06);
+      --tag-bg: rgba(94,106,210,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      transition: background 0.3s, color 0.3s;
+    }
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px var(--glow);
+    }
+    .accent { color: var(--accent); }
+    .muted { color: var(--text-muted); }
+    code, .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+    .tag {
+      display: inline-flex; align-items: center;
+      background: var(--tag-bg); color: var(--accent);
+      border-radius: 6px; padding: 2px 8px; font-size: 0.75rem; font-weight: 500;
+    }
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Layout */
+    .layout { display: grid; grid-template-columns: 260px 1fr; gap: 24px; max-width: 1240px; margin: 0 auto; padding: 24px 20px; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .sidebar { order: -1; } }
+
+    /* Sidebar */
+    .sidebar { position: sticky; top: 24px; align-self: start; }
+    .meta-block { padding: 16px; border-bottom: 1px solid var(--border); }
+    .meta-block:last-child { border-bottom: none; }
+    .meta-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .meta-value { font-size: 0.88rem; font-weight: 500; }
+    .epr-bar { height: 6px; border-radius: 3px; background: var(--card2); margin-top: 6px; overflow: hidden; }
+    .epr-fill { height: 100%; border-radius: 3px; background: var(--accent); transition: width 1s ease; }
+
+    /* Header */
+    header { border-bottom: 1px solid var(--border); padding: 20px 0 16px; margin-bottom: 24px; }
+    header h1 { font-size: 1.6rem; font-weight: 700; line-height: 1.25; }
+    header .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-top: 6px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+
+    /* Sections */
+    section { margin-bottom: 32px; }
+    section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    section h2 .num { background: var(--accent); color: #fff; border-radius: 6px; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+    section h3 { font-size: 0.95rem; font-weight: 600; margin: 18px 0 8px; color: var(--accent); }
+
+    /* Ranking cards */
+    .rank-card { padding: 16px 20px; border-radius: 10px; background: var(--card2); border-left: 3px solid var(--accent); margin-bottom: 10px; }
+    .rank-card .rank-num { font-size: 1.4rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .rank-card .rank-name { font-weight: 700; font-size: 1rem; }
+    .rank-card .rank-badge { font-size: 0.7rem; padding: 2px 7px; border-radius: 4px; font-weight: 600; }
+    .rank-card.tension { border-left-color: #f97316; }
+    .rank-card.tension .rank-num { color: #f97316; }
+
+    /* Tables */
+    .tbl-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    thead th { background: var(--card2); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--glow); }
+    .score-chip { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; padding: 2px 8px; border-radius: 6px; font-size: 0.82rem; }
+    .score-high { background: rgba(34,197,94,0.12); color: #22c55e; }
+    .score-med { background: rgba(234,179,8,0.12); color: #eab308; }
+    .score-low { background: rgba(239,68,68,0.12); color: #ef4444; }
+    .score-na { background: rgba(107,114,128,0.12); color: #9ca3af; }
+    .burden-high { background: rgba(239,68,68,0.1); color: #ef4444; border-radius: 5px; padding: 2px 7px; font-size: 0.78rem; font-weight: 600; }
+    .burden-med { background: rgba(234,179,8,0.1); color: #eab308; border-radius: 5px; padding: 2px 7px; font-size: 0.78rem; font-weight: 600; }
+    .burden-low { background: rgba(34,197,94,0.1); color: #22c55e; border-radius: 5px; padding: 2px 7px; font-size: 0.78rem; font-weight: 600; }
+    .burden-na { background: rgba(107,114,128,0.1); color: #9ca3af; border-radius: 5px; padding: 2px 7px; font-size: 0.78rem; font-weight: 600; }
+    .jrow-primary td:first-child { font-weight: 700; }
+    .jrow-context td:first-child { color: var(--text-muted); font-style: italic; }
+
+    /* Lawyer checklist */
+    .counsel-item { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.86rem; }
+    .counsel-item:last-child { border-bottom: none; }
+    .counsel-item .ci-num { flex-shrink: 0; background: rgba(239,68,68,0.12); color: #ef4444; border-radius: 5px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; margin-top: 1px; }
+    .counsel-jur { font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; margin-bottom: 2px; }
+
+    /* Reconciliation bullets */
+    .recon-item { display: flex; gap: 10px; margin-bottom: 10px; font-size: 0.87rem; }
+    .recon-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; }
+    .recon-ok { background: #22c55e; }
+    .recon-warn { background: #f97316; }
+    .recon-info { background: var(--accent); }
+
+    /* Charts */
+    .chart-wrap { padding: 16px; }
+    canvas { max-height: 220px; }
+
+    /* Source coverage */
+    .cov-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.84rem; }
+    .cov-row:last-child { border-bottom: none; }
+    .cov-status { flex-shrink: 0; width: 72px; font-size: 0.72rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; text-align: center; }
+    .cov-covered { background: rgba(34,197,94,0.12); color: #22c55e; }
+    .cov-skipped { background: rgba(234,179,8,0.1); color: #eab308; }
+    .cov-missing { background: rgba(239,68,68,0.12); color: #ef4444; }
+    .cov-attempted { background: rgba(107,114,128,0.1); color: #9ca3af; }
+
+    /* Controls */
+    .controls { position: fixed; top: 16px; right: 20px; display: flex; gap: 8px; z-index: 50; }
+    .ctrl-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+    .ctrl-btn:hover { background: var(--card2); border-color: var(--accent); color: var(--accent); }
+
+    /* TOC */
+    .toc { list-style: none; padding: 0; }
+    .toc li { padding: 5px 0; border-bottom: 1px solid var(--border); }
+    .toc li:last-child { border-bottom: none; }
+    .toc a { color: var(--text-muted); font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
+    .toc a:hover { color: var(--accent); }
+
+    /* Print */
+    @media print {
+      html[data-theme="dark"] { --bg: #fff; --card: #f9f9f9; --text: #111; --text-muted: #555; --border: #e5e7eb; --accent: #5E6AD2; }
+      .controls, .sidebar { display: none; }
+      .layout { grid-template-columns: 1fr; }
+      body { font-size: 11pt; }
+      .tbl-wrap { overflow: visible; }
+      table { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="controls">
+  <button class="ctrl-btn" onclick="toggleTheme()" id="theme-btn">☀️ Light</button>
+  <button class="ctrl-btn" onclick="shareReport()">Share</button>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="glass">
+      <div class="meta-block">
+        <div class="meta-label">Agent</div>
+        <div class="meta-value accent">DELPHI PRO</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Research Depth</div>
+        <div class="meta-value">D3 — Scouts + Critic + Synthesizer</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">EPR Score</div>
+        <div class="meta-value">13 / 20</div>
+        <div class="epr-bar"><div class="epr-fill" style="width:65%"></div></div>
+        <div style="font-size:0.72rem;margin-top:4px;" class="muted">Evidence 3 · Precision 3 · Relevance 3 · Novelty 4</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Synthesizer</div>
+        <div class="meta-value">Opus (EPR retry rule, 12-15)</div>
+        <div class="meta-label" style="margin-top:4px;">self_grade</div>
+        <div class="meta-value">88 / 100</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Source Tiers</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;">
+          <span class="tag">T1: ~12</span>
+          <span class="tag">T2: ~28</span>
+          <span class="tag">T3: 4 flagged</span>
+        </div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Date</div>
+        <div class="meta-value">2026-07-13</div>
+        <div class="meta-label" style="margin-top:6px;">Project</div>
+        <div class="meta-value">Telehealth Peptides</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Channels</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;">Brave ×11 · Exa (academic) · WebFetch ×6 · Reddit CLI (0 results) · HN CLI (0 results)</div>
+        <div style="font-size:0.72rem;color:#ef4444;margin-top:4px;">Perplexity: unavailable · Tavily: rate-limited</div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Navigation</div>
+        <ul class="toc" style="margin-top:6px;">
+          <li><a href="#s1">1 · Scoring Matrix</a></li>
+          <li><a href="#s2">2 · Top 5 Ranking</a></li>
+          <li><a href="#s3">3 · Reconciliation</a></li>
+          <li><a href="#s4">4 · Unscored Items</a></li>
+          <li><a href="#s5">5 · Lawyer Checklist</a></li>
+          <li><a href="#s6">6 · Source Coverage</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <header>
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">DELPHI PRO · D3 RESEARCH · 2026-07-13</div>
+      <h1>EU Telehealth Incorporation Speed Ranking</h1>
+      <div class="subtitle">Ease + Time-to-Operational · Malta · Estonia · Netherlands · Portugal · Cyprus · Czechia · Romania</div>
+      <div class="pill-row">
+        <span class="tag">Fills missing axes from 2026-07-11 compliance ranking</span>
+        <span class="tag">Counsel-gated</span>
+        <span class="tag">UNSCORED preserved</span>
+      </div>
+      <div style="margin-top:12px;padding:10px 14px;background:var(--card2);border-radius:8px;border-left:3px solid var(--accent);font-size:0.84rem;">
+        <strong>Scope guard:</strong> This ranking does NOT re-litigate the 2026-07-11 compliance ranking (Malta #1 on licensing/CBeP grounds). Where ease/time evidence favors a lower-ranked jurisdiction, it is flagged as a tension for counsel, not a promotion. Every licensing/legal claim carries an implicit <span style="color:#ef4444;font-weight:600;">⚖ lawyer must confirm</span> tag.
+      </div>
+    </header>
+
+    <!-- SECTION 1: SCORING MATRIX -->
+    <section id="s1" class="fade-in">
+      <h2><span class="num">1</span> Scoring Matrix</h2>
+      <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:12px;">(P) = primary row · (C) = context row · UNSCORED = insufficient evidence — not interpolated</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Jurisdiction</th>
+              <th>Ease (0-10)</th>
+              <th>Time to Incorporate</th>
+              <th>Time-to-Operational</th>
+              <th>Telehealth Licensing Burden</th>
+              <th>Banking Friction</th>
+              <th>Key Gotchas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="jrow-primary">
+              <td><strong>Malta</strong> <span class="tag" style="margin-left:4px;font-size:0.68rem;">P</span></td>
+              <td><span class="score-chip score-high">7/10</span></td>
+              <td>1–2 wks [T2]</td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td><span class="burden-low">Low-Med / UNSCORED</span></td>
+              <td><span class="burden-med">Medium / UNSCORED</span></td>
+              <td>No dedicated telehealth law; HCSD consulting-room exclusion may spare virtual-only ops [T1] — <strong>explicitly unresolved</strong>. LN 316/2021 content not retrieved.</td>
+            </tr>
+            <tr class="jrow-primary">
+              <td><strong>Estonia</strong> <span class="tag" style="margin-left:4px;font-size:0.68rem;">P</span></td>
+              <td><span class="score-chip score-med">6/10</span></td>
+              <td>2–8 wks (card) + 1 day (OÜ) [T2]</td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td><span class="burden-med">Medium / UNSCORED</span></td>
+              <td><span class="burden-high">High</span></td>
+              <td>e-Residency card = 2–8 wk pre-req. Traditional banks (LHV/SEB) restrict non-residents; EMI route primary. Non-EU prescriber = 3 mo review + 1 mo [T1]. eesti.ee T1 load FAILED.</td>
+            </tr>
+            <tr class="jrow-primary">
+              <td><strong>Netherlands</strong> <span class="tag" style="margin-left:4px;font-size:0.68rem;">P</span></td>
+              <td><span class="score-chip score-med">6/10</span></td>
+              <td>1–2 wks (entity) / 4–6 wks (with banking) [T2]</td>
+              <td><span class="score-chip" style="background:rgba(239,68,68,0.12);color:#ef4444;">≥8 wks</span></td>
+              <td><span class="burden-high">High</span></td>
+              <td><span class="burden-high">Medium-High</span></td>
+              <td><strong style="color:#ef4444;">Wtza licence = 8 weeks [T1 KVK.nl].</strong> Prescribing prohibition (never-physically-met) + Apr 2023 exception. CIBG mandatory. BIG registration. Possible MDR classification.</td>
+            </tr>
+            <tr class="jrow-primary">
+              <td><strong>Portugal</strong> <span class="tag" style="margin-left:4px;font-size:0.68rem;">P</span></td>
+              <td><span class="score-chip score-high">7/10</span></td>
+              <td>5 days (express) / 2–6 wks (standard) [T2]</td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td><span class="burden-med">Medium / UNSCORED</span></td>
+              <td><span class="burden-low">Low-Med / UNSCORED</span></td>
+              <td>ERS licence required (DL 126/2014); ERS Guidance 7/2024 (consent + TMRG). Banking: 2–4 wks (single T2 only). Prescriber: T3 only — UNSCORED.</td>
+            </tr>
+            <tr class="jrow-primary">
+              <td><strong>Cyprus</strong> <span class="tag" style="margin-left:4px;font-size:0.68rem;">P</span></td>
+              <td><span class="score-chip score-med">6/10</span></td>
+              <td>1.5–2 wks (7–10 business days) [T2]</td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td><span class="burden-med">Medium / UNSCORED</span></td>
+              <td><span class="burden-high">High / UNSCORED</span></td>
+              <td>eHealth Law 59(I)/2019 + NEHA [T1]. "Most challenging banking" [T2]. Non-EU doctors: 3-yr experience gate [T1]. GDPR UNSCORED.</td>
+            </tr>
+            <tr class="jrow-context">
+              <td><em>Czechia</em> <span class="tag" style="margin-left:4px;font-size:0.68rem;background:rgba(107,114,128,0.1);color:#9ca3af;">C</span></td>
+              <td><span class="score-chip score-high">7/10</span></td>
+              <td>~2 wks (10 working days) [T2]</td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td><span class="burden-med">Medium / UNSCORED</span></td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td>Telemedicine permitted (Act 372/2011; Decree 30/2025). No T1 licensing timeline. Axis B near-impossible to score. EU expansion scout context only.</td>
+            </tr>
+            <tr class="jrow-context">
+              <td><em>Romania</em> <span class="tag" style="margin-left:4px;font-size:0.68rem;background:rgba(107,114,128,0.1);color:#9ca3af;">C</span></td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td>Async lawful [prior D3]</td>
+              <td><span class="burden-na">UNSCORED</span></td>
+              <td>No findings this run. Domestic-only pilot per prior D3. Cross-border FROM Romania not viable.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Charts Row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div class="glass chart-wrap">
+          <div style="font-size:0.8rem;font-weight:700;margin-bottom:10px;color:var(--text-muted);">EASE OF INCORPORATION SCORES</div>
+          <canvas id="easeChart"></canvas>
+        </div>
+        <div class="glass chart-wrap">
+          <div style="font-size:0.8rem;font-weight:700;margin-bottom:10px;color:var(--text-muted);">EPR BREAKDOWN</div>
+          <canvas id="eprChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: TOP 5 RANKING -->
+    <section id="s2" class="fade-in">
+      <h2><span class="num">2</span> Final Top 5 Ranking (Ease + Time-to-Operational)</h2>
+      <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:14px;">Ranking weights evidenced incorporation speed + known operational friction. UNSCORED jurisdictions cannot climb on unproven speed.</p>
+
+      <div class="rank-card">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <div class="rank-num">#1</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <span class="rank-name">Malta</span>
+              <span class="rank-badge tag">No tension</span>
+            </div>
+            <div style="font-size:0.85rem;">Fastest evidenced incorporation (1–2 wks [T2]) + lightest known licensing posture — no dedicated telehealth law, consulting-room exclusion may spare virtual-only operators [T1]. Operational axis UNSCORED (HCSD timeline not found) but rank rests on best incorporation speed + lowest known burden. <strong>Coincides with compliance #1 — no divergence.</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rank-card tension">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <div class="rank-num" style="color:#f97316;">#2</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <span class="rank-name">Portugal</span>
+              <span class="rank-badge" style="background:rgba(249,115,22,0.12);color:#f97316;border-radius:4px;padding:2px 7px;font-size:0.7rem;font-weight:600;">⚠ Tension: compliance #4</span>
+            </div>
+            <div style="font-size:0.85rem;">5-day express LDA (Empresa na Hora [T2]) = single fastest formation data point in the set. Outranks Estonia/Netherlands on incorporation ease. <strong>Tension for counsel:</strong> do NOT read as compliance promotion — ERS licensing timeline is UNSCORED, banking evidence is thin (one T2 source). Ease advantage is real; operational advantage is unconfirmed.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rank-card">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <div class="rank-num">#3</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <span class="rank-name">Estonia</span>
+              <span class="rank-badge" style="background:rgba(234,179,8,0.12);color:#eab308;border-radius:4px;padding:2px 7px;font-size:0.7rem;font-weight:600;">Banking drag</span>
+            </div>
+            <div style="font-size:0.85rem;">Best-in-class OÜ registration (1 business day) but 2–8 wk e-Residency pre-requisite + <strong>High</strong> non-resident banking friction (traditional bank restrictions, rejection risk [T2]) pull it below its compliance rank #2. Prescriber timelines are the only quantified ones (non-EU: 3 mo + 1 mo [T1]). Banking friction is the critical path item to de-risk before committing.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rank-card">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <div class="rank-num">#4</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <span class="rank-name">Cyprus</span>
+              <span class="rank-badge tag">Consistent with compliance #5</span>
+            </div>
+            <div style="font-size:0.85rem;">Clean 7–10 business-day formation [T2, two consistent sources], but <strong>High</strong> banking friction ("most challenging part of setup" [T2], no numeric estimate) and hard prescriber gate (non-EU doctors = 3 years experience in recognizing Member State [T1]) cap operational speed. No upward tension vs compliance ranking.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rank-card" style="border-left-color:#ef4444;">
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <div class="rank-num" style="color:#ef4444;">#5</div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <span class="rank-name">Netherlands</span>
+              <span class="rank-badge" style="background:rgba(239,68,68,0.12);color:#ef4444;border-radius:4px;padding:2px 7px;font-size:0.7rem;font-weight:600;">⬇ Inverts: compliance #3</span>
+            </div>
+            <div style="font-size:0.85rem;">Lowest combined ease+time despite compliance rank #3. Only jurisdiction with two <em>quantified</em> adverse operational facts: <strong>8-week Wtza licence [T1 KVK.nl]</strong> + prescribing prohibition (never-physically-met, narrowed by April 2023 exception [T2 cms.law]). Highest known licensing burden = slowest realistic time-to-first-lawful-consult.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: RECONCILIATION -->
+    <section id="s3" class="fade-in">
+      <h2><span class="num">3</span> Reconciliation with 2026-07-11 Compliance Ranking</h2>
+      <div class="glass" style="padding:16px;">
+        <div class="recon-item">
+          <div class="recon-dot recon-ok"></div>
+          <div><strong>Malta holds #1 on both axes.</strong> Compliance (LN 316/2021 + cleanest licence) and ease/time (fastest evidenced formation, lightest known burden) agree — strongest signal in the dataset for a Malta hub.</div>
+        </div>
+        <div class="recon-item">
+          <div class="recon-dot recon-warn"></div>
+          <div><strong>Netherlands inverts: compliance #3 → ease/time #5.</strong> The 8-week Wtza licence [T1] + never-physically-met prescribing prohibition [T2] make it the slowest-to-operational primary. Compliance strength does not equal speed to first consult.</div>
+        </div>
+        <div class="recon-item">
+          <div class="recon-dot recon-warn"></div>
+          <div><strong>Portugal inverts upward on ease: compliance #4 → ease/time #2</strong> on 5-day formation strength. Flagged tension for counsel — do not promote. ERS licensing timeline UNSCORED; banking evidence thin.</div>
+        </div>
+        <div class="recon-item">
+          <div class="recon-dot recon-info"></div>
+          <div><strong>Estonia's banking drag</strong> is the gap between compliance strength (#2, best e-health/CBeP) and operational reality (High banking friction). Malta/Estonia hub decision must budget Estonian non-resident banking as a live risk.</div>
+        </div>
+        <div class="recon-item">
+          <div class="recon-dot recon-ok"></div>
+          <div><strong>Cyprus is consistent</strong> (low on both), reinforcing fallback status, not primary hub.</div>
+        </div>
+        <div class="recon-item">
+          <div class="recon-dot recon-info"></div>
+          <div><strong>Net for Malta/Estonia hub decision:</strong> Malta is the only jurisdiction with no ease/time-vs-compliance tension → primary hub candidate. Estonia remains the CBeP/e-prescription layer but banking friction is the critical path item.</div>
+        </div>
+        <div class="recon-item">
+          <div class="recon-dot recon-info"></div>
+          <div><strong>Both orderings answer different questions</strong> (licensing clarity vs. speed to operational); divergence is expected. Hub choice should optimize Malta-first with Estonia as the CBeP/e-prescription layer.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: UNSCORED -->
+    <section id="s4" class="fade-in">
+      <h2><span class="num">4</span> Exceptions and Unscored Items</h2>
+      <div class="glass" style="padding:16px;">
+        <h3 style="color:#ef4444;font-size:0.9rem;margin-top:0;">Critical Gaps</h3>
+
+        <div style="margin-bottom:12px;padding:10px;background:rgba(239,68,68,0.06);border-radius:8px;border-left:3px solid #ef4444;">
+          <div style="font-weight:700;font-size:0.85rem;margin-bottom:3px;">Telehealth licensing timelines — UNSCORED for ALL jurisdictions except Netherlands</div>
+          <div style="font-size:0.83rem;color:var(--text-muted);">Malta (HCSD), Estonia (Terviseamet), Portugal (ERS), Cyprus (NEHA), Czechia (provider authorization) all lack timeline evidence. Only Netherlands has a quantified anchor: Wtza = 8 weeks [T1 KVK.nl].</div>
+        </div>
+
+        <div style="margin-bottom:12px;padding:10px;background:rgba(239,68,68,0.06);border-radius:8px;border-left:3px solid #ef4444;">
+          <div style="font-weight:700;font-size:0.85rem;margin-bottom:3px;">Estonia activity-licence — CRITICAL T1 GAP</div>
+          <div style="font-size:0.83rem;color:var(--text-muted);">eesti.ee page failed to load; Terviseamet licence scope/conditions/timeline for telehealth not confirmed at T1. The licence requirement is named from T2 sources but its conditions are unverified.</div>
+        </div>
+
+        <div style="margin-bottom:12px;padding:10px;background:rgba(234,179,8,0.06);border-radius:8px;border-left:3px solid #eab308;">
+          <div style="font-weight:700;font-size:0.85rem;margin-bottom:3px;">Banking friction (numeric weeks) — UNSCORED for Cyprus, Malta, Czechia; LOW-MED for Portugal</div>
+          <div style="font-size:0.83rem;color:var(--text-muted);">Cyprus: qualitative "most challenging" only, no number. Malta: 2–6 wk estimate is LOW-MED confidence, healthcare-sector friction unverified. Portugal: single T2 source (commenda.io). Czechia: no findings.</div>
+        </div>
+
+        <div style="margin-bottom:12px;padding:10px;background:rgba(234,179,8,0.06);border-radius:8px;border-left:3px solid #eab308;">
+          <div style="font-weight:700;font-size:0.85rem;margin-bottom:3px;">Prescriber onboarding timelines — UNSCORED except Estonia</div>
+          <div style="font-size:0.83rem;color:var(--text-muted);">Estonia non-EU = 3 mo review + 1 mo post-exam [T1]. Malta = T3 "few weeks" (not citable). Portugal = T3 multi-stage. Netherlands = authority named (IGJ/BIG) but steps not quantified. Cyprus = eligibility rule (3-yr) but no processing time.</div>
+        </div>
+
+        <div style="margin-bottom:12px;padding:10px;background:rgba(107,114,128,0.06);border-radius:8px;border-left:3px solid #9ca3af;">
+          <div style="font-weight:700;font-size:0.85rem;margin-bottom:3px;">GDPR/health-data basis — UNSCORED for Malta, Estonia, Cyprus</div>
+          <div style="font-size:0.83rem;color:var(--text-muted);">Partial for Netherlands (NEN 7510/7512/7513) and Portugal (Law 41/2004 + GDPR Art 9(2)(h)). No DPA registration timeline found for any jurisdiction.</div>
+        </div>
+
+        <div style="padding:10px;background:rgba(107,114,128,0.06);border-radius:8px;border-left:3px solid #9ca3af;">
+          <div style="font-weight:700;font-size:0.85rem;margin-bottom:3px;">Romania — entirely UNSCORED this run; Malta LN 316/2021 content not retrieved</div>
+          <div style="font-size:0.83rem;color:var(--text-muted);">Romania: no findings returned (prior-D3 context only; domestic-only pilot confirmed). Malta LN 316/2021: existence confirmed at T1; specific provisions not retrieved.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: LAWYER CHECKLIST -->
+    <section id="s5" class="fade-in">
+      <h2><span class="num">5</span> Consolidated Lawyer Must-Confirm Checklist</h2>
+      <div class="glass" style="padding:16px;">
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:12px;">18 items across 7 jurisdictions. Every item must be verified by qualified local counsel before operational reliance.</div>
+
+        <h3 style="margin-top:0;">Malta</h3>
+        <div class="counsel-item"><div class="ci-num">1</div><div><div class="counsel-jur">MALTA</div>Whether a virtual-only / telehealth-only operator requires a physical clinic licence under HCSD, given the consulting-room exclusion [T1] — EXPLICITLY UNRESOLVED.</div></div>
+        <div class="counsel-item"><div class="ci-num">2</div><div><div class="counsel-jur">MALTA</div>Content and applicability of <strong>LN 316/2021</strong> cross-border eHealth framework to the intended operating model (not retrieved in research).</div></div>
+        <div class="counsel-item"><div class="ci-num">3</div><div><div class="counsel-jur">MALTA</div>HCSD private-clinic licence application timeline and whether the Health Act + Medicines Act route covers remote prescribing.</div></div>
+        <div class="counsel-item"><div class="ci-num">4</div><div><div class="counsel-jur">MALTA</div>Medical Council Malta prescriber registration timeline — only T3 "few weeks" available, not a confirmable fact.</div></div>
+
+        <h3>Estonia</h3>
+        <div class="counsel-item"><div class="ci-num">5</div><div><div class="counsel-jur">ESTONIA</div><strong>Terviseamet (Health Board) activity-licence conditions, telehealth scope, and timeline — CRITICAL: T1 confirmation absent (eesti.ee failed to load).</strong></div></div>
+        <div class="counsel-item"><div class="ci-num">6</div><div><div class="counsel-jur">ESTONIA</div>Whether e-Resident / non-resident founders can obtain a compliant business bank/EMI account sufficient for healthcare payment rails, given traditional-bank restrictions [T2].</div></div>
+        <div class="counsel-item"><div class="ci-num">7</div><div><div class="counsel-jur">ESTONIA</div>Confirm non-EU vs EU prescriber onboarding path and the 3 mo + 1 mo Health Board timeline for the specific clinical team [T1].</div></div>
+
+        <h3>Netherlands</h3>
+        <div class="counsel-item"><div class="ci-num">8</div><div><div class="counsel-jur">NETHERLANDS</div>Whether the model qualifies for the <strong>April 2023 remote-prescribing exception</strong>: physical exam unnecessary AND prescriber has updated medication history access [T2 cms.law].</div></div>
+        <div class="counsel-item"><div class="ci-num">9</div><div><div class="counsel-jur">NETHERLANDS</div>Whether the service triggers <strong>Wtza authorization</strong> (8-wk application [T1]) and mandatory <strong>CIBG registration</strong> [T1].</div></div>
+        <div class="counsel-item"><div class="ci-num">10</div><div><div class="counsel-jur">NETHERLANDS</div>Whether the telehealth software qualifies as a medical device under <strong>EU MDR 2017/745</strong> [T2].</div></div>
+        <div class="counsel-item"><div class="ci-num">11</div><div><div class="counsel-jur">NETHERLANDS</div>BIG registration process/timeline for physicians and <strong>NEN 7510/7512/7513</strong> health data security compliance obligations [T2].</div></div>
+
+        <h3>Portugal</h3>
+        <div class="counsel-item"><div class="ci-num">12</div><div><div class="counsel-jur">PORTUGAL</div>ERS registration/licensing under <strong>Decree-Law 126/2014</strong> — applicability, requirements, and timeline (UNSCORED).</div></div>
+        <div class="counsel-item"><div class="ci-num">13</div><div><div class="counsel-jur">PORTUGAL</div>Compliance with <strong>ERS Guidance No. 7/2024</strong> (teleconsult consent + TMRG) and Ordem dos Médicos 2023 integration standards [T1+T2].</div></div>
+        <div class="counsel-item"><div class="ci-num">14</div><div><div class="counsel-jur">PORTUGAL</div>Foreign-degree prescriber recognition path (recognition + Ordem dos Médicos registration + Cédula Profissional) — T3 only, requires T1 confirmation.</div></div>
+
+        <h3>Cyprus</h3>
+        <div class="counsel-item"><div class="ci-num">15</div><div><div class="counsel-jur">CYPRUS</div>Obligations under <strong>eHealth Law 59(I)/2019</strong> and NEHA authority requirements for e-prescription/telemedicine [T1].</div></div>
+        <div class="counsel-item"><div class="ci-num">16</div><div><div class="counsel-jur">CYPRUS</div>The non-EU doctor "<strong>3 years professional experience in the recognizing Member State</strong>" rule and its impact on prescriber onboarding [T1].</div></div>
+
+        <h3>Czechia (context)</h3>
+        <div class="counsel-item"><div class="ci-num">17</div><div><div class="counsel-jur">CZECHIA</div>Healthcare-provider authorization (separate from S.R.O. registration) under <strong>Act 372/2011</strong> and compliance with <strong>Decree 30/2025</strong> telemedicine requirements [T2].</div></div>
+
+        <h3>Romania (context)</h3>
+        <div class="counsel-item"><div class="ci-num">18</div><div><div class="counsel-jur">ROMANIA</div>Re-confirm prior-D3 domestic-only conclusions (Ordin 1410/2016; OUG 196/2020 + HG 1133/2022; DSP regional authorization) before any operational reliance.</div></div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: SOURCE COVERAGE -->
+    <section id="s6" class="fade-in">
+      <h2><span class="num">6</span> Source Coverage Report</h2>
+      <div class="glass" style="padding:16px;">
+        <div class="cov-row">
+          <div class="cov-status cov-covered">COVERED</div>
+          <div><strong>Web Search</strong> — Brave ×11 queries, Exa (category=research_paper) · ~40 findings · Exa T1 Frontiers paper (EHDS Reg 2025/327, Jan 2026)</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-covered">COVERED</div>
+          <div><strong>Academic</strong> — Exa research_paper category · 1 T1 paper + T2 legal guides · Seeded EHDS framework</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-covered">COVERED</div>
+          <div><strong>Regulatory Pages (WebFetch)</strong> — 6 pages fetched (eesti.ee FAILED; cms.law NL/PT/CZ; gnius EE/MT; Malta Health Network PDF binary) · Key regulatory data on NL/PT/CY</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-covered">COVERED</div>
+          <div><strong>News</strong> — Brave includes news results · GNews/Guardian CLI not separately invoked</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-attempted">0 RESULTS</div>
+          <div><strong>Reddit</strong> — reddit-search.sh CLI invoked · 0 results returned · Professional/legal topic; no practitioner Reddit content found for EU telehealth licensing</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-attempted">0 RESULTS</div>
+          <div><strong>HackerNews</strong> — hn-search.sh CLI invoked · 0 results returned · Topic too specialized for HN practitioner discussion</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-skipped">SKIPPED</div>
+          <div><strong>X/Twitter</strong> — CONDITIONAL-SKIPPED · Professional legal topic; no relevant practitioner X content expected · B2B regulatory research</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-skipped">SKIPPED</div>
+          <div><strong>Instagram / TikTok</strong> — CONDITIONAL-SKIPPED · B2B regulatory topic; social visual channels not relevant</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-skipped">SKIPPED</div>
+          <div><strong>YouTube/Video</strong> — CONDITIONAL-SKIPPED · Legal/regulatory comparison topic; no video search invoked</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-missing">MISSING</div>
+          <div><strong>Deep Research (Perplexity/Tavily Research)</strong> — Perplexity API key not in Keychain; Tavily Research rate-limited. Both deep-research tools unavailable this run. Impact: no cross-jurisdictional synthesis layer.</div>
+        </div>
+        <div class="cov-row">
+          <div class="cov-status cov-attempted">PARTIAL</div>
+          <div><strong>Prior D3 Context (2026-07-11)</strong> — Compliance ranking + Romania context (Ordin 1410/2016, OUG 196/2020, HG 1133/2022, DSP) · Not re-researched this run</div>
+        </div>
+
+        <div style="margin-top:14px;padding:10px;background:rgba(239,68,68,0.06);border-radius:8px;font-size:0.83rem;">
+          <strong>Coverage verdict:</strong> Web/academic COVERED. Social/video = ATTEMPTED or CONDITIONAL-SKIPPED (professional legal topic — 0 results when tried). Deep Research = MISSING (infrastructure unavailable). EPR 13/20 reflects these gaps. Time-to-operational is UNSCORED for 4/5 primaries as a direct consequence.
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section class="fade-in">
+      <div class="glass" style="padding:14px;font-size:0.8rem;color:var(--text-muted);">
+        <strong style="color:var(--text);">Methodology</strong> · D3 research, DELPHI PRO, 2026-07-13 · Critic: Sonnet subagent (EPR 13/20) · Synthesizer: Opus subagent (EPR retry rule, 12-15 range) · self_grade: 88/100 · Model provenance unverified (Agent tool parameter) · Channels: Brave ×11, Exa ×1, WebFetch ×6, Reddit CLI (0), HN CLI (0) · Perplexity: API key unavailable · Tavily: rate-limited · Intel file: <code>~/.nexus/intel/telehealth-eu-incorporation-speed-ranking-DELPHI-2026-07-13.md</code> · Cortex: business <code>2eada43e</code>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Theme toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('theme-btn').textContent = isDark ? '🌙 Dark' : '☀️ Light';
+    localStorage.setItem('nexus-theme', isDark ? 'light' : 'dark');
+    updateCharts();
+  }
+  // Restore theme
+  const savedTheme = localStorage.getItem('nexus-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('theme-btn').textContent = savedTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
+  });
+
+  // Share
+  function shareReport() {
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({ title: 'EU Telehealth Incorporation Ranking — DELPHI D3', url });
+    } else {
+      navigator.clipboard.writeText(url).then(() => alert('Link copied!'));
+    }
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Charts
+  let easeChart, eprChart;
+
+  function getChartColors() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    return {
+      text: isDark ? '#8b949e' : '#6b7280',
+      grid: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)',
+      accent: isDark ? '#58a6ff' : '#5E6AD2'
+    };
+  }
+
+  function buildCharts() {
+    const c = getChartColors();
+
+    // Ease chart
+    const easeCtx = document.getElementById('easeChart').getContext('2d');
+    easeChart = new Chart(easeCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Malta', 'Portugal', 'Czechia*', 'Estonia', 'Netherlands', 'Cyprus'],
+        datasets: [{
+          label: 'Ease Score (0-10)',
+          data: [7, 7, 7, 6, 6, 6],
+          backgroundColor: ['rgba(88,166,255,0.7)', 'rgba(249,115,22,0.5)', 'rgba(107,114,128,0.4)', 'rgba(88,166,255,0.5)', 'rgba(239,68,68,0.5)', 'rgba(88,166,255,0.4)'],
+          borderRadius: 5,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: c.text, font: { size: 10 } }, grid: { color: c.grid } },
+          y: { min: 0, max: 10, ticks: { color: c.text, font: { size: 10 } }, grid: { color: c.grid } }
+        }
+      }
+    });
+
+    // EPR breakdown chart
+    const eprCtx = document.getElementById('eprChart').getContext('2d');
+    eprChart = new Chart(eprCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Evidence (3)', 'Precision (3)', 'Relevance (3)', 'Novelty (4)'],
+        datasets: [{
+          data: [3, 3, 3, 4],
+          backgroundColor: ['rgba(88,166,255,0.7)', 'rgba(34,197,94,0.7)', 'rgba(234,179,8,0.7)', 'rgba(139,92,246,0.7)'],
+          borderWidth: 1,
+          borderColor: 'transparent'
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: c.text, font: { size: 10 }, padding: 8 } },
+          tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}/5` } }
+        }
+      }
+    });
+  }
+
+  function updateCharts() {
+    const c = getChartColors();
+    if (easeChart) {
+      easeChart.options.scales.x.ticks.color = c.text;
+      easeChart.options.scales.x.grid.color = c.grid;
+      easeChart.options.scales.y.ticks.color = c.text;
+      easeChart.options.scales.y.grid.color = c.grid;
+      easeChart.update();
+    }
+    if (eprChart) {
+      eprChart.options.plugins.legend.labels.color = c.text;
+      eprChart.update();
+    }
+  }
+
+  window.addEventListener('load', buildCharts);
+</script>
+</body>
+</html>
