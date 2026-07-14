@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abstain Council Report - council-20260714-0943-odob</title>
+<style>
+:root { color-scheme: dark; --bg:#111; --panel:#1b1b1b; --panel2:#242424; --line:#303030; --text:#e8e8e8; --muted:#a0a0a0; --green:#5bc46b; --amber:#f0a631; --red:#e5534b; --blue:#76a9ff; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(circle at 16% 0%, #1f2937 0, transparent 28rem), var(--bg); color:var(--text); font:14px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:30px 24px 60px; }
+.top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:26px; }
+.brand { font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+button { border:1px solid var(--line); background:var(--panel); color:var(--text); border-radius:8px; padding:8px 12px; }
+.hero { padding:28px 0 22px; border-bottom:1px solid var(--line); }
+h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.02; margin:0 0 14px; letter-spacing:0; }
+.subtitle { max-width:850px; color:var(--muted); font-size:17px; }
+.meta { margin-top:16px; color:var(--muted); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+.grid { display:grid; gap:16px; }
+.metrics { grid-template-columns:repeat(5, minmax(0,1fr)); margin:22px 0; }
+.two { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); align-items:start; }
+.card { background:color-mix(in srgb, var(--panel) 92%, transparent); border:1px solid var(--line); border-radius:8px; padding:18px; box-shadow:0 16px 38px rgba(0,0,0,.25); }
+.decision-band { display:grid; grid-template-columns:1fr 1.25fr; gap:16px; margin:0 0 16px; }
+.decision-band div { border:1px solid var(--line); border-radius:8px; padding:16px 18px; background:linear-gradient(135deg, rgba(118,169,255,.14), rgba(27,27,27,.95)); }
+.decision-band small,.flow-step small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.decision-band strong { display:block; font-size:20px; margin:6px 0; }
+.decision-band span,.flow-step span { color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr; align-items:stretch; gap:10px; margin:0 0 16px; }
+.flow-step { border:1px solid var(--line); border-radius:8px; padding:14px; background:var(--panel); }
+.flow-step strong { display:block; margin:6px 0; font-size:16px; }
+.flow-arrow { display:grid; place-items:center; color:var(--muted); font-size:22px; }
+.advisor-cards { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin:0 0 16px; }
+.advisor-card { border:1px solid var(--line); border-radius:8px; padding:16px; background:var(--panel); }
+.advisor-card.vote-pass { border-top:4px solid var(--green); }
+.advisor-card.vote-revise,.advisor-card.vote-split { border-top:4px solid var(--amber); }
+.advisor-card.vote-block,.advisor-card.vote-abstain { border-top:4px solid var(--red); }
+.advisor-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.advisor-head span { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+.advisor-head b { border:1px solid var(--line); border-radius:999px; padding:4px 10px; background:#151515; }
+.confidence { display:flex; justify-content:space-between; align-items:center; margin:12px 0 8px; padding:8px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.confidence span { color:var(--muted); }
+.advisor-card h3 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 5px; }
+.advisor-card p { margin:0; }
+.metric small { color:var(--muted); text-transform:uppercase; letter-spacing:.08em; display:block; }
+.metric strong { display:block; font-size:24px; margin:8px 0 2px; overflow-wrap:anywhere; }
+.metric span { color:var(--muted); }
+h2 { margin:0 0 14px; font-size:22px; }
+h3 { margin:18px 0 8px; color:var(--blue); }
+.score { display:grid; grid-template-columns:130px minmax(120px, 1fr) 52px; align-items:center; gap:12px; margin:11px 0; }
+.score b { height:16px; background:#111; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.score i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--red), var(--amber), var(--green)); }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+table { border-collapse:collapse; width:100%; min-width:760px; background:var(--panel); }
+th,td { border-bottom:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; }
+th { background:var(--panel2); color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; }
+tr:hover td { background:rgba(255,255,255,.025); }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:#151515; font-weight:700; }
+.narrative { margin-top:16px; }
+.narrative p { margin:9px 0; }
+.narrative ul { padding-left:22px; }
+code { background:#101010; border:1px solid var(--line); border-radius:5px; padding:1px 5px; }
+pre { max-height:420px; overflow:auto; background:#090909; border:1px solid var(--line); border-radius:8px; padding:14px; }
+.muted { color:var(--muted); }
+summary { cursor:pointer; color:var(--muted); }
+a { color:var(--blue); text-decoration:none; }
+@media (max-width:880px) { .metrics,.two { grid-template-columns:1fr; } .score { grid-template-columns:100px minmax(90px,1fr) 46px; } }
+@media (max-width:980px) { .decision-band,.advisor-cards,.flow { grid-template-columns:1fr; } .flow-arrow { display:none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="top"><div class="brand">Council Report</div><button onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Share</button></nav>
+  <header class="hero"><h1>Abstain Council Report - council-20260714-0943-odob</h1><p class="subtitle">Council Report Final Verdict No verdict text provided.</p><div class="meta">Generated 2026-07-14 09:52 UTC | Task council-20260714-0943-odob</div></header>
+  <section class="grid metrics">
+    <article class="card metric"><small>Outcome</small><strong>ABSTAIN</strong><span>Verdict</span></article>
+    <article class="card metric"><small>Certainty</small><strong>0.00</strong><span>Confidence</span></article>
+    <article class="card metric"><small>Quality</small><strong>0.00/4</strong><span>NPLF average</span></article>
+    <article class="card metric"><small>Run Spend</small><strong>$0.5646</strong><span>Cost</span></article>
+    <article class="card metric"><small>Evidence</small><strong>3</strong><span>Advisors</span></article>
+  </section>
+  <section class='decision-band'><div><small>Committee Shape</small><strong>1 ABSTAIN / 2 PASS</strong><span>Final reconciler tier: ABSTAIN</span></div><div><small>How To Read</small><strong>Vote → Motivation → Objection → Synthesis</strong><span>The report shows what each advisor believed, where they split, and why the final tier followed.</span></div></section>
+  <section class='flow' aria-label='Decision flow'><div class='flow-step'><small>1</small><strong>Independent advisors</strong><span>ABSTAIN + PASS + PASS</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>2</small><strong>Agreement / dissent map</strong><span>Shared claims and explicit objections are separated.</span></div><div class='flow-arrow'>→</div><div class='flow-step'><small>3</small><strong>Final synthesis</strong><span>ABSTAIN after weighing public advisor positions.</span></div></section>
+  <section class='advisor-cards'><article class='advisor-card vote-abstain'><div class='advisor-head'><span>Advisor A</span><b>ABSTAIN</b></div><div class='confidence'><span>Confidence</span><strong>0.0</strong></div><h3>Why this advisor voted this way</h3><p>No public motivation recorded.</p><h3>Main objection or warning</h3><p>No public objection recorded.</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor B</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.81</strong></div><h3>Why this advisor voted this way</h3><p>Sequencing discipline is exactly right for the risk profile: Phase B (the four gates) lands and is verified as its own isolated commit before the model swap or channel repairs, and the model rollout is staged so critic_single is swapped alone and proven with 3x live D3 runs before the other four roles move — this deliberately prevents a critic-scoring regression from being confounded with the gates that enforce that scoring.</p><h3>Main objection or warning</h3><p>System-wide blast radius on live infrastructure: post-research.sh and the channel CLIs are invoked on every Delphi research run, so a partial B2 apply or a source-glue failure breaks all research until manually restored — the mitigation is sound (atomic restore-from-backup) but the failure window is total while it is open.</p></article>
+<article class='advisor-card vote-pass'><div class='advisor-head'><span>Advisor C</span><b>PASS</b></div><div class='confidence'><span>Confidence</span><strong>0.91</strong></div><h3>Why this advisor voted this way</h3><p>The proposal addresses verified production defects: four promised gates are absent, two channel CLIs are broken, the hook contract is inconsistent, model configuration is stale, and two agents collide under the same name.</p><h3>Main objection or warning</h3><p>An incomplete or contract-incompatible B2 edit could break every Delphi research run because post-research.sh is on the shared execution path and must coordinate scoring, coverage production, and run_metrics persistence.</p></article></section>
+  <section class="grid two">
+    <article class="card"><h2>NPLF Scorecard</h2><div class='score'><span>Need</span><b><i style='width:0.0%'></i></b><strong>0.00</strong></div>
+<div class='score'><span>Plan</span><b><i style='width:0.0%'></i></b><strong>0.00</strong></div>
+<div class='score'><span>Leverage</span><b><i style='width:0.0%'></i></b><strong>0.00</strong></div>
+<div class='score'><span>Fit</span><b><i style='width:0.0%'></i></b><strong>0.00</strong></div></article>
+    <article class="card"><h2>Advisor Matrix</h2><div class="table-wrap"><table><thead><tr><th>Advisor</th><th>Position</th><th>Confidence</th><th>Agrees On</th><th>Disagrees / Warns On</th></tr></thead><tbody><tr><td><strong>A</strong></td><td><span class='pill'>ABSTAIN</span></td><td>0.0</td><td>not specified</td><td>not specified</td></tr>
+<tr><td><strong>B</strong></td><td><span class='pill'>PASS</span></td><td>0.81</td><td>Sequencing discipline is exactly right for the risk profile: Phase B (the four gates) lands and is verified as its own isolated commit before the model swap or channel repairs, and the model rollout is staged so critic_single is swapped alone and proven with 3x live D3 runs before the other four roles move — this deliberately prevents a critic-scoring regression from being confounded with the gates that enforce that scoring.; Strong rollback posture on a system-wide blast radius: every edited file is snapshotted in WI-0 with per-phase rollback, B2 (post-research.sh) is treated as one atomic edit unit that must be fully restored from backup rather than patched forward, and permission-sensitive changes (SKILL.md, LaunchAgent, the agent&#x27;s own definition) are fenced behind owner sign-off.; Execution risk for a no-research Sonnet executor is well-controlled: all facts are pre-verified (Arctic Shift HTTP 200 as the Reddit replacement, hn.algolia healthy at nbHits 48667, post-research.sh 4-vs-5 arg mismatch), the plan reached v1.1 through two independent audits plus a reconciliation with 19 amendments, and success criteria are concrete and testable (unit tests asserting exit codes, no residual claude-sonnet-4-6 refs, exactly one loadable delphi-pro agent).</td><td>System-wide blast radius on live infrastructure: post-research.sh and the channel CLIs are invoked on every Delphi research run, so a partial B2 apply or a source-glue failure breaks all research until manually restored — the mitigation is sound (atomic restore-from-backup) but the failure window is total while it is open.; The model swap can regress the exact critic scoring the new gates now enforce, and the only guard is 3x live D3 runs; three passing runs are a weak sample against distributional drift in critic judgment, so a subtle scoring regression could survive the staged gate and only surface after the remaining four roles are swapped.; Tension between the success criterion &#x27;D3 e2e run reaches Critic to Synthesizer to delivery without stalling&#x27; and B4 shipping as detect+alert-only with auto-resume deferred — a stall would be detected and alerted but not resumed, so meeting the no-stall criterion depends on stalls simply not occurring during the verification run rather than on the gate recovering from one.</td></tr>
+<tr><td><strong>C</strong></td><td><span class='pill'>PASS</span></td><td>0.91</td><td>The proposal addresses verified production defects: four promised gates are absent, two channel CLIs are broken, the hook contract is inconsistent, model configuration is stale, and two agents collide under the same name.; The execution sequence isolates the highest-risk gate implementation in its own verified commit, then stages the critic model rollout through three live D3 runs before changing the other roles.; Risk controls are unusually concrete: complete snapshots, per-phase rollback, atomic restoration for B2, JSON-safe state migration, fail-open coverage enforcement, and explicit owner gates for LaunchAgent, SKILL.md, and Fable 5 decisions.</td><td>An incomplete or contract-incompatible B2 edit could break every Delphi research run because post-research.sh is on the shared execution path and must coordinate scoring, coverage production, and run_metrics persistence.; The success criteria may be interpreted too broadly if detect-and-alert stall supervision is presented as recovery; B4 does not satisfy automatic resumption, which correctly remains deferred.; Changing critic_single could alter scoring behavior enough to expose failures in the new gates, so the three live D3 proofs must use explicit acceptance checks and preserve rollback evidence.</td></tr></tbody></table></div></article>
+  </section>
+  <section class="card narrative"><h2>Decision Trace</h2><p># Council Report</p>
+<h2>Final Verdict</h2>
+<p>No verdict text provided.</p>
+<h2>Dissent</h2>
+<p>No dissent recorded.</p>
+<h2>Advisor Positions</h2>
+<h3>A</h3>
+<ul>
+<li>Position: ABSTAIN</li>
+<li>Confidence: 0.0</li>
+<li>Agrees on: not specified</li>
+<li>Disagrees or warns on: not specified</li>
+</ul>
+<h3>B</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.81</li>
+<li>Agrees on: Sequencing discipline is exactly right for the risk profile: Phase B (the four gates) lands and is verified as its own isolated commit before the model swap or channel repairs, and the model rollout is staged so critic_single is swapped alone and proven with 3x live D3 runs before the other four roles move — this deliberately prevents a critic-scoring regression from being confounded with the gates that enforce that scoring.; Strong rollback posture on a system-wide blast radius: every edited file is snapshotted in WI-0 with per-phase rollback, B2 (post-research.sh) is treated as one atomic edit unit that must be fully restored from backup rather than patched forward, and permission-sensitive changes (SKILL.md, LaunchAgent, the agent&#x27;s own definition) are fenced behind owner sign-off.; Execution risk for a no-research Sonnet executor is well-controlled: all facts are pre-verified (Arctic Shift HTTP 200 as the Reddit replacement, hn.algolia healthy at nbHits 48667, post-research.sh 4-vs-5 arg mismatch), the plan reached v1.1 through two independent audits plus a reconciliation with 19 amendments, and success criteria are concrete and testable (unit tests asserting exit codes, no residual claude-sonnet-4-6 refs, exactly one loadable delphi-pro agent).</li>
+<li>Disagrees or warns on: System-wide blast radius on live infrastructure: post-research.sh and the channel CLIs are invoked on every Delphi research run, so a partial B2 apply or a source-glue failure breaks all research until manually restored — the mitigation is sound (atomic restore-from-backup) but the failure window is total while it is open.; The model swap can regress the exact critic scoring the new gates now enforce, and the only guard is 3x live D3 runs; three passing runs are a weak sample against distributional drift in critic judgment, so a subtle scoring regression could survive the staged gate and only surface after the remaining four roles are swapped.; Tension between the success criterion &#x27;D3 e2e run reaches Critic to Synthesizer to delivery without stalling&#x27; and B4 shipping as detect+alert-only with auto-resume deferred — a stall would be detected and alerted but not resumed, so meeting the no-stall criterion depends on stalls simply not occurring during the verification run rather than on the gate recovering from one.</li>
+</ul>
+<h3>C</h3>
+<ul>
+<li>Position: PASS</li>
+<li>Confidence: 0.91</li>
+<li>Agrees on: The proposal addresses verified production defects: four promised gates are absent, two channel CLIs are broken, the hook contract is inconsistent, model configuration is stale, and two agents collide under the same name.; The execution sequence isolates the highest-risk gate implementation in its own verified commit, then stages the critic model rollout through three live D3 runs before changing the other roles.; Risk controls are unusually concrete: complete snapshots, per-phase rollback, atomic restoration for B2, JSON-safe state migration, fail-open coverage enforcement, and explicit owner gates for LaunchAgent, SKILL.md, and Fable 5 decisions.</li>
+<li>Disagrees or warns on: An incomplete or contract-incompatible B2 edit could break every Delphi research run because post-research.sh is on the shared execution path and must coordinate scoring, coverage production, and run_metrics persistence.; The success criteria may be interpreted too broadly if detect-and-alert stall supervision is presented as recovery; B4 does not satisfy automatic resumption, which correctly remains deferred.; Changing critic_single could alter scoring behavior enough to expose failures in the new gates, so the three live D3 proofs must use explicit acceptance checks and preserve rollback evidence.</li>
+</ul>
+<h2>Scoring</h2>
+<ul>
+<li>Tier: ABSTAIN</li>
+<li>Confidence: 0.0</li>
+<li>Cost: $0.5646</li>
+<li>N: 0.00/4</li>
+<li>P: 0.00/4</li>
+<li>L: 0.00/4</li>
+<li>F: 0.00/4</li>
+</ul></section>
+</main>
+</body>
+</html>
