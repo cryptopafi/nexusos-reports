@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LangGraph vs CrewAI: Multi-Agent Orchestration in 2026 — DELPHI D3</title>
+  <meta name="description" content="Deep research comparison of LangGraph vs CrewAI for multi-agent orchestration in 2026 across state model, tool routing, and production maturity.">
+  <meta property="og:title" content="LangGraph vs CrewAI: Multi-Agent Orchestration in 2026">
+  <meta property="og:description" content="DELPHI D3 research: state model, tool routing, production maturity. LangGraph wins production; CrewAI wins prototyping.">
+  <meta property="og:type" content="article">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0A0F;
+      --card: #111118;
+      --accent: #58a6ff;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: rgba(88,166,255,0.15);
+      --glass: rgba(17,17,24,0.7);
+      --glow: 0 0 24px rgba(88,166,255,0.12);
+    }
+    html.light {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --accent: #5E6AD2;
+      --text: #111118;
+      --muted: #6b7280;
+      --border: rgba(94,106,210,0.2);
+      --glass: rgba(255,255,255,0.8);
+      --glow: 0 0 24px rgba(94,106,210,0.1);
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; transition: background .3s, color .3s; }
+    code, pre, .mono { font-family: 'JetBrains Mono', monospace; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--glow); backdrop-filter: blur(8px); }
+    .accent { color: var(--accent); }
+    .muted { color: var(--muted); }
+    .badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: rgba(88,166,255,0.12); color: var(--accent); border: 1px solid rgba(88,166,255,0.25); }
+    .badge-warn { background: rgba(251,191,36,0.12); color: #fbbf24; border-color: rgba(251,191,36,0.25); }
+    .badge-ok { background: rgba(34,197,94,0.12); color: #22c55e; border-color: rgba(34,197,94,0.25); }
+    .badge-red { background: rgba(239,68,68,0.12); color: #ef4444; border-color: rgba(239,68,68,0.25); }
+    .progress-bar { height: 6px; border-radius: 999px; background: rgba(88,166,255,0.15); overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), #38bdf8); transition: width 1s ease; }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .toc-link { display: block; padding: 6px 12px; border-radius: 6px; color: var(--muted); font-size: 0.85rem; transition: background .2s, color .2s; }
+    .toc-link:hover, .toc-link.active { background: rgba(88,166,255,0.08); color: var(--accent); }
+    table { border-collapse: collapse; width: 100%; }
+    th { background: rgba(88,166,255,0.08); color: var(--accent); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 14px; text-align: left; }
+    td { padding: 10px 14px; font-size: 0.875rem; border-bottom: 1px solid var(--border); color: var(--text); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(88,166,255,0.03); }
+    h2 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: .75rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; color: var(--accent); margin-bottom: .5rem; margin-top: 1.25rem; }
+    h4 { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin-bottom: .4rem; margin-top: 1rem; }
+    p { color: var(--text); line-height: 1.7; margin-bottom: .75rem; }
+    li { color: var(--text); line-height: 1.7; margin-bottom: .35rem; }
+    ul { padding-left: 1.25rem; list-style: disc; margin-bottom: .75rem; }
+    ol { padding-left: 1.25rem; list-style: decimal; margin-bottom: .75rem; }
+    .pull-quote { border-left: 3px solid var(--accent); padding: 12px 20px; background: rgba(88,166,255,0.05); border-radius: 0 8px 8px 0; font-style: italic; color: var(--muted); margin: 1.25rem 0; }
+    .critical-bug { border: 1px solid rgba(239,68,68,0.35); background: rgba(239,68,68,0.06); border-radius: 8px; padding: 14px; margin: 1rem 0; }
+    .security-note { border: 1px solid rgba(251,191,36,0.35); background: rgba(251,191,36,0.06); border-radius: 8px; padding: 14px; margin: 1rem 0; }
+    .winner-badge { display: inline-flex; gap: 6px; align-items: center; background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
+    @media print { body { background: white; color: black; } .no-print { display: none !important; } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 no-print" style="background: var(--glass); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-sm font-semibold" style="color: var(--accent);">DELPHI PRO</span>
+      <span class="muted text-xs">D3 Research</span>
+      <span class="badge">2026-07-14</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-xs muted">Content 11/15 · Grounding 76.9% · Grade 74</span>
+      <button onclick="toggleMode()" class="text-xs px-3 py-1 rounded-lg" style="background: rgba(88,166,255,0.1); color: var(--accent); border: 1px solid var(--border);">🌓 Toggle</button>
+      <button onclick="shareReport()" class="text-xs px-3 py-1 rounded-lg" style="background: rgba(88,166,255,0.1); color: var(--accent); border: 1px solid var(--border);">📋 Share</button>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-7xl mx-auto px-6 py-8 flex gap-8">
+
+  <!-- SIDEBAR -->
+  <aside class="no-print hidden lg:block w-64 shrink-0">
+    <div class="sticky top-20">
+
+      <!-- Metadata card -->
+      <div class="card p-5 mb-4">
+        <div class="text-xs font-semibold muted uppercase tracking-widest mb-3">Run Metadata</div>
+        <div class="space-y-3">
+          <div>
+            <div class="text-xs muted mb-1">Depth</div>
+            <span class="badge">D3 Deep Research</span>
+          </div>
+          <div>
+            <div class="text-xs muted mb-1">Content Score</div>
+            <div class="flex items-center gap-2">
+              <div class="progress-bar flex-1"><div class="progress-fill" style="width: 73.3%"></div></div>
+              <span class="text-sm font-semibold accent">11/15</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-xs muted mb-1">Grounding (post-retry)</div>
+            <div class="flex items-center gap-2">
+              <div class="progress-bar flex-1"><div class="progress-fill" style="width: 76.9%"></div></div>
+              <span class="text-sm font-semibold accent">76.9%</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-xs muted mb-1">Self-Grade</div>
+            <div class="flex items-center gap-2">
+              <div class="progress-bar flex-1"><div class="progress-fill" style="width: 74%"></div></div>
+              <span class="text-sm font-semibold accent">74/100</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-xs muted mb-1">Gate Outcome</div>
+            <span class="badge badge-ok">PASS (after retry)</span>
+          </div>
+          <div>
+            <div class="text-xs muted mb-1">Sources</div>
+            <div class="text-sm">
+              <span class="badge badge-ok">T1 ×19</span>
+              <span class="badge ml-1">T2 ×14</span>
+              <span class="badge-warn badge ml-1">T3 ×7</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-xs muted mb-1">Scouts</div>
+            <div class="text-xs" style="color: var(--text);">scout-web · scout-knowledge · scout-social</div>
+          </div>
+          <div>
+            <div class="text-xs muted mb-1">Run ID</div>
+            <div class="mono text-xs muted">langgraph-crewai-20260714-001</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOC -->
+      <div class="card p-5">
+        <div class="text-xs font-semibold muted uppercase tracking-widest mb-3">Contents</div>
+        <nav class="space-y-1">
+          <a href="#tldr" class="toc-link">TL;DR</a>
+          <a href="#state-model" class="toc-link">1. State Model</a>
+          <a href="#tool-routing" class="toc-link">2. Tool Routing</a>
+          <a href="#production-maturity" class="toc-link">3. Production Maturity</a>
+          <a href="#guidance" class="toc-link">4. Selection Guidance</a>
+          <a href="#risks" class="toc-link">5. Risks & Bugs</a>
+          <a href="#academic" class="toc-link">Academic Context</a>
+          <a href="#coverage" class="toc-link">Source Coverage</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 min-w-0">
+
+    <!-- HERO -->
+    <div class="card p-8 mb-6 fade-in">
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="badge">Multi-Agent Orchestration</span>
+        <span class="badge">Framework Comparison</span>
+        <span class="badge">2026</span>
+      </div>
+      <h1 class="text-3xl font-bold mb-2" style="line-height: 1.2;">LangGraph vs CrewAI<br><span class="accent">Multi-Agent Orchestration in 2026</span></h1>
+      <p class="muted text-sm mb-6">DELPHI D3 Research · Prepared for Pafi · July 14, 2026</p>
+
+      <!-- Verdict cards -->
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="rounded-xl p-4" style="background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2);">
+          <div class="text-xs font-semibold mb-1" style="color: #22c55e;">PRODUCTION WINNER</div>
+          <div class="text-xl font-bold" style="color: #22c55e;">LangGraph</div>
+          <div class="text-xs muted mt-1">State · Tool routing · Compliance</div>
+        </div>
+        <div class="rounded-xl p-4" style="background: rgba(88,166,255,0.06); border: 1px solid rgba(88,166,255,0.2);">
+          <div class="text-xs font-semibold mb-1 accent">PROTOTYPING WINNER</div>
+          <div class="text-xl font-bold accent">CrewAI</div>
+          <div class="text-xs muted mt-1">Speed · Community · Brand</div>
+        </div>
+      </div>
+
+      <!-- Charts row -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <div class="text-xs muted mb-2 text-center">Source Distribution</div>
+          <canvas id="sourceChart" height="160"></canvas>
+        </div>
+        <div>
+          <div class="text-xs muted mb-2 text-center">Framework Score by Facet</div>
+          <canvas id="facetChart" height="160"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- TL;DR -->
+    <section id="tldr" class="card p-6 mb-5 fade-in">
+      <h2>TL;DR</h2>
+      <div class="pull-quote">
+        Pick LangGraph for production. Its checkpoint-native persistence, deterministic tool routing via conditional edges, and HITL support give it a structural advantage in regulated or high-reliability deployments.
+      </div>
+      <p>CrewAI ships a better developer-experience story and broader brand recognition, but active bugs involving <strong>tool call fabrication</strong> (GitHub Issue #3154 — agents fabricate tool observations without calling <code>tool.run()</code>) and implicit sequential orchestration disguised as hierarchical make it a liability in production today.</p>
+      <p>Both frameworks have documented gaps versus next-generation asynchronous and context-aware tool routing architectures emerging from research. Neither is production-hardened for high-cardinality tool environments (&gt;1,000 tools) or truly async parallel workloads.</p>
+    </section>
+
+    <!-- 1. STATE MODEL -->
+    <section id="state-model" class="mb-5 fade-in">
+      <div class="card p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2>1. State Model</h2>
+          <span class="winner-badge">✓ LangGraph</span>
+        </div>
+
+        <h3>LangGraph</h3>
+        <p>LangGraph v0.4 (April 2026) substantially simplified Human-in-the-Loop (HITL) state management: <code>Interrupt</code> objects now surface automatically in the <code>.invoke()</code> return value, eliminating the need for separate <code>getState()</code> polling calls. The <code>Interrupt</code> class was trimmed from 4 fields to 2. Parallel branches can surface multiple simultaneous interrupts and resolve all in a single <code>Command</code> call. <span class="muted text-xs">[Source: aitechconnect.in]</span></p>
+
+        <div class="mb-4">
+          <table class="rounded-lg overflow-hidden">
+            <thead><tr><th>Backend</th><th>Use Case</th><th>Production?</th></tr></thead>
+            <tbody>
+              <tr><td><code>AsyncPostgresSaver</code></td><td>ACID-compliant, queryable audit trail</td><td><span class="badge badge-ok">Yes — recommended</span></td></tr>
+              <tr><td><code>Redis</code> (AOF/RDB + TTL)</td><td>High-throughput, TTL-controlled</td><td><span class="badge badge-warn">Yes — with caveats</span></td></tr>
+              <tr><td><code>MemorySaver</code></td><td>Development only</td><td><span class="badge badge-red">No</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><code>AsyncPostgresSaver</code> stores complete graph state at every node transition, enabling compliance with FCA SYSC 9.1 and SEBI audit trail requirements. <strong>Time-travel debugging</strong> — rewind to any checkpoint and replay forward — is a first-class feature.</p>
+
+        <div class="security-note">
+          <div class="text-sm font-semibold mb-1" style="color: #fbbf24;">⚠ Production Risks</div>
+          <ul class="text-sm">
+            <li>Serialization footgun: non-primitive state types (Pydantic v2 custom serializers, numpy arrays) cause silent resume failures</li>
+            <li>Fixed <code>thread_id</code> shared across users → history leaks. Generate per-user-session.</li>
+            <li><code>SqliteSaver</code> write-bottleneck under concurrency. Go straight to <code>PostgresSaver</code>.</li>
+            <li><code>MemorySaver</code> is lost on process restart — enforce linting gates to prevent production use</li>
+            <li>LangChain's 2026 State of Agent Engineering report: 60%+ of production incidents attributed to state management</li>
+          </ul>
+        </div>
+        <p class="text-sm muted">Sub-graph state scoping: supervisor nodes cannot reliably read modified state from sub-graphs without explicit plumbing. Known design friction point with workarounds — not an unresolvable defect. <span class="muted text-xs">[Source: reddit.com/r/LangGraph]</span></p>
+
+        <h3>CrewAI</h3>
+        <p>CrewAI Flows use <code>@start</code>, <code>@listen</code>, and <code>@router</code> decorators to define execution order, state threading, and conditional paths. State is typed via Pydantic <code>BaseModel</code>. Flat model structure recommended over nested. <span class="muted text-xs">[Source: docs.crewai.com]</span></p>
+
+        <div class="critical-bug">
+          <div class="text-sm font-semibold mb-1" style="color: #ef4444;">❌ Critical Gap: Persistence</div>
+          <p class="text-sm mb-0">Persistence in CrewAI Flows is <strong>opt-in, not automatic</strong>. The <code>@persist</code> decorator defaults to SQLite and requires explicit adoption. Postgres is available for multi-instance deployments but is NOT activated on every state transition by default. This is a structural difference from LangGraph's checkpoint-on-every-node model. <span class="muted text-xs">[Source: agilesoftlabs.com — PARTIAL]</span></p>
+        </div>
+
+        <div class="critical-bug">
+          <div class="text-sm font-semibold mb-1" style="color: #ef4444;">❌ Verified Hierarchical Flaw</div>
+          <p class="text-sm mb-0">The manager does not enforce conditional branching between tasks. The final crew output is determined by whichever task runs last, not by the manager's reasoning — a billing agent's output can silently overwrite a technical agent's output. <span class="muted text-xs">[Source: towardsdatascience.com — VERIFIED]</span></p>
+        </div>
+
+        <p class="text-sm">Memory and knowledge stores default to local SQLite and Chroma — incompatible with pod-scaled deployments without significant risk of data corruption. <span class="muted text-xs">[Source: Reddit community]</span></p>
+
+        <h3>Head-to-Head: State Model</h3>
+        <table class="rounded-lg overflow-hidden">
+          <thead><tr><th>Dimension</th><th>LangGraph</th><th>CrewAI</th></tr></thead>
+          <tbody>
+            <tr><td>Persistence model</td><td>Automatic on every node transition</td><td>Opt-in via <code>@persist</code></td></tr>
+            <tr><td>Production backend</td><td>PostgresSaver (ACID)</td><td>Postgres available, not default</td></tr>
+            <tr><td>HITL support</td><td>Native, simplified in v0.4</td><td>Not native</td></tr>
+            <tr><td>Audit trail</td><td>FCA/SEBI-grade via Postgres</td><td>Manual</td></tr>
+            <tr><td>Time-travel debug</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Pod-scale safety</td><td>Yes (Postgres)</td><td>Risk (SQLite/Chroma default)</td></tr>
+            <tr><td>Known production bug</td><td>Sub-graph state scoping friction</td><td>Manager output overwrite flaw</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2. TOOL ROUTING -->
+    <section id="tool-routing" class="mb-5 fade-in">
+      <div class="card p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2>2. Tool Routing</h2>
+          <span class="winner-badge">✓ LangGraph</span>
+        </div>
+
+        <h3>LangGraph</h3>
+        <p>Tool routing is explicit and deterministic. <code>ToolNode</code> acts as a graph node routing tool calls from agent to execution via the <code>Runnable</code> interface. Routing is governed by <code>conditional_edges</code> — statically defined at compile time, but conditional on node output at runtime.</p>
+        <p>v0.4 introduces native subagents for tool isolation: a child graph consumes intermediate tool output and returns a single string summary to the parent, preventing context window bloat. Conditional edges enable structured error recovery vs. hope-based ReAct self-correction.</p>
+
+        <h3>CrewAI</h3>
+        <p>Tool routing is role-based and implicit: agents autonomously decide which tools to invoke within their assigned toolset. Faster to configure, harder to audit.</p>
+
+        <div class="critical-bug">
+          <div class="text-sm font-semibold mb-2" style="color: #ef4444;">🚨 CRITICAL: GitHub Issue #3154 (Active, Unresolved)</div>
+          <p class="text-sm mb-1">Agents <strong>fabricate tool observations without actually calling <code>tool.run()</code></strong>. No side effects occur, no logging runs from tool implementations, no runtime trace exists. The agent produces complete, coherent output that appears legitimate while silently bypassing actual tool execution.</p>
+          <ul class="text-sm">
+            <li>Affects both custom LLMs and GPT-4</li>
+            <li>Parser-level fix attempted in PR #3388 — status uncertain</li>
+            <li>Runtime tool logs cannot be trusted for audit trails</li>
+            <li>Critical enterprise compliance gap</li>
+          </ul>
+          <a href="https://github.com/crewAIInc/crewAI/issues/3154" target="_blank" class="text-xs mono" style="color: var(--accent);">→ github.com/crewAIInc/crewAI/issues/3154</a>
+        </div>
+
+        <div class="critical-bug">
+          <div class="text-sm font-semibold mb-1" style="color: #ef4444;">❌ GitHub Issue #2881 — Duplicate Invocation (v0.121.0)</div>
+          <p class="text-sm mb-0">Tools called multiple times within a single task even after successful initial execution. Confirmed duplicate invocation bug. <span class="muted text-xs">[PARTIAL — recursion crash attribution uncertain]</span></p>
+        </div>
+
+        <div class="critical-bug">
+          <div class="text-sm font-semibold mb-1" style="color: #ef4444;">❌ GPT-5 Function Calling Breakage</div>
+          <p class="text-sm mb-0">GPT-5's chat-mode fallback does not support delegation (itself a tool call), breaking function calling in CrewAI. <span class="muted text-xs">[Source: community.crewai.com]</span></p>
+        </div>
+
+        <p class="text-sm">The "hierarchical" orchestration mode is sequential execution with routing logic, not genuine parallel orchestration. Genuine manager-directed branching requires a custom manager agent as a workaround.</p>
+
+        <h3>Head-to-Head: Tool Routing</h3>
+        <table class="rounded-lg overflow-hidden">
+          <thead><tr><th>Dimension</th><th>LangGraph</th><th>CrewAI</th></tr></thead>
+          <tbody>
+            <tr><td>Routing model</td><td>Deterministic via <code>conditional_edges</code></td><td>Implicit, role-based</td></tr>
+            <tr><td>Tool call verification</td><td>Guaranteed via <code>Runnable</code></td><td><span style="color:#ef4444;">Fabrication bug active (#3154)</span></td></tr>
+            <tr><td>Failure recovery</td><td>Structured conditional edges</td><td>Hope-based ReAct fallback</td></tr>
+            <tr><td>Tool isolation</td><td>Native subagents (child graph)</td><td>No equivalent</td></tr>
+            <tr><td>Context management</td><td>Child graph summarization</td><td>Manual</td></tr>
+            <tr><td>Duplicate invocation</td><td>Not reported</td><td>Confirmed (#2881)</td></tr>
+            <tr><td>Token efficiency</td><td>30–40% fewer tokens (medium tasks) ¹</td><td>Baseline</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs muted mt-2">¹ Single source (requesty.ai citing aidevdayindia.org) — not independently reproduced. Use as directional signal only.</p>
+      </div>
+    </section>
+
+    <!-- 3. PRODUCTION MATURITY -->
+    <section id="production-maturity" class="mb-5 fade-in">
+      <div class="card p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2>3. Production Maturity</h2>
+          <span class="winner-badge">✓ LangGraph</span>
+        </div>
+
+        <h3>LangGraph</h3>
+        <p>v1.0 GA October 2025. v0.4 (April 2026) focused on HITL hardening and compliance-grade audit trails. ~36,700 GitHub stars, bi-weekly release cadence. Native LangSmith observability. LangGraph Platform for managed deployments. Enterprise adoption growing in regulated industries (fintech, healthcare).</p>
+        <div class="pull-quote">"We persist our entire workflow state — context, plans, generated code — to Postgres in a few lines of code without building any custom infrastructure." — Qodo production case study [Source: qodo.ai]</div>
+
+        <div class="security-note">
+          <div class="text-sm font-semibold mb-1" style="color: #fbbf24;">⚠ Security: March 2026 CVE Cluster (Active)</div>
+          <p class="text-sm mb-1">File read, SQL injection, and RCE (Remote Code Execution) vulnerabilities via checkpoint deserialization. Characterized by security researchers as producing repeated CVEs with slow maintainer response. CVE-2026-28277 (June 2026) corroborates ongoing cluster.</p>
+          <p class="text-sm mb-0"><strong>Action required:</strong> Pin to vetted versions; audit checkpoint serialization paths; do not pass raw user input through checkpoint fields.</p>
+          <a href="https://www.thehackernews.com/2026/03/langchain-langgraph-flaws-expose-files.html" target="_blank" class="text-xs mono" style="color: #fbbf24;">→ thehackernews.com (March 2026)</a>
+        </div>
+
+        <p class="text-sm muted">Community friction: "abstraction soup makes debugging a nightmare," "breaking changes across versions" — HN thread Feb 2026.</p>
+
+        <h3>CrewAI</h3>
+        <p>v1.0 GA October 25, 2025. v1.10.1 released March 2026. Rapid release cadence. <strong>40K+ GitHub stars</strong> (official self-reported), <strong>1.4B+ agentic executions</strong>, <strong>60%+ Fortune 500</strong> adoption claim. Backed by Andrew Ng, Dharmesh Shah (HubSpot CTO), Amjad Masad (Replit CEO).</p>
+
+        <div class="critical-bug">
+          <div class="text-sm font-semibold mb-1" style="color: #ef4444;">❌ Deployment Risks</div>
+          <ul class="text-sm">
+            <li>Memory/knowledge locked to SQLite/Chroma locally — incompatible with horizontal pod scaling</li>
+            <li>Token runaway: agents re-summarize each other in multi-turn crews with no native cost cap</li>
+            <li>No equivalent to LangSmith — observability requires custom integration</li>
+          </ul>
+        </div>
+
+        <p class="text-sm muted">Community: "fragile in production," "CTOs demanding control — CrewAI couldn't deliver" (Reddit, T3). Counterpoint: at least one 8-month production deployment reported.</p>
+
+        <h3>Head-to-Head: Production Maturity</h3>
+        <table class="rounded-lg overflow-hidden">
+          <thead><tr><th>Dimension</th><th>LangGraph</th><th>CrewAI</th></tr></thead>
+          <tbody>
+            <tr><td>GA version</td><td>v1.0 (Oct 2025), v0.4 current</td><td>v1.0 (Oct 2025), v1.10.1 current</td></tr>
+            <tr><td>GitHub stars</td><td>~36.7K</td><td>40K+ (self-reported)</td></tr>
+            <tr><td>Observability</td><td>LangSmith (native)</td><td>Custom integration only</td></tr>
+            <tr><td>Security posture</td><td><span style="color:#ef4444;">March 2026 CVE cluster — ongoing</span></td><td>No major CVEs surfaced</td></tr>
+            <tr><td>Pod-scale readiness</td><td>Yes (Postgres-backed)</td><td>Risk without refactoring</td></tr>
+            <tr><td>Enterprise adoption driver</td><td>Compliance, audit trail, HITL</td><td>Developer experience, brand</td></tr>
+            <tr><td>Community production sentiment</td><td>Cautious positive</td><td>Skeptical to negative</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4. GUIDANCE -->
+    <section id="guidance" class="card p-6 mb-5 fade-in">
+      <h2>4. Framework Selection Guidance</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div class="rounded-xl p-5" style="background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.2);">
+          <h3 style="color: #22c55e; margin-top:0;">✓ Pick LangGraph when:</h3>
+          <ol class="text-sm space-y-2">
+            <li><strong>Checkpointing guarantees needed</strong> — any stateful multi-step workflow requiring resume-on-failure</li>
+            <li><strong>Regulated industries</strong> — FCA, SEBI, HIPAA audit trail maps directly to <code>AsyncPostgresSaver</code></li>
+            <li><strong>HITL required</strong> — v0.4's simplified interrupt model makes human approval gates production-ready</li>
+            <li><strong>Tools must actually run</strong> — CrewAI #3154 fabrication bug makes tool-dependent workflows fundamentally unsafe</li>
+            <li><strong>Horizontal scaling</strong> — Postgres-backed state is pod-safe; CrewAI SQLite default is not</li>
+            <li><strong>Reproducible debugging needed</strong> — time-travel to any checkpoint and replay is a concrete operational advantage</li>
+          </ol>
+        </div>
+        <div class="rounded-xl p-5" style="background: rgba(88,166,255,0.05); border: 1px solid rgba(88,166,255,0.2);">
+          <h3 style="color: var(--accent); margin-top:0;">✓ Pick CrewAI when:</h3>
+          <ol class="text-sm space-y-2">
+            <li><strong>Rapid prototyping</strong> — decorator-driven Flows API is faster to scaffold than LangGraph graphs</li>
+            <li><strong>Internal tooling</strong> — lower stakes, single-instance, tool reliability less critical</li>
+            <li><strong>Team familiarity</strong> — 40K+ stars, Andrew Ng backing, more community tutorials</li>
+            <li><strong>Genuinely sequential workflows</strong> — hierarchical flaw is less relevant if true branching isn't needed</li>
+            <li><strong>You've verified #3154</strong> — if tools are simple enough that fabrication is immediately observable</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="rounded-xl p-5" style="background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.2);">
+        <h3 style="color: #ef4444; margin-top:0;">✗ Avoid both when:</h3>
+        <ul class="text-sm space-y-1">
+          <li><strong>Async parallel tool calling at scale</strong> — both are predominantly synchronous; research shows 1.6–5.4× latency gains from async that neither implements</li>
+          <li><strong>More than 1,000 tools</strong> — ETOM benchmark: both frameworks degrade in high-cardinality tool environments</li>
+          <li><strong>Context-aware dynamic tool retrieval needed</strong> — neither implements DTDR; layer it manually</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. RISKS -->
+    <section id="risks" class="card p-6 mb-5 fade-in">
+      <h2>5. Risks & Active Bugs</h2>
+
+      <h3>Known Active Bugs</h3>
+      <table class="rounded-lg overflow-hidden mb-5">
+        <thead><tr><th>Bug</th><th>Framework</th><th>Severity</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Tool fabrication — no <code>tool.run()</code> called</td><td>CrewAI #3154</td><td><span class="badge badge-red">Critical</span></td><td>Open; PR #3388 attempted</td></tr>
+          <tr><td>Duplicate tool invocation</td><td>CrewAI #2881</td><td><span class="badge badge-warn">High</span></td><td>Confirmed; resolution uncertain</td></tr>
+          <tr><td>Sub-graph state scoping</td><td>LangGraph</td><td><span class="badge">Medium</span></td><td>Known; workarounds available</td></tr>
+          <tr><td>GPT-5 function calling breakage</td><td>CrewAI</td><td><span class="badge badge-warn">High</span></td><td>Active</td></tr>
+          <tr><td>Checkpoint deserialization (non-primitive types)</td><td>LangGraph</td><td><span class="badge">Medium</span></td><td>Known footgun; avoid non-primitive state</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Operational Watch Items</h3>
+      <ul class="text-sm space-y-2">
+        <li><strong>Shared thread_id across users</strong> (LangGraph): History leaks if not scoped per-user. Treat <code>thread_id</code> as a security boundary — generate per-user-session.</li>
+        <li><strong>Token runaway</strong> (CrewAI): Multi-turn crews re-summarize each other. Implement external token budget enforcement.</li>
+        <li><strong>MemorySaver</strong> (LangGraph): Fails silently on process restart. Add linting gate to prevent reaching production.</li>
+        <li><strong>LangGraph CVE cluster</strong>: Pin to vetted versions; audit checkpoint serialization paths for untrusted data ingestion.</li>
+        <li><strong>CrewAI rapid releases</strong>: GPT-5 integration broke function calling — monitor provider model compatibility as a first-class concern.</li>
+      </ul>
+    </section>
+
+    <!-- ACADEMIC -->
+    <section id="academic" class="card p-6 mb-5 fade-in">
+      <h2>Academic Context</h2>
+      <p class="text-sm muted mb-4">Research benchmarks point to capability gaps that neither framework currently addresses. These represent the next architectural generation both platforms will likely converge toward.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-lg p-4" style="background: rgba(88,166,255,0.04); border: 1px solid var(--border);">
+          <div class="text-xs font-semibold accent mb-2">DTDR — Dynamic Tool Dependency Retrieval</div>
+          <p class="text-sm">Context-aware tool selection at inference time shows <strong>23–104% performance improvement</strong> over static tool registration. Both frameworks use static tool assignment. DTDR-style routing would benefit LangGraph's <code>ToolNode</code> and can be layered in as a preprocessing step.</p>
+        </div>
+        <div class="rounded-lg p-4" style="background: rgba(88,166,255,0.04); border: 1px solid var(--border);">
+          <div class="text-xs font-semibold accent mb-2">Asynchronous Function Calling</div>
+          <p class="text-sm">Reducing synchronous tool wait times yields <strong>1.6–5.4× latency improvements</strong>. Both frameworks are predominantly synchronous. LangGraph's <code>Send</code> primitives for graph fan-out are closer to enabling this than CrewAI's sequential model.</p>
+        </div>
+        <div class="rounded-lg p-4" style="background: rgba(88,166,255,0.04); border: 1px solid var(--border);">
+          <div class="text-xs font-semibold accent mb-2">ETOM Benchmark</div>
+          <p class="text-sm">Evaluation of Tool-Oriented Multi-agent systems: both frameworks struggle with cross-server tool dependencies and <strong>high-cardinality scenarios (&gt;1,000 tools)</strong>. Plan for retrieval-augmented tool selection as a separate architectural layer.</p>
+        </div>
+        <div class="rounded-lg p-4" style="background: rgba(88,166,255,0.04); border: 1px solid var(--border);">
+          <div class="text-xs font-semibold accent mb-2">MACA — Multi-Agent Cooperative Architecture</div>
+          <p class="text-sm">Joint structure-orchestration adaptation achieves <strong>43% token efficiency gain</strong>. Neither framework implements this. Represents the next-generation architecture these platforms will likely converge toward in the next 12–18 months.</p>
+        </div>
+      </div>
+
+      <p class="text-sm muted mt-4">Multi-agent baseline: systems show ~70% goal success improvement vs. single-agent. The framework selection question matters less than the decision to adopt multi-agent at all — both platforms are meaningfully better than single-agent on complex tasks.</p>
+    </section>
+
+    <!-- COVERAGE -->
+    <section id="coverage" class="card p-6 mb-5 fade-in">
+      <h2>Source Coverage Report</h2>
+      <table class="rounded-lg overflow-hidden">
+        <thead><tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th></tr></thead>
+        <tbody>
+          <tr><td>Web / Technical Docs</td><td><span class="badge badge-ok">COVERED</span></td><td>docs.crewai.com, LangGraph docs, aitechconnect.in, eastondev.com, qodo.ai, TDS</td><td>18 verified</td></tr>
+          <tr><td>Social / Community</td><td><span class="badge badge-ok">COVERED</span></td><td>Reddit/r/LangGraph, Reddit/r/crewai, HN (Feb 2026), community.crewai.com</td><td>7 (T3, labelled)</td></tr>
+          <tr><td>Academic</td><td><span class="badge badge-ok">COVERED</span></td><td>ArXiv (DTDR, ETOM, MACA, async function calling)</td><td>4 research directions</td></tr>
+          <tr><td>GitHub</td><td><span class="badge badge-ok">COVERED</span></td><td>github.com/crewAIInc/crewAI issues #3154, #2881, PR #3388, releases</td><td>3 verified issues</td></tr>
+          <tr><td>News / Security</td><td><span class="badge badge-ok">COVERED</span></td><td>thehackernews.com (March 2026 CVE), CVE-2026-28277</td><td>2 findings</td></tr>
+          <tr><td>Perplexity Deep</td><td><span class="badge-warn badge">SKIPPED</span></td><td>—</td><td>0</td></tr>
+        </tbody>
+      </table>
+      <p class="text-xs muted mt-3">Perplexity Deep skipped per Pafi constraint on this run. Two benchmark claims (47s/111s speed, 47% token reduction) stripped by Critic — URLs dead/wrong. Grounding recalculated post-retry: 76.9%. Cortex ID: e05b182d-cde0-4b98-9a05-cb9015cb3fb0</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-6 muted text-xs fade-in">
+      <p>DELPHI PRO D3 · Run ID: langgraph-crewai-20260714-001 · 2026-07-14</p>
+      <p>Content: 11/15 · Grounding: 76.9% (post-retry) · Self-grade: 74 · Gate: PASS_AFTER_RETRY</p>
+      <p>Cortex: e05b182d-cde0-4b98-9a05-cb9015cb3fb0</p>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+// Dark/Light toggle
+function toggleMode() {
+  const html = document.documentElement;
+  html.classList.toggle('dark');
+  html.classList.toggle('light');
+  localStorage.setItem('mode', html.classList.contains('light') ? 'light' : 'dark');
+}
+(function() {
+  const saved = localStorage.getItem('mode');
+  if (saved) {
+    document.documentElement.classList.toggle('dark', saved === 'dark');
+    document.documentElement.classList.toggle('light', saved === 'light');
+  }
+})();
+
+// Share
+function shareReport() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'LangGraph vs CrewAI 2026 — DELPHI D3', url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => alert('Link copied!'));
+  }
+}
+
+// Fade-in observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// TOC active highlight
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  tocLinks.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + current); });
+});
+
+// Charts
+const isDark = () => document.documentElement.classList.contains('dark');
+const textColor = () => isDark() ? '#8b949e' : '#6b7280';
+
+// Source pie chart
+const srcCtx = document.getElementById('sourceChart').getContext('2d');
+new Chart(srcCtx, {
+  type: 'doughnut',
+  data: {
+    labels: ['T1 (Official)', 'T2 (Reputable)', 'T3 (Community)'],
+    datasets: [{ data: [19, 14, 7], backgroundColor: ['#22c55e', '#58a6ff', '#f97316'], borderWidth: 0 }]
+  },
+  options: { plugins: { legend: { labels: { color: textColor(), font: { size: 10 } } } }, cutout: '65%' }
+});
+
+// Facet bar chart
+const facetCtx = document.getElementById('facetChart').getContext('2d');
+new Chart(facetCtx, {
+  type: 'bar',
+  data: {
+    labels: ['State Model', 'Tool Routing', 'Prod Maturity'],
+    datasets: [
+      { label: 'LangGraph', data: [9, 8, 7], backgroundColor: '#22c55e' },
+      { label: 'CrewAI', data: [4, 2, 6], backgroundColor: '#ef4444' }
+    ]
+  },
+  options: {
+    scales: {
+      x: { ticks: { color: textColor(), font: { size: 10 } }, grid: { color: 'rgba(88,166,255,0.08)' } },
+      y: { ticks: { color: textColor(), font: { size: 10 } }, grid: { color: 'rgba(88,166,255,0.08)' }, max: 10 }
+    },
+    plugins: { legend: { labels: { color: textColor(), font: { size: 10 } } } }
+  }
+});
+</script>
+
+</body>
+</html>
