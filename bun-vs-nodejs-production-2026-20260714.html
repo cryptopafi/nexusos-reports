@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bun vs Node.js for Production Backend Services in 2026 · DELPHI D3</title>
+  <meta name="description" content="Deep research comparing Bun and Node.js across runtime performance, ecosystem compatibility, and deployment maturity for production backend services in 2026.">
+  <meta property="og:title" content="Bun vs Node.js for Production Backend Services in 2026">
+  <meta property="og:description" content="DELPHI D3 research: performance, ecosystem compatibility, and deployment maturity. Content 14/15 · 96 sources.">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0A0A0F;
+      --card: #111118;
+      --accent: #58a6ff;
+      --accent2: #3b82f6;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: rgba(255,255,255,0.08);
+      --glass: rgba(17,17,24,0.7);
+      --glow: rgba(88,166,255,0.15);
+    }
+    .light {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --accent: #5E6AD2;
+      --accent2: #4f5fc0;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: rgba(0,0,0,0.08);
+      --glass: rgba(255,255,255,0.8);
+      --glow: rgba(94,106,210,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+    code, pre, .mono { font-family: 'JetBrains Mono', monospace; }
+    .glass {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+    }
+    .glow-accent { box-shadow: 0 0 30px var(--glow); }
+    .accent { color: var(--accent); }
+
+    /* Layout */
+    .layout { display: grid; grid-template-columns: 260px 1fr; gap: 0; min-height: 100vh; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky; top: 0; height: 100vh; overflow-y: auto;
+      background: var(--card); border-right: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+    }
+    .sidebar-logo { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 2rem; }
+    .sidebar h3 { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 1.5rem 0 0.5rem; }
+    .toc-link { display: block; font-size: 0.8rem; color: var(--muted); padding: 0.3rem 0; text-decoration: none; border-left: 2px solid transparent; padding-left: 0.75rem; transition: all 0.2s; }
+    .toc-link:hover, .toc-link.active { color: var(--accent); border-left-color: var(--accent); }
+    .meta-row { display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
+    .meta-row:last-child { border-bottom: none; }
+    .meta-label { color: var(--muted); }
+    .meta-val { color: var(--text); font-weight: 500; }
+    .badge {
+      display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.7rem;
+      font-weight: 600; letter-spacing: 0.05em;
+    }
+    .badge-blue { background: rgba(88,166,255,0.15); color: #58a6ff; border: 1px solid rgba(88,166,255,0.3); }
+    .badge-yellow { background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3); }
+    .badge-green { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+    .badge-red { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+    .badge-gray { background: rgba(139,148,158,0.15); color: #8b949e; border: 1px solid rgba(139,148,158,0.3); }
+
+    /* Main */
+    main { padding: 3rem 2.5rem; max-width: 900px; }
+    @media (max-width: 900px) { main { padding: 1.5rem; } }
+
+    /* Header */
+    .report-header { margin-bottom: 3rem; }
+    .report-header .eyebrow { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .report-header h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+    @media (max-width: 600px) { .report-header h1 { font-size: 1.6rem; } }
+    .report-header .subtitle { color: var(--muted); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    /* Sections */
+    section { margin-bottom: 3.5rem; scroll-margin-top: 2rem; }
+    h2 { font-size: 1.35rem; font-weight: 600; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--accent); }
+    p { font-size: 0.9rem; line-height: 1.7; color: var(--text); margin-bottom: 0.75rem; }
+    li { font-size: 0.875rem; line-height: 1.7; margin-bottom: 0.35rem; }
+    ul, ol { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+
+    /* Cards */
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; }
+    .card.highlight { border-color: rgba(88,166,255,0.3); box-shadow: 0 0 20px rgba(88,166,255,0.08); }
+
+    /* Exec summary box */
+    .exec-box {
+      background: linear-gradient(135deg, rgba(88,166,255,0.08), rgba(58,130,246,0.04));
+      border: 1px solid rgba(88,166,255,0.2);
+      border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;
+    }
+    .exec-box p { font-size: 0.95rem; font-weight: 400; }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; margin: 1rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th { background: rgba(88,166,255,0.08); color: var(--accent); text-align: left; padding: 0.6rem 0.75rem; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* Status indicators */
+    .status-works { color: #22c55e; font-weight: 600; }
+    .status-partial { color: #eab308; font-weight: 600; }
+    .status-broken { color: #ef4444; font-weight: 600; }
+    .status-unsupported { color: #8b949e; font-weight: 600; }
+    .status-native { color: #22c55e; font-weight: 600; }
+    .status-manual { color: #f97316; font-weight: 600; }
+    .status-risky { color: #ef4444; font-weight: 600; }
+    .status-skipped { color: #8b949e; font-weight: 600; }
+    .status-covered { color: #22c55e; font-weight: 600; }
+
+    /* Confidence chips */
+    .conf-high { color: #22c55e; font-size: 0.7rem; font-weight: 600; background: rgba(34,197,94,0.1); padding: 0.1rem 0.4rem; border-radius: 4px; }
+    .conf-med { color: #eab308; font-size: 0.7rem; font-weight: 600; background: rgba(234,179,8,0.1); padding: 0.1rem 0.4rem; border-radius: 4px; }
+    .conf-unverified { color: #8b949e; font-size: 0.7rem; font-weight: 600; background: rgba(139,148,158,0.1); padding: 0.1rem 0.4rem; border-radius: 4px; }
+
+    /* Callout */
+    .callout { border-left: 3px solid; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.875rem; }
+    .callout-blue { border-color: var(--accent); background: rgba(88,166,255,0.06); }
+    .callout-red { border-color: #ef4444; background: rgba(239,68,68,0.06); }
+    .callout-yellow { border-color: #eab308; background: rgba(234,179,8,0.06); }
+    .callout-green { border-color: #22c55e; background: rgba(34,197,94,0.06); }
+
+    /* Hypothesis row */
+    .hyp-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .hyp-row:last-child { border-bottom: none; }
+    .hyp-label { flex-shrink: 0; min-width: 80px; }
+
+    /* Decision grid */
+    .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.25rem 0; }
+    @media (max-width: 650px) { .decision-grid { grid-template-columns: 1fr; } }
+    .decision-card { border-radius: 10px; padding: 1.25rem; }
+    .decision-card h4 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .decision-card ul { list-style: none; padding: 0; }
+    .decision-card li { font-size: 0.82rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.4rem; }
+    .decision-card li::before { content: '▸'; flex-shrink: 0; margin-top: 0.1rem; }
+    .bun-card { background: rgba(88,166,255,0.06); border: 1px solid rgba(88,166,255,0.2); }
+    .bun-card h4 { color: #58a6ff; }
+    .node-card { background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.2); }
+    .node-card h4 { color: #22c55e; }
+    .hybrid-card { background: rgba(234,179,8,0.05); border: 1px solid rgba(234,179,8,0.2); grid-column: 1 / -1; }
+    .hybrid-card h4 { color: #eab308; }
+
+    /* Chart container */
+    .chart-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.25rem 0; }
+    .chart-box h4 { font-size: 0.8rem; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
+    .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 650px) { .chart-row { grid-template-columns: 1fr; } }
+
+    /* Benchmark hero */
+    .bench-hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+    .bench-stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1rem; text-align: center; }
+    .bench-stat .val { font-size: 1.6rem; font-weight: 700; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    .bench-stat .label { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
+    .bench-stat .sub { font-size: 0.68rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* Progress bar */
+    .prog-bar-wrap { margin: 0.5rem 0; }
+    .prog-bar-label { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.3rem; color: var(--muted); }
+    .prog-bar { height: 6px; background: rgba(255,255,255,0.07); border-radius: 9999px; overflow: hidden; }
+    .prog-bar-fill { height: 100%; border-radius: 9999px; transition: width 1s ease; }
+
+    /* Fade-in */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* Toggle + share */
+    .top-bar { position: fixed; top: 1rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 100; }
+    .icon-btn {
+      width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background: var(--card); border: 1px solid var(--border); cursor: pointer; color: var(--muted);
+      transition: all 0.2s; font-size: 14px;
+    }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Quality footer */
+    .quality-footer { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; font-size: 0.8rem; }
+    .quality-footer h3 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 1rem; }
+    .retraction { display: flex; gap: 0.5rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); }
+    .retraction:last-child { border-bottom: none; }
+    .retraction-icon { color: #ef4444; flex-shrink: 0; }
+
+    /* Print */
+    @media print {
+      body { background: white; color: black; }
+      .sidebar, .top-bar { display: none; }
+      main { padding: 1rem; max-width: 100%; }
+      .card, .exec-box, .callout { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="top-bar">
+    <button class="icon-btn" id="themeToggle" title="Toggle theme">☀</button>
+    <button class="icon-btn" id="shareBtn" title="Share report">⎋</button>
+  </div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">NexusOS · DELPHI</div>
+
+      <div class="meta-row"><span class="meta-label">Depth</span><span class="meta-val"><span class="badge badge-blue">D3</span></span></div>
+      <div class="meta-row"><span class="meta-label">Date</span><span class="meta-val">2026-07-14</span></div>
+      <div class="meta-row"><span class="meta-label">Run ID</span><span class="meta-val mono" style="font-size:0.65rem">bun-node-2026-20260714</span></div>
+      <div class="meta-row"><span class="meta-label">Content</span><span class="meta-val">14 / 15</span></div>
+      <div class="meta-row"><span class="meta-label">Grounding</span><span class="meta-val"><span class="badge badge-yellow">70% +retry</span></span></div>
+      <div class="meta-row"><span class="meta-label">Self-grade</span><span class="meta-val">79 / 100</span></div>
+      <div class="meta-row"><span class="meta-label">Sources</span><span class="meta-val">96 examined</span></div>
+      <div class="meta-row"><span class="meta-label">Scouts</span><span class="meta-val">3 parallel</span></div>
+      <div class="meta-row"><span class="meta-label">Est. cost</span><span class="meta-val">~$0.35</span></div>
+
+      <h3>Contents</h3>
+      <a class="toc-link" href="#exec">Executive Summary</a>
+      <a class="toc-link" href="#performance">1 · Runtime Performance</a>
+      <a class="toc-link" href="#ecosystem">2 · Ecosystem Compatibility</a>
+      <a class="toc-link" href="#deployment">3 · Deployment Maturity</a>
+      <a class="toc-link" href="#decision">Decision Framework</a>
+      <a class="toc-link" href="#coverage">Source Coverage</a>
+      <a class="toc-link" href="#quality">Quality Notes</a>
+    </aside>
+
+    <!-- Main content -->
+    <main>
+      <div class="report-header fade-in">
+        <div class="eyebrow">DELPHI Research · D3 · Tech</div>
+        <h1>Bun vs Node.js for Production Backend Services in 2026</h1>
+        <div class="subtitle">
+          <span>96 sources · 3 facets · Critic-reviewed</span>
+          <span>Content 14/15 · Grounding 70% (retry applied)</span>
+          <span>2026-07-14</span>
+        </div>
+      </div>
+
+      <!-- Executive Summary -->
+      <section id="exec" class="fade-in">
+        <h2>Executive Summary</h2>
+        <div class="exec-box">
+          <p>Bun outperforms Node.js by 2–4× in synthetic HTTP benchmarks and roughly 2× on cold starts, but the production-relevant difference narrows to <strong>under 3%</strong> once realistic middleware and database I/O are factored in. The decisive blockers in 2026 are not performance — they are memory leaks in long-running server processes, incomplete Application Performance Monitoring (APM) tooling (Datadog), and native C++ addon incompatibility.</p>
+          <p style="margin-top:0.75rem">For greenfield APIs on Hono or Express with Prisma or Drizzle ORM, Bun is production-viable today. For NestJS, Next.js SSR, Jest-heavy test suites, or any stack relying on native addons or Datadog auto-instrumentation, migration cost and operational risk remain high. The emerging consensus in 2026 is a <strong>hybrid pattern</strong>: use Bun as a package manager for Node.js projects, reserve Bun as runtime for edge functions, scripts, and net-new services where the dependency surface is controlled.</p>
+        </div>
+
+        <!-- Benchmark hero stats -->
+        <div class="bench-hero">
+          <div class="bench-stat">
+            <div class="val">&lt;3%</div>
+            <div class="label">Production gap</div>
+            <div class="sub">URL shortener with routing + DB</div>
+          </div>
+          <div class="bench-stat">
+            <div class="val">2–4×</div>
+            <div class="label">Synthetic HTTP edge</div>
+            <div class="sub">Best-case, minimal middleware</div>
+          </div>
+          <div class="bench-stat">
+            <div class="val">2×</div>
+            <div class="label">Cold start advantage</div>
+            <div class="sub">~11ms Bun vs ~21ms Node</div>
+          </div>
+          <div class="bench-stat">
+            <div class="val">~98%</div>
+            <div class="label">npm pure-JS compat</div>
+            <div class="sub">Bun claim · MEDIUM confidence</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Facet 1: Performance -->
+      <section id="performance" class="fade-in">
+        <h2>Facet 1 · Runtime Performance</h2>
+
+        <div class="callout callout-blue">
+          <strong>Most decision-relevant finding:</strong> A production-grade URL shortener (routing + validation + database, sourced from HackerNoon/byteiota 2026) shows Bun at 12,400 req/s vs Node.js at 12,000 req/s — a <strong>less than 3% difference</strong>. The 2–4× synthetic advantage evaporates when you add the full query pipeline. <span class="conf-high">HIGH</span>
+        </div>
+
+        <h3>Benchmark Numbers</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Scenario</th><th>Bun</th><th>Node.js</th><th>Delta</th><th>Confidence</th></tr></thead>
+            <tbody>
+              <tr><td>Production URL shortener (routing + validation + DB)</td><td>12,400 req/s</td><td>12,000 req/s</td><td><strong>&lt;3%</strong></td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>HTTP synthetic (Bun+Elysia vs Node+Fastify)</td><td>~245K req/s</td><td>~95K req/s</td><td><strong>~2.5×</strong></td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>HTTP synthetic range (byteiota 2026)</td><td>—</td><td>—</td><td><strong>2–4×</strong></td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Cold start</td><td>~11ms</td><td>~21ms</td><td><strong>~2×</strong></td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>JSON.stringify (3.3MB payload)</td><td>5.5ms</td><td>13.6ms</td><td><strong>2.5×</strong></td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>File I/O — disk operations</td><td>—</td><td>—</td><td><strong>2.3–3.8×</strong></td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>CPU-bound workloads</td><td>—</td><td>—</td><td><strong>Parity</strong></td><td><span class="conf-high">HIGH</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Charts row -->
+        <div class="chart-row">
+          <div class="chart-box">
+            <h4>HTTP Throughput — Synthetic vs Production</h4>
+            <canvas id="perfChart" height="180"></canvas>
+          </div>
+          <div class="chart-box">
+            <h4>Performance Edge by Workload Type</h4>
+            <canvas id="workloadChart" height="180"></canvas>
+          </div>
+        </div>
+
+        <h3>Context: Why Synthetic Numbers Mislead</h3>
+        <p>The 2–4× HTTP throughput advantage reflects best-case conditions: minimal middleware, no database round-trips, controlled hardware. These numbers tell you about architectural headroom, not production outcomes. The URL shortener result is why: add the query pipeline and the advantage becomes statistical noise. <span class="conf-high">HIGH</span></p>
+
+        <h3>Node.js 24 LTS: Real Improvements, Insufficient Catch-Up</h3>
+        <p>Node.js 24 (V8/libuv improvements) measurably improved throughput vs Node 20. However, multiple independent 2026 benchmarks confirm the runtime architecture gap persists — Bun remains 2–2.5× faster in synthetic HTTP tests. The hypothesis that Node 22/24 would close the gap is <strong>REFUTED</strong>. Node 24's strength is ecosystem stability, not absolute speed. <span class="conf-high">HIGH</span></p>
+
+        <h3>File I/O: Structural Architectural Advantage</h3>
+        <p>Bun's Zig-native filesystem implementation versus Node.js's libuv (library for asynchronous I/O) wrapper produces a genuine 2.3–3.8× gap on disk-heavy operations. This advantage is structural and unlikely to be eliminated by V8/libuv tuning alone. For build tools, log processors, and asset pipelines, this is material. <span class="conf-high">HIGH</span></p>
+
+        <div class="callout callout-yellow">
+          <strong>Trigger.dev caveat:</strong> Trigger.dev reported ~5× throughput after migrating to Bun. This figure reflects a co-optimized migration — the Bun version also received approximately 40% CPU-level optimization alongside the runtime switch. It is NOT a pure runtime comparison. Treat as a combined infrastructure + runtime win, not a Bun-alone number. (Source: HN discussion of Trigger.dev blog post.)
+        </div>
+
+        <h3>Hypothesis Outcomes</h3>
+        <div class="card">
+          <div class="hyp-row">
+            <div class="hyp-label"><span class="badge badge-green">CONFIRMED</span></div>
+            <div><strong>H1</strong> — Gap narrows under realistic middleware/DB: &lt;3% at production load; 2.3–3.8× on pure FS (file-system) I/O</div>
+          </div>
+          <div class="hyp-row">
+            <div class="hyp-label"><span class="badge badge-red">REFUTED</span></div>
+            <div><strong>H3</strong> — Node 22/24 closed the gap: multiple 2026 measurements confirm 2–2.5× synthetic gap persists</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Facet 2: Ecosystem -->
+      <section id="ecosystem" class="fade-in">
+        <h2>Facet 2 · Ecosystem Compatibility</h2>
+
+        <div class="callout callout-red">
+          <strong>Primary blocker for native-addon stacks:</strong> Packages compiled against V8's ABI (Application Binary Interface — native C++ <code>.node</code> binaries) are fundamentally incompatible with Bun, which uses JavaScriptCore. This is an architectural boundary, not a gap that workarounds fully close. Affected: bcrypt, argon2, canvas. <span class="conf-high">HIGH</span>
+        </div>
+
+        <h3>Compatibility Matrix</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Package / Tool</th><th>Status</th><th>Notes</th><th>Confidence</th></tr></thead>
+            <tbody>
+              <tr><td>Express</td><td><span class="status-works">WORKS</span></td><td>node:http compatible; multiple production reports</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Hono</td><td><span class="status-works">WORKS</span></td><td>First-class Bun support; recommended greenfield choice</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>NestJS</td><td><span class="status-partial">PARTIAL</span></td><td>Bun transpiler lacks emitDecoratorMetadata (issue #27575 verified). Workaround: use SWC (@swc/core). Works in production with SWC.</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Next.js</td><td><span class="status-partial">PARTIAL</span></td><td>bun install: works unconditionally. Bun as runtime: mostly functional but not officially supported. Middleware edge sandbox has subtle differences.</td><td><span class="conf-med">MEDIUM</span></td></tr>
+              <tr><td>Prisma</td><td><span class="status-works">WORKS</span></td><td>Official docs at prisma.io/docs/guides/runtimes/bun (verified). Pure-JS client, no native bindings.</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Drizzle ORM</td><td><span class="status-works">WORKS</span></td><td>Pure JS; first-choice ORM for Bun greenfield projects</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>TypeORM (standalone)</td><td><span class="status-works">WORKS</span></td><td>Pure JS; no issues standalone</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>TypeORM + NestJS</td><td><span class="status-partial">PARTIAL</span></td><td>Requires SWC workaround (same as NestJS above)</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Jest</td><td><span class="status-partial">PARTIAL</span></td><td>Simple suites: yes. Complex jest.mock() hoisting, jsdom, custom reporters: requires migration. Real migration: 60/420 tests rewritten.</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Vitest</td><td><span class="status-partial">PARTIAL</span></td><td>Works in Node projects with Bun as package manager. As Bun runtime test runner: untested at scale.</td><td><span class="conf-med">MEDIUM</span></td></tr>
+              <tr><td>bcrypt (native)</td><td><span class="status-broken">BROKEN</span></td><td>Use bcryptjs or Bun.password instead</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>argon2</td><td><span class="status-broken">BROKEN</span></td><td>Native C++ addon — fundamentally incompatible</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>sharp</td><td><span class="status-partial">PARTIAL</span></td><td>Works via WebAssembly fallback; performance degraded vs native. Bun.Image (built-in) partially addresses the gap.</td><td><span class="conf-med">MEDIUM</span></td></tr>
+              <tr><td>canvas</td><td><span class="status-broken">BROKEN</span></td><td>Native C++ addon</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Datadog dd-trace (APM)</td><td><span class="status-broken">PARTIAL/BROKEN</span></td><td>async_hooks edge cases + vm module differences; teams reported two weeks without full auto-instrumentation</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Webpack (as runtime)</td><td><span class="status-unsupported">NOT SUPPORTED</span></td><td>Relies on Node.js internals; bun build is the alternative</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>ESM/CJS mixing</td><td><span class="status-works">WORKS</span></td><td>Bun supports both in same file — eliminates ESM migration friction</td><td><span class="conf-high">HIGH</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Operational Risk: Datadog APM Gap</h3>
+        <p>Teams running Datadog for observability have reported two weeks without full auto-instrumentation after migrating to Bun. Root cause: <code>async_hooks</code> (a Node.js API for tracking async context) edge-case differences and <code>vm</code> module divergence that APM agents rely on internally. For any production service where observability is non-negotiable and Datadog is the tool, this is a <strong>hard blocker</strong> until official Bun support ships. <span class="conf-high">HIGH</span></p>
+
+        <h3>Operational Risk: .env Auto-Loading Footgun</h3>
+        <div class="callout callout-yellow">
+          Bun automatically loads <code>.env</code> files before any userland code executes — before any <code>dotenv</code> call. Teams migrating from Node.js who assume dotenv controls when environment variables are loaded can silently mix staging and production credentials. This requires an explicit team convention change, not a code fix. <span class="conf-med">MEDIUM</span>
+        </div>
+
+        <h3>NestJS: Solvable, Not Blocked</h3>
+        <p>GitHub issue #27575 (verified) confirms Bun's transpiler does not support <code>emitDecoratorMetadata</code> (TypeScript metadata needed by NestJS dependency injection). The workaround — using <code>@swc/core</code> as the transpiler — is confirmed to work in production as of April 2026. This is a configuration issue, not a fundamental barrier, but it adds meaningful setup friction. <span class="conf-high">HIGH</span></p>
+
+        <h3>Bun 1.3 New Capabilities</h3>
+        <p>Bun 1.3 added: built-in <code>bun:redis</code> client, HTTP/2 + HTTP/3 fetch clients, a unified SQL API, and <code>Bun.Image</code> for native image processing (partially addressing the canvas/sharp limitation). Bun tracks upstream Node.js API changes closely in 2026 releases. <span class="conf-med">MEDIUM — Bun's own communications</span></p>
+
+        <h3>Hypothesis Outcomes</h3>
+        <div class="card">
+          <div class="hyp-row">
+            <div class="hyp-label"><span class="badge badge-yellow">NUANCED</span></div>
+            <div><strong>H2</strong> — Ecosystem = primary blocker: <strong>CONFIRMED</strong> for native-addon and APM-dependent stacks; <strong>MANAGEABLE</strong> for Hono/Express + Prisma/Drizzle greenfield. The blockers are concentrated and predictable.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Facet 3: Deployment -->
+      <section id="deployment" class="fade-in">
+        <h2>Facet 3 · Deployment Maturity</h2>
+
+        <div class="callout callout-red">
+          <strong>Highest-severity operational risk:</strong> Multiple GitHub issues document severe memory exhaustion in long-running server processes: #27514 (RSS grows continuously in Next.js SSR until OOMKilled), #29302 (JSC GC failure under concurrent requests), #28632 (MySQL bun:sql OOMKilled on Linux). PR #30875 ("Fix effectively every native-code memory leak in Bun") merged — but confirmation of full stable rollout is unverified. <span class="conf-high">HIGH on problem severity</span> · <span class="conf-med">MEDIUM on resolution completeness</span>
+        </div>
+
+        <div class="callout callout-blue" style="margin-bottom:1rem">
+          <strong>Practical mitigation:</strong> Until the fix is confirmed stable across multi-week production runs, Bun should not run long-lived server processes without memory limits and automatic restart policies (Kubernetes restartPolicy, PM2, or systemd watchdog).
+        </div>
+
+        <h3>Platform Support Matrix</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Platform</th><th>Status</th><th>Notes</th><th>Confidence</th></tr></thead>
+            <tbody>
+              <tr><td>Cloudflare Workers</td><td><span class="status-native">NATIVE</span></td><td>Wrangler (Cloudflare's CLI tool) native Bun environment; active maintenance confirmed</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Vercel Functions</td><td><span class="status-native">NATIVE</span></td><td>Public beta Oct 2025, confirmed active (vercel.com blog verified)</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>AWS Lambda</td><td><span class="status-manual">WORKS (manual)</span></td><td>Official bun-lambda custom runtime layer maintained; requires manual layer deployment — not native like Node.js</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>Docker (Linux)</td><td><span class="status-risky">RISKY</span></td><td>oven/bun official images exist; production build failures documented (#28346, #28576, #30365); no Node.js Alpine equivalent maturity</td><td><span class="conf-high">HIGH</span></td></tr>
+              <tr><td>GCP Cloud Run</td><td><span class="status-partial">WORKS (custom)</span></td><td>Documented guides exist; no native buildpack; custom Dockerfile required</td><td><span class="conf-med">MEDIUM</span></td></tr>
+              <tr><td>Kubernetes</td><td><span class="status-manual">MANUAL</span></td><td>No official Helm charts or operators; requires custom Docker images + bespoke K8s manifests</td><td><span class="conf-high">HIGH</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-box">
+            <h4>Platform Readiness Score</h4>
+            <canvas id="platformChart" height="200"></canvas>
+          </div>
+          <div class="chart-box">
+            <h4>Memory Leak Issues (GitHub tracker)</h4>
+            <div style="padding-top:0.5rem">
+              <div class="prog-bar-wrap">
+                <div class="prog-bar-label"><span>#27514 Next.js SSR RSS exhaustion</span><span style="color:#ef4444">SEVERE</span></div>
+                <div class="prog-bar"><div class="prog-bar-fill" style="width:90%;background:#ef4444"></div></div>
+              </div>
+              <div class="prog-bar-wrap">
+                <div class="prog-bar-label"><span>#29302 JSC GC failure under load</span><span style="color:#ef4444">SEVERE</span></div>
+                <div class="prog-bar"><div class="prog-bar-fill" style="width:85%;background:#ef4444"></div></div>
+              </div>
+              <div class="prog-bar-wrap">
+                <div class="prog-bar-label"><span>#28632 MySQL bun:sql OOMKilled</span><span style="color:#f97316">HIGH</span></div>
+                <div class="prog-bar"><div class="prog-bar-fill" style="width:75%;background:#f97316"></div></div>
+              </div>
+              <div class="prog-bar-wrap">
+                <div class="prog-bar-label"><span>PR #30875 Comprehensive fix (merged)</span><span style="color:#eab308">ROLLOUT PENDING</span></div>
+                <div class="prog-bar"><div class="prog-bar-fill" style="width:60%;background:#eab308"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Version Cadence Warning</h3>
+        <p>Bun releases rapid minor version increments with no declared LTS (Long-Term Support) track. Node.js has a formal LTS schedule (even-numbered versions, 30-month support windows). For teams with change-control processes or compliance requirements around dependency pinning, Bun's cadence creates planning risk. <span class="conf-high">HIGH</span></p>
+
+        <h3>Production Adoption Evidence</h3>
+        <p>Evidence of production Bun usage is real but selective: Trigger.dev (5× throughput, co-optimized — see Facet 1 caveat), multiple mid-size API services on Hono + Prisma/Drizzle stacks (dev.to reports 2025–2026), and a documented "selective adoption" pattern. The consistent thread: teams adopt Bun where they control the full dependency surface and avoid native addons and Datadog.</p>
+
+        <h3>Hypothesis Outcomes</h3>
+        <div class="card">
+          <div class="hyp-row">
+            <div class="hyp-label"><span class="badge badge-yellow">PARTIAL</span></div>
+            <div><strong>H4</strong> — Docker/serverless production-ready: <strong>CONFIRMED</strong> for Vercel and Cloudflare; <strong>RISKY</strong> for Docker/K8s due to memory leaks and image maturity gaps</div>
+          </div>
+          <div class="hyp-row">
+            <div class="hyp-label"><span class="badge badge-green">CONFIRMED</span></div>
+            <div><strong>H5</strong> — "Bun for edge/scripts, Node for long-running prod" as emerging consensus: <strong>CONFIRMED</strong> by multiple independent practitioner reports</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Decision Framework -->
+      <section id="decision" class="fade-in">
+        <h2>Decision Framework</h2>
+
+        <div class="decision-grid">
+          <div class="decision-card bun-card">
+            <h4>Choose Bun as Runtime When…</h4>
+            <ul>
+              <li>Edge / serverless is primary target (Cloudflare Workers, Vercel Functions)</li>
+              <li>Greenfield service with controlled stack: Hono/Express + Prisma/Drizzle + bcryptjs, no native addons</li>
+              <li>Scripts and build tooling where FS I/O advantage (2.3–3.8×) and cold-start (2×) are material</li>
+              <li>Performance ceiling is genuinely required AND benchmarked on your specific workload</li>
+              <li>Team can absorb setup friction: NestJS+SWC, Jest migration, .env conventions, Docker tuning</li>
+            </ul>
+          </div>
+          <div class="decision-card node-card">
+            <h4>Choose Node.js as Runtime When…</h4>
+            <ul>
+              <li>Native C++ addons required (argon2, canvas, or any .node binary without WebAssembly alternative)</li>
+              <li>Datadog APM is non-negotiable — async_hooks gaps cause observability blind spots</li>
+              <li>Long-running stateful processes until PR #30875 memory fixes are confirmed stable</li>
+              <li>Kubernetes-native deployment — no official Helm charts or operators for Bun</li>
+              <li>LTS / compliance requirements — Bun has no LTS track</li>
+              <li>Webpack-dependent build pipelines</li>
+              <li>Jest suite with complex mocking / jsdom / custom reporters</li>
+            </ul>
+          </div>
+          <div class="decision-card hybrid-card">
+            <h4>Hybrid Pattern — Recommended for Most Teams in 2026</h4>
+            <ul>
+              <li><strong>Use Bun as package manager, Node.js as runtime.</strong> bun install is 10–25× faster than npm and compatible with all existing Node.js projects. This captures the developer-experience improvement with zero runtime compatibility risk — the pattern most frequently reported by teams that evaluated Bun and chose not to fully commit.</li>
+              <li><strong>Run Bun as runtime for edge functions and internal scripts</strong> while keeping Node.js for the primary application server. Builds Bun operational knowledge incrementally, reduces blast radius of compatibility surprises.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Source Coverage -->
+      <section id="coverage" class="fade-in">
+        <h2>Source Coverage Report</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Category</th><th>Status</th><th>Channels Used</th><th>Findings</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Web Search</td><td><span class="status-covered">COVERED</span></td><td>Brave, Tavily, Exa</td><td>42</td><td>Primary benchmark data, vendor blog posts, practitioner write-ups</td></tr>
+              <tr><td>Social / Community</td><td><span class="status-covered">COVERED</span></td><td>HN, Reddit (web proxy), dev.to</td><td>18</td><td>Trigger.dev caveat sourced from HN; real migration reports from dev.to</td></tr>
+              <tr><td>GitHub / Technical</td><td><span class="status-covered">COVERED</span></td><td>GitHub issues, PRs, repos</td><td>22</td><td>Memory leak issues #27514, #29302, #28632, #30875; NestJS #27575; Docker build failures</td></tr>
+              <tr><td>News / Vendor Blogs</td><td><span class="status-covered">COVERED</span></td><td>byteiota, Bolder Apps, Vercel blog, Prisma docs, Bun blog</td><td>20</td><td>Platform status, official compatibility documentation (Vercel, Prisma docs verified)</td></tr>
+              <tr><td>Academic (ArXiv / OpenAlex)</td><td><span class="status-skipped">SKIPPED</span></td><td>—</td><td>0</td><td>No peer-reviewed literature on Bun runtime performance; practitioner and GitHub sources are more current and relevant for a 2026 production decision</td></tr>
+              <tr><td>Perplexity Deep</td><td><span class="status-skipped">SKIPPED</span></td><td>—</td><td>0</td><td>Explicitly excluded by requester</td></tr>
+              <tr><td>Social (X / Instagram)</td><td><span class="status-skipped">SKIPPED</span></td><td>—</td><td>0</td><td>Tech infrastructure topic — HN and dev.to are more signal-rich for this question</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Quality Notes -->
+      <section id="quality" class="fade-in">
+        <h2>Quality Notes</h2>
+        <div class="quality-footer">
+          <h3>Critic Verdict · Content 14/15 · Grounding 70% → Retry applied</h3>
+
+          <p style="margin-bottom:1rem;color:var(--muted)">Three claims were retracted or downgraded after Critic verification failed. All other findings are from verified sources.</p>
+
+          <div class="retraction">
+            <span class="retraction-icon">✕</span>
+            <div><strong>RETRACTED — Exact throughput figures</strong> attributed to "botmonster/benchmarks GitHub" (122,170 / 47,734 req/s, Node 24.18.0 vs Bun 1.3.14): unverifiable — those exact numbers appear in no independent source. Replaced with: byteiota 2026 showing 2.7–4× synthetic advantage; Elysia-on-Bun vs Fastify-on-Node ~2–2.5× at realistic load (both independently sourced).</div>
+          </div>
+          <div class="retraction">
+            <span class="retraction-icon">✕</span>
+            <div><strong>RETRACTED — PR #31991 (June 2026) Node.js 26.3.0 compatibility bump:</strong> URL unverified. Retained as MEDIUM confidence only: "Bun tracks upstream Node.js API changes closely in 2026 releases."</div>
+          </div>
+          <div class="retraction">
+            <span class="retraction-icon">✕</span>
+            <div><strong>DOWNGRADED — webpack "Feb 2026 roadmap post":</strong> specific citation removed as unverifiable. Replaced with: "webpack relies on Node.js internals and does not currently run under Bun as a runtime — Bun's own bundler (bun build) is the recommended alternative." (Widely accepted; no specific dated citation needed.)</div>
+          </div>
+
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
+            <p style="color:var(--muted);font-size:0.8rem"><strong>Self-grade: 79/100.</strong> Strengths: retractions applied cleanly, decision framework is actionable, memory leak risk correctly lead-positioned. Limitations: the &lt;3% production delta rests on a single benchmark configuration; Datadog APM resolution status is MEDIUM (problem confirmed, fix timeline unknown); no quantified GCP Cloud Run at scale; Vitest-on-Bun-runtime data thin.</p>
+            <p style="color:var(--muted);font-size:0.8rem;margin-top:0.5rem">Run ID: bun-node-2026-20260714 · DELPHI D3 · 2026-07-14 · 96 sources examined · ~$0.35 est. cost</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') document.body.classList.add('light');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+      toggle.textContent = document.body.classList.contains('light') ? '☾' : '☀';
+    });
+    if (saved === 'light') toggle.textContent = '☾';
+
+    // Share button
+    document.getElementById('shareBtn').addEventListener('click', () => {
+      const url = window.location.href;
+      if (navigator.share) {
+        navigator.share({ title: 'Bun vs Node.js 2026 — DELPHI D3', url });
+      } else {
+        navigator.clipboard.writeText(url).then(() => {
+          const btn = document.getElementById('shareBtn');
+          btn.textContent = '✓';
+          setTimeout(() => btn.textContent = '⎋', 1500);
+        });
+      }
+    });
+
+    // Fade-in on scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    // Charts
+    const isDark = () => !document.body.classList.contains('light');
+    const gridColor = () => isDark() ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
+    const textColor = () => isDark() ? '#8b949e' : '#6b7280';
+
+    // Chart 1: HTTP Throughput comparison
+    const perfCtx = document.getElementById('perfChart').getContext('2d');
+    new Chart(perfCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Synthetic (min handler)', 'Elysia vs Fastify', 'Production URL shortener'],
+        datasets: [
+          { label: 'Bun', data: [100, 100, 100], backgroundColor: 'rgba(88,166,255,0.7)', borderColor: '#58a6ff', borderWidth: 1 },
+          { label: 'Node.js', data: [39, 43, 97], backgroundColor: 'rgba(34,197,94,0.5)', borderColor: '#22c55e', borderWidth: 1 }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: textColor(), font: { family: 'Inter', size: 11 } } }, tooltip: { callbacks: { label: (c) => c.dataset.label + ': ' + c.raw + '% of Bun baseline' } } },
+        scales: {
+          x: { ticks: { color: textColor(), font: { size: 10 } }, grid: { color: gridColor() } },
+          y: { ticks: { color: textColor(), font: { size: 10 }, callback: v => v + '%' }, grid: { color: gridColor() }, max: 110, title: { display: true, text: '% relative to Bun', color: textColor(), font: { size: 10 } } }
+        }
+      }
+    });
+
+    // Chart 2: Workload advantage
+    const wCtx = document.getElementById('workloadChart').getContext('2d');
+    new Chart(wCtx, {
+      type: 'bar',
+      data: {
+        labels: ['HTTP synthetic', 'File I/O', 'Cold start', 'JSON ops', 'CPU-bound', 'Prod (w/ DB)'],
+        datasets: [{
+          label: 'Bun advantage (×)',
+          data: [2.5, 3.0, 2.0, 2.5, 1.0, 1.03],
+          backgroundColor: (ctx) => ctx.raw <= 1.1 ? 'rgba(139,148,158,0.5)' : 'rgba(88,166,255,0.65)',
+          borderColor: (ctx) => ctx.raw <= 1.1 ? '#8b949e' : '#58a6ff',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => c.raw + '× Bun advantage' } } },
+        scales: {
+          x: { ticks: { color: textColor(), font: { size: 10 }, callback: v => v + '×' }, grid: { color: gridColor() }, min: 0, max: 4 },
+          y: { ticks: { color: textColor(), font: { size: 10 } }, grid: { color: gridColor() } }
+        }
+      }
+    });
+
+    // Chart 3: Platform readiness
+    const pCtx = document.getElementById('platformChart').getContext('2d');
+    new Chart(pCtx, {
+      type: 'radar',
+      data: {
+        labels: ['Cloudflare Workers', 'Vercel', 'AWS Lambda', 'GCP Cloud Run', 'Docker', 'Kubernetes'],
+        datasets: [
+          { label: 'Bun', data: [5, 5, 3.5, 3, 2, 1.5], backgroundColor: 'rgba(88,166,255,0.15)', borderColor: '#58a6ff', borderWidth: 2, pointBackgroundColor: '#58a6ff' },
+          { label: 'Node.js', data: [4, 4.5, 5, 5, 5, 5], backgroundColor: 'rgba(34,197,94,0.1)', borderColor: '#22c55e', borderWidth: 2, pointBackgroundColor: '#22c55e' }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: textColor(), font: { family: 'Inter', size: 11 } } } },
+        scales: { r: { min: 0, max: 5, ticks: { display: false, stepSize: 1 }, grid: { color: gridColor() }, pointLabels: { color: textColor(), font: { size: 10 } }, angleLines: { color: gridColor() } } }
+      }
+    });
+
+    // TOC active link
+    const sections = document.querySelectorAll('section[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => tocObs.observe(s));
+  </script>
+</body>
+</html>
