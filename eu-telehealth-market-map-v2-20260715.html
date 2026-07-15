@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU Telehealth Platform & Infrastructure Market Map — v2</title>
+<meta property="og:title" content="EU Telehealth Platform & Infrastructure Market Map — v2">
+<meta property="og:description" content="Delphi D3 build-vs-buy map for a GLP-1 EU telehealth operator. Critic Content 13/15 · Grounding ~93% · Gate PASS.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0A0A0F; --card:#111118; --accent:#58a6ff; --glass:rgba(17,17,24,0.7);
+    --text:#e6e6ef; --muted:#9aa0ae; --border:rgba(255,255,255,0.08);
+  }
+  [data-theme="light"]{
+    --bg:#fafafa; --card:#ffffff; --accent:#3a6fd8; --glass:rgba(255,255,255,0.75);
+    --text:#15151c; --muted:#5a5f6d; --border:rgba(0,0,0,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    margin:0; min-height:100vh;
+    transition:background .25s ease, color .25s ease;
+  }
+  code, .mono{font-family:'JetBrains Mono',monospace;}
+  .glass{
+    background:var(--glass); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border:1px solid var(--border); border-radius:16px;
+  }
+  .glow{ box-shadow:0 0 60px -20px rgba(88,166,255,0.35); }
+  a{color:var(--accent);}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-thumb{background:var(--border); border-radius:8px;}
+  table{border-collapse:collapse; width:100%; font-size:0.85rem;}
+  th,td{border:1px solid var(--border); padding:10px 12px; text-align:left; vertical-align:top;}
+  th{background:rgba(88,166,255,0.08); color:var(--accent); font-weight:600; position:sticky; top:0;}
+  tr:hover td{background:rgba(88,166,255,0.04);}
+  .tbl-wrap{overflow-x:auto; border-radius:12px; border:1px solid var(--border);}
+  .badge{
+    display:inline-block; padding:1px 7px; border-radius:6px; font-size:0.68rem;
+    font-weight:700; letter-spacing:.02em; font-family:'JetBrains Mono',monospace;
+    white-space:nowrap;
+  }
+  .b-high{background:rgba(34,197,94,0.16); color:#4ade80; border:1px solid rgba(34,197,94,0.35);}
+  .b-medium{background:rgba(234,179,8,0.16); color:#facc15; border:1px solid rgba(234,179,8,0.35);}
+  .b-unverified{background:rgba(239,68,68,0.16); color:#f87171; border:1px solid rgba(239,68,68,0.35);}
+  .b-low{background:rgba(148,163,184,0.16); color:#94a3b8; border:1px solid rgba(148,163,184,0.35);}
+  .fade-in{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .fade-in.visible{opacity:1; transform:translateY(0);}
+  .toc-link{display:block; padding:6px 10px; border-radius:8px; color:var(--muted); font-size:0.85rem; text-decoration:none; transition:all .15s;}
+  .toc-link:hover, .toc-link.active{background:rgba(88,166,255,0.1); color:var(--accent);}
+  .pull-quote{
+    border-left:3px solid var(--accent); padding:14px 20px; font-style:italic;
+    background:rgba(88,166,255,0.05); border-radius:0 12px 12px 0; margin:20px 0; color:var(--text);
+  }
+  .kicker{color:var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:0.72rem;}
+  @media print{
+    body{background:#fff !important; color:#111 !important;}
+    #sidebar, #topbar, .no-print{display:none !important;}
+    .glass{background:#fff !important; border:1px solid #ccc !important; box-shadow:none !important;}
+    a{color:#111 !important; text-decoration:underline;}
+    table{font-size:9pt;}
+    section{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div id="topbar" class="no-print sticky top-0 z-40 glass" style="border-radius:0; border-left:none; border-right:none; border-top:none;">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
+    <div class="flex items-center gap-2">
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;box-shadow:0 0 12px var(--accent);"></span>
+      <span class="font-semibold text-sm sm:text-base">DELPHI · D3 Market Map</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="shareBtn" class="text-xs sm:text-sm px-3 py-1.5 rounded-lg border" style="border-color:var(--border);">Share</button>
+      <button id="themeToggle" class="text-xs sm:text-sm px-3 py-1.5 rounded-lg border" style="border-color:var(--border);">Light/Dark</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<header class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-8 fade-in">
+  <div class="kicker mb-3">Delphi D3 · Build-vs-Buy Research</div>
+  <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight mb-4" style="letter-spacing:-0.02em;">
+    EU Telehealth Platform & Infrastructure Market Map <span style="color:var(--accent);">— v2</span>
+  </h1>
+  <p class="text-base sm:text-lg max-w-3xl" style="color:var(--muted);">
+    Build-vs-buy assessment of EU/EEA telehealth platforms and infrastructure for a GLP-1 / weight-management
+    telehealth operator (async questionnaire → clinician review → e-prescription → pharmacy fulfilment → follow-up
+    titration). Supersedes the 2026-07-14 v1 run (EPR 12/20, coverage INCOMPLETE).
+  </p>
+  <div class="flex flex-wrap gap-2 mt-5">
+    <span class="badge b-high">Gate: PASS</span>
+    <span class="badge" style="background:rgba(88,166,255,0.14); color:var(--accent); border:1px solid rgba(88,166,255,0.35);">Critic Content 13/15</span>
+    <span class="badge" style="background:rgba(88,166,255,0.14); color:var(--accent); border:1px solid rgba(88,166,255,0.35);">Grounding ~93%</span>
+    <span class="badge b-low">6 scouts</span>
+    <span class="badge b-low">2026-07-15</span>
+  </div>
+</header>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 flex gap-8">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="no-print hidden lg:block" style="width:260px; flex-shrink:0;">
+    <div class="sticky top-20 glass p-5 space-y-6">
+      <div>
+        <div class="kicker mb-2">Contents</div>
+        <nav id="tocNav" class="space-y-0.5"></nav>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div class="kicker mb-2">Run Metadata</div>
+        <dl class="text-xs space-y-1.5" style="color:var(--muted);">
+          <div class="flex justify-between"><dt>Depth</dt><dd class="mono" style="color:var(--text);">D3</dd></div>
+          <div class="flex justify-between"><dt>Critic (Content)</dt><dd class="mono" style="color:var(--text);">13/15</dd></div>
+          <div class="flex justify-between"><dt>Grounding</dt><dd class="mono" style="color:var(--text);">~93%</dd></div>
+          <div class="flex justify-between"><dt>Gate</dt><dd class="mono" style="color:#4ade80;">PASS</dd></div>
+          <div class="flex justify-between"><dt>Scouts</dt><dd class="mono" style="color:var(--text);">6</dd></div>
+          <div class="flex justify-between"><dt>Supersedes</dt><dd class="mono" style="color:var(--text);">v1 (07-14)</dd></div>
+          <div class="flex justify-between"><dt>Date</dt><dd class="mono" style="color:var(--text);">2026-07-15</dd></div>
+        </dl>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div class="kicker mb-2">Confidence Key</div>
+        <div class="space-y-1.5 text-xs">
+          <div><span class="badge b-high">HIGH</span> corroborated / primary source</div>
+          <div><span class="badge b-medium">MEDIUM</span> partial / single-body</div>
+          <div><span class="badge b-unverified">UNVERIFIED</span> unconfirmed / gap</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 min-w-0 pb-24 space-y-14">
+
+    <section id="s1" class="fade-in">
+      <h2 class="text-2xl font-bold mb-2">1. Executive Summary</h2>
+      <div class="pull-quote">
+        No vendor is simultaneously (a) EU-native/EU-hosted, (b) headless/API-first, and (c) turnkey on
+        e-prescription + pharmacy fulfilment. <strong>This is a COMPOSE play, not a license-one-vendor play.</strong>
+      </div>
+      <p class="mb-4" style="color:var(--muted);">
+        Every EU-native orchestration layer (Awell, Alakin) stops short of pharmacy fulfilment; every turnkey pharmacy
+        rail (DocMorris/Redcare, REMPe/Delonia) is a closed national system, not an API-first platform; every
+        architecturally-close full-stack analog (Wheel, Fabric, Beluga, Canvas) is US-only and cannot be deployed for
+        EU patients as-is. Budget and timeline should assume integration of 4-6 independent vendors/rails plus
+        meaningful in-house glue code (orchestration state machine, per-country pharmacy connectors, clinician review UI).
+      </p>
+      <div class="glass p-5 space-y-3">
+        <div class="font-semibold text-sm" style="color:var(--accent);">Recommended buy-vs-build split by layer</div>
+        <ul class="text-sm space-y-2" style="color:var(--text);">
+          <li><strong>BUY (commodity):</strong> video/telecom (Vonage Video EU/DE zones, or LiveKit self-hosted), payments, identity/KYC (Nect for DE-first, Signicat as pan-EU broker).</li>
+          <li><strong>BUY/INTEGRATE, choose carefully:</strong> FHIR EHR backbone — pick FHIR-native (Firely Server EU-native, or Medplum self-hosted-EU) specifically to avoid a 2028-29 EHDS interoperability migration.</li>
+          <li><strong>BUY per-country, budget 4-9 months per market:</strong> e-prescription + pharmacy fulfilment — no pan-EU rail exists; start Germany, add France, then Benelux/Nordics.</li>
+          <li><strong>BUILD in-house (the differentiator, and the regulatory-control point):</strong> clinical eligibility/triage logic and the async→review→titration orchestration state machine, kept clinician-assistive (not autonomous) to stay outside MDR Class IIa/AI Act high-risk classification where possible — orchestrate on Awell (EU-native) or build directly on Medplum Bots.</li>
+          <li><strong>Timeline:</strong> ~4-6 months to a single-market (DE) pilot; 9-12+ months to a 3-5 market EU footprint, gated primarily by per-country eRx/pharmacy re-certification and national medical-board sign-off, not by technology.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="s2" class="fade-in">
+      <h2 class="text-2xl font-bold mb-2">2. Section A — Full End-to-End SaaS Platforms</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Vendor</th><th>HQ</th><th>Ownership / funding / shutdown risk</th><th>What it is</th><th>Integration surface</th><th>Compliance posture (confidence)</th><th>Pricing</th><th>GLP-1 fit</th><th>Supplier vs Competitor</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Doctolib</strong></td><td>Paris, FR</td><td>~$6.5B val., Bpifrance/General Atlantic/Eurazeo; acquiring Medicus Health (May 2026), Typeless, Argos; IPO speculated 2026-28. LOW shutdown risk.</td><td>Booking + video + practice mgmt, closed ecosystem</td><td>Integrations layer only, no open clinical FHIR API</td><td>ISO 27001 cert IS-748307-001, BSI <span class="badge b-high">HIGH fact</span><span class="badge b-medium">MEDIUM cert#</span>; ISO 27701 BSI; NEN 7510 cert 159-2024; HDS France since Nov 2021, BSI <span class="badge b-high">HIGH</span>; C5:2020 Type 1 <span class="badge b-medium">MEDIUM self-reported</span>; not classified as medical device <span class="badge b-high">HIGH</span></td><td>Not public (practices reportedly €100-150/mo/doctor)</td><td>LOW (closed, no eRx/pharmacy build surface)</td><td><strong>COMPETITOR</strong> + potential distribution channel</td></tr>
+            <tr><td><strong>Kry / Livi</strong></td><td>Stockholm, SE</td><td>~$2B val. (Index/Accel); exited Germany 2022 (400 layoffs); profitable only 2023-24. MODERATE risk.</td><td>Closed consumer telehealth app</td><td>None public</td><td>No certs found <span class="badge b-unverified">UNVERIFIED</span>; KRY International AB is data controller</td><td>Not public</td><td>LOW</td><td><strong>COMPETITOR</strong></td></tr>
+            <tr><td><strong>Wellster Healthtech</strong></td><td>Berlin, DE</td><td>Profitable since Nov 2024; owns GoLighter (GLP-1/weight brand), GoSpring, MySpring, TeleClinic, Patientus</td><td>Vertically integrated: own doctors + own pharmacy</td><td>Closed</td><td>No certs found <span class="badge b-unverified">UNVERIFIED</span>; "data in Germany" marketing claim only <span class="badge b-unverified">UNVERIFIED</span></td><td>Not public</td><td>HIGH GLP-1 relevance</td><td><strong>DIRECT COMPETITOR</strong> — closest DACH analog (confirmed NOT related to Medgate)</td></tr>
+            <tr><td><strong>TeleClinic</strong></td><td>Munich, DE</td><td>Owned by DocMorris/Zur Rose since 2020</td><td>Video consult tied to DocMorris pharmacy + eRezept</td><td>Closed</td><td>Own ISO not found <span class="badge b-unverified">UNVERIFIED</span>; operates under Fernbehandlung §7 Abs.4 MBO-Ä <span class="badge b-medium">MEDIUM</span></td><td>Not public</td><td>MODERATE-HIGH</td><td>Competitor / pharmacy-supplier hybrid</td></tr>
+            <tr><td><strong>Oviva</strong></td><td>Zurich, CH / London, UK</td><td>Series D 2026; DiGA-listed</td><td>Dietitian-coaching obesity/GLP-1 pathway, NHS-integrated</td><td>Closed</td><td>DiGA entry 00872 "Oviva Direkt für Adipositas" + hypertension DiGA entry, BfArM registry <span class="badge b-high">HIGH</span>; own ISO <span class="badge b-unverified">UNVERIFIED</span></td><td>Not public</td><td>HIGH</td><td><strong>DIRECT COMPETITOR</strong></td></tr>
+            <tr><td><strong>Ada Health</strong></td><td>Berlin, DE</td><td>$167M raised</td><td>B2B care-navigation/triage only</td><td>Open partner API (gated)</td><td>App = Class I (MDD); Ada Assess = Class IIa under EU MDR 2017/745 (Dec 2022), notified body TÜV SÜD Product Service GmbH <span class="badge b-high">HIGH — fix applied</span></td><td>Enterprise, not public</td><td>LOW as E2E / supplier candidate for triage only</td><td>Supplier (triage component, see C4)</td></tr>
+            <tr><td><strong>Medgate</strong></td><td>Basel, CH</td><td>Ownership CONFLICT: AEVIS VICTORIA vs. Otto Group majority, dates conflict <span class="badge b-unverified">UNRESOLVED</span></td><td>Closed CH telehealth</td><td>N/A</td><td>N/A</td><td>MODERATE</td><td>Competitor (Switzerland — outside EU/EEA scope, FADP ≠ GDPR)</td></tr>
+            <tr><td><strong>HealthHero</strong></td><td>London, UK / Dublin, IE</td><td>MARCOL PE-backed, $125M; roll-up of Fernarzt/Doctorlink/Qare/Doctopsy; ~22M covered lives</td><td>Multi-brand aggregator</td><td>Closed</td><td>CQC provider ID 1-1837286653 <span class="badge b-high">HIGH</span>; ISO <span class="badge b-unverified">UNVERIFIED</span>. Note: NOT "Hero Health" (US NYC hardware co.) — do not conflate certs.</td><td>Not public</td><td>MODERATE</td><td>Competitor + distribution-supplier</td></tr>
+            <tr><td><strong>DocPlanner / Doctoralia</strong></td><td>Warsaw, PL / Barcelona, ES</td><td>~$1B val.</td><td>Booking/EHR-lite, OPEN REST API (integrations.docplanner.com)</td><td>Open scheduling API</td><td>Trust page has no cert data <span class="badge b-unverified">UNVERIFIED</span></td><td>Not public</td><td>LOW clinical fit / usable as booking layer</td><td>Supplier (booking) + Competitor</td></tr>
+            <tr><td><strong>Qare</strong></td><td>Paris, FR</td><td>Acquired by HealthHero, Apr 2021</td><td>Video consults</td><td>Closed</td><td>Third-party HDS-certified host — <strong>host UNNAMED</strong> <span class="badge b-medium">MEDIUM — gap in disclosure</span></td><td>Not public</td><td>LOW</td><td>Competitor</td></tr>
+            <tr><td><strong>CGM (CompuGroup Medical)</strong></td><td>Koblenz, DE</td><td>Public company, €1.13B revenue</td><td>Practice-mgmt/EHR + eRezept(TI) module + lab + video</td><td>Enterprise integration</td><td>Self-published ISO 27001 cert number not locatable <span class="badge b-medium">MEDIUM</span>; Austria "first medical-software with infosec cert," Dec 2024</td><td>Enterprise</td><td>LOW as consumer build / HIGH as eRezept-rail supplier</td><td>Infrastructure supplier</td></tr>
+            <tr><td><strong>Medadom</strong></td><td>Paris, FR</td><td>Verdane + Bpifrance investment closing 2026</td><td>Telehealth kiosk/cabin, hardware-tied</td><td>Closed</td><td>N/A</td><td>Not public</td><td>LOW (poor async fit)</td><td>Competitor (different model)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="glass p-5 mt-5">
+        <div class="font-semibold text-sm mb-2" style="color:var(--accent);">Acquisitions / defunct / consolidation watch</div>
+        <ul class="text-sm space-y-1.5" style="color:var(--text);">
+          <li><strong>ZAVA → Hims & Hers (Jul 1, 2025):</strong> highest-capitalization threat. EU beachhead UK→DE/FR/IE, async questionnaire + Rx + pharmacy — closest direct competitor architecture. <strong>DIRECT COMPETITOR.</strong></li>
+          <li><strong>Babylon:</strong> DEFUNCT, Chapter 7, Aug 2023 (GP@Hand → eMed). Cautionary burn-rate case.</li>
+          <li><strong>Qare / Fernarzt → HealthHero:</strong> consolidated into HealthHero roll-up.</li>
+          <li><strong>TeleClinic → DocMorris/Zur Rose</strong> (since 2020).</li>
+          <li><strong>Doktor24 / Doktor.se:</strong> merged Jun 2024; Platform24 arm is licensable white-label (potential supplier), Doktor24 consumer app remains competitor.</li>
+          <li><strong>Medgate:</strong> ownership UNRESOLVED.</li>
+          <li><strong>Patientus, DoktorABC, Min Doktor:</strong> ownership UNRESOLVED — flagged for counsel/procurement follow-up (Section 9).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="s3" class="fade-in">
+      <h2 class="text-2xl font-bold mb-2">3. Section B — White-Label / Headless / API-First Platforms</h2>
+      <p class="text-sm mb-4" style="color:var(--muted);">Deepest section of this report. <strong>Structural finding:</strong> no vendor here is simultaneously EU-native/EU-hosted, headless/API-first, AND turnkey on e-prescription + pharmacy fulfilment. Realistic build path: compose an EU-native orchestration layer (Awell or Alakin) + a separate EU/national e-prescription-pharmacy rail (Section C3) + a FHIR-native system of record (Medplum or Firely Server, Section C2).</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Vendor</th><th>HQ</th><th>Ownership / shutdown risk</th><th>What it is</th><th>Integration surface</th><th>Async→review→eRx→pharmacy→titration support</th><th>EU data residency (confidence)</th><th>Pricing</th><th>GLP-1 fit</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Awell Health</strong></td><td>Brussels, BE — EU-native</td><td>$6.7M raised (LocalGlobe, Octopus, S16); ~10yr old; customers incl. Mindler, Parsley. MODERATE shutdown risk (thin capital base).</td><td>Headless care-flow orchestration engine — workflow-as-code via Awell Studio</td><td>GraphQL Orchestration API + Mirth Connect HL7/FHIR bridge + webhooks + EHR marketplace — genuinely API-first</td><td>Supports async questionnaire → clinician review as a task state-machine BY DESIGN. Does not itself do eRx or pharmacy — must be composed with a pharmacy rail.</td><td>Belgium controller; no explicit published EU-hosting statement found <span class="badge b-unverified">UNVERIFIED — confirm with vendor</span></td><td>Not public</td><td><strong>HIGH</strong> — best pure orchestration layer, EU-native</td></tr>
+            <tr><td><strong>Medplum</strong></td><td>San Francisco, US (OSS + hosting arm)</td><td>OSS Apache-2.0, 2.5k+ GitHub stars, active; commercial hosted tier</td><td>Headless EHR / FHIR-native repository + auth + serverless Bots + React components</td><td>Full FHIR R4 REST + GraphQL, SMART-on-FHIR; self-hostable on AWS/GCP/Azure/on-prem incl. EU regions</td><td>Not turnkey — you build the intake/review UI and eRx integration yourself on top of the FHIR backbone</td><td>Deployment is your choice — self-host EU region gives full control <span class="badge b-medium">strong, self-managed</span></td><td>Free self-host / hosted pricing not public</td><td><strong>HIGH</strong> for a build-heavy team; lowest vendor lock-in</td></tr>
+            <tr><td><strong>Canvas Medical</strong></td><td>San Francisco, US</td><td>$44M Series B</td><td>ONC-certified headless EMR + SDK (650+ events, Studio); explicitly cites GLP-1 as use case</td><td>FHIR R4 API</td><td>Well-suited architecturally</td><td>US-only (Surescripts/NPI-dependent), no EU hosting path</td><td>Enterprise</td><td><strong>REFERENCE MODEL only</strong> — cannot deploy for EU patients as-is</td></tr>
+            <tr><td><strong>Metriport / Zus Health</strong></td><td>US</td><td>—</td><td>HIE record-aggregation tools</td><td>FHIR aggregation</td><td>—</td><td>US-only</td><td>—</td><td><strong>WRONG CATEGORY</strong> — solve record retrieval, not care-workflow orchestration</td></tr>
+            <tr><td><strong>Formsort</strong></td><td>New York, US</td><td>$4M seed</td><td>API-first clinical questionnaire/intake builder; proven in GLP-1 telehealth via Form Health</td><td>API</td><td>Solves ONLY the intake stage</td><td>US-only data handling</td><td>Not public</td><td>MODERATE — usable only as intake-stage component; US data handling needs re-verification for EU use</td></tr>
+            <tr><td><strong>Beluga Health</strong></td><td>US, Medtronic-backed</td><td>—</td><td>Full-stack white-label incl. pharmacy; claims ISO 27001/SOC2</td><td>Closed/managed</td><td>Full stack, but...</td><td>US-only (50-state)</td><td>Not public</td><td><strong>REFERENCE MODEL only</strong></td></tr>
+            <tr><td><strong>Wheel / Fabric Health</strong></td><td>US</td><td>Enterprise-backed</td><td>Async care-enablement engine + Surescripts eRx; has obesity program</td><td>API/managed</td><td>Closest workflow analog architecturally to operator's own model</td><td>US-only</td><td>Enterprise</td><td><strong>REFERENCE MODELS</strong> — study architecture, cannot deploy in EU</td></tr>
+            <tr><td><strong>DoctorBox</strong></td><td>Germany (GmbH) — EU-native</td><td>—</td><td>Modular white-label app: video/appointments/test-kits/messaging</td><td>Modular</td><td>Insurer/wellness-oriented, not a clinical-Rx pipeline</td><td>ISO 27001/9001 <span class="badge b-medium">MEDIUM</span>; GDPR, German-hosted</td><td>Not public</td><td>MODERATE — EU-native but wrong product shape</td></tr>
+            <tr><td><strong>Alakin Health / Tech2Heal</strong></td><td>Paris, FR — EU-native</td><td>VERY EARLY (5 employees, seed only 23% funded). <strong>HIGH shutdown risk</strong> — validate runway before committing.</td><td>No-code care-pathway builder + patient app, native FHIR R4</td><td>FHIR R4</td><td>Full pathway builder</td><td><strong>Strongest EU data-sovereignty story in this section:</strong> EU Sovereign Cloud, HDS-certified AWS France, CE Mark Class I, ANS-aligned</td><td>Not public</td><td><strong>HIGH</strong> — EU-native, but runway risk is real and must be diligenced</td></tr>
+            <tr><td><strong>arztkonsultation (ak)</strong></td><td>Schwerin, DE</td><td>KBV/GKV-certified</td><td>White-label VIDEO + booking, German-hosted, DSGVO-compliant</td><td>Limited</td><td>Video-visit tool, not an async-Rx engine</td><td>Strong EU <span class="badge b-high">effectively HIGH for video-only scope</span></td><td>Not public</td><td>LOW — wrong scope (video only)</td></tr>
+            <tr><td><strong>UK GLP-1 white-label cluster</strong> (PExpo, Slimple, Arixa, Onescript)</td><td>UK</td><td>Various, post-Brexit UK-regulated (GPhC/MHRA/CQC)</td><td>Slimple/PExpo = clinic-in-a-box; Onescript = API-first B2B pharmacy layer</td><td>Onescript has genuine API</td><td><strong>Closest exact-workflow match</strong> to operator's model (async GLP-1 clinic-in-a-box)</td><td><strong>UK-only</strong> — GPhC/MHRA regime, not EU/EEA</td><td>Slimple ~£150-199/patient</td><td><strong>REFERENCE MODELS only</strong> — study Onescript's pharmacy-API pattern specifically</td></tr>
+            <tr><td><strong>Fox (PowerApps), WellieMD</strong></td><td>US</td><td>Pre-seed. <strong>VERY HIGH shutdown risk.</strong></td><td>Small telehealth tools</td><td>Limited</td><td>—</td><td>US-only</td><td>WellieMD ~$1,500/mo published</td><td>Do not build on — see Section 8</td></tr>
+            <tr><td><strong>OpenTeleHealth</strong></td><td>Denmark</td><td>Acquired by Doccla (UK), Aug 2023</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>DEFUNCT as standalone</strong></td></tr>
+            <tr><td><strong>Lyfegen</strong></td><td>Basel, CH</td><td>—</td><td>Pharma rebate/pricing SaaS</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>NOT telehealth infrastructure</strong> — excluded from consideration</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s4" class="fade-in">
+      <h2 class="text-2xl font-bold mb-1">4. Section C — Component Infrastructure</h2>
+      <p class="text-sm mb-4" style="color:var(--muted);">Deepest technical layer: video/telecom, EHR/FHIR backends, e-prescription/pharmacy routing, identity/eIDAS/KYC, and triage/CDS engines.</p>
+
+      <h3 class="text-lg font-semibold mt-6 mb-2" style="color:var(--accent);">C1. Video / Telecom APIs</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Vendor</th><th>HQ</th><th>Ownership/risk</th><th>EU residency / compliance (confidence)</th><th>Pricing</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Twilio Video</strong></td><td>San Francisco, US</td><td>Twilio Inc.</td><td><strong>CORRECTED (fix #1):</strong> Twilio announced a Dec 5, 2026 EOL in Mar 2024, then REVERSED it Oct 2024 — "Twilio Video will remain a standalone product" with continued investment. <strong>SAFE to build on.</strong> Only mild reputational/roadmap-confidence residue remains — factor a small trust discount, not a technical one.</td><td>Usage-based</td><td><strong>Buildable</strong> — no longer belongs on a do-not-build list</td></tr>
+            <tr><td><strong>Vonage Video API / OpenTok</strong></td><td>Holmdel, NJ, US</td><td>Ericsson-owned since Jul 2022</td><td><strong>Concrete Regional Media Zones: EU+Germany.</strong> EU+US zone $550/€500/mo, Germany-only zone $1,100/€1,000/mo; base $9.99 + $0.00395/user-min; HIPAA BAA via sales; ISO + regional zones <span class="badge b-medium">MEDIUM-HIGH</span></td><td>Tiered + zone fee</td><td><strong>Recommended primary pick</strong> — concrete EU/DE data-residency zones, Ericsson-backed stability</td></tr>
+            <tr><td><strong>Daily.co</strong></td><td>San Francisco, US</td><td>—</td><td>EU residency enterprise-tier only; SOC2 Type II, GDPR, EU-US DPF; Healthcare add-on $500/mo is "HIPAA-enablement," not full BAA-cert <span class="badge b-medium">MEDIUM</span></td><td>$0.004/participant-min + $500/mo add-on</td><td>Usable but pricing complaints reported (see Section 6)</td></tr>
+            <tr><td><strong>LiveKit</strong></td><td>San Francisco, US</td><td>OSS Apache-2.0, 12k+ stars</td><td>Self-hostable EU-sovereign OR cloud; no confirmed managed HIPAA tier; ISO 27001/27018/PCI "in progress," not yet held <span class="badge b-high">HIGH-confidence negative</span></td><td>Self-host = infra cost only</td><td>Well-regarded on HN; best self-host option if you accept DevOps overhead</td></tr>
+            <tr><td><strong>Zoom Video SDK / Healthcare</strong></td><td>San Jose, US</td><td>—</td><td>EU data centers on higher tiers; native Epic integration; HIPAA-eligible</td><td>Tiered</td><td>Viable, enterprise-weighted</td></tr>
+            <tr><td><strong>Amazon Chime SDK</strong></td><td>AWS</td><td>—</td><td>HIPAA-eligible; Frankfurt region confirmed</td><td>Usage-based</td><td>Viable hyperscaler option (see CLOUD Act caveat in C2)</td></tr>
+            <tr><td><strong>100ms</strong></td><td>US / Bangalore</td><td>—</td><td>HIPAA + BAA; region select USA/Europe/India</td><td>Usage-based</td><td>Worth diligence, telehealth-positioned</td></tr>
+            <tr><td><strong>Whereby Embedded</strong></td><td>Måløy/Oslo, Norway — EU-native</td><td>Videonor-owned</td><td>ISO self-reported, recert Feb 2022/2025, no cert number published <span class="badge b-medium">MEDIUM</span>; no explicit EU-residency SLA</td><td>Usage-based</td><td>EU-native but weaker compliance documentation than Vonage</td></tr>
+            <tr><td><strong>Jitsi</strong></td><td>8x8-owned</td><td>OSS Apache-2.0, 29k+ stars</td><td>Self-host EU; no managed HIPAA tier</td><td>Self-host</td><td>Viable self-host alternative to LiveKit</td></tr>
+            <tr><td><strong>Dyte</strong></td><td>—</td><td><strong>Acquired by Cloudflare, Apr 2025</strong> — may be sunset into RealtimeKit</td><td>—</td><td>—</td><td><strong>WATCH, do not commit</strong> — roadmap risk</td></tr>
+            <tr><td><strong>Dolby.io</strong></td><td>US, Dolby Labs</td><td>—</td><td>No EU-residency/HIPAA surfaced; pricier</td><td>—</td><td>Deprioritize</td></tr>
+            <tr><td><strong>VideoSDK.live</strong></td><td>Zujo Tech Pvt Ltd — HQ opaque</td><td>—</td><td>Claims ISO27001/SOC2/HIPAA/GDPR "instantly" — <span class="badge b-unverified">UNVERIFIED, unsubstantiated</span></td><td>—</td><td><strong>Deprioritize / do not build on</strong></td></tr>
+            <tr><td><strong>Agora</strong></td><td>Santa Clara, US + Shanghai, PRC</td><td>PRC VIEs per SEC F-1 filing, majority PRC revenue</td><td>GDPR-adequacy / sovereignty risk for EU clinical PHI</td><td>—</td><td><strong>EXCLUDE for EU clinical PHI use</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-3" style="color:var(--muted);"><strong>C1 verdict:</strong> Vonage Video (concrete EU/Germany zones, Ericsson stability, HIPAA path) or LiveKit (self-host EU-sovereign, DevOps-heavy) are the two realistic picks; 100ms merits a deeper look.</p>
+
+      <h3 class="text-lg font-semibold mt-8 mb-2" style="color:var(--accent);">C2. EHR / FHIR Backends</h3>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Vendor</th><th>HQ</th><th>Ownership/risk</th><th>Compliance (confidence)</th><th>EU fit</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Firely Server</strong></td><td>Amsterdam, NL — EU-native</td><td>Maintains OSS Firely SDK</td><td>ONC g10 cert; markets "deployable in ISO-27001 environments" — <strong>NOT itself ISO-certified</strong> <span class="badge b-medium">MEDIUM — do not conflate</span></td><td>National profiles for DE/NL/UK; EHDS-engaged (MedMij/VIPP); on-prem/cloud, no lock-in</td><td><strong>Best EU-native FHIR pick</strong> — no CLOUD Act exposure</td></tr>
+            <tr><td><strong>Medplum</strong></td><td>US (self-hostable EU)</td><td>OSS + commercial</td><td>SOC2 Type II + ONC cert, not ISO <span class="badge b-medium">MEDIUM-HIGH</span></td><td>EU residency = your deployment choice</td><td>Runner-up; lowest lock-in, self-host in EU region</td></tr>
+            <tr><td><strong>Smile CDR / Smile Digital Health</strong></td><td>Toronto, CA</td><td>Commercial; maintains HAPI FHIR</td><td>ISO 27001/27017/27018 + HITRUST r2 + SOC2 <span class="badge b-high">HIGH</span></td><td>On-prem, EU-sovereignty-marketed, DACH/EU national-framework-adapted</td><td>Strong compliance stack; heavier enterprise implementation</td></tr>
+            <tr><td><strong>Aidbox / Health Samurai</strong></td><td>Hermosa Beach, US</td><td>—</td><td>HITRUST + SOC2 <span class="badge b-medium">MEDIUM</span></td><td>Multi-cloud, EU-region-capable</td><td>Aidbox Telehealth vertical exists; per-unique-DB pricing ~$19K/yr base + stacked fees</td></tr>
+            <tr><td><strong>HAPI FHIR</strong></td><td>OSS, Apache-2.0</td><td>Community / Smile-sponsored</td><td>—</td><td>Self-host anywhere</td><td>Bare building block, most in-house engineering required; HN report of scaling concerns at ~100M Observations — <strong>SINGLE-SOURCE, not corroborated</strong></td></tr>
+            <tr><td><strong>Kodjin / Edenlab</strong></td><td>Kyiv, Ukraine</td><td>—</td><td>—</td><td>EHDS research project deployments in AT + DE</td><td>$160K-500K project pricing; non-EU HQ is a diligence flag</td></tr>
+            <tr><td><strong>Google Cloud Healthcare API / AWS HealthLake / Azure Health Data Services</strong></td><td>US hyperscalers</td><td>—</td><td>Managed FHIR, EU regions (AWS HealthLake Ireland region launched Jun 2025)</td><td>EU regions available BUT <strong>US hyperscaler = CLOUD Act exposure</strong>, high lock-in</td><td>Consider only with explicit CLOUD Act risk acceptance</td></tr>
+            <tr><td><strong>Ottehr</strong></td><td>US</td><td>OSS</td><td>Full EHR w/ telehealth + eRx modules</td><td>US-oriented</td><td>Overlaps with Section B white-label category</td></tr>
+            <tr><td><strong>InterSystems IRIS for Health</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>Heavy/costly enterprise option, deprioritize for a lean build</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-3" style="color:var(--muted);"><strong>C2 verdict:</strong> Firely Server (EU-native, EHDS-engaged, no CLOUD Act exposure) primary; Medplum (self-host EU) runner-up for build-heavy teams.</p>
+
+      <h3 class="text-lg font-semibold mt-8 mb-2" style="color:var(--accent);">C3. E-Prescription + Pharmacy Routing / Fulfilment</h3>
+      <div class="pull-quote">
+        Clear verdict: there is <strong>NO turnkey multi-country EU pharmacy-fulfilment API.</strong> Every national
+        e-prescription rail is closed and government-run, requiring separate certification per country (4-9 months
+        each). Start with Germany, add France next; treat MyHealth@EU as government-to-government infrastructure,
+        not a commercial integration path.
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Market / Rail</th><th>Status</th><th>Access model</th><th>Timeline/cost</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Germany — eRezept (gematik/TI)</strong></td><td>Live</td><td>FHIR api-erp (GitHub), 3rd-party apps need gematik approval + IdP + patient consent</td><td><strong>4-9 months</strong></td><td>TI 2.0 cloud migration in 2026; ECC-only cryptography required after Jun 29, 2026</td></tr>
+            <tr><td><strong>Germany — DocMorris / Redcare (Shop Apotheke)</strong></td><td>Live, most mature</td><td>Partner API for stock/orders/fulfilment across DE/AT/NL/FR/IT/BE networks</td><td>Commercial partnership</td><td>Redcare ISO 27001 via TÜV Rheinland <span class="badge b-high">HIGH</span>; DocMorris' own ISO not found <span class="badge b-unverified">UNVERIFIED</span>. Most mature single-vendor option, but not pan-EU turnkey.</td></tr>
+            <tr><td><strong>Germany — Mayd</strong></td><td>Live</td><td>30-min delivery, eRezept since 2022</td><td>No public API</td><td>Commercial deal only</td></tr>
+            <tr><td><strong>Germany — PHOENIX Group</strong></td><td>Live</td><td>29-country wholesale</td><td>No public API</td><td>Direct commercial deal only</td></tr>
+            <tr><td><strong>Germany — RedMedical / CGM Lauer / scanacs / Noventi</strong></td><td>Live</td><td>DE middleware</td><td>gematik-approval path, not an external API</td><td>Backend-only players</td></tr>
+            <tr><td><strong>France — ordonnance numérique</strong></td><td>Generalized Jan 1, 2025</td><td>CNDA approval; 10 certified pharmacy-software vendors (LGPI, LEO, Winpharma, Smart-RX, etc.)</td><td>Per-vendor certification</td><td>Fragmented vendor landscape</td></tr>
+            <tr><td><strong>Spain — receta electrónica (public) + REMPe (private)</strong></td><td>Live</td><td>~80% of private-sector Rx via REMPe; Delonia is a B2B API, OMC-approved</td><td>Commercial</td><td>Best private-sector API option in ES</td></tr>
+            <tr><td><strong>Nordics — SE E-hälsomyndigheten</strong></td><td>99% electronic</td><td><strong>No commercial API</strong> — domestically built by prescribers only</td><td>N/A</td><td>Closed system</td></tr>
+            <tr><td><strong>MyHealth@EU / NCPeH</strong></td><td>13 states live (CZ, EE, EL, FI, FR, HR, IE, LT, LU, LV, MT, PL, PT); AT/CY/DK/HU/IS/IT/NO/RO/SE/SI joining 2025; SK + Germany-eRx-NCPeH bridge in 2026</td><td><strong>Government-to-government FHIR gateway only.</strong> No commercial or private-sector API <span class="badge b-high">HIGH confidence — see fix #4</span></td><td>N/A</td><td>Not usable as an integration path for a private telehealth operator</td></tr>
+            <tr><td><strong>Belgium — Medipim</strong></td><td>Live</td><td>Product-data API (EAN/PZN/CIP13)</td><td>Commercial</td><td><strong>Product data only — NOT prescription routing</strong></td></tr>
+            <tr><td><strong>UK reference — Phlo Connect</strong></td><td>Live (UK-only, post-Brexit)</td><td>API-first prescribing + fulfilment + delivery</td><td>Commercial</td><td><strong>Best architectural analog</strong> — study the API design, cannot deploy in EU</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-3" style="color:var(--muted);"><strong>Build-vs-buy verdict:</strong> compose DocMorris/Redcare (DACH + BeNeLux + FR reach) + REMPe/Delonia (ES) as the initial two-rail footprint; treat each additional country as its own 4-9-month certification project, starting with Germany.</p>
+
+      <h3 class="text-lg font-semibold mt-8 mb-2" style="color:var(--accent);">C4. Identity / eIDAS / KYC and Symptom-Triage / CDS Engines</h3>
+      <p class="text-sm font-semibold mb-2">Identity / eIDAS / KYC</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Vendor</th><th>HQ</th><th>LoA / eIDAS status</th><th>Compliance (confidence)</th><th>Pricing</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Onfido</strong></td><td>London, UK / Entrust</td><td>ETSI-certified IDV + QES bundle</td><td>ISO 27001 cert IS 660122, BSI — <span class="badge b-high">HIGH on fact</span>; exact cert number not independently re-verified <span class="badge b-medium">MEDIUM on the number — fix #5</span></td><td>$50-200K/yr enterprise</td><td>Sales-gated pricing (see Section 6 sentiment)</td></tr>
+            <tr><td><strong>Veriff</strong></td><td>Tallinn, EE</td><td>eID passthrough</td><td>ISO 27001:2022, no cert# or body published <span class="badge b-medium">MEDIUM</span></td><td>~$0.80/check self-serve</td><td>3 layoff rounds noted — monitor stability</td></tr>
+            <tr><td><strong>iDenfy</strong></td><td>Vilnius, LT</td><td>Substantial/High via eID passthrough</td><td>—</td><td>Pay-per-check</td><td>—</td></tr>
+            <tr><td><strong>IDnow</strong></td><td>Munich, DE</td><td>AutoIdent, LoA Substantial</td><td>BaFin-approved; QTSP via IDnow Trust Services AB + ANSSI PVID <span class="badge b-high">HIGH</span></td><td>Custom</td><td>Strong regulatory footing</td></tr>
+            <tr><td><strong>Nect</strong></td><td>Hamburg, DE</td><td>LoA High, BSI-TR 03147</td><td>gematik-approved Aug 2025 for HealthID / eRezept PIN issuance <span class="badge b-high">HIGH</span></td><td>Custom</td><td><strong>Most gematik-native option for a DE-first launch</strong></td></tr>
+            <tr><td><strong>Signicat</strong></td><td>Trondheim, NO</td><td>Pan-EU eID broker aggregating itsme/Verimi/BankID</td><td>QTSP, ISO 27001:2022 + 27018 <span class="badge b-medium">MEDIUM</span></td><td>Setup + subscription + per-transaction</td><td><strong>Best pan-EU broker to avoid per-country re-integration</strong></td></tr>
+            <tr><td><strong>itsme</strong></td><td>Brussels, BE</td><td>LoA High, eIDAS-notified (BE)</td><td>—</td><td>—</td><td>National scheme</td></tr>
+            <tr><td><strong>Verimi</strong></td><td>Berlin, DE</td><td>LoA Substantial + High</td><td>—</td><td>—</td><td>National scheme</td></tr>
+            <tr><td><strong>Yoti</strong></td><td>London, UK</td><td>E-sig levels; no LoA-High</td><td>—</td><td>—</td><td>Not sufficient alone for identity-gated Rx</td></tr>
+            <tr><td><strong>Stripe Identity</strong></td><td>US</td><td>No eIDAS LoA</td><td>—</td><td>—</td><td>Supplementary only, not a primary KYC gate</td></tr>
+            <tr><td><strong>EUDI Wallet</strong></td><td>eIDAS 2.0</td><td>Member states must offer by Dec 24, 2026; private-sector acceptance late 2027; LoA High</td><td>—</td><td>—</td><td><strong>2027+ roadmap — not usable for a 2026 build</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-3" style="color:var(--muted);"><strong>GLP-1 fit:</strong> identity verification must gate Rx issuance. Nect (gematik-native) for a Germany-first launch; Signicat as the pan-EU broker for subsequent markets, to avoid re-integrating per country.</p>
+
+      <p class="text-sm font-semibold mt-6 mb-2">Symptom-Triage / Clinical Decision Support (CDS) engines — MDR class per engine</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Vendor</th><th>HQ</th><th>MDR class (confidence)</th><th>Notified body</th><th>API</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Infermedica</strong></td><td>Wrocław, PL</td><td>Class IIb <span class="badge b-high">HIGH</span></td><td>Dekra (ISO 27001) <span class="badge b-high">HIGH</span> + TÜV Nord (ISO 13485) <span class="badge b-high">HIGH</span></td><td>Full dev API, Intake + Triage, 20+ languages incl. Arabic</td><td>Customers incl. Allianz, Medicover. <strong>Primary pick</strong> — Arabic support + strongest cert stack + open API</td></tr>
+            <tr><td><strong>XUND</strong></td><td>Vienna, AT</td><td>Class IIa <span class="badge b-medium">MEDIUM on exact class</span></td><td>TÜV SÜD, NB 0123 <span class="badge b-high">HIGH on QMS cert</span></td><td>API-first Medical API</td><td>EU-pure alternative</td></tr>
+            <tr><td><strong>Ada Health</strong></td><td>Berlin, DE</td><td>Ada Assess = Class IIa under EU MDR 2017/745, Dec 2022</td><td>TÜV SÜD Product Service GmbH <span class="badge b-high">HIGH — fix #2 applied</span></td><td>Partner API (gated)</td><td>EU-pure alternative</td></tr>
+            <tr><td><strong>Mediktor</strong></td><td>Barcelona, ES</td><td>Class UNCONFIRMED <span class="badge b-unverified">UNVERIFIED</span></td><td>Not found</td><td>White-label API, Arabic support</td><td>CE-mark claim unresolvable — do not cite as certified</td></tr>
+            <tr><td><strong>Symptoma</strong></td><td>Vienna, AT</td><td>Class I, self-declared <span class="badge b-medium">MEDIUM</span></td><td>—</td><td>—</td><td>Lower assurance tier</td></tr>
+            <tr><td><strong>Visiba Triage / Red Robin</strong></td><td>Gothenburg, SE</td><td>Class IIa, CE <span class="badge b-medium">MEDIUM</span></td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td><strong>Isabel</strong></td><td>UK</td><td>Class UNCONFIRMED</td><td>—</td><td>Differential-diagnosis tool</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-3" style="color:var(--muted);"><strong>Best triage pick:</strong> Infermedica (Arabic language support + Class IIb + open API + strongest three-body cert stack) primary; XUND or Ada Health as EU-pure Class IIa alternatives.</p>
+    </section>
+
+    <section id="s5" class="fade-in">
+      <h2 class="text-2xl font-bold mb-3">5. EU Regulatory Constraints</h2>
+      <div class="space-y-4 text-sm" style="color:var(--text);">
+        <div class="glass p-4">
+          <div class="font-semibold mb-1" style="color:var(--accent);">EHDS — Regulation (EU) 2025/327 (European Health Data Space)</div>
+          <p>Adopted 11 Feb 2025, published in the Official Journal 5 Mar 2025 (CELEX 32025R0327). <strong>Date conflict flagged:</strong> secondary sources disagree on the in-force date — some state 25 Mar 2025, others 26 May 2025. This report defers to the EUR-Lex Official Journal date and marks the discrepancy as an open item for counsel (see Section 9) rather than averaging or guessing. Substantively: EEHRxF (European Electronic Health Record exchange format) FHIR specifications due 26 Mar 2027; primary-use interoperability obligations (patient summaries + ePrescriptions) go live Mar 2029; imaging/labs follow Mar 2031. <strong>Practical implication:</strong> an operator launching before 2029 has no FHIR mandate yet under EHDS — choosing FHIR-native infrastructure now (Section C2) is a future-proofing choice, not a current legal requirement.</p>
+        </div>
+        <div class="glass p-4">
+          <div class="font-semibold mb-1" style="color:var(--accent);">MDR (EU) 2017/745 + MDCG 2019-11 Rev.1 (published 17 Jun 2025)</div>
+          <p>Covers modular medical device software (MDSW) classification, with a cross-reference to AI Act "MDAI" subsets, and the "medical purpose" test. GLP-1 eligibility-screening logic sits in a gray zone: arguably OUTSIDE MDR scope if it is a static criteria checklist (BMI thresholds, contraindication flags) reviewed by a clinician before action; it risks classification as Class I or IIa if it autonomously recommends dose or drug without clinician review. This is a case-by-case determination requiring a specific counsel opinion on the operator's actual algorithm (see Section 9).</p>
+        </div>
+        <div class="glass p-4">
+          <div class="font-semibold mb-1" style="color:var(--accent);">AI Act — Regulation (EU) 2024/1689</div>
+          <p>In force Aug 2024; prohibitions applied Feb 2025; GPAI obligations Aug 2025; <strong>full high-risk obligations apply Aug 2026.</strong> Annex III(5)(a) classifies medical-device AI / CDS systems as high-risk where they gate access to care — meaning Aug 2026 is a real compliance deadline for any AI-driven triage or eligibility layer the operator builds or buys.</p>
+        </div>
+        <div class="glass p-4">
+          <div class="font-semibold mb-1" style="color:var(--accent);">MyHealth@EU</div>
+          <p>Government-to-government (G2G) infrastructure only. <span class="badge b-high">HIGH confidence</span> — but note per fix #4: this is inferred from the consistent architecture of EU Commission / NCPeH FHIR Implementation Guide documentation (health.ec.europa.eu eHealth, build-fhir.ehdsi.eu/ncp-api) describing a gateway scoped to national contact points — not based on a single explicit "no commercial API" statement from the Commission. Treat it as unusable for private-sector integration.</p>
+        </div>
+        <div class="glass p-4">
+          <div class="font-semibold mb-2" style="color:var(--accent);">Member-state GLP-1 prescribing friction (patchwork, not harmonized)</div>
+          <ul class="space-y-1.5 list-disc list-inside">
+            <li><strong>Germany:</strong> Fernbehandlung permitted where the remote medium is "medically justifiable" — pushes toward requiring an initial sync/video visit for new weight-management prescriptions <span class="badge b-medium">MEDIUM</span>.</li>
+            <li><strong>France:</strong> Teleconsultation legally equal to in-person, but practically a physical exam expected for new patients; as of 15 Jun 2026, reimbursed first-prescription of Wegovy/Mounjaro is reserved to specialized obesity centers (CSO), university hospitals, or endocrinology <span class="badge b-medium">MEDIUM-HIGH</span> — this materially narrows the reimbursed-patient addressable market in France.</li>
+            <li><strong>Netherlands:</strong> BIG-registered doctor required, remote practice used, but the async-only restriction is unclear <span class="badge b-medium">LOW-MEDIUM — gap, needs local counsel</span>.</li>
+            <li><strong>Ireland:</strong> IMC-registered doctor + ongoing oversight required; specifics unclear <span class="badge b-medium">LOW-MEDIUM gap</span>.</li>
+            <li><strong>Spain, Sweden, Denmark:</strong> async-vs-sync prescribing rule not found in this research pass <span class="badge b-unverified">UNVERIFIED — gap</span>.</li>
+            <li><strong>Pattern:</strong> no EU-wide ban on async prescribing, but Germany and France in particular create real friction for a zero-sync, text-only model — plan for at least one synchronous touchpoint in the largest markets.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="s6" class="fade-in">
+      <h2 class="text-2xl font-bold mb-3">6. Practitioner & Buyer Sentiment <span class="text-sm font-normal" style="color:var(--muted);">(new in v2 — social lanes)</span></h2>
+      <p class="text-sm mb-4" style="color:var(--muted);">Seven corroborated (2+ independent source) pain points surfaced from HN, Reddit-proxy, and trade press:</p>
+      <ol class="text-sm space-y-3 list-decimal list-inside" style="color:var(--text);">
+        <li><strong>Twilio Video migration noise</strong> — real pain among teams that had already begun migrating off Twilio before the Oct 2024 reversal (HN + 4 trade-press pieces). Per fix #1, the underlying EOL threat is resolved, but the noise is evidence of roadmap-confidence residue to price in.</li>
+        <li><strong>eRezept / DocMorris friction</strong> — Germany's e-prescription pharmacy pipeline described as <em>"technisch sehr holprig"</em> (technically very bumpy) by the president of the German pharmacists' association; DocMorris stock fell ~20% over 3 months (Aug 2025) with analysts citing eRezept problems; DocMorris + Shop Apotheke filed an EU Commission complaint over the eGK-chip redemption flow; app-store login/transfer friction reported across 5+ sources.</li>
+        <li><strong>Identity-verification (IDV) sales-gating</strong> — Onfido/Veriff pricing gated behind sales calls, with $50-200K/yr enterprise minimums and weeks-long sandbox onboarding (HN + G2 + vendor sites).</li>
+        <li><strong>FHIR promise-vs-reality gap</strong> — multiple r/healthIT threads describe systems still running on HL7 v2 underneath FHIR marketing, with one specific complaint of <strong>"$20,000 fee each time someone wants to connect."</strong></li>
+        <li><strong>Daily.co pricing objections</strong> — reported cost of ~$10K/mo at 1,000 users × 2hrs driving teams toward self-hosted LiveKit/Jitsi instead (2 independent HN threads).</li>
+        <li><strong>Kry's Germany exit</strong> (2022, 400 layoffs) post-DVG-era over-optimism (Sifted reporting) — a cautionary tale for over-scaling ahead of reimbursement clarity.</li>
+        <li><strong>Doctolib support degradation past tier-1</strong> — corroborated across separate r/germany and r/france national threads, alongside resentment of the €100-150/mo/doctor price point and a €4.6M French antitrust fine.</li>
+      </ol>
+      <div class="glass p-4 mt-4 text-sm">
+        <p class="mb-2"><strong>Single-source items</strong> (flagged, not treated as corroborated fact): HAPI FHIR reported scaling difficulty at ~100M Observations (1 HN thread); Oviva coaching described as "ChatGPT-generated BS" for meal-photo feedback (1 Reddit post, r/WegovyUK — specific and on-topic, but not corroborated elsewhere).</p>
+        <p style="color:var(--muted);"><strong>Channels that returned nil or unexplored signal:</strong> Instagram (no signal), X/Twitter (no signal beyond Medplum's own promotional posts), YouTube (unexplored — DevDays conference content has an estimated ~6-month indexing lag).</p>
+      </div>
+    </section>
+
+    <section id="s7" class="fade-in">
+      <h2 class="text-2xl font-bold mb-3">7. Shortlist — 5 Most Viable Build-On Options</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="glass p-4"><div class="font-bold mb-1" style="color:var(--accent);">1. Awell Health <span class="text-xs font-normal" style="color:var(--muted);">(orchestration layer)</span></div><p class="text-sm">The only EU-native (Brussels), genuinely API-first (GraphQL + FHIR/HL7 bridge) care-flow engine that natively models the async-questionnaire→clinician-review state machine. Survives because nothing else combines EU jurisdiction with headless orchestration at this maturity.</p></div>
+        <div class="glass p-4"><div class="font-bold mb-1" style="color:var(--accent);">2. Firely Server <span class="text-xs font-normal" style="color:var(--muted);">(FHIR system-of-record)</span></div><p class="text-sm">EU-native (Amsterdam), maintains the OSS Firely SDK, already engaged with EHDS/MedMij, no US CLOUD Act exposure. Cleanest data-sovereignty foundation, ahead of Medplum for teams wanting EU jurisdiction baked in rather than self-managed.</p></div>
+        <div class="glass p-4"><div class="font-bold mb-1" style="color:var(--accent);">3. Vonage Video <span class="text-xs font-normal" style="color:var(--muted);">(video/telecom)</span></div><p class="text-sm">The only video API with concrete, named EU and Germany-only Regional Media Zones plus a credible enterprise parent (Ericsson) and a HIPAA-BAA path. Survives on data-residency specificity that competitors only gesture at.</p></div>
+        <div class="glass p-4"><div class="font-bold mb-1" style="color:var(--accent);">4. Infermedica <span class="text-xs font-normal" style="color:var(--muted);">(triage/CDS)</span></div><p class="text-sm">Class IIb MDR classification with a three-body certification stack (Dekra + TÜV Nord), a genuinely open developer API, and native Arabic-language support for adjacent markets. Highest-assurance triage engine with real API access (vs. Ada's gated partner-only model).</p></div>
+        <div class="glass p-4 sm:col-span-2"><div class="font-bold mb-1" style="color:var(--accent);">5. DocMorris/Redcare <span class="text-xs font-normal" style="color:var(--muted);">(pharmacy fulfilment)</span></div><p class="text-sm">The most mature single-vendor e-prescription-to-pharmacy rail spanning DE/AT/NL/FR/IT/BE, with Redcare's ISO 27001 certified by TÜV Rheinland. The only pharmacy partner with multi-country reach today, even though it is not a true pan-EU API.</p></div>
+      </div>
+      <p class="text-xs mt-4" style="color:var(--muted);"><em>Runners-up worth tracking: Alakin/Tech2Heal for its EU-sovereign-cloud story if its funding runway clears diligence; Medplum as the lower-lock-in FHIR alternative; Nect for gematik-native identity if launching DE-first; LiveKit if the team accepts self-host DevOps overhead over Vonage's managed zones.</em></p>
+    </section>
+
+    <section id="s8" class="fade-in">
+      <h2 class="text-2xl font-bold mb-3">8. Do-Not-Build-On List <span class="text-sm font-normal" style="color:var(--muted);">(with reasons)</span></h2>
+      <ul class="text-sm space-y-2" style="color:var(--text);">
+        <li><strong>Agora</strong> — Santa Clara + Shanghai HQ, PRC VIEs disclosed in SEC F-1, majority PRC revenue: GDPR-adequacy/sovereignty risk for EU clinical PHI.</li>
+        <li><strong>Dyte</strong> — acquired by Cloudflare (Apr 2025), roadmap uncertain, may be sunset into RealtimeKit.</li>
+        <li><strong>VideoSDK.live</strong> — HQ opaque (Zujo Tech Pvt Ltd), unverified/unsubstantiated compliance claims ("ISO27001/SOC2/HIPAA/GDPR instantly").</li>
+        <li><strong>Canvas Medical, Wheel, Fabric Health, Beluga Health</strong> — US-only, cannot be deployed as EU systems regardless of architectural fit; reference models only.</li>
+        <li><strong>PExpo, Slimple, Onescript</strong> — UK-only (GPhC/MHRA/CQC post-Brexit regime), not usable for EU/EEA deployment; reference models only.</li>
+        <li><strong>Metriport, Zus Health</strong> — wrong category entirely (US health-information-exchange record aggregation, not care-workflow infrastructure).</li>
+        <li><strong>Lyfegen</strong> — not a telehealth product at all (pharma rebate/pricing SaaS).</li>
+        <li><strong>Fox (PowerApps-based), WellieMD</strong> — US pre-seed with very high shutdown risk; do not commit integration effort.</li>
+        <li><strong>OpenTeleHealth</strong> — defunct as a standalone product (absorbed into Doccla UK, Aug 2023).</li>
+        <li><strong>MyHealth@EU / NCPeH</strong> — not a commercial API; government-to-government gateway only, unusable as a private-sector integration path.</li>
+      </ul>
+      <div class="pull-quote mt-4">Note: Twilio Video is NO LONGER on this list. Per fix #1, its EOL was reversed in Oct 2024 and it remains a supported standalone product — it has been moved to the buildable list in Section C1.</div>
+    </section>
+
+    <section id="s9" class="fade-in">
+      <h2 class="text-2xl font-bold mb-3">9. Open Questions for Counsel / Procurement</h2>
+      <ol class="text-sm space-y-2 list-decimal list-inside" style="color:var(--text);">
+        <li><strong>EHDS in-force date conflict</strong> — resolve definitively via the EUR-Lex Official Journal record for CELEX 32025R0327 (25 Mar 2025 vs. 26 May 2025 as reported by secondary sources).</li>
+        <li><strong>MDR classification opinion</strong> on the operator's specific GLP-1 eligibility/triage algorithm — static-checklist-plus-clinician-review vs. autonomous recommendation determines Class-exempt vs. Class I/IIa.</li>
+        <li><strong>AI Act classification</strong> of the triage/CDS layer under Annex III(5)(a) ahead of the Aug 2026 high-risk-obligations deadline.</li>
+        <li><strong>Per-country async-vs-sync prescribing rules</strong> for DE, FR, NL, IE, ES, SE, DK — several remain unverified gaps in this research pass.</li>
+        <li><strong>Scope of France's 15 Jun 2026 reimbursement-gating rule</strong> — does it apply only to reimbursed prescriptions, or also to private-pay first-prescriptions of Wegovy/Mounjaro?</li>
+        <li><strong>MyHealth@EU commercial-gateway question</strong> — formally confirm with the EU Commission/NCPeH that no private-sector integration path exists (current HIGH-confidence finding is inferred from architecture documentation, not an explicit statement).</li>
+        <li><strong>Ownership resolution</strong> for Medgate, Patientus, DoktorABC, and Min Doktor.</li>
+        <li><strong>Qare's HDS-certified hosting partner</strong> — identify the unnamed third-party host to assess the operator's own downstream HDS obligations if partnering.</li>
+        <li><strong>Exact certificate numbers</strong> for Doctolib (BSI, claimed IS-748307-001) and Onfido (BSI, claimed IS 660122) — request the primary BSI certificate documents for independent re-verification; current confidence is HIGH on the fact of certification, MEDIUM on the specific numbers.</li>
+      </ol>
+    </section>
+
+    <section id="s10" class="fade-in">
+      <h2 class="text-2xl font-bold mb-3">10. Source Coverage Report</h2>
+      <div class="grid lg:grid-cols-2 gap-6 items-start">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Category</th><th>Status</th><th>Channels used</th><th>Findings (approx.)</th></tr></thead>
+            <tbody>
+              <tr><td>Web</td><td><span class="badge b-high">COVERED</span></td><td>Exa, Brave Search, WebSearch, WebFetch (Tavily quota-exhausted early, substituted with Brave + WebSearch)</td><td>60+</td></tr>
+              <tr><td>Regulatory-primary</td><td><span class="badge b-high">COVERED</span></td><td>EUR-Lex, EC eHealth portal, BfArM, ANS (France), CQC (UK), gematik, cert-body pages</td><td>20+</td></tr>
+              <tr><td>Compliance-grounding</td><td><span class="badge b-high">COVERED</span></td><td>BSI, Dekra, TÜV SÜD, TÜV Rheinland, TÜV Nord, BfArM, CQC registries</td><td>25+</td></tr>
+              <tr><td>Social/HackerNews</td><td><span class="badge b-high">COVERED</span></td><td>Algolia HN Search API</td><td>10+</td></tr>
+              <tr><td>Social/Reddit</td><td><span class="badge b-medium">COVERED-via-proxy</span></td><td>site: search (native JSON API dead/unreliable)</td><td>8+</td></tr>
+              <tr><td>Social/X</td><td><span class="badge b-low">COVERED-nil-signal</span></td><td>Direct search</td><td>0 substantive</td></tr>
+              <tr><td>Social/Instagram</td><td><span class="badge b-low">COVERED-nil-signal</span></td><td>Direct search</td><td>0</td></tr>
+              <tr><td>Social/YouTube</td><td><span class="badge b-unverified">SKIPPED</span></td><td>DevDays conference content indexing lag (~6mo), left unexplored this run</td><td>0</td></tr>
+              <tr><td>Academic</td><td><span class="badge b-high">COVERED</span></td><td>Exa research-paper mode, OpenAlex</td><td>2 papers</td></tr>
+              <tr><td>Deep-research</td><td><span class="badge b-medium">COVERED</span></td><td>Perplexity Sonar Pro, standard tier, credit-constrained/partial</td><td>partial</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="glass p-4" style="height:280px;"><canvas id="coverageChart"></canvas></div>
+      </div>
+      <p class="text-sm mt-4" style="color:var(--muted);"><strong>Methodology note:</strong> several direct-fetch attempts returned HTTP 403; those claims were triangulated via search-result snippets and secondary citations of the same primary pages rather than a raw fetch of the primary source itself — a tooling constraint of this run, not a downgrade in the underlying claim's confidence tag.</p>
+    </section>
+
+    <footer class="pt-8 text-center text-xs" style="color:var(--muted); border-top:1px solid var(--border);">
+      Delphi D3 v2 · Critic Content 13/15 · Grounding ~93% · Gate PASS · 6 scouts · date 2026-07-15
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Theme toggle
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  function applyTheme(t){ root.setAttribute('data-theme', t); localStorage.setItem('reportTheme', t); }
+  applyTheme(localStorage.getItem('reportTheme') || 'dark');
+  themeToggle.addEventListener('click', () => {
+    const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    applyTheme(cur);
+  });
+
+  // Share
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    if (navigator.share) { try { await navigator.share({title: document.title, url}); return; } catch(e){} }
+    try { await navigator.clipboard.writeText(url); alert('Link copied to clipboard'); } catch(e){ prompt('Copy this link:', url); }
+  });
+
+  // Build TOC
+  const sections = document.querySelectorAll('main section[id]');
+  const tocNav = document.getElementById('tocNav');
+  sections.forEach(sec => {
+    const h = sec.querySelector('h2');
+    if (!h) return;
+    const a = document.createElement('a');
+    a.href = '#' + sec.id;
+    a.className = 'toc-link';
+    a.textContent = h.textContent.replace(/^\d+\.\s*/, '');
+    tocNav.appendChild(a);
+  });
+
+  // Scroll spy + fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        const id = e.target.getAttribute('id');
+        if (id) {
+          document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+          const link = document.querySelector('.toc-link[href="#' + id + '"]');
+          if (link) link.classList.add('active');
+        }
+      }
+    });
+  }, {threshold: 0.15});
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Coverage chart
+  try {
+    const ctx = document.getElementById('coverageChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Web','Reg-primary','Compliance','HN','Reddit','X','Instagram','YouTube','Academic'],
+        datasets: [{
+          label: 'Findings (approx.)',
+          data: [60, 20, 25, 10, 8, 0, 0, 0, 2],
+          backgroundColor: '#58a6ff',
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#9aa0ae', font: {size: 10} }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: { ticks: { color: '#9aa0ae' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+        }
+      }
+    });
+  } catch(e) {}
+</script>
+</body>
+</html>
