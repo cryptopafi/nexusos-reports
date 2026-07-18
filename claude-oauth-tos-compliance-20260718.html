@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code OAuth Auth in Persistent Orchestration — ToS Compliance (Delphi D3)</title>
+<meta property="og:title" content="Claude Code OAuth Auth in Persistent Orchestration — ToS Compliance">
+<meta property="og:description" content="Delphi D3 compliance research — GREEN/YELLOW/RED checklist for subscription-OAuth automation across a Mac + VPS orchestrator. Grounding ~92%.">
+<meta property="og:type" content="article">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0F;--card:#111118;--accent:#58a6ff;--glass:rgba(17,17,24,0.7);--text:#e6e6ef;--muted:#9aa0b4;--border:rgba(255,255,255,0.08);}
+html:not(.dark){--bg:#fafafa;--card:#ffffff;--accent:#5E6AD2;--glass:rgba(255,255,255,0.75);--text:#1a1a22;--muted:#5a6072;--border:rgba(0,0,0,0.08);}
+*{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;transition:background .3s,color .3s}
+code,.mono{font-family:'JetBrains Mono',monospace}
+.card{background:var(--glass);backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:16px}
+.accent{color:var(--accent)}
+.glow{box-shadow:0 0 60px -20px var(--accent)}
+a.toc{color:var(--muted);text-decoration:none;display:block;padding:4px 0;font-size:.86rem;border-left:2px solid transparent;padding-left:12px;transition:.2s}
+a.toc:hover{color:var(--accent);border-left-color:var(--accent)}
+h2{scroll-margin-top:24px}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-weight:700;font-size:.72rem;letter-spacing:.03em}
+.pill-g{background:rgba(34,197,94,.16);color:#22c55e;border:1px solid rgba(34,197,94,.4)}
+.pill-y{background:rgba(234,179,8,.16);color:#eab308;border:1px solid rgba(234,179,8,.4)}
+.pill-r{background:rgba(239,68,68,.16);color:#ef4444;border:1px solid rgba(239,68,68,.4)}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.04em}
+.fade{opacity:0;transform:translateY(18px);transition:.7s}
+.fade.in{opacity:1;transform:none}
+.quote{border-left:3px solid var(--accent);padding:10px 18px;background:rgba(88,166,255,.06);border-radius:0 10px 10px 0;font-style:italic;color:var(--text)}
+.metric{font-size:1.6rem;font-weight:800;line-height:1}
+@media print{html{--bg:#fff;--card:#fff;--text:#000;--muted:#444}nav,#togglebtn,.no-print{display:none!important}.card{box-shadow:none;border:1px solid #ccc}body{background:#fff}.fade{opacity:1!important;transform:none!important}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="max-w-6xl mx-auto px-5 py-8">
+  <header class="card glow p-7 mb-8 fade in">
+    <div class="flex justify-between items-start gap-4 flex-wrap">
+      <div>
+        <div class="text-xs mono accent mb-2">DELPHI · D3 RESEARCH · 2026-07-18</div>
+        <h1 class="text-2xl md:text-3xl font-extrabold leading-tight max-w-3xl">Claude Code / Subscription-OAuth Authentication in a Persistent Agentic Orchestrator</h1>
+        <p class="text-sm mt-2" style="color:var(--muted)">ToS &amp; Usage-Policy compliance for one Max account, <code>claude setup-token</code> OAuth, across a Mac orchestrator + VPS agent fleet.</p>
+      </div>
+      <button id="togglebtn" onclick="tg()" class="text-xs mono px-3 py-2 rounded-lg no-print" style="border:1px solid var(--border)">◐ theme</button>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+      <div class="card p-4"><div class="metric accent">11/15</div><div class="text-xs mt-1" style="color:var(--muted)">Content score</div></div>
+      <div class="card p-4"><div class="metric accent">~92%</div><div class="text-xs mt-1" style="color:var(--muted)">Grounding (9/10 verified)</div></div>
+      <div class="card p-4"><div class="metric" style="color:#22c55e">PASSED</div><div class="text-xs mt-1" style="color:var(--muted)">Quality gate</div></div>
+      <div class="card p-4"><div class="metric accent">T1</div><div class="text-xs mt-1" style="color:var(--muted)">Anthropic primary-doc dominant</div></div>
+    </div>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8">
+    <nav class="hidden lg:block sticky top-6 self-start no-print">
+      <div class="text-xs mono mb-3" style="color:var(--muted)">CONTENTS</div>
+      <a class="toc" href="#s1">1 · Auth-model distinction</a>
+      <a class="toc" href="#s2">2 · The central clause</a>
+      <a class="toc" href="#s3">3 · Grey &amp; red zones</a>
+      <a class="toc" href="#s4">4 · Rate limits &amp; concurrency</a>
+      <a class="toc" href="#s5">5 · Token security</a>
+      <a class="toc" href="#s6">6 · Account-risk factors</a>
+      <a class="toc" href="#checklist">✦ Compliance checklist</a>
+      <a class="toc" href="#risk">✦ Clearest NexusOS risk</a>
+    </nav>
+
+    <main class="space-y-8">
+
+      <section id="s1" class="card p-6 fade">
+        <h2 class="text-xl font-bold mb-3"><span class="accent">1 ·</span> The auth-model distinction</h2>
+        <p class="text-sm mb-4" style="color:var(--muted)">Anthropic runs two mutually exclusive contracts; each says so in its own text.</p>
+        <table>
+          <thead><tr><th></th><th>Subscription (Pro / Max / Team / Enterprise login)</th><th>API key (Console, usage-billed)</th></tr></thead>
+          <tbody>
+            <tr><td><b>Governs</b></td><td>Consumer Terms of Service</td><td>Commercial Terms of Service</td></tr>
+            <tr><td><b>Credential</b></td><td>Interactive <code>/login</code>, or <code>claude setup-token</code> → <code>CLAUDE_CODE_OAUTH_TOKEN</code> (1-year)</td><td><code>sk-ant-api…</code> key</td></tr>
+            <tr><td><b>Metering</b></td><td>Pooled 5-hour + weekly windows (throttle on exhaustion)</td><td>Per-token usage billing, RPM/TPM org limits</td></tr>
+            <tr><td><b>Revoke / rotate</b></td><td><b style="color:#ef4444">No confirmed working kill-switch</b> (§5)</td><td>Configurable TTL, Console delete, secret-scanning auto-deactivation</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs mt-3 mono" style="color:var(--muted)">Sources: anthropic.com/legal/consumer-terms, /commercial-terms; code.claude.com/docs/en/authentication — HIGH confidence.</p>
+      </section>
+
+      <section id="s2" class="card p-6 fade">
+        <h2 class="text-xl font-bold mb-3"><span class="accent">2 ·</span> The central clause — this is the whole question</h2>
+        <p class="text-sm mb-3">Consumer Terms §3, prohibited uses, verbatim (Critic-verified 2026-07-18):</p>
+        <div class="quote text-sm mb-4">"Except when you are accessing our Services via an Anthropic API Key <b>or where we otherwise explicitly permit it</b>, [you may not] access the Services through automated or non-human means, whether through a bot, script, or otherwise."</div>
+        <p class="text-sm mb-3">Read literally: automation on a subscription is restricted <b>unless</b> (a) you use an API key, or (b) Anthropic "otherwise explicitly permits it." Anthropic's own Claude Code documentation <b>is</b> that explicit permission — <code>claude setup-token</code> produces a one-year OAuth token that "authenticates with your Claude subscription and requires a Pro, Max, Team, or Enterprise plan," expressly "for CI pipelines, scripts, or other environments where interactive browser login isn't available." Headless <code>-p</code>, the Agent SDK, subagents and unattended background sessions are all first-party documented surfaces.</p>
+        <p class="text-sm p-3 rounded-lg" style="background:rgba(34,197,94,.08)"><b class="accent">Conclusion (HIGH):</b> A single person running personal, unattended Claude Code automation on their own subscription OAuth token is a <b>documented, supported</b> pattern — not a ToS workaround. The automation ban targets un-permitted bot/script access; Anthropic explicitly permits its own tooling.</p>
+      </section>
+
+      <section id="s3" class="card p-6 fade">
+        <h2 class="text-xl font-bold mb-3"><span class="accent">3 ·</span> Where the grey and the red actually are</h2>
+        <ol class="text-sm space-y-3 list-decimal pl-5">
+          <li><b>The <code>--bare</code> / Agent-SDK push toward API keys.</b> <code>--bare</code> (Anthropic's recommended mode for scripted/SDK calls, and future default for <code>-p</code>) <b>cannot use OAuth</b> — it requires <code>ANTHROPIC_API_KEY</code>. GitHub Actions and GitLab CI docs document only API-key (or Bedrock/Vertex OIDC) credentials, never <code>setup-token</code>. Subscription OAuth automation is permitted, but Anthropic soft-steers serious/production automation toward API keys. Direction, not prohibition. <span class="mono" style="color:var(--muted)">(T1)</span></li>
+          <li><b>The reselling line.</b> Agent SDK docs: <i>"Unless previously approved, Anthropic does not allow third party developers to offer claude.ai login or rate limits for their products…"</i> The primary text is worded around third-party developers exposing subscription auth <b>to other end-users</b> (reselling). It does <b>not</b> explicitly address one individual's own personal automation — genuinely unresolved either way. <span class="mono" style="color:var(--muted)">(T1)</span></li>
+          <li><b>The economic-steering flux (live, moving).</b> Across Apr–Jun 2026 Anthropic repeatedly changed how third-party/<code>claude -p</code>/SDK usage bills against a subscription — cut it, offered metered credits, reversed, paused. <b>As of 2026-07-18</b> the Critic live-fetched support article 15036540: <i>"Update June 15: We're pausing the changes… nothing has changed: Claude Agent SDK, <code>claude -p</code>, and third-party app usage still draw from your subscription's usage limits."</i> The separate metered credit pool is <b>inactive</b> — but this is an actively-changing area.</li>
+        </ol>
+      </section>
+
+      <section id="s4" class="card p-6 fade">
+        <h2 class="text-xl font-bold mb-3"><span class="accent">4 ·</span> Rate limits &amp; concurrency — the practical ceiling</h2>
+        <ul class="text-sm space-y-2 list-disc pl-5">
+          <li><b>Weekly limits</b> (Pro + Max) introduced 2025-07-28, effective ~2025-08-28, alongside the 5-hour rolling window; Anthropic estimated &lt;5% of subscribers affected.</li>
+          <li><b>Hitting a limit throttles, it does not ban.</b> Error docs: session/weekly/Opus limits "block further requests until the reset time shown." <code>/model</code> escapes only the Opus-specific limit. <span class="mono" style="color:var(--muted)">(T1 — H4 confirmed)</span></li>
+          <li><b>Concurrency draws from one shared pool.</b> Multiple sessions/subagents "multiply token usage"; experimental agent teams ~7×. RPM/TPM concurrency ceilings are an <b>API-org</b> concept and do <b>not</b> apply to subscriptions. <span class="mono" style="color:var(--muted)">(T1)</span></li>
+          <li>Named enforcement <b>trigger</b>, per Anthropic's spokesperson at the Aug-2025 rollout: <b>"24/7 background operation" + "sharing accounts and reselling access"</b> — abnormal sustained volume and credential sharing, not automation per se.</li>
+        </ul>
+      </section>
+
+      <section id="s5" class="card p-6 fade">
+        <h2 class="text-xl font-bold mb-3"><span class="accent">5 ·</span> Token security — the sharpest operational weakness</h2>
+        <ul class="text-sm space-y-2 list-disc pl-5">
+          <li>macOS Keychain item <code>Claude Code-credentials</code> (accessToken/refreshToken/expiresAt). <code>setup-token</code> "does not save the token anywhere; copy it and set as <code>CLAUDE_CODE_OAUTH_TOKEN</code>." Devcontainer guidance: store as a secret/env var; "avoid mounting host secrets… prefer repository-scoped or short-lived tokens." <span class="mono" style="color:var(--muted)">(T1)</span></li>
+          <li><b style="color:#ef4444">Revocation is unreliable.</b> GitHub #43801: "Log out all sessions" / "Revoke all Claude Code instances" did <b>not</b> invalidate a live token ("security theater"). A collaborator claimed a server-side fix and closed it 2026-05-19, but users report recurrence through 2026-07-09, unanswered. Anthropic's "Managing active sessions" article covers only browser sessions — silent on CLI/OAuth tokens. <b>Treat the OAuth token as effectively non-revocable in practice.</b></li>
+          <li><b>API keys are the opposite:</b> configurable TTL (3h→30d/custom/Never), Console delete, GitHub secret-scanning auto-deactivation, WIF for short-lived CI. Genuinely revocable/rotatable/scopable. <span class="mono" style="color:var(--muted)">(T1)</span></li>
+        </ul>
+      </section>
+
+      <section id="s6" class="card p-6 fade">
+        <h2 class="text-xl font-bold mb-3"><span class="accent">6 ·</span> Account-risk factors — what actually gets people flagged</h2>
+        <ul class="text-sm space-y-2 list-disc pl-5">
+          <li><b>Abnormal sustained volume</b> — 24/7 unattended runs, hundreds of fanned-out agents burning a weekly quota in hours. <span style="color:var(--muted)">(Anthropic-named + community)</span></li>
+          <li><b>Credential/account sharing with other people; reselling.</b> <span style="color:var(--muted)">(T1 ToS + consensus)</span></li>
+          <li><b>Multiple accounts to dodge rate limits</b> — mere account count is not the trigger; quota-dodging intent is. <span style="color:var(--muted)">(consensus)</span></li>
+          <li><b>Token-pooling relay architectures</b> across many accounts behind one endpoint. <span style="color:var(--muted)">(speculative)</span></li>
+          <li><b>Opaque "Safeguards Team" suspensions</b> — real, frustrating, causally unattributable.</li>
+          <li class="p-2 rounded" style="background:rgba(88,166,255,.06)"><b>Negative finding:</b> No public ban report isolates <i>one person, one legitimate token, official client, on their own Mac + own VPS</i> as the trigger. A genuine "no evidence found" — weak reassurance, <b>not</b> a safe-harbor.</li>
+        </ul>
+      </section>
+
+      <section id="checklist" class="card p-6 fade">
+        <div class="flex justify-between items-center flex-wrap gap-4 mb-4">
+          <h2 class="text-xl font-bold">✦ Compliance checklist — mapped to NexusOS</h2>
+          <div style="width:150px;height:150px"><canvas id="chart"></canvas></div>
+        </div>
+        <p class="text-sm mb-4" style="color:var(--muted)">NexusOS auth = single Max account, one OAuth <code>setup-token</code>, Keychain <code>Claude Code-credentials</code> on Mac + same credential class on VPS, single owner, long-lived agents.</p>
+        <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>#</th><th>Automation pattern</th><th>Rating</th><th>Source</th><th>NexusOS status</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Run Claude Code headless (<code>claude -p</code>) unattended</td><td><span class="pill pill-g">GREEN</span></td><td>docs/headless (T1)</td><td>In use — allowed</td></tr>
+            <tr><td>2</td><td>Use <code>claude setup-token</code> OAuth for scripts/CI on Max</td><td><span class="pill pill-g">GREEN</span></td><td>docs/authentication (T1) — Anthropic's own path</td><td>Core of NexusOS auth — allowed</td></tr>
+            <tr><td>3</td><td>Wrap the CLI in a personal single-user orchestrator</td><td><span class="pill pill-g">GREEN</span></td><td>Consumer §3 carve-out (T1)</td><td>This <i>is</i> NexusOS — allowed</td></tr>
+            <tr><td>4</td><td>Spawn subagents / multiple sessions on one account</td><td><span class="pill pill-g">GREEN</span></td><td>docs/agents, /costs (T1)</td><td>In use — allowed (watch volume)</td></tr>
+            <tr><td>5</td><td>Hit a rate limit</td><td><span class="pill pill-g">GREEN</span></td><td>docs/errors (T1) — throttle, not ban</td><td>Non-punitive</td></tr>
+            <tr><td>6</td><td>One OAuth token concurrently on Mac + VPS (same person)</td><td><span class="pill pill-y">YELLOW</span></td><td>ToS <b>SILENT</b> (T1); no ban report (community)</td><td><b>Current setup</b> — undocumented, tolerated</td></tr>
+            <tr><td>7</td><td>Long-lived 24/7 agents / sustained high volume</td><td><span class="pill pill-y">YELLOW</span></td><td>Anthropic-named trigger; metered not banned</td><td><b>Current setup</b> — closest to a named flag</td></tr>
+            <tr><td>8</td><td>Prefer <code>--bare</code>/Agent-SDK "production automation" on OAuth</td><td><span class="pill pill-y">YELLOW</span></td><td>docs/headless (T1) — <code>--bare</code> needs API key</td><td>If moving to SDK/bare → switch to API key</td></tr>
+            <tr><td>9</td><td>Rely on token revocation to contain a leak</td><td><span class="pill pill-y">YELLOW</span></td><td>GH #43801 (T2) — revocation unreliable</td><td>Operational risk on VPS</td></tr>
+            <tr><td>10</td><td>Billing stability of subscription automation</td><td><span class="pill pill-y">YELLOW</span></td><td>support 15036540 (T1) — status quo but changing</td><td>Monitor; changed 3× in 2026</td></tr>
+            <tr><td>11</td><td>Share account/credentials with <b>other people</b></td><td><span class="pill pill-r">RED</span></td><td>Consumer §2 (T1)</td><td>Single owner → not doing this</td></tr>
+            <tr><td>12</td><td>Resell access / offer claude.ai login to other users</td><td><span class="pill pill-r">RED</span></td><td>Agent SDK + Consumer §3 (T1)</td><td>Not doing this</td></tr>
+            <tr><td>13</td><td>Multiple accounts to dodge rate limits</td><td><span class="pill pill-r">RED</span></td><td>consensus + AUP (T1/community)</td><td>Not doing this</td></tr>
+            <tr><td>14</td><td>Token-pooling relay across many accounts</td><td><span class="pill pill-r">RED</span></td><td>speculative/community</td><td>Not doing this</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="text-sm mt-4 p-3 rounded-lg" style="background:rgba(34,197,94,.08)"><b>NexusOS lands GREEN on every RED item</b> (single owner, single account, single token, no sharing/reselling/dodging). Its exposure is entirely in the YELLOW band — specifically rows 6, 7, 9.</p>
+      </section>
+
+      <section id="risk" class="card p-6 fade glow">
+        <h2 class="text-xl font-bold mb-3">✦ Single clearest compliance risk in the current NexusOS setup</h2>
+        <p class="text-sm mb-4"><b>Not a ToS violation — an operational / blast-radius risk that sits on top of two grey areas.</b> NexusOS runs (a) <i>long-lived 24/7 agents</i> — the pattern Anthropic itself named ("24/7 background operation") when it introduced enforcement — while (b) <i>sharing one effectively-non-revocable OAuth subscription token across both the Mac and the VPS</i>. If the VPS is compromised, there is no confirmed working way to revoke that token without re-minting on every host, and the sustained-volume profile is the closest thing to a documented flag trigger.</p>
+        <div class="text-sm">
+          <div class="font-semibold mb-2 accent">Highest-leverage mitigations, in order:</div>
+          <ol class="space-y-2 list-decimal pl-5">
+            <li><b>Mint a separate <code>claude setup-token</code> per host</b> (distinct Mac and VPS tokens); never copy the Mac's live Keychain credential to the VPS. Store the VPS token in a secrets manager / <code>0600</code> env file, never in git.</li>
+            <li><b>For the VPS's unattended/headless lanes, prefer an <code>ANTHROPIC_API_KEY</code></b> (revocable, TTL-scoped, secret-scanned) over the OAuth token — removes the <code>--bare</code> incompatibility and insulates you from the subscription-billing flux.</li>
+            <li><b>Instrument weekly-limit proximity</b> and avoid pathological fan-out (hundreds of concurrent subagents) that mimics abuse.</li>
+            <li><b>Keep it single-owner.</b> The bright-line RED rules are exactly what NexusOS already avoids — keep it that way.</li>
+          </ol>
+        </div>
+        <p class="text-xs mt-4 p-3 rounded-lg mono" style="background:rgba(234,179,8,.08);color:var(--muted)">Anti-hallucination note: the concurrent one-token-two-machines question and the personal-vs-reseller line in the Agent SDK clause are genuinely <b>unstated</b> in Anthropic's primary sources. They are YELLOW because they are undocumented, not because a rule was found prohibiting them.</p>
+      </section>
+
+      <footer class="text-center text-xs py-6 mono" style="color:var(--muted)">
+        Delphi D3 · 4 scouts (official / technical / community / token-security) → single Critic (grounding 9/10 + 1 partial, content 11/15) → gate PASSED · 2026-07-18<br>
+        Authority hierarchy: Anthropic ToS + official docs (T1) dominant · GitHub/HN/Reddit (T2) corroboration only.
+      </footer>
+    </main>
+  </div>
+</div>
+<script>
+function tg(){document.documentElement.classList.toggle('dark');localStorage.setItem('th',document.documentElement.classList.contains('dark')?'d':'l')}
+if(localStorage.getItem('th')==='l')document.documentElement.classList.remove('dark');
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.08});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+new Chart(document.getElementById('chart'),{type:'doughnut',data:{labels:['GREEN','YELLOW','RED'],datasets:[{data:[5,5,4],backgroundColor:['#22c55e','#eab308','#ef4444'],borderWidth:0}]},options:{plugins:{legend:{display:false}},cutout:'62%'}});
+</script>
+</body>
+</html>
