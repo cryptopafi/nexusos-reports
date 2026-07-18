@@ -1,0 +1,742 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecting Production Agentic Operating Systems — Best Practices (July 2026)</title>
+<meta name="description" content="Delphi D3 deep-research synthesis on production agentic OS architecture — orchestration, routing, memory, tools, reliability, safety, observability, and failure isolation, audited against the NexusOS stack.">
+<meta property="og:title" content="Architecting Production Agentic Operating Systems — Best Practices (July 2026)">
+<meta property="og:description" content="Delphi D3 research: 8-dimension best-practices synthesis for production agentic operating systems, with a Top-10 gap audit against NexusOS/Hermes/OpenClaw.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<style>
+  :root {
+    --accent: #58a6ff;
+    --accent-rgb: 88,166,255;
+    --bg: #0A0A0F;
+    --card: #111118;
+    --card-glass: rgba(17,17,24,0.7);
+    --border: rgba(255,255,255,0.08);
+    --text: #E6E6EB;
+    --text-dim: #9A9AA8;
+    --text-faint: #6b6b78;
+  }
+  :root[data-theme="light"] {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --card-glass: rgba(255,255,255,0.85);
+    --border: rgba(0,0,0,0.08);
+    --text: #16161d;
+    --text-dim: #55555f;
+    --text-faint: #8a8a94;
+    --accent: #5E6AD2;
+    --accent-rgb: 94,106,210;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --card-glass: rgba(255,255,255,0.85);
+      --border: rgba(0,0,0,0.08);
+      --text: #16161d;
+      --text-dim: #55555f;
+      --text-faint: #8a8a94;
+      --accent: #5E6AD2;
+      --accent-rgb: 94,106,210;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    transition: background .2s ease, color .2s ease;
+    overflow-x: hidden;
+  }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+
+  .bg-glow {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(var(--accent-rgb),0.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 20%, rgba(var(--accent-rgb),0.08), transparent 60%);
+  }
+
+  .glass {
+    background: var(--card-glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* content typography */
+  .prose-body h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-top: 3rem;
+    margin-bottom: .75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 90px;
+    letter-spacing: -0.01em;
+  }
+  .prose-body > h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .prose-body p { line-height: 1.75; color: var(--text); margin-bottom: 1rem; font-size: 0.975rem; }
+  .prose-body > p > em:only-child { color: var(--text-dim); font-size: 0.9rem; }
+  .prose-body ul, .prose-body ol { margin: 0 0 1.5rem 0; padding-left: 0; list-style: none; }
+  .prose-body li {
+    position: relative;
+    padding: 0.9rem 1rem 0.9rem 2.1rem;
+    margin-bottom: 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .prose-body ol { counter-reset: item; }
+  .prose-body ol > li { counter-increment: item; }
+  .prose-body ol > li::before {
+    content: counter(item);
+    position: absolute; left: 0.75rem; top: 0.85rem;
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--accent); color: #fff;
+    font-size: 0.68rem; font-weight: 700; border-radius: 5px;
+  }
+  .prose-body ul > li::before {
+    content: "";
+    position: absolute; left: 0.9rem; top: 1.35rem;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .prose-body li p { margin: 0; }
+  .prose-body strong { color: var(--text); font-weight: 700; }
+  .prose-body em { color: var(--text-dim); font-style: italic; }
+  .prose-body code {
+    background: rgba(var(--accent-rgb),0.12);
+    color: var(--accent);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+  .prose-body hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  .prose-body table {
+    width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem 0;
+    font-size: 0.85rem; border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .prose-body th {
+    background: rgba(var(--accent-rgb),0.1);
+    color: var(--text);
+    text-align: left; padding: 0.6rem 0.9rem; font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+  .prose-body td {
+    padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border); color: var(--text-dim);
+    vertical-align: top;
+  }
+  .prose-body tr:last-child td { border-bottom: none; }
+
+  /* pull-quote style for exec summary lead paragraph */
+  .prose-body #executive-summary + p {
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+
+  /* fade-in on scroll */
+  .fade-in { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* sidebar */
+  .sidebar { position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow-y: auto; }
+  .sidebar::-webkit-scrollbar { width: 5px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .toc-link {
+    display: block; padding: 0.4rem 0.7rem; border-radius: 8px;
+    color: var(--text-dim); font-size: 0.83rem; font-weight: 500;
+    border-left: 2px solid transparent; transition: all .15s ease;
+  }
+  .toc-link:hover { color: var(--text); text-decoration: none; background: rgba(var(--accent-rgb),0.06); }
+  .toc-link.active { color: var(--accent); border-left-color: var(--accent); background: rgba(var(--accent-rgb),0.08); font-weight: 600; }
+
+  .stat-tile {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 0.7rem 0.85rem;
+  }
+  .stat-tile .label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); font-weight: 600; }
+  .stat-tile .value { font-size: 1.35rem; font-weight: 800; color: var(--text); margin-top: 2px; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 0.25rem 0.6rem; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 600;
+    background: rgba(var(--accent-rgb),0.12); color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb),0.25);
+  }
+
+  #topProgress {
+    position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
+    z-index: 100; width: 0%; transition: width .1s ease;
+  }
+
+  .theme-toggle-btn {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--card); border: 1px solid var(--border);
+    cursor: pointer; color: var(--text);
+  }
+  .theme-toggle-btn:hover { border-color: var(--accent); }
+
+  @media print {
+    :root, :root[data-theme="dark"] {
+      --bg: #ffffff; --card: #ffffff; --card-glass: #ffffff;
+      --text: #111111; --text-dim: #444444; --text-faint: #666666;
+      --border: #dddddd; --accent: #2452c9;
+    }
+    body { background: #fff !important; }
+    .no-print { display: none !important; }
+    .bg-glow { display: none !important; }
+    #topProgress { display: none !important; }
+    a { color: #2452c9 !important; text-decoration: underline; }
+    .prose-body li { break-inside: avoid; page-break-inside: avoid; box-shadow: none; }
+    .prose-body h2 { break-after: avoid; page-break-after: avoid; }
+    .glass { backdrop-filter: none; }
+    @page { size: A4; margin: 16mm; }
+  }
+</style>
+
+<div id="topProgress" class="no-print"></div>
+<div class="bg-glow"></div>
+
+<div class="relative z-10 min-h-screen">
+
+  <!-- Header -->
+  <header class="no-print sticky top-0 z-50 glass">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-8 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(var(--accent-rgb),.15);border:1px solid rgba(var(--accent-rgb),.3);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+        </div>
+        <span class="font-semibold text-sm truncate" style="color:var(--text)">DELPHI Research Report</span>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="shareBtn" class="theme-toggle-btn" title="Share">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+        </button>
+        <button id="themeToggle" class="theme-toggle-btn" title="Toggle theme">
+          <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 109 9 9 9 0 11-9-9z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-[1400px] mx-auto px-5 md:px-8 pt-10 md:pt-14 pb-6">
+    <div class="badge mb-4 no-print">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4l-6.3 4.4 2.3-7.2-6-4.4h7.6z"/></svg>
+      DELPHI · Deep Research · D3
+    </div>
+    <h1 class="text-3xl md:text-[2.6rem] font-extrabold leading-tight tracking-tight max-w-4xl" style="color:var(--text)">Architecting Production Agentic Operating Systems — Best Practices (July 2026)</h1>
+    <p class="mt-3 text-sm md:text-base" style="color:var(--text-dim)">Delphi D3 deep-research synthesis, run <code>delphi-20260718-132058-agentic-os</code> · Audience: NexusOS/Hermes/OpenClaw engineering · Published 2026-07-18</p>
+  </section>
+
+  <!-- Layout -->
+  <div class="max-w-[1400px] mx-auto px-5 md:px-8 pb-24 grid grid-cols-1 lg:grid-cols-[240px_1fr_260px] gap-8">
+
+    <!-- TOC sidebar -->
+    <aside class="no-print order-2 lg:order-1">
+      <div class="sidebar">
+        <div class="text-xs font-bold uppercase tracking-wider mb-2 px-2" style="color:var(--text-faint)">Contents</div>
+        <ul class="space-y-0.5">
+          <li><a href="#executive-summary" class="toc-link" data-target="executive-summary">Executive Summary</a></li>
+<li><a href="#1-orchestrator-sub-agent-topology" class="toc-link" data-target="1-orchestrator-sub-agent-topology">1. Orchestrator↔Sub-agent Topology</a></li>
+<li><a href="#2-model-routing" class="toc-link" data-target="2-model-routing">2. Model Routing</a></li>
+<li><a href="#3-memory-amp-knowledge-substrate" class="toc-link" data-target="3-memory-amp-knowledge-substrate">3. Memory & Knowledge Substrate</a></li>
+<li><a href="#4-tool-mcp-boundaries" class="toc-link" data-target="4-tool-mcp-boundaries">4. Tool/MCP Boundaries</a></li>
+<li><a href="#5-reliability-amp-control-loops" class="toc-link" data-target="5-reliability-amp-control-loops">5. Reliability & Control Loops</a></li>
+<li><a href="#6-safety-amp-hardening" class="toc-link" data-target="6-safety-amp-hardening">6. Safety & Hardening</a></li>
+<li><a href="#7-observability-amp-governance" class="toc-link" data-target="7-observability-amp-governance">7. Observability & Governance</a></li>
+<li><a href="#8-failure-isolation-amp-idempotency" class="toc-link" data-target="8-failure-isolation-amp-idempotency">8. Failure Isolation & Idempotency</a></li>
+<li><a href="#source-coverage-report" class="toc-link" data-target="source-coverage-report">Source Coverage Report</a></li>
+<li><a href="#top-10-gaps-recommendations-for-nexusos-hermes-openclaw" class="toc-link" data-target="top-10-gaps-recommendations-for-nexusos-hermes-openclaw">Top 10 Gaps</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="order-1 lg:order-2 min-w-0">
+
+      <!-- Report Coverage chart card -->
+      <div class="card p-5 md:p-6 mb-8 fade-in">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="w-full md:w-48 shrink-0">
+            <canvas id="sourceTierChart" height="180"></canvas>
+          </div>
+          <div class="flex-1 w-full">
+            <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--text-faint)">Source Tier Distribution — 51 sources</div>
+            <div class="grid grid-cols-3 gap-3">
+              <div class="stat-tile"><div class="label">Tier 1</div><div class="value" style="color:#58a6ff">22</div></div>
+              <div class="stat-tile"><div class="label">Tier 2</div><div class="value" style="color:#8b8bf5">24</div></div>
+              <div class="stat-tile"><div class="label">Tier 3</div><div class="value" style="color:#5a5a68">5</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <article class="prose-body fade-in">
+        <p><em>Delphi D3 deep-research synthesis. Run: delphi-20260718-132058-agentic-os. Audience: NexusOS/Hermes/OpenClaw engineering. Doubles as an audit rubric against the current stack.</em></p>
+<hr />
+<h2 id="executive-summary">Executive Summary</h2>
+<p>By mid-2026, a production agentic OS has converged on a recognizable shape: a thin frontier-model orchestrator that decomposes work, embeds explicit scaling rules to prevent uncontrolled fan-out, and delegates to mid-tier subagents isolated by <em>context</em> rather than by role — with writes kept single-threaded or environment-isolated, since uncoordinated parallel writers reliably conflict on merge. Four findings recur across independent sources: (1) orchestration buys parallelism, not coherence, and costs 3-10x more tokens than single-agent execution — it must be justified by task value, not defaulted to; (2) memory and tool context must be actively managed (just-in-time retrieval, condensed subagent summaries, dynamic tool discovery past ~10 tools) or both degrade — "context rot" and the "tool-selection cliff" are measured, not theoretical; (3) reliability requires deterministic, external control (watchdogs that don't trust model self-reports, idempotency keys derived from run-id+step, durable checkpoint/resume), because probabilistic agents fail in ways scripts don't; (4) safety requires structural boundaries — prompt-level instruction hygiene tops out well short of adequate, and the "lethal trifecta" (private data + untrusted content + egress) is a design-time hazard, not a runtime one to filter away.</p>
+<p>The single biggest tension in the literature is <strong>multi-agent cost/coherence versus parallelism</strong>: fanning out subagents is the most reliable lever for throughput, but it is simultaneously the most reliable source of token-cost explosion, merge conflicts, and evaluation blind spots — every credible source treats "how many agents" as a cost/risk dial to be tuned per task, never a default to maximize.</p>
+<hr />
+<h2 id="1-orchestrator-sub-agent-topology">1. Orchestrator↔Sub-agent Topology</h2>
+<p>Default to orchestrator-worker, not mesh; the harder problem is <em>how</em> to split work and <em>when not to</em> fan out at all.</p>
+<ul>
+<li>
+<p>Default to orchestrator-worker (lead decomposes → spawns specialists → synthesizes), not flat/networked mesh. <strong>Source:</strong> Anthropic Engineering, "How we built our multi-agent research system," 2025-06-13; corroborated by OpenAI Agents orchestration docs (Handoffs vs. Agents-as-tools), accessed 2026-07-18. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: follows</strong> — GENIE is an explicit thin orchestrator with a "dispatch not inline" rule.</p>
+</li>
+<li>
+<p>Embed explicit scaling/delegation rules in the orchestrator prompt (agent count and tool-call budget scaled to task complexity) — vague tasks cause duplication and uncontrolled 50+-subagent fan-out. <strong>Source:</strong> Anthropic Engineering, 2025-06-13. <strong>Confidence:</strong> MEDIUM (single primary source). <strong>NexusOS/Hermes/OpenClaw: follows</strong> — lane-based routing (ULTRAWORK 4-6 read lanes / parallel-agents 2-3-or-write / agent-spawn single).</p>
+</li>
+<li>
+<p>Decompose subagents by isolatable <em>context</em>, not by type-of-work; role splits like feature-writer/test-writer/reviewer create coordination overhead and lose context at handoffs. <strong>Source:</strong> Claude/Anthropic blog, Cara Phillips et al., "Building multi-agent systems: when and how," 2026-01-23. <strong>Confidence:</strong> MEDIUM (single primary source, thematically echoed by Cognition's context-rot argument for review agents below). <strong>NexusOS/Hermes/OpenClaw: partial</strong> — DEV routing (builder/fixer/integrator/pipeliner) is closer to a type-of-work split than a context-isolation split; not evaluated against this principle.</p>
+</li>
+<li>
+<p><strong>CONTRARIAN — do not fan out parallel write workers without isolation.</strong> Uncoordinated implicit decisions conflict on merge; give each write worker its own VM/shell/branch with a coordinator reading full trajectories to resolve conflicts, or better, keep writes single-threaded and use extra agents only for review/escalation/delegation. <strong>Source:</strong> Cognition, "Devin can now manage Devins," 2026-03-19; Cognition/Walden Yan, "Don't build multi-agents," 2025-06-12, reaffirmed 2026-04-22. <strong>Confidence:</strong> HIGH (same author, two posts 10 months apart with consistent conclusion; independently corroborated by HN 47761625, "shared-nothing beats shared mutable state," 2026-04-14). <strong>NexusOS/Hermes/OpenClaw: follows</strong> — <code>isolation:"worktree"</code> gives per-agent write isolation; TECH owns its own build→verify→audit→gate sub-pipeline rather than parallel uncoordinated writers.</p>
+</li>
+<li>
+<p><strong>CONTRARIAN — cost floor.</strong> Multi-agent systems reliably cost 3-10x (Anthropic measured ~15x vs. a single chat turn) more tokens than single-agent; only justify the overhead when task value clearly exceeds it. <strong>Source:</strong> Anthropic Engineering, 2025-06-13; Cognition, 2025-06-12. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — "ALWAYS PARALLELIZE" ("several agents at once by default") does not gate on task-value-exceeds-overhead; no documented cost/value check precedes fan-out.</p>
+</li>
+<li>
+<p>The practical concurrency sweet spot is small (2-3 agents plus a human), not double digits; one documented 84-hook orchestrator broke on concurrent JSON writes and was fixed only by serializing dispatch. Topology alone — independent of the underlying model — can swing latency &gt;100x and coordination success from 90% to under 30% (EARLY-STAGE/single-study). <strong>Source:</strong> HN 46993479, 2026-02-12; MAFBench, arXiv:2602.03128 (Orogat et al.), 2026-02-03. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: partial</strong> — lane thresholds (2-3 vs. 4-6) roughly track the empirical sweet spot, but no serialized-dispatcher pattern is documented for concurrent state writes (e.g., MEMORY.md, run-state JSON).</p>
+</li>
+<li>
+<p>Verification/review subagents work best with clean, unshared context but must be explicitly instructed to run complete checks — the top orchestration failure is verifiers rubber-stamping without doing the work. <strong>Source:</strong> Claude/Anthropic blog, 2026-01-23; Cognition, 2026-04-22 (clean-context review catches ~2 bugs/PR, ~58% severe). <strong>Confidence:</strong> HIGH (2 independent sources). <strong>NexusOS/Hermes/OpenClaw: follows</strong> — forge-auditor/forge-auditor-b/audit-reconciler run with independent context; VERIFIER-WRITES-FOOTER forces the verifier to actually run checks before writing a verification claim.</p>
+</li>
+<li>
+<p>Multi-agent gains are "often minimal" in controlled study, and orchestration buys parallelism, not coherence — evaluation remains the hardest unsolved problem. <strong>Source:</strong> MAST, arXiv:2503.13657 (Berkeley, Cemri et al., 1,600+ traces, 7 frameworks, 14 failure modes), 2025-03-17; HN 46746681, 2026-01-24. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no measurement compares orchestrated vs. single-agent outcome quality; parallelize-by-default is a standing rule, not an evaluated choice.</p>
+</li>
+</ul>
+<h2 id="2-model-routing">2. Model Routing</h2>
+<p>Tiering is well-established; the frontier is knowing when routing itself helps versus hurts.</p>
+<ul>
+<li>
+<p>Put the frontier model on the orchestrator, mid-tier models on parallel subagents — Opus lead + Sonnet subagents beat single-agent Opus by 90.2% on an internal research eval. <strong>Source:</strong> Anthropic Engineering, 2025-06-13. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: follows</strong> — HARD rule: Genie=Opus orchestrator, Sonnet=execution, Haiku=triage.</p>
+</li>
+<li>
+<p>Token/tool-call budget explains ~80% of eval variance, but per unit of spend, upgrading model tier beats doubling the token budget on an older model. <strong>Source:</strong> Anthropic Engineering, 2025-06-13. <strong>Confidence:</strong> MEDIUM (single source). <strong>NexusOS/Hermes/OpenClaw: not audited</strong> — no budget-vs-tier tradeoff data documented.</p>
+</li>
+<li>
+<p>Build model selection empirically: prototype with the most-capable model everywhere for a baseline, swap to cheaper models per-task, re-run evals, and keep frontier only where the target remains unmet. <strong>Source:</strong> OpenAI, "A practical guide to building agents," 2026-01-14. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — routing (Genie/Haiku/Sonnet/Opus tiers) is rule-based, not empirically re-validated per task via eval sweeps.</p>
+</li>
+<li>
+<p>Router maturity ladder: static rules → weighted splits → semantic/classifier routing → cascades (cheap model, escalate on low confidence). Classifier or embedding+kNN routers are fast enough for real-time (~10-100ms); LLM-as-judge routing is too slow (+1-5s) for live paths. <strong>Source:</strong> TrueFoundry (Boyu Wang), 2026-06-08; Sean Geng, 2026-06-03. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: follows (static-rules rung)</strong> — model routing is the static-rule tier, the simplest and most reliable rung; no classifier/cascade layer, which is appropriate at current scale but a ceiling if task diversity grows.</p>
+</li>
+<li>
+<p>Discount headline router cost-savings claims: FrugalGPT's 98% and RouteLLM's 85% are dataset best-cases; ~20-25% cost reduction per session is the defensible real-traffic number. <strong>Source:</strong> Sean Geng, 2026-06-03. <strong>Confidence:</strong> MEDIUM (single source). <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no per-session cost-reduction measurement exists against a non-routed baseline.</p>
+</li>
+<li>
+<p><strong>CONTRARIAN, GROUNDED — naive routing can underperform always-using-the-best-model.</strong> OpenRouter's Auto Router scored -24.7% versus a Best-Single-model baseline; even the strongest router in the benchmark (Avengers-Pro) only <em>matched</em> Best-Single quality, while achieving up to 31.7% cost reduction — the real payoff of routing is cost, not quality, and a bad router actively hurts quality. <strong>Source:</strong> Li et al., "LLMRouterBench," arXiv:2601.07206, 2026-01-12. <strong>Confidence:</strong> MEDIUM (single grounded academic primary source; no independent replication located yet). <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no routing-quality benchmark exists; the existing "AGENT MODEL PARAM UNVERIFIED" HARD rule already flags a more basic version of this risk (manual model-override routing not confirmed to hit the intended backend).</p>
+</li>
+<li>
+<p>Router operator controls are non-negotiable: a cost/quality dial, org allow/block lists, transparency about which model actually ran, and a hard manual override — "routing is not failover." <strong>Source:</strong> TrueFoundry, 2026-06-08. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: partial</strong> — per-lane model pinning ("execution lanes pin sonnet, never silently inherit a /model switch") is a manual-override/anti-drift control, but no runtime transparency layer surfaces which model actually served a given call.</p>
+</li>
+<li>
+<p>Good routers can beat the single strongest model, but only under real operational constraints (cost ceilings, latency SLAs); calibrated cascades (e.g., isotonic regression on prediction-margin uncertainty) can cut cost ~31% at held quality on narrow, well-defined tasks (EARLY-STAGE/single-study). <strong>Source:</strong> Moslem &amp; Kelleher, arXiv:2603.04445, 2026-02-23; Kotte, "UCCI," arXiv:2605.18796, 2026-05-11. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no cascade/confidence-based escalation logic in routing.</p>
+</li>
+</ul>
+<h2 id="3-memory-amp-knowledge-substrate">3. Memory &amp; Knowledge Substrate</h2>
+<p>Retrieval and write-path hygiene both matter; most production pain is write-side (staleness, contradiction, decay), not retrieval-side.</p>
+<ul>
+<li>
+<p>Just-in-time retrieval: store lightweight identifiers (paths, queries, links), retrieve full content at runtime rather than pre-loading everything into context. <strong>Source:</strong> Anthropic, "Effective context engineering for AI agents," 2025-09-29. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: partial</strong> — Cortex-first gate + tool-inventory-first reflex fetch on demand, but MEMORY.md itself (~200 dense lines) loads whole every session rather than being retrieved just-in-time.</p>
+</li>
+<li>
+<p>Guard against "context rot": recall accuracy degrades as tokens accumulate — keep only what's necessary in working memory, offload the rest to persisted notes/files. <strong>Source:</strong> Anthropic, 2025-09-29. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: partial</strong> — /dream consolidation + 200-line MEMORY.md cap is a real anti-bloat mechanism, but the 1,311-procedure index plus dense pointer format still risks working-memory rot at session start.</p>
+</li>
+<li>
+<p>Subagents should return condensed 1-2K-token summaries to the orchestrator, never raw transcripts. <strong>Source:</strong> Anthropic, 2025-09-29. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: follows</strong> — Delphi scouts return condensed summaries to the orchestrator by design.</p>
+</li>
+<li>
+<p>Treat memory as a WRITE path, not just a retriever: explicit consolidation — merge, resolve contradictions, decay stale entries — beats an append-only vector store; separate semantic/episodic/procedural memory with distinct update and retrieval logic per type. <strong>Source:</strong> Medium/Michael Lanham, 2026-04 (MEDIUM); LangChain LangMem SDK launch, 2025 (HIGH). <strong>Confidence:</strong> MEDIUM-HIGH. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — Cortex has no episodic/procedural/semantic split; all collections (rules, conversations, business_*, ideas, decisions, research, technical, general) are flat semantic-style stores with no TTL/decay or contradiction-resolution pass beyond /dream's manual pruning.</p>
+</li>
+<li>
+<p>Use multi-signal retrieval (semantic + BM25 + entity) with a two-phase extract-at-write/retrieve-top-K-at-query pattern, and scope memory with multi-key isolation (user_id, agent_id, run_id, org_id) to prevent cross-tenant leakage. <strong>Source:</strong> Mem0 blog, 2026-07-18. <strong>Confidence:</strong> MEDIUM (single vendor blog). <strong>NexusOS/Hermes/OpenClaw: partial</strong> — Cortex is host-aware (Mac vs. VPS) but has no documented multi-key scoping inside collections for cross-agent/cross-run isolation.</p>
+</li>
+<li>
+<p>Sleep-time compute: use idle turns to consolidate/rewrite memory off the critical path — incremental online writing during live work leaves memory messy. <strong>Source:</strong> Letta blog, 2025-04-21. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: follows</strong> — /dream is a direct sleep-time-compute analog (reads recent sessions, prunes MEMORY.md, runs off the live task path).</p>
+</li>
+<li>
+<p>EARLY-STAGE/single-study but notable: no single memory architecture dominates across workloads — localized incremental maintenance tends to beat global reorganization; a scoped active-core-plus-passive-store design reached 93.8% on LongMemEval at ~10.7x fewer tokens than baselines. <strong>Source:</strong> agent-native memory study, arXiv:2606.24775, 2026-06-23 (12-system/5-workload benchmark, HIGH); Oracle, "Oracle Agent Memory," arXiv:2607.13157, 2026-07-14 (EARLY-STAGE/single-study). <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — Cortex has no active-core/passive-store split or token-efficiency benchmark against alternatives.</p>
+</li>
+</ul>
+<h2 id="4-tool-mcp-boundaries">4. Tool/MCP Boundaries</h2>
+<p>The dominant failure mode here is scale, not access control — too many always-loaded tools degrades accuracy before it degrades security.</p>
+<ul>
+<li>
+<p>Use dynamic tool discovery (Tool Search Tool, defer_loading) once past ~10 tools or 10K tokens of tool definitions: 85% context cut; MCP-eval accuracy rose 49%→74% (Opus 4) and 79.5%→88.1% (Opus 4.5). <strong>Source:</strong> Anthropic, "Advanced tool use," Bin Wu et al., 2025-11-24. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — the orchestrator's always-loaded MCP surface (cortex, tavily, brave, exa, arxiv, openalex, wikipedia, apify, youtube, computer-use, and more) has no documented dynamic-discovery mechanism at the agent-definition level; this report's own session required an explicit deferred-tool ToolSearch pass, evidence the pattern exists in the runtime but isn't systematically applied.</p>
+</li>
+<li>
+<p>Use programmatic tool calling (agent writes code that orchestrates tool calls) to keep intermediate results out of context — 37% token cut plus accuracy gains. Present MCP servers as code APIs, discoverable on-demand filesystem-style, rather than loading full schemas: one workflow dropped from 150K to 2K tokens (98.7% cut). <strong>Source:</strong> Anthropic, "Advanced tool use," 2025-11-24; Anthropic, "Code execution with MCP" (Jones &amp; Kelly), 2025-11-04. <strong>Confidence:</strong> HIGH (2 independent Anthropic engineering posts, same underlying pattern). <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no code-execution-as-MCP-interface pattern documented.</p>
+</li>
+<li>
+<p>Enforce least privilege at the tool level, not the server level: default-deny with a narrow allowlist per agent/role varied by task/intent; each tool should declare its needed permission and identity per invocation, with mutating calls audited and access time-boxed. <strong>Source:</strong> Maxim AI, 2026; WorkOS (Maria Paktiti), 2026-07-14. <strong>Confidence:</strong> HIGH (2 independent vendor sources converge). <strong>NexusOS/Hermes/OpenClaw: partial</strong> — agent definitions explicitly restrict per-agent tool lists (e.g., cortex-searcher = Bash only; forge-auditor = Read/Grep/Glob/Bash), but audit-mutating-calls and time-boxed access are not confirmed.</p>
+</li>
+<li>
+<p>Group tools task-oriented and scoped rather than by API structure: virtual/scoped "Tool Groups" exposing only 5-10 tools an agent actually needs cut context overhead ~80%. <strong>Source:</strong> Speakeasy MCP docs; Scalekit (Ravi Madabhushi), 2026-06-30. <strong>Confidence:</strong> MEDIUM (2 independent vendor sources). <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no scoped Tool Groups mechanism; orchestrator-level MCP surface is broad and undifferentiated by task.</p>
+</li>
+<li>
+<p><strong>FAILURE — tool-selection cliff around 30-40 tools.</strong> Cutting 40→13 tools improved SWE-bench scores 2-5 points and shaved 400ms; a controlled test held 20/20 success at 10 tools, 19/20 at 20, and failed completely at 107. Real deployments with 150+ tools carry 30-60K tokens of pure metadata and trigger three failure modes — wrong tool selected, agent freeze, hallucinated tool calls. Fix is scoped Tool Groups, not raising context caps. <strong>Source:</strong> Speakeasy + startdebugging.net, 2026-05; Lunar.dev (Eyal Solomon), 2026-06-15. <strong>Confidence:</strong> MEDIUM (2 independent sources, consistent numbers). <strong>NexusOS/Hermes/OpenClaw: gap</strong> — the orchestrator's MCP roster runs well past the 30-40-tool cliff before deferred-tool loading is invoked; the risk is live, not hypothetical.</p>
+</li>
+</ul>
+<h2 id="5-reliability-amp-control-loops">5. Reliability &amp; Control Loops</h2>
+<p>Every credible source converges on the same shape: bound everything (time, tokens, depth, iterations), and never let the agent judge its own liveness.</p>
+<ul>
+<li>
+<p>Layer loop termination: hard iteration cap + token/time budget + no-progress detection + a verifier that confirms the goal was actually reached — no single mechanism suffices alone. <strong>Source:</strong> eesel AI, "Loop engineering," 2026. <strong>Confidence:</strong> MEDIUM (single source, internally multi-part, consistent with circuit-breaker literature below). <strong>NexusOS/Hermes/OpenClaw: partial</strong> — ralph's max-10-iteration cap and exponential backoff (1→2→4→8s, max 4) cover budget/retry; no documented no-progress detector distinct from the stall-supervisor.</p>
+</li>
+<li>
+<p>Put circuit breakers on every retry path with a fixed limit and explicit failure report — unbounded retry-on-ambiguous is the most common runaway shape. <strong>Source:</strong> eesel AI, 2026. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: follows</strong> — exponential backoff HARD rule + Delphi gates.sh include a retry gate.</p>
+</li>
+<li>
+<p>Keep the watchdog/supervisor deterministic and external to the agent's own reasoning loop — never rely on the model self-reporting a stall; pair with an external heartbeat/dead-man's-switch (missed check-ins trigger graceful save-state → cleanup → shutdown). <strong>Source:</strong> Anthropic, "How we contain Claude" (McGuinness et al.), 2026-05-25; RedSwitch.ai + OneUptime, 2026. <strong>Confidence:</strong> MEDIUM (T1 primary plus two weaker corroborating). <strong>NexusOS/Hermes/OpenClaw: partial</strong> — stall-supervisor.sh and loop-deadman.sh are architecturally correct (external, deterministic), but stall-supervisor is <strong>unscheduled (not on cron)</strong> and there is <strong>no automatic resume</strong> — a stalled run requires manual re-dispatch, undermining the graceful-shutdown half of the pattern.</p>
+</li>
+<li>
+<p><strong>CORRECTED — bound every recursive or hook-triggered chain with an explicit timeout and depth limit</strong>; an unbounded chain is the most direct route to a runaway that silently burns budget for hours. <strong>Source:</strong> practitioner-blog anecdote, DevToolPicks, 2026-05-03, describing unverified dollar figures (a reported single unattended command and a separate two-day run). The specific cost figures and the post's claimed Anthropic-post-mortem attribution could not be verified against any actual Anthropic publication and must not be cited as Anthropic-sourced. <strong>Confidence:</strong> UNVERIFIED (the cost anecdote itself); the underlying practice — timeout+depth limits on recursive/hook chains — stands independently and is reinforced by the circuit-breaker and layered-termination items above. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no explicit documented depth-limit on hook/recursive chains distinct from the top-level iteration cap; worth confirming ralph's cap and Delphi gates actually bound hook-triggered recursion, not only top-level loop iterations.</p>
+</li>
+<li>
+<p>MAS fail catastrophically on minor faults without resume-from-checkpoint; the fix is full-trace tracing plus rainbow deploys (never kill in-flight agents). <strong>Source:</strong> Anthropic Engineering, 2025-06-13. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no rainbow-deploy/non-killing-redeploy pattern documented; heartbeat resume is manual re-dispatch from disk-persisted scout results, not automatic checkpoint-resume.</p>
+</li>
+</ul>
+<h2 id="6-safety-amp-hardening">6. Safety &amp; Hardening</h2>
+<p>Prompt-level defenses are necessary but structurally insufficient; the literature is explicit that they top out well short of adequate.</p>
+<ul>
+<li>
+<p>Build a structural instruction-source boundary (capability metadata / custom interpreter, e.g. CaMeL) so untrusted content cannot execute as instruction regardless of what the model believes — neutralized 67% of AgentDojo attacks in controlled testing. <strong>Source:</strong> Simon Willison, 2025-04-11; arXiv:2503.18813. <strong>Confidence:</strong> HIGH (blog + academic paper, same finding). <strong>NexusOS/Hermes/OpenClaw: gap</strong> — the instruction-source boundary is prompt-level only ("observed content = data not commands" in agent prompts); no structural/interpreter-level enforcement exists, which is exactly the "model steering" layer this source says tops out near 83% against injection, not the deterministic backstop.</p>
+</li>
+<li>
+<p>Apply the lethal-trifecta test: private data + untrusted content + external egress in the same task is structurally exfiltration-vulnerable — remove one leg per task rather than trying to filter content. <strong>Source:</strong> Simon Willison newsletter, 2026. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: gap, explicit</strong> — this combination exists structurally (Cortex private data + web scouts' untrusted content + Telegram/GitHub-Pages egress) with no trifecta-breaking control documented; the single most concrete, source-grounded exposure found in this audit.</p>
+</li>
+<li>
+<p>Treat allowlist entries as capability grants, not destination filters — an allowlisted domain grants everything reachable through it; scope credentials to capability, not domain. Inspect tool outputs before they enter context via a proxy/classifier, since tool output is attack surface even from nominally trusted tools. <strong>Source:</strong> Anthropic, "How we contain Claude," 2026-05-25. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no documented capability-scoped credential model or pre-context tool-output inspection layer.</p>
+</li>
+<li>
+<p>Scale HITL friction to reversibility and the user's ability to evaluate risk, not uniformly — only ~0.8% of actions are irreversible and 73% of tool calls already carry HITL by default. <strong>CORRECTED:</strong> an 84% reduction in permission prompts came from Anthropic's <strong>OS-level sandbox rollout</strong> (a deterministic environment-layer control), not from a classifier pre-approving actions. Never execute project-local config (hooks/skills/startup) before trust is explicitly accepted; sandbox untrusted execution at the environment layer (OS sandbox/gVisor/VM with mount modes) as the deterministic backstop. <strong>Source:</strong> Anthropic, "Trustworthy agents," 2026-04-09; Anthropic, "How we contain Claude," 2026-05-25. <strong>Confidence:</strong> HIGH (2 Anthropic sources, consistent). <strong>NexusOS/Hermes/OpenClaw: gap</strong> — HITL scaling is comparable in spirit (RUO Supabase writes → Narcis executes; PROCEDURE GATE asks before research/business execution), but no environment-layer sandbox exists for untrusted web content, and no pre-trust-acceptance gate on project-local config execution is documented.</p>
+</li>
+<li>
+<p><strong>CORRECTED — four real, multi-source-corroborated production-agent compromises occurred Jan 7-15, 2026</strong> via indirect prompt injection inside the lethal trifecta: IBM's "Bob," Notion AI (poisoned resume), Superhuman (email → Google Forms exfiltration), and Claude Cowork (hidden white text in a shared skill document drove an SSN upload to an attacker-controlled Anthropic account). <strong>PromptArmor</strong> disclosed the Cowork skill-document exfiltration; this is distinct from Johann Rehberger's separate, earlier Files-API disclosure (Oct-2025). Whitelisting by destination or file-type was the common enabler across all four. <strong>Source:</strong> Roval (David Baum), 2026-04-30; PromptArmor, Jan-2026 disclosure; Rehberger, Oct-2025 (separate incident). <strong>Confidence:</strong> HIGH (multi-source, multi-incident corroboration). <strong>NexusOS/Hermes/OpenClaw: gap</strong> — the same lethal-trifecta shape (private-KB access + untrusted web/document content + publish/send egress) exists in the Delphi/Cortex/publish pipeline; no destination/file-type-independent control is documented.</p>
+</li>
+<li>
+<p>Treat runtime behavioral drift as distinct from prompt injection and monitor it directly — OWASP's 2026 Top 10 Agentic formalizes "Rogue Agent" drift, requiring anomaly detection on behavior, not just input. EARLY-STAGE/single-study caution: peer-pressure-style convergence toward unsafe behavior can occur even under a supervising agent, and framing alone can shift safety preferences — per-agent evaluation is insufficient for multi-agent systems. <strong>Source:</strong> OWASP GenAI, 2026 (HIGH); MAEBE, arXiv:2506.03053, 2025-06-03 (single study). <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no behavioral-drift/anomaly monitor exists; quality gates (Content/Grounding, Critic council) check output quality, not behavioral drift across a run.</p>
+</li>
+<li>
+<p>No model or defense currently achieves both high fidelity and high security simultaneously (96.5% fidelity at 47.8% security vs. 99.3% security at 71-74% fidelity). EARLY-STAGE/single-study. <strong>Source:</strong> SecFid, arXiv:2606.30783, 2026-06-29. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: context</strong> — frames why prompt-level-only defenses (item 1 above) cannot be expected to reach both goals without an architectural change.</p>
+</li>
+</ul>
+<h2 id="7-observability-amp-governance">7. Observability &amp; Governance</h2>
+<ul>
+<li>
+<p>Adopt OpenTelemetry GenAI semantic conventions: create_agent/invoke_agent/execute_tool spans, with gen_ai.client.operation.duration required and token-usage metrics recommended; propagate one trace ID across every service boundary. <strong>Source:</strong> OpenTelemetry blog, 2026; Langfuse docs, 2026. <strong>Confidence:</strong> HIGH (2 independent sources, published standard). <strong>NexusOS/Hermes/OpenClaw: gap, explicit</strong> — "no OpenTelemetry GenAI spans / distributed tracing — observability is log-file + JSON-artifact based." Per-run JSON artifacts (run-metrics, coverage, gate-outcomes.log) are a reasonable ad hoc substitute but don't compose across agents/services the way a propagated trace ID does.</p>
+</li>
+<li>
+<p>Treat agent/framework-level spans as still experimental even though client spans stabilized in early 2026 — pin SDK versions, expect attribute churn. <strong>Source:</strong> Greptime, 2026-05-09. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: not applicable yet</strong> — no tracing SDK in use, so no churn exposure; becomes relevant the moment OTel is adopted.</p>
+</li>
+<li>
+<p>Use Anthropic's eval taxonomy (Task/Trial/Grader/Transcript/Outcome) with isolated LLM-judges per dimension rather than one omnibus judge, and recalibrate graders against human SME judgment on a fixed cadence. <strong>Source:</strong> Anthropic, "Demystifying evals," 2026. <strong>Confidence:</strong> HIGH. <strong>NexusOS/Hermes/OpenClaw: follows</strong> — "Critic council with isolated axes (never blended)" matches the isolated-per-dimension-judge pattern directly.</p>
+</li>
+<li>
+<p>Run online evaluators against live traces asynchronously, off the critical path, and convert any caught regression into a permanent eval case. <strong>Source:</strong> Braintrust, 2026. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no mechanism converts a caught regression into a durable eval/regression case; audits are point-in-time (FORGE-AUDIT/cross-model) rather than continuously replayed.</p>
+</li>
+<li>
+<p><strong>FAILURE — cost dashboards are not budget enforcement.</strong> LangSmith, Braintrust, Arize, and Helicone all record cost but none can kill an in-flight over-budget run; hard caps require a gateway/proxy in front of the model call itself. <strong>Source:</strong> LangChain docs; Waxell, 2026. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: partial</strong> — Delphi enforces a cost ceiling in code (lib/gates.sh), which is closer to correct (enforcement, not dashboard) for that one pipeline, but is not confirmed to exist as a cross-fleet gateway-level spend cap — a runaway in GENIE, TECH, or OpenClaw outside Delphi's gates has no equivalent kill-switch.</p>
+</li>
+</ul>
+<h2 id="8-failure-isolation-amp-idempotency">8. Failure Isolation &amp; Idempotency</h2>
+<ul>
+<li>
+<p>Give each concurrent agent its own git worktree (own directory+branch, shared object database) — in practice review throughput bottlenecks around 4-8 worktrees per developer, not the isolation mechanism. <strong>Source:</strong> Augment Code, 2026. <strong>Confidence:</strong> MEDIUM-HIGH. <strong>NexusOS/Hermes/OpenClaw: follows</strong> — Agent tool supports <code>isolation:"worktree"</code>.</p>
+</li>
+<li>
+<p>Choose sandbox depth by threat model, not by default: Firecracker microVMs (own kernel, ~150ms cold start) for the strongest isolation, gVisor for GPU workloads, hardened OCI with seccomp/netpolicy (27-90ms) when speed matters more than kernel isolation. <strong>Source:</strong> AgentMarketCap, 2026-04-10. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no environment-layer sandbox of any depth documented for untrusted web content (same gap noted in Dimension 6).</p>
+</li>
+<li>
+<p>Build durable execution/checkpointing (Temporal, LangGraph checkpointers, Inngest, Restate, DBOS) so a workflow resumes from its last completed step rather than restarting whole. <strong>Source:</strong> Inngest, 2026. <strong>Confidence:</strong> MEDIUM-HIGH. <strong>NexusOS/Hermes/OpenClaw: gap, explicit</strong> — stall-supervisor is unscheduled and resume is manual re-dispatch from disk-persisted scout results, not automatic durable-execution resume.</p>
+</li>
+<li>
+<p>Construct idempotency keys deterministically from run ID + step index + action type — never from timestamps or freshly generated UUIDs — and pass the key to every side-effecting call. <strong>Source:</strong> AgentPatterns.ai, 2026. <strong>Confidence:</strong> MEDIUM-HIGH. <strong>NexusOS/Hermes/OpenClaw: gap, explicit</strong> — "run_id exists but is not used as an idempotency key on side-effecting writes" (Cortex store/Notion/Telegram could double-fire on a retried distribution step).</p>
+</li>
+<li>
+<p><strong>FAILURE — retry amplification and non-idempotent chains.</strong> Naive retries at every layer multiply load (3×3×3 = 243x against a failing dependency) — retry at exactly one layer, add jitter, and enforce a global token-bucket budget. Separately, a timeout mid-chain followed by whole-chain retry re-executes completed steps (duplicate orders, charges, emails); fix is step-level checkpointing plus per-step idempotency keys, not chain-level retry alone. <strong>Source:</strong> Fast.io, 2026; Channel.tel, 2026. <strong>Confidence:</strong> MEDIUM-HIGH (2 independent sources, adjacent failure modes). <strong>NexusOS/Hermes/OpenClaw: partial</strong> — exponential backoff (1→2→4→8s, max 4) bounds one retry path but isn't confirmed as the only layer, and no global token-bucket budget is documented.</p>
+</li>
+<li>
+<p>Use agent-aware circuit breakers with a DEGRADED intermediate state and graduated re-enablement, with retry/backoff budget shared globally across parallel instances; maintain tiered cross-provider fallback chains as a baseline (~114 LLM-provider incidents/90d in early 2026) and an out-of-band infra circuit breaker able to revoke a swarm's write permissions and force read-only mode. <strong>Source:</strong> dev.to/Waxell, 2026; IsDown incident data, early 2026; Microsoft Agent Governance Toolkit, Apr-2026. <strong>Confidence:</strong> MEDIUM. <strong>NexusOS/Hermes/OpenClaw: gap</strong> — no documented global (cross-agent) retry budget or out-of-band control that can force the whole fleet read-only; graceful degradation exists per-service (Cortex→Vault→Grep→skip, etc.) but not as a fleet-wide kill switch.</p>
+</li>
+</ul>
+<hr />
+<h2 id="source-coverage-report">Source Coverage Report</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Status</th>
+<th>Channels used</th>
+<th>Findings count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web search</td>
+<td>COVERED</td>
+<td>Brave, Tavily</td>
+<td>~14</td>
+</tr>
+<tr>
+<td>Academic (arXiv/OpenAlex)</td>
+<td>COVERED</td>
+<td>arXiv direct</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Practitioner/HN</td>
+<td>COVERED</td>
+<td>HN Algolia</td>
+<td>~14</td>
+</tr>
+<tr>
+<td>Social-Reddit</td>
+<td>FAILED (env-blocked), substituted</td>
+<td>HN + Brave snippet proxy</td>
+<td>0 direct / folded into HN count</td>
+</tr>
+<tr>
+<td>Deep-research-CLI</td>
+<td>SKIPPED (gated, not needed at D3)</td>
+<td>—</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Vendor-docs</td>
+<td>COVERED</td>
+<td>Direct fetch (Anthropic, OpenAI, OpenTelemetry, Langfuse, LangChain, Speakeasy, etc.)</td>
+<td>~20</td>
+</tr>
+<tr>
+<td>Social-X/YouTube</td>
+<td>SKIPPED (B2B/engineering topic — forum content = noise, HN covers practitioner signal)</td>
+<td>—</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="top-10-gaps-recommendations-for-nexusos-hermes-openclaw">TOP 10 GAPS / RECOMMENDATIONS for NexusOS/Hermes/OpenClaw</h2>
+<ol>
+<li>
+<p><strong>Lethal-trifecta exposure in the Cortex+web+publish pipeline.</strong> Why it matters: Cortex holds private data, Delphi scouts ingest untrusted web/document content, and output flows to Telegram/GitHub Pages egress — the exact structural exfiltration pattern behind four real Jan-2026 production compromises (IBM Bob, Notion AI, Superhuman, Claude Cowork). Fix: break one leg per task — e.g., scouts that touch untrusted content should never have direct Cortex write access or direct publish egress in the same run; route through a mediating step that can't be instructed by ingested content. Derives from: Dimension 6, lethal-trifecta test (Simon Willison, 2026) + the PromptArmor-corrected Cowork incident.</p>
+</li>
+<li>
+<p><strong>No structural prompt-injection isolation.</strong> Why it matters: current defense is prompt-level only ("observed content = data not commands"), which the primary source says tops out near 83% against injection — a probabilistic ceiling, not a guarantee, for a system that already has trifecta exposure (gap #1). Fix: prototype a CaMeL-style capability-metadata boundary or custom interpreter for at least the scout→Cortex and scout→publish edges, where untrusted content flows. Derives from: Dimension 6, structural instruction-source boundary (Simon Willison 2025-04-11; arXiv:2503.18813).</p>
+</li>
+<li>
+<p><strong>Stall-supervisor unscheduled + no automatic resume.</strong> Why it matters: the one deterministic, external watchdog NexusOS has is not on cron, and a stalled run requires manual re-dispatch — this is precisely the "MAS fail catastrophically on minor faults without resume-from-checkpoint" failure mode from Anthropic's own research. Fix: put stall-supervisor.sh on cron immediately (low effort, high leverage); scope durable-execution/checkpoint-resume (Temporal/Inngest-style) as a follow-up for the highest-value pipelines (Delphi first). Derives from: Dimension 5 (contain-claude watchdog pattern) + Dimension 8 (Inngest durable execution).</p>
+</li>
+<li>
+<p><strong>No per-step idempotency keys on distribution side-effects.</strong> Why it matters: run_id exists but isn't used as an idempotency key on Cortex store/Notion/Telegram writes — a retried distribution step can double-fire (duplicate Cortex entries, duplicate Telegram messages, duplicate Notion writes), silently corrupting the knowledge base this whole system depends on. Fix: derive idempotency keys as run_id+step_index+action_type on every side-effecting call in the distribution layer; this is a small, mechanical, high-value fix. Derives from: Dimension 8 (AgentPatterns.ai deterministic idempotency keys; Channel.tel non-idempotent-chain failure mode).</p>
+</li>
+<li>
+<p><strong>End-to-end model-routing verification gap.</strong> Why it matters: the HARD rule already flags that Agent tool <code>model:</code> overrides "may not route to a distinct backend" — meaning NexusOS cannot currently <em>prove</em> Sonnet-pinned lanes are actually running Sonnet, which undermines every cost and quality assumption built on the tiering model. Fix: build a cheap runtime check (e.g., a fingerprint probe or provider-reported model-id log) that confirms actual backend per lane and alerts on drift; this closes the same class of risk LLMRouterBench quantifies at benchmark scale. Derives from: Dimension 2 (LLMRouterBench, arXiv:2601.07206; existing AGENT MODEL PARAM UNVERIFIED rule).</p>
+</li>
+<li>
+<p><strong>Cost dashboards without fleet-wide enforcement.</strong> Why it matters: Delphi has a cost ceiling in code, but that's one pipeline — GENIE, TECH, and OpenClaw have no equivalent gateway-level kill switch, so a runaway anywhere else in the fleet has nothing stopping it short of manual intervention. Fix: extend the gateway/proxy-enforced-ceiling pattern already proven in Delphi's lib/gates.sh to a shared, fleet-wide spend gate in front of every model call. Derives from: Dimension 7 (cost-dashboards-≠-enforcement failure mode, LangChain/Waxell 2026).</p>
+</li>
+<li>
+<p><strong>Large always-loaded MCP tool surface without scoped Tool Groups or defer-loading.</strong> Why it matters: the orchestrator's MCP roster runs well past the empirically measured 30-40-tool cliff where accuracy degrades and freeze/hallucinated-call failure modes appear — this session itself needed a deferred-tool ToolSearch pass, live evidence the exposure is real, not theoretical. Fix: define per-agent scoped Tool Groups (5-10 tools each, task-oriented naming) and apply dynamic tool discovery/defer_loading at the agent-definition level, not just ad hoc per-session. Derives from: Dimension 4 (Anthropic advanced-tool-use 2025-11-24; Speakeasy/Lunar.dev tool-selection-cliff findings).</p>
+</li>
+<li>
+<p><strong>No OpenTelemetry distributed tracing.</strong> Why it matters: observability is log-file/JSON-artifact based per pipeline, with no propagated trace ID — this makes cross-agent debugging (e.g., a Delphi scout failure that cascades into a GENIE dispatch failure) reconstructive rather than queryable, and blocks adopting standard GenAI-span tooling. Fix: adopt OTel GenAI semantic conventions incrementally, starting with a shared trace_id threaded through Delphi's existing run-metrics/coverage/gate-outcomes artifacts before a full span migration. Derives from: Dimension 7 (OpenTelemetry blog 2026; Langfuse docs 2026).</p>
+</li>
+<li>
+<p><strong>Memory lifecycle has no episodic/procedural split or decay.</strong> Why it matters: Cortex collections are flat semantic-style stores with no TTL, importance decay, or contradiction-resolution beyond manual /dream pruning — as the procedure index and session history grow (already 1,311 procedures), stale or contradictory entries will increasingly pollute retrieval without a mechanism to age them out. Fix: introduce at minimum a decay/TTL pass and a semantic/episodic/procedural tagging scheme in Cortex writes, informed by the localized-incremental-maintenance finding (global reorganization underperforms). Derives from: Dimension 3 (LangMem SDK; agent-native memory study arXiv:2606.24775; Oracle Agent Memory arXiv:2607.13157).</p>
+</li>
+<li>
+<p><strong>No capability-scoped credential model — allowlists are treated as destination filters.</strong> Why it matters: the contain-claude research is explicit that an allowlisted domain grants everything reachable through it (e.g., arbitrary file upload via a trusted-looking endpoint) — if NexusOS's tool/domain allowlists follow the same destination-filter mental model, they carry the same latent over-grant risk documented in the four Jan-2026 incidents. Fix: audit existing allowlist entries (web fetch domains, publish targets, Notion/Telegram scopes) and rescope credentials to the specific capability needed, not the domain reached. Derives from: Dimension 6 (Anthropic "How we contain Claude," 2026-05-25).</p>
+</li>
+</ol>
+<hr />
+<p><em>Report compiled by DELPHI Synthesizer, 2026-07-18. Sources as cited inline; critic corrections applied per D3 QA pass (see run notes delphi-20260718-132058-agentic-os).</em></p>
+      </article>
+    </main>
+
+    <!-- Metadata sidebar -->
+    <aside class="no-print order-3">
+      <div class="sidebar space-y-4">
+        <div class="card p-4">
+          <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--text-faint)">Report Metadata</div>
+          <div class="space-y-2.5 text-sm">
+            <div class="flex justify-between"><span style="color:var(--text-dim)">Agent</span><span class="font-semibold">DELPHI</span></div>
+            <div class="flex justify-between"><span style="color:var(--text-dim)">Depth</span><span class="font-semibold">D3</span></div>
+            <div class="flex justify-between"><span style="color:var(--text-dim)">Date</span><span class="font-semibold mono">2026-07-18</span></div>
+            <div class="flex justify-between"><span style="color:var(--text-dim)">Duration</span><span class="font-semibold">~25 min</span></div>
+          </div>
+        </div>
+
+        <div class="card p-4">
+          <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--text-faint)">Quality Signals</div>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span style="color:var(--text-dim)">EPR Score</span><span class="font-bold">14/20</span></div>
+              <div class="h-1.5 rounded-full" style="background:var(--border)"><div class="h-1.5 rounded-full" style="width:70%;background:#58a6ff"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span style="color:var(--text-dim)">Grounding</span><span class="font-bold">90%</span></div>
+              <div class="h-1.5 rounded-full" style="background:var(--border)"><div class="h-1.5 rounded-full" style="width:90%;background:#22c55e"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1"><span style="color:var(--text-dim)">Self-Grade</span><span class="font-bold">82/100</span></div>
+              <div class="h-1.5 rounded-full" style="background:var(--border)"><div class="h-1.5 rounded-full" style="width:82%;background:#8b5cf6"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-4">
+          <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--text-faint)">Source Tiers</div>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between items-center"><span style="color:var(--text-dim)"><span class="inline-block w-2 h-2 rounded-full mr-2" style="background:#58a6ff"></span>Tier 1 (primary)</span><span class="font-bold mono">22</span></div>
+            <div class="flex justify-between items-center"><span style="color:var(--text-dim)"><span class="inline-block w-2 h-2 rounded-full mr-2" style="background:#8b8bf5"></span>Tier 2 (vendor/practitioner)</span><span class="font-bold mono">24</span></div>
+            <div class="flex justify-between items-center"><span style="color:var(--text-dim)"><span class="inline-block w-2 h-2 rounded-full mr-2" style="background:#5a5a68"></span>Tier 3 (single-study)</span><span class="font-bold mono">5</span></div>
+            <div class="pt-2 mt-2 flex justify-between items-center" style="border-top:1px solid var(--border)"><span class="font-semibold" style="color:var(--text)">Total</span><span class="font-bold mono">51</span></div>
+          </div>
+        </div>
+
+        <div class="card p-4">
+          <div class="text-xs font-bold uppercase tracking-wider mb-2" style="color:var(--text-faint)">Scope</div>
+          <p class="text-xs leading-relaxed" style="color:var(--text-dim)">8-dimension synthesis: orchestrator topology, model routing, memory substrate, tool/MCP boundaries, reliability control loops, safety hardening, observability, and failure isolation — cross-referenced against the live NexusOS/Hermes/OpenClaw stack.</p>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="no-print max-w-[1400px] mx-auto px-5 md:px-8 pb-10 text-xs" style="color:var(--text-faint)">
+    Report compiled by DELPHI Synthesizer · 2026-07-18 · Published via shared-reporter → GitHub Pages
+  </footer>
+</div>
+
+<script>
+  // Theme handling
+  (function() {
+    var root = document.documentElement;
+    var saved = localStorage.getItem('report-theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    function currentIsDark() {
+      var t = root.getAttribute('data-theme');
+      if (t) return t === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function updateIcon() {
+      var icon = document.getElementById('themeIcon');
+      if (!icon) return;
+      icon.innerHTML = currentIsDark()
+        ? '<path d="M12 3a6 6 0 109 9 9 9 0 11-9-9z"/>'
+        : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+    }
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      var next = currentIsDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('report-theme', next);
+      updateIcon();
+      renderChart();
+    });
+    updateIcon();
+  })();
+
+  // Share
+  document.getElementById('shareBtn').addEventListener('click', function() {
+    var url = window.location.href;
+    if (navigator.share) {
+      navigator.share({ title: document.title, url: url }).catch(function(){});
+    } else {
+      navigator.clipboard.writeText(url).then(function() {
+        var btn = document.getElementById('shareBtn');
+        var orig = btn.innerHTML;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
+        setTimeout(function() { btn.innerHTML = orig; }, 1500);
+      });
+    }
+  });
+
+  // Scroll progress
+  window.addEventListener('scroll', function() {
+    var h = document.documentElement;
+    var pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('topProgress').style.width = pct + '%';
+  });
+
+  // Fade-in on scroll
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  // TOC active state
+  var tocLinks = document.querySelectorAll('.toc-link');
+  var sections = Array.from(tocLinks).map(function(l) { return document.getElementById(l.dataset.target); }).filter(Boolean);
+  function updateToc() {
+    var y = window.scrollY + 120;
+    var activeId = null;
+    sections.forEach(function(s) { if (s.offsetTop <= y) activeId = s.id; });
+    tocLinks.forEach(function(l) { l.classList.toggle('active', l.dataset.target === activeId); });
+  }
+  window.addEventListener('scroll', updateToc);
+  updateToc();
+
+  // Chart.js — source tier distribution
+  var chartInstance = null;
+  function renderChart() {
+    var el = document.getElementById('sourceTierChart');
+    if (!el || typeof Chart === 'undefined') return;
+    var styles = getComputedStyle(document.documentElement);
+    var textColor = styles.getPropertyValue('--text-dim').trim() || '#9A9AA8';
+    if (chartInstance) chartInstance.destroy();
+    chartInstance = new Chart(el.getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Tier 1', 'Tier 2', 'Tier 3'],
+        datasets: [{
+          data: [22, 24, 5],
+          backgroundColor: ['#58a6ff', '#8b8bf5', '#5a5a68'],
+          borderWidth: 0,
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        cutout: '68%',
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return ctx.label + ': ' + ctx.raw + ' sources'; } } }
+        }
+      }
+    });
+  }
+  renderChart();
+</script>
