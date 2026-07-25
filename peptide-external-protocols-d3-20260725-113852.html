@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>External Dosing Protocols — Evidence Inventory for 20 Peptide and Incretin Compounds</title>
+<meta property="og:title" content="External Dosing Protocols — Evidence Inventory for 20 Peptide and Incretin Compounds">
+<meta property="og:description" content="DELPHI PRO · Depth D3 · An evidence inventory, not medical advice. 11 of 20 compounds have a traceable external dosing protocol; 9 do not.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0A0A0F; --card:#111118; --card2:#15151d; --accent:#58a6ff; --accent2:#7db4ff;
+    --text:#e8e8ee; --text-dim:#9a9aab; --border:rgba(255,255,255,0.08); --glass:rgba(17,17,24,0.7);
+    --yes:#22c55e; --no:#f59e0b; --high:#22c55e; --medium:#eab308; --unverified:#ef4444;
+    --boundary-bg:#241305; --boundary-border:#f59e0b;
+  }
+  [data-theme="light"]{
+    --bg:#fafafa; --card:#ffffff; --card2:#f4f4f6; --accent:#5E6AD2; --accent2:#4147a8;
+    --text:#16161d; --text-dim:#5b5b6b; --border:rgba(0,0,0,0.08); --glass:rgba(255,255,255,0.75);
+    --boundary-bg:#fff7e6; --boundary-border:#d97706;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#fafafa; --card:#ffffff; --card2:#f4f4f6; --accent:#5E6AD2; --accent2:#4147a8;
+      --text:#16161d; --text-dim:#5b5b6b; --border:rgba(0,0,0,0.08); --glass:rgba(255,255,255,0.75);
+      --boundary-bg:#fff7e6; --boundary-border:#d97706;
+    }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text); font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6; overflow-x:hidden; transition:background .2s,color .2s;
+  }
+  code, .mono{ font-family:'JetBrains Mono',monospace; }
+  a{ color:var(--accent); text-decoration:none; word-break:break-word; }
+  a:hover{ text-decoration:underline; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  /* Top bar */
+  .topbar{
+    position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
+    background:var(--glass); border-bottom:1px solid var(--border);
+    padding:12px 0;
+  }
+  .topbar-inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.02em; }
+  .brand-dot{ width:9px; height:9px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent); }
+  .topbar-actions{ display:flex; gap:8px; align-items:center; }
+  .btn{
+    font-family:inherit; font-size:13px; font-weight:600; padding:8px 14px; border-radius:8px;
+    border:1px solid var(--border); background:var(--card2); color:var(--text); cursor:pointer;
+    display:inline-flex; align-items:center; gap:6px; transition:all .15s;
+  }
+  .btn:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* Hero */
+  .hero{ padding:56px 0 28px; }
+  .eyebrow{
+    display:inline-flex; gap:8px; align-items:center; font-family:'JetBrains Mono',monospace;
+    font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:.08em;
+    border:1px solid var(--border); padding:6px 12px; border-radius:999px; margin-bottom:18px;
+    background:var(--card);
+  }
+  h1{ font-size:clamp(28px,4.2vw,44px); font-weight:800; line-height:1.15; letter-spacing:-.01em; margin-bottom:16px; }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+  .meta-chip{
+    font-family:'JetBrains Mono',monospace; font-size:12px; padding:6px 12px; border-radius:8px;
+    background:var(--card); border:1px solid var(--border); color:var(--text-dim);
+  }
+  .meta-chip b{ color:var(--text); }
+
+  /* Boundary statement */
+  .boundary{
+    background:var(--boundary-bg); border:2px solid var(--boundary-border); border-radius:14px;
+    padding:28px 28px; margin:28px 0; position:relative;
+  }
+  .boundary::before{
+    content:"⚠ SCOPE BOUNDARY"; position:absolute; top:-13px; left:24px; background:var(--boundary-border);
+    color:#1a1206; font-family:'JetBrains Mono',monospace; font-weight:800; font-size:11px;
+    letter-spacing:.08em; padding:4px 10px; border-radius:6px;
+  }
+  .boundary h2{ font-size:19px; margin-bottom:12px; color:#f59e0b; margin-top:6px;}
+  [data-theme="light"] .boundary h2{ color:#92400e; }
+  .boundary p{ margin-bottom:10px; font-size:15.5px; }
+  .boundary p:last-child{ margin-bottom:0; }
+  .boundary strong{ color:var(--text); }
+  .boundary-bottom{ margin-top:64px; }
+
+  /* Layout */
+  .layout{ display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:start; padding:20px 0 80px; }
+  @media (max-width:960px){ .layout{ grid-template-columns:1fr; } .toc{ display:none; } }
+  .toc{
+    position:sticky; top:80px; max-height:calc(100vh - 100px); overflow-y:auto;
+    background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px;
+  }
+  .toc-title{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim); margin-bottom:12px; font-weight:700; }
+  .toc-section{ font-size:11px; text-transform:uppercase; color:var(--text-dim); margin:14px 0 6px; font-weight:700;}
+  .toc a.toc-link{ display:block; font-size:13px; padding:6px 8px; border-radius:6px; color:var(--text-dim); border-left:2px solid transparent; }
+  .toc a.toc-link:hover{ background:var(--card2); color:var(--text); text-decoration:none; }
+  .toc a.toc-yes{ border-left-color:var(--yes); }
+  .toc a.toc-no{ border-left-color:var(--no); }
+
+  .content section{ margin-bottom:56px; scroll-margin-top:80px; }
+  .content h2.section-title{
+    font-size:26px; font-weight:800; margin-bottom:6px; letter-spacing:-.01em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-num{ color:var(--accent); font-family:'JetBrains Mono',monospace; font-size:16px; }
+  .section-lede{ color:var(--text-dim); font-size:15.5px; margin-bottom:24px; max-width:800px; }
+  .prose p{ margin-bottom:14px; font-size:15.5px; }
+  .prose strong{ color:var(--text); }
+  .prose ul{ margin:10px 0 14px 22px; }
+  .prose li{ margin-bottom:6px; font-size:15.5px; }
+
+  .pullquote{
+    border-left:3px solid var(--accent); padding:14px 20px; margin:20px 0; background:var(--card);
+    border-radius:0 10px 10px 0; font-size:16px; font-style:italic; color:var(--text);
+  }
+
+  /* Stat row */
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:24px 0; }
+  .stat-card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; }
+  .stat-num{ font-size:32px; font-weight:800; color:var(--accent); font-family:'JetBrains Mono',monospace; }
+  .stat-label{ font-size:12.5px; color:var(--text-dim); margin-top:4px; }
+
+  .chart-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:24px 0; }
+  @media (max-width:760px){ .chart-grid{ grid-template-columns:1fr; } }
+  .chart-card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; }
+  .chart-card h4{ font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-dim); margin-bottom:12px; }
+  .chart-card .chart-wrap{ position:relative; height:220px; }
+
+  /* Table */
+  .table-scroll{ overflow-x:auto; border:1px solid var(--border); border-radius:12px; background:var(--card); }
+  table{ width:100%; border-collapse:collapse; min-width:760px; font-size:13.5px; }
+  th{
+    text-align:left; padding:12px 14px; background:var(--card2); color:var(--text-dim);
+    text-transform:uppercase; font-size:11px; letter-spacing:.05em; border-bottom:1px solid var(--border);
+    position:sticky; top:0;
+  }
+  td{ padding:12px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:last-child td{ border-bottom:none; }
+  tr:hover td{ background:var(--card2); }
+  td.td-name{ font-weight:600; white-space:nowrap; }
+
+  .pill{ display:inline-block; padding:3px 10px; border-radius:999px; font-size:11.5px; font-weight:700; font-family:'JetBrains Mono',monospace; }
+  .pill-yes{ background:rgba(34,197,94,.15); color:var(--yes); border:1px solid rgba(34,197,94,.35); }
+  .pill-no{ background:rgba(245,158,11,.15); color:var(--no); border:1px solid rgba(245,158,11,.35); }
+
+  .conf-badge{ display:inline-block; padding:3px 10px; border-radius:6px; font-size:11px; font-weight:700; font-family:'JetBrains Mono',monospace; white-space:nowrap; }
+  .conf-high{ background:rgba(34,197,94,.15); color:var(--high); border:1px solid rgba(34,197,94,.3); }
+  .conf-medium{ background:rgba(234,179,8,.15); color:var(--medium); border:1px solid rgba(234,179,8,.3); }
+  .conf-unverified{ background:rgba(239,68,68,.15); color:var(--unverified); border:1px solid rgba(239,68,68,.3); }
+
+  /* Group headers for compound sections */
+  .group-header{ margin:36px 0 20px; padding:18px 22px; border-radius:12px; border:1px solid var(--border); }
+  .group-yes{ background:linear-gradient(90deg, rgba(34,197,94,.08), transparent); border-left:4px solid var(--yes); }
+  .group-no{ background:linear-gradient(90deg, rgba(245,158,11,.08), transparent); border-left:4px solid var(--no); }
+  .group-header h3{ font-size:19px; margin-bottom:6px; }
+  .group-header p{ font-size:14px; color:var(--text-dim); }
+
+  /* Compound cards */
+  .compound-card{
+    background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px;
+    margin-bottom:20px; scroll-margin-top:80px;
+  }
+  .protocol-no{ border-left:3px solid var(--no); }
+  .protocol-yes{ border-left:3px solid var(--yes); }
+  .compound-head{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:6px; }
+  .compound-num{ font-family:'JetBrains Mono',monospace; color:var(--text-dim); font-size:13px; }
+  .compound-head h3{ font-size:19px; font-weight:700; flex:1; min-width:180px; }
+  .protocol-flag{ font-size:10.5px; font-weight:800; letter-spacing:.04em; padding:4px 10px; border-radius:6px; font-family:'JetBrains Mono',monospace; }
+  .flag-yes{ background:rgba(34,197,94,.15); color:var(--yes); border:1px solid rgba(34,197,94,.3); }
+  .flag-no{ background:rgba(245,158,11,.15); color:var(--no); border:1px solid rgba(245,158,11,.3); }
+  .kind-tag{
+    display:inline-block; font-size:12.5px; color:var(--no); font-style:italic; margin-bottom:14px;
+    background:rgba(245,158,11,.08); padding:6px 12px; border-radius:8px; border:1px solid rgba(245,158,11,.2);
+  }
+
+  .field{ margin-top:16px; }
+  .field-label{ display:block; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:700; margin-bottom:6px; }
+  .field p{ font-size:14.5px; color:var(--text); }
+  .field-conflict .field-label{ color:var(--no); }
+  .field-correction .field-label{ color:#c084fc; }
+  .field-finding .field-label{ color:var(--no); }
+  .field-finding p{ font-weight:600; }
+  .field-safety{ padding-top:14px; border-top:1px dashed var(--border); }
+  .field-safety .field-label{ color:var(--unverified); }
+
+  .source-list{ list-style:none; margin-top:6px; }
+  .source-item{
+    background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:12px 14px;
+    margin-bottom:10px;
+  }
+  .tier-badge{
+    display:inline-block; font-size:10px; font-weight:800; letter-spacing:.04em; padding:3px 8px;
+    border-radius:5px; font-family:'JetBrains Mono',monospace; margin-bottom:8px;
+  }
+  .tier-guideline{ background:rgba(88,166,255,.15); color:var(--accent2); border:1px solid rgba(88,166,255,.3); }
+  .tier-peer{ background:rgba(192,132,252,.15); color:#c084fc; border:1px solid rgba(192,132,252,.3); }
+  .tier-none{ background:rgba(239,68,68,.15); color:var(--unverified); border:1px solid rgba(239,68,68,.3); }
+  .source-text{ font-size:13.5px; margin-bottom:6px; }
+  .source-link{ font-size:12px; }
+  .source-link a{ font-family:'JetBrains Mono',monospace; word-break:break-all; }
+  .no-url{ font-size:12px; color:var(--text-dim); font-style:italic; }
+
+  .gaps-block{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-bottom:16px; }
+  .gaps-block h4{ font-size:15px; margin-bottom:10px; color:var(--accent); }
+  .gaps-block p{ font-size:14.5px; margin-bottom:10px; }
+  .gaps-block p:last-child{ margin-bottom:0; }
+
+  footer{ border-top:1px solid var(--border); padding:32px 0; text-align:center; color:var(--text-dim); font-size:13px; }
+
+  @media print{
+    .topbar, .toc, .btn{ display:none !important; }
+    body{ background:#fff; color:#000; }
+    .layout{ grid-template-columns:1fr; }
+    .compound-card{ break-inside:avoid; border:1px solid #ccc; }
+    a{ color:#000; text-decoration:underline; }
+    .boundary{ border:2px solid #000; background:#fff; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand"><span class="brand-dot"></span> DELPHI PRO · D3 Research</div>
+    <div class="topbar-actions">
+      <button class="btn" id="themeToggle">🌓 Theme</button>
+      <button class="btn" id="shareBtn">🔗 Share</button>
+      <button class="btn" onclick="window.print()">🖨 Print</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="eyebrow">Tier 2 · Full Report · Evidence Inventory</span>
+    <h1>External Dosing Protocols<br>Evidence Inventory for 20 Peptide and Incretin Compounds</h1>
+    <div class="hero-meta">
+      <span class="meta-chip">Agent: <b>DELPHI PRO</b></span>
+      <span class="meta-chip">Depth: <b>D3</b></span>
+      <span class="meta-chip">Date: <b>25 July 2026</b></span>
+      <span class="meta-chip">Run ID: <b>20260725-peptide-external-protocols</b></span>
+      <span class="meta-chip">10 scouts · 1 independent Critic · 1 remediation pass</span>
+    </div>
+  </div>
+
+  <div class="boundary" id="boundary-top">
+    <h2>What this document is, and what it is not</h2>
+    <p>This is an <strong>evidence inventory</strong>. Its only purpose is to record, for each of twenty compounds, whether any dosing protocol exists <strong>outside</strong> the knowledge base being assessed, who published it, and how well it holds up when the citation is opened and read. It does not correct, endorse or replace the knowledge base; it tells the owner which entries have external support and which are standing on nothing.</p>
+    <p><strong>This document is not medical advice.</strong> It is not clinical validation, not a treatment recommendation, and not a protocol anyone should follow. Several of the figures reproduced below come from single-arm phase 1 studies, from halted trials, from labels for products that no longer exist, or from investigational programmes that no regulator has approved. Some are ceilings that carry explicit safety warnings. Reproducing a number here means only that a named source printed that number at a verifiable web address. It carries no implication that the dose is safe, appropriate, or applicable to any individual person.</p>
+    <p>Anyone considering the use of any substance named here should consult a licensed physician who can assess them directly. The author of this report is not a clinician and has not evaluated anyone.</p>
+  </div>
+
+  <div class="layout">
+    <nav class="toc">
+      <div class="toc-title">Contents</div>
+      <a href="#headline" class="toc-link">2 · Headline</a>
+      <a href="#summary-table" class="toc-link">3 · Tiered summary</a>
+      <a href="#entries" class="toc-link">4 · Per-compound entries</a>
+      <div class="toc-section">With protocol (11)</div>
+      <a href="#semaglutide" class="toc-link toc-yes">Semaglutide</a>
+<a href="#tirzepatide" class="toc-link toc-yes">Tirzepatide</a>
+<a href="#somatropin" class="toc-link toc-yes">Somatropin (recombinant human growth hormone)</a>
+<a href="#cerebrolysin" class="toc-link toc-yes">Cerebrolysin</a>
+<a href="#gonadorelin" class="toc-link toc-yes">Gonadorelin</a>
+<a href="#sermorelin" class="toc-link toc-yes">Sermorelin</a>
+<a href="#oxytocin" class="toc-link toc-yes">Oxytocin</a>
+<a href="#somatostatin" class="toc-link toc-yes">Somatostatin (native somatostatin-14)</a>
+<a href="#ghrp2" class="toc-link toc-yes">GHRP-2 (pralmorelin, KP-102)</a>
+<a href="#cagrilintide" class="toc-link toc-yes">Cagrilintide</a>
+<a href="#survodutide" class="toc-link toc-yes">Survodutide (BI 456906)</a>
+      <div class="toc-section">No protocol (9)</div>
+      <a href="#aod9604" class="toc-link toc-no">AOD-9604</a>
+<a href="#alphamsh" class="toc-link toc-no">Alpha-MSH (native alpha-melanocyte stimulating hormone)</a>
+<a href="#melanotan2" class="toc-link toc-no">Melanotan II</a>
+<a href="#pegmgf" class="toc-link toc-no">PEG-MGF (pegylated mechano growth factor)</a>
+<a href="#ghrp6" class="toc-link toc-no">GHRP-6</a>
+<a href="#ara290" class="toc-link toc-no">ARA-290 (cibinetide)</a>
+<a href="#foxo4dri" class="toc-link toc-no">FOXO4-DRI</a>
+<a href="#hexarelin" class="toc-link toc-no">Hexarelin (examorelin)</a>
+<a href="#ace031" class="toc-link toc-no">ACE-031 (ramatercept)</a>
+      <a href="#not-support" class="toc-link" style="margin-top:10px;">5 · What the evidence does not support</a>
+      <a href="#gaps" class="toc-link">6 · Known gaps</a>
+      <a href="#method" class="toc-link">7 · Method &amp; quality gate</a>
+      <a href="#boundary-bottom" class="toc-link">8 · Boundary (closing)</a>
+    </nav>
+
+    <div class="content">
+
+      <section id="headline">
+        <h2 class="section-title"><span class="section-num">2</span> Headline</h2>
+        <div class="prose">
+          <p>Of the twenty compounds examined, <strong>eleven have an external dosing protocol that could be traced to a named, verifiable source, and nine do not</strong>.</p>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-card"><div class="stat-num">11 / 20</div><div class="stat-label">Have a traceable external protocol</div></div>
+          <div class="stat-card"><div class="stat-num">9 / 20</div><div class="stat-label">Have none — a finding, not a gap</div></div>
+          <div class="stat-card"><div class="stat-num">9</div><div class="stat-label">Rest on a regulatory label / guideline</div></div>
+          <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Investigational trial dosing only (cagrilintide, survodutide)</div></div>
+        </div>
+
+        <div class="chart-grid">
+          <div class="chart-card">
+            <h4>Protocol coverage split (20 compounds)</h4>
+            <div class="chart-wrap"><canvas id="coverageChart"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h4>Confidence distribution across all 20 entries</h4>
+            <div class="chart-wrap"><canvas id="confidenceChart"></canvas></div>
+          </div>
+        </div>
+
+        <div class="prose">
+          <p>The eleven split further, and the split matters more than the raw count:</p>
+          <ul>
+            <li><strong>Nine</strong> rest on a regulatory drug label, a pharmacopoeia-equivalent monograph, or a clinical practice guideline: semaglutide, tirzepatide, somatropin, oxytocin, cerebrolysin, somatostatin, growth hormone releasing peptide 2 (GHRP-2), gonadorelin and sermorelin. Two of those nine (gonadorelin, sermorelin) are historical — the products carrying the dose have been withdrawn from the market.</li>
+            <li><strong>Two</strong> — cagrilintide and survodutide — have investigational trial dosing only. Their numbers come from published phase 2 and phase 3 trials. No regulator has approved either compound or endorsed any dose. They appear as "has protocol" only because trial dosing was explicitly requested; they should never be read as equivalent to a label.</li>
+          </ul>
+          <p>The nine with no protocol are alpha-melanocyte stimulating hormone (alpha-MSH), Melanotan II, AOD-9604, PEG-MGF (pegylated mechano growth factor), GHRP-6, ARA-290 (cibinetide), FOXO4-DRI, hexarelin and ACE-031 (ramatercept). For these, <strong>"no legitimate human dosing protocol exists" is the finding. It is not a gap in the research; it is the result.</strong></p>
+          <div class="pullquote">The one genuine surprise: GHRP-2 is an approved drug in Japan — licensed by the Pharmaceuticals and Medical Devices Agency as "GHRP Kaken 100 Injection" for a single, narrow purpose: a diagnostic test for growth hormone secretion deficiency, given as one 100 microgram intravenous bolus. A single diagnostic bolus is not a therapeutic regimen, and nothing about the Japanese approval supports repeated or chronic administration for growth hormone enhancement, anti-ageing, or bodybuilding.</div>
+          <p>Two further results run against intuition. <strong>Sermorelin was discontinued for commercial reasons, not safety reasons</strong> — the FDA formally determined that the Geref products "were not withdrawn from sale for reasons of safety or effectiveness." The manufacturer simply stopped selling them; every sermorelin product on the market today is unapproved compounded material outside FDA review. <strong>Cerebrolysin has a properly registered dose attached to a mixed-to-negative evidence base</strong> — the Romanian medicines agency has approved a Summary of Product Characteristics with specific numbers in it, and a European neurology guideline recommends 30 mL per day, yet a 2020 Cochrane systematic review of seven randomised trials concluded the drug probably does not reduce mortality and was associated with an increase in serious non-fatal adverse events. A registered dose and a working drug are not the same thing.</p>
+        </div>
+      </section>
+
+      <section id="summary-table">
+        <h2 class="section-title"><span class="section-num">3</span> Tiered summary table</h2>
+        <p class="section-lede">Confidence is anchored to evidence structure, not to a percentage. <strong>HIGH</strong> means two or more independent sources agree. <strong>MEDIUM</strong> means one credible source, uncorroborated. <strong>UNVERIFIED</strong> means no source could be traced, or the sources conflict.</p>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Compound</th><th>Regulatory status</th><th>External protocol?</th><th>Strongest evidence tier</th><th>Confidence</th></tr></thead>
+            <tbody>
+              <tr>
+          <td class="td-name">Semaglutide</td>
+          <td>Approved (multiple products, multiple indications)</td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>guideline (FDA labels)</td>
+          <td><span class="conf-badge conf-high">HIGH</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Tirzepatide</td>
+          <td>Approved (Mounjaro, Zepbound)</td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>guideline (FDA labels)</td>
+          <td><span class="conf-badge conf-high">HIGH</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Somatropin</td>
+          <td>Approved (multiple brands, indication-specific)</td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>guideline (FDA labels + Endocrine Society)</td>
+          <td><span class="conf-badge conf-high">HIGH</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Cerebrolysin</td>
+          <td>Nationally registered (e.g. Romania); not FDA or EMA approved</td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>guideline (ANMDMR SmPC + EAN/EFNR guideline)</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Gonadorelin</td>
+          <td>Discontinued as a human product in the US; historical Canadian monograph</td>
+          <td><span class="pill pill-yes">Yes (historical)</span></td>
+          <td>guideline (Health Canada monograph)</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Sermorelin</td>
+          <td>Discontinued (2008–2009, commercial)</td>
+          <td><span class="pill pill-yes">Yes (historical, approved-era)</span></td>
+          <td>peer_reviewed for the dose; guideline for the chronology</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+<tr>
+          <td class="td-name">AOD-9604</td>
+          <td>Never approved</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>peer_reviewed</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Alpha-MSH (native)</td>
+          <td>Never approved</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>peer_reviewed (review article)</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Melanotan II</td>
+          <td>Never approved; active enforcement in four jurisdictions</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>guideline (regulator warnings)</td>
+          <td><span class="conf-badge conf-high">HIGH</span></td>
+        </tr>
+<tr>
+          <td class="td-name">PEG-MGF</td>
+          <td>Never approved</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>none admissible — documented absence</td>
+          <td><span class="conf-badge conf-high">HIGH (on the null)</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Oxytocin</td>
+          <td>Approved (obstetric)</td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>guideline (FDA label, WHO, ACOG)</td>
+          <td><span class="conf-badge conf-high">HIGH (obstetric) / MEDIUM (intranasal)</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Somatostatin (native, somatostatin-14)</td>
+          <td>Nationally registered in several EU states; not FDA approved</td>
+          <td><span class="pill pill-yes">Yes</span></td>
+          <td>guideline (compendium monograph + Baveno VII)</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+<tr>
+          <td class="td-name">GHRP-2 (pralmorelin)</td>
+          <td>Approved in Japan, diagnostic use only</td>
+          <td><span class="pill pill-yes">Yes (diagnostic only)</span></td>
+          <td>peer_reviewed</td>
+          <td><span class="conf-badge conf-high">HIGH</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Cagrilintide</td>
+          <td>Research only; CagriSema New Drug Application under FDA review</td>
+          <td><span class="pill pill-yes">Yes — investigational trial dosing only</span></td>
+          <td>peer_reviewed</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+<tr>
+          <td class="td-name">GHRP-6</td>
+          <td>Never approved</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>peer_reviewed (mechanistic study, not a protocol)</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+<tr>
+          <td class="td-name">ARA-290 (cibinetide)</td>
+          <td>Research only</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>peer_reviewed</td>
+          <td><span class="conf-badge conf-high">HIGH (trials) / MEDIUM (sponsor status)</span></td>
+        </tr>
+<tr>
+          <td class="td-name">FOXO4-DRI</td>
+          <td>Research only — preclinical</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>peer_reviewed (mouse only)</td>
+          <td><span class="conf-badge conf-high">HIGH (on the null)</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Hexarelin (examorelin)</td>
+          <td>Discontinued, never marketed</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>peer_reviewed</td>
+          <td><span class="conf-badge conf-high">HIGH (on the null)</span></td>
+        </tr>
+<tr>
+          <td class="td-name">ACE-031 (ramatercept)</td>
+          <td>Discontinued; trials halted 2011</td>
+          <td><span class="pill pill-no">No</span></td>
+          <td>peer_reviewed</td>
+          <td><span class="conf-badge conf-high">HIGH</span></td>
+        </tr>
+<tr>
+          <td class="td-name">Survodutide (BI 456906)</td>
+          <td>Research only, never approved</td>
+          <td><span class="pill pill-yes">Yes — investigational trial dosing only</span></td>
+          <td>peer_reviewed</td>
+          <td><span class="conf-badge conf-medium">MEDIUM</span></td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="entries">
+        <h2 class="section-title"><span class="section-num">4</span> Per-compound entries</h2>
+        <p class="section-lede">Every entry below preserves the source tier, the verbatim quotation where captured, independence assessment, unreconciled conflicts, and safety notes exactly as recorded in the underlying run. Dose figures pass through unaltered.</p>
+
+        <div class="group-header group-yes">
+          <h3>Compounds with an external protocol (11)</h3>
+          <p>Traceable to a named, verifiable source — a regulatory label, a pharmacopoeia-equivalent monograph, a clinical practice guideline, or (for two compounds, explicitly flagged) investigational trial dosing only.</p>
+        </div>
+        
+    <article class="compound-card protocol-yes" id="semaglutide">
+      <div class="compound-head">
+        <span class="compound-num">4.1</span>
+        <h3>Semaglutide</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Approved. Four distinct approved products, each with its own indication and its own dose ceiling: Ozempic (injection, type 2 diabetes), Wegovy (injection and, separately, an oral tablet, for chronic weight management), and Rybelsus (oral tablet, type 2 diabetes).</p></div><div class="field"><span class="field-label">Protocol</span><p>Ozempic maintenance is 0.5 mg, 1 mg or 2 mg subcutaneously once weekly, reached by starting at 0.25 mg weekly for four weeks. Wegovy injection maintenance is 2.4 mg once weekly (or 1.7 mg), reached through a fixed five-step ladder: 0.25 mg in weeks 1 to 4, 0.5 mg in weeks 5 to 8, 1 mg in weeks 9 to 12, 1.7 mg in weeks 13 to 16, 2.4 mg from week 17. The Wegovy tablet ladder is 1.5 mg on days 1 to 30, 4 mg on days 31 to 60, 9 mg on days 61 to 90, then 25 mg once daily as maintenance. Rybelsus starts at 3 mg once daily for 30 days — a run-in dose that the label states is not a treatment dose — then 7 mg, and may be increased to 14 mg once daily.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Ozempic prescribing information via DailyMed. Verbatim: “Initiate OZEMPIC with a dosage of 0.25 mg injected subcutaneously once weekly for 4 weeks... The recommended maintenance dosage is 0.5 mg, 1 mg, or 2 mg... The maximum recommended dosage is 2 mg once weekly.”</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=adec4fd2-6858-4c99-91d4-531f5f2a2d79" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=adec4fd2-6858-4c99-91d4-531f5f2a2d79</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Wegovy injection and tablet prescribing information via DailyMed. Verbatim: “the dosage may be increased to a maximum dosage of 7.2 mg subcutaneously once weekly.”</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ee06186f-2aa3-4990-a760-757579d8f77b" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ee06186f-2aa3-4990-a760-757579d8f77b</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Rybelsus prescribing information. Verbatim: “Start RYBELSUS with 3 mg once daily for 30 days... increase the dose to 7 mg once daily. Dose may be increased to 14 mg once daily...”</div>
+          <div class="source-link"><a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/213051s018lbl.pdf" target="_blank" rel="noopener">https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/213051s018lbl.pdf</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">STEP 1, Wilding JPH et al., New England Journal of Medicine 2021;384:989-1002. n = 1,961, randomised controlled trial, semaglutide 2.4 mg subcutaneously weekly for 68 weeks.</div>
+          <div class="source-link"><a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2032183" target="_blank" rel="noopener">https://www.nejm.org/doi/full/10.1056/NEJMoa2032183</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">SELECT cardiovascular outcomes trial. n = 17,604, 2.4 mg weekly.</div>
+          <div class="source-link"><a href="https://www.nejm.org/doi/pdf/10.1056/NEJMoa2307563" target="_blank" rel="noopener">https://www.nejm.org/doi/pdf/10.1056/NEJMoa2307563</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>The four labels are all Novo Nordisk filings and therefore represent one company’s position, but each is a separate legal document reviewed and issued by the FDA, which is a meaningful independent check. STEP 1 and SELECT are two independently designed and separately published randomised trials. Independence is genuine.</p></div><div class="field field-conflict"><span class="field-label">Conflicts — reported, not reconciled</span><p>The Wegovy label contains both a 2.4 mg once-weekly maintenance dose and a separate statement that the dosage may be increased to a maximum of 7.2 mg once weekly for weight reduction. This is unusual enough that the Critic re-opened the label specifically to check it, and confirmed the sentence verbatim. The two figures are not averaged and must never be. Separately, Ozempic’s ceiling of 2 mg weekly and Wegovy’s ceiling of 7.2 mg weekly apply to the same molecule under different approved indications; that divergence is a fact about the approvals, not a contradiction to be resolved.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Boxed warning for thyroid C-cell tumours observed in rodents; contraindicated in anyone with a personal or family history of medullary thyroid carcinoma or Multiple Endocrine Neoplasia syndrome type 2. The starting doses of 0.25 mg, 3 mg and 1.5 mg are explicitly not maintenance doses; they exist to reduce gastrointestinal adverse effects during initiation. The 7.2 mg figure is a stated maximum, not a target.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="tirzepatide">
+      <div class="compound-head">
+        <span class="compound-num">4.2</span>
+        <h3>Tirzepatide</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Approved as Mounjaro (type 2 diabetes) and Zepbound (chronic weight management, and obstructive sleep apnoea in adults with obesity).</p></div><div class="field"><span class="field-label">Protocol</span><p>Maintenance 5 mg, 10 mg or 15 mg subcutaneously once weekly. Initiation is 2.5 mg once weekly for four weeks, which the label states is not approved as a maintenance dosage, followed by 5 mg weekly, with further increases in 2.5 mg increments after at least four weeks at the current dose, to a maximum of 15 mg weekly. For obstructive sleep apnoea the maintenance dose is restricted to 10 mg or 15 mg. Paediatric Mounjaro (ages 10 and above) is capped at 10 mg weekly.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Mounjaro prescribing information via DailyMed.</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d2d7da5d-ad07-4228-955f-cf7e355c8cc0" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d2d7da5d-ad07-4228-955f-cf7e355c8cc0</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Zepbound prescribing information via DailyMed. Verbatim: “Maximum dosage for all indications: 15 mg injected subcutaneously once weekly.”</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=487cd7e7-434c-4925-99fa-aa80b1cc776b</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">SURMOUNT-1, Jastreboff AM et al., New England Journal of Medicine 2022. n = 2,539, phase 3 randomised controlled trial, 5/10/15 mg weekly over 72 weeks.</div>
+          <div class="source-link"><a href="https://www.nejm.org/doi/pdf/10.1056/nejmoa2206038" target="_blank" rel="noopener">https://www.nejm.org/doi/pdf/10.1056/nejmoa2206038</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Frías JP et al., “Tirzepatide versus Semaglutide Once Weekly in Patients with Type 2 Diabetes,” New England Journal of Medicine 2021;385(6):503-515, DOI 10.1056/NEJMoa2107519 (SURPASS-2; n = 1,879; 40-week open-label phase 3b). Abstract verbatim: “randomly assigned 1879 patients to receive tirzepatide at a dose of 5 mg, 10 mg, or 15 mg or semaglutide at a dose of 1 mg”. Cited by journal reference only — no permissible web address was captured during the run (full text paywalled, HTTP 403); quotation is from the PubMed-indexed abstract. Deliberately absent from the machine-readable source list rather than reconstructed. Note: the first pass had cited this trial to an Eli Lilly investor-relations press release, which was removed as a citation-hygiene failure.</div>
+          <div class="source-link"><span class="no-url">no permissible web address captured</span></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>Mounjaro and Zepbound are both Eli Lilly products containing the same molecule, so they are not independent scientific confirmation of one another, although each is a separately reviewed FDA label. SURMOUNT-1 and SURPASS-2 are independently designed trials in different populations against different comparators.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Boxed warning for thyroid C-cell tumours; contraindicated in medullary thyroid carcinoma and Multiple Endocrine Neoplasia syndrome type 2. Post-marketing reports of acute kidney injury, some requiring haemodialysis, secondary to dehydration from gastrointestinal adverse effects.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="somatropin">
+      <div class="compound-head">
+        <span class="compound-num">4.3</span>
+        <h3>Somatropin (recombinant human growth hormone)</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Approved, with brand-specific and indication-specific dosing. Three separate FDA labels were opened during this run, held by two different companies.</p></div><div class="field"><span class="field-label">Protocol</span><p>Weight-based and indication-specific, subcutaneous, mostly daily.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Genotropin prescribing information (Pfizer) via DailyMed. Verbatim: “Pediatric GHD: 0.16 to 0.24 mg/kg body weight/week; Turner syndrome: 0.33 mg/kg/week; SGA: up to 0.48 mg/kg/week; Idiopathic short stature: up to 0.47 mg/kg/week; Prader-Willi: 0.24 mg/kg/week; Adult GHD non-weight-based: approximately 0.2 mg/day (range 0.15-0.30 mg/day)... Adult GHD weight-based: not more than 0.04 mg/kg/week initially, not more than 0.08 mg/kg/week maximum.” The Critic re-opened this label and matched all nine weight-based figures verbatim.</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ffebf88b-d257-4542-9808-74d9b7167765" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ffebf88b-d257-4542-9808-74d9b7167765</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Serostim prescribing information (EMD Serono) via DailyMed. 0.1 mg/kg subcutaneously daily at bedtime, up to 6 mg, for HIV-associated wasting; weight-tiered as above 55 kg 6 mg, 45 to 55 kg 5 mg, 35 to 45 kg 4 mg, below 35 kg 0.1 mg/kg; an alternate every-other-day schedule at 0.1 mg/kg is described.</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=62b01d29-90f0-45b2-a0c4-3a750ba36c8a" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=62b01d29-90f0-45b2-a0c4-3a750ba36c8a</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Zorbtive prescribing information (EMD Serono) via DailyMed. 0.1 mg/kg subcutaneously once daily to a maximum daily dose of 8 mg, for four weeks, in short bowel syndrome.</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=c04b1b2c-5484-4a5d-887a-3f7ace8388a1" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=c04b1b2c-5484-4a5d-887a-3f7ace8388a1</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Molitch ME et al., “Evaluation and Treatment of Adult Growth Hormone Deficiency,” Endocrine Society Clinical Practice Guideline, Journal of Clinical Endocrinology and Metabolism 2011;96(6):1587-1609. Verbatim: “Ages 30-60: starting dose 200-300 mcg/d; increase by 100-200 mcg every 1-2 months; &gt;60 years: start 100-200 mcg/d, increase more slowly; &lt;30 years: may start at 400-500 mcg/d; women on oral estrogen usually need substantially higher doses.”</div>
+          <div class="source-link"><a href="https://academic.oup.com/jcem/article/96/6/1587/2833853" target="_blank" rel="noopener">https://academic.oup.com/jcem/article/96/6/1587/2833853</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>Strong. Three FDA labels from two different sponsors, plus an independent professional-society guideline that was developed separately from any of them.</p></div><div class="field field-conflict"><span class="field-label">Conflicts — reported, not reconciled</span><p>None that are true conflicts. The doses differ because the indications differ. The Genotropin fixed-range adult framework and the Endocrine Society age-stratified framework are reported side by side and deliberately not reconciled into one number.</p></div><div class="field field-correction"><span class="field-label">Correction carried from the Critic</span><p>The first pass presented the phrase “increased by approximately 0.1-0.2 mg/day every 1-2 months” as part of the Genotropin label quotation. The Critic’s own fetch of that label did not contain the string, and it is numerically identical to the Endocrine Society increment of 100 to 200 micrograms every one to two months. It appears to be two sources blended into one quoted string. That specific increment is therefore attributed to the Endocrine Society guideline, not to the Genotropin label, and should be treated as unverified against the label.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Explicit stated ceilings: Zorbtive maximum 8 mg per day; Serostim maximum 6 mg per day; Genotropin adult growth hormone deficiency maximum 0.08 mg/kg per week. All labels describe dose reduction for oedema, arthralgia and hyperglycaemia. Per secondary mirrors (drugs.com, bscg.org), and not verified against the official World Anti-Doping Agency list, somatropin appears under prohibited class S2.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="cerebrolysin">
+      <div class="compound-head">
+        <span class="compound-num">4.4</span>
+        <h3>Cerebrolysin</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Not approved by the FDA or the European Medicines Agency. Nationally registered in several countries including Romania, where the marketing authorisation is MA 4804/2012/01-04, held by EVER Neuro Pharma.</p></div><div class="field"><span class="field-label">Protocol</span><p>The European Academy of Neurology and European Federation of NeuroRehabilitation Societies guideline recommends 30 mL per day intravenously for a minimum of 10 days in early motor rehabilitation after acute ischaemic stroke, initiated within the first seven days. The Romanian Summary of Product Characteristics sets out indication-specific daily doses and a ceiling: 5 to 30 mL in dementia, 10 to 50 mL after stroke, 10 to 50 mL in traumatic brain injury, and 1 to 2 mL in children.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Beghi E et al., European Academy of Neurology / European Federation of NeuroRehabilitation Societies guideline on pharmacological support in early motor rehabilitation after acute ischaemic stroke, European Journal of Neurology 2021. Verbatim: “Cerebrolysin, 30 ml/day, intravenous, minimum 10 days”. The guideline itself notes that “further efforts are required to provide more precise recommendations.”</div>
+          <div class="source-link"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8321620/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC8321620/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Romanian National Agency for Medicines and Medical Devices (ANMDMR) hosted Summary of Product Characteristics, marketing authorisation 4804/2012. Verbatim (Romanian): “Se pot administra doze unice până la 50 ml soluție injectabilă/concentrat pentru soluție perfuzabilă dar, este de preferat tratamentul în cure.” — single doses of up to 50 mL may be administered, but treatment in courses is preferred. Also verbatim: “Doze între 10 ml până la maximum 50 ml soluție injectabilă/concentrat pentru soluție perfuzabilă sunt recomandate numai sub formă de perfuzie intravenoasă lentă, după diluare... până la un volum total de soluție gata de infuzat de 250 ml.” — doses between 10 mL and a maximum of 50 mL are recommended ONLY as a slow intravenous infusion after dilution to a total ready-to-infuse volume of 250 mL.</div>
+          <div class="source-link"><a href="https://www.anm.ro/_/_RCP/rcp_4804_17.07.12.pdf" target="_blank" rel="noopener">https://www.anm.ro/_/_RCP/rcp_4804_17.07.12.pdf</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Heiss WD et al., CASTA trial, Stroke 2012. n = 1,070, randomised double-blind placebo-controlled multicentre trial, 30 mL Cerebrolysin daily intravenously for 10 days. The primary combined endpoint was NOT significant against placebo overall.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/22282884/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/22282884/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Ziganshina LE et al., Cochrane Database of Systematic Reviews 2020, CD007026.pub6. Seven randomised trials, n = 1,773. Verbatim findings: the drug “probably does not reduce the risk of dying” and “led to an increase in the total number of people with serious, non-fatal unwanted effects”. The review notes manufacturer involvement in three of the included trials.</div>
+          <div class="source-link"><a href="https://www.cochrane.org/evidence/CD007026_cerebrolysin-acute-ischaemic-stroke" target="_blank" rel="noopener">https://www.cochrane.org/evidence/CD007026_cerebrolysin-acute-ischaemic-stroke</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>Weaker than it looks. The guideline, the CASTA trial and the Cochrane review draw on an overlapping pool of underlying trials, and Cochrane explicitly flags manufacturer involvement in three of the seven. The Romanian Summary of Product Characteristics is a genuinely separate regulatory document.</p></div><div class="field field-conflict"><span class="field-label">Conflicts — reported, not reconciled</span><p>A real, consistently registered dose exists. The efficacy evidence attached to it diverges sharply: Cochrane finds no mortality benefit plus a harm signal, while the European guideline endorsement is narrow and explicitly acknowledges its own evidentiary limits. Both are reported; neither is reconciled away.</p></div><div class="field field-note"><span class="field-label">Note</span><p>Route and dilution matter more than the ceiling. Any dose in the 10 to 50 mL range is to be given only as a slow diluted intravenous infusion into approximately 250 mL, over 15 to 60 minutes. A reader who extracts “up to 50 mL” without the accompanying route and dilution instruction has extracted the wrong half of the sentence. Citation correction: the first pass sourced the 50 mL figure to a Romanian online pharmacy retailer; that citation was removed and replaced with the medicines-agency-hosted document above, verified independently by both the Critic and the remediation scout. The manufacturer’s own product page states only the strength of 215.2 mg/mL and carries no dosing regimen; it is a manufacturer page and is not counted as evidence.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>The Cochrane review reports an increase in total serious non-fatal adverse events against placebo or control. Not FDA approved.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="gonadorelin">
+      <div class="compound-head">
+        <span class="compound-num">4.5</span>
+        <h3>Gonadorelin</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Discontinued as a human product in the United States. A DailyMed search for gonadorelin returns five products — Cystorelin, Factrel, Fertagyl, Gonabreed and Ovacyst — and all five are veterinary. The Critic independently followed the FACTREL record and confirmed it resolves to Zoetis Inc., a veterinary cattle product. That is unusually clean evidence of the human-approval null.</p></div><div class="field"><span class="field-label">Protocol</span><p>Historical, from a Health Canada product monograph. For pulsatile ovulation induction in women with primary hypothalamic amenorrhoea: 5 micrograms per pulse, every 90 minutes, intravenously or subcutaneously, delivered by a dedicated pulsatile pump set to deliver 25 or 50 microlitres per pulse from a reconstituted 0.8 mg vial. Titration is deliberately slow: a 21-day treatment interval is completed before any dose adjustment, and the dose is raised cautiously and stepwise only if there is no response after three such intervals. Doses of 1 to 20 micrograms per pulse were used in clinical studies, and some patients require less than 5 micrograms.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">LUTREPULSE Product Monograph, Ferring Inc., Health Canada Submission Control No. 127836, revised 17 August 2010. Verbatim: “The reconstituted solution is administered either IV or SC using a suitable pulsatile pump. The pump should be set to deliver either 25 or 50 microL of solution... at a pulse frequency of 90 minutes... The recommended dose in primary hypothalamic amenorrhea is 5 microg every 90 minutes, administered either SC or IV.” Also verbatim: “Sixty-eight percent of the 5 microg every 90 minutes regimens induced ovulation... when administered intravenously.” The Critic re-opened this monograph and matched every figure, including the titration interval, the ovulation rate and the safety numbers.</div>
+          <div class="source-link"><a href="https://www.ferring.ca/media/1230/lutrepulse-pm-control-no-127836-3-2mg-and-0-8-mg-en_17aug2010.pdf" target="_blank" rel="noopener">https://www.ferring.ca/media/1230/lutrepulse-pm-control-no-127836-3-2mg-and-0-8-mg-en_17aug2010.pdf</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">DailyMed professional search for gonadorelin. Used solely to document the absence of any currently listed human gonadorelin product in the United States.</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gonadorelin&amp;audience=professional" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gonadorelin&amp;audience=professional</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>The two sources are independent of each other but serve different functions: one carries the protocol, the other documents the regulatory null. Only one source carries the dose. This is a single-source dose with a separately verified regulatory context.</p></div><div class="field field-conflict"><span class="field-label">Conflicts — reported, not reconciled</span><p>A second figure circulates for this compound: a single 100 microgram subcutaneous or intravenous dose used as a diagnostic gonadotrophin-releasing hormone stimulation test, from the discontinued human Factrel label (New Drug Application 018123). That figure was reported via a secondary drug-reference mirror only; no regulator-hosted copy of the discontinued human Factrel label could be reached, and the only FDA-system Factrel record is the veterinary product. Treat the 100 microgram figure as UNVERIFIED. It is retained here for completeness, not as evidence. It is in any case a different indication — a single diagnostic bolus — and is not in conflict with the pulsatile regimen. Separately, and importantly: the off-label use of gonadorelin as an adjunct to testosterone replacement therapy in men has no labelled dose anywhere in the world. All circulating dosing for that use originates from compounding-pharmacy and clinic marketing material and was excluded from this run as inadmissible.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Ovarian hyperstimulation syndrome in fewer than 1% of pulsatile cycles. Of 89 Lutrepulse pregnancies with delivery data, 11 (12%) were multiple births — 10 twin and 1 triplet. Antibody formation in approximately 3% of subcutaneous Factrel users. Anaphylaxis has been reported with gonadorelin hydrochloride. Contraindicated in prolactinoma, hormone-dependent tumours and ovarian cysts. Both United States human products are discontinued.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="sermorelin">
+      <div class="compound-head">
+        <span class="compound-num">4.6</span>
+        <h3>Sermorelin</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Discontinued. Two products existed: Geref (0.5 mg and 1.0 mg base per vial, New Drug Application 20-443, approved 26 September 1997) for idiopathic growth hormone deficiency in children with growth failure, and Geref Diagnostic (0.05 mg base per ampoule, New Drug Application 19-863, approved 28 December 1990) for evaluating pituitary somatotroph growth hormone secretion. EMD Serono sent discontinuation letters on 11 July 2008 and 2 December 2008; the New Drug Application withdrawals took effect on 18 June 2009.</p></div><div class="field"><span class="field-label">Protocol</span><p>Historical, approved era. Diagnostic use: 1 microgram per kilogram of body weight as a single intravenous bolus. Paediatric treatment: 30 micrograms per kilogram subcutaneously once daily at bedtime.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">FDA, “Determination That GEREF (Sermorelin Acetate) Injection... Were Not Withdrawn From Sale for Reasons of Safety or Effectiveness,” Docket FDA-2012-P-1071, 78 Federal Register (2013). Confirms the indications, strengths, discontinuation letters, withdrawal dates, and the central finding quoted in its own title. Contains no per-kilogram dose.</div>
+          <div class="source-link"><a href="https://public-inspection.federalregister.gov/2013-04827.pdf" target="_blank" rel="noopener">https://public-inspection.federalregister.gov/2013-04827.pdf</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Prakash A, Goa KL, “Sermorelin: a review of its use in the diagnosis and treatment of children with idiopathic growth hormone deficiency,” BioDrugs 1999;12(2):139-157. Verbatim: “Intravenous sermorelin 1 microg/kg bodyweight appear[s] to be a rapid and relatively specific test for the diagnosis of growth hormone deficiency”; and “once daily subcutaneous sermorelin 30 microg/kg bodyweight given at bedtime is effective in treating some prepubertal children with idiopathic growth hormone deficiency.” The Critic verified both figures verbatim against this abstract.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/18031173/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/18031173/</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>Stated plainly: the regulatory chronology is well verified from a primary FDA document. The two per-kilogram dose figures rest on a SINGLE 1999 review article and nothing else. Remediation was attempted and failed: the original Geref package insert returns an HTTP 404 error at the FDA’s document archive; no DailyMed structured product label exists because the products were discontinued in 2008, before the electronic labelling mandate; and the Federal Register notice redirected to an unfetchable block page on retry. No second independent peer-reviewed source carrying the per-kilogram figures was reached. The dose therefore has one source, not two.</p></div><div class="field field-note"><span class="field-label">Note</span><p>Why the discontinuation reason matters: the FDA determination states in terms that these products were NOT withdrawn for reasons of safety or effectiveness. They were withdrawn because the manufacturer chose to stop selling them. This distinction is routinely garbled in marketing material around sermorelin, in both directions. What follows from it is narrow: no FDA-approved sermorelin product exists in the United States today, and every sermorelin product currently available is unapproved compounded material produced under sections 503A or 503B, outside FDA review of that specific product.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Per secondary mirrors (drugs.com, bscg.org), and not verified against the official World Anti-Doping Agency list, sermorelin falls under prohibited class S2.2 as a growth hormone releasing hormone analogue.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="oxytocin">
+      <div class="compound-head">
+        <span class="compound-num">4.11</span>
+        <h3>Oxytocin</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Approved. Human products are currently marketed and listed.</p></div><div class="field"><span class="field-label">Protocol</span><p>Four distinct, indication-specific protocols that must be kept separate. (1) Labour induction and augmentation: continuous IV infusion via calibrated pump only, initial dose 0.5 to 1 milliunits/min, increased by 1 to 2 milliunits/min at 30–60 min intervals; rates up to 6 milliunits/min approximate spontaneous labour, rates exceeding 9–10 milliunits/min rarely required. ACOG Practice Bulletin No. 107: Low-Dose regimen starting 0.5–2 milliunits/min, increases of 1–2 milliunits/min every 15–40 min; High-Dose regimen starting 6 milliunits/min, increases of 3–6 milliunits/min every 15–40 min, reduced to 3 milliunits/min on hyperstimulation and to 1 milliunit/min if it recurs. “A numeric value for the maximum dose of oxytocin has not been established.” (2) Postpartum haemorrhage prevention: single fixed dose of 10 IU IM or IV, per WHO. (3) Postpartum haemorrhage treatment: 10 to 40 units added to an infusion, or 10 units IM after delivery of the placenta. (4) Intranasal research dosing, approximately 8 to 24 IU per administration — entirely unapproved and investigational.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">PITOCIN prescribing information via DailyMed. Verbatim: “initial dose of 0.5 to 1 milliunits per minute”; “rates exceeding 9 to 10 milliunits/minute are rarely required”; “the total dose should not exceed 30 units in a 12-hour period”; and for postpartum haemorrhage, “10 to 40 units of oxytocin may be added to the bottle” or “Ten (10) units of Pitocin can be given”.</div>
+          <div class="source-link"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=969d5b35-0add-4c23-9605-6a5b6ab65c95" target="_blank" rel="noopener">https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=969d5b35-0add-4c23-9605-6a5b6ab65c95</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">American College of Obstetricians and Gynecologists Practice Bulletin No. 107, “Induction of Labor,” Obstetrics and Gynecology 2009;114:386-97 (publisher-hosted citation).</div>
+          <div class="source-link"><a href="https://journals.lww.com/greenjournal/citation/2009/08000/acog_practice_bulletin_no__107__induction_of_labor.30.aspx" target="_blank" rel="noopener">https://journals.lww.com/greenjournal/citation/2009/08000/acog_practice_bulletin_no__107__induction_of_labor.30.aspx</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">World Health Organization Consolidated Guidelines for the Prevention, Diagnosis and Treatment of Postpartum Haemorrhage. Verbatim: “Oxytocin (10 IU, intramuscularly/intravenously) is recommended for the prevention of postpartum haemorrhage for all births”; “the intravenous administration of 10 IU oxytocin — diluted and administered slowly over 1 to 2 minutes — is recommended in preference to intramuscular administration”; “Intravenous oxytocin is the recommended uterotonic drug for the treatment of postpartum haemorrhage”. The Critic verified Recommendation 7.1 verbatim, including the intravenous-over-intramuscular preference.</div>
+          <div class="source-link"><a href="https://www.ncbi.nlm.nih.gov/books/NBK619236/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/books/NBK619236/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Randomised double-blind placebo-controlled three-way crossover trial of intranasal oxytocin delivered by a Breath Powered device in adult males with autism spectrum disorder, n = 17. Doses of 8 IU and 24 IU per single intranasal administration. Investigational, not approved.</div>
+          <div class="source-link"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5584522/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC5584522/</a></div>
+        </li></ul></div><div class="field field-conflict"><span class="field-label">Conflicts — reported, not reconciled</span><p>The four protocols above must never be merged into a single “oxytocin dose”. They differ in route, in unit, in schedule and in clinical purpose.</p></div><div class="field field-note"><span class="field-label">Note</span><p>Citation correction and an honest limit: the Practice Bulletin’s milliunits-per-minute table was originally quoted from a copy hosted on a hospital-association website rather than the publisher. That mirror was removed from the source list and the publisher-hosted citation substituted. The publisher page is paywalled (HTTP 402), so the milliunits-per-minute table could NOT be re-verified verbatim from any directly opened source, and the third-party mirror remains the origin of those specific numbers. The NIH Bookshelf StatPearls entry NBK459264 still cites Practice Bulletin 107 as current for induction dosing methodology, so the bulletin is not withdrawn. The FDA Pitocin label independently carries the 0.5 to 1 milliunits per minute start and the 30 units per 12 hours ceiling, so the oxytocin entry does not depend on the bulletin alone.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>The label carries a water-intoxication warning: large doses of 40 to 50 milliunits per minute given over long periods with hypotonic fluids can cause convulsions through the drug’s antidiuretic effect. The total dose should not exceed 30 units in 12 hours. All obstetric use is hospital-administered under continuous monitoring.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="somatostatin">
+      <div class="compound-head">
+        <span class="compound-num">4.12</span>
+        <h3>Somatostatin (native somatostatin-14)</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Nationally registered in several European Union member states; NOT FDA approved. The adversarial scout separately confirmed that the European Medicines Agency central register contains no entry for the native compound, while the analogues octreotide and pasireotide are centrally authorised.</p></div><div class="field"><span class="field-label">Protocol</span><p>For acute variceal bleeding (oesophageal or gastric) in adults: a 250 microgram intravenous bolus over 3 to 5 minutes, followed by a continuous intravenous infusion of 250 micrograms per hour, with additional 250 microgram boluses if bleeding is not controlled. Treatment continues until variceal bleeding has stopped, usually within 12 to 24 hours, then for at least another 48 to 72 hours, out to a maximum of 120 hours.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Stilamin monograph, Compendium of Pharmaceuticals and Specialties (reproduced at rxmed.com). Verbatim: “250 microg i.v. bolus injection over 3 to 5 minutes”, then “250 microg/hr”; “additional 250 microg boluses can be used if bleeding is not controlled”. This is a SECONDARY MIRROR of a compendium monograph, not a regulator-hosted document.</div>
+          <div class="source-link"><a href="https://www.rxmed.com/b.main/b2.pharmaceutical/b2.1.monographs/cps-_monographs/CPS-_(General_Monographs-_S)/STILAMIN.html" target="_blank" rel="noopener">https://www.rxmed.com/b.main/b2.pharmaceutical/b2.1.monographs/cps-_monographs/CPS-_(General_Monographs-_S)/STILAMIN.html</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">de Franchis R et al. (Baveno VII Faculty), consensus workshop report on portal hypertension (publisher copy hosted at PubMed Central). Verbatim, Statement 6.5: “In suspected variceal bleeding, vasoactive drugs (terlipressin, somatostatin, octreotide) should be started as soon as possible and continued for 2-5 days.” This confirms the class role and the treatment duration. It does NOT confirm the numbers.</div>
+          <div class="source-link"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11090185/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11090185/</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>The Critic’s hardest ruling, applied: the first pass rated this compound HIGH confidence on the basis that a compendium monograph and an independent international hepatology consensus converged exactly on the same numbers. The Critic could read the 250 microgram bolus and 250 micrograms per hour figures in NEITHER cited source: the compendium copy is a secondary mirror, and the Journal of Hepatology page returned an HTTP 403 error on repeated attempts. Remediation obtained a clean publisher-hosted copy of the consensus statement, but that copy confirms only the class-level recommendation.</p></div><div class="field field-conflict"><span class="field-label">Conflicts — reported, not reconciled</span><p>None on the dose. One critical disambiguation: somatostatin must not be confused with octreotide, a separate longer-acting analogue with an entirely different regimen.</p></div><div class="field field-note"><span class="field-label">Note</span><p>The numeric dose therefore rests on a single secondary mirror and was NOT independently verified against any regulator-hosted Summary of Product Characteristics. No Italian, Greek or Swiss agency document for a native somatostatin product was reachable. The compound retains has_external_protocol = true, because native somatostatin is a nationally registered product in several European states with a guideline-endorsed first-line role in variceal bleeding. The confidence attached to the specific numbers is MEDIUM, not HIGH.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Native somatostatin has a half-life of approximately 2 to 3 minutes, which is precisely why it requires continuous infusion and why it is an acute, hospital-administered drug only. As an endogenous regulatory hormone, there is NO supplementation or optimisation dosing protocol of any kind, and the existence of an approved acute-bleeding regimen provides no support for any other use.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="ghrp2">
+      <div class="compound-head">
+        <span class="compound-num">4.13</span>
+        <h3>GHRP-2 (pralmorelin, KP-102)</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Approved in Japan, for diagnostic use only. Marketed as “GHRP Kaken 100 Injection” by Kaken Pharmaceutical, licensed by the Pharmaceuticals and Medical Devices Agency, launched July 2004, for use as a diagnostic test for growth hormone secretion deficiency. NOT approved for any therapeutic indication in any jurisdiction.</p></div><div class="field"><span class="field-label">Protocol</span><p>A single 100 microgram intravenous bolus, administered once as a diagnostic test. This is not a repeated or chronic regimen.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">“A simple diagnostic test using GH-releasing peptide-2 in adult GH deficiency”. n = 135 (77 healthy participants and 58 with growth hormone deficiency established by insulin tolerance test), a diagnostic-accuracy validation study against the insulin tolerance test. Verbatim: “a 100 microg dose of GHRP-2 was administered intravenously”. The Critic verified both the dose and the sample size verbatim.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/17609397/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/17609397/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Pralmorelin drug-development profile, Drugs in R&amp;D 2004;5(4):236-9. Records that “KP-102 D [is] currently awaiting approval in Japan as a diagnostic agent”.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/15230633/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/15230633/</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>Two independent peer-reviewed sources. The adversarial scout additionally corroborated the Japanese approval through the qlife.jp Japanese drug database entry and Japanese clinical trial registry entries, but could not fetch raw text from the Pharmaceuticals and Medical Devices Agency or from Kaken directly — so the approval is established from published literature and secondary Japanese databases rather than the regulator’s own document.</p></div><div class="field field-note"><span class="field-label">Note</span><p>Why this is the run’s one surprise, and what it does not license: every prior expectation placed GHRP-2 in the same category as GHRP-6 and hexarelin — an unapproved research chemical with heavy grey-market vendor presence. It is instead a licensed pharmaceutical in one country. But the approval is for a SINGLE intravenous bolus used to make a diagnosis, not for any treatment. Outside Japan it is a research chemical. No legitimate anti-ageing, growth-hormone-optimisation or bodybuilding protocol exists for it anywhere, and the Japanese diagnostic licence provides no support for one.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Per secondary mirrors (drugs.com, bscg.org), and not verified against the official World Anti-Doping Agency list, GHRP-2 and pralmorelin are named under prohibited class S2.2.4 covering growth hormone releasing peptides.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="cagrilintide">
+      <div class="compound-head">
+        <span class="compound-num">4.14</span>
+        <h3>Cagrilintide</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Research only. The CagriSema New Drug Application was filed with the FDA in December 2025 and a decision was pending as of July 2026. Cagrilintide is not approved anywhere in the world.</p></div><div class="field"><span class="field-label">Protocol</span><p>INVESTIGATIONAL TRIAL DOSING ONLY. The phase 2 dose-finding trial studied 0.3, 0.6, 1.2, 2.4 and 4.5 mg subcutaneously once weekly. The phase 3 REDEFINE programme carried forward only the 2.4 mg weekly dose, both alone and as the cagrilintide component of the CagriSema 2.4 mg / 2.4 mg combination. In phase 2, the 0.3 and 0.6 mg arms were held at dose from the start with no escalation, while the 1.2, 2.4 and 4.5 mg arms were reached through “a dose-escalation period of up to 6 weeks”, followed by a 26-week maintenance period and a 6-week untreated follow-up.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Lau DCW et al., Lancet 2021. n = 706, phase 2 dose-finding, randomised double-blind, placebo-controlled and active-controlled against liraglutide 3.0 mg, 26 weeks.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/34798060/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/34798060/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Garvey WT et al., REDEFINE-1, New England Journal of Medicine, DOI 10.1056/NEJMoa2502081. Verbatim: “In a phase 3a, 68-week, multicenter, double-blind, placebo-controlled and active-controlled trial, we enrolled adults without diabetes”, with dosing described as “semaglutide at a dose of 2.4 mg and cagrilintide at a dose of 2.4 mg, plus lifestyle interventions”. Verbatim outcome: “estimated mean percent change in body weight from baseline to week 68 was -20.4%” against -3.0% for placebo. Total n = 3,417, of whom 2,108 received the combination.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/40544433/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/40544433/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Independent review, “Approved and Emerging Hormone-Based Anti-Obesity Medications”.</div>
+          <div class="source-link"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11642516/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11642516/</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>Stated explicitly as the schema requires: this is investigational trial dosing, not an externally recommended protocol. No regulator has endorsed any cagrilintide dose. The phase 2 and phase 3 trials are both Novo Nordisk programmes; the review article is independent of the sponsor.</p></div><div class="field field-conflict"><span class="field-label">Conflicts — reported, not reconciled</span><p>Reported, not reconciled. Phase 2 studied doses up to 4.5 mg, which produced 10.8% weight loss, yet phase 3 carried only 2.4 mg forward. Separately, REDEFINE-1 reports 22.7% weight reduction under the trial-product estimand and 20.4% under the treatment-policy estimand for the same treatment arm. Both figures are correct; they answer different questions about what would happen if everyone stayed on treatment as opposed to what happened in practice. They must not be averaged.</p></div><div class="field field-note"><span class="field-label">Note</span><p>Citation correction: the first pass cited REDEFINE-1 to a Novo Nordisk press release standing in for the paywalled journal article. That citation was removed and replaced with the PubMed record above, which the remediation scout fetched directly.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Not approved anywhere. All dosing is investigational. Gastrointestinal adverse events occurred in 41% to 63% of participants across phase 2 arms.</p></div>
+    </article>
+
+    <article class="compound-card protocol-yes" id="survodutide">
+      <div class="compound-head">
+        <span class="compound-num">4.20</span>
+        <h3>Survodutide (BI 456906)</h3>
+        <span class="protocol-flag flag-yes">HAS EXTERNAL PROTOCOL</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Research only. Never approved anywhere.</p></div><div class="field"><span class="field-label">Protocol</span><p>INVESTIGATIONAL TRIAL DOSING ONLY. Phase 2 obesity trial: 0.6, 2.4, 3.6 and 4.8 mg subcutaneously once weekly, across a 46-week design comprising “20 weeks dose escalation; 26 weeks dose maintenance”. Phase 2 metabolic dysfunction-associated steatohepatitis (MASH) trial: 2.4, 4.8 and 6.0 mg subcutaneously once weekly, across a 48-week design comprising “a 24-week rapid-dose-escalation phase, followed by a 24-week maintenance phase”. The individual weekly steps within the escalation phases could not be verified because the journal full text returned an HTTP 403 error.</p></div><div class="field"><span class="field-label">Sources</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">le Roux CW et al. 2024. n = 387, phase 2 dose-finding trial in obesity, randomised double-blind placebo-controlled.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/38330987/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/38330987/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Sanyal AJ et al., New England Journal of Medicine 2024, DOI 10.1056/NEJMoa2401755. n = 293, phase 2 trial in metabolic dysfunction-associated steatohepatitis with fibrosis stages F1 to F3.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/38847460/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/38847460/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Independent review, states that participants “on the maximum dose of 4.8 mg achieved weight loss up to 18.7% over 46 weeks”.</div>
+          <div class="source-link"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11642516/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11642516/</a></div>
+        </li></ul></div><div class="field"><span class="field-label">Independence</span><p>Stated explicitly as the schema requires: this is investigational trial dosing, not an externally recommended protocol. No regulator has endorsed any survodutide dose. Both phase 2 trials are Boehringer Ingelheim programmes; the review article is independent of the sponsor.</p></div><div class="field field-conflict"><span class="field-label">Conflicts — reported, not reconciled</span><p>Reported, not reconciled. The dose sets differ by indication: a maximum of 4.8 mg weekly in the obesity trial against 6.0 mg weekly in the MASH trial. More importantly, the MASH dose-response is NON-MONOTONIC: the 4.8 mg arm produced the highest rate of MASH improvement at 62%, while the higher 6.0 mg arm performed worse at 43%. More is not better in this dataset, and no averaging or interpolation between these arms would be meaningful.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Not approved. The FDA Breakthrough Therapy designation granted in September 2024, the Fast Track designation, and the EMA PRIME designation are all regulatory acceleration statuses, NOT approvals, and are frequently misreported as such. The phase 3 SYNCHRONIZE programme is ongoing. In the MASH trial, gastrointestinal adverse events were common: nausea in 66%, diarrhoea in 49%, vomiting in 41%. In the obesity trial, adverse events occurred in 91% of survodutide participants against 75% on placebo.</p></div>
+    </article>
+
+        <div class="group-header group-no">
+          <h3>Compounds with no external protocol (9)</h3>
+          <p><strong>These nine absences are findings, not gaps.</strong> Where nothing exists, nothing is reported — no plausible-looking number was extracted from marketing copy to fill the slot.</p>
+        </div>
+        
+    <article class="compound-card protocol-no" id="aod9604">
+      <div class="compound-head">
+        <span class="compound-num">4.7</span>
+        <h3>AOD-9604</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="kind-tag">A development programme ran, produced dosing, and then failed.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Never approved, anywhere, for any indication. Development was terminated in 2007.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>Trial dosing exists in the published literature, but it is company-sponsored phase 1 and phase 2 dosing for a programme that failed and was abandoned. It is not a protocol.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Stier H, Vos E, Kenley D, “Safety and tolerability of the hexadecapeptide AOD9604 in humans,” Journal of Endocrinology and Metabolism 2013;3(1-2):7-15. Verbatim on the METAOD005 trial (n = 300, obese participants): “12 weeks administration of either placebo or AOD9604 (1, 5, 10, 20 or 30 mg AOD9604 or placebo once daily)”, given as ORAL CAPSULES. Verbatim on the pivotal METAOD006 / OPTIONS trial (n = 502, clinically obese participants): “a daily dose of 0.25, 0.5 or 1mg AOD9604 or placebo for 24 weeks”, also oral. Six completed phase 1 and phase 2 trials, all sponsored by Metabolic Pharmaceuticals. Both dose sets were verified verbatim by the Critic.</div>
+          <div class="source-link"><a href="https://www.jofem.org/index.php/jofem/article/view/157/194" target="_blank" rel="noopener">https://www.jofem.org/index.php/jofem/article/view/157/194</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">FDA Generally Recognized As Safe (GRAS) Notice Inventory. Searched and used to document an absence: no entry exists under AOD-9604 or Tyr-hGH(177-191). Commercial claims that the compound is “GRAS” therefore refer to self-affirmed status, not to anything the FDA reviewed.</div>
+          <div class="source-link"><a href="https://www.hfpappexternal.fda.gov/scripts/fdcc/index.cfm?set=GRASNotices" target="_blank" rel="noopener">https://www.hfpappexternal.fda.gov/scripts/fdcc/index.cfm?set=GRASNotices</a></div>
+        </li></ul></div><div class="field field-note"><span class="field-label">Note</span><p>Note on the oral route: every published human dose for this compound was given orally. Injectable dosing protocols circulating for AOD-9604 have no counterpart anywhere in the published human trial record. Conflicts (not reconciled): the earlier METAOD005 trial, using higher oral doses of 1 to 30 mg, reported a weight-loss signal at the 1 mg arm, while the larger pivotal METAOD006 trial, using lower doses of 0.25 to 1 mg, failed to replicate significance.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Reported as safe and well tolerated across six company-funded trials, but the compound never underwent regulatory safety review, and development was terminated for lack of efficacy rather than for safety. Per secondary mirrors, and not verified against the official World Anti-Doping Agency list, AOD-9604 is named under prohibited class S2.2.3 covering growth hormone fragments. The compound’s placement in FDA 503A Category 2 (not permitted for compounding), with a nomination withdrawn in September 2024, could not be confirmed by direct fetch. The Australian Therapeutic Goods Administration’s rejection of the obesity indication after phase 2b, and the later reversal of a 2012 food-grade classification, rest on secondary reporting only; no primary Therapeutic Goods Administration record was located.</p></div>
+    </article>
+
+    <article class="compound-card protocol-no" id="alphamsh">
+      <div class="compound-head">
+        <span class="compound-num">4.8</span>
+        <h3>Alpha-MSH (native alpha-melanocyte stimulating hormone)</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="kind-tag">The compound is real but the approved thing is a different molecule.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Never approved. Native alpha-MSH remains investigational.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>No external protocol exists for native alpha-MSH.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">“Alpha-melanocyte stimulating hormone: biology, clinical relevance and implication in melanoma,” review. Confirms that afamelanotide is the only approved agent acting on the alpha-MSH pathway and that native alpha-MSH remains investigational.</div>
+          <div class="source-link"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10463388/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC10463388/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">FDA review documents for afamelanotide (SCENESSE). Cited here only to establish that the approved agent is a DIFFERENT MOLECULE.</div>
+          <div class="source-link"><a href="https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/210797Orig1s000RiskR.pdf" target="_blank" rel="noopener">https://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/210797Orig1s000RiskR.pdf</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-none">NO ADMISSIBLE SOURCE</span>
+          <div class="source-text">A bioRxiv preprint, “Alpha-Melanocyte Stimulating Hormone Reduces Blood Glucose Across Species,” March 2025, describes a randomised double-blind placebo-controlled dose-finding IV infusion study in 15 healthy volunteers with doses of 15, 150 and 1,500 ng/kg/hour, started 30 minutes before an oral glucose tolerance test. A preprint is by definition not peer reviewed and cannot be tiered as such; the page also returned an HTTP 403 error on direct fetch, so the figures were reached through search extraction. The Critic separately confirmed the figures are not fabricated — reported here as an unpublished preprint finding and nothing more, EXCLUDED from the admissible source list.</div>
+          <div class="source-link"><span class="no-url">no permissible web address captured</span></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-none">NO ADMISSIBLE SOURCE</span>
+          <div class="source-text">ClinicalTrials.gov registry record NCT06293664, “Protocol for Alpha MSH Infusion Study in Patients With Type 2 Diabetes”, is an active registered trial protocol with no posted results. A registry record is not a clinical practice guideline and was mis-tiered in the first pass; it evidences continued investigational status and nothing more, EXCLUDED from the admissible source list.</div>
+          <div class="source-link"><span class="no-url">no permissible web address captured</span></div>
+        </li></ul></div><div class="field field-note"><span class="field-label">Note</span><p>Conflicts — a disambiguation essential to get right: two approved drugs act on this pathway and NEITHER of their doses belongs to native alpha-MSH. Afamelanotide (SCENESSE), historically and confusingly called “Melanotan I”, is a distinct molecule carrying Nle4 and D-Phe7 substitutions, FDA approved (October 2019) and EMA approved (2014) for erythropoietic protoporphyria, labelled dose one 16 mg subcutaneous implant above the anterior supra-iliac crest every two months. Bremelanotide (VYLEESI), a metabolite and analogue of Melanotan II, FDA approved (2019) for hypoactive sexual desire disorder in premenopausal women at 1.75 mg subcutaneously as needed, maximum one dose in 24 hours and maximum 12 doses per month. Neither dose may be transferred to native alpha-MSH or to Melanotan II. The Critic checked specifically for this kind of cross-compound leakage and found none.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>There is no systematic human safety dataset for native alpha-MSH outside small controlled research infusions. None of the harms documented for Melanotan II can be attributed to native alpha-MSH; they are different molecules.</p></div>
+    </article>
+
+    <article class="compound-card protocol-no" id="melanotan2">
+      <div class="compound-head">
+        <span class="compound-num">4.9</span>
+        <h3>Melanotan II</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="kind-tag">Something was given to humans in an experiment that was never a protocol.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Never approved, and actively enforced against in at least four jurisdictions. UK (MHRA): no Melanotan product licensed, sale/supply as a medicine illegal; 72 supplying websites closed in a three-month period; 18 reports covering 74 suspected adverse reactions received (described from secondary reporting — no live regulator-hosted page was reachable during the run). Ireland (HPRA): formal safety notice, unregulated and unsafe, ongoing enforcement and prosecution. Australia (TGA): Schedule 4, prescription only, no product on the Australian Register of Therapeutic Goods; 2025 public warning issued and 27 infringement notices served on a single individual for illegal supply. United States (FDA): unapproved new drug, excluded from 503A compounding eligibility, warning letters and a Notice of Opportunity for Hearing on record.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>There is no approved or recommended dose for this compound anywhere in the world.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Health Products Regulatory Authority safety notice (Ireland).</div>
+          <div class="source-link"><a href="https://www.hpra.ie/safety-information/safety-notices/article/reminder-of-serious-health-risks-with-melanotan-2-self-tan-products" target="_blank" rel="noopener">https://www.hpra.ie/safety-information/safety-notices/article/reminder-of-serious-health-risks-with-melanotan-2-self-tan-products</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Therapeutic Goods Administration public warning (Australia).</div>
+          <div class="source-link"><a href="https://www.tga.gov.au/news/blog/dont-risk-using-tanning-products-containing-melanotan" target="_blank" rel="noopener">https://www.tga.gov.au/news/blog/dont-risk-using-tanning-products-containing-melanotan</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">Therapeutic Goods Administration media release on 27 infringement notices.</div>
+          <div class="source-link"><a href="https://www.tga.gov.au/news/media-releases/individual-issued-27-infringement-notices-allegedly-supplying-melanotan-ii" target="_blank" rel="noopener">https://www.tga.gov.au/news/media-releases/individual-issued-27-infringement-notices-allegedly-supplying-melanotan-ii</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-guideline">GUIDELINE</span>
+          <div class="source-text">FDA-hosted docket document (Manookian matter, Docket FDA-2015-N-4169).</div>
+          <div class="source-link"><a href="https://www.fda.gov/media/128834/download" target="_blank" rel="noopener">https://www.fda.gov/media/128834/download</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Dorr RT et al., “Evaluation of melanotan-II, a superpotent cyclic melanotropic peptide in a pilot phase-I clinical study,” Life Sciences 1996;58(20):1777-84, PMID 8637402. n = 3 normal male volunteers, single-blind alternating-day placebo-controlled dose escalation. Quoted dosing: starting at 0.01 mg/kg subcutaneously, escalated in 0.005 mg/kg increments to 0.03 mg/kg in two subjects and 0.025 mg/kg in one, given daily Monday to Friday for two consecutive weeks. Abstract only; full text paywalled. THIS IS A THREE-PERSON HISTORICAL PHASE 1 DOSE-ESCALATION STUDY FROM 1996 IN A PROGRAMME THAT NEVER PROCEEDED TO APPROVAL. It is not a protocol and must not be read as one. The Critic verified every figure verbatim.</div>
+          <div class="source-link"><a href="https://www.sciencedirect.com/science/article/abs/pii/0024320596001609" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/0024320596001609</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Wessells H et al., Journal of Urology 1998;160(2):389-93. n = 10, double-blind placebo-controlled crossover in psychogenic erectile dysfunction. THE DOSE IS DELIBERATELY NOT QUOTED: the paper is paywalled and the figure could not be verified.</div>
+          <div class="source-link"><a href="https://www.sciencedirect.com/science/article/pii/S0022534701629033" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0022534701629033</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">“Melanotan II injection resulting in systemic toxicity and rhabdomyolysis,” Clinical Toxicology 2012;50(10). Single-patient case report; the patient self-injected 6 mg subcutaneously, roughly six times the starting dose stated by vendors.</div>
+          <div class="source-link"><a href="https://www.tandfonline.com/doi/full/10.3109/15563650.2012.740637" target="_blank" rel="noopener">https://www.tandfonline.com/doi/full/10.3109/15563650.2012.740637</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">“Melanotan-associated melanoma,” British Journal of Dermatology 2011;164(6):1403.</div>
+          <div class="source-link"><a href="https://academic.oup.com/bjd/article-abstract/164/6/1403/6644309" target="_blank" rel="noopener">https://academic.oup.com/bjd/article-abstract/164/6/1403/6644309</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">“Eruptive melanocytic naevi following melanotan injection,” British Journal of Dermatology 2009;161(3):707.</div>
+          <div class="source-link"><a href="https://academic.oup.com/bjd/article-abstract/161/3/707/6642168" target="_blank" rel="noopener">https://academic.oup.com/bjd/article-abstract/161/3/707/6642168</a></div>
+        </li></ul></div><div class="field field-note"><span class="field-label">Note</span><p>Citation correction: the first pass cited the UK regulator’s warning through a third-party consumer-safety website and the FDA warning letter through a trade-press article. Both were removed. Remediation confirmed that no gov.uk-hosted page carrying the MHRA warning is still live, and that the FDA’s pre-2012 warning letters have largely been purged from the current portal, with the Melanocorp letter address returning an HTTP 404 error. The remaining four regulator-primary sources carry the regulatory claim without needing either dropped citation. Conflicts: the afamelanotide/bremelanotide disambiguation in the alpha-MSH entry applies here with equal force — Melanotan II is neither of those approved molecules.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>The documented harm profile is the substance of this entry: rhabdomyolysis and systemic toxicity; eruptive and dysplastic melanocytic naevi; case reports of associated melanoma; ischaemic priapism requiring surgical decompression; posterior reversible encephalopathy syndrome; renal infarction; and the additional risks of unregulated and potentially contaminated product plus needle-borne infection.</p></div>
+    </article>
+
+    <article class="compound-card protocol-no" id="pegmgf">
+      <div class="compound-head">
+        <span class="compound-num">4.10</span>
+        <h3>PEG-MGF (pegylated mechano growth factor)</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="kind-tag">Nothing has ever been given to a human.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Never approved.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>THE STRONGEST DOCUMENTED ABSENCE IN THE ENTIRE RUN. No admissible source exists, because there is nothing to cite.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-none">NO ADMISSIBLE SOURCE</span>
+          <div class="source-text">PubMed search for mechano growth factor in human trials returns no records describing MGF or PEG-MGF administered as a therapeutic to humans. The matching records are animal studies (a SOD1(G93A) amyotrophic lateral sclerosis mouse model, mouse peritoneal macrophages) or human studies MEASURING ENDOGENOUS MGF MESSENGER RNA EXPRESSION after exercise or recombinant human growth hormone. Measuring a molecule the body already makes is not the same as administering a peptide, and the two are routinely conflated in marketing material.</div>
+          <div class="source-link"><span class="no-url">no permissible web address captured</span></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-none">NO ADMISSIBLE SOURCE</span>
+          <div class="source-text">ClinicalTrials.gov search for mechano growth factor returns no registered trials for mechano growth factor, PEG-MGF, or MGF peptide. The Critic re-ran the strict interventional query and confirmed a return of zero. No registry record exists at all.</div>
+          <div class="source-link"><span class="no-url">no permissible web address captured</span></div>
+        </li></ul></div><div class="field field-note"><span class="field-label">Note</span><p>What this means for the knowledge base: any dosing protocol encountered anywhere for PEG-MGF is, by definition, grey-market or vendor-sourced. There is no other possible origin, because no human administration has ever been published or registered. A knowledge-base entry giving a PEG-MGF dose is not an entry with weak sourcing; it is an entry that cannot have a legitimate source.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>There is no human safety or efficacy data at any dose, by any route, in any population. Per secondary mirrors (drugs.com, bscg.org), and not verified against the official World Anti-Doping Agency list, prohibited class S2.3 covering growth factors explicitly includes mechano growth factor.</p></div>
+    </article>
+
+    <article class="compound-card protocol-no" id="ghrp6">
+      <div class="compound-head">
+        <span class="compound-num">4.15</span>
+        <h3>GHRP-6</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-medium">MEDIUM</span>
+      </div>
+      <div class="kind-tag">Something was given to humans in an experiment that was never a protocol.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Never approved, in any jurisdiction, for any indication.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>No external protocol exists.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">“GH-releasing peptide-6 requires endogenous hypothalamic GHRH for maximal GH stimulation,” Journal of Clinical Endocrinology and Metabolism 1998;83(4):1186. n = 9 healthy men aged 20 to 30, randomised mechanistic study. Dose: “1 microg/kg, i.v. bolus”. THIS IS AN ACUTE GROWTH-HORMONE-STIMULATION PHARMACOLOGY EXPERIMENT DESIGNED TO PROBE A MECHANISM. It is not, and was never intended as, a dosing protocol, and quoting it as one would misrepresent the paper.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/9543138/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/9543138/</a></div>
+        </li></ul></div><div class="field field-note"><span class="field-label">Note</span><p>Deliberately not cited: a 2012 or 2013 pharmacokinetic study in the European Journal of Pharmaceutical Sciences, reported to have used single intravenous doses of 100, 200 and 400 micrograms per kilogram in 9 healthy males, was identified but returned an HTTP 403 error at the publisher. It was left uncited rather than cited unread.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>Per secondary mirrors (drugs.com, bscg.org), and not verified against the official World Anti-Doping Agency list, GHRP-6 is named under prohibited class S2.2.4. FDA warning-letter activity against compounders producing GHRP-6 products as unapproved new drugs was indicated by search, but no specific letter was located or opened, so that claim is unverified. There is no FDA or EMA approval of any kind.</p></div>
+    </article>
+
+    <article class="compound-card protocol-no" id="ara290">
+      <div class="compound-head">
+        <span class="compound-num">4.16</span>
+        <h3>ARA-290 (cibinetide)</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="kind-tag">A development programme ran, produced dosing, and then failed.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Research only. Never approved; never completed phase 3.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>Phase 2 trial dosing exists and is well documented, but no regulator has approved it and no independent body recommends it.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Culver DA et al., Investigative Ophthalmology and Visual Science 2017;58(6):BIO52-BIO60. n = 64, phase 2b randomised double-blind multicentre trial in sarcoidosis-associated small nerve fibre loss with neuropathic pain. Dosing: “1, 4, and 8 mg/day cibinetide versus placebo”, given subcutaneously daily for 28 days. The 4 mg arm was strongest on corneal nerve fibre area, P = 0.012. The Critic verified the sample size, all three dose levels, the duration, the confidence interval and the P value verbatim.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/28475703/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/28475703/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Dahan A et al., Molecular Medicine 2013;19(1):334-345. Randomised placebo-controlled blinded pilot study, subcutaneous daily for 28 days with 16-week follow-up. n = 36 per a secondary source and NOT verbatim-confirmed; the exact milligram dose does not appear in the fetched abstract and is therefore not reported.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/24136731/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/24136731/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Brines M et al., Molecular Medicine 2015;20(1):658-666. Phase 2 randomised double-blind placebo-controlled trial in type 2 diabetes with painful neuropathy. Dosing: “ARA 290 (4 mg)” administered “subcutaneously daily for 28 d”. The sample size does not appear in the fetched content and is not reported.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/25387363/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/25387363/</a></div>
+        </li></ul></div><div class="field field-note"><span class="field-label">Note</span><p>Independence — the weakest point of this entry: all three trials were sponsored by Araim Pharmaceuticals in partnership with academic centres (Cleveland Clinic; Centre for Human Drug Research / Leiden). There is NO independent, non-sponsor replication of any finding. Three papers from one sponsor are not three independent sources in the sense that matters.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>No significant safety issues were reported at 1 to 8 mg subcutaneously daily for 28 days, but that assessment comes from investigator and sponsor reporting within the same programme. The compound never completed phase 3 and was never approved. Orphan drug designation from the FDA and in the European Union is an incentive status conferred on rare-disease programmes, not an approval, and it is reported here from secondary summaries only. Araim Pharmaceuticals appears to have ceased independent operation and no active Investigational New Drug holder was identified.</p></div>
+    </article>
+
+    <article class="compound-card protocol-no" id="foxo4dri">
+      <div class="compound-head">
+        <span class="compound-num">4.17</span>
+        <h3>FOXO4-DRI</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="kind-tag">Nothing has ever been given to a human.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Research only, and preclinical. It has never entered a registered human trial.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>No external protocol exists.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Baar MP, Brandt RMC, Putavet DA et al., “Targeted Apoptosis of Senescent Cells Restores Tissue Homeostasis in Response to Chemotoxicity and Aging,” Cell 2017, PMID 28340339. In vivo work was MOUSE ONLY (fast-ageing Xpd-TTD/TTD mice and naturally aged mice), plus in vitro work on human and mouse fibroblasts. The paper reports restoration of “fitness, fur density, and renal function” in mice. NO DOSE FIGURE IS REPORTED HERE. The methods text at the publisher returned an HTTP 403 error, and the “5 mg/kg intravenously” figure that circulates for this compound was found only on vendor and marketing pages. It is therefore deliberately omitted. The Critic examined this specific decision and endorsed it.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/28340339/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/28340339/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Corroborating review confirming preclinical-only status.</div>
+          <div class="source-link"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8116695/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC8116695/</a></div>
+        </li></ul></div><div class="field field-note"><span class="field-label">Note</span><p>Documented absence: a ClinicalTrials.gov application-programming-interface query for FOXO4-DRI returned zero studies; the Critic re-ran it and confirmed a total count of zero. A PubMed query for FOXO4-DRI restricted to clinical trials or human studies returned 12 results, all preclinical (mouse in vivo, or in vitro human cell and tissue work) or review articles. None is a human clinical trial.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>No human safety data exists at any dose, by any route. There is no FDA or EMA approval and no designation of any kind. Every circulating “protocol” for this compound is a longevity-clinic or grey-market extrapolation from mouse experiments. Mouse dosing does not scale to humans by any simple factor, and the underlying paper does not supply a human-relevant figure in any case.</p></div>
+    </article>
+
+    <article class="compound-card protocol-no" id="hexarelin">
+      <div class="compound-head">
+        <span class="compound-num">4.18</span>
+        <h3>Hexarelin (examorelin)</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="kind-tag">A development programme ran, produced dosing, and then failed.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Discontinued and never marketed in any jurisdiction. It reached phase 2 for growth hormone deficiency and congestive heart failure, then was discontinued around 2005 for strategic and commercial reasons.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>No external protocol exists.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">NCATS Inxight Drugs entry for examorelin, unique ingredient identifier 09QF37C617. Status recorded as “Investigational”, approval year “Unknown”; developers listed as Mediolanum Farmaceutici and Europeptides for somatotropin deficiency. THIS IS A UNITED STATES GOVERNMENT SUBSTANCE DATABASE rather than a journal article, included as documentary evidence of development status, not as clinical evidence.</div>
+          <div class="source-link"><a href="https://drugs.ncats.io/drug/09QF37C617" target="_blank" rel="noopener">https://drugs.ncats.io/drug/09QF37C617</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">“GH Secretagogue Hexarelin Stimulates the Hypothalamic-Pituitary-Adrenal Axis via Arginine Vasopressin,” Journal of Clinical Endocrinology and Metabolism 1999;84(7):2489. n = 15 healthy young men, randomised acute pharmacology study. THE EXACT DOSE COULD NOT BE EXTRACTED — the full text was paywalled and truncated — so no dose is reported. This is the correct outcome: an unreadable figure is not a figure.</div>
+          <div class="source-link"><a href="https://academic.oup.com/jcem/article/84/7/2489/2864389" target="_blank" rel="noopener">https://academic.oup.com/jcem/article/84/7/2489/2864389</a></div>
+        </li></ul></div><div class="field field-safety"><span class="field-label">Safety</span><p>Per secondary mirrors (drugs.com, bscg.org), and not verified against the official World Anti-Doping Agency list, “examorelin (hexarelin)” appears under prohibited class S2.2.4. Grey-market sellers promote a “heart health” framing based on the compound’s interaction with the CD36 receptor; this framing is not supported by any approved indication anywhere, and the cardiac programme was abandoned without producing an approval.</p></div>
+    </article>
+
+    <article class="compound-card protocol-no" id="ace031">
+      <div class="compound-head">
+        <span class="compound-num">4.19</span>
+        <h3>ACE-031 (ramatercept)</h3>
+        <span class="protocol-flag flag-no">NO EXTERNAL PROTOCOL — THIS IS A FINDING</span>
+        <span class="conf-badge conf-high">HIGH</span>
+      </div>
+      <div class="kind-tag">A development programme ran, produced dosing, and then failed.</div>
+      <div class="field"><span class="field-label">Regulatory status</span><p>Discontinued. Trials were halted by Acceleron Pharma and Shire in April 2011 and the programme was formally discontinued in May 2013. The compound holds only an FDA orphan drug designation for Duchenne muscular dystrophy, which is an incentive status and not an approval.</p></div><div class="field field-finding"><span class="field-label">Finding</span><p>No external protocol exists. This compound’s trials were stopped for a SAFETY SIGNAL, which places it in a different category from compounds that simply failed to work.</p></div><div class="field"><span class="field-label">Sources examined</span><ul class="source-list"><li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Attie KM et al., “A single ascending-dose study of muscle regulator ACE-031 in healthy volunteers,” Muscle &amp; Nerve 2013, PMID 23169607. n = 48, phase 1 double-blind placebo-controlled (3:1) single ascending dose study in healthy postmenopausal women. Doses of 0.02 to 3 mg/kg subcutaneously, single administration.</div>
+          <div class="source-link"><a href="https://pubmed.ncbi.nlm.nih.gov/23169607/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/23169607/</a></div>
+        </li>
+<li class="source-item">
+          <span class="tier-badge tier-peer">PEER-REVIEWED</span>
+          <div class="source-text">Campbell C, McMillan HJ, Mah JK, Tarnopolsky M et al., Muscle &amp; Nerve 2017, PMID 27462804. n = 24, phase 2 randomised double-blind placebo-controlled ascending-dose study in ambulatory, steroid-treated boys with Duchenne muscular dystrophy. Dosing described as “escalating SC doses every 2-4 weeks”. Verbatim on the halt: “the study was stopped after the second dosing regimen due to potential safety concerns of epistasis [sic] and telangiectasias.” The published abstract prints “epistasis”, a typographical error in the original for “epistaxis” (nosebleeds); quoted here as printed [sic], not silently corrected.</div>
+          <div class="source-link"><a href="https://onlinelibrary.wiley.com/doi/10.1002/mus.25268" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1002/mus.25268</a></div>
+        </li></ul></div><div class="field field-note"><span class="field-label">Note</span><p>Registry corroboration, reported in prose (not counted as a tiered source): ClinicalTrials.gov records NCT00755638 (matching the Attie phase 1 study) and NCT01099761 and NCT01239758 (both phase 2 studies in Duchenne muscular dystrophy, both with status Terminated for safety concerns; NCT01099761 enrolled 24 boys). The April 2011 halt was separately reported by the Muscular Dystrophy Association, a patient-advocacy organisation; that report was mis-tiered as a clinician source in the first pass and has been moved to prose.</p></div><div class="field field-safety"><span class="field-label">Safety</span><p>The vascular safety signal consisted of nosebleeds and telangiectasias, understood as off-target effects on vascular biology; the adversarial scout attributes these to inhibition of bone morphogenetic proteins 9 and 10, on secondary sourcing. No serious or severe adverse events were reported individually, but the vascular signal combined with an absent efficacy signal ended the programme, with the sponsor concluding that the findings did not support further development.</p></div>
+    </article>
+      </section>
+
+      <section id="not-support">
+        <h2 class="section-title"><span class="section-num">5</span> What the evidence does not support</h2>
+        <div class="prose">
+          <p>Nine of the twenty compounds have <strong>no external dosing protocol of any kind</strong>: alpha-MSH (native), Melanotan II, AOD-9604, PEG-MGF, GHRP-6, ARA-290, FOXO4-DRI, hexarelin and ACE-031.</p>
+          <p>This is the most useful section of the report, and it should be read as a positive finding rather than as a failure to find something. The run was designed to catch the failure mode in which an absent protocol gets filled in with a plausible-looking number extracted from marketing copy. It did not do that in a single instance. Where nothing exists, nothing is reported.</p>
+          <p>The nine break into four distinct kinds of nothing, and the distinction matters:</p>
+        </div>
+        <div class="gaps-block">
+          <h4>Nothing has ever been given to a human</h4>
+          <p><strong>PEG-MGF and FOXO4-DRI.</strong> For PEG-MGF, no human administration has ever been published or registered — the human literature measures the body's own mechano growth factor expression, which is a different thing entirely. For FOXO4-DRI, the entire in vivo evidence base is mice, and the primary paper does not even supply a figure that could be misused. For these two compounds, any dosing protocol in circulation necessarily originated with a seller, because there is no other possible origin.</p>
+        </div>
+        <div class="gaps-block">
+          <h4>Something was given to humans in an experiment that was never a protocol</h4>
+          <p><strong>GHRP-6 and, in its 1996 phase 1 form, Melanotan II.</strong> A mechanistic bolus given to nine men to test whether a peptide needs endogenous growth hormone releasing hormone, or a dose-escalation in three volunteers from 1996, produces numbers. Numbers from such studies describe what an investigator did once under monitoring, in a programme that then went nowhere. Presenting them as dosing guidance inverts their meaning.</p>
+        </div>
+        <div class="gaps-block">
+          <h4>A development programme ran, produced dosing, and then failed</h4>
+          <p><strong>AOD-9604, ARA-290, hexarelin and, in a specific sense, ACE-031.</strong> These have the most seductive evidence profile, because real phase 2 trials with real dose arms and real sample sizes exist and can be cited. What is missing in every case is the ending: AOD-9604's pivotal trial failed to replicate its own earlier signal and the programme was terminated in 2007; ARA-290 has no non-sponsor replication and its sponsor appears to have ceased independent operation; hexarelin was abandoned around 2005 and never marketed; ACE-031 was stopped for a vascular safety signal. A citable dose from an abandoned programme is not a protocol; it is a record of what was tried before the trying stopped.</p>
+        </div>
+        <div class="gaps-block">
+          <h4>The compound is real but the approved thing is a different molecule</h4>
+          <p><strong>Native alpha-MSH.</strong> Afamelanotide and bremelanotide are genuinely approved drugs with genuine labelled doses, and both are structurally related to the compounds in this inventory. Neither dose transfers. This is the single most likely route by which a legitimate-looking but wrong number could enter a knowledge base for these compounds, and it was checked for specifically.</p>
+        </div>
+        <div class="prose">
+          <p><strong>Why this matters more than a filled slot.</strong> A knowledge-base entry that reads "no external protocol exists; all circulating doses are vendor-sourced" is more valuable to a non-clinician owner than an entry containing a number of unknown provenance. The first tells the owner exactly how much weight the entry can bear. The second looks identical to a well-grounded entry and cannot be distinguished from one without doing the work this run did. Nine empty slots, honestly marked, are the result — not a shortfall in it.</p>
+        </div>
+      </section>
+
+      <section id="gaps">
+        <h2 class="section-title"><span class="section-num">6</span> Known gaps and unverified claims</h2>
+        <p class="section-lede">Everything below is a limitation of this run. None of it is buried elsewhere in the document.</p>
+
+        <div class="gaps-block">
+          <h4>Paywalls and failed primary fetches</h4>
+          <p>New England Journal of Medicine full text returned HTTP 403 errors repeatedly. Affected: the SURPASS-2 tirzepatide paper (quotation taken from the PubMed abstract), the REDEFINE-1 cagrilintide paper (resolved via PubMed), the survodutide MASH paper (within-escalation weekly steps unverified), and a 2021 intranasal oxytocin trial with n = 290 that was identified and deliberately not cited rather than cited unread.</p>
+          <p>The Journal of Hepatology page for the Baveno VII consensus returned HTTP 403 on repeated attempts; a publisher copy hosted at PubMed Central was substituted, and it confirms the class-level statement but not the numeric dose.</p>
+          <p>The American College of Obstetricians and Gynecologists Practice Bulletin No. 107 publisher page returned HTTP 402 (payment required). <strong>The milliunits-per-minute infusion table could not be re-verified verbatim from any directly opened source</strong>; the third-party hospital-association mirror remains the origin of those specific numbers. The bulletin is not withdrawn — National Institutes of Health Bookshelf StatPearls still cites it as current — but whether the newer 2024 ACOG labour-management guideline revises the numbers is <strong>unknown</strong>, because that document returned HTTP 402 or 403 on every attempt.</p>
+          <p>The Cell paper methods text for FOXO4-DRI returned HTTP 403, which is why no dose is reported for that compound. The hexarelin Journal of Clinical Endocrinology and Metabolism paper was paywalled and truncated, so its dose is not reported. A European Journal of Pharmaceutical Sciences pharmacokinetic study of GHRP-6 returned HTTP 403 at the publisher and was left uncited. The Melanotan II papers by Dorr (Life Sciences 1996) and Wessells (Journal of Urology 1998) are abstract-only and paywalled respectively; the Wessells dose is deliberately not quoted. The original Geref package insert returns HTTP 404 at the FDA document archive, and no DailyMed structured product label exists for it because the product predates the electronic labelling mandate. The FDA's Melanocorp warning letter URL returns HTTP 404; the FDA appears to have purged most pre-2012 warning letters from its current portal. No live gov.uk-hosted page carrying the UK Medicines and Healthcare products Regulatory Agency Melanotan warning was reachable.</p>
+        </div>
+
+        <div class="gaps-block">
+          <h4>The World Anti-Doping Agency situation</h4>
+          <p>No scout and not the Critic achieved a clean fetch of the official 2026 Prohibited List. The published PDF is image- or font-encoded with no extractable text, and extraction through a third-party service hit a plan limit. Remediation additionally failed on the United States Anti-Doping Agency site (navigational content only), UK Anti-Doping (HTTP 404), Sport Integrity Australia (timeout) and Global DRO (a JavaScript-rendered shell with no server-side content). <strong>Every anti-doping statement in this report therefore rests on secondary mirrors — drugs.com and bscg.org — and is not verified against the official list.</strong> No anti-doping claim appears in any machine-readable source list. Per those mirrors, the following are prohibited: somatropin (class S2), GHRP-2, GHRP-6 and hexarelin/examorelin (class S2.2.4), sermorelin (class S2.2, growth hormone releasing hormone analogues), PEG-MGF (class S2, growth factors) and AOD-9604 (class S2.2.3, growth hormone fragments). Status is <strong>unverified</strong> for gonadorelin, alpha-MSH, Melanotan II, ARA-290, ACE-031, oxytocin and the remainder.</p>
+        </div>
+
+        <div class="gaps-block">
+          <h4>Named single-source figures</h4>
+          <p>Three doses in this report have exactly one source each and are flagged as such in their entries:</p>
+          <ul style="margin-left:20px;">
+            <li><strong>Somatostatin</strong>, 250 microgram bolus plus 250 micrograms per hour: rests on a single secondary mirror of a compendium monograph. Not verified against any regulator-hosted Summary of Product Characteristics; none was reachable in Italy, Greece or Switzerland. Confidence for the numbers is MEDIUM, not HIGH.</li>
+            <li><strong>Sermorelin</strong>, 1 microgram per kilogram intravenously and 30 micrograms per kilogram subcutaneously: rests on a single 1999 review article in BioDrugs. Remediation was attempted and failed on three separate routes. The Critic did verify both figures verbatim against that review, so the figures are accurately transcribed — they are simply not corroborated.</li>
+            <li><strong>Gonadorelin</strong>, the 100 microgram diagnostic bolus: reported through a secondary drug-reference mirror only. No regulator-hosted copy of the discontinued human Factrel label could be reached, and the only FDA-system Factrel record is a Zoetis veterinary product for cattle. Treat as unverified. The Lutrepulse pulsatile regimen, by contrast, was verified figure by figure against the Health Canada monograph.</li>
+          </ul>
+        </div>
+
+        <div class="gaps-block">
+          <h4>Attribution corrected rather than verified</h4>
+          <p>The somatropin titration phrase "increased by approximately 0.1-0.2 mg/day every 1-2 months" was presented in the first pass as part of a Genotropin label quotation. It did not appear in the Critic's fetch of that label and is numerically identical to the Endocrine Society increment. It is attributed to the Endocrine Society guideline in this report and should be treated as unverified against the label.</p>
+        </div>
+
+        <div class="gaps-block">
+          <h4>Other unverified leads</h4>
+          <p>The current status of the European gonadorelin brands Kryptocur and Relefact LH-RH was not verified, nor was the current Canadian marketing status of Lutrepulse. AOD-9604's FDA 503A Category 2 status and the withdrawal of its compounding nomination in September 2024 could not be confirmed by direct fetch. The Therapeutic Goods Administration's rejection of AOD-9604 for obesity and the reversal of its 2012 food-grade classification rest on secondary reporting with no primary record located. FDA warning-letter activity against GHRP-6 compounders was indicated by search but no specific letter was opened. The somatostatin pancreatic-fistula indication and the full list of countries where native somatostatin is registered were not verified to primary standard. For GHRP-2, raw text from the Japanese regulator and from Kaken Pharmaceutical could not be fetched; the approval is established from published literature and Japanese secondary drug databases. ARA-290's orphan designations and Araim Pharmaceuticals' current corporate status rest on secondary summaries.</p>
+        </div>
+
+        <div class="gaps-block">
+          <h4>Vendor contamination — the ambient condition of this entire search space</h4>
+          <p>Every one of the twenty compounds returned search results dominated by peptide vendors, telehealth marketing and "peptide guide" content farms. <strong>None was cited, at any tier, at any point.</strong> Vendor saturation was highest — meaning the risk of mistaking marketing copy for a citable protocol was highest — for Melanotan II, GHRP-2, GHRP-6, hexarelin, AOD-9604, ARA-290, PEG-MGF, FOXO4-DRI, ACE-031 and alpha-MSH. Sermorelin carries heavy telehealth-marketing contamination specifically around the question of its legal status, which typically garbles the true chronology. One seller citation did make it into the first pass — a Romanian pharmacy retailer's reproduction of the cerebrolysin Summary of Product Characteristics — and it was caught and replaced with the medicines-agency-hosted original. The content happened to be accurate; the citation was still inadmissible, and the fact that a correct-looking seller page slipped through once is the clearest available argument for the rule.</p>
+        </div>
+      </section>
+
+      <section id="method">
+        <h2 class="section-title"><span class="section-num">7</span> Method and quality gate</h2>
+        <div class="prose">
+          <p><strong>Structure.</strong> Ten scouts covered the twenty compounds in thematic groups — approved incretins, incretin trials, the growth hormone axis, the growth hormone releasing peptides, the reproductive axis, neurological and gastrointestinal compounds, melanocortins, investigational compounds, halted programmes — plus one adversarial scout whose sole assignment was to attempt to overturn the expected negatives and to establish regulatory ground truth independently of the compound scouts.</p>
+          <p><strong>Evidence rules applied throughout.</strong> Three tiers only were admissible: <code>guideline</code> (clinical practice guidelines, regulatory drug labels, pharmacopoeia monographs), <code>peer_reviewed</code> (trials and systematic reviews, recorded with sample size, design and population) and <code>clinician</code> (practising physicians, including doctor-influencers). A compound was marked as having an external protocol only where at least two independent sources supported it. Vendor, seller, compounding-pharmacy and peptide-shop pages were inadmissible at every tier without exception.</p>
+          <p><strong>A meaningful negative result about the weakest permitted evidence.</strong> Two <code>clinician</code> sources agreeing is the weakest pair that can qualify a compound, and it must always be labelled as such, because physicians with a public following routinely cite one another — their agreement is a citation loop, not independent confirmation, and it is not equivalent to two trials. In this run, no compound rests on a clinician pair. After the mis-tiered patient-advocacy source was removed from the ACE-031 entry, the report contains no <code>clinician</code>-tier source at all. Every protocol reported here is supported by regulatory labels, pharmacopoeia-style monographs, clinical practice guidelines, or peer-reviewed trials. That is a better outcome than the evidence rules required and is worth recording explicitly.</p>
+          <p><strong>Quality gate.</strong> An independent Critic re-resolved the sources rather than merely reading the scouts' summaries, opening labels and abstracts itself and comparing every reachable figure against what the source actually printed.</p>
+          <ul>
+            <li><strong>Content: 14 out of 15</strong> (Comprehensiveness 5, Depth and Insight 5, Relevance 4). Passes the threshold of 11.</li>
+            <li><strong>Grounding: 82.8%</strong> (48 of 58 resolvable claims passed) as measured before the fixes were applied. Counting strictly, with claims marked unverified counted against, the figure was 68.6% (48 of 70). This fell below the 90% threshold and triggered the single permitted retry pass, of which this report is the product.</li>
+          </ul>
+          <p><strong>The Critic's central finding, stated plainly.</strong> It hunted specifically for fabricated, drifted or interpolated doses — the failure mode that matters most for this deliverable — and <strong>found none</strong>. Every numeric dose it could reach matched its source exactly. All ten grounding failures were citation-hygiene and tier-assignment defects, not substance: two sponsor press releases standing in for peer-reviewed journal articles, one pharmacy-retailer page standing in for a medicines-agency document, one secondary label mirror, two third-party reports of regulator warnings, three sources assigned to tiers they do not belong to (a preprint tiered as peer-reviewed, a trial registry record tiered as a guideline, a patient-advocacy organisation tiered as a clinician), and one quotation that had blended two sources into a single quoted string. All twenty has_external_protocol verdicts were correct on everything testable and none changed during remediation.</p>
+          <p>The Critic also specifically confirmed the decisions where the first pass had <strong>refused</strong> to report a number: the vendor-only "5 mg/kg" figure for FOXO4-DRI, the paywalled hexarelin dose, the paywalled Wessells Melanotan II dose, and the unreadable GHRP-6 pharmacokinetic doses. It confirmed that the afamelanotide 16 mg and bremelanotide 1.75 mg doses had been correctly kept off Melanotan II and alpha-MSH, with no cross-compound leakage anywhere in the set.</p>
+          <p><strong>Eleven mandatory fixes were issued and all eleven have been applied in this document.</strong> Nine were blocking: replacing the cerebrolysin seller citation with the Romanian medicines agency document and adding the indication-specific daily doses and the dilution requirement; replacing the tirzepatide sponsor press release with the journal citation; replacing the cagrilintide sponsor press release with the journal record; removing three mis-tiered sources to prose; downgrading the somatostatin numeric dose to explicitly single-sourced with MEDIUM confidence; quoting the ACE-031 abstract as printed rather than silently correcting its typographical error; relabelling every anti-doping statement as resting on secondary mirrors; removing the gonadorelin secondary mirror and moving its figure to a labelled unverified conflict; and dropping two third-party reports from the Melanotan II entry. Two were advisory: correcting the attribution of the somatropin titration increment, and requiring that investigational trial dosing be labelled as such in the independence note for cagrilintide and survodutide.</p>
+          <p><strong>One retry pass was permitted and one was used.</strong> No new research was conducted in producing this report; every source, figure and quotation in it comes from material already gathered and verified during the run.</p>
+        </div>
+      </section>
+
+      <div class="boundary boundary-bottom" id="boundary-bottom">
+        <h2>Boundary statement — closing</h2>
+        <p>To restate the limit this document operates under, because the detail above can easily be mistaken for something it is not:</p>
+        <p>This is an inventory of what other people have published. It records where a dose came from, how strong that source is, whether anything independent agrees with it, and where nothing exists at all. That is its whole function.</p>
+        <p>It is <strong>not medical advice</strong>. It is <strong>not clinical validation</strong> of any compound, any dose, or any knowledge-base entry. A dose appearing in section 4 means a named source printed it at a verifiable address — nothing more. Several of the figures here come from studies in three people, from trials halted for safety signals, from labels for withdrawn products, and from programmes no regulator has approved. Several are explicit maximums attached to warnings. None of them constitutes guidance to any individual.</p>
+        <p>Nine of the twenty compounds have no legitimate human dosing protocol at all, and for two of those, no human being has ever been administered the substance in any published or registered study. For those compounds, every dose in circulation traces back to someone selling the product.</p>
+        <p><strong>Any decision about using any substance named in this document belongs with a licensed physician who can assess the person in front of them. Nothing here substitutes for that.</strong></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    DELPHI PRO · Depth D3 · Run 20260725-peptide-external-protocols · Generated 25 July 2026 via shared-reporter (Tier 2)
+  </div>
+</footer>
+
+<script>
+  // Theme toggle
+  const root = document.documentElement;
+  const stored = localStorage.getItem('nexus-theme');
+  if(stored){ root.setAttribute('data-theme', stored); }
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('nexus-theme', next);
+  });
+
+  // Share
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const url = window.location.href;
+    if(navigator.share){
+      try{ await navigator.share({ title: document.title, url }); }catch(e){}
+    } else {
+      try{
+        await navigator.clipboard.writeText(url);
+        const btn = document.getElementById('shareBtn');
+        const old = btn.innerHTML; btn.innerHTML = '✓ Copied';
+        setTimeout(()=>{ btn.innerHTML = old; }, 1600);
+      }catch(e){}
+    }
+  });
+
+  // Scroll fade-in
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity=1; e.target.style.transform='translateY(0)'; } });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.compound-card, .gaps-block, .stat-card').forEach(el=>{
+    el.style.opacity=0; el.style.transform='translateY(12px)'; el.style.transition='opacity .5s ease, transform .5s ease';
+    io.observe(el);
+  });
+
+  // Charts
+  function chartColors(){
+    const style = getComputedStyle(document.documentElement);
+    return {
+      text: style.getPropertyValue('--text').trim() || '#e8e8ee',
+      dim: style.getPropertyValue('--text-dim').trim() || '#9a9aab',
+      accent: style.getPropertyValue('--accent').trim() || '#58a6ff',
+    };
+  }
+  const cc = chartColors();
+  new Chart(document.getElementById('coverageChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Has external protocol (11)', 'No external protocol (9)'],
+      datasets: [{ data: [11,9], backgroundColor: ['#22c55e','#f59e0b'], borderWidth: 0 }]
+    },
+    options: {
+      plugins: { legend: { position: 'bottom', labels: { color: cc.text, font:{family:"Inter", size:11} } } },
+      cutout: '62%'
+    }
+  });
+  new Chart(document.getElementById('confidenceChart'), {
+    type: 'bar',
+    data: {
+      labels: ['HIGH', 'MEDIUM', 'UNVERIFIED (flagged, not counted)'],
+      datasets: [{ data: [11, 9, 0], backgroundColor: ['#22c55e','#eab308','#ef4444'], borderRadius: 6 }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display:false } },
+      scales: {
+        x: { ticks:{ color: cc.dim, font:{family:"Inter", size:11} }, grid:{ color:'rgba(128,128,128,0.15)' } },
+        y: { ticks:{ color: cc.text, font:{family:"Inter", size:11} }, grid:{ display:false } }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
