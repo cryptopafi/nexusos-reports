@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-29T15:55:00+03:00",
+  "generatedAt": "2026-07-29T16:10:00+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -49,7 +49,8 @@
     "Pafi clarification 2026-07-11: P0-014 SO-04 receiving is directly related to P0-020 batch labels and P0-021 COA orders; labels and COAs are prerequisites for receipt/stock acceptance."
     ,
     "Urgent 2026-07-29 packaging procurement: Pafi orders boxes for pens, labels for pens, labels for vials, and compatible needles. These are four separate P0 tasks related to P0-023 so each order can be tracked independently.",
-    "Ownership boundary 2026-07-29: Narcis works strictly on digital scope: technology, Supabase/admin gates, dashboards, integrations, agents, automation, data quality, and digital implementation. Purchasing, supplier orders, physical packaging, shipment preparation, dispatch, receiving, and other physical logistics belong to Pafi unless Pafi explicitly reassigns them."
+    "Ownership boundary 2026-07-29: Narcis works strictly on digital scope: technology, Supabase/admin gates, dashboards, integrations, agents, automation, data quality, and digital implementation. Purchasing, supplier orders, physical packaging, shipment preparation, dispatch, receiving, and other physical logistics belong to Pafi unless Pafi explicitly reassigns them.",
+    "Vic additions 2026-07-29: Vic tests and purchases a professional logistics software stack and completes the company account setup."
   ],
   "gates": [
     {
@@ -63,7 +64,7 @@
         "Pafi"
       ],
       "dueDate": "",
-      "summary": "Vic owns RUO compliance, allowed website products, affiliate rules, online-presence rules, and creation of the RUO Slack workspace. Website compliance waits for lawyer boundaries; Narcis implements approved changes; Pafi owns product/sales implications."
+      "summary": "Vic owns RUO compliance, allowed website products, affiliate rules, online-presence rules, creation of the RUO Slack workspace, and completion of the company account under P0-030. Website compliance waits for lawyer boundaries; Narcis implements approved digital changes; Pafi owns product/sales implications."
     },
     {
       "id": "gate-tech-admin-ai",
@@ -101,7 +102,7 @@
         "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Pafi owns purchasing and physical logistics, including supplier orders, labels, COAs, packaging, shipment preparation, dispatch, and receiving. Narcis participates only in digital administration such as the Supabase batch/COA receipt gate under P0-014.",
+      "summary": "Pafi owns purchasing and physical logistics. Vic owns the evaluation and acquisition of a professional logistics software stack under P0-029. Narcis participates only in digital administration such as the Supabase batch/COA receipt gate under P0-014.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -2555,6 +2556,60 @@
       "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Pafi trebuie sa comande urgent ace compatibile cu modelul de pen ales. Compatibilitatea, specificatia, ambalarea sterila individuala, cantitatea si furnizorul trebuie confirmate inainte de comanda."
+    },
+    {
+      "id": "P0-029",
+      "title": "Test and acquire a professional logistics software stack",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Logistics Systems",
+      "priority": "P0",
+      "urgencyScore": 98,
+      "status": "open",
+      "owner": "Vic",
+      "assignees": [
+        "Vic"
+      ],
+      "dueDate": "2026-07-31",
+      "source": "Pafi instruction 2026-07-29: Vic to test and purchase a professional logistics software stack",
+      "description": "Vic evaluates, tests, selects, and purchases a professional logistics software stack for RUO operations. The evaluation must cover order management, inventory and warehouse operations, shipping/carrier integrations, tracking, returns, COD support where relevant, reporting, role-based access, audit logs, integrations with PepInternal/Supabase, data export, support, implementation time, and total cost.",
+      "acceptance": "At least three suitable systems are compared against one written requirement list; the leading option is tested with a realistic order-to-delivery workflow; integration, data ownership/export, security/access, support, and full cost are documented; one stack is selected and purchased; invoice/contract, admin ownership, implementation steps, and go-live owner are recorded.",
+      "chapterOwner": "Pafi",
+      "colour": "red",
+      "colourReason": "Owner requested an urgent professional logistics software decision; testing, selection, and purchase are not yet evidenced.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T16:10:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Vic trebuie sa compare minimum trei solutii profesionale de logistica, sa testeze fluxul complet comanda-stoc-expediere-tracking-retur si sa cumpere varianta aleasa. Trebuie pastrate costul, contractul/factura, accesul admin si planul de implementare."
+    },
+    {
+      "id": "P0-030",
+      "title": "Complete the company account setup",
+      "category": "Compliance & Online Presence",
+      "chapter": "Compliance & Online Presence",
+      "workstream": "Company Administration",
+      "priority": "P0",
+      "urgencyScore": 97,
+      "status": "open",
+      "owner": "Vic",
+      "assignees": [
+        "Vic"
+      ],
+      "dueDate": "2026-07-31",
+      "source": "Pafi instruction 2026-07-29: Vic to finish the company account",
+      "description": "Vic completes the company account setup currently in progress. Confirm the exact platform/account, complete all company and beneficial-owner fields, finish required verification, establish controlled admin ownership and recovery access, record any remaining external approval, and save the final status without exposing credentials.",
+      "acceptance": "The exact company account is identified; all required company, owner, address, tax, and verification fields applicable to that platform are completed; submitted documents and verification status are recorded; admin ownership, recovery method, and access roles are confirmed; any unresolved external review is documented with owner and ETA. No credentials are stored in the dashboard.",
+      "chapterOwner": "Vic",
+      "colour": "red",
+      "colourReason": "Company account setup remains unfinished and was assigned by Pafi to Vic for completion.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T16:10:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Vic trebuie sa finalizeze contul firmei aflat deja in lucru: platforma exacta, datele firmei, verificarile, documentele, accesul admin si recuperarea contului. Parolele sau codurile nu se trec in dashboard."
     }
   ],
   "chapters": [
@@ -2567,7 +2622,7 @@
         "Narcis",
         "Pafi"
       ],
-      "summary": "RUO compliance, allowed website products, affiliate rules, online-presence rules, COA/Janoshik public evidence boundaries."
+      "summary": "RUO compliance, allowed website products, affiliate rules, online-presence rules, COA/Janoshik public evidence boundaries, and completion of the company account setup under P0-030."
     },
     {
       "id": "tech-admin-ai-agents",
@@ -2599,7 +2654,7 @@
       "assignees": [
         "Pafi"
       ],
-      "summary": "Pafi owns purchasing, supplier orders, labels, COAs, packaging, shipment preparation, dispatch, and physical receiving. Narcis is strictly digital and supports only Supabase/admin/dashboard implementation such as the P0-014 batch/COA receipt gate.",
+      "summary": "Pafi owns purchasing and physical logistics. Vic evaluates and acquires the professional logistics software stack under P0-029. Narcis is strictly digital and supports only Supabase/admin/dashboard implementation such as the P0-014 batch/COA receipt gate.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
