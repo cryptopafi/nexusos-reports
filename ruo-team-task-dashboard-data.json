@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-29T16:10:00+03:00",
+  "generatedAt": "2026-07-29T16:20:00+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -50,7 +50,8 @@
     ,
     "Urgent 2026-07-29 packaging procurement: Pafi orders boxes for pens, labels for pens, labels for vials, and compatible needles. These are four separate P0 tasks related to P0-023 so each order can be tracked independently.",
     "Ownership boundary 2026-07-29: Narcis works strictly on digital scope: technology, Supabase/admin gates, dashboards, integrations, agents, automation, data quality, and digital implementation. Purchasing, supplier orders, physical packaging, shipment preparation, dispatch, receiving, and other physical logistics belong to Pafi unless Pafi explicitly reassigns them.",
-    "Vic additions 2026-07-29: Vic tests and purchases a professional logistics software stack and completes the company account setup."
+    "Vic additions 2026-07-29: Vic tests and purchases a professional logistics software stack and completes the company account setup.",
+    "Pafi additions 2026-07-29: Pafi finalizes the 3PL contract and transfers the existing Bucharest inventory to the confirmed warehouse after receiving instructions are approved."
   ],
   "gates": [
     {
@@ -102,7 +103,7 @@
         "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Pafi owns purchasing and physical logistics. Vic owns the evaluation and acquisition of a professional logistics software stack under P0-029. Narcis participates only in digital administration such as the Supabase batch/COA receipt gate under P0-014.",
+      "summary": "Pafi owns purchasing and physical logistics, including finalizing the 3PL contract under P0-031 and transferring existing Bucharest inventory to the confirmed warehouse under P0-032. Vic owns the professional logistics software stack under P0-029. Narcis participates only in digital administration such as P0-014.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -2610,6 +2611,70 @@
       "colourUpdatedAt": "2026-07-29T16:10:00+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Vic trebuie sa finalizeze contul firmei aflat deja in lucru: platforma exacta, datele firmei, verificarile, documentele, accesul admin si recuperarea contului. Parolele sau codurile nu se trec in dashboard."
+    },
+    {
+      "id": "P0-031",
+      "title": "Finalize the contract with the selected 3PL",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "3PL Contracting",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-31",
+      "source": "Pafi instruction 2026-07-29: add task for Pafi to finish the 3PL contract",
+      "description": "Pafi finalizes and signs the contract with the selected 3PL. Confirm the contracting entity, covered warehouse location, accepted product categories, inbound receiving process, storage and pick-pack fees, shipping/COD coverage, returns, loss/damage liability, insurance, service levels, stock reporting, integrations, data ownership/export, termination terms, and named operational contacts.",
+      "acceptance": "Final commercial and operating terms are agreed; legal entity and warehouse are confirmed; product acceptance and inbound requirements are documented; complete pricing and liability/insurance terms are recorded; the contract is signed by authorized parties; invoice/payment requirements, admin contacts, implementation owner, and effective date are saved.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-024",
+        "P0-029",
+        "P0-032"
+      ],
+      "colour": "red",
+      "colourReason": "The 3PL contract must be finalized before existing Bucharest inventory can be transferred safely.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T16:20:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa finalizeze si sa semneze contractul cu 3PL-ul ales. Contractul trebuie sa confirme depozitul, produsele acceptate, costurile complete, receptia, livrarile/COD, retururile, raspunderea pentru pierderi si persoanele de contact."
+    },
+    {
+      "id": "P0-032",
+      "title": "Transfer existing Bucharest inventory to the 3PL warehouse",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Warehouse Transfer",
+      "priority": "P0",
+      "urgencyScore": 98,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-08-03",
+      "source": "Pafi instruction 2026-07-29: add task for Pafi to deliver existing Bucharest goods to the warehouse",
+      "description": "Pafi transfers the existing physical inventory held in Bucharest to the contracted 3PL warehouse. Before dispatch, reconcile the physical count by SKU and batch, confirm which units are eligible for transfer, prepare the 3PL inbound/ASN and packing list, follow temperature and handling requirements where applicable, arrange insured tracked transport, and preserve dispatch and warehouse receipt evidence.",
+      "acceptance": "P0-031 is complete; the destination warehouse and inbound appointment/instructions are confirmed; pre-dispatch physical count by SKU, quantity, batch, and disposition is signed off; packing list and inbound/ASN reference exist; transport/tracking and handoff proof are recorded; the warehouse confirms received quantities and discrepancies. Any Supabase stock movement is performed only through the authorized Hermes workflow after physical evidence exists.",
+      "chapterOwner": "Pafi",
+      "blockedBy": "P0-031 contract and warehouse receiving instructions",
+      "relatesTo": [
+        "P0-031",
+        "P0-029"
+      ],
+      "colour": "red",
+      "colourReason": "Physical Bucharest inventory transfer is pending the signed 3PL contract, confirmed warehouse, and receiving instructions.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T16:20:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa mute marfa existenta din Bucuresti la depozitul 3PL dupa semnarea contractului. Inainte de expediere se face inventarul pe SKU si batch, packing list-ul si programarea de receptie; dupa livrare se pastreaza tracking-ul si confirmarea cantitatilor primite."
     }
   ],
   "chapters": [
@@ -2654,7 +2719,7 @@
       "assignees": [
         "Pafi"
       ],
-      "summary": "Pafi owns purchasing and physical logistics. Vic evaluates and acquires the professional logistics software stack under P0-029. Narcis is strictly digital and supports only Supabase/admin/dashboard implementation such as the P0-014 batch/COA receipt gate.",
+      "summary": "Pafi owns purchasing and physical logistics, including the 3PL contract under P0-031 and transfer of existing Bucharest inventory under P0-032. Vic evaluates and acquires the logistics software under P0-029. Narcis is strictly digital and supports only Supabase/admin/dashboard implementation such as P0-014.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
