@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-07-12T23:00:00+03:00",
+  "generatedAt": "2026-07-29T15:35:00+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -47,6 +47,8 @@
     "Urgent 2026-07-11 logistics: Narcis prepares Ibiza shipment for Monday 2026-07-13 (BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15), orders new batch labels using RUO-{YYYYMMDD}-{PO_NO}-{SKU}, and orders COAs for BPC-157/TB-500/PT-141/Semax/Selank; Vic orders 50 BAC Water from Netherlands to Bucharest.",
     "Urgent 2026-07-11 logistics addition: Narcis buys 10 reusable pens and 100 pen cartridges from Amazon and delivers them to Ibiza.",
     "Pafi clarification 2026-07-11: P0-014 SO-04 receiving is directly related to P0-020 batch labels and P0-021 COA orders; labels and COAs are prerequisites for receipt/stock acceptance."
+    ,
+    "Urgent 2026-07-29 packaging procurement: Narcis orders boxes for pens, labels for pens, labels for vials, and compatible needles. These are four separate P0 tasks related to P0-023 so each order can be tracked independently."
   ],
   "gates": [
     {
@@ -98,7 +100,7 @@
         "Pafi"
       ],
       "dueDate": "2026-07-02",
-      "summary": "Purchasing/logistics has urgent 2026-07-11 actions: Narcis prepares the Monday 2026-07-13 Ibiza shipment, orders batch labels, orders COAs for newly arrived SKUs, and buys 10 reusable pens plus 100 pen cartridges from Amazon for Ibiza delivery; Vic orders 50 BAC Water from Netherlands to Bucharest. SO-04 receipt P0-014 is directly dependent on P0-020 batch labels and P0-021 COAs before stock acceptance or sale-ready status.",
+      "summary": "Purchasing/logistics includes urgent packaging procurement: Narcis orders boxes for pens, labels for pens, labels for vials, and compatible needles under P0-025 through P0-028. These are tracked separately and relate to P0-023. Existing shipment, batch-label, COA, BAC Water, and SO-04 receipt tasks remain independently tracked.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -106,7 +108,7 @@
         "Sultan"
       ],
       "assignmentNote": "Pafi is the primary gate owner. Narcis, Dragos, Vic, and Sultan are support by task, not co-assignees of the whole gate.",
-      "updatedAt": "2026-07-11T12:58:13+03:00",
+      "updatedAt": "2026-07-29T15:35:00+03:00",
       "updatedBy": "Codex"
     },
     {
@@ -2430,6 +2432,128 @@
       "plainExplanationRo": "Pafi trebuie sa contacteze urgent toate contactele relevante de la AWC Budapest: Jing3PL pentru procurement China + fulfilment UE, WAPI si BigArena pentru 3PL cu COD, plus Vincent pentru clarificarea unui posibil parteneriat US. Raspunsurile trebuie comparate pe tari, COD, costuri, retururi, integrare, batch si COA.",
       "plainExplanationUpdatedAt": "2026-07-12T23:00:00+03:00",
       "plainExplanationUpdatedBy": "Codex"
+    },
+    {
+      "id": "P0-025",
+      "title": "Order boxes for pens",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Pen Packaging",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-30",
+      "source": "Pafi instruction 2026-07-29: add boxes for pens ordering as urgent to-do",
+      "description": "Narcis urgently orders suitable retail/shipping boxes for the reusable peptide pens. Confirm box dimensions against the selected pen and cartridge configuration, quantity, unit price, print/finish requirements, supplier, production lead time, delivery destination, and ETA before placing the final order.",
+      "acceptance": "Pen fit and box specification are confirmed; supplier and quantity are selected; the order is placed; order reference, price, artwork/specification, delivery destination, ETA/tracking, and receipt owner are recorded.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-023"
+      ],
+      "colour": "red",
+      "colourReason": "Urgent packaging order requested by Pafi; no completed order evidence is recorded yet.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Narcis trebuie sa comande urgent cutii potrivite pentru pen-uri. Inainte de comanda finala verifica dimensiunea, cantitatea, designul, pretul, furnizorul si locul de livrare."
+    },
+    {
+      "id": "P0-026",
+      "title": "Order labels for pens",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Pen Packaging",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-30",
+      "source": "Pafi instruction 2026-07-29: add labels for pens as urgent to-do",
+      "description": "Narcis urgently prepares and orders labels for the pens. The label specification must match the selected pen model and approved product/SKU information, with correct dimensions, artwork version, material/adhesive, quantity, supplier, delivery destination, and ETA.",
+      "acceptance": "Approved pen-label artwork and dimensions are matched to the pen model; quantity and supplier are confirmed; the order is placed; order reference, price, artwork version, ETA/tracking, and delivery destination are recorded.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-023",
+        "P0-025"
+      ],
+      "colour": "red",
+      "colourReason": "Urgent pen-label order requested by Pafi; artwork/specification and completed order evidence are not yet recorded.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Narcis trebuie sa comande urgent etichetele pentru pen-uri, dupa verificarea dimensiunii, modelului de pen, designului aprobat, cantitatii si furnizorului."
+    },
+    {
+      "id": "P0-027",
+      "title": "Order labels for vials",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Vial Packaging",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-30",
+      "source": "Pafi instruction 2026-07-29: add labels for vials as urgent to-do",
+      "description": "Narcis urgently prepares and orders vial labels. Build the print list from the approved SKU strengths and required batch information, verify label dimensions and material against the vial format, and keep obsolete or incorrect artwork out of production.",
+      "acceptance": "SKU/strength/batch print list is checked; vial-label dimensions, material, artwork version, quantity, and supplier are confirmed; the order is placed; order reference, price, ETA/tracking, delivery destination, and obsolete-artwork control are recorded.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-012",
+        "P0-020"
+      ],
+      "colour": "red",
+      "colourReason": "Urgent vial-label order requested by Pafi; validated print list and completed order evidence are not yet recorded.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Narcis trebuie sa comande urgent etichetele pentru vialuri. Lista trebuie verificata pe SKU, concentratie si batch, ca sa nu intre din nou in productie etichete gresite."
+    },
+    {
+      "id": "P0-028",
+      "title": "Order compatible needles",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Pen Accessories",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "open",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-30",
+      "source": "Pafi instruction 2026-07-29: add needles ordering as urgent to-do",
+      "description": "Narcis urgently sources and orders needles compatible with the selected reusable pens. Confirm connector compatibility, needle specification, sterile single-use packaging, quantity, supplier, price, delivery destination, and ETA before placing the final order.",
+      "acceptance": "Compatibility with the selected pen model is documented; needle specification and sterile single-use packaging are confirmed; quantity and supplier are selected; the order is placed; order reference, price, ETA/tracking, delivery destination, and receipt owner are recorded.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-023"
+      ],
+      "colour": "red",
+      "colourReason": "Urgent compatible-needle order requested by Pafi; compatibility and completed order evidence are not yet recorded.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Narcis trebuie sa comande urgent ace compatibile cu modelul de pen ales. Compatibilitatea, specificatia, ambalarea sterila individuala, cantitatea si furnizorul trebuie confirmate inainte de comanda."
     }
   ],
   "chapters": [
@@ -2474,7 +2598,7 @@
       "assignees": [
         "Pafi"
       ],
-      "summary": "Purchasing, in-transit stock, labels, delivery/logistics routing, and restock planning. Urgent 2026-07-11 additions: Narcis prepares Ibiza shipment for 2026-07-13, orders batch labels and COAs, and buys 10 reusable pens plus 100 pen cartridges from Amazon for Ibiza; Vic orders 50 BAC Water Netherlands -> Bucharest. P0-014 SO-04 receipt depends directly on P0-020 labels and P0-021 COAs.",
+      "summary": "Purchasing, in-transit stock, labels, packaging, delivery/logistics routing, and restock planning. Urgent 2026-07-29 additions: Narcis orders boxes for pens, labels for pens, labels for vials, and compatible needles under P0-025 through P0-028.",
       "supportingAssignees": [
         "Narcis",
         "Dragos",
@@ -2482,7 +2606,7 @@
         "Sultan"
       ],
       "assignmentNote": "One primary chapter owner only; support remains visible per blocker/task.",
-      "updatedAt": "2026-07-11T12:58:13+03:00",
+      "updatedAt": "2026-07-29T15:35:00+03:00",
       "updatedBy": "Codex"
     },
     {
