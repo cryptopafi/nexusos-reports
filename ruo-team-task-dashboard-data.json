@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-08-05T12:00:00+03:00",
+  "generatedAt": "2026-08-05T12:30:00+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -51,7 +51,8 @@
     "Vic additions 2026-07-29: Vic tests and purchases a professional logistics software stack and completes the company account setup.",
     "Pafi additions 2026-07-29: Pafi finalizes the 3PL contract and transfers the existing Bucharest inventory to the confirmed warehouse after receiving instructions are approved.",
     "WAPI documentation 2026-07-29: Pafi prepares a GPT-assisted declaration of conformity draft for WAPI, grounded in real company/product evidence and reviewed by Vic before authorized signature or submission.",
-    "Status reconciliation 2026-08-05: Pafi updated tasks 7-36 from the numbered active list; completed/closed tasks are moved to the end, replacements and cancellations are grey, in-progress/waiting tasks remain yellow."
+    "Status reconciliation 2026-08-05: Pafi updated tasks 7-36 from the numbered active list; completed/closed tasks are moved to the end, replacements and cancellations are grey, in-progress/waiting tasks remain yellow.",
+    "Sultan planning 2026-08-05: P0-005 includes a dedicated six-month Sultan budget section; P0-034 tracks the peptide.ro partnership proposal. P0-014 is done."
   ],
   "gates": [
     {
@@ -333,21 +334,22 @@
       ],
       "dueDate": "2026-06-24",
       "source": "Pafi ownership update 2026-06-30",
-      "description": "Create one 6-month budget and reserve allocation with monthly tracking by operating bucket. Split and track legal/customs/QA, peptide OpCo, accessories, owner repayment, Dragos compensation, COA/testing, inventory, ops/logistics, AI/data/dashboard, marketing/content, and contingency. For each bucket, show planned budget, actual spend, remaining reserve, responsible owner/person, evidence/proof link, and variance.",
-      "acceptance": "Budget states what Vic can commit, which reserves are protected, and month-by-month budget vs actual by operating bucket so Pafi/Vic can see runway, over/under-budget categories, and reserve pressure.",
+      "description": "Create one 6-month budget and reserve allocation with monthly tracking by operating bucket. Split and track legal/customs/QA, peptide OpCo, accessories, owner repayment, Dragos compensation, COA/testing, inventory, ops/logistics, AI/data/dashboard, marketing/content, contingency, and a dedicated Sultan budget section. For each bucket, show planned budget, actual spend, remaining reserve, responsible owner/person, evidence/proof link, and variance.",
+      "acceptance": "Budget states what Vic can commit, which reserves are protected, and month-by-month budget vs actual by operating bucket. It includes a dedicated Sultan section showing proposed cash contribution, inventory/procurement funding, operating costs, marketing/sales allocation, compensation or distribution assumptions, protected reserves, milestone-based releases, and base/upside/downside six-month scenarios. Sultan figures remain proposal assumptions until partnership terms are approved.",
       "workstream": "Financial",
       "chapter": "Products, SKUs & Budgeting",
       "chapterOwner": "Pafi",
       "colour": "yellow",
-      "colourReason": "Merged with P2-005; still open because the combined 6-month budget plus monthly operating-bucket tracker has not been produced yet.",
+      "colourReason": "Open combined six-month budget task; scope now also requires a dedicated Sultan budget section linked to the partnership proposal.",
       "colourEvidence": [
         "Pafi instruction 2026-07-04: merge 2 and 9",
         "Previous P0-005 Produce 6-month budget and reserve allocation",
-        "Previous P2-005 Create monthly budget tracking by operating bucket"
+        "Previous P2-005 Create monthly budget tracking by operating bucket",
+        "Pafi instruction 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-04T00:08:30+03:00",
+      "colourUpdatedAt": "2026-08-05T12:30:00+03:00",
       "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Am unit taskul de buget pe 6 luni cu trackingul lunar. Rămâne un singur task: planul financiar pe 6 luni, împărțit pe buckets, cu planned budget, actual spend, remaining reserve, owner, proof/evidence și variance pentru fiecare lună.",
+      "plainExplanationRo": "Bugetul pe 6 luni trebuie sa includa acum o sectiune separata pentru Sultan: contributia propusa, banii pentru stoc/procurement, costurile operationale, marketingul, eventualele compensatii/distributii, rezervele protejate si trei scenarii pe 6 luni. Valorile raman propuneri pana la aprobarea parteneriatului.",
       "plainExplanationUpdatedAt": "2026-07-04T00:08:30+03:00",
       "plainExplanationUpdatedBy": "Codex",
       "mergedTasks": [
@@ -377,7 +379,25 @@
         "Vic"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "sultanBudgetScope": {
+        "status": "required_inside_P0-005",
+        "linkedTask": "P0-034",
+        "months": 6,
+        "requiredLines": [
+          "cash contribution and timing",
+          "inventory and procurement funding",
+          "COA, compliance, logistics, and warehousing costs",
+          "sales and marketing allocation",
+          "operating compensation and distributions",
+          "protected reserve and contingency",
+          "milestone-based fund release",
+          "base, upside, and downside scenarios"
+        ],
+        "updatedAt": "2026-08-05T12:30:00+03:00",
+        "updatedBy": "Codex",
+        "source": "Pafi instruction 2026-08-05"
+      }
     },
     {
       "id": "P0-008",
@@ -500,198 +520,6 @@
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-014",
-      "title": "Administer SO-04 digital batch/COA receipt gate",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Purchasing / Restock",
-      "priority": "P0",
-      "urgencyScore": 89,
-      "status": "open",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis"
-      ],
-      "dueDate": "2026-07-01",
-      "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30",
-      "description": "SO-04 is the open 250-vial restock. Pafi owns the commercial order, batch-label/COA procurement, and physical logistics. Narcis owns only the digital Supabase/admin receipt gate that blocks stock acceptance until batch number and matching COA evidence are recorded. Narcis does not purchase, pack, dispatch, receive, or handle physical stock. Status remains ordered/not received; no stock was added.",
-      "acceptance": "Narcis maintains only the digital gate: batch number and matching COA evidence are required in the Supabase/admin flow before stock acceptance, customer dispatch, or sale-ready status. Pafi or the designated physical operator supplies the purchasing, shipment, receipt, quantity, and evidence inputs. Narcis performs no physical handling or procurement.",
-      "chapterOwner": "Pafi",
-      "supportingAssignees": [
-        "Dragos",
-        "Pafi"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Pafi",
-        "Dragos",
-        "Narcis"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex",
-      "colour": "yellow",
-      "colourReason": "Open digital Supabase/admin gate; Narcis is not responsible for purchasing, shipment, or physical receiving.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments",
-        "Pafi instruction 2026-07-02: SO-04 line items and costs",
-        "/Users/pafi/Documents/RUO Peptides/output/purchasing-logistics/so-04-structured-line-breakdown-2026-07-02.md",
-        "Pafi instruction 2026-07-02: accept SO-04 as-is; ETA/status in transit, arriving in EU this week",
-        "Supabase read-back 2026-07-02: SO-04 restock_items inserted, qty=250, line_total_usd=1300, approval_id=SO04-ITEMIZATION-PAFI-20260702",
-        "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-restock-items-readback-2026-07-02.json",
-        "Supabase read-back 2026-07-02: SO-04 delivery gate requires batch number and COA before receipt/delivery/stock-add",
-        "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-delivery-batch-coa-gate-readback-2026-07-02.json",
-        "Pafi instruction 2026-07-03: consider the SO-04 order as-is, without supplier/order proof or Dragos Zen payment proof",
-        "Pafi instruction 2026-07-03: Pafi is not receiving SO-04 and already ensured Supabase requires COA before acceptance",
-        "Pafi instruction 2026-07-03: consider SO-04 order as-is without supplier/order proof or Dragos Zen payment proof",
-        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021"
-      ],
-      "colourUpdatedAt": "2026-07-11T12:58:13+03:00",
-      "colourUpdatedBy": "Codex",
-      "so04LineBreakdown": {
-        "source": "Pafi instruction 2026-07-02",
-        "workingAssumption": "1 box = 10 vials; line prices are treated as total USD per 5-box line unless Pafi later corrects this.",
-        "items": [
-          {
-            "product": "Selank",
-            "skuHint": "SELANK-10MG",
-            "strengthMg": 10,
-            "boxes": 5,
-            "assumedVialsPerBox": 10,
-            "expectedVials": 50,
-            "lineTotalUsd": 275,
-            "unitUsdPerVial": 5.5
-          },
-          {
-            "product": "Semax",
-            "skuHint": "SEMAX-10MG",
-            "strengthMg": 10,
-            "boxes": 5,
-            "assumedVialsPerBox": 10,
-            "expectedVials": 50,
-            "lineTotalUsd": 275,
-            "unitUsdPerVial": 5.5
-          },
-          {
-            "product": "PT-141",
-            "skuHint": "PT141-10MG",
-            "strengthMg": 10,
-            "boxes": 5,
-            "assumedVialsPerBox": 10,
-            "expectedVials": 50,
-            "lineTotalUsd": 275,
-            "unitUsdPerVial": 5.5
-          },
-          {
-            "product": "TB-500",
-            "skuHint": "TB500-5MG",
-            "strengthMg": 5,
-            "boxes": 5,
-            "assumedVialsPerBox": 10,
-            "expectedVials": 50,
-            "lineTotalUsd": 300,
-            "unitUsdPerVial": 6
-          },
-          {
-            "product": "BPC-157",
-            "skuHint": "BPC157-5MG",
-            "strengthMg": 5,
-            "boxes": 5,
-            "assumedVialsPerBox": 10,
-            "expectedVials": 50,
-            "lineTotalUsd": 175,
-            "unitUsdPerVial": 3.5
-          }
-        ],
-        "totals": {
-          "totalBoxes": 25,
-          "totalExpectedVials": 250,
-          "totalUsd": 1300,
-          "averageUsdPerVial": 5.2
-        },
-        "savedEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/purchasing-logistics/so-04-structured-line-breakdown-2026-07-02.md",
-        "remainingProofNeeded": [
-          "batch number at delivery",
-          "COA at delivery",
-          "received quantity confirmation"
-        ],
-        "updatedAt": "2026-07-03T00:20:00Z",
-        "updatedBy": "Codex",
-        "lineBreakdownAcceptedAsIs": true,
-        "etaStatus": "In transit, arriving in EU this week.",
-        "etaStatusSource": "Pafi instruction 2026-07-02",
-        "supabaseWriteStatus": "written_verified",
-        "supabaseRestockId": "5849f096-01ee-4205-ad24-4519ca9e809a",
-        "supabaseApprovalId": "SO04-ITEMIZATION-PAFI-20260702",
-        "supabaseInsertedRestockItemIds": [
-          "2aea0971-12e4-4d40-a493-3d2296ddf3d6",
-          "55de0e10-a139-44ed-bccb-f1ba8b753600",
-          "8086a9d3-b5cb-bfe9-0dc58287ef9b",
-          "c067cdf7-e809-42eb-97f5-fc6682a48e9f",
-          "eb91f060-0223-48cb-bd2a-84f57f76eb7d"
-        ],
-        "readbackEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-restock-items-readback-2026-07-02.json",
-        "deliveryGate": {
-          "batchNumberRequired": true,
-          "coaRequired": true,
-          "requiredBefore": [
-            "delivery",
-            "receipt",
-            "stock_add",
-            "customer_dispatch",
-            "sale_ready_status"
-          ],
-          "supabaseApprovalId": "SO04-DELIVERY-BATCH-COA-GATE-20260702",
-          "readbackEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-delivery-batch-coa-gate-readback-2026-07-02.json",
-          "updatedAt": "2026-07-02T17:31:37Z",
-          "updatedBy": "Codex"
-        },
-        "proofWaiver": {
-          "waivedBy": "Pafi",
-          "waivedAt": "2026-07-03T00:00:00Z",
-          "source": "Pafi instruction 2026-07-03",
-          "waivedProof": [
-            "supplier/order proof",
-            "Dragos Zen payment proof"
-          ],
-          "decision": "Consider SO-04 order as-is without those proof blockers.",
-          "stillRequired": [
-            "batch number at delivery",
-            "COA at delivery"
-          ]
-        }
-      },
-      "partialCompletionNote": "Pafi decision/gate complete. Remaining open work: Narcis must enforce receipt/admin acceptance only after batch number + COA; Dragos supports physical receipt/dispatch evidence if applicable.",
-      "plainExplanationRo": "Narcis administreaza doar poarta digitala Supabase pentru SO-04: fara batch si COA nu se poate accepta stocul. Cumpararea, transportul si primirea fizica sunt la Pafi sau operatorul fizic desemnat.",
-      "plainExplanationUpdatedAt": "2026-07-11T12:58:13+03:00",
-      "plainExplanationUpdatedBy": "Codex",
-      "proofWaiver": {
-        "waivedBy": "Pafi",
-        "waivedAt": "2026-07-03T00:00:00Z",
-        "source": "Pafi instruction 2026-07-03",
-        "waivedProof": [
-          "supplier/order proof",
-          "Dragos Zen payment proof"
-        ],
-        "decision": "Consider SO-04 order as-is without those proof blockers.",
-        "stillRequired": [
-          "batch number at delivery",
-          "COA at delivery"
-        ]
-      },
-      "assignmentDecision": {
-        "updatedAt": "2026-07-03T00:20:00Z",
-        "updatedBy": "Codex",
-        "source": "Pafi instruction 2026-07-03",
-        "previousOwner": "Pafi",
-        "newOwner": "Narcis",
-        "reason": "Pafi does not receive the order; Pafi completed the order-as-is decision and Supabase COA gate. Remaining work is receipt/admin control."
-      },
-      "relatedTasks": [
-        "P0-020",
-        "P0-021"
-      ]
     },
     {
       "id": "P1-021",
@@ -1037,6 +865,235 @@
       "colourUpdatedAt": "2026-07-29T16:30:00+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Pafi pregateste cu GPT draftul declaratiei cerute de WAPI. Mai intai obtine modelul sau cerintele exacte de la WAPI, apoi completeaza numai cu date si dovezi reale. Vic verifica formularea, iar documentul final este semnat de reprezentantul autorizat si trimis cu dovada."
+    },
+    {
+      "id": "P0-034",
+      "title": "Create peptide.ro partnership proposal for Sultan",
+      "category": "Products, SKUs & Budgeting",
+      "chapter": "Products, SKUs & Budgeting",
+      "workstream": "Sultan Partnership",
+      "priority": "P0",
+      "urgencyScore": 98,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-08-08",
+      "source": "Pafi instruction 2026-08-05: add peptide.ro partnership proposal for Sultan",
+      "description": "Pafi prepares a formal peptide.ro partnership proposal for Sultan. The proposal must define the business scope, Sultan contribution, ownership or economic participation, roles and decision rights, funding schedule, six-month budget linkage, product and inventory responsibilities, sales channels, profit and loss treatment, compensation/distributions, compliance boundaries, IP/brand/data ownership, reporting, approval thresholds, dispute and exit terms, and conditions that must be satisfied before the partnership starts.",
+      "acceptance": "One decision-ready proposal exists with a clear offer and alternatives; exact cash/non-cash contributions and timing; ownership/economic model; responsibilities and KPIs; linked Sultan section in P0-005; governance and reserved decisions; accounting/reporting access; compliance and liability allocation; IP/brand/customer-data treatment; distributions and loss treatment; vesting or milestone conditions where applicable; termination/buyout/dispute terms; and explicit approve=start, reject=no start logic. No ownership, funding, or operational commitment is treated as active until Sultan and Pafi approve the final terms and required legal documents are completed.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-005"
+      ],
+      "colour": "red",
+      "colourReason": "Sultan partnership proposal has been requested but the commercial, financial, governance, and legal terms are not yet finalized.",
+      "colourEvidence": [
+        "Pafi instruction 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:30:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa pregateasca propunerea de parteneriat peptide.ro pentru Sultan: ce aduce fiecare, ce primeste Sultan, cine decide, cum se finanteaza primele 6 luni, cum se impart profitul si pierderile, cine raspunde de produse si vanzari, ce se intampla daca parteneriatul se opreste si regula clara aproba = pornim, nu aproba = nu pornim."
+    },
+    {
+      "id": "P0-014",
+      "title": "Administer SO-04 digital batch/COA receipt gate",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Purchasing / Restock",
+      "priority": "P0",
+      "urgencyScore": 89,
+      "status": "done",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-01",
+      "source": "Project-card gap 2026-06-28 / chapter reorg 2026-06-30",
+      "description": "SO-04 is the open 250-vial restock. Pafi owns the commercial order, batch-label/COA procurement, and physical logistics. Narcis owns only the digital Supabase/admin receipt gate that blocks stock acceptance until batch number and matching COA evidence are recorded. Narcis does not purchase, pack, dispatch, receive, or handle physical stock. Status remains ordered/not received; no stock was added.",
+      "acceptance": "Narcis maintains only the digital gate: batch number and matching COA evidence are required in the Supabase/admin flow before stock acceptance, customer dispatch, or sale-ready status. Pafi or the designated physical operator supplies the purchasing, shipment, receipt, quantity, and evidence inputs. Narcis performs no physical handling or procurement.",
+      "chapterOwner": "Pafi",
+      "supportingAssignees": [
+        "Dragos",
+        "Pafi"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Pafi",
+        "Dragos",
+        "Narcis"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the SO-04 digital batch/COA receipt gate is complete.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments",
+        "Pafi instruction 2026-07-02: SO-04 line items and costs",
+        "/Users/pafi/Documents/RUO Peptides/output/purchasing-logistics/so-04-structured-line-breakdown-2026-07-02.md",
+        "Pafi instruction 2026-07-02: accept SO-04 as-is; ETA/status in transit, arriving in EU this week",
+        "Supabase read-back 2026-07-02: SO-04 restock_items inserted, qty=250, line_total_usd=1300, approval_id=SO04-ITEMIZATION-PAFI-20260702",
+        "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-restock-items-readback-2026-07-02.json",
+        "Supabase read-back 2026-07-02: SO-04 delivery gate requires batch number and COA before receipt/delivery/stock-add",
+        "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-delivery-batch-coa-gate-readback-2026-07-02.json",
+        "Pafi instruction 2026-07-03: consider the SO-04 order as-is, without supplier/order proof or Dragos Zen payment proof",
+        "Pafi instruction 2026-07-03: Pafi is not receiving SO-04 and already ensured Supabase requires COA before acceptance",
+        "Pafi instruction 2026-07-03: consider SO-04 order as-is without supplier/order proof or Dragos Zen payment proof",
+        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021",
+        "Pafi instruction 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:30:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "so04LineBreakdown": {
+        "source": "Pafi instruction 2026-07-02",
+        "workingAssumption": "1 box = 10 vials; line prices are treated as total USD per 5-box line unless Pafi later corrects this.",
+        "items": [
+          {
+            "product": "Selank",
+            "skuHint": "SELANK-10MG",
+            "strengthMg": 10,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 275,
+            "unitUsdPerVial": 5.5
+          },
+          {
+            "product": "Semax",
+            "skuHint": "SEMAX-10MG",
+            "strengthMg": 10,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 275,
+            "unitUsdPerVial": 5.5
+          },
+          {
+            "product": "PT-141",
+            "skuHint": "PT141-10MG",
+            "strengthMg": 10,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 275,
+            "unitUsdPerVial": 5.5
+          },
+          {
+            "product": "TB-500",
+            "skuHint": "TB500-5MG",
+            "strengthMg": 5,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 300,
+            "unitUsdPerVial": 6
+          },
+          {
+            "product": "BPC-157",
+            "skuHint": "BPC157-5MG",
+            "strengthMg": 5,
+            "boxes": 5,
+            "assumedVialsPerBox": 10,
+            "expectedVials": 50,
+            "lineTotalUsd": 175,
+            "unitUsdPerVial": 3.5
+          }
+        ],
+        "totals": {
+          "totalBoxes": 25,
+          "totalExpectedVials": 250,
+          "totalUsd": 1300,
+          "averageUsdPerVial": 5.2
+        },
+        "savedEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/purchasing-logistics/so-04-structured-line-breakdown-2026-07-02.md",
+        "remainingProofNeeded": [
+          "batch number at delivery",
+          "COA at delivery",
+          "received quantity confirmation"
+        ],
+        "updatedAt": "2026-07-03T00:20:00Z",
+        "updatedBy": "Codex",
+        "lineBreakdownAcceptedAsIs": true,
+        "etaStatus": "In transit, arriving in EU this week.",
+        "etaStatusSource": "Pafi instruction 2026-07-02",
+        "supabaseWriteStatus": "written_verified",
+        "supabaseRestockId": "5849f096-01ee-4205-ad24-4519ca9e809a",
+        "supabaseApprovalId": "SO04-ITEMIZATION-PAFI-20260702",
+        "supabaseInsertedRestockItemIds": [
+          "2aea0971-12e4-4d40-a493-3d2296ddf3d6",
+          "55de0e10-a139-44ed-bccb-f1ba8b753600",
+          "8086a9d3-b5cb-bfe9-0dc58287ef9b",
+          "c067cdf7-e809-42eb-97f5-fc6682a48e9f",
+          "eb91f060-0223-48cb-bd2a-84f57f76eb7d"
+        ],
+        "readbackEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-restock-items-readback-2026-07-02.json",
+        "deliveryGate": {
+          "batchNumberRequired": true,
+          "coaRequired": true,
+          "requiredBefore": [
+            "delivery",
+            "receipt",
+            "stock_add",
+            "customer_dispatch",
+            "sale_ready_status"
+          ],
+          "supabaseApprovalId": "SO04-DELIVERY-BATCH-COA-GATE-20260702",
+          "readbackEvidenceFile": "/Users/pafi/Documents/RUO Peptides/output/supabase-mutations/so04-delivery-batch-coa-gate-readback-2026-07-02.json",
+          "updatedAt": "2026-07-02T17:31:37Z",
+          "updatedBy": "Codex"
+        },
+        "proofWaiver": {
+          "waivedBy": "Pafi",
+          "waivedAt": "2026-07-03T00:00:00Z",
+          "source": "Pafi instruction 2026-07-03",
+          "waivedProof": [
+            "supplier/order proof",
+            "Dragos Zen payment proof"
+          ],
+          "decision": "Consider SO-04 order as-is without those proof blockers.",
+          "stillRequired": [
+            "batch number at delivery",
+            "COA at delivery"
+          ]
+        }
+      },
+      "partialCompletionNote": "Pafi decision/gate complete. Remaining open work: Narcis must enforce receipt/admin acceptance only after batch number + COA; Dragos supports physical receipt/dispatch evidence if applicable.",
+      "plainExplanationRo": "Narcis administreaza doar poarta digitala Supabase pentru SO-04: fara batch si COA nu se poate accepta stocul. Cumpararea, transportul si primirea fizica sunt la Pafi sau operatorul fizic desemnat.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:58:13+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "proofWaiver": {
+        "waivedBy": "Pafi",
+        "waivedAt": "2026-07-03T00:00:00Z",
+        "source": "Pafi instruction 2026-07-03",
+        "waivedProof": [
+          "supplier/order proof",
+          "Dragos Zen payment proof"
+        ],
+        "decision": "Consider SO-04 order as-is without those proof blockers.",
+        "stillRequired": [
+          "batch number at delivery",
+          "COA at delivery"
+        ]
+      },
+      "assignmentDecision": {
+        "updatedAt": "2026-07-03T00:20:00Z",
+        "updatedBy": "Codex",
+        "source": "Pafi instruction 2026-07-03",
+        "previousOwner": "Pafi",
+        "newOwner": "Narcis",
+        "reason": "Pafi does not receive the order; Pafi completed the order-as-is decision and Supabase COA gate. Remaining work is receipt/admin control."
+      },
+      "relatedTasks": [
+        "P0-020",
+        "P0-021"
+      ],
+      "completedAt": "2026-08-05T12:30:00+03:00",
+      "completedBy": "Pafi",
+      "completionNote": "SO-04 digital batch/COA receipt gate completed.",
+      "completionEvidence": [
+        "Pafi instruction 2026-08-05"
+      ]
     },
     {
       "id": "P0-019",
