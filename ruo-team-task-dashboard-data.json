@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "project": "PetraLab RUO Peptides",
-  "generatedAt": "2026-08-04T12:00:00+03:00",
+  "generatedAt": "2026-08-05T12:00:00+03:00",
   "timezone": "Europe/Madrid",
   "refreshSeconds": 15,
   "sourceFiles": [
@@ -45,13 +45,13 @@
     "2026-07-08 clarification #2: P1-023 scope is cross-project — the AWC scraped database serves PetraLab RUO, Telehealth Peptides, and SMSads simultaneously, not RUO alone. No Vic compliance approval is required for this scraping task. AWC edition/city unknown to Pafi; treat as 'AWC 2026' generically.",
     "Urgent 2026-07-11 logistics: Narcis prepares Ibiza shipment for Monday 2026-07-13 (BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15), orders new batch labels using RUO-{YYYYMMDD}-{PO_NO}-{SKU}, and orders COAs for BPC-157/TB-500/PT-141/Semax/Selank; Vic orders 50 BAC Water from Netherlands to Bucharest.",
     "Urgent 2026-07-11 logistics addition: Narcis buys 10 reusable pens and 100 pen cartridges from Amazon and delivers them to Ibiza.",
-    "Pafi clarification 2026-07-11: P0-014 SO-04 receiving is directly related to P0-020 batch labels and P0-021 COA orders; labels and COAs are prerequisites for receipt/stock acceptance."
-    ,
+    "Pafi clarification 2026-07-11: P0-014 SO-04 receiving is directly related to P0-020 batch labels and P0-021 COA orders; labels and COAs are prerequisites for receipt/stock acceptance.",
     "Urgent 2026-07-29 packaging procurement: Pafi orders boxes for pens, labels for pens, labels for vials, and compatible needles. These are four separate P0 tasks related to P0-023 so each order can be tracked independently.",
     "Ownership boundary 2026-07-29: Narcis works strictly on digital scope: technology, Supabase/admin gates, dashboards, integrations, agents, automation, data quality, and digital implementation. Purchasing, supplier orders, physical packaging, shipment preparation, dispatch, receiving, and other physical logistics belong to Pafi unless Pafi explicitly reassigns them.",
     "Vic additions 2026-07-29: Vic tests and purchases a professional logistics software stack and completes the company account setup.",
     "Pafi additions 2026-07-29: Pafi finalizes the 3PL contract and transfers the existing Bucharest inventory to the confirmed warehouse after receiving instructions are approved.",
-    "WAPI documentation 2026-07-29: Pafi prepares a GPT-assisted declaration of conformity draft for WAPI, grounded in real company/product evidence and reviewed by Vic before authorized signature or submission."
+    "WAPI documentation 2026-07-29: Pafi prepares a GPT-assisted declaration of conformity draft for WAPI, grounded in real company/product evidence and reviewed by Vic before authorized signature or submission.",
+    "Status reconciliation 2026-08-05: Pafi updated tasks 7-36 from the numbered active list; completed/closed tasks are moved to the end, replacements and cancellations are grey, in-progress/waiting tasks remain yellow."
   ],
   "gates": [
     {
@@ -231,67 +231,6 @@
       "assigneeAuditUpdatedBy": "Codex"
     },
     {
-      "id": "P0-019",
-      "title": "Prepare Ibiza shipment for Monday 2026-07-13",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Ibiza Shipment / Stock Transfer",
-      "priority": "P0",
-      "urgencyScore": 99.2,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-13",
-      "source": "Pafi instruction 2026-07-11; ownership correction 2026-07-29: Narcis is digital-only, physical shipment belongs to Pafi",
-      "description": "Pafi prepares the urgent shipment to Ibiza for Monday 2026-07-13 with exact quantities: BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15. This is a controlled shipment-preparation task: pack list, source stock location, receiving destination, shipment method, handoff proof, and dashboard/Supabase-ready transfer evidence must be prepared before dispatch.",
-      "acceptance": "Shipment pack list exists with SKU, quantity, source location, destination Ibiza, dispatch date 2026-07-13, responsible sender/receiver, shipment/tracking proof requirement, and receiving checklist. No stock movement/receipt is treated as complete until the actual dispatch/receipt proof is captured and the authorized dashboard/Supabase workflow records it.",
-      "shipmentItems": [
-        {
-          "sku": "BPC157-5MG",
-          "label": "BPC-157",
-          "qty": 25
-        },
-        {
-          "sku": "TB500-5MG",
-          "label": "TB-500",
-          "qty": 25
-        },
-        {
-          "sku": "PT141-10MG",
-          "label": "PT-141",
-          "qty": 10
-        },
-        {
-          "sku": "SEMAX-10MG",
-          "label": "Semax",
-          "qty": 10
-        },
-        {
-          "sku": "SELANK-10MG",
-          "label": "Selank",
-          "qty": 10
-        },
-        {
-          "sku": "BAC-10ML",
-          "label": "BAC Water",
-          "qty": 15
-        }
-      ],
-      "chapterOwner": "Pafi",
-      "colour": "red",
-      "colourReason": "Urgent owner instruction for Monday 2026-07-13 Ibiza shipment; packing, proof, and transfer evidence not yet completed.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-11: prepare Ibiza shipment for Monday 13.07 with exact SKU quantities"
-      ],
-      "colourUpdatedAt": "2026-07-11T12:50:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa pregateasca transportul pentru Ibiza: BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15. Trebuie pack list, locatie sursa, dovada de predare/transport si checklist de primire.",
-      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
-      "plainExplanationUpdatedBy": "Codex"
-    },
-    {
       "id": "P0-020",
       "title": "Order new batch labels for Ibiza shipment SKUs",
       "category": "Purchasing & Logistics",
@@ -299,7 +238,7 @@
       "workstream": "Labels / Batch Traceability",
       "priority": "P0",
       "urgencyScore": 98.9,
-      "status": "open",
+      "status": "partial",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
@@ -325,192 +264,19 @@
         "P0-014",
         "P0-021"
       ],
-      "colour": "red",
-      "colourReason": "Urgent labels/batch traceability task created for the Monday Ibiza shipment and new arrived stock.",
+      "colour": "yellow",
+      "colourReason": "New batch labels are currently in progress.",
       "colourEvidence": [
         "Pafi instruction 2026-07-11: order labels with new batch no.; create model using date/PO no./SKU name",
-        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021"
+        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-11T12:58:13+03:00",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Pafi trebuie sa comande etichete noi cu batch number. Model propus: RUO-YYYYMMDD-PO-SKU, de exemplu RUO-20260713-POXX-BPC1575MG. Etichetele vechi sau gresite nu se folosesc.",
       "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
-      "plainExplanationUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-021",
-      "title": "Order COAs for the 5 newly arrived SKUs",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "COA / Batch Quality Gate",
-      "priority": "P0",
-      "urgencyScore": 98.8,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-13",
-      "source": "Pafi instruction 2026-07-11; ownership correction 2026-07-29: Narcis is digital-only, COA ordering belongs to Pafi",
-      "description": "Pafi orders COAs for all 5 newly arrived SKUs named in the owner instruction context: BPC-157, TB-500, PT-141, Semax, and Selank. Each COA order must tie to the new batch number/PO model and be recorded as pending evidence until the actual COA files arrive and are matched to batch/SKU. This task is directly tied to P0-014: SO-04 cannot be cleanly received/accepted into stock until matching COA evidence exists.",
-      "acceptance": "COA order/proof exists for BPC-157, TB-500, PT-141, Semax, and Selank; each line has SKU, batch number, PO/order reference, lab/provider, order date, expected return date, status, and file/evidence slot. No newly arrived SKU is marked sale-ready, shipment-ready for customer fulfillment, or accepted into clean stock without its matching batch/COA evidence state being visible.",
-      "coaItems": [
-        "BPC157-5MG",
-        "TB500-5MG",
-        "PT141-10MG",
-        "SEMAX-10MG",
-        "SELANK-10MG"
-      ],
-      "chapterOwner": "Pafi",
-      "relatedTasks": [
-        "P0-019",
-        "P0-020",
-        "P0-014"
-      ],
-      "colour": "red",
-      "colourReason": "Urgent COA orders required for five newly arrived SKUs before clean stock/sale-ready status.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-11: order COA for all 5 new SKUs that have arrived",
-        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021"
-      ],
-      "colourUpdatedAt": "2026-07-11T12:58:13+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa comande COA pentru cele 5 SKU-uri noi sosite: BPC-157, TB-500, PT-141, Semax si Selank. Fiecare COA trebuie legat de batch number si PO/order reference.",
-      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
-      "plainExplanationUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-022",
-      "title": "Order 50 BAC Water from Netherlands to Bucharest",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "BAC Water / Netherlands Purchase",
-      "priority": "P0",
-      "urgencyScore": 98.4,
-      "status": "open",
-      "owner": "Vic",
-      "assignees": [
-        "Vic"
-      ],
-      "dueDate": "2026-07-13",
-      "source": "Pafi instruction 2026-07-11: urgent Ibiza shipment, new batch labels, COAs, and BAC Water NL->Bucharest order",
-      "description": "Vic urgently orders 50 BAC Water units from the Netherlands to Bucharest. This is a purchasing/logistics task, not a stock receipt. Capture supplier, order confirmation, price, shipping route, ETA, payment/proof, and receiving responsibility before the order is treated as operationally complete.",
-      "acceptance": "Order proof exists for 50 BAC Water from Netherlands to Bucharest, including supplier/order reference, quantity 50, payment/proof or invoice state, ETA, shipment/tracking when available, receiving plan in Bucharest, and dashboard/Supabase-ready evidence. Stock is not accepted or made available until received and evidence is recorded.",
-      "purchaseItems": [
-        {
-          "sku": "BAC-10ML",
-          "label": "BAC Water",
-          "qty": 50,
-          "route": "Netherlands -> Bucharest"
-        }
-      ],
-      "chapterOwner": "Pafi",
-      "colour": "red",
-      "colourReason": "Urgent owner instruction for Vic to order 50 BAC Water from the Netherlands to Bucharest.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-11: urgent task for Vic, order 50 BAC water from Netherland to Bucharest"
-      ],
-      "colourUpdatedAt": "2026-07-11T12:50:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Vic trebuie sa comande urgent 50 BAC Water din Olanda catre Bucuresti. Trebuie dovada comanda, supplier, pret/invoice sau payment state, ETA si plan de primire in Bucuresti.",
-      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
-      "plainExplanationUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-0-001",
-      "title": "Create 48h live-state register",
-      "category": "Products, SKUs & Budgeting",
-      "priority": "P0-0",
-      "urgencyScore": 100,
-      "status": "done",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-06-24",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Create a simple 48-hour snapshot of what is actually live or not live right now: D2C sales live, ads not running, website compliance waiting for lawyer opinion, high-revenue SKUs continue selling, Dragos collaborator sales not active yet, Supabase/dashboard active, Airtable frozen, accessories waiting for proof/QC. This is a status register, not a freeze.",
-      "acceptance": "Each item has state, owner, next action, due date if relevant, proof/evidence link, and subtask 4.6 SKU pricing/margin truth. The team can open one board and see what is live, blocked, waiting, or ready.",
-      "completedAt": "2026-07-04",
-      "completedBy": "Codex",
-      "completionNote": "48h live-state register created as a status snapshot. It records live, paused, waiting, blocked, and draft-only states and links each item to owner, next action, and evidence/task reference. This does not close the underlying open tasks.",
-      "workstream": "Administration",
-      "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi",
-      "colour": "green",
-      "colourReason": "48h live-state register created; underlying yellow/red gates remain open separately.",
-      "colourEvidence": [
-        "/Users/pafi/Documents/RUO Peptides/output/live-state-register-2026-07-04/ruo-48h-live-state-register-2026-07-04.md",
-        "Current RUO dashboard state as of 2026-07-04 00:05 EEST"
-      ],
-      "colourUpdatedAt": "2026-07-04T00:05:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "supportingFile": "https://cryptopafi.github.io/nexusos-reports/ruo-48h-live-state-register-2026-07-04.md",
-      "plainExplanationRo": "Registrul de stare pe 48h este facut. El arata ce este live, ce este oprit, ce asteapta avocatul, ce este in lucru si ce este blocat. Taskul registrului se inchide, dar taskurile de dedesubt raman deschise separat unde inca exista lucru real.",
-      "plainExplanationUpdatedAt": "2026-07-04T00:05:00+03:00",
       "plainExplanationUpdatedBy": "Codex",
-      "liveStateRegister": {
-        "generatedAt": "2026-07-04T00:05:00+03:00",
-        "file": "/Users/pafi/Documents/RUO Peptides/output/live-state-register-2026-07-04/ruo-48h-live-state-register-2026-07-04.md",
-        "publicUrl": "https://cryptopafi.github.io/nexusos-reports/ruo-48h-live-state-register-2026-07-04.md",
-        "summary": "D2C live controlled; ads not running; website compliance waiting for lawyer opinion; high-risk SKUs continue only under RUO-safe copy; Dragos collaborator sales not active; Supabase/dashboard active; Airtable frozen; accessories waiting proof/QC and business plan; pricing/margin and SKU disposition still yellow."
-      },
-      "supportingAssignees": [
-        "Vic",
-        "Narcis"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Pafi",
-        "Vic",
-        "Narcis"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-0-002",
-      "title": "Create red/yellow/green gate scoreboard",
-      "category": "Tech/Admin & AI Agents",
-      "priority": "P0-0",
-      "urgencyScore": 99,
-      "status": "open",
-      "owner": "Codex/Tech",
-      "assignees": [
-        "Codex/Tech"
-      ],
-      "dueDate": "2026-06-24",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Codex owns the red/yellow/green marking logic and keeps the gate scoreboard readable from Pafi-provided information. Narcis supports dashboard/admin rendering; Pafi supplies product/sales state; Vic supplies compliance state.",
-      "acceptance": "Every gate has colour/state, owner, blocker, proof needed, next action, and evidence/reason. Colour changes use the RUO task colour marker skill so all agents read the same state.",
-      "workstream": "Administration",
-      "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis",
-      "colour": "yellow",
-      "colourReason": "Pafi authorized Codex to do task 5; implementation/ongoing marking is active.",
-      "colourEvidence": [
-        "Pafi instruction 2026-06-30",
-        "/Users/pafi/.codex/skills/ruo-task-colour-marker/SKILL.md"
-      ],
-      "colourUpdatedBy": "Codex",
-      "colourUpdatedAt": "2026-06-30T18:26:02Z",
-      "plainExplanationRo": "Acesta este tabelul de control pe culori: verde înseamnă că putem continua, galben înseamnă risc sau informație lipsă dar nu blocaj total, roșu înseamnă blocaj sau risc major, gri înseamnă planned/parcat. Codex actualizează culoarea pe baza informațiilor primite de la Pafi și a dovezilor verificate.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
-      "plainExplanationUpdatedBy": "Codex",
-      "supportingAssignees": [
-        "Narcis",
-        "Pafi",
-        "Vic"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Codex/Tech; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Codex/Tech",
-        "Narcis",
-        "Pafi",
-        "Vic"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "progressNote": "In progress as of 2026-08-05."
     },
     {
       "id": "P0-0-004",
@@ -550,66 +316,6 @@
         "Vic",
         "Pafi",
         "Codex/Tech"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-0-005",
-      "title": "Close Dragos cash packet",
-      "category": "Products, SKUs & Budgeting",
-      "priority": "P0-0",
-      "urgencyScore": 96,
-      "status": "overdue",
-      "owner": "Dragos",
-      "assignees": [
-        "Dragos"
-      ],
-      "dueDate": "2026-06-22",
-      "source": "Owner override 2026-06-24",
-      "description": "Dragos provides the real cash/Zen/crypto/receivable/proof data; Narcis helps package it into the dashboard/evidence format. Separate company money owed from any back-pay or personal-stock discussion.",
-      "acceptance": "Actual balances, proofs, receivables, and personal-stock debt are recorded cleanly; Pafi is not treated as the owner of this task.",
-      "workstream": "Financial",
-      "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi",
-      "supportingAssignees": [
-        "Narcis"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Dragos; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Dragos",
-        "Narcis"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-0-007",
-      "title": "Reconcile audit number with Dragos transaction records",
-      "category": "Tech/Admin & AI Agents",
-      "priority": "P0-0",
-      "urgencyScore": 94,
-      "status": "open",
-      "owner": "Dragos",
-      "assignees": [
-        "Dragos"
-      ],
-      "dueDate": "2026-06-30",
-      "source": "Pafi instruction 2026-06-30; supersedes completed Airtable/Supabase freeze sync.",
-      "description": "Dragos must reconcile the audit number against his own transaction records, including Zen, crypto, cash, receivables, refunds, transfers, and any proof files. The old Airtable/Supabase sync remains historical context; this task is now about Dragos confirming the audit balance from his side.",
-      "acceptance": "Dragos provides a transaction-by-transaction reconciliation that explains any difference between the audit number and his own records; each difference is marked as matched, missing proof, duplicate, timing difference, personal/back-pay, company receivable, or correction needed.",
-      "completedAt": null,
-      "completionNote": "Reopened/reassigned by Pafi on 2026-06-30. Previous completion was Airtable/Supabase payment sync before Airtable freeze; new scope is Dragos audit-number reconciliation.",
-      "workstream": "Cash / Dragos Proof",
-      "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi",
-      "supportingAssignees": [
-        "Pafi"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Dragos; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Dragos",
-        "Pafi"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex"
@@ -674,140 +380,6 @@
       "assigneeAuditUpdatedBy": "Codex"
     },
     {
-      "id": "P0-006",
-      "title": "4.6 Create canonical SKU pricing and margin table",
-      "category": "Products, SKUs & Budgeting",
-      "priority": "P0",
-      "urgencyScore": 92,
-      "status": "done",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-06-25",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Canonical SKU pricing and margin table v1 created. It combines supplier/base cost, economic COA allocation, landed cost, public price, net revenue ex VAT, 30% discount/commission/CAC reserve, strict 60% margin gate, restock status, counsel flag, and public copy status. Row-level SKU states remain red/yellow/grey where gates are not passed.",
-      "acceptance": "Done for v1: one source-backed SKU pricing truth exists with exception notes for each SKU. Remaining work is row-level cleanup/repricing/COA/copy action, not creation of the table.",
-      "workstream": "Financial",
-      "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi",
-      "parentTask": "P0-0-001",
-      "subtask": "4.6",
-      "colour": "green",
-      "colourReason": "Pricing/margin table v1 created and published; row-level SKU gaps remain tracked inside the table.",
-      "colourEvidence": [
-        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
-        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
-        "Pafi grill-me decisions 2026-07-04 D1-D10"
-      ],
-      "colourUpdatedBy": "Codex",
-      "colourUpdatedAt": "2026-07-04T00:25:00+03:00",
-      "plainExplanationRo": "Am creat tabelul canonical de pricing/margin per SKU. Include cost, COA economic, preț public, net ex VAT, rezervă 30%, margin gate 60%, restock status, counsel flag și copy status. Taskul de creare este gata; problemele pe fiecare SKU rămân marcate în tabel.",
-      "plainExplanationUpdatedAt": "2026-07-04T00:25:00+03:00",
-      "plainExplanationUpdatedBy": "Codex",
-      "supportingAssignees": [
-        "Narcis"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Pafi",
-        "Narcis"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex",
-      "completedAt": "2026-07-04",
-      "completedBy": "Codex",
-      "completionNote": "Canonical SKU pricing/margin table v1 generated from available sources and Pafi grill-me decisions. Zero rows are green under the strict policy; row-level gates are visible in the table.",
-      "supportingFile": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
-      "skuPricingMarginTable": {
-        "generatedAt": "2026-07-04T00:20:00+03:00",
-        "rows": 31,
-        "green": 0,
-        "yellow": 12,
-        "red": 11,
-        "grey": 8,
-        "verifiedCoa": 12,
-        "holdUntilVerifiedCoa": 11,
-        "publicReport": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-disposition-report-v1-2026-07-04.html",
-        "pricingCsv": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
-        "dispositionCsv": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
-        "localFiles": [
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.html",
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-summary-2026-07-04.json"
-        ],
-        "policy": "Pafi grill-me decisions D1-D10: controlled continue, verified public COA required for sellability/green, strict 60% margin after COA/VAT/30% reserve, restock only if COA-economic, RUO-safe public copy only."
-      }
-    },
-    {
-      "id": "P0-007",
-      "title": "Build SKU disposition table",
-      "category": "Products, SKUs & Budgeting",
-      "priority": "P0",
-      "urgencyScore": 91,
-      "status": "done",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-06-25",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "SKU disposition table v1 created. Each SKU is classified as continue-controlled, hold-until-verified-COA, parked/no-stock, margin review, restock focus, counsel review, or quality-proof blocked according to Pafi decisions and available evidence.",
-      "acceptance": "Done for v1: every SKU has an explicit disposition and no SKU status is inferred from memory only. Remaining work is executing the red/yellow row actions.",
-      "workstream": "Logistics",
-      "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi",
-      "colour": "green",
-      "colourReason": "SKU disposition table v1 created and published; row-level actions remain visible in the table.",
-      "colourEvidence": [
-        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
-        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
-        "Pafi grill-me decisions 2026-07-04 D1-D10"
-      ],
-      "colourUpdatedBy": "Codex",
-      "colourUpdatedAt": "2026-07-04T00:25:00+03:00",
-      "plainExplanationRo": "Am creat tabelul de disposition per SKU. Fiecare SKU are status explicit: continue controlled, hold până la COA verificat, parked/no-stock, margin review, restock focus, counsel review sau quality-proof blocked. Taskul de creare este gata; execuția pe rânduri rămâne de făcut.",
-      "plainExplanationUpdatedAt": "2026-07-04T00:25:00+03:00",
-      "plainExplanationUpdatedBy": "Codex",
-      "supportingAssignees": [
-        "Narcis"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Pafi",
-        "Narcis"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex",
-      "completedAt": "2026-07-04",
-      "completedBy": "Codex",
-      "completionNote": "SKU disposition table v1 generated. Existing stock without verified public/independent COA is hold/red; high-risk verified-COA SKUs remain yellow/counsel-review; parked no-stock rows are grey.",
-      "supportingFile": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
-      "skuDispositionTable": {
-        "generatedAt": "2026-07-04T00:20:00+03:00",
-        "rows": 31,
-        "green": 0,
-        "yellow": 12,
-        "red": 11,
-        "grey": 8,
-        "verifiedCoa": 12,
-        "holdUntilVerifiedCoa": 11,
-        "publicReport": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-disposition-report-v1-2026-07-04.html",
-        "pricingCsv": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
-        "dispositionCsv": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
-        "localFiles": [
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.html",
-          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-summary-2026-07-04.json"
-        ],
-        "policy": "Pafi grill-me decisions D1-D10: controlled continue, verified public COA required for sellability/green, strict 60% margin after COA/VAT/30% reserve, restock only if COA-economic, RUO-safe public copy only."
-      }
-    },
-    {
       "id": "P0-008",
       "title": "Create Accessories Business plan proposal",
       "category": "Accessories Business",
@@ -866,111 +438,6 @@
       }
     },
     {
-      "id": "P1-007",
-      "title": "Merged into Accessories Business plan proposal",
-      "category": "Accessories Business",
-      "priority": "P1",
-      "urgencyScore": 83,
-      "status": "closed",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-02",
-      "source": "Pafi instruction 2026-06-30; replaces Dragos observation-mode asset task.",
-      "description": "Merged into P0-008 Create Accessories Business plan proposal. The separate accessories operating-model scope is preserved inside P0-008 and should no longer be tracked as a separate open Pafi task.",
-      "acceptance": "Closed as merged/superseded by P0-008. No separate action remains here.",
-      "workstream": "Accessories / Operating Model",
-      "chapter": "Accessories Business",
-      "chapterOwner": "Pafi",
-      "supportingAssignees": [
-        "Vic",
-        "Narcis",
-        "Dragos"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Pafi",
-        "Vic",
-        "Narcis",
-        "Dragos"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex",
-      "colour": "grey",
-      "completedAt": "2026-07-03T20:00:00Z",
-      "completedBy": "Codex",
-      "colourReason": "Merged into P0-008 per Pafi instruction; no separate active task remains.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-03: merge tasks 5 and 10 into the accessories business plan proposal"
-      ],
-      "colourUpdatedAt": "2026-07-03T20:00:00Z",
-      "colourUpdatedBy": "Codex",
-      "supersededBy": "P0-008",
-      "completionNote": "Merged into P0-008 Accessories Business plan proposal on 2026-07-03.",
-      "plainExplanationRo": "Închis ca task separat. Conținutul lui a fost mutat în P0-008, planul/propunerea pentru business-ul de accesorii.",
-      "plainExplanationUpdatedAt": "2026-07-03T20:00:00Z",
-      "plainExplanationUpdatedBy": "Codex"
-    },
-    {
-      "id": "P1-009",
-      "title": "Create approval register for commercial and public changes",
-      "category": "Tech/Admin & AI Agents",
-      "priority": "P1",
-      "urgencyScore": 79,
-      "status": "open",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis"
-      ],
-      "dueDate": "2026-06-30",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Narcis creates a Supabase-backed approval register for every commercial/public mutation: public copy, price change, discount code, supplier order, import decision, live outbound message, refund/replacement, marketplace listing, wholesale/dropshipping partner activation, and dashboard/admin data mutation. Pafi and Vic remain approval authorities where relevant, but Narcis owns the implementation and operating register.",
-      "acceptance": "Narcis adds the approval register in Supabase or creates an implementation-ready schema; every mutating action can be tied to approval ID, approver, scope, evidence link, timestamp, owner, and status before execution.",
-      "workstream": "Administration",
-      "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis",
-      "colour": "yellow",
-      "colourReason": "Narcis owns the Supabase approval register implementation.",
-      "colourEvidence": [
-        "Pafi instruction 2026-06-30"
-      ],
-      "colourUpdatedBy": "Codex",
-      "colourUpdatedAt": "2026-06-30T18:33:23Z",
-      "plainExplanationRo": "Acesta este registrul oficial de aprobări în Supabase. Orice schimbare comercială sau publică importantă trebuie să aibă approval ID, cine a cerut, cine a aprobat, ce s-a schimbat, când, scope și evidence link. Narcis îl construiește.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
-      "plainExplanationUpdatedBy": "Codex"
-    },
-    {
-      "id": "P1-011",
-      "title": "Integrate Hermes agent into the Telegram group",
-      "category": "Tech/Admin & AI Agents",
-      "priority": "P1",
-      "urgencyScore": 77,
-      "status": "open",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis"
-      ],
-      "dueDate": "2026-06-26",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Narcis integrates the Hermes agent into the shared Telegram group so the team uses one agent for everyone. This is a Narcis-owned coordination/setup task. Scope includes the new Hermes Telegram stock-management agent and the Hermes agent for peptides/supplements protocols.",
-      "acceptance": "Hermes is present in the shared Telegram group, the team knows to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented. Hermes Telegram stock-management and peptide/supplement protocol agent responsibilities are documented, tested in read-only/draft-first mode, and routed to the correct group/admin workflow.",
-      "workstream": "AI / Workflow",
-      "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis",
-      "supportingAssignees": [
-        "Codex/Tech"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Narcis; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Narcis",
-        "Codex/Tech"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
       "id": "P1-012",
       "title": "Define wholesale and dropshipping services lane",
       "category": "Sales & Marketing",
@@ -999,78 +466,6 @@
         "Vic",
         "Narcis",
         "Dan"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
-      "id": "P2-002",
-      "title": "Build dummy website-paid order handoff and location notification flow",
-      "category": "Sales & Marketing",
-      "priority": "P2",
-      "urgencyScore": 72,
-      "status": "closed",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis"
-      ],
-      "dueDate": "2026-07-03",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Narcis builds/tests a dummy paid website-order flow from order paid -> location decision -> notification -> local handoff -> evidence record -> stock movement. The notification must route based on customer delivery location: Ibiza orders notify the Ibiza/local handoff channel; Bulgaria/Bucharest/other warehouse-flow orders notify the Bulgaria/central logistics channel. Include order ID, customer location, product/SKU, paid status, delivery/handoff route, responsible person, required proof, and no medical/product-advice text.",
-      "acceptance": "A dummy paid order can be processed without real collaborator activation. The correct Ibiza vs Bulgaria/central notification is selected from customer location, the handoff recipient sees only operational details, stock/evidence records are created or drafted, and the flow can be repeated safely before real use.",
-      "workstream": "Sales / Dragos",
-      "chapter": "Sales & Marketing",
-      "chapterOwner": "Pafi",
-      "plainExplanationRo": "Acesta este un test dummy pentru o comandă plătită pe website: paid order -> locație client -> notificare corectă -> handoff local/central -> evidence record -> stock movement. Ibiza merge pe flow local; Bulgaria/Bucharest/warehouse merge pe flow central.",
-      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
-      "plainExplanationUpdatedBy": "Codex",
-      "supportingAssignees": [
-        "Pafi",
-        "Dragos",
-        "Codex/Tech"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Narcis; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Narcis",
-        "Pafi",
-        "Dragos",
-        "Codex/Tech"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
-      "id": "P2-003",
-      "title": "Build read-only/draft-first AI agent suite",
-      "category": "Tech/Admin & AI Agents",
-      "priority": "P2",
-      "urgencyScore": 70,
-      "status": "planned",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis"
-      ],
-      "dueDate": "2026-07-10",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Build AI helpers that can read the dashboard/Supabase/project context and draft actions or reports, but cannot change records by themselves. Examples: Daily Ops summary, Stock check, Finance check, Compliance check, Procurement draft, Accessories check, Ibiza Network update, and Weekly Business Reporter. Narcis owns tech creation/admin for the agent suite, including stock-management and peptide/supplement protocol workflows; agents remain read-only/draft-first unless explicitly Pafi-authorized.",
-      "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution. Approved Supabase writes by Codex/Pafi agents must set local app.actor='Pafi' in the same write transaction.",
-      "workstream": "AI / Workflow",
-      "chapter": "Tech/Admin & AI Agents",
-      "chapterOwner": "Narcis",
-      "plainExplanationRo": "Agenții AI rămân read-only/draft-first. Dacă un agent Codex/Pafi primește aprobare de write în Supabase, write-ul trebuie făcut cu set local app.actor='Pafi' în aceeași tranzacție, ca auditul să arate Pafi, nu rolul DB.",
-      "plainExplanationUpdatedAt": "2026-07-01T10:17:40Z",
-      "plainExplanationUpdatedBy": "Codex",
-      "supportingAssignees": [
-        "Codex/Tech",
-        "Pafi",
-        "Vic"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Narcis; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Narcis",
-        "Codex/Tech",
-        "Pafi",
-        "Vic"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex"
@@ -1105,97 +500,6 @@
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
-      "id": "P2-005",
-      "title": "Create monthly budget tracking by operating bucket",
-      "category": "Products, SKUs & Budgeting",
-      "priority": "P2",
-      "urgencyScore": 66,
-      "status": "closed",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-10",
-      "source": "Pafi ownership update 2026-06-30",
-      "description": "Merged into P0-005 Produce 6-month budget and reserve allocation. The monthly operating-bucket tracking scope is preserved inside P0-005 and should no longer be tracked as a separate P2 task.",
-      "acceptance": "Closed as merged. Use P0-005 for the combined 6-month budget, reserve allocation, monthly planned-vs-actual spend, remaining reserve, evidence/proof links, and variance tracking.",
-      "workstream": "Financial",
-      "chapter": "Products, SKUs & Budgeting",
-      "chapterOwner": "Pafi",
-      "completedAt": "2026-07-04",
-      "completedBy": "Codex",
-      "completionNote": "Closed as merged into P0-005 per Pafi instruction. Monthly budget tracking remains required inside the active P0-005 task.",
-      "colour": "grey",
-      "colourReason": "Superseded by merged P0-005 budget/reserve/monthly tracking task.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-04: merge 2 and 9"
-      ],
-      "colourUpdatedAt": "2026-07-04T00:08:30+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Acest task separat este închis pentru că a fost mutat în P0-005. Trackingul lunar nu dispare; este acum parte din taskul mare de buget pe 6 luni.",
-      "plainExplanationUpdatedAt": "2026-07-04T00:08:30+03:00",
-      "plainExplanationUpdatedBy": "Codex",
-      "mergedInto": "P0-005",
-      "supportingAssignees": [
-        "Vic",
-        "Narcis",
-        "Codex/Tech"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Pafi",
-        "Vic",
-        "Narcis",
-        "Codex/Tech"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-013",
-      "title": "Resolve Ibiza 69-vial in-transit transfer and recount",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Inventory / Logistics",
-      "priority": "P0",
-      "urgencyScore": 90,
-      "status": "done",
-      "owner": "Narcis",
-      "assignees": [
-        "Narcis"
-      ],
-      "dueDate": "2026-07-01",
-      "source": "Project-card gap 2026-06-28; scope correction 2026-07-29: Narcis owns only the digital Supabase/admin gate",
-      "description": "Resolve the Bucharest -> Ibiza 69-vial transfer that is deducted from Bucharest and present in Ibiza accounting but not physically arrived according to Pafi. Keep those vials treated as in-transit/not sellable until physical receipt and recount.",
-      "acceptance": "Receipt or non-receipt is evidenced; BPC-157 14, TB-500 5, Retatrutide 10, Mots-C 15, GHK-CU 15, and NAD+ 10 are either received/recounted or explicitly marked in-transit/not sellable in the operating view.",
-      "chapterOwner": "Pafi",
-      "supportingAssignees": [
-        "Dragos",
-        "Pafi"
-      ],
-      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Narcis; previous collaborators moved to supportingAssignees.",
-      "assigneeAuditPrevious": [
-        "Narcis",
-        "Dragos",
-        "Pafi"
-      ],
-      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex",
-      "colour": "green",
-      "colourReason": "Pafi confirmed physical receipt and recount of the 69-vial Bucharest-to-Ibiza transfer on Thursday 2026-07-02.",
-      "colourEvidence": [
-        "Pafi confirmation 2026-07-11: transfer received and recount confirmed on Thursday 2026-07-02"
-      ],
-      "colourUpdatedAt": "2026-07-11T15:00:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "completedAt": "2026-07-02",
-      "completedBy": "Pafi",
-      "completionNote": "Physical receipt in Ibiza and recount of all 69 transferred vials confirmed by Pafi; received Thursday 2026-07-02.",
-      "plainExplanationRo": "Rezolvat: transferul de 69 de fiole Bucuresti -> Ibiza a fost primit fizic si inventariat joi, 2 iulie 2026. Stocul nu mai este tratat ca fiind in tranzit.",
-      "plainExplanationUpdatedAt": "2026-07-11T15:00:00+03:00",
-      "plainExplanationUpdatedBy": "Codex"
     },
     {
       "id": "P0-014",
@@ -1390,6 +694,1128 @@
       ]
     },
     {
+      "id": "P1-021",
+      "title": "Contact eMag and Amazon for accessories suppliers and plan next order",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Accessories",
+      "priority": "P1",
+      "urgencyScore": 55,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "",
+      "source": "Pafi instruction 2026-07-08 (voice, Telegram)",
+      "description": "Contact eMag and Amazon regarding accessories (supplier/marketplace options, pricing, terms) and use findings to plan the next accessories order.",
+      "acceptance": "eMag and Amazon contacted; supplier/pricing/terms info gathered; next accessories order plan drafted with quantities and estimated cost.",
+      "blockedBy": "",
+      "relatesTo": [
+        "P2-004"
+      ],
+      "colour": "yellow",
+      "colourReason": "New task added by Pafi 2026-07-08; not yet started.",
+      "colourEvidence": [
+        "Pafi voice instruction 2026-07-08"
+      ],
+      "colourUpdatedAt": "2026-07-10T09:08:10.564856+03:00",
+      "colourUpdatedBy": "Hermes"
+    },
+    {
+      "id": "P0-024",
+      "title": "Contact all Affiliate World Budapest logistics, China procurement and 3PL/COD leads",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Supplier Sourcing / 3PL / COD",
+      "priority": "P0",
+      "urgencyScore": 98.5,
+      "status": "partial",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-13",
+      "source": "Pafi instruction 2026-07-12; Affiliate World Budapest contact register",
+      "description": "Urgently contact every identified Affiliate World Budapest logistics/3PL lead: Jerry Chen / Jing3PL for China procurement and EU fulfilment; Natalia Abramovskaia / WAPI for fulfilment and COD; Yoana / BigArena Fulfillment for EU 3PL and COD; and Vincent to qualify his possible US sourcing/3PL introduction. Use the filtered contact workbook as the outreach register and preserve responses for side-by-side comparison.",
+      "acceptance": "All four leads are contacted. For Jing3PL capture China procurement terms, EU warehouse map, importer-of-record responsibility, batch/COA handling, pick-pack, returns and pricing. For WAPI and BigArena capture warehouse countries, COD coverage, RUO/regulated-goods acceptance, returns, integrations and full pricing. Vincent is either qualified with company/capability details or closed as not relevant. Responses and next steps are recorded in one comparison view before selecting a partner.",
+      "contactWorkbook": "/Users/pafi/Desktop/Elevate Marketing /AWC_Budapest_Logistics_3PL_Contacts_2026-07-12.xlsx",
+      "contactIds": [
+        "AWB-012",
+        "AWB-023",
+        "AWB-037",
+        "AWB-035"
+      ],
+      "primaryConfirmedContacts": [
+        {
+          "id": "AWB-012",
+          "contact": "Jerry Chen",
+          "company": "Jing3PL",
+          "capability": "China procurement + EU 3PL"
+        },
+        {
+          "id": "AWB-023",
+          "contact": "Natalia Abramovskaia",
+          "company": "WAPI",
+          "telegram": "https://t.me/nab_wapi",
+          "capability": "Fulfilment + COD"
+        },
+        {
+          "id": "AWB-037",
+          "contact": "Yoana",
+          "company": "BigArena Fulfillment",
+          "telegram": "https://t.me/yoannnat",
+          "capability": "EU 3PL + COD"
+        }
+      ],
+      "qualificationLead": {
+        "id": "AWB-035",
+        "contact": "Vincent",
+        "telegram": "https://t.me/VinzDoggyDogg",
+        "capability": "Potential US sourcing / 3PL introduction"
+      },
+      "chapterOwner": "Pafi",
+      "colour": "yellow",
+      "colourReason": "All relevant contacts were contacted; procurement response/action is still pending.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-12",
+        "/Users/pafi/Desktop/Elevate Marketing /Affiliate_World_Budapest_Contacts_2026-07-12.xlsx",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa contacteze urgent toate contactele relevante de la AWC Budapest: Jing3PL pentru procurement China + fulfilment UE, WAPI si BigArena pentru 3PL cu COD, plus Vincent pentru clarificarea unui posibil parteneriat US. Raspunsurile trebuie comparate pe tari, COD, costuri, retururi, integrare, batch si COA.",
+      "plainExplanationUpdatedAt": "2026-07-12T23:00:00+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "progressNote": "Contact stage complete; waiting for procurement."
+    },
+    {
+      "id": "P0-025",
+      "title": "Order boxes for pens",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Pen Packaging",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "partial",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-30",
+      "source": "Pafi instruction 2026-07-29: add boxes for pens ordering as urgent to-do",
+      "description": "Pafi urgently orders suitable retail/shipping boxes for the reusable peptide pens. Confirm box dimensions against the selected pen and cartridge configuration, quantity, unit price, print/finish requirements, supplier, production lead time, delivery destination, and ETA before placing the final order.",
+      "acceptance": "Pen fit and box specification are confirmed; supplier and quantity are selected; the order is placed; order reference, price, artwork/specification, delivery destination, ETA/tracking, and receipt owner are recorded.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-023"
+      ],
+      "colour": "yellow",
+      "colourReason": "Order placed and design finalized; payment is still pending.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa comande urgent cutii potrivite pentru pen-uri. Inainte de comanda finala verifica dimensiunea, cantitatea, designul, pretul, furnizorul si locul de livrare.",
+      "progressNote": "Order placed and design set; not yet paid."
+    },
+    {
+      "id": "P0-026",
+      "title": "Order labels for pens",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Pen Packaging",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-30",
+      "source": "Pafi instruction 2026-07-29: add labels for pens as urgent to-do",
+      "description": "Pafi urgently prepares and orders labels for the pens. The label specification must match the selected pen model and approved product/SKU information, with correct dimensions, artwork version, material/adhesive, quantity, supplier, delivery destination, and ETA.",
+      "acceptance": "Approved pen-label artwork and dimensions are matched to the pen model; quantity and supplier are confirmed; the order is placed; order reference, price, artwork version, ETA/tracking, and delivery destination are recorded.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-023",
+        "P0-025"
+      ],
+      "colour": "red",
+      "colourReason": "Urgent pen-label order requested by Pafi; artwork/specification and completed order evidence are not yet recorded.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa comande urgent etichetele pentru pen-uri, dupa verificarea dimensiunii, modelului de pen, designului aprobat, cantitatii si furnizorului."
+    },
+    {
+      "id": "P0-028",
+      "title": "Order compatible needles",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Pen Accessories",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "waiting",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-30",
+      "source": "Pafi instruction 2026-07-29: add needles ordering as urgent to-do",
+      "description": "Pafi urgently sources and orders needles compatible with the selected reusable pens. Confirm connector compatibility, needle specification, sterile single-use packaging, quantity, supplier, price, delivery destination, and ETA before placing the final order.",
+      "acceptance": "Compatibility with the selected pen model is documented; needle specification and sterile single-use packaging are confirmed; quantity and supplier are selected; the order is placed; order reference, price, ETA/tracking, delivery destination, and receipt owner are recorded.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-023"
+      ],
+      "colour": "yellow",
+      "colourReason": "Delayed; compatible needles will be purchased locally.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa comande urgent ace compatibile cu modelul de pen ales. Compatibilitatea, specificatia, ambalarea sterila individuala, cantitatea si furnizorul trebuie confirmate inainte de comanda.",
+      "progressNote": "Purchase route changed to local sourcing."
+    },
+    {
+      "id": "P0-029",
+      "title": "Test and acquire a professional logistics software stack",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Logistics Systems",
+      "priority": "P0",
+      "urgencyScore": 98,
+      "status": "partial",
+      "owner": "Vic",
+      "assignees": [
+        "Vic"
+      ],
+      "dueDate": "2026-07-31",
+      "source": "Pafi instruction 2026-07-29: Vic to test and purchase a professional logistics software stack",
+      "description": "Vic evaluates, tests, selects, and purchases a professional logistics software stack for RUO operations. The evaluation must cover order management, inventory and warehouse operations, shipping/carrier integrations, tracking, returns, COD support where relevant, reporting, role-based access, audit logs, integrations with PepInternal/Supabase, data export, support, implementation time, and total cost.",
+      "acceptance": "At least three suitable systems are compared against one written requirement list; the leading option is tested with a realistic order-to-delivery workflow; integration, data ownership/export, security/access, support, and full cost are documented; one stack is selected and purchased; invoice/contract, admin ownership, implementation steps, and go-live owner are recorded.",
+      "chapterOwner": "Pafi",
+      "colour": "yellow",
+      "colourReason": "Professional logistics software evaluation/acquisition is in progress.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Vic trebuie sa compare minimum trei solutii profesionale de logistica, sa testeze fluxul complet comanda-stoc-expediere-tracking-retur si sa cumpere varianta aleasa. Trebuie pastrate costul, contractul/factura, accesul admin si planul de implementare.",
+      "progressNote": "In progress as of 2026-08-05."
+    },
+    {
+      "id": "P0-030",
+      "title": "Complete the company account setup",
+      "category": "Compliance & Online Presence",
+      "chapter": "Compliance & Online Presence",
+      "workstream": "Company Administration",
+      "priority": "P0",
+      "urgencyScore": 97,
+      "status": "open",
+      "owner": "Vic",
+      "assignees": [
+        "Vic"
+      ],
+      "dueDate": "2026-07-31",
+      "source": "Pafi instruction 2026-07-29: Vic to finish the company account",
+      "description": "Vic completes the company account setup currently in progress. Confirm the exact platform/account, complete all company and beneficial-owner fields, finish required verification, establish controlled admin ownership and recovery access, record any remaining external approval, and save the final status without exposing credentials.",
+      "acceptance": "The exact company account is identified; all required company, owner, address, tax, and verification fields applicable to that platform are completed; submitted documents and verification status are recorded; admin ownership, recovery method, and access roles are confirmed; any unresolved external review is documented with owner and ETA. No credentials are stored in the dashboard.",
+      "chapterOwner": "Vic",
+      "colour": "red",
+      "colourReason": "Company account setup remains unfinished and was assigned by Pafi to Vic for completion.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T16:10:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Vic trebuie sa finalizeze contul firmei aflat deja in lucru: platforma exacta, datele firmei, verificarile, documentele, accesul admin si recuperarea contului. Parolele sau codurile nu se trec in dashboard."
+    },
+    {
+      "id": "P0-031",
+      "title": "Finalize the contract with the selected 3PL",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "3PL Contracting",
+      "priority": "P0",
+      "urgencyScore": 99,
+      "status": "partial",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-31",
+      "source": "Pafi instruction 2026-07-29: add task for Pafi to finish the 3PL contract",
+      "description": "Pafi finalizes and signs the contract with the selected 3PL. Confirm the contracting entity, covered warehouse location, accepted product categories, inbound receiving process, storage and pick-pack fees, shipping/COD coverage, returns, loss/damage liability, insurance, service levels, stock reporting, integrations, data ownership/export, termination terms, and named operational contacts.",
+      "acceptance": "Final commercial and operating terms are agreed; legal entity and warehouse are confirmed; product acceptance and inbound requirements are documented; complete pricing and liability/insurance terms are recorded; the contract is signed by authorized parties; invoice/payment requirements, admin contacts, implementation owner, and effective date are saved.",
+      "chapterOwner": "Pafi",
+      "relatesTo": [
+        "P0-024",
+        "P0-029",
+        "P0-032"
+      ],
+      "colour": "yellow",
+      "colourReason": "The selected 3PL contract is in progress.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa finalizeze si sa semneze contractul cu 3PL-ul ales. Contractul trebuie sa confirme depozitul, produsele acceptate, costurile complete, receptia, livrarile/COD, retururile, raspunderea pentru pierderi si persoanele de contact.",
+      "progressNote": "In progress as of 2026-08-05."
+    },
+    {
+      "id": "P0-032",
+      "title": "Transfer existing Bucharest inventory to the 3PL warehouse",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Warehouse Transfer",
+      "priority": "P0",
+      "urgencyScore": 98,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-08-03",
+      "source": "Pafi instruction 2026-07-29: add task for Pafi to deliver existing Bucharest goods to the warehouse",
+      "description": "Pafi transfers the existing physical inventory held in Bucharest to the contracted 3PL warehouse. Before dispatch, reconcile the physical count by SKU and batch, confirm which units are eligible for transfer, prepare the 3PL inbound/ASN and packing list, follow temperature and handling requirements where applicable, arrange insured tracked transport, and preserve dispatch and warehouse receipt evidence.",
+      "acceptance": "P0-031 is complete; the destination warehouse and inbound appointment/instructions are confirmed; pre-dispatch physical count by SKU, quantity, batch, and disposition is signed off; packing list and inbound/ASN reference exist; transport/tracking and handoff proof are recorded; the warehouse confirms received quantities and discrepancies. Any Supabase stock movement is performed only through the authorized Hermes workflow after physical evidence exists.",
+      "chapterOwner": "Pafi",
+      "blockedBy": "P0-031 contract and warehouse receiving instructions",
+      "relatesTo": [
+        "P0-031",
+        "P0-029"
+      ],
+      "colour": "red",
+      "colourReason": "Physical Bucharest inventory transfer is pending the signed 3PL contract, confirmed warehouse, and receiving instructions.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T16:20:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa mute marfa existenta din Bucuresti la depozitul 3PL dupa semnarea contractului. Inainte de expediere se face inventarul pe SKU si batch, packing list-ul si programarea de receptie; dupa livrare se pastreaza tracking-ul si confirmarea cantitatilor primite."
+    },
+    {
+      "id": "P0-033",
+      "title": "Create a GPT-assisted declaration of conformity for WAPI",
+      "category": "Compliance & Online Presence",
+      "chapter": "Compliance & Online Presence",
+      "workstream": "WAPI Compliance Documentation",
+      "priority": "P0",
+      "urgencyScore": 98,
+      "status": "open",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-31",
+      "source": "Pafi instruction 2026-07-29: create with GPT a declaration of conformity for WAPI",
+      "description": "Pafi uses GPT to prepare a declaration of conformity draft for WAPI. First confirm WAPI's exact requested document type, contracting entity, products/SKUs and intended logistics scope. Build the draft only from verified company, supplier, batch, COA, label, packaging, storage, and regulatory evidence. Unsupported compliance claims, invented certificate numbers, false standards, or unverified product statements are prohibited. Vic reviews the compliance wording before the authorized company representative signs or submits it.",
+      "acceptance": "WAPI's exact template or required fields are obtained; the declaring legal entity, product/SKU scope, batches, intended use, evidence references, applicable standards/legal basis, storage/handling conditions, exclusions, date, and authorized signatory are identified; GPT draft is cross-checked line by line against source evidence; Vic records compliance review; final authorized version is signed and delivered to WAPI with submission proof. Missing evidence remains explicitly marked and blocks unsupported claims.",
+      "chapterOwner": "Vic",
+      "blockedBy": "WAPI document requirements and verified supporting evidence",
+      "relatesTo": [
+        "P0-031",
+        "P0-032"
+      ],
+      "colour": "red",
+      "colourReason": "WAPI conformity documentation is required, but the exact requested scope and evidence-backed final declaration are not yet completed.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-29"
+      ],
+      "colourUpdatedAt": "2026-07-29T16:30:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi pregateste cu GPT draftul declaratiei cerute de WAPI. Mai intai obtine modelul sau cerintele exacte de la WAPI, apoi completeaza numai cu date si dovezi reale. Vic verifica formularea, iar documentul final este semnat de reprezentantul autorizat si trimis cu dovada."
+    },
+    {
+      "id": "P0-019",
+      "title": "Prepare Ibiza shipment for Monday 2026-07-13",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Ibiza Shipment / Stock Transfer",
+      "priority": "P0",
+      "urgencyScore": 99.2,
+      "status": "done",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-13",
+      "source": "Pafi instruction 2026-07-11; ownership correction 2026-07-29: Narcis is digital-only, physical shipment belongs to Pafi",
+      "description": "Pafi prepares the urgent shipment to Ibiza for Monday 2026-07-13 with exact quantities: BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15. This is a controlled shipment-preparation task: pack list, source stock location, receiving destination, shipment method, handoff proof, and dashboard/Supabase-ready transfer evidence must be prepared before dispatch.",
+      "acceptance": "Shipment pack list exists with SKU, quantity, source location, destination Ibiza, dispatch date 2026-07-13, responsible sender/receiver, shipment/tracking proof requirement, and receiving checklist. No stock movement/receipt is treated as complete until the actual dispatch/receipt proof is captured and the authorized dashboard/Supabase workflow records it.",
+      "shipmentItems": [
+        {
+          "sku": "BPC157-5MG",
+          "label": "BPC-157",
+          "qty": 25
+        },
+        {
+          "sku": "TB500-5MG",
+          "label": "TB-500",
+          "qty": 25
+        },
+        {
+          "sku": "PT141-10MG",
+          "label": "PT-141",
+          "qty": 10
+        },
+        {
+          "sku": "SEMAX-10MG",
+          "label": "Semax",
+          "qty": 10
+        },
+        {
+          "sku": "SELANK-10MG",
+          "label": "Selank",
+          "qty": 10
+        },
+        {
+          "sku": "BAC-10ML",
+          "label": "BAC Water",
+          "qty": 15
+        }
+      ],
+      "chapterOwner": "Pafi",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the Ibiza shipment preparation task is complete.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-11: prepare Ibiza shipment for Monday 13.07 with exact SKU quantities",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa pregateasca transportul pentru Ibiza: BPC-157 25, TB-500 25, PT-141 10, Semax 10, Selank 10, BAC Water 15. Trebuie pack list, locatie sursa, dovada de predare/transport si checklist de primire.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "completionNote": "Shipment preparation completed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
+    },
+    {
+      "id": "P0-021",
+      "title": "Order COAs for the 5 newly arrived SKUs",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "COA / Batch Quality Gate",
+      "priority": "P0",
+      "urgencyScore": 98.8,
+      "status": "done",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-13",
+      "source": "Pafi instruction 2026-07-11; ownership correction 2026-07-29: Narcis is digital-only, COA ordering belongs to Pafi",
+      "description": "Pafi orders COAs for all 5 newly arrived SKUs named in the owner instruction context: BPC-157, TB-500, PT-141, Semax, and Selank. Each COA order must tie to the new batch number/PO model and be recorded as pending evidence until the actual COA files arrive and are matched to batch/SKU. This task is directly tied to P0-014: SO-04 cannot be cleanly received/accepted into stock until matching COA evidence exists.",
+      "acceptance": "COA order/proof exists for BPC-157, TB-500, PT-141, Semax, and Selank; each line has SKU, batch number, PO/order reference, lab/provider, order date, expected return date, status, and file/evidence slot. No newly arrived SKU is marked sale-ready, shipment-ready for customer fulfillment, or accepted into clean stock without its matching batch/COA evidence state being visible.",
+      "coaItems": [
+        "BPC157-5MG",
+        "TB500-5MG",
+        "PT141-10MG",
+        "SEMAX-10MG",
+        "SELANK-10MG"
+      ],
+      "chapterOwner": "Pafi",
+      "relatedTasks": [
+        "P0-019",
+        "P0-020",
+        "P0-014"
+      ],
+      "colour": "green",
+      "colourReason": "Pafi confirmed the five COA orders are complete.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-11: order COA for all 5 new SKUs that have arrived",
+        "Pafi instruction 2026-07-11: 014 is directly related to 020 and 021",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Pafi trebuie sa comande COA pentru cele 5 SKU-uri noi sosite: BPC-157, TB-500, PT-141, Semax si Selank. Fiecare COA trebuie legat de batch number si PO/order reference.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "completionNote": "COA orders completed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
+    },
+    {
+      "id": "P0-022",
+      "title": "Order 50 BAC Water from Netherlands to Bucharest",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "BAC Water / Netherlands Purchase",
+      "priority": "P0",
+      "urgencyScore": 98.4,
+      "status": "done",
+      "owner": "Vic",
+      "assignees": [
+        "Vic"
+      ],
+      "dueDate": "2026-07-13",
+      "source": "Pafi instruction 2026-07-11: urgent Ibiza shipment, new batch labels, COAs, and BAC Water NL->Bucharest order",
+      "description": "Vic urgently orders 50 BAC Water units from the Netherlands to Bucharest. This is a purchasing/logistics task, not a stock receipt. Capture supplier, order confirmation, price, shipping route, ETA, payment/proof, and receiving responsibility before the order is treated as operationally complete.",
+      "acceptance": "Order proof exists for 50 BAC Water from Netherlands to Bucharest, including supplier/order reference, quantity 50, payment/proof or invoice state, ETA, shipment/tracking when available, receiving plan in Bucharest, and dashboard/Supabase-ready evidence. Stock is not accepted or made available until received and evidence is recorded.",
+      "purchaseItems": [
+        {
+          "sku": "BAC-10ML",
+          "label": "BAC Water",
+          "qty": 50,
+          "route": "Netherlands -> Bucharest"
+        }
+      ],
+      "chapterOwner": "Pafi",
+      "colour": "green",
+      "colourReason": "BAC Water order completed and already delivered.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-11: urgent task for Vic, order 50 BAC water from Netherland to Bucharest",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Vic trebuie sa comande urgent 50 BAC Water din Olanda catre Bucuresti. Trebuie dovada comanda, supplier, pret/invoice sau payment state, ETA si plan de primire in Bucuresti.",
+      "plainExplanationUpdatedAt": "2026-07-11T12:50:00+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "completionNote": "50 BAC Water units ordered and delivered.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
+    },
+    {
+      "id": "P0-0-001",
+      "title": "Create 48h live-state register",
+      "category": "Products, SKUs & Budgeting",
+      "priority": "P0-0",
+      "urgencyScore": 100,
+      "status": "done",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-06-24",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Create a simple 48-hour snapshot of what is actually live or not live right now: D2C sales live, ads not running, website compliance waiting for lawyer opinion, high-revenue SKUs continue selling, Dragos collaborator sales not active yet, Supabase/dashboard active, Airtable frozen, accessories waiting for proof/QC. This is a status register, not a freeze.",
+      "acceptance": "Each item has state, owner, next action, due date if relevant, proof/evidence link, and subtask 4.6 SKU pricing/margin truth. The team can open one board and see what is live, blocked, waiting, or ready.",
+      "completedAt": "2026-07-04",
+      "completedBy": "Codex",
+      "completionNote": "48h live-state register created as a status snapshot. It records live, paused, waiting, blocked, and draft-only states and links each item to owner, next action, and evidence/task reference. This does not close the underlying open tasks.",
+      "workstream": "Administration",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi",
+      "colour": "green",
+      "colourReason": "48h live-state register created; underlying yellow/red gates remain open separately.",
+      "colourEvidence": [
+        "/Users/pafi/Documents/RUO Peptides/output/live-state-register-2026-07-04/ruo-48h-live-state-register-2026-07-04.md",
+        "Current RUO dashboard state as of 2026-07-04 00:05 EEST"
+      ],
+      "colourUpdatedAt": "2026-07-04T00:05:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "supportingFile": "https://cryptopafi.github.io/nexusos-reports/ruo-48h-live-state-register-2026-07-04.md",
+      "plainExplanationRo": "Registrul de stare pe 48h este facut. El arata ce este live, ce este oprit, ce asteapta avocatul, ce este in lucru si ce este blocat. Taskul registrului se inchide, dar taskurile de dedesubt raman deschise separat unde inca exista lucru real.",
+      "plainExplanationUpdatedAt": "2026-07-04T00:05:00+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "liveStateRegister": {
+        "generatedAt": "2026-07-04T00:05:00+03:00",
+        "file": "/Users/pafi/Documents/RUO Peptides/output/live-state-register-2026-07-04/ruo-48h-live-state-register-2026-07-04.md",
+        "publicUrl": "https://cryptopafi.github.io/nexusos-reports/ruo-48h-live-state-register-2026-07-04.md",
+        "summary": "D2C live controlled; ads not running; website compliance waiting for lawyer opinion; high-risk SKUs continue only under RUO-safe copy; Dragos collaborator sales not active; Supabase/dashboard active; Airtable frozen; accessories waiting proof/QC and business plan; pricing/margin and SKU disposition still yellow."
+      },
+      "supportingAssignees": [
+        "Vic",
+        "Narcis"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Pafi",
+        "Vic",
+        "Narcis"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex"
+    },
+    {
+      "id": "P0-0-002",
+      "title": "Create red/yellow/green gate scoreboard",
+      "category": "Tech/Admin & AI Agents",
+      "priority": "P0-0",
+      "urgencyScore": 99,
+      "status": "done",
+      "owner": "Codex/Tech",
+      "assignees": [
+        "Codex/Tech"
+      ],
+      "dueDate": "2026-06-24",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Codex owns the red/yellow/green marking logic and keeps the gate scoreboard readable from Pafi-provided information. Narcis supports dashboard/admin rendering; Pafi supplies product/sales state; Vic supplies compliance state.",
+      "acceptance": "Every gate has colour/state, owner, blocker, proof needed, next action, and evidence/reason. Colour changes use the RUO task colour marker skill so all agents read the same state.",
+      "workstream": "Administration",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the red/yellow/green gate scoreboard is complete.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30",
+        "/Users/pafi/.codex/skills/ruo-task-colour-marker/SKILL.md",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "plainExplanationRo": "Acesta este tabelul de control pe culori: verde înseamnă că putem continua, galben înseamnă risc sau informație lipsă dar nu blocaj total, roșu înseamnă blocaj sau risc major, gri înseamnă planned/parcat. Codex actualizează culoarea pe baza informațiilor primite de la Pafi și a dovezilor verificate.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex",
+      "supportingAssignees": [
+        "Narcis",
+        "Pafi",
+        "Vic"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Codex/Tech; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Codex/Tech",
+        "Narcis",
+        "Pafi",
+        "Vic"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "completionNote": "Gate scoreboard completed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
+    },
+    {
+      "id": "P0-0-005",
+      "title": "Close Dragos cash packet",
+      "category": "Products, SKUs & Budgeting",
+      "priority": "P0-0",
+      "urgencyScore": 96,
+      "status": "done",
+      "owner": "Dragos",
+      "assignees": [
+        "Dragos"
+      ],
+      "dueDate": "2026-06-22",
+      "source": "Owner override 2026-06-24",
+      "description": "Dragos provides the real cash/Zen/crypto/receivable/proof data; Narcis helps package it into the dashboard/evidence format. Separate company money owed from any back-pay or personal-stock discussion.",
+      "acceptance": "Actual balances, proofs, receivables, and personal-stock debt are recorded cleanly; Pafi is not treated as the owner of this task.",
+      "workstream": "Financial",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi",
+      "supportingAssignees": [
+        "Narcis"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Dragos; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Dragos",
+        "Narcis"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the Dragos cash packet is complete.",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "completionNote": "Dragos cash packet completed.",
+      "colourEvidence": [
+        "Pafi status update 2026-08-05"
+      ],
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
+    },
+    {
+      "id": "P0-0-007",
+      "title": "Reconcile audit number with Dragos transaction records",
+      "category": "Tech/Admin & AI Agents",
+      "priority": "P0-0",
+      "urgencyScore": 94,
+      "status": "done",
+      "owner": "Dragos",
+      "assignees": [
+        "Dragos"
+      ],
+      "dueDate": "2026-06-30",
+      "source": "Pafi instruction 2026-06-30; supersedes completed Airtable/Supabase freeze sync.",
+      "description": "Dragos must reconcile the audit number against his own transaction records, including Zen, crypto, cash, receivables, refunds, transfers, and any proof files. The old Airtable/Supabase sync remains historical context; this task is now about Dragos confirming the audit balance from his side.",
+      "acceptance": "Dragos provides a transaction-by-transaction reconciliation that explains any difference between the audit number and his own records; each difference is marked as matched, missing proof, duplicate, timing difference, personal/back-pay, company receivable, or correction needed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completionNote": "Audit number reconciled with Dragos transactions.",
+      "workstream": "Cash / Dragos Proof",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi",
+      "supportingAssignees": [
+        "Pafi"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Dragos; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Dragos",
+        "Pafi"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "green",
+      "colourReason": "Pafi confirmed Dragos transaction reconciliation is complete.",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "colourEvidence": [
+        "Pafi status update 2026-08-05"
+      ],
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
+    },
+    {
+      "id": "P0-006",
+      "title": "4.6 Create canonical SKU pricing and margin table",
+      "category": "Products, SKUs & Budgeting",
+      "priority": "P0",
+      "urgencyScore": 92,
+      "status": "done",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-06-25",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Canonical SKU pricing and margin table v1 created. It combines supplier/base cost, economic COA allocation, landed cost, public price, net revenue ex VAT, 30% discount/commission/CAC reserve, strict 60% margin gate, restock status, counsel flag, and public copy status. Row-level SKU states remain red/yellow/grey where gates are not passed.",
+      "acceptance": "Done for v1: one source-backed SKU pricing truth exists with exception notes for each SKU. Remaining work is row-level cleanup/repricing/COA/copy action, not creation of the table.",
+      "workstream": "Financial",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi",
+      "parentTask": "P0-0-001",
+      "subtask": "4.6",
+      "colour": "green",
+      "colourReason": "Pricing/margin table v1 created and published; row-level SKU gaps remain tracked inside the table.",
+      "colourEvidence": [
+        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
+        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
+        "Pafi grill-me decisions 2026-07-04 D1-D10"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-07-04T00:25:00+03:00",
+      "plainExplanationRo": "Am creat tabelul canonical de pricing/margin per SKU. Include cost, COA economic, preț public, net ex VAT, rezervă 30%, margin gate 60%, restock status, counsel flag și copy status. Taskul de creare este gata; problemele pe fiecare SKU rămân marcate în tabel.",
+      "plainExplanationUpdatedAt": "2026-07-04T00:25:00+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "supportingAssignees": [
+        "Narcis"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Pafi",
+        "Narcis"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "completedAt": "2026-07-04",
+      "completedBy": "Codex",
+      "completionNote": "Canonical SKU pricing/margin table v1 generated from available sources and Pafi grill-me decisions. Zero rows are green under the strict policy; row-level gates are visible in the table.",
+      "supportingFile": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
+      "skuPricingMarginTable": {
+        "generatedAt": "2026-07-04T00:20:00+03:00",
+        "rows": 31,
+        "green": 0,
+        "yellow": 12,
+        "red": 11,
+        "grey": 8,
+        "verifiedCoa": 12,
+        "holdUntilVerifiedCoa": 11,
+        "publicReport": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-disposition-report-v1-2026-07-04.html",
+        "pricingCsv": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
+        "dispositionCsv": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
+        "localFiles": [
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.html",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-summary-2026-07-04.json"
+        ],
+        "policy": "Pafi grill-me decisions D1-D10: controlled continue, verified public COA required for sellability/green, strict 60% margin after COA/VAT/30% reserve, restock only if COA-economic, RUO-safe public copy only."
+      }
+    },
+    {
+      "id": "P0-007",
+      "title": "Build SKU disposition table",
+      "category": "Products, SKUs & Budgeting",
+      "priority": "P0",
+      "urgencyScore": 91,
+      "status": "done",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-06-25",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "SKU disposition table v1 created. Each SKU is classified as continue-controlled, hold-until-verified-COA, parked/no-stock, margin review, restock focus, counsel review, or quality-proof blocked according to Pafi decisions and available evidence.",
+      "acceptance": "Done for v1: every SKU has an explicit disposition and no SKU status is inferred from memory only. Remaining work is executing the red/yellow row actions.",
+      "workstream": "Logistics",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi",
+      "colour": "green",
+      "colourReason": "SKU disposition table v1 created and published; row-level actions remain visible in the table.",
+      "colourEvidence": [
+        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
+        "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
+        "Pafi grill-me decisions 2026-07-04 D1-D10"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-07-04T00:25:00+03:00",
+      "plainExplanationRo": "Am creat tabelul de disposition per SKU. Fiecare SKU are status explicit: continue controlled, hold până la COA verificat, parked/no-stock, margin review, restock focus, counsel review sau quality-proof blocked. Taskul de creare este gata; execuția pe rânduri rămâne de făcut.",
+      "plainExplanationUpdatedAt": "2026-07-04T00:25:00+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "supportingAssignees": [
+        "Narcis"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Pafi",
+        "Narcis"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "completedAt": "2026-07-04",
+      "completedBy": "Codex",
+      "completionNote": "SKU disposition table v1 generated. Existing stock without verified public/independent COA is hold/red; high-risk verified-COA SKUs remain yellow/counsel-review; parked no-stock rows are grey.",
+      "supportingFile": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
+      "skuDispositionTable": {
+        "generatedAt": "2026-07-04T00:20:00+03:00",
+        "rows": 31,
+        "green": 0,
+        "yellow": 12,
+        "red": 11,
+        "grey": 8,
+        "verifiedCoa": 12,
+        "holdUntilVerifiedCoa": 11,
+        "publicReport": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-disposition-report-v1-2026-07-04.html",
+        "pricingCsv": "https://cryptopafi.github.io/nexusos-reports/sku-pricing-margin-table-v1-2026-07-04.csv",
+        "dispositionCsv": "https://cryptopafi.github.io/nexusos-reports/sku-disposition-table-v1-2026-07-04.csv",
+        "localFiles": [
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-margin-table-v1-2026-07-04.csv",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-disposition-table-v1-2026-07-04.csv",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.md",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-report-v1-2026-07-04.html",
+          "/Users/pafi/Documents/RUO Peptides/output/sku-pricing-disposition-2026-07-04/sku-pricing-disposition-summary-2026-07-04.json"
+        ],
+        "policy": "Pafi grill-me decisions D1-D10: controlled continue, verified public COA required for sellability/green, strict 60% margin after COA/VAT/30% reserve, restock only if COA-economic, RUO-safe public copy only."
+      }
+    },
+    {
+      "id": "P1-007",
+      "title": "Merged into Accessories Business plan proposal",
+      "category": "Accessories Business",
+      "priority": "P1",
+      "urgencyScore": 83,
+      "status": "closed",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-02",
+      "source": "Pafi instruction 2026-06-30; replaces Dragos observation-mode asset task.",
+      "description": "Merged into P0-008 Create Accessories Business plan proposal. The separate accessories operating-model scope is preserved inside P0-008 and should no longer be tracked as a separate open Pafi task.",
+      "acceptance": "Closed as merged/superseded by P0-008. No separate action remains here.",
+      "workstream": "Accessories / Operating Model",
+      "chapter": "Accessories Business",
+      "chapterOwner": "Pafi",
+      "supportingAssignees": [
+        "Vic",
+        "Narcis",
+        "Dragos"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Pafi",
+        "Vic",
+        "Narcis",
+        "Dragos"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "grey",
+      "completedAt": "2026-07-03T20:00:00Z",
+      "completedBy": "Codex",
+      "colourReason": "Merged into P0-008 per Pafi instruction; no separate active task remains.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-03: merge tasks 5 and 10 into the accessories business plan proposal"
+      ],
+      "colourUpdatedAt": "2026-07-03T20:00:00Z",
+      "colourUpdatedBy": "Codex",
+      "supersededBy": "P0-008",
+      "completionNote": "Merged into P0-008 Accessories Business plan proposal on 2026-07-03.",
+      "plainExplanationRo": "Închis ca task separat. Conținutul lui a fost mutat în P0-008, planul/propunerea pentru business-ul de accesorii.",
+      "plainExplanationUpdatedAt": "2026-07-03T20:00:00Z",
+      "plainExplanationUpdatedBy": "Codex"
+    },
+    {
+      "id": "P1-009",
+      "title": "Create approval register for commercial and public changes",
+      "category": "Tech/Admin & AI Agents",
+      "priority": "P1",
+      "urgencyScore": 79,
+      "status": "closed",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-06-30",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Narcis creates a Supabase-backed approval register for every commercial/public mutation: public copy, price change, discount code, supplier order, import decision, live outbound message, refund/replacement, marketplace listing, wholesale/dropshipping partner activation, and dashboard/admin data mutation. Pafi and Vic remain approval authorities where relevant, but Narcis owns the implementation and operating register.",
+      "acceptance": "Narcis adds the approval register in Supabase or creates an implementation-ready schema; every mutating action can be tied to approval ID, approver, scope, evidence link, timestamp, owner, and status before execution.",
+      "workstream": "Administration",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis",
+      "colour": "grey",
+      "colourReason": "Cancelled by Pafi.",
+      "colourEvidence": [
+        "Pafi instruction 2026-06-30",
+        "Pafi status update 2026-08-05"
+      ],
+      "colourUpdatedBy": "Codex",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "plainExplanationRo": "Acesta este registrul oficial de aprobări în Supabase. Orice schimbare comercială sau publică importantă trebuie să aibă approval ID, cine a cerut, cine a aprobat, ce s-a schimbat, când, scope și evidence link. Narcis îl construiește.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex",
+      "completionNote": "Cancelled by Pafi.",
+      "closedAt": "2026-08-05T12:00:00+03:00",
+      "closedBy": "Pafi"
+    },
+    {
+      "id": "P1-011",
+      "title": "Integrate Hermes agent into the Telegram group",
+      "category": "Tech/Admin & AI Agents",
+      "priority": "P1",
+      "urgencyScore": 77,
+      "status": "done",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-06-26",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Narcis integrates the Hermes agent into the shared Telegram group so the team uses one agent for everyone. This is a Narcis-owned coordination/setup task. Scope includes the new Hermes Telegram stock-management agent and the Hermes agent for peptides/supplements protocols.",
+      "acceptance": "Hermes is present in the shared Telegram group, the team knows to use that single agent, duplicated bot workflows are retired or marked read-only, and routing/logging rules are documented. Hermes Telegram stock-management and peptide/supplement protocol agent responsibilities are documented, tested in read-only/draft-first mode, and routed to the correct group/admin workflow.",
+      "workstream": "AI / Workflow",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis",
+      "supportingAssignees": [
+        "Codex/Tech"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Narcis; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Narcis",
+        "Codex/Tech"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the Hermes Telegram integration task is complete.",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "completionNote": "Hermes agent integrated into the Telegram group.",
+      "colourEvidence": [
+        "Pafi status update 2026-08-05"
+      ],
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
+    },
+    {
+      "id": "P2-002",
+      "title": "Build dummy website-paid order handoff and location notification flow",
+      "category": "Sales & Marketing",
+      "priority": "P2",
+      "urgencyScore": 72,
+      "status": "closed",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-03",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Narcis builds/tests a dummy paid website-order flow from order paid -> location decision -> notification -> local handoff -> evidence record -> stock movement. The notification must route based on customer delivery location: Ibiza orders notify the Ibiza/local handoff channel; Bulgaria/Bucharest/other warehouse-flow orders notify the Bulgaria/central logistics channel. Include order ID, customer location, product/SKU, paid status, delivery/handoff route, responsible person, required proof, and no medical/product-advice text.",
+      "acceptance": "A dummy paid order can be processed without real collaborator activation. The correct Ibiza vs Bulgaria/central notification is selected from customer location, the handoff recipient sees only operational details, stock/evidence records are created or drafted, and the flow can be repeated safely before real use.",
+      "workstream": "Sales / Dragos",
+      "chapter": "Sales & Marketing",
+      "chapterOwner": "Pafi",
+      "plainExplanationRo": "Acesta este un test dummy pentru o comandă plătită pe website: paid order -> locație client -> notificare corectă -> handoff local/central -> evidence record -> stock movement. Ibiza merge pe flow local; Bulgaria/Bucharest/warehouse merge pe flow central.",
+      "plainExplanationUpdatedAt": "2026-06-30T18:34:40Z",
+      "plainExplanationUpdatedBy": "Codex",
+      "supportingAssignees": [
+        "Pafi",
+        "Dragos",
+        "Codex/Tech"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Narcis; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Narcis",
+        "Pafi",
+        "Dragos",
+        "Codex/Tech"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex"
+    },
+    {
+      "id": "P2-003",
+      "title": "Build read-only/draft-first AI agent suite",
+      "category": "Tech/Admin & AI Agents",
+      "priority": "P2",
+      "urgencyScore": 70,
+      "status": "closed",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-10",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Build AI helpers that can read the dashboard/Supabase/project context and draft actions or reports, but cannot change records by themselves. Examples: Daily Ops summary, Stock check, Finance check, Compliance check, Procurement draft, Accessories check, Ibiza Network update, and Weekly Business Reporter. Narcis owns tech creation/admin for the agent suite, including stock-management and peptide/supplement protocol workflows; agents remain read-only/draft-first unless explicitly Pafi-authorized.",
+      "acceptance": "Each AI helper is read-only by default. Any proposed write, payment change, stock movement, public copy change, order change, or message send must become a draft and wait for explicit approval ID/idempotency key before execution. Approved Supabase writes by Codex/Pafi agents must set local app.actor='Pafi' in the same write transaction.",
+      "workstream": "AI / Workflow",
+      "chapter": "Tech/Admin & AI Agents",
+      "chapterOwner": "Narcis",
+      "plainExplanationRo": "Agenții AI rămân read-only/draft-first. Dacă un agent Codex/Pafi primește aprobare de write în Supabase, write-ul trebuie făcut cu set local app.actor='Pafi' în aceeași tranzacție, ca auditul să arate Pafi, nu rolul DB.",
+      "plainExplanationUpdatedAt": "2026-07-01T10:17:40Z",
+      "plainExplanationUpdatedBy": "Codex",
+      "supportingAssignees": [
+        "Codex/Tech",
+        "Pafi",
+        "Vic"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Narcis; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Narcis",
+        "Codex/Tech",
+        "Pafi",
+        "Vic"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "grey",
+      "colourReason": "Cancelled by Pafi.",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "completionNote": "Cancelled by Pafi.",
+      "closedAt": "2026-08-05T12:00:00+03:00",
+      "closedBy": "Pafi",
+      "colourEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
+    },
+    {
+      "id": "P2-005",
+      "title": "Create monthly budget tracking by operating bucket",
+      "category": "Products, SKUs & Budgeting",
+      "priority": "P2",
+      "urgencyScore": 66,
+      "status": "closed",
+      "owner": "Pafi",
+      "assignees": [
+        "Pafi"
+      ],
+      "dueDate": "2026-07-10",
+      "source": "Pafi ownership update 2026-06-30",
+      "description": "Merged into P0-005 Produce 6-month budget and reserve allocation. The monthly operating-bucket tracking scope is preserved inside P0-005 and should no longer be tracked as a separate P2 task.",
+      "acceptance": "Closed as merged. Use P0-005 for the combined 6-month budget, reserve allocation, monthly planned-vs-actual spend, remaining reserve, evidence/proof links, and variance tracking.",
+      "workstream": "Financial",
+      "chapter": "Products, SKUs & Budgeting",
+      "chapterOwner": "Pafi",
+      "completedAt": "2026-07-04",
+      "completedBy": "Codex",
+      "completionNote": "Closed as merged into P0-005 per Pafi instruction. Monthly budget tracking remains required inside the active P0-005 task.",
+      "colour": "grey",
+      "colourReason": "Superseded by merged P0-005 budget/reserve/monthly tracking task.",
+      "colourEvidence": [
+        "Pafi instruction 2026-07-04: merge 2 and 9"
+      ],
+      "colourUpdatedAt": "2026-07-04T00:08:30+03:00",
+      "colourUpdatedBy": "Codex",
+      "plainExplanationRo": "Acest task separat este închis pentru că a fost mutat în P0-005. Trackingul lunar nu dispare; este acum parte din taskul mare de buget pe 6 luni.",
+      "plainExplanationUpdatedAt": "2026-07-04T00:08:30+03:00",
+      "plainExplanationUpdatedBy": "Codex",
+      "mergedInto": "P0-005",
+      "supportingAssignees": [
+        "Vic",
+        "Narcis",
+        "Codex/Tech"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Pafi; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Pafi",
+        "Vic",
+        "Narcis",
+        "Codex/Tech"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex"
+    },
+    {
+      "id": "P0-013",
+      "title": "Resolve Ibiza 69-vial in-transit transfer and recount",
+      "category": "Purchasing & Logistics",
+      "chapter": "Purchasing & Logistics",
+      "workstream": "Inventory / Logistics",
+      "priority": "P0",
+      "urgencyScore": 90,
+      "status": "done",
+      "owner": "Narcis",
+      "assignees": [
+        "Narcis"
+      ],
+      "dueDate": "2026-07-01",
+      "source": "Project-card gap 2026-06-28; scope correction 2026-07-29: Narcis owns only the digital Supabase/admin gate",
+      "description": "Resolve the Bucharest -> Ibiza 69-vial transfer that is deducted from Bucharest and present in Ibiza accounting but not physically arrived according to Pafi. Keep those vials treated as in-transit/not sellable until physical receipt and recount.",
+      "acceptance": "Receipt or non-receipt is evidenced; BPC-157 14, TB-500 5, Retatrutide 10, Mots-C 15, GHK-CU 15, and NAD+ 10 are either received/recounted or explicitly marked in-transit/not sellable in the operating view.",
+      "chapterOwner": "Pafi",
+      "supportingAssignees": [
+        "Dragos",
+        "Pafi"
+      ],
+      "assigneeAuditNote": "Assignee audit 2026-07-02: primary assignee reduced to Narcis; previous collaborators moved to supportingAssignees.",
+      "assigneeAuditPrevious": [
+        "Narcis",
+        "Dragos",
+        "Pafi"
+      ],
+      "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "green",
+      "colourReason": "Pafi confirmed physical receipt and recount of the 69-vial Bucharest-to-Ibiza transfer on Thursday 2026-07-02.",
+      "colourEvidence": [
+        "Pafi confirmation 2026-07-11: transfer received and recount confirmed on Thursday 2026-07-02"
+      ],
+      "colourUpdatedAt": "2026-07-11T15:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "completedAt": "2026-07-02",
+      "completedBy": "Pafi",
+      "completionNote": "Physical receipt in Ibiza and recount of all 69 transferred vials confirmed by Pafi; received Thursday 2026-07-02.",
+      "plainExplanationRo": "Rezolvat: transferul de 69 de fiole Bucuresti -> Ibiza a fost primit fizic si inventariat joi, 2 iulie 2026. Stocul nu mai este tratat ca fiind in tranzit.",
+      "plainExplanationUpdatedAt": "2026-07-11T15:00:00+03:00",
+      "plainExplanationUpdatedBy": "Codex"
+    },
+    {
       "id": "P0-015",
       "title": "Prepare Retatrutide premium restock and expanded COA plan",
       "category": "Purchasing & Logistics",
@@ -1397,7 +1823,7 @@
       "workstream": "Purchasing / QA",
       "priority": "P0",
       "urgencyScore": 88,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
@@ -1419,13 +1845,20 @@
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
       "assigneeAuditUpdatedBy": "Codex",
-      "colour": "yellow",
-      "colourReason": "Retatrutide premium restock and expanded COA plan can proceed, but purchase/COA/testing decisions are not yet closed.",
+      "colour": "green",
+      "colourReason": "Order placed and paid; Pafi marked the task complete.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments"
+        "Pafi instruction 2026-07-02: fix Purchasing & Logistics blocker summary and assignments",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-02T14:36:50Z",
-      "colourUpdatedBy": "Codex"
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "completionNote": "Order placed and paid.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
     },
     {
       "id": "P0-016",
@@ -1490,7 +1923,7 @@
       "workstream": "Purchasing / Pafi Restock",
       "priority": "P0",
       "urgencyScore": 85,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
@@ -1503,14 +1936,15 @@
       "relatedTasks": [
         "P0-016"
       ],
-      "colour": "yellow",
-      "colourReason": "Restock planner found the next order candidate; task remains open/yellow until Pafi approves placing or changing the order.",
+      "colour": "green",
+      "colourReason": "Order placed and paid; Pafi marked the task complete.",
       "colourEvidence": [
         "Pafi instruction 2026-07-03: P0-018 is only Pafi and should use restock planner skill",
         "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/restock-plan-live-2026-07-03.json",
-        "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/next-order-recommendation-2026-07-03.md"
+        "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/next-order-recommendation-2026-07-03.md",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-03T19:35:00Z",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Acesta este doar taskul lui Pafi. Am rulat restock planner read-only și următoarea comandă propusă este: BAC Water 40, MOTS-C 30, Tesamorelin 10, total estimat USD 868 goods cost. Nu se comandă nimic și nu se scrie nimic în Supabase până când Pafi aprobă explicit.",
       "plainExplanationUpdatedAt": "2026-07-03T19:35:00Z",
@@ -1565,7 +1999,13 @@
         ],
         "evidenceFile": "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/next-order-recommendation-2026-07-03.md",
         "jsonReport": "/Users/pafi/Documents/RUO Peptides/output/restock-planner-2026-07-03/restock-plan-live-2026-07-03.json"
-      }
+      },
+      "completionNote": "Order placed and paid.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
     },
     {
       "id": "P1-015",
@@ -1575,7 +2015,7 @@
       "workstream": "Affiliate / Referral",
       "priority": "P1",
       "urgencyScore": 78,
-      "status": "planned",
+      "status": "closed",
       "owner": "Narcis",
       "assignees": [
         "Narcis"
@@ -1585,12 +2025,13 @@
       "description": "Implement the approved discount/referral/affiliate engine structure: affiliate profiles, discount codes, customer discount assignments, product discount policies, order discount lines, affiliate order attribution, affiliate commission lines, and Staff class. Vic owns rules/compliance; Pafi owns sales economics; Narcis owns tech/admin implementation.",
       "acceptance": "Engine is built or implementation-ready with ex-VAT/ex-transport commission basis, no stacking by default, product-line margin gate, 20% default pool/30% ceiling, partial-refund reversal, legacy high-discount review, and no activation before Vic compliance signoff.",
       "chapterOwner": "Pafi",
-      "colour": "yellow",
-      "colourReason": "Pricing/discount-engine plan is completed and handed to Narcis; build implementation and Vic compliance signoff remain pending before activation.",
+      "colour": "grey",
+      "colourReason": "Cancelled as a separate task and replaced by P0-029.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-01: new pricing structure completed according to best practices and sent to Narcis"
+        "Pafi instruction 2026-07-01: new pricing structure completed according to best practices and sent to Narcis",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-01T16:13:11Z",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
       "colourUpdatedBy": "Codex",
       "supportingAssignees": [
         "Vic",
@@ -1605,7 +2046,11 @@
         "Codex/Tech"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "supersededBy": "P0-029",
+      "completionNote": "Closed as replaced by P0-029.",
+      "closedAt": "2026-08-05T12:00:00+03:00",
+      "closedBy": "Pafi"
     },
     {
       "id": "P1-016",
@@ -1677,7 +2122,7 @@
       "workstream": "Data Quality / Supabase",
       "priority": "P1",
       "urgencyScore": 76,
-      "status": "planned",
+      "status": "done",
       "owner": "Narcis",
       "assignees": [
         "Narcis"
@@ -1701,7 +2146,20 @@
         "Codex/Tech"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the structured Supabase transaction-reference plan is complete.",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "completionNote": "Structured transaction-reference plan completed.",
+      "colourEvidence": [
+        "Pafi status update 2026-08-05"
+      ],
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
     },
     {
       "id": "P1-019",
@@ -1711,7 +2169,7 @@
       "workstream": "Referral / Relationship Tree",
       "priority": "P1",
       "urgencyScore": 73,
-      "status": "open",
+      "status": "done",
       "owner": "Dragos/Narcis",
       "assignees": [
         "Dragos"
@@ -1721,12 +2179,13 @@
       "description": "Create the initial customer relationship/referral map before the referral/affiliate engine becomes active. For every known customer/order, identify who referred or originated the customer and attach the customer to one of the starting root accounts: Pafi, Narcis, Vic, Dragos, or Sultan. Dragos supplies field/customer-origin knowledge, especially Ibiza/local relationship context; Narcis turns the mapping into the Supabase/dashboard/admin structure. Do not guess unknown referrals: mark them unknown/unverified with evidence needed.",
       "acceptance": "Every known customer/order has referral_root, direct_referrer, relationship_path, source/evidence link, confidence level, and unknown_reason when missing. Root accounts Pafi, Narcis, Vic, Dragos, and Sultan exist in the tree. Direct and indirect referrals are visible/exportable for dashboard/agent use. Conflicts are flagged instead of overwritten. No Supabase write/import occurs without explicit Pafi authorization, approval-register entry where relevant, and the required app.actor/performed_by audit markers.",
       "chapterOwner": "Pafi",
-      "colour": "yellow",
-      "colourReason": "Task added because no existing task explicitly assigned Dragos and Narcis to identify each customer referral and build the root relationship tree.",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the customer referral relationship tree task is complete.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-02: identify each customer referral; root accounts are Pafi, Narcis, Vic, Dragos, Sultan"
+        "Pafi instruction 2026-07-02: identify each customer referral; root accounts are Pafi, Narcis, Vic, Dragos, Sultan",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-02T12:42:00Z",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Dragos si Narcis trebuie sa faca harta initiala: pentru fiecare client, cine l-a adus si sub ce cont radacina intra: Pafi, Narcis, Vic, Dragos sau Sultan. Dragos da informatia din teren/relatii, Narcis o structureaza in dashboard/Supabase. Ce nu stim se marcheaza necunoscut, nu se inventeaza.",
       "plainExplanationUpdatedAt": "2026-07-02T12:42:00Z",
@@ -1740,7 +2199,13 @@
         "Narcis"
       ],
       "assigneeAuditUpdatedAt": "2026-07-02T13:24:00Z",
-      "assigneeAuditUpdatedBy": "Codex"
+      "assigneeAuditUpdatedBy": "Codex",
+      "completionNote": "Referral relationship tree completed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
     },
     {
       "id": "P0-011",
@@ -2171,7 +2636,7 @@
       "workstream": "Affiliate / Referral",
       "priority": "P1",
       "urgencyScore": 60,
-      "status": "open",
+      "status": "done",
       "owner": "Narcis",
       "assignees": [
         "Narcis"
@@ -2184,42 +2649,20 @@
       "relatesTo": [
         "P1-015"
       ],
-      "colour": "yellow",
-      "colourReason": "New task added by Pafi 2026-07-08; not yet built, no compliance signoff yet.",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the newsletter second-order discount task is complete.",
       "colourEvidence": [
-        "Pafi voice instruction 2026-07-08: 8% discount for second order if subscribed to newsletter — was missing from the engine spec"
+        "Pafi voice instruction 2026-07-08: 8% discount for second order if subscribed to newsletter — was missing from the engine spec",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-10T09:08:10.564856+03:00",
-      "colourUpdatedBy": "Hermes"
-    },
-    {
-      "id": "P1-021",
-      "title": "Contact eMag and Amazon for accessories suppliers and plan next order",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Accessories",
-      "priority": "P1",
-      "urgencyScore": 55,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "",
-      "source": "Pafi instruction 2026-07-08 (voice, Telegram)",
-      "description": "Contact eMag and Amazon regarding accessories (supplier/marketplace options, pricing, terms) and use findings to plan the next accessories order.",
-      "acceptance": "eMag and Amazon contacted; supplier/pricing/terms info gathered; next accessories order plan drafted with quantities and estimated cost.",
-      "blockedBy": "",
-      "relatesTo": [
-        "P2-004"
-      ],
-      "colour": "yellow",
-      "colourReason": "New task added by Pafi 2026-07-08; not yet started.",
-      "colourEvidence": [
-        "Pafi voice instruction 2026-07-08"
-      ],
-      "colourUpdatedAt": "2026-07-10T09:08:10.564856+03:00",
-      "colourUpdatedBy": "Hermes"
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "completionNote": "8% second-order newsletter discount completed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
     },
     {
       "id": "P1-022",
@@ -2229,7 +2672,7 @@
       "workstream": "Pricing",
       "priority": "P1",
       "urgencyScore": 55,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
@@ -2243,13 +2686,20 @@
         "P0-006",
         "P0-007"
       ],
-      "colour": "yellow",
-      "colourReason": "New task added by Pafi 2026-07-08; not yet started.",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the peptide.ro SKU COGS calculation is complete.",
       "colourEvidence": [
-        "Pafi voice instruction 2026-07-08"
+        "Pafi voice instruction 2026-07-08",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-10T09:08:10.564856+03:00",
-      "colourUpdatedBy": "Hermes"
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
+      "completionNote": "Total SKU cost basis completed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
     },
     {
       "id": "P1-023",
@@ -2259,7 +2709,7 @@
       "workstream": "Lead Generation",
       "priority": "P1",
       "urgencyScore": 50,
-      "status": "open",
+      "status": "done",
       "owner": "Narcis",
       "assignees": [
         "Narcis"
@@ -2272,18 +2722,25 @@
       "openQuestions": [
         "AWC edition/city not specifically known by Pafi; treat as 'AWC 2026' generically for export dating."
       ],
-      "colour": "yellow",
-      "colourReason": "App identity confirmed (official AWC 2026 app); method confirmed (Android emulator + on-laptop scraping agent); scope confirmed as cross-project (RUO + Telehealth + SMSads), no Vic compliance approval required for this scraping task. Ready for Narcis to start once app account access is available.",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the AWC app scraping task is complete.",
       "colourEvidence": [
         "Pafi voice instruction 2026-07-08 (clarification): 'Aplicatia este aplicatia site-ului Affiliate World Conference... noi cu Vic participam la aceasta conferinta acum... contine toata baza de date cu toti afiliatii, cu toate firmele care participa, expozanti.' Method: 'Narcis trebuie sa instaleze un emulator de Android ca sa poata sa incarce aplicatia AWC pe un laptop, dupa care sa ruleze un agent care sa faca scraping direct de pe laptopul respectiv.'",
-        "Pafi voice instruction 2026-07-08 (2nd clarification): 'Scraping este si pentru Telehealth si pentru smsads, si pentru RUO, nu trebuie niciun acord de la Vic. Nu stiu editia evenimentului, cred ca este 2026 simplu.'"
+        "Pafi voice instruction 2026-07-08 (2nd clarification): 'Scraping este si pentru Telehealth si pentru smsads, si pentru RUO, nu trebuie niciun acord de la Vic. Nu stiu editia evenimentului, cred ca este 2026 simplu.'",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-10T10:03:53.084676+03:00",
-      "colourUpdatedBy": "Hermes",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
+      "colourUpdatedBy": "Codex",
       "relatedProjects": [
         "PetraLab RUO",
         "Telehealth Peptides",
         "SMSads"
+      ],
+      "completionNote": "AWC attendee/exhibitor scraping completed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
       ]
     },
     {
@@ -2294,7 +2751,7 @@
       "workstream": "Accessories / Ibiza Delivery",
       "priority": "P0",
       "urgencyScore": 98.2,
-      "status": "open",
+      "status": "done",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
@@ -2318,143 +2775,24 @@
         }
       ],
       "chapterOwner": "Pafi",
-      "colour": "red",
-      "colourReason": "Urgent physical purchasing task assigned to Pafi under the 2026-07-29 digital-only boundary for Narcis.",
+      "colour": "green",
+      "colourReason": "Pafi confirmed the pens and cartridges task is complete.",
       "colourEvidence": [
         "Pafi instruction 2026-07-11: urgent task for Narcis to buy 10 reusable pens from Amazon and deliver them to Ibiza",
-        "Pafi instruction 2026-07-11: also buy 100 pen cartridges from Amazon as well"
+        "Pafi instruction 2026-07-11: also buy 100 pen cartridges from Amazon as well",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-11T12:53:31+03:00",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
       "colourUpdatedBy": "Codex",
       "plainExplanationRo": "Pafi trebuie sa cumpere urgent de pe Amazon 10 pen-uri reutilizabile si 100 de cartuse pentru pen-uri, cu livrare in Ibiza. Trebuie dovada comanda, ETA/tracking si confirmare de primire sau handoff.",
       "plainExplanationUpdatedAt": "2026-07-11T12:53:31+03:00",
-      "plainExplanationUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-024",
-      "title": "Contact all Affiliate World Budapest logistics, China procurement and 3PL/COD leads",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Supplier Sourcing / 3PL / COD",
-      "priority": "P0",
-      "urgencyScore": 98.5,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-13",
-      "source": "Pafi instruction 2026-07-12; Affiliate World Budapest contact register",
-      "description": "Urgently contact every identified Affiliate World Budapest logistics/3PL lead: Jerry Chen / Jing3PL for China procurement and EU fulfilment; Natalia Abramovskaia / WAPI for fulfilment and COD; Yoana / BigArena Fulfillment for EU 3PL and COD; and Vincent to qualify his possible US sourcing/3PL introduction. Use the filtered contact workbook as the outreach register and preserve responses for side-by-side comparison.",
-      "acceptance": "All four leads are contacted. For Jing3PL capture China procurement terms, EU warehouse map, importer-of-record responsibility, batch/COA handling, pick-pack, returns and pricing. For WAPI and BigArena capture warehouse countries, COD coverage, RUO/regulated-goods acceptance, returns, integrations and full pricing. Vincent is either qualified with company/capability details or closed as not relevant. Responses and next steps are recorded in one comparison view before selecting a partner.",
-      "contactWorkbook": "/Users/pafi/Desktop/Elevate Marketing /AWC_Budapest_Logistics_3PL_Contacts_2026-07-12.xlsx",
-      "contactIds": [
-        "AWB-012",
-        "AWB-023",
-        "AWB-037",
-        "AWB-035"
-      ],
-      "primaryConfirmedContacts": [
-        {
-          "id": "AWB-012",
-          "contact": "Jerry Chen",
-          "company": "Jing3PL",
-          "capability": "China procurement + EU 3PL"
-        },
-        {
-          "id": "AWB-023",
-          "contact": "Natalia Abramovskaia",
-          "company": "WAPI",
-          "telegram": "https://t.me/nab_wapi",
-          "capability": "Fulfilment + COD"
-        },
-        {
-          "id": "AWB-037",
-          "contact": "Yoana",
-          "company": "BigArena Fulfillment",
-          "telegram": "https://t.me/yoannnat",
-          "capability": "EU 3PL + COD"
-        }
-      ],
-      "qualificationLead": {
-        "id": "AWB-035",
-        "contact": "Vincent",
-        "telegram": "https://t.me/VinzDoggyDogg",
-        "capability": "Potential US sourcing / 3PL introduction"
-      },
-      "chapterOwner": "Pafi",
-      "colour": "red",
-      "colourReason": "Urgent owner task: identified AWC procurement and 3PL/COD leads have not yet been contacted or commercially qualified.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-12",
-        "/Users/pafi/Desktop/Elevate Marketing /Affiliate_World_Budapest_Contacts_2026-07-12.xlsx"
-      ],
-      "colourUpdatedAt": "2026-07-12T23:00:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa contacteze urgent toate contactele relevante de la AWC Budapest: Jing3PL pentru procurement China + fulfilment UE, WAPI si BigArena pentru 3PL cu COD, plus Vincent pentru clarificarea unui posibil parteneriat US. Raspunsurile trebuie comparate pe tari, COD, costuri, retururi, integrare, batch si COA.",
-      "plainExplanationUpdatedAt": "2026-07-12T23:00:00+03:00",
-      "plainExplanationUpdatedBy": "Codex"
-    },
-    {
-      "id": "P0-025",
-      "title": "Order boxes for pens",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Pen Packaging",
-      "priority": "P0",
-      "urgencyScore": 99,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-30",
-      "source": "Pafi instruction 2026-07-29: add boxes for pens ordering as urgent to-do",
-      "description": "Pafi urgently orders suitable retail/shipping boxes for the reusable peptide pens. Confirm box dimensions against the selected pen and cartridge configuration, quantity, unit price, print/finish requirements, supplier, production lead time, delivery destination, and ETA before placing the final order.",
-      "acceptance": "Pen fit and box specification are confirmed; supplier and quantity are selected; the order is placed; order reference, price, artwork/specification, delivery destination, ETA/tracking, and receipt owner are recorded.",
-      "chapterOwner": "Pafi",
-      "relatesTo": [
-        "P0-023"
-      ],
-      "colour": "red",
-      "colourReason": "Urgent packaging order requested by Pafi; no completed order evidence is recorded yet.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-29"
-      ],
-      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa comande urgent cutii potrivite pentru pen-uri. Inainte de comanda finala verifica dimensiunea, cantitatea, designul, pretul, furnizorul si locul de livrare."
-    },
-    {
-      "id": "P0-026",
-      "title": "Order labels for pens",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Pen Packaging",
-      "priority": "P0",
-      "urgencyScore": 99,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-30",
-      "source": "Pafi instruction 2026-07-29: add labels for pens as urgent to-do",
-      "description": "Pafi urgently prepares and orders labels for the pens. The label specification must match the selected pen model and approved product/SKU information, with correct dimensions, artwork version, material/adhesive, quantity, supplier, delivery destination, and ETA.",
-      "acceptance": "Approved pen-label artwork and dimensions are matched to the pen model; quantity and supplier are confirmed; the order is placed; order reference, price, artwork version, ETA/tracking, and delivery destination are recorded.",
-      "chapterOwner": "Pafi",
-      "relatesTo": [
-        "P0-023",
-        "P0-025"
-      ],
-      "colour": "red",
-      "colourReason": "Urgent pen-label order requested by Pafi; artwork/specification and completed order evidence are not yet recorded.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-29"
-      ],
-      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa comande urgent etichetele pentru pen-uri, dupa verificarea dimensiunii, modelului de pen, designului aprobat, cantitatii si furnizorului."
+      "plainExplanationUpdatedBy": "Codex",
+      "completionNote": "Pens and cartridges purchasing completed.",
+      "completedAt": "2026-08-05T12:00:00+03:00",
+      "completedBy": "Pafi",
+      "completionEvidence": [
+        "Pafi status update 2026-08-05"
+      ]
     },
     {
       "id": "P0-027",
@@ -2464,7 +2802,7 @@
       "workstream": "Vial Packaging",
       "priority": "P0",
       "urgencyScore": 99,
-      "status": "open",
+      "status": "closed",
       "owner": "Pafi",
       "assignees": [
         "Pafi"
@@ -2478,194 +2816,19 @@
         "P0-012",
         "P0-020"
       ],
-      "colour": "red",
-      "colourReason": "Urgent vial-label order requested by Pafi; validated print list and completed order evidence are not yet recorded.",
+      "colour": "grey",
+      "colourReason": "Replaced by P0-020, which now carries the vial/batch label scope.",
       "colourEvidence": [
-        "Pafi instruction 2026-07-29"
+        "Pafi instruction 2026-07-29",
+        "Pafi status update 2026-08-05"
       ],
-      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
+      "colourUpdatedAt": "2026-08-05T12:00:00+03:00",
       "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa comande urgent etichetele pentru vialuri. Lista trebuie verificata pe SKU, concentratie si batch, ca sa nu intre din nou in productie etichete gresite."
-    },
-    {
-      "id": "P0-028",
-      "title": "Order compatible needles",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Pen Accessories",
-      "priority": "P0",
-      "urgencyScore": 99,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-30",
-      "source": "Pafi instruction 2026-07-29: add needles ordering as urgent to-do",
-      "description": "Pafi urgently sources and orders needles compatible with the selected reusable pens. Confirm connector compatibility, needle specification, sterile single-use packaging, quantity, supplier, price, delivery destination, and ETA before placing the final order.",
-      "acceptance": "Compatibility with the selected pen model is documented; needle specification and sterile single-use packaging are confirmed; quantity and supplier are selected; the order is placed; order reference, price, ETA/tracking, delivery destination, and receipt owner are recorded.",
-      "chapterOwner": "Pafi",
-      "relatesTo": [
-        "P0-023"
-      ],
-      "colour": "red",
-      "colourReason": "Urgent compatible-needle order requested by Pafi; compatibility and completed order evidence are not yet recorded.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-29"
-      ],
-      "colourUpdatedAt": "2026-07-29T15:35:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa comande urgent ace compatibile cu modelul de pen ales. Compatibilitatea, specificatia, ambalarea sterila individuala, cantitatea si furnizorul trebuie confirmate inainte de comanda."
-    },
-    {
-      "id": "P0-029",
-      "title": "Test and acquire a professional logistics software stack",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Logistics Systems",
-      "priority": "P0",
-      "urgencyScore": 98,
-      "status": "open",
-      "owner": "Vic",
-      "assignees": [
-        "Vic"
-      ],
-      "dueDate": "2026-07-31",
-      "source": "Pafi instruction 2026-07-29: Vic to test and purchase a professional logistics software stack",
-      "description": "Vic evaluates, tests, selects, and purchases a professional logistics software stack for RUO operations. The evaluation must cover order management, inventory and warehouse operations, shipping/carrier integrations, tracking, returns, COD support where relevant, reporting, role-based access, audit logs, integrations with PepInternal/Supabase, data export, support, implementation time, and total cost.",
-      "acceptance": "At least three suitable systems are compared against one written requirement list; the leading option is tested with a realistic order-to-delivery workflow; integration, data ownership/export, security/access, support, and full cost are documented; one stack is selected and purchased; invoice/contract, admin ownership, implementation steps, and go-live owner are recorded.",
-      "chapterOwner": "Pafi",
-      "colour": "red",
-      "colourReason": "Owner requested an urgent professional logistics software decision; testing, selection, and purchase are not yet evidenced.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-29"
-      ],
-      "colourUpdatedAt": "2026-07-29T16:10:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Vic trebuie sa compare minimum trei solutii profesionale de logistica, sa testeze fluxul complet comanda-stoc-expediere-tracking-retur si sa cumpere varianta aleasa. Trebuie pastrate costul, contractul/factura, accesul admin si planul de implementare."
-    },
-    {
-      "id": "P0-030",
-      "title": "Complete the company account setup",
-      "category": "Compliance & Online Presence",
-      "chapter": "Compliance & Online Presence",
-      "workstream": "Company Administration",
-      "priority": "P0",
-      "urgencyScore": 97,
-      "status": "open",
-      "owner": "Vic",
-      "assignees": [
-        "Vic"
-      ],
-      "dueDate": "2026-07-31",
-      "source": "Pafi instruction 2026-07-29: Vic to finish the company account",
-      "description": "Vic completes the company account setup currently in progress. Confirm the exact platform/account, complete all company and beneficial-owner fields, finish required verification, establish controlled admin ownership and recovery access, record any remaining external approval, and save the final status without exposing credentials.",
-      "acceptance": "The exact company account is identified; all required company, owner, address, tax, and verification fields applicable to that platform are completed; submitted documents and verification status are recorded; admin ownership, recovery method, and access roles are confirmed; any unresolved external review is documented with owner and ETA. No credentials are stored in the dashboard.",
-      "chapterOwner": "Vic",
-      "colour": "red",
-      "colourReason": "Company account setup remains unfinished and was assigned by Pafi to Vic for completion.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-29"
-      ],
-      "colourUpdatedAt": "2026-07-29T16:10:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Vic trebuie sa finalizeze contul firmei aflat deja in lucru: platforma exacta, datele firmei, verificarile, documentele, accesul admin si recuperarea contului. Parolele sau codurile nu se trec in dashboard."
-    },
-    {
-      "id": "P0-031",
-      "title": "Finalize the contract with the selected 3PL",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "3PL Contracting",
-      "priority": "P0",
-      "urgencyScore": 99,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-31",
-      "source": "Pafi instruction 2026-07-29: add task for Pafi to finish the 3PL contract",
-      "description": "Pafi finalizes and signs the contract with the selected 3PL. Confirm the contracting entity, covered warehouse location, accepted product categories, inbound receiving process, storage and pick-pack fees, shipping/COD coverage, returns, loss/damage liability, insurance, service levels, stock reporting, integrations, data ownership/export, termination terms, and named operational contacts.",
-      "acceptance": "Final commercial and operating terms are agreed; legal entity and warehouse are confirmed; product acceptance and inbound requirements are documented; complete pricing and liability/insurance terms are recorded; the contract is signed by authorized parties; invoice/payment requirements, admin contacts, implementation owner, and effective date are saved.",
-      "chapterOwner": "Pafi",
-      "relatesTo": [
-        "P0-024",
-        "P0-029",
-        "P0-032"
-      ],
-      "colour": "red",
-      "colourReason": "The 3PL contract must be finalized before existing Bucharest inventory can be transferred safely.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-29"
-      ],
-      "colourUpdatedAt": "2026-07-29T16:20:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa finalizeze si sa semneze contractul cu 3PL-ul ales. Contractul trebuie sa confirme depozitul, produsele acceptate, costurile complete, receptia, livrarile/COD, retururile, raspunderea pentru pierderi si persoanele de contact."
-    },
-    {
-      "id": "P0-032",
-      "title": "Transfer existing Bucharest inventory to the 3PL warehouse",
-      "category": "Purchasing & Logistics",
-      "chapter": "Purchasing & Logistics",
-      "workstream": "Warehouse Transfer",
-      "priority": "P0",
-      "urgencyScore": 98,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-08-03",
-      "source": "Pafi instruction 2026-07-29: add task for Pafi to deliver existing Bucharest goods to the warehouse",
-      "description": "Pafi transfers the existing physical inventory held in Bucharest to the contracted 3PL warehouse. Before dispatch, reconcile the physical count by SKU and batch, confirm which units are eligible for transfer, prepare the 3PL inbound/ASN and packing list, follow temperature and handling requirements where applicable, arrange insured tracked transport, and preserve dispatch and warehouse receipt evidence.",
-      "acceptance": "P0-031 is complete; the destination warehouse and inbound appointment/instructions are confirmed; pre-dispatch physical count by SKU, quantity, batch, and disposition is signed off; packing list and inbound/ASN reference exist; transport/tracking and handoff proof are recorded; the warehouse confirms received quantities and discrepancies. Any Supabase stock movement is performed only through the authorized Hermes workflow after physical evidence exists.",
-      "chapterOwner": "Pafi",
-      "blockedBy": "P0-031 contract and warehouse receiving instructions",
-      "relatesTo": [
-        "P0-031",
-        "P0-029"
-      ],
-      "colour": "red",
-      "colourReason": "Physical Bucharest inventory transfer is pending the signed 3PL contract, confirmed warehouse, and receiving instructions.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-29"
-      ],
-      "colourUpdatedAt": "2026-07-29T16:20:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi trebuie sa mute marfa existenta din Bucuresti la depozitul 3PL dupa semnarea contractului. Inainte de expediere se face inventarul pe SKU si batch, packing list-ul si programarea de receptie; dupa livrare se pastreaza tracking-ul si confirmarea cantitatilor primite."
-    },
-    {
-      "id": "P0-033",
-      "title": "Create a GPT-assisted declaration of conformity for WAPI",
-      "category": "Compliance & Online Presence",
-      "chapter": "Compliance & Online Presence",
-      "workstream": "WAPI Compliance Documentation",
-      "priority": "P0",
-      "urgencyScore": 98,
-      "status": "open",
-      "owner": "Pafi",
-      "assignees": [
-        "Pafi"
-      ],
-      "dueDate": "2026-07-31",
-      "source": "Pafi instruction 2026-07-29: create with GPT a declaration of conformity for WAPI",
-      "description": "Pafi uses GPT to prepare a declaration of conformity draft for WAPI. First confirm WAPI's exact requested document type, contracting entity, products/SKUs and intended logistics scope. Build the draft only from verified company, supplier, batch, COA, label, packaging, storage, and regulatory evidence. Unsupported compliance claims, invented certificate numbers, false standards, or unverified product statements are prohibited. Vic reviews the compliance wording before the authorized company representative signs or submits it.",
-      "acceptance": "WAPI's exact template or required fields are obtained; the declaring legal entity, product/SKU scope, batches, intended use, evidence references, applicable standards/legal basis, storage/handling conditions, exclusions, date, and authorized signatory are identified; GPT draft is cross-checked line by line against source evidence; Vic records compliance review; final authorized version is signed and delivered to WAPI with submission proof. Missing evidence remains explicitly marked and blocks unsupported claims.",
-      "chapterOwner": "Vic",
-      "blockedBy": "WAPI document requirements and verified supporting evidence",
-      "relatesTo": [
-        "P0-031",
-        "P0-032"
-      ],
-      "colour": "red",
-      "colourReason": "WAPI conformity documentation is required, but the exact requested scope and evidence-backed final declaration are not yet completed.",
-      "colourEvidence": [
-        "Pafi instruction 2026-07-29"
-      ],
-      "colourUpdatedAt": "2026-07-29T16:30:00+03:00",
-      "colourUpdatedBy": "Codex",
-      "plainExplanationRo": "Pafi pregateste cu GPT draftul declaratiei cerute de WAPI. Mai intai obtine modelul sau cerintele exacte de la WAPI, apoi completeaza numai cu date si dovezi reale. Vic verifica formularea, iar documentul final este semnat de reprezentantul autorizat si trimis cu dovada."
+      "plainExplanationRo": "Pafi trebuie sa comande urgent etichetele pentru vialuri. Lista trebuie verificata pe SKU, concentratie si batch, ca sa nu intre din nou in productie etichete gresite.",
+      "supersededBy": "P0-020",
+      "completionNote": "Closed as replaced by P0-020.",
+      "closedAt": "2026-08-05T12:00:00+03:00",
+      "closedBy": "Pafi"
     }
   ],
   "chapters": [
